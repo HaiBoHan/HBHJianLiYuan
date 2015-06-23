@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<pub-sub>
+
+  <subcription event="UFIDA.U9.PR.PurchaseRequest.PR.BeforeDefaultValue">
+    <subscriber type="U9.VOB.Cus.HBHJianLiYuan.PlugInBE.PR_BeforeDefaultValueExtend,U9.VOB.Cus.HBHJianLiYuan.PlugInBE.dll" />
+  </subcription>
+  
+  <subcription event="UFIDA.U9.PM.Rcv.Receivement.BeforeDefaultValue">
+    <subscriber type="U9.VOB.Cus.HBHJianLiYuan.PlugInBE.Rcv_BeforeDefaultValueExtend,U9.VOB.Cus.HBHJianLiYuan.PlugInBE.dll" />
+  </subcription>
+  <subcription event="UFIDA.U9.PM.Rcv.Receivement.AfterValidate">
+    <subscriber type="U9.VOB.Cus.HBHJianLiYuan.PlugInBE.Rcv_AfterValidateExtend,U9.VOB.Cus.HBHJianLiYuan.PlugInBE.dll" />
+  </subcription>
+
+  <subcription event="UFIDA.U9.SM.Ship.Ship.Updated">
+    <subscriber type="U9.VOB.Cus.HBHJianLiYuan.PlugInBE.Ship_Updated,U9.VOB.Cus.HBHJianLiYuan.PlugInBE.dll" />
+  </subcription>
+</pub-sub>

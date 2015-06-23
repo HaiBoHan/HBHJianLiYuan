@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project id="9fcaf04f-7330-4117-8678-f4bab3ec0930" name="HBHJianLiYuanBP" displayName="HBHJianLiYuanBP" description="" help="" type="BP" assemblyName="U9.VOB.Cus.HBHJianLiYuan.BP" mapProject="" resourceName="" projectVersion="Normal">
+  <SourceControl />
+  <ItemGroup>
+    <Item id="0a65c90e-d34d-4f32-b445-9c920c35af77" name="GetPriceFromPurListBP.ubfbp" displayName="GetPriceFromPurListBP.ubfbp" description="" help="" include="GetPriceFromPurListBP.ubfbp" type="BE" />
+  </ItemGroup>
+</Project>

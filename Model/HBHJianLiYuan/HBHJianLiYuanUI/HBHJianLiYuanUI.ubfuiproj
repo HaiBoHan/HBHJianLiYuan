@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project id="99f8a4d8-2108-4d7c-8ff4-83a82cc252be" name="HBHJianLiYuanUI" displayName="HBHJianLiYuanUI" description="U9.VOB.Cus.HBHJianLiYuan.PMUI" help="" type="UI" assemblyName="U9.VOB.Cus.HBHJianLiYuan.PMUI" mapProject="" resourceName="" projectVersion="Normal">
+  <Imports>
+    <Import id="d3f12651-14f7-4f56-8ff7-9906cbc23f08" name="HBHJianLiYuanBE" displayName="HBHJianLiYuanBE" description="" help="" componentid="13a5b6db-0dab-4f3a-aeae-7e9af108a7bc" path="..\..\..\..\..\..\UFIDA\UBFV30\U9.VOB.Product.Metadata\Unconfiged\Metadata\U9.VOB.Cus.HBHJianLiYuan.BE.MetaData.dll" type="BE" isRuntime="True" />
+    <Import id="267d2d2b-4aa5-449e-87e0-979c219d6256" name="CBOReferenceUI" displayName="CBOReferenceUI" description="" help="" componentid="2ac4288d-af64-42a9-bbd2-285464e8f707" path="..\..\..\..\..\..\UFIDA\UBFV30\U9.VOB.Product.Metadata\UI\UFIDA.U9.CBO.Ref.CBOReferenceUI.MetaData.dll" type="UI" isRuntime="True" />
+    <Import id="1fd74de0-778d-4432-93c6-b201a20fcbfc" name="CBO_PubBE" displayName="CBO_PubBE" description="" help="" componentid="a743cfe1-fcae-4fcf-ae0c-8d4400990e88" path="..\..\..\..\..\..\UFIDA\UBFV30\U9.VOB.Product.Metadata\App\UFIDA.U9.CBO.PubBE.MetaData.dll" type="BE" isRuntime="True" />
+    <Import id="e229a91f-ea0d-4533-9907-27d24ff40689" name="PMReferenceUI" displayName="PMReferenceUI" description="" help="" componentid="343e6fa9-893b-4d7c-a64f-4a00ea2dcb8b" path="..\..\..\..\..\..\UFIDA\UBFV30\U9.VOB.Product.Metadata\UI\UFIDA.U9.SCM.Ref.PM.PMReferenceUI.MetaData.dll" type="UI" isRuntime="True" />
+  </Imports>
+  <SourceControl />
+  <ItemGroup>
+    <Item id="a6435066-167a-4956-aa01-65f41f637a09" name="DeptItemSupplierUIModel.ubfuim" displayName="DeptItemSupplierUIModel.ubfuim" description="" help="" include="DeptItemSupplierUIModel.ubfuim" type="" />
+    <Item id="c2697e36-255f-4d70-81c5-48056aaf6bd2" name="DeptItemSupplierUIForm.ubfform" displayName="DeptItemSupplierUIForm.ubfform" description="" help="" include="DeptItemSupplierUIForm.ubfform" type="" />
+    <Item id="a4a9b342-ae51-4ef3-bbe5-485e3811660f" name="PPLDepartmentUIModel.ubfuim" displayName="PPLDepartmentUIModel.ubfuim" description="" help="" include="PPLDepartmentUIModel.ubfuim" type="" />
+    <Item id="7d60618c-9386-4dee-9a11-e73a5a9648ad" name="PPLDepartmentUIForm.ubfform" displayName="PPLDepartmentUIForm.ubfform" description="" help="" include="PPLDepartmentUIForm.ubfform" type="" />
+    <Item id="51bcbd5f-f61a-4e89-b867-b720d38a8d7b" name="HBHJianLiYuanRef" displayName="HBHJianLiYuanRef" description="" help="" include="HBHJianLiYuanRef" type="" />
+    <Item id="46e1e10b-fe7d-4c13-91ea-6817cc084fe5" name="DeptRef.ubfref" displayName="DeptRef.ubfref" description="" help="" include="HBHJianLiYuanRef\DeptRef.ubfref" type="" />
+    <Item id="0b6838cf-39d3-4ba1-b3c1-1bf9039e8b02" name="ItemMasterRef.ubfref" displayName="ItemMasterRef.ubfref" description="" help="" include="HBHJianLiYuanRef\ItemMasterRef.ubfref" type="" />
+    <Item id="8300c914-baad-40c1-a517-bacdcb96efc2" name="DeptItemSupplierFindRef.ubfref" displayName="DeptItemSupplierFindRef.ubfref" description="" help="" include="DeptItemSupplierFindRef.ubfref" type="" />
+  </ItemGroup>
+</Project>

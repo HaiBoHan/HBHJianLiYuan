@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ServiceGroup>
-  <ServiceGroupInfo id="44e6c310-e566-4c19-97ff-2458deb52e59" name="HBHJianLiYuanwf" displayName="FT" description="" help="" fullPath="D:\U9Cust\UFIDA\U9Proj\U9AppCode\U9.VOB.Apps.Cus\CusApp\HBHJianLiYuan\Model\HBHJianLiYuanwf.sg" applicationID="" />
+  <ServiceGroupInfo id="44e6c310-e566-4c19-97ff-2458deb52e59" name="HBHJianLiYuanwf" displayName="FT" description="" help="" fullPath="D:\U9客开\健力源\HBHJianLiYuan.git\Model\HBHJianLiYuanwf.sg" applicationID="" />
   <AssemblyGroup>
     <Assembly ID="8d3e40fc-5aef-4d3f-9531-2fdad262cb78" name="UFIDA.U9.SCM.PM.ReceivementUI" type="UI" path="" />
   </AssemblyGroup>

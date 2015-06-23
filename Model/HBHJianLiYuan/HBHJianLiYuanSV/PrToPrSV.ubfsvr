@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Component id="7603cdc7-1e03-45fb-abd3-9072cbd2a54d" name="U9.VOB.Cus.HBHJianLiYuan.PrToPrSV" displayName="PrToPrSV" description="" help="" type="SV" assemblyName="U9.VOB.Cus.HBHJianLiYuan.SV">
+  <Namespace id="15ae8882-cf7d-4138-bd15-8f2bbeec7c1f" name="U9.VOB.Cus.HBHJianLiYuan.PrToPrSV" displayName="U9.VOB.Cus.HBHJianLiYuan.PrToPrSV" description="" help="">
+    <Operation id="69c65ca3-cf1e-495d-b99e-413684cad7cc" name="PrToPrSV" displayName="请购单转请购单服务" description="" help="" mD_ParentClass_ID="" isFactEntity="False" returnTypeID="49c8362f-f94e-4d65-9bf4-7c67b269d37a" isService="True" isDefault="False" isReturnCollection="True" isEntityKey="False" transactionType="0" isAuthorization="True" isISV="False">
+      <Groups>
+        <Group id="194f85be-ecd8-4845-a0fa-5d1d73848c28" name="Misc" displayName="Misc" description="" help="" />
+      </Groups>
+      <Attributes>
+        <Attribute id="418fae79-2550-464c-9be7-8507c6a4061c" name="PR" displayName="请购单实体Key" description="" help="请购单转请购单服务.Misc.请购单实体Key" isCollection="True" dataTypeID="2d4d494b-6d8d-447e-9184-7bcfe2a71ef6" isKey="False" defaultValue="" length="50" precise="5" scale="0" isNullable="True" isReadOnly="False" isHide="False" isCalculation="False" valueExpression="" maxValue="" minValue="" sequence="0" isDefaultDimensionAttribute="False" isDefaultMeasureAttribute="False" isGlobalization="False" idGenerator="" groupName="Misc" isEntityKey="True" isEntityData="True" isSystem="False" isBusinessKey="False" isSyncDictionary="False" dictionaryKey="" isExtendCode="False" isQuery="True" isForAsso="True" isModifyControl="False" isDynamic="False" isImpressible="False" isInCache="False" isKeySerializable="False" isColumnDefine="True" isFilterDefine="True" isSortDefine="True" isDefaultColumn="True" forOBAImport="False" />
+      </Attributes>
+      <Implements>
+        <Operation id="4096d534-0709-4c85-a1b6-82e287e0e1d6" name="Impement" displayName="实现" description="" help="" mD_ParentClass_ID="" isFactEntity="False" returnTypeID="49c8362f-f94e-4d65-9bf4-7c67b269d37a" isService="False" isDefault="True" isEntityKey="False" transactionType="2" isAuthorization="True" isISV="False" />
+      </Implements>
+    </Operation>
+    <Diagram id="491980fb-7c9d-45dd-a47b-b94b0ce52cca" name="PrToPrSV" displayName="PrToPrSV">
+      <Class Editable="True" ID="b86e7de9-2809-46b6-b7d6-8392a8d13799" Type="Service" ADID="69c65ca3-cf1e-495d-b99e-413684cad7cc">
+        <Location X="119" Y="60" />
+        <Size width="120" height="58" />
+      </Class>
+    </Diagram>
+  </Namespace>
+</Component>
