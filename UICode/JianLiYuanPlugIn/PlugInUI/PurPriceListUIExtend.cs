@@ -5,7 +5,6 @@ using System.Text;
 using UFSoft.UBF.UI.ControlModel;
 using UFSoft.UBF.UI.WebControlAdapter;
 using System.Collections.Specialized;
-using UFIDA.U9.Base.BaseBE;
 using UFSoft.UBF.ExportService;
 using UFSoft.UBF.UI.ActionProcess;
 using System.Data;

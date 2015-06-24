@@ -52,15 +52,6 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInUI
             part = Part;
             _strongPart = Part as UFIDA.U9.SCM.PM.PRUIModel.PRMainUIFormWebPart;
             part.Model.ClearErrorMessage();
-            if (_strongPart.Model.Views["PR"].FocusedRecord != null)
-            {
-                string id = _strongPart.Model.Views["PR"].FocusedRecord["ReqDepartment"].ToString();
-            }
-            else
-            {
-                //IUFFldReferenceColumn itemRef = (IUFFldReferenceColumn)DataGrid8.Columns["ItemInfo_ItemID"];
-                //itemRef.CustomInParams = BaseAction.Symbol_AddCustomFilter + "= ID=0 ";
-            }
             
             base.AfterLoad(Part, args);
         }
@@ -73,10 +64,6 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInUI
             _strongPart = Part as UFIDA.U9.SCM.PM.PRUIModel.PRMainUIFormWebPart;
 
             part.Model.ClearErrorMessage();
-            if (_strongPart.Model.Views["PR"].FocusedRecord != null)
-            {
-                string id = _strongPart.Model.Views["PR"].FocusedRecord["ReqDepartment"].ToString();
-            }
             IUFFldReferenceColumn itemRef = (IUFFldReferenceColumn)DataGrid8.Columns["ItemInfo_ItemID"];
             //itemRef.CustomInParams = BaseAction.Symbol_MovePageFilter + "= 1=1";
             //itemRef.CustomInParams = BaseAction.Symbol_AddCustomFilter + "= ID =1001411280110126";
@@ -90,10 +77,6 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInUI
             part = Part;
             _strongPart = Part as UFIDA.U9.SCM.PM.PRUIModel.PRMainUIFormWebPart;
 
-            if (_strongPart.Model.Views["PR"].FocusedRecord != null)
-            {
-                string id = _strongPart.Model.Views["PR"].FocusedRecord["ReqDepartment"].ToString();
-            }
         }
         public override void AfterDataCollect(UFSoft.UBF.UI.IView.IPart Part)
         {
@@ -113,11 +96,6 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInUI
         {
             base.AfterEventProcess(Part, eventName, sender, args);
 
-            if (_strongPart.Model.Views["PR"].FocusedRecord != null)
-            {
-                string id = _strongPart.Model.Views["PR"].FocusedRecord["ReqDepartment"].ToString();
-            }
-
             string strMeg = string.Empty;
             UFSoft.UBF.UI.WebControlAdapter.UFWebButton4ToolbarAdapter webButton = sender as UFSoft.UBF.UI.WebControlAdapter.UFWebButton4ToolbarAdapter;
             UFSoft.UBF.UI.WebControlAdapter.UFWebReferenceAdapter web = sender as UFSoft.UBF.UI.WebControlAdapter.UFWebReferenceAdapter;
@@ -128,8 +106,9 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInUI
                 ////if (_strongPart.Model.Views["PR"].FocusedRecord["ReqDepartment"] == null || (long)_strongPart.Model.Views["PR"].FocusedRecord["ReqDepartment"] ==0)
                 ////_strongPart.Model.ErrorMessage.Message = "请先选择需求部门";
                 //itemRef.CustomInParams = BaseAction.Symbol_AddCustomFilter + "= ID in (select ItemMaster from U9::VOB::Cus::HBHJianLiYuan::DeptItemSupplierBE::DeptItemSupplierLine where DeptItemSupplier.Department.ID=" + _strongPart.Model.Views["PR"].FocusedRecord["ReqDepartment"] + ")";
-                itemRef.CustomInParams = BaseAction.Symbol_AddCustomFilter + " = ItemCode ='001120511-2'";
-               // itemRef.AddReferenceInParameter("Code", "Code", "001120511-2");
+                //itemRef.CustomInParams = BaseAction.Symbol_AddCustomFilter + " = Code ='001120511-2'";
+                //itemRef.AddReferenceInParameter("ItemMaster", "Code", "001120511-2");
+                //itemRef.AddReferenceInParameter("ItemMaster", "ID", "0");
                 //itemRef.CustomInParams += " & Code ='001120511-2'";
             }
             #endregion
@@ -206,9 +185,10 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInUI
                     this.part.Model.ErrorMessage.Message = "生成请购单失败";
                     return;
                 }
-                else
+                else if (resultDataList[0].Name != "")
                 {
-
+                    this.part.Model.ErrorMessage.Message = resultDataList[0].Name;
+                    return;
                 }
             }
             catch (Exception ex)
@@ -245,9 +225,10 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInUI
                     this.part.Model.ErrorMessage.Message = "生成请购单失败";
                     return;
                 }
-                else
+                else if(resultDataList[0].Name !="")
                 {
-
+                    this.part.Model.ErrorMessage.Message = resultDataList[0].Name;
+                    return;
                 }
             }
             catch (Exception ex)

@@ -82,14 +82,6 @@
     <Reference Include="UBF.System">
       <HintPath>..\..\..\..\..\UBFV30\U9.VOB.Product.UBF\UBFStudio\Runtime\UBF.System.dll</HintPath>
     </Reference>
-    <Reference Include="UFIDA.U9.Base.BaseBE, Version=25.5401.15036.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\UBFV30\U9.VOB.Product.Component\UBF\UFIDA.U9.Base.BaseBE.dll</HintPath>
-    </Reference>
-    <Reference Include="UFIDA.U9.Base.BaseBE.Deploy, Version=25.5401.15036.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\UBFV30\U9.VOB.Product.Component\UBF\UFIDA.U9.Base.BaseBE.Deploy.dll</HintPath>
-    </Reference>
     <Reference Include="UFIDA.U9.Base.BaseBP, Version=25.5401.15528.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\UBFV30\U9.VOB.Product.Component\UBF\UFIDA.U9.Base.BaseBP.dll</HintPath>
@@ -102,14 +94,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\UBFV30\U9.VOB.Product.Component\UBF\UFIDA.U9.Base.BaseBP.Deploy.dll</HintPath>
     </Reference>
-    <Reference Include="UFIDA.U9.CBO.PubBE, Version=25.5401.5480.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\UBFV30\U9.VOB.Product.Component\App\UFIDA.U9.CBO.PubBE.dll</HintPath>
-    </Reference>
-    <Reference Include="UFIDA.U9.CBO.PubBE.Deploy, Version=25.5401.5480.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\UBFV30\U9.VOB.Product.Component\App\UFIDA.U9.CBO.PubBE.Deploy.dll</HintPath>
-    </Reference>
     <Reference Include="UFIDA.U9.CBO.PubSV, Version=25.5401.1216.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\..\..\..\..\UFIDA\UBFV30\U9.VOB.Product.Component\App\UFIDA.U9.CBO.PubSV.dll</HintPath>
@@ -121,14 +105,6 @@
     <Reference Include="UFIDA.U9.CBO.PubSV.Deploy, Version=25.5401.1216.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\..\..\..\..\UFIDA\UBFV30\U9.VOB.Product.Component\App\UFIDA.U9.CBO.PubSV.Deploy.dll</HintPath>
-    </Reference>
-    <Reference Include="UFIDA.U9.CBO.SCMBE, Version=25.5401.1077.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\UBFV30\U9.VOB.Product.Component\App\UFIDA.U9.CBO.SCMBE.dll</HintPath>
-    </Reference>
-    <Reference Include="UFIDA.U9.CBO.SCMBE.Deploy, Version=25.5401.288.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\UBFV30\U9.VOB.Product.Component\App\UFIDA.U9.CBO.SCMBE.Deploy.dll</HintPath>
     </Reference>
     <Reference Include="UFIDA.U9.CM.CMBP, Version=25.5401.13167.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -154,18 +130,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\UBFV30\U9.VOB.Product.Component\UI\UFIDA.U9.CS.UI.PDHelper.dll</HintPath>
     </Reference>
-    <Reference Include="UFIDA.U9.ISV.SM.SDIndustryChainSV, Version=25.5401.1183.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\..\..\..\..\UFIDA\UBFV30\U9.VOB.Product.Component\App\UFIDA.U9.ISV.SM.SDIndustryChainSV.dll</HintPath>
-    </Reference>
-    <Reference Include="UFIDA.U9.ISV.SM.SDIndustryChainSV.Agent, Version=25.5401.1183.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\..\..\..\..\UFIDA\UBFV30\U9.VOB.Product.Component\App\UFIDA.U9.ISV.SM.SDIndustryChainSV.Agent.dll</HintPath>
-    </Reference>
-    <Reference Include="UFIDA.U9.ISV.SM.SDIndustryChainSV.Deploy, Version=25.5401.1183.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\..\..\..\..\UFIDA\UBFV30\U9.VOB.Product.Component\App\UFIDA.U9.ISV.SM.SDIndustryChainSV.Deploy.dll</HintPath>
-    </Reference>
     <Reference Include="UFIDA.U9.PriceCal.PriceCalSV, Version=25.5401.14423.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\UBFV30\U9.VOB.Product.Component\App\UFIDA.U9.PriceCal.PriceCalSV.dll</HintPath>
@@ -184,12 +148,11 @@
     <Reference Include="UFIDA.U9.SCM.PM.PurPriceListUI.WebPart">
       <HintPath>..\..\..\..\..\..\..\..\..\..\UFIDA\U9V30\Portal\UILib\UFIDA.U9.SCM.PM.PurPriceListUI.WebPart.dll</HintPath>
     </Reference>
+    <Reference Include="UFIDA.U9.SCM.PM.ReceivementUI.WebPart">
+      <HintPath>..\..\..\..\..\..\..\..\..\..\UFIDA\U9V30\Portal\UILib\UFIDA.U9.SCM.PM.ReceivementUI.WebPart.dll</HintPath>
+    </Reference>
     <Reference Include="UFIDA.U9.SCM.SD.ShipUI.WebPart">
       <HintPath>..\..\..\..\..\..\..\..\..\..\UFIDA\U9V30\Portal\UILib\UFIDA.U9.SCM.SD.ShipUI.WebPart.dll</HintPath>
-    </Reference>
-    <Reference Include="UFIDA.U9.SM.SMBE, Version=25.5401.15901.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\UBFV30\U9.VOB.Product.Component\App\UFIDA.U9.SM.SMBE.dll</HintPath>
     </Reference>
     <Reference Include="UFIDA.U9.SM.SMBP, Version=25.5401.1379.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>

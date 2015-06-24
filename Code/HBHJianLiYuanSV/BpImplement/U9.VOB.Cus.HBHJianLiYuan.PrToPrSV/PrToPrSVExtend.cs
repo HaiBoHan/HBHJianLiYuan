@@ -34,135 +34,216 @@
 		public PrToPrSVImpementStrategy() { }
 
 		public override object Do(object obj)
-		{						
-			PrToPrSV bpObj = (PrToPrSV)obj;
-			
-			//get business operation context is as follows
-			//IContext context = ContextManager.Context	
-			
-			//auto generating code end,underside is user custom code
-			//and if you Implement replace this Exception Code...
+        {
+            PrToPrSV bpObj = (PrToPrSV)obj;
+
+            //get business operation context is as follows
+            //IContext context = ContextManager.Context	
+
+            //auto generating code end,underside is user custom code
+            //and if you Implement replace this Exception Code...
             //Dictionary<long, List<PRInfoDTO>> dicOrgToPoInfo = new Dictionary<long, List<PRInfoDTO>>();
             Dictionary<long, long> dicSrcPrlineToTarget = new Dictionary<long, long>();
             //返回结果
-            UFIDA.U9.CBO.Pub.Controller.CommonArchiveDataDTOData resultData = new UFIDA.U9.CBO.Pub.Controller.CommonArchiveDataDTOData();
-            UFIDA.U9.PR.PurchaseRequest.PR pr = UFIDA.U9.PR.PurchaseRequest.PR.Finder.FindByID(bpObj.PR[0].ID);
-            if (pr == null)
+            UFIDA.U9.CBO.Pub.Controller.CommonArchiveDataDTO resultData = new UFIDA.U9.CBO.Pub.Controller.CommonArchiveDataDTO();
+            List<UFIDA.U9.CBO.Pub.Controller.CommonArchiveDataDTO> resultDataList  = new List<UFIDA.U9.CBO.Pub.Controller.CommonArchiveDataDTO>();
+            foreach (PR.EntityKey prDto in bpObj.PR)
             {
-                throw new Exception("请购单不能为空");
-            }
-            if(pr.ReqDepartment == null)
-            {
-                throw new Exception("请购单部门不能为空");
-            }
-            if (pr.ReqDepartment.DescFlexField.PrivateDescSeg1 == "")
-            {
-                throw new Exception("请购单部门对应需求组织不能为空");
-            }
-            if (pr.ReqDepartment.DescFlexField.PrivateDescSeg1.Equals(pr.Org.Code))
-            {
-                resultData.ID = pr.ID;
-                resultData.Code = pr.DocNo;
-                return resultData;
-            }
-            // 跨组织，生成供应商对应组织的请购单;
-          
-            UFIDA.U9.Base.Organization.Organization org = UFIDA.U9.Base.Organization.Organization.FindByCode(pr.ReqDepartment.DescFlexField.PrivateDescSeg1.ToString());
-            //ContextDTO contextDTO = new ContextDTO();
-            //contextDTO.UserCode = UFSoft.UBF.Util.Context.PlatformContext.Current.UserCode;
-            //contextDTO.OrgCode = org.Code;
-            //contextDTO.EntCode = UFSoft.UBF.Util.Context.PlatformContext.Current.EnterpriseID;
-            //contextDTO.WriteToContext();
-            UFIDA.U9.ISV.PRSV.Proxy.CreatePRSVForOtherSysProxy proxy = new UFIDA.U9.ISV.PRSV.Proxy.CreatePRSVForOtherSysProxy();
-            proxy.PRDTOList = new List<UFIDA.U9.ISV.PRSV.OtherSystemPRDTOData>();
-            {
-                UFIDA.U9.ISV.PRSV.OtherSystemPRDTOData prDTO = new UFIDA.U9.ISV.PRSV.OtherSystemPRDTOData();
-
-                prDTO.BusinessDate = DateTime.Today;
-                prDTO.PRDocType = new UFIDA.U9.Base.DTOs.IDCodeNameDTOData();
-                prDTO.PRDocType.Code = pr.PRDocType.Code;
-                prDTO.Org = new UFIDA.U9.Base.DTOs.IDCodeNameDTOData();
-                prDTO.Org.Code = org.Code;
-                // 币种放到了行上赋值
-
-                prDTO.PRLineList = new List<UFIDA.U9.ISV.PRSV.OtherSystemPRLineDTOData>();
-
-                foreach (PRLine line in pr.PRLineList)
+                UFIDA.U9.PR.PurchaseRequest.PR pr = UFIDA.U9.PR.PurchaseRequest.PR.Finder.FindByID(prDto.ID);
+                UFIDA.U9.PR.PurchaseRequest.PRLine findPR = UFIDA.U9.PR.PurchaseRequest.PRLine.Finder.Find("DescFlexSegments.PrivateDescSeg3='" + prDto.ID.ToString() + "'");
+                if (findPR != null)
                 {
-                    UFIDA.U9.ISV.PRSV.OtherSystemPRLineDTOData lineData = GetPRLineDTO(line,prDTO);
-
-                    if (lineData != null)
-                    {
-                        prDTO.PRLineList.Add(lineData);
-                    }
+                    resultData.Name = "请购单"+pr.DocNo+"已经下发";
+                    resultDataList.Add(resultData);
+                    continue;
+                    //return resultDataList;
                 }
-
-                proxy.PRDTOList.Add(prDTO);
-            }
-            //proxy.TargetOrgCode = org.Code;
-            long id = org.ID;
-            List<UFIDA.U9.ISV.PRSV.PRBizKeyDTOData> lstPR = proxy.Do();
-
-
-            if (lstPR != null&& lstPR.Count > 0)
-            {
-                foreach (UFIDA.U9.ISV.PRSV.PRBizKeyDTOData prheadDTO in lstPR)
+                if (pr == null)
                 {
-                    if (prheadDTO != null)
+                    //throw new Exception("请购单不能为空");
+                    resultData.Name = "请购单不能为空";
+                    resultDataList.Add(resultData);
+                    return resultDataList;
+                }
+                if (pr.Status == PRStatusEnum.OpenOpen || pr.Status == PRStatusEnum.Approving)
+                {
+                    resultData.Name = "开立/核准中状态不能下发";
+                    resultDataList.Add(resultData);
+                    return resultDataList;
+                }
+                if (pr.ReqDepartment == null)
+                {
+                    //throw new Exception("请购单部门不能为空");
+                    resultData.Name = "请购单"+pr.DocNo+"需求部门不能为空";
+                    resultData.ID = pr.ID;
+                    resultData.Code = pr.DocNo;
+                    resultDataList.Add(resultData);
+                    continue;
+                    //return resultDataList;
+                }
+                if (pr.ReqDepartment.DescFlexField.PrivateDescSeg1 == "")
+                {
+                    //throw new Exception("请购单部门对应需求组织不能为空");
+                    resultData.Name = "请购单部门对应需求组织不能为空";
+                    resultData.ID = pr.ID;
+                    resultData.Code = pr.DocNo;
+                    resultDataList.Add(resultData);
+                    return resultDataList;
+                }
+                if (pr.ReqDepartment.DescFlexField.PrivateDescSeg1.Equals(pr.Org.Code))
+                {
+                    resultData.ID = pr.ID;
+                    resultData.Code = pr.DocNo;
+                    resultDataList.Add(resultData);
+                    return resultDataList;
+                }
+                // 跨组织，生成供应商对应组织的请购单;
+                //需求组织
+                UFIDA.U9.Base.Organization.Organization org = UFIDA.U9.Base.Organization.Organization.FindByCode(pr.ReqDepartment.DescFlexField.PrivateDescSeg1.ToString());
+                //ContextDTO contextDTO = new ContextDTO();
+                //contextDTO.UserCode = UFSoft.UBF.Util.Context.PlatformContext.Current.UserCode;
+                //contextDTO.OrgCode = org.Code;
+                //contextDTO.EntCode = UFSoft.UBF.Util.Context.PlatformContext.Current.EnterpriseID;
+                //contextDTO.WriteToContext();
+
+                //查询请购单服务
+                UFIDA.U9.ISV.PRSV.Proxy.QueryPRSVForOtherSysProxy queryProxy = new QueryPRSVForOtherSysProxy();
+                queryProxy.PRIDDocNoList = new List<UFIDA.U9.ISV.PRSV.PRConditionDTOData>();
+                {
+                    UFIDA.U9.ISV.PRSV.PRConditionDTOData queryprdto = new UFIDA.U9.ISV.PRSV.PRConditionDTOData();
+                    queryprdto.PRID = pr.ID;
+                    queryprdto.DocNO = pr.DocNo;
+                    queryProxy.PRIDDocNoList.Add(queryprdto);
+                }
+                List<UFIDA.U9.ISV.PRSV.OtherSystemPRDTOData> listPRDTO = queryProxy.Do();
+                //创建请购单服务
+                UFIDA.U9.ISV.PRSV.Proxy.CreatePRSVForOtherSysProxy proxy = new UFIDA.U9.ISV.PRSV.Proxy.CreatePRSVForOtherSysProxy();
+                //foreach (UFIDA.U9.ISV.PRSV.OtherSystemPRDTOData prDTO in listPRDTO)
+                //{
+                //    prDTO.Org = new UFIDA.U9.Base.DTOs.IDCodeNameDTOData();
+                //    prDTO.Org.Code = org.Code;
+                //    prDTO.BusinessDate = DateTime.Now;
+                //    //prDTO.PRDocType = new UFIDA.U9.Base.DTOs.IDCodeNameDTOData();
+                //    //prDTO.PRDocType.Code = prDTO.PRDocType.Code;
+                //    foreach (UFIDA.U9.ISV.PRSV.OtherSystemPRLineDTOData prLineDTO in prDTO.PRLineList)
+                //    {
+                //        UFIDA.U9.ISV.PRSV.OtherSystemPRLineDTOData prlinedata = prLineDTO;
+                //        prLineDTO.CurrentOrg = new UFIDA.U9.Base.DTOs.IDCodeNameDTOData();
+                //        prLineDTO.CurrentOrg.Code = org.Code;
+                //        prLineDTO.RegOrg = new UFIDA.U9.Base.DTOs.IDCodeNameDTOData();
+                //        prLineDTO.RegOrg.Code = org.Code;
+                //        //prLineDTO.ReqDept = new UFIDA.U9.Base.DTOs.IDCodeNameDTOData();
+                //        //prLineDTO.ReqDept.Code = prlinedata.ReqDept.Code;
+                //        ////prLineDTO.ItemInfo = new UFIDA.U9.CBO.SCM.Item.ItemInfoData();
+                //        ////prLineDTO.ItemInfo.ItemCode = prlinedata.ItemInfo.ItemCode;
+                //        ////prLineDTO.ItemInfo.ItemName = prlinedata.ItemInfo.ItemName;
+                //        ////if (prline.SeiBanMaster != null)
+                //        //if (prLineDTO.SeiBan != null)
+                //        //{
+                //        //    prLineDTO.SeiBan = new UFIDA.U9.Base.DTOs.IDCodeNameDTOData();
+                //        //    prLineDTO.SeiBan.ID = 0;
+                //        //    prLineDTO.SeiBan.Code = prlinedata.SeiBan.Code;
+                //        //}
+
+                //        //prLineDTO.SuggestedSupplier = new UFIDA.U9.Base.DTOs.IDCodeNameDTOData();
+                //        //prLineDTO.SuggestedSupplier.Code = prlinedata.SuggestedSupplier.Code;
+
+                //        //prLineDTO.ReqDept = new UFIDA.U9.Base.DTOs.IDCodeNameDTOData();
+                //        //prLineDTO.ReqDept.Code = prlinedata.ReqDept.Code;
+                //    }
+                //}
+                //proxy.PRDTOList = listPRDTO;
+                //proxy.TargetOrgCode = org.Code;
+                proxy.PRDTOList = new List<UFIDA.U9.ISV.PRSV.OtherSystemPRDTOData>();
+                {
+                    UFIDA.U9.ISV.PRSV.OtherSystemPRDTOData prDTO = new UFIDA.U9.ISV.PRSV.OtherSystemPRDTOData();
+
+                    prDTO.BusinessDate = DateTime.Today;
+                    prDTO.PRDocType = new UFIDA.U9.Base.DTOs.IDCodeNameDTOData();
+                    prDTO.PRDocType.Code = pr.PRDocType.Code;
+                    prDTO.Org = new UFIDA.U9.Base.DTOs.IDCodeNameDTOData();
+                    prDTO.Org.Code = org.Code;
+                    // 币种放到了行上赋值
+
+                    prDTO.PRLineList = new List<UFIDA.U9.ISV.PRSV.OtherSystemPRLineDTOData>();
+
+                    foreach (PRLine line in pr.PRLineList)
                     {
-                        PR prhead = PR.Finder.Find("DocNo=@DocNo and Org=@Org", new OqlParam(prheadDTO.DocNo) , new OqlParam(prheadDTO.Org.ID) );
-                        if (prhead != null)
+                        UFIDA.U9.ISV.PRSV.OtherSystemPRLineDTOData lineData = GetPRLineDTO(line, prDTO);
+
+                        if (lineData != null)
                         {
-                            resultData.ID = prhead.ID;
-                            resultData.Code = prhead.DocNo;
-                            // 提交请购单
-                            using (ISession session = Session.Open())
-                            {
-                                prhead.ActivityType = ActivityTypeEnum.SrvUpdate;
-                                prhead.Status = PRStatusEnum.Approving;
+                            prDTO.PRLineList.Add(lineData);
+                        }
+                    }
 
-                                foreach (PRLine line in prhead.PRLineList)
+                    proxy.PRDTOList.Add(prDTO);
+                }
+                long id = org.ID;
+                List<UFIDA.U9.ISV.PRSV.PRBizKeyDTOData> lstPR = proxy.Do(id);
+
+
+                if (lstPR != null && lstPR.Count > 0)
+                {
+                    foreach (UFIDA.U9.ISV.PRSV.PRBizKeyDTOData prheadDTO in lstPR)
+                    {
+                        if (prheadDTO != null)
+                        {
+                            PR prhead = PR.Finder.Find("DocNo=@DocNo and Org=@Org", new OqlParam(prheadDTO.DocNo), new OqlParam(prheadDTO.Org.ID));
+                            if (prhead != null)
+                            {
+                                resultData.ID = prhead.ID;
+                                resultData.Code = prhead.DocNo;
+                                // 提交请购单
+                                using (ISession session = Session.Open())
                                 {
-                                    if (line != null)
+                                    prhead.ActivityType = ActivityTypeEnum.SrvUpdate;
+                                    prhead.Status = PRStatusEnum.Approving;
+
+                                    foreach (PRLine line in prhead.PRLineList)
                                     {
-                                        line.Status = prhead.Status;
+                                        if (line != null)
+                                        {
+                                            line.Status = prhead.Status;
+                                        }
                                     }
+
+                                    session.Commit();
                                 }
 
-                                session.Commit();
-                            }
-
-                            prhead = PR.Finder.FindByID(prhead.ID);
-                            // 审核请购单
-                            using (ISession session = Session.Open())
-                            {
-                                prhead.ActivityType = ActivityTypeEnum.SrvUpdate;
-                                prhead.Status = PRStatusEnum.Approved;
-                                prhead.ApprovedOn = DateTime.Now;
-                                prhead.ApprovedBy = Context.LoginUser;
-                                //prhead.CancelApprovedOn = null;
-                                prhead.CancelApprovedBy = string.Empty;
-
-                                foreach (PRLine line in prhead.PRLineList)
+                                prhead = PR.Finder.FindByID(prhead.ID);
+                                // 审核请购单
+                                using (ISession session = Session.Open())
                                 {
-                                    if (line != null)
-                                    {
-                                        line.Status = prhead.Status;
-                                    }
-                                }
+                                    prhead.ActivityType = ActivityTypeEnum.SrvUpdate;
+                                    prhead.Status = PRStatusEnum.Approved;
+                                    prhead.ApprovedOn = DateTime.Now;
+                                    prhead.ApprovedBy = Context.LoginUser;
+                                    //prhead.CancelApprovedOn = null;
+                                    prhead.CancelApprovedBy = string.Empty;
 
-                                session.Commit();
+                                    foreach (PRLine line in prhead.PRLineList)
+                                    {
+                                        if (line != null)
+                                        {
+                                            line.Status = prhead.Status;
+                                        }
+                                    }
+
+                                    session.Commit();
+                                }
                             }
                         }
                     }
+                    resultDataList.Add(resultData);
                 }
-                return resultData;
+                else
+                {
+                    throw new BusinessException("请购单下发失败!");
+                }
             }
-            else
-            {
-                throw new BusinessException("请购单下发失败!");
-            }
-		}
+            return resultDataList;
+        }
 
         private UFIDA.U9.ISV.PRSV.OtherSystemPRLineDTOData GetPRLineDTO(PRLine prline, UFIDA.U9.ISV.PRSV.OtherSystemPRDTOData prHeadDTO)
         {
@@ -210,6 +291,15 @@
                 lineData.RcvOrg = new UFIDA.U9.Base.DTOs.IDCodeNameDTOData();
                 lineData.RcvOrg.Code = prline.RcvOrg.Code;
 
+                lineData.AccountOrg = new UFIDA.U9.Base.DTOs.IDCodeNameDTOData();
+                lineData.AccountOrg.Code = prline.AccountOrg.Code;
+
+                if (prline.ReqEmployee != null)
+                {
+                    lineData.ReqEmployee = new UFIDA.U9.Base.DTOs.IDCodeNameDTOData();
+                    lineData.ReqEmployee.Code = prline.ReqEmployee.Code;
+                }
+
                 string strOrgCode = string.Empty;
                 string strRcvOrgCode = string.Empty;
                 if (prline.ReqDept != null)
@@ -241,8 +331,8 @@
 
                 lineData.DescFlexSegments.PrivateDescSeg1 = prline.DescFlexSegments.PrivateDescSeg1;
                 lineData.DescFlexSegments.PrivateDescSeg2 = prline.DescFlexSegments.PrivateDescSeg2;
-                lineData.DescFlexSegments.PrivateDescSeg3 = prline.DescFlexSegments.PrivateDescSeg3;
-                lineData.DescFlexSegments.PrivateDescSeg4 = prline.DescFlexSegments.PrivateDescSeg4;
+                lineData.DescFlexSegments.PrivateDescSeg3 = prline.PR.ID.ToString();
+                lineData.DescFlexSegments.PrivateDescSeg4 = prline.PR.DocNo.ToString();
                 lineData.DescFlexSegments.PrivateDescSeg5 = prline.DescFlexSegments.PrivateDescSeg5;
                 lineData.DescFlexSegments.PrivateDescSeg6 = prline.DescFlexSegments.PrivateDescSeg6;
                 lineData.DescFlexSegments.PrivateDescSeg7 = prline.DescFlexSegments.PrivateDescSeg7;
@@ -326,8 +416,6 @@
                 lineData.DescFlexSegments.CombineName = prline.DescFlexSegments.CombineName;
 
 
-                lineData.DescFlexSegments.PrivateDescSeg3 = prline.ID.ToString();
-                lineData.DescFlexSegments.PrivateDescSeg4 = prline.PR.DocNo;
 
                 return lineData;
             }

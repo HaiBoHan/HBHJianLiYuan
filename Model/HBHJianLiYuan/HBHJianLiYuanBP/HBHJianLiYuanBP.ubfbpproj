@@ -3,5 +3,6 @@
   <SourceControl />
   <ItemGroup>
     <Item id="0a65c90e-d34d-4f32-b445-9c920c35af77" name="GetPriceFromPurListBP.ubfbp" displayName="GetPriceFromPurListBP.ubfbp" description="" help="" include="GetPriceFromPurListBP.ubfbp" type="BE" />
+    <Item id="ab0f0b28-7ec7-41e3-b8b1-63cff7aea3c5" name="ShipPickByDocBP.ubfbp" displayName="ShipPickByDocBP.ubfbp" description="" help="" include="ShipPickByDocBP.ubfbp" type="BE" />
   </ItemGroup>
 </Project>

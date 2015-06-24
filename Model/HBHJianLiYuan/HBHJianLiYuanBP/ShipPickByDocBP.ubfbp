@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Component id="c5b43389-79ea-440b-81ac-9792acdcd670" name="U9.VOB.Cus.HBHJianLiYuan.ShipPickByDocBP" displayName="ShipPickByDocBP" description="" help="" type="BP" assemblyName="U9.VOB.Cus.HBHJianLiYuan.BP">
+  <Namespace id="3fb64170-6362-4de9-9acd-773de8c7db63" name="U9.VOB.Cus.HBHJianLiYuan.ShipPickByDocBP" displayName="U9.VOB.Cus.HBHJianLiYuan.ShipPickByDocBP" description="" help="">
+    <Operation id="c0cc9165-2c45-4c6a-8abb-9b0a0aef8176" name="ShipPickByDoc" displayName="出货单整单拣货 " description="" help="" mD_ParentClass_ID="" isFactEntity="False" returnTypeID="378d45b4-375d-4b5d-8748-abc9575c26b3" isService="False" isDefault="False" isEntityKey="False" transactionType="0" isAuthorization="True" isISV="False">
+      <Groups>
+        <Group id="174163ba-a704-4eae-b45e-ad80d68300dd" name="Misc" displayName="Misc" description="" help="" />
+      </Groups>
+      <Attributes>
+        <Attribute id="ee4df615-3f19-4974-9765-70f623749016" name="Type" displayName="类型" description="" help="出货单整单拣货 .Misc.类型" dataTypeID="d7c6031e-d3fe-41aa-a397-5edd86c10cae" isKey="False" defaultValue="0" length="4" precise="10" scale="0" isNullable="True" isReadOnly="False" isHide="False" isCalculation="False" valueExpression="" maxValue="" minValue="" sequence="0" isDefaultDimensionAttribute="False" isDefaultMeasureAttribute="False" isGlobalization="False" idGenerator="" groupName="Misc" isEntityKey="False" isEntityData="True" isSystem="False" isBusinessKey="False" isSyncDictionary="False" dictionaryKey="" isExtendCode="False" isQuery="True" isForAsso="True" isModifyControl="False" isDynamic="False" isImpressible="False" isInCache="False" isKeySerializable="False" isColumnDefine="True" isFilterDefine="True" isSortDefine="True" isDefaultColumn="True" forOBAImport="False" />
+        <Attribute id="0d67cf64-b06e-4fd8-981d-01c12532445e" name="ShipNos" displayName="出货单单号集合" description="" help="出货单整单拣货 .Misc.出货单单号集合" isCollection="True" dataTypeID="3d174255-fd12-47f7-8844-3b5e4fae9e8c" isKey="False" defaultValue="" length="50" precise="5" scale="0" isNullable="True" isReadOnly="False" isHide="False" isCalculation="False" valueExpression="" maxValue="" minValue="" sequence="1" isDefaultDimensionAttribute="False" isDefaultMeasureAttribute="False" isGlobalization="False" idGenerator="" groupName="Misc" isEntityKey="False" isEntityData="True" isSystem="False" isBusinessKey="False" isSyncDictionary="False" dictionaryKey="" isExtendCode="False" isQuery="True" isForAsso="True" isModifyControl="False" isDynamic="False" isImpressible="False" isInCache="False" isKeySerializable="False" isColumnDefine="True" isFilterDefine="True" isSortDefine="True" isDefaultColumn="True" forOBAImport="False" />
+      </Attributes>
+      <Implements>
+        <Operation id="c646ad6c-a9ac-46b9-b281-8eb3335824e5" name="Impement" displayName="实现" description="" help="" mD_ParentClass_ID="" isFactEntity="False" returnTypeID="378d45b4-375d-4b5d-8748-abc9575c26b3" isService="False" isDefault="True" isEntityKey="False" transactionType="2" isAuthorization="True" isISV="False" />
+      </Implements>
+    </Operation>
+    <Diagram id="b02e0001-09a3-4bec-bc61-660691b8ff1e" name="ShipPickByDocBP" displayName="ShipPickByDocBP">
+      <Class Editable="True" ID="bb7f0598-f269-464c-b67c-95b4f1e06a16" Type="Operation" ADID="c0cc9165-2c45-4c6a-8abb-9b0a0aef8176">
+        <Location X="110" Y="77" />
+        <Size width="120" height="58" />
+      </Class>
+    </Diagram>
+  </Namespace>
+</Component>

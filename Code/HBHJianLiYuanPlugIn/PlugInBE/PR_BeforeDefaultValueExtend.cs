@@ -29,35 +29,31 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInBE
          
            foreach (PRLine line in pr.PRLineList)
            {
-               if (line.ReqDept == null && line.ItemInfo != null && line.SuggestedSupplier == null)
+               if (line.ReqDept != null && line.ItemInfo != null )
                {
                    deptLine = VOB.Cus.HBHJianLiYuan.DeptItemSupplierBE.DeptItemSupplierLine.Finder.Find("ItemMaster=" + line.ItemInfo.ItemID.ID + " and DeptItemSupplier.Department=" + line.ReqDept.ID + "");
                    if (deptLine != null)
                    {
                        //建议供应商
-                       line.SuggestedSupplier = new UFIDA.U9.CBO.SCM.Supplier.SupplierMISCInfo();
-                       line.SuggestedSupplier.Code = deptLine.Supplier.Code;
-                      
+                       if (line.SuggestedSupplier == null || line.SuggestedSupplier.Supplier == null)
+                       {
+                           line.SuggestedSupplier = new UFIDA.U9.CBO.SCM.Supplier.SupplierMISCInfo();
+                           line.SuggestedSupplier.Code = deptLine.Supplier.Code;
+                           line.SuggestedSupplier.Name = deptLine.Supplier.Name;
+                           line.SuggestedSupplier.Supplier = new UFIDA.U9.CBO.SCM.Supplier.Supplier();
+                           line.SuggestedSupplier.Supplier.Code = deptLine.Supplier.Code;
+                       }
                        //建议价格
                        if (line.SuggestedPrice == 0)
                        {
                            UFIDA.U9.PPR.PurPriceList.PurPriceLine purPriceLine = UFIDA.U9.PPR.PurPriceList.PurPriceLine.Finder.Find("ItemInfo.ItemID.ID=" + line.ItemInfo.ItemID.ID + " and Active=1 and FromDate<=getdate() and ToDate >=getdate() and PurPriceList.Supplier.ID=" + deptLine.Supplier.ID + " and PurPriceList.ID in (select PurchasePriceList from U9::VOB::Cus::HBHJianLiYuan::PPLDepartmentBE::PPLDepartment where Department.ID=" + line.ReqDept.ID + ")");
                            if (purPriceLine != null)
-                           {
-                               if (purPriceLine.DescFlexField != null && purPriceLine.DescFlexField.PubDescSeg1.ToString() != "")
-                               {
-                                   line.SuggestedPrice = Math.Round(purPriceLine.Price * Decimal.Parse(purPriceLine.DescFlexField.PubDescSeg1), line.TradeCurrency.PriceRound.Precision);
-                               }
-                               else if (purPriceLine.DescFlexField != null && purPriceLine.DescFlexField.PubDescSeg2.ToString() != "")
-                               {
-                                   line.SuggestedPrice = purPriceLine.Price - Decimal.Parse(purPriceLine.DescFlexField.PubDescSeg1);
-                               }
-                               else
-                               {
-                                   line.SuggestedPrice = purPriceLine.Price;
-                               }
+                           { 
+                               line.SuggestedPrice = purPriceLine.Price;
                                line.DescFlexSegments.PrivateDescSeg1 = purPriceLine.PurPriceList.Code;
                                line.DescFlexSegments.PrivateDescSeg2 = purPriceLine.DocLineNo.ToString();
+                               line.DescFlexSegments.PubDescSeg1 = purPriceLine.DescFlexField.PubDescSeg1;
+                               line.DescFlexSegments.PubDescSeg2 = purPriceLine.DescFlexField.PubDescSeg2;
                            }
                        }
                       

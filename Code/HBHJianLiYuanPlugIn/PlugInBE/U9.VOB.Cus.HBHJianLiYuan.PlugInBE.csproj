@@ -264,6 +264,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PO_BeforeDefaultValueExtend..cs" />
     <Compile Include="Rcv_AfterValidateExtend.cs" />
     <Compile Include="PR_BeforeDefaultValueExtend.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

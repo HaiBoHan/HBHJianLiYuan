@@ -115,19 +115,24 @@ this.OnLoadData_DefaultImpl(sender,e);
         {
             //数据过滤
             string orgCode = PDContext.Current.OrgRef.CodeColumn;
-           
+
             //多组织数据过滤
-            if (string.IsNullOrEmpty(filterOpath))
-            {
-                filterOpath = " Org=" + PDContext.Current.OrgID;
-            }
-            else
-            {
-                filterOpath += " and Org=" + PDContext.Current.OrgID;
-            }
             if (this.CommonAction.CurrentPart.NameValues["SrcPRID"] != null)
             {
-                filterOpath += " and PRLineList.PRLineList.PrivateDescSeg3 = '" + Convert.ToInt64(this.CommonAction.CurrentPart.NameValues["SrcPRID"].ToString()+"'");
+                if (string.IsNullOrEmpty(filterOpath))
+                {
+                    //filterOpath = " Org=" + PDContext.Current.OrgID;
+                    filterOpath = "  PRLineList.DescFlexSegments.PrivateDescSeg3 = '" + Convert.ToInt64(this.CommonAction.CurrentPart.NameValues["SrcPRID"].ToString()) + "'";
+                }
+                else
+                {
+                    //filterOpath += " and Org=" + PDContext.Current.OrgID;
+                    filterOpath += " and PRLineList.DescFlexSegments.PrivateDescSeg3 = '" + Convert.ToInt64(this.CommonAction.CurrentPart.NameValues["SrcPRID"].ToString()) + "'";
+                }
+                //if (this.CommonAction.CurrentPart.NameValues["SrcPRID"] != null)
+                //{
+                //    filterOpath += " and PRLineList.DescFlexSegments.PrivateDescSeg3 = '" + Convert.ToInt64(this.CommonAction.CurrentPart.NameValues["SrcPRID"].ToString()) + "'";
+                //}
             }
             return filterOpath;
         }

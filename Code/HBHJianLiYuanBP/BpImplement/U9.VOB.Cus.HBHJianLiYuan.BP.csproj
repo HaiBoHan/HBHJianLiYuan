@@ -50,6 +50,15 @@
     <Reference Include="UFIDA.U9.CBO.PubBE.Deploy">
       <HintPath>..\..\..\..\..\..\..\..\..\..\UFIDA\UBFV30\U9.VOB.Product.Component\App\UFIDA.U9.CBO.PubBE.Deploy.dll</HintPath>
     </Reference>
+    <Reference Include="UFIDA.U9.ISV.SM.SDIndustryChainSV">
+      <HintPath>..\..\..\..\..\..\..\..\..\..\UFIDA\UBFV30\U9.VOB.Product.Component\App\UFIDA.U9.ISV.SM.SDIndustryChainSV.dll</HintPath>
+    </Reference>
+    <Reference Include="UFIDA.U9.ISV.SM.SDIndustryChainSV.Agent">
+      <HintPath>..\..\..\..\..\..\..\..\..\..\UFIDA\UBFV30\U9.VOB.Product.Component\App\UFIDA.U9.ISV.SM.SDIndustryChainSV.Agent.dll</HintPath>
+    </Reference>
+    <Reference Include="UFIDA.U9.ISV.SM.SDIndustryChainSV.Deploy">
+      <HintPath>..\..\..\..\..\..\..\..\..\..\UFIDA\UBFV30\U9.VOB.Product.Component\App\UFIDA.U9.ISV.SM.SDIndustryChainSV.Deploy.dll</HintPath>
+    </Reference>
     <Reference Include="UFIDA.U9.PPR.PPRBE">
       <HintPath>..\..\..\..\..\..\..\..\..\..\UFIDA\UBFV30\U9.VOB.Product.Component\App\UFIDA.U9.PPR.PPRBE.dll</HintPath>
     </Reference>
