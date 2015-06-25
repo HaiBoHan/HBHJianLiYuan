@@ -2,8 +2,8 @@
 <ServiceGroup>
   <ServiceGroupInfo id="44e6c310-e566-4c19-97ff-2458deb52e59" name="HBHJianLiYuanwf" displayName="TradeCenter" description="" help="" fullPath="D:\U9客开\健力源\HBHJianLiYuan.git\Model\HBHJianLiYuanwf.sg" applicationID="" />
   <AssemblyGroup>
-    <Assembly ID="8d3e40fc-5aef-4d3f-9531-2fdad262cb78" name="UFIDA.U9.SCM.PM.PRUI.WebPart" type="UI" path="" />
-    <Assembly ID="D601B251-739C-4C5F-9104-6116C14E2B64" name="UFIDA.U9.SCM.SD.ShipUI.WebPart" type="UI" path="" />
-    <Assembly ID="C5401237-C794-411E-BA49-C8E3B4C31AE7" name="UFIDA.U9.SCM.PM.ReceivementUI.WebPart" type="UI" path="" />
+    <Assembly ID="8d3e40fc-5aef-4d3f-9531-2fdad262cb78" name="UFIDA.U9.SCM.PM.PRUI" type="UI" path="" />
+    <Assembly ID="D601B251-739C-4C5F-9104-6116C14E2B64" name="UFIDA.U9.SCM.SD.ShipUI" type="UI" path="" />
+    <Assembly ID="C5401237-C794-411E-BA49-C8E3B4C31AE7" name="UFIDA.U9.SCM.PM.ReceivementUI" type="UI" path="" />
   </AssemblyGroup>
 </ServiceGroup>
