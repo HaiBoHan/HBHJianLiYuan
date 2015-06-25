@@ -124,16 +124,17 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInUI
                 IUFFldReferenceColumn itemRef = (IUFFldReferenceColumn)DataGrid8.Columns["ItemInfo_ItemID"];
                 //if (_strongPart.Model.Views["PR"].FocusedRecord["ReqDepartment"] == null || (long)_strongPart.Model.Views["PR"].FocusedRecord["ReqDepartment"] ==0)
                 //_strongPart.Model.ErrorMessage.Message = "请先选择需求部门";
-                itemRef.CustomInParams = BaseAction.Symbol_AddCustomFilter + "= ID in (select ItemMaster from U9::VOB::Cus::HBHJianLiYuan::DeptItemSupplierBE::DeptItemSupplierLine where DeptItemSupplier.Department.ID=" + _strongPart.Model.Views["PR"].FocusedRecord["ReqDepartment"] + ")";
+                // itemRef.CustomInParams = BaseAction.Symbol_AddCustomFilter + "= ID in (select ItemMaster from U9::VOB::Cus::HBHJianLiYuan::DeptItemSupplierBE::DeptItemSupplierLine where DeptItemSupplier.Department.ID=" + _strongPart.Model.Views["PR"].FocusedRecord["ReqDepartment"] + ")";
 
-                string opath = "ID in (select ItemMaster from U9::VOB::Cus::HBHJianLiYuan::DeptItemSupplierBE::DeptItemSupplierLine where DeptItemSupplier.Department.ID=" + _strongPart.Model.Views["PR"].FocusedRecord["ReqDepartment"] + ")";
+                // string opath = "ID in (select ItemMaster from U9::VOB::Cus::HBHJianLiYuan::DeptItemSupplierBE::DeptItemSupplierLine where DeptItemSupplier.Department.ID=" + _strongPart.Model.Views["PR"].FocusedRecord["ReqDepartment"] + ")";
+                string opath = "Code = '000001'";
 
                 string custFilter = BaseAction.Symbol_AddCustomFilter + "=";
                 if (itemRef.CustomInParams != null
                     && itemRef.CustomInParams.Contains(custFilter)
                     )
                 {
-                    itemRef.CustomInParams.Replace(custFilter, string.Format("{0}{1}", custFilter, custFilter + opath + " and "));
+                    itemRef.CustomInParams = itemRef.CustomInParams.Replace(custFilter, string.Format("{0}{1}", custFilter, custFilter + opath + " and "));                    
                 }
                 else
                 {
