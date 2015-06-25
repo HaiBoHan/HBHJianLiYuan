@@ -126,7 +126,7 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInUI
                 //_strongPart.Model.ErrorMessage.Message = "请先选择需求部门";
                 // itemRef.CustomInParams = BaseAction.Symbol_AddCustomFilter + "= ID in (select ItemMaster from U9::VOB::Cus::HBHJianLiYuan::DeptItemSupplierBE::DeptItemSupplierLine where DeptItemSupplier.Department.ID=" + _strongPart.Model.Views["PR"].FocusedRecord["ReqDepartment"] + ")";
 
-                string opath = "ID in (select disLine.ItemMaster from U9::VOB::Cus::HBHJianLiYuan::DeptItemSupplierBE::DeptItemSupplierLine disLine where disLine.DeptItemSupplier.Department.ID=" + _strongPart.Model.Views["PR"].FocusedRecord["ReqDepartment"] + ")";
+                string opath = "ID in (select disLine.ItemMaster from U9::VOB::Cus::HBHJianLiYuan::DeptItemSupplierBE::DeptItemSupplierLine disLine where disLine.DeptItemSupplier.Department=" + _strongPart.Model.Views["PR"].FocusedRecord["ReqDepartment"] + ")";
                 //string opath = "Code = '000001'";
 
                 string custFilter = BaseAction.Symbol_AddCustomFilter + "=";
