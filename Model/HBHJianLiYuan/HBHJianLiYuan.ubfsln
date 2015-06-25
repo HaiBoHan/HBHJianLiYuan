@@ -5,10 +5,10 @@
     <Item id="37d392db-52e5-4f76-bb85-50528bfe003c" include="HBHJianLiYuanBE\HBHJianLiYuanBE.ubfmlproj" />
     <Item id="4ab7cd32-e7de-4e77-a9d5-e87e75cf9b55" include="HBHJianLiYuanUI\HBHJianLiYuanUI.ubfuiproj" />
     <Item id="faecc03f-9fe7-4017-a0ca-ffa6f33dd298" include="HBHJianLiYuanSV\HBHJianLiYuanSV.ubfserproj" />
-    <Item id="ca38123a-0747-4718-84e4-81a4ac114cf5" include="..\..\U9AppCode\U9.VOB.Apps.Cus\CusApp\HBHJianLiYuan\UICode\HBHJianLiYuanList\HBHJianLiYuanList.ubfuiproj" />
-    <Item id="23a5729d-1e2e-48b7-b5a5-37bd169bfac5" include="..\..\U9AppCode\U9.VOB.Apps.Cus\CusApp\HBHJianLiYuan\Code\HBHJianLiYuanListBP\HBHJianLiYuanListBP.ubfbpproj" />
     <Item id="aac353fc-105f-4e2a-bf78-2da27446061e" include="HBHJianLiYuanQuery\HBHJianLiYuanQuery.ubfqueryproj" />
     <Item id="97573cb1-ce19-4964-81c6-4fc41a30563f" include="HBHJianLiYuanBP\HBHJianLiYuanBP.ubfbpproj" />
+    <Item id="2b09f5c2-d960-413e-8f91-fd071521d31d" include="HBHJianLiYuanList\HBHJianLiYuanList.ubfuiproj" />
+    <Item id="ad49444b-bba3-48b7-95d4-e0d842d97423" include="HBHJianLiYuanListBP\HBHJianLiYuanListBP.ubfbpproj" />
   </ItemGroup>
   <ServiceGroupInfo id="6c2d60cf-0599-44f1-ad1e-030aae6b280b" name="HBHJianLiYuan" displayName="HBHJianLiYuan" description="" help="" fullPath="D:\U9客开\健力源\HBHJianLiYuan.git\Model\HBHJianLiYuan\HBHJianLiYuan.ubfsln" applicationID="" />
 </Solution>
