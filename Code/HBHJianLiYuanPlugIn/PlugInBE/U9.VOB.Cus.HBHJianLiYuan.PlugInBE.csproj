@@ -290,7 +290,9 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="U9.VOB.Cus.HBHJianLiYuan.PlugInBE.sub.xml" />
+    <Content Include="U9.VOB.Cus.HBHJianLiYuan.PlugInBE.sub.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
