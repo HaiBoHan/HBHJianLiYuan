@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project id="ae783a81-e39f-40ad-a8f6-4f3342468bbd" name="HBHJianLiYuanList" displayName="HBHJianLiYuanList" description="" help="" type="UI" assemblyName="U9.VOB.Cus.HBHJianLiYuan.ListUI" mapProject="" resourceName="" projectVersion="Normal">
+  <Imports>
+    <Import id="44d5df38-3ed5-4fa6-8877-645c80393758" name="PRBE" displayName="PRBE" description="" help="" componentid="69173939-365a-43ab-8e54-47cfa8b25abb" path="..\..\..\..\..\..\..\..\..\UFIDA\UBFV30\U9.VOB.Product.Metadata\App\UFIDA.U9.PR.PRBE.MetaData.dll" type="BE" isRuntime="True" />
+  </Imports>
+  <SourceControl />
+  <ItemGroup>
+    <Item id="e9753807-61da-41dc-bbb2-f172395b5dd3" name="HBHJianLiYuanListBQryUIModel.ubfuim" displayName="HBHJianLiYuanListBQryUIModel.ubfuim" description="" help="" include="HBHJianLiYuanListBQryUIModel.ubfuim" type="" />
+    <Item id="147d48b2-0bfa-4460-8743-b555ff39ba42" name="HBHJianLiYuanListBQryUIForm.ubfform" displayName="HBHJianLiYuanListBQryUIForm.ubfform" description="" help="" include="HBHJianLiYuanListBQryUIForm.ubfform" type="" />
+  </ItemGroup>
+</Project>
