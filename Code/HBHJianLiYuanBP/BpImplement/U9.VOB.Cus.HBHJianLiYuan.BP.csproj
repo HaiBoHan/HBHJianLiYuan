@@ -33,37 +33,34 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="U9.VOB.Cus.HBHJianLiYuan.BE">
-      <HintPath>..\..\..\..\..\..\..\..\..\..\UFIDA\UBFV30\U9.VOB.Product.Component\Unconfiged\Component\U9.VOB.Cus.HBHJianLiYuan.BE.dll</HintPath>
-    </Reference>
-    <Reference Include="U9.VOB.Cus.HBHJianLiYuan.BE.Deploy">
-      <HintPath>..\..\..\..\..\..\..\..\..\..\UFIDA\UBFV30\U9.VOB.Product.Component\Unconfiged\Component\U9.VOB.Cus.HBHJianLiYuan.BE.Deploy.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\Unconfiged\Component\U9.VOB.Cus.HBHJianLiYuan.BE.dll</HintPath>
     </Reference>
     <Reference Include="UFIDA.U9.Base.BaseBE">
-      <HintPath>..\..\..\..\..\..\..\..\..\..\UFIDA\UBFV30\U9.VOB.Product.Component\UBF\UFIDA.U9.Base.BaseBE.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\UBF\UFIDA.U9.Base.BaseBE.dll</HintPath>
     </Reference>
     <Reference Include="UFIDA.U9.Base.BaseBE.Deploy">
-      <HintPath>..\..\..\..\..\..\..\..\..\..\UFIDA\UBFV30\U9.VOB.Product.Component\UBF\UFIDA.U9.Base.BaseBE.Deploy.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\UBF\UFIDA.U9.Base.BaseBE.Deploy.dll</HintPath>
     </Reference>
     <Reference Include="UFIDA.U9.CBO.PubBE">
-      <HintPath>..\..\..\..\..\..\..\..\..\..\UFIDA\UBFV30\U9.VOB.Product.Component\App\UFIDA.U9.CBO.PubBE.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\App\UFIDA.U9.CBO.PubBE.dll</HintPath>
     </Reference>
     <Reference Include="UFIDA.U9.CBO.PubBE.Deploy">
-      <HintPath>..\..\..\..\..\..\..\..\..\..\UFIDA\UBFV30\U9.VOB.Product.Component\App\UFIDA.U9.CBO.PubBE.Deploy.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\App\UFIDA.U9.CBO.PubBE.Deploy.dll</HintPath>
     </Reference>
     <Reference Include="UFIDA.U9.ISV.SM.SDIndustryChainSV">
-      <HintPath>..\..\..\..\..\..\..\..\..\..\UFIDA\UBFV30\U9.VOB.Product.Component\App\UFIDA.U9.ISV.SM.SDIndustryChainSV.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\App\UFIDA.U9.ISV.SM.SDIndustryChainSV.dll</HintPath>
     </Reference>
     <Reference Include="UFIDA.U9.ISV.SM.SDIndustryChainSV.Agent">
-      <HintPath>..\..\..\..\..\..\..\..\..\..\UFIDA\UBFV30\U9.VOB.Product.Component\App\UFIDA.U9.ISV.SM.SDIndustryChainSV.Agent.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\App\UFIDA.U9.ISV.SM.SDIndustryChainSV.Agent.dll</HintPath>
     </Reference>
     <Reference Include="UFIDA.U9.ISV.SM.SDIndustryChainSV.Deploy">
-      <HintPath>..\..\..\..\..\..\..\..\..\..\UFIDA\UBFV30\U9.VOB.Product.Component\App\UFIDA.U9.ISV.SM.SDIndustryChainSV.Deploy.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\App\UFIDA.U9.ISV.SM.SDIndustryChainSV.Deploy.dll</HintPath>
     </Reference>
     <Reference Include="UFIDA.U9.PPR.PPRBE">
-      <HintPath>..\..\..\..\..\..\..\..\..\..\UFIDA\UBFV30\U9.VOB.Product.Component\App\UFIDA.U9.PPR.PPRBE.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\App\UFIDA.U9.PPR.PPRBE.dll</HintPath>
     </Reference>
     <Reference Include="UFIDA.U9.PPR.PPRBE.Deploy">
-      <HintPath>..\..\..\..\..\..\..\..\..\..\UFIDA\UBFV30\U9.VOB.Product.Component\App\UFIDA.U9.PPR.PPRBE.Deploy.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\App\UFIDA.U9.PPR.PPRBE.Deploy.dll</HintPath>
     </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project id="5ae8d531-325c-4dfc-90ba-5774b52b574a" name="HBHJianLiYuanQuery" displayName="HBHJianLiYuanQuery" description="" help="" type="" assemblyName="HBHJianLiYuanQuery" mapProject="" resourceName="" projectVersion="Normal">
   <Imports>
-    <Import id="06088d21-5e60-4258-b596-b998899565c1" name="HBHJianLiYuanList" displayName="HBHJianLiYuanList" description="" help="" componentid="ae783a81-e39f-40ad-a8f6-4f3342468bbd" path="..\..\..\U9AppCode\U9.VOB.Apps.Cus\CusApp\HBHJianLiYuan\UICode\HBHJianLiYuanList\HBHJianLiYuanList.ubfuiproj" type="UI" isRuntime="False" />
-    <Import id="628479fc-b509-4810-89fd-a63ed00190f0" name="HBHJianLiYuanListBP" displayName="HBHJianLiYuanListBP" description="" help="" componentid="5268c858-a083-48af-84de-2d0b3d423efa" path="..\..\..\U9AppCode\U9.VOB.Apps.Cus\CusApp\HBHJianLiYuan\Code\HBHJianLiYuanListBP\HBHJianLiYuanListBP.ubfbpproj" type="BP" isRuntime="False" />
+    <Import id="06088d21-5e60-4258-b596-b998899565c1" name="HBHJianLiYuanList" displayName="HBHJianLiYuanList" description="" help="" componentid="ae783a81-e39f-40ad-a8f6-4f3342468bbd" path="..\HBHJianLiYuanList\HBHJianLiYuanList.ubfuiproj" type="UI" isRuntime="False" />
+    <Import id="628479fc-b509-4810-89fd-a63ed00190f0" name="HBHJianLiYuanListBP" displayName="HBHJianLiYuanListBP" description="" help="" componentid="5268c858-a083-48af-84de-2d0b3d423efa" path="..\HBHJianLiYuanListBP\HBHJianLiYuanListBP.ubfbpproj" type="BP" isRuntime="False" />
   </Imports>
   <SourceControl />
   <ItemGroup>

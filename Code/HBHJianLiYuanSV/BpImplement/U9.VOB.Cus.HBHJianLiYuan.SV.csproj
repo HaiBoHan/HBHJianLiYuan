@@ -33,34 +33,34 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="UFIDA.U9.Base.BaseBE">
-      <HintPath>..\..\..\..\..\..\..\..\..\..\UFIDA\UBFV30\U9.VOB.Product.Component\UBF\UFIDA.U9.Base.BaseBE.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\UBF\UFIDA.U9.Base.BaseBE.dll</HintPath>
     </Reference>
     <Reference Include="UFIDA.U9.Base.BaseBE.Deploy">
-      <HintPath>..\..\..\..\..\..\..\..\..\..\UFIDA\UBFV30\U9.VOB.Product.Component\UBF\UFIDA.U9.Base.BaseBE.Deploy.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\UBF\UFIDA.U9.Base.BaseBE.Deploy.dll</HintPath>
     </Reference>
     <Reference Include="UFIDA.U9.CBO.PubBE">
-      <HintPath>..\..\..\..\..\..\..\..\..\..\UFIDA\UBFV30\U9.VOB.Product.Component\App\UFIDA.U9.CBO.PubBE.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\App\UFIDA.U9.CBO.PubBE.dll</HintPath>
     </Reference>
     <Reference Include="UFIDA.U9.CBO.PubBE.Deploy">
-      <HintPath>..\..\..\..\..\..\..\..\..\..\UFIDA\UBFV30\U9.VOB.Product.Component\App\UFIDA.U9.CBO.PubBE.Deploy.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\App\UFIDA.U9.CBO.PubBE.Deploy.dll</HintPath>
     </Reference>
     <Reference Include="UFIDA.U9.CBO.SCMBE">
-      <HintPath>..\..\..\..\..\..\..\..\..\..\UFIDA\UBFV30\U9.VOB.Product.Component\App\UFIDA.U9.CBO.SCMBE.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\App\UFIDA.U9.CBO.SCMBE.dll</HintPath>
     </Reference>
     <Reference Include="UFIDA.U9.CBO.SCMBE.Deploy">
-      <HintPath>..\..\..\..\..\..\..\..\..\..\UFIDA\UBFV30\U9.VOB.Product.Component\App\UFIDA.U9.CBO.SCMBE.Deploy.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\App\UFIDA.U9.CBO.SCMBE.Deploy.dll</HintPath>
     </Reference>
     <Reference Include="UFIDA.U9.ISV.PM.PMISV, Version=25.5401.3138.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\..\..\..\..\UFIDA\UBFV30\U9.VOB.Product.Component\App\UFIDA.U9.ISV.PM.PMISV.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\App\UFIDA.U9.ISV.PM.PMISV.dll</HintPath>
     </Reference>
     <Reference Include="UFIDA.U9.ISV.PM.PMISV.Agent, Version=25.5401.3138.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\..\..\..\..\UFIDA\UBFV30\U9.VOB.Product.Component\App\UFIDA.U9.ISV.PM.PMISV.Agent.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\App\UFIDA.U9.ISV.PM.PMISV.Agent.dll</HintPath>
     </Reference>
     <Reference Include="UFIDA.U9.ISV.PM.PMISV.Deploy, Version=25.5401.3138.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\..\..\..\..\UFIDA\UBFV30\U9.VOB.Product.Component\App\UFIDA.U9.ISV.PM.PMISV.Deploy.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\App\UFIDA.U9.ISV.PM.PMISV.Deploy.dll</HintPath>
     </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
