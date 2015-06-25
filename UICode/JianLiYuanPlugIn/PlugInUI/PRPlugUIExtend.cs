@@ -113,6 +113,37 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInUI
             }
             #endregion
         }
+
+        public override void AfterRender(UFSoft.UBF.UI.IView.IPart Part, EventArgs args)
+        {
+            base.AfterRender(Part, args);
+
+            if (_strongPart.Model.Views["PR"].FocusedRecord != null)
+            {
+                string id = _strongPart.Model.Views["PR"].FocusedRecord["ReqDepartment"].ToString();
+                IUFFldReferenceColumn itemRef = (IUFFldReferenceColumn)DataGrid8.Columns["ItemInfo_ItemID"];
+                //if (_strongPart.Model.Views["PR"].FocusedRecord["ReqDepartment"] == null || (long)_strongPart.Model.Views["PR"].FocusedRecord["ReqDepartment"] ==0)
+                //_strongPart.Model.ErrorMessage.Message = "请先选择需求部门";
+                itemRef.CustomInParams = BaseAction.Symbol_AddCustomFilter + "= ID in (select ItemMaster from U9::VOB::Cus::HBHJianLiYuan::DeptItemSupplierBE::DeptItemSupplierLine where DeptItemSupplier.Department.ID=" + _strongPart.Model.Views["PR"].FocusedRecord["ReqDepartment"] + ")";
+
+                string opath = "ID in (select ItemMaster from U9::VOB::Cus::HBHJianLiYuan::DeptItemSupplierBE::DeptItemSupplierLine where DeptItemSupplier.Department.ID=" + _strongPart.Model.Views["PR"].FocusedRecord["ReqDepartment"] + ")";
+
+                string custFilter = BaseAction.Symbol_AddCustomFilter + "=";
+                if (itemRef.CustomInParams != null
+                    && itemRef.CustomInParams.Contains(custFilter)
+                    )
+                {
+                    itemRef.CustomInParams.Replace(custFilter, string.Format("{0}{1}", custFilter, custFilter + opath + " and "));
+                }
+                else
+                {
+                    itemRef.CustomInParams = string.Format("{0}{1}", custFilter, opath);
+                }
+            }
+            //IUFFldReferenceColumn itemRef = (IUFFldReferenceColumn)DataGrid8.Columns["ItemInfo_ItemID"];
+            //itemRef.CustomInParams = BaseAction.Symbol_AddCustomFilter + "= ID =1001411280110126";
+        }
+
         #endregion
 
         #region 自定义方法
