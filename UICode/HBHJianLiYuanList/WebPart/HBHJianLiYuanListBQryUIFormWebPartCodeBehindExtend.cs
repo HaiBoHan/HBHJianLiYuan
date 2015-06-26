@@ -126,7 +126,17 @@ namespace U9.VOB.Cus.HBHJianLiYuan.HBHJianLiYuanListBQryUIModel
 		{
 						
 			BeforeUIModelBinding_Qry_DefaultImpl();//BE查询自动产生的代码
-		
+
+
+            // SCM.PM.PM3020_10&PR_Type=PM3020
+            LinkParameter paramType = new LinkParameter("PR_Type", "PM3020", enuBindingType.value);
+            LinkParameter paramOrg = new LinkParameter("__curOId", "PR_Org", enuBindingType.column, enuBindingPropertyType.Key);
+            
+            U9.VOB.HBHCommon.HBHCommonUI.UICommonHelper.SetDocNoTitleClick(this.DataGrid1
+                , "PR"
+                , "PR_DocNo", "4E0A5FF2-3FCD-4403-8D36-068F37667C4F", "请购单"
+                , paramType, paramOrg
+                );
 		}
 
 		public void AfterUIModelBinding()

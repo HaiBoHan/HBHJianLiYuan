@@ -19,6 +19,7 @@ using System.Collections.Specialized;
 using UFIDA.U9.PriceCal.PriceCalSV;
 using UFSoft.UBF.UI.Controls;
 using UFSoft.UBF.UI.WebControls;
+using UFIDA.U9.Cust.HBH.Common.CommonLibary;
 
 namespace U9.VOB.Cus.HBHJianLiYuan.PlugInUI
 {
@@ -257,9 +258,11 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInUI
                     this.part.Model.ErrorMessage.Message = "生成请购单失败";
                     return;
                 }
-                else if(resultDataList[0].Name !="")
+                else if(!PubClass.IsNull( resultDataList[0].Code))
                 {
-                    this.part.Model.ErrorMessage.Message = resultDataList[0].Name;
+                    //this.part.Model.ErrorMessage.Message = resultDataList[0].Name;
+
+                    BtnQueryPR_ItemClick(null, null);
                     return;
                 }
             }

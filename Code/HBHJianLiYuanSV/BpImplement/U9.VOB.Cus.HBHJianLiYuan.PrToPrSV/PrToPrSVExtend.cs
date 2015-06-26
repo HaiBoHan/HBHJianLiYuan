@@ -13,6 +13,8 @@
     using UFIDA.U9.CBO.SCM.Enums;
     using UFIDA.U9.CBO.Pub.Controller;
     using U9.VOB.Cus.HBHJianLiYuan.HBHHelper;
+    using UFIDA.U9.CBO.HR.Department;
+    using UFIDA.U9.Base.Organization;
 
 	/// <summary>
 	/// PrToPrSV partial 
@@ -268,7 +270,7 @@
 
                     foreach (PRLine line in pr.PRLineList)
                     {
-                        UFIDA.U9.ISV.PRSV.OtherSystemPRLineDTOData lineData = GetPRLineDTO(line, prDTO);
+                        UFIDA.U9.ISV.PRSV.OtherSystemPRLineDTOData lineData = GetPRLineDTO(line, prDTO, org);
 
                         if (lineData != null)
                         {
@@ -344,7 +346,7 @@
             return resultDataList;
         }
 
-        private UFIDA.U9.ISV.PRSV.OtherSystemPRLineDTOData GetPRLineDTO(PRLine prline, UFIDA.U9.ISV.PRSV.OtherSystemPRDTOData prHeadDTO)
+        private UFIDA.U9.ISV.PRSV.OtherSystemPRLineDTOData GetPRLineDTO(PRLine prline, UFIDA.U9.ISV.PRSV.OtherSystemPRDTOData prHeadDTO, Organization org)
         {
 
             //// 4、pr转pr核算币种没带过去
@@ -360,11 +362,34 @@
             {
                 UFIDA.U9.ISV.PRSV.OtherSystemPRLineDTOData lineData = new UFIDA.U9.ISV.PRSV.OtherSystemPRLineDTOData();
 
+                lineData.DocLineNo = prline.DocLineNo;
                 lineData.ItemInfo = new UFIDA.U9.CBO.SCM.Item.ItemInfoData();
                 lineData.ItemInfo.ItemCode = prline.ItemInfo.ItemCode;
                 lineData.ItemInfo.ItemName = prline.ItemInfo.ItemName;
-                lineData.CurrentOrg = new UFIDA.U9.Base.DTOs.IDCodeNameDTOData();
-                lineData.CurrentOrg.Code = prline.ReqDept.DescFlexField.PrivateDescSeg1;
+
+                string strOrgCode = string.Empty;
+                string strRcvOrgCode = string.Empty;
+                if (prline.ReqDept != null)
+                {
+                    strOrgCode = prline.ReqDept.DescFlexField.PrivateDescSeg1;//需求组织
+
+                    if (String.IsNullOrEmpty(strOrgCode))
+                    {
+                        lineData.CurrentOrg = new UFIDA.U9.Base.DTOs.IDCodeNameDTOData();
+                        lineData.CurrentOrg.Code = strOrgCode;
+
+                        lineData.RegOrg = new UFIDA.U9.Base.DTOs.IDCodeNameDTOData();
+                        lineData.RegOrg.Code = strOrgCode;
+
+                        lineData.RcvOrg = new UFIDA.U9.Base.DTOs.IDCodeNameDTOData();
+                        lineData.RcvOrg.Code = strOrgCode;
+
+                        lineData.AccountOrg = new UFIDA.U9.Base.DTOs.IDCodeNameDTOData();
+                        lineData.AccountOrg.Code = strOrgCode;
+                    }
+
+                }
+
                 //if (prline.SeiBanMaster != null)
                 if (prline.SeiBanMasterKey != null)
                 {
@@ -373,25 +398,45 @@
                     lineData.SeiBan.Code = prline.SeiBanMaster.SeibanNO;
                 }
 
-                lineData.ReqUOM = new UFIDA.U9.Base.DTOs.IDCodeNameDTOData();
-                lineData.ReqUOM.Code = prline.ReqUOM.Code;
+                if (prline.ReqUOM != null)
+                {
+                    lineData.ReqUOM = new UFIDA.U9.Base.DTOs.IDCodeNameDTOData();
+                    lineData.ReqUOM.Code = prline.ReqUOM.Code;
+                }
 
                 lineData.ReqQtyTU = prline.ReqQtyTU;
 
                 lineData.RequiredDeliveryDate = prline.RequiredDeliveryDate;
 
-                lineData.SuggestedSupplier = new UFIDA.U9.Base.DTOs.IDCodeNameDTOData();
-                lineData.SuggestedSupplier.Code = prline.SuggestedSupplier.Code;
                 lineData.SuggestedPrice = prline.SuggestedPrice;
+                if (prline.SuggestedSupplier != null)
+                {
+                    lineData.SuggestedSupplier = new UFIDA.U9.Base.DTOs.IDCodeNameDTOData();
+                    lineData.SuggestedSupplier.Code = prline.SuggestedSupplier.Code;
+                }
 
-                lineData.ReqDept = new UFIDA.U9.Base.DTOs.IDCodeNameDTOData();
-                lineData.ReqDept.Code = prline.ReqDept.Code;
+                if (prline.ReqDept != null)
+                {
+                    string deptName = prline.ReqDept.Name;
+                    Department targetDept = Department.Finder.Find("Name=@Name and Org=@Org"
+                        , new OqlParam(deptName)
+                        , new OqlParam(org.ID)
+                        );
 
-                lineData.RcvOrg = new UFIDA.U9.Base.DTOs.IDCodeNameDTOData();
-                lineData.RcvOrg.Code = prline.RcvOrg.Code;
-
-                lineData.AccountOrg = new UFIDA.U9.Base.DTOs.IDCodeNameDTOData();
-                lineData.AccountOrg.Code = prline.AccountOrg.Code;
+                    if (targetDept != null)
+                    {
+                        lineData.ReqDept = new UFIDA.U9.Base.DTOs.IDCodeNameDTOData();
+                        //lineData.ReqDept.Code = prline.ReqDept.Code;
+                        //lineData.ReqDept.Name = prline.ReqDept.Name;
+                        lineData.ReqDept.Code = targetDept.Code;
+                    }
+                    else
+                    {
+                        string msg = string.Format("组织[{0}]中没有名称为[{1}]的部门!"
+                            , org.Name, deptName);
+                        throw new BusinessException(msg);
+                    }
+                }
 
                 if (prline.ReqEmployee != null)
                 {
@@ -399,18 +444,6 @@
                     lineData.ReqEmployee.Code = prline.ReqEmployee.Code;
                 }
 
-                string strOrgCode = string.Empty;
-                string strRcvOrgCode = string.Empty;
-                if (prline.ReqDept != null)
-                {
-                    strOrgCode = prline.ReqDept.DescFlexField.PrivateDescSeg1;//需求组织
-
-                   if(String.IsNullOrEmpty(strOrgCode))
-                   {
-                       lineData.RegOrg = new UFIDA.U9.Base.DTOs.IDCodeNameDTOData();
-                       lineData.RegOrg.Code = strOrgCode;
-                   }
-                }
                 //{
                 //    lineData.RcvOrg = new UFIDA.U9.Base.DTOs.IDCodeNameDTOData();
                 //    //// 开票单位(私有段4)

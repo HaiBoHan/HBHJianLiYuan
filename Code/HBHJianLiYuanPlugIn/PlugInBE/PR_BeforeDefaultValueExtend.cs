@@ -61,7 +61,18 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInBE
                                 UFIDA.U9.PPR.PurPriceList.PurPriceLine purPriceLine = UFIDA.U9.PPR.PurPriceList.PurPriceLine.Finder.Find("ItemInfo.ItemID.ID=" + line.ItemInfo.ItemID.ID + " and Active=1 and FromDate<=getdate() and ToDate >=getdate() and PurPriceList.Supplier.ID=" + deptLine.Supplier.ID + " and PurPriceList.ID in (select PurchasePriceList from U9::VOB::Cus::HBHJianLiYuan::PPLDepartmentBE::PPLDepartment where Department.ID=" + line.ReqDept.ID + ")");
                                 if (purPriceLine != null)
                                 {
-                                    line.SuggestedPrice = purPriceLine.Price;
+                                    decimal preDiscountPrice = HBHHelper.PPLineHelper.GetPreDiscountPrice(purPriceLine);
+                                    decimal discountedPrice = HBHHelper.PPLineHelper.GetFinallyPrice(purPriceLine);
+
+                                    if (pr.AC != null)
+                                    {
+                                        line.SuggestedPrice = pr.AC.PriceRound.GetRoundValue(discountedPrice);
+                                        line.MoneyAC = pr.AC.MoneyRound.GetRoundValue(line.SuggestedPrice * line.ReqQtyTU);
+
+                                        line.SuggestPriceFC = line.SuggestedPrice;
+                                        line.MoneyAC = line.MoneyFC;
+                                    }
+
                                     //line.DescFlexSegments.PrivateDescSeg1 = purPriceLine.PurPriceList.Code;
                                     //line.DescFlexSegments.PrivateDescSeg2 = purPriceLine.DocLineNo.ToString();
                                     //line.DescFlexSegments.PubDescSeg1 = purPriceLine.DescFlexField.PubDescSeg1;
@@ -71,7 +82,7 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInBE
                                     PRLineHelper.SetSrcPPLineNo(line.DescFlexSegments, purPriceLine.DocLineNo.ToString());
 
                                     // 后面考虑是不是在 PRLineHelper里加个方法实现这个；
-                                    DescFlexFieldHelper.SetPreDiscountPrice(line.DescFlexSegments, DescFlexFieldHelper.GetPreDiscountPrice(purPriceLine.DescFlexField));
+                                    DescFlexFieldHelper.SetPreDiscountPrice(line.DescFlexSegments, preDiscountPrice);
                                     DescFlexFieldHelper.SetDiscountRate(line.DescFlexSegments, DescFlexFieldHelper.GetDiscountRate(purPriceLine.DescFlexField));
                                     DescFlexFieldHelper.SetDiscountLimit(line.DescFlexSegments, DescFlexFieldHelper.GetDiscountLimit(purPriceLine.DescFlexField));
                                 }

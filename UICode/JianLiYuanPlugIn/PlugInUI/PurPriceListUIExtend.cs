@@ -9,6 +9,7 @@ using UFSoft.UBF.ExportService;
 using UFSoft.UBF.UI.ActionProcess;
 using System.Data;
 using UFSoft.UBF.Util.DataAccess;
+using UFIDA.U9.Cust.HBH.Common.CommonLibary;
 
 
 namespace U9.VOB.Cus.HBHJianLiYuan.PlugInUI
@@ -52,9 +53,9 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInUI
             if (part.Model.Views[0].FocusedRecord != null && part.Model.Views[0].FocusedRecord.DataRecordState != DataRowState.Added)
             {
                 NameValueCollection param = new NameValueCollection();
-                param.Add("SrcPurpriceID", part.Model.Views[0].FocusedRecord["ID"].ToString());
-                param.Add("SrcPurpriceCode", part.Model.Views[0].FocusedRecord["Code"].ToString());
-                param.Add("SrcPurpriceName", part.Model.Views[0].FocusedRecord["Name"].ToString());
+                param.Add("SrcPurpriceID", PubClass.GetString(part.Model.Views[0].FocusedRecord["ID"].ToString()));
+                param.Add("SrcPurpriceCode", PubClass.GetString(part.Model.Views[0].FocusedRecord["Code"].ToString()));
+                param.Add("SrcPurpriceName", PubClass.GetString(part.Model.Views[0].FocusedRecord["Name"]));
                 part.ShowModalDialog("b6217510-0ac9-4905-a3a2-6730a9179884", "部门子表", "504", "504", "", param, false);
             }
         }

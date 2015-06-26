@@ -1,8 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project id="9fcaf04f-7330-4117-8678-f4bab3ec0930" name="HBHJianLiYuanBP" displayName="HBHJianLiYuanBP" description="" help="" type="BP" assemblyName="U9.VOB.Cus.HBHJianLiYuan.BP" mapProject="" resourceName="" projectVersion="Normal">
+  <Imports>
+    <Import id="e6a87114-a64a-4736-b316-6d0efdc0a88c" name="CBO_PubBE" displayName="CBO_PubBE" description="" help="" componentid="fe8dc9a2-365d-41c0-8f48-c02abb016910" path="..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Metadata\App\UFIDA.U9.CBO.PubBE.MetaData.dll" type="BE" isRuntime="True" />
+  </Imports>
   <SourceControl />
   <ItemGroup>
     <Item id="0a65c90e-d34d-4f32-b445-9c920c35af77" name="GetPriceFromPurListBP.ubfbp" displayName="GetPriceFromPurListBP.ubfbp" description="" help="" include="GetPriceFromPurListBP.ubfbp" type="BE" />
     <Item id="ab0f0b28-7ec7-41e3-b8b1-63cff7aea3c5" name="ShipPickByDocBP.ubfbp" displayName="ShipPickByDocBP.ubfbp" description="" help="" include="ShipPickByDocBP.ubfbp" type="BE" />
+    <Item id="f1775311-a8f5-4cd7-b375-3fd2367d76d2" name="HBHJianLiYuanUIBP.ubfbp" displayName="HBHJianLiYuanUIBP.ubfbp" description="" help="" include="HBHJianLiYuanUIBP.ubfbp" type="BE" />
   </ItemGroup>
 </Project>

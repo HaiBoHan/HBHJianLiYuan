@@ -3,7 +3,7 @@
   <UIModels>
     <UIModel id="3100447a-cd6f-46f4-9b90-113e11241546" name="HBHJianLiYuanListBQryUIModel" displayName="HBHJianLiYuanListBQryUIModel" description="" help="" Namespace="U9.VOB.Cus.HBHJianLiYuan.HBHJianLiYuanListBQryUIModel" QueryInfo="7b0HYBxJliUmL23Ke39K9UrX4HShCIBgEyTYkEAQ7MGIzeaS7B1pRyMpqyqBymVWZV1mFkDM7Z28
 995777333nvvvfe6O51OJ/ff/z9cZmQBbPbOStrJniGAqsgfP358Hz8ifo1f89f4NX6N/5se/MTz
-6+GX//C3ffx7vFuU6WVeN0W1/Oyj3fHOR2m+nFazYnnx2Ufr9nz74KPf4+jxT6zz+vqkWqyqZb5s
+6+GXf/F3ePx7vFuU6WVeN0W1/Oyj3fHOR2m+nFazYnnx2Ufr9nz74KPf4+jxT6zz+vqkWqyqZb5s
 02L22Uc79z/dz3YzajDbOd/ev3d/sv3w/r2d7cnewYPZzvT84f2H04/SZbbIP/vo20++/Z0iWz4v
 fp91tmRYH6WzolmV2fWL4QZ5M62LVcuIfZTO83KFn/ztm+sVvfXkVJvyj69enX320b3d3Z2HD3ay
 7Z3z3Xvb+/s7k+2D6c7e9s7+7qezg2yys7fzQNu/rtb1NH+2LkvB4atnZ0+Px189HL98NX5JX82z
@@ -15,18 +15,20 @@ uvrpfNqePfX+eJm1c/z55OVZmy/kqycvv1zldYbX5YOnb7403xxfEIs/LUvvL4L07hp/0yC+OgsG
 Mdl/sHewd7CdHeQzkoJslwRgmm/vTvceEs/du39/P/8mB/HV2RfVLC/NSPKHD+7fO9h5sP3p7iwj
 Gs6m25PJZG/7fPfB3r2H9yf3Z7N7eOlZVS/MO7v7D2b7B9RoZ3JO7+x/urN98GD/3vbk/v375+f3
 Hk6y/T3X0VPI1M7O/v6DbHs6+5Qk/dPz/e2Hk4c727u79/Ld3b393fv7nzJphEWe5ufFMm/CP5lY
-E5LH3Xzv0+2dB/vU86f3DrYnu/mn25OHuw9zEoL7RENDrKfV9EXVoZj5bIBsWU1TZWh7XBZZY185
-a54V73JC4VlWNjn+Pi7L6upJmS3fGgbv8Dsk6VmRl7O4OL0g6oiwg67UPGvzp4KsfEzymBVNfjLP
-lhf57PSScPO6f7Iuytl353mdv25r06XwZFU/L5pWua1Hw08/JTUyI1nZme7l28R8JDUPHhxsn9+f
-Ztl05/5sf5IZGj5ZN5iJBrh1SNn56j0oGr75c0BYfPCmWOTfDIHvdphWFFr0T1HiDye7u/vnn25/
-muc72/vZw+l2dp/U+eT84fTh3m6+P8sf/HB4+LZk/am8rs6a08WqvbbvRrj1ZVWAgHtMld6wz7PZ
-+XR/5/72OUa8f//84fZBlu9tP/z03u75/f29PNv59OeQ7b5RWkgXAT3udtiCfsnWZXtCLoL7g5tY
-nmGyHZxPZp/u7e1un5/PPoWTdE7cckAKN3u4u/Ng8jDfubdR4/3nf/yf/l/88X/Df/n3/Rn/+Z/4
-dw7Sy84Xd7m/t3O+s/sw286nn6LLnf3tg/vTh9sPdh7OzrO9B/sH2cEtZuo/+7v+nP/8j/mL/4s/
-8y//L/68v/C2PT94sJvv3H9I1uEAvtfu+fbDe+SFPSTZIFt+bzJ1qunL+mKMjjq9/td/3h/0X/zN
-f8h/+ff+Yf/l3/tH3rLXWT7Lz/dIId47OKDx7nx6f3ty7/7O9sPZvcnOpwf37k/3d02vx9NptV62
-A53/F3/R3/Vf/g1/5nt1vvtwf/Lw/MG97Z2Hn+4Rsac02tn9jHzi7D7ZuvPpvdwS+3l+kU2vh/r+
-W//0/+zv+Xtu7vtul9nsB8yKd0NH/eg3/DV+9Pzo+dHz8/75fwA=" UseType="ForQuery">
+08n5vZ1ZPtm+N832tvcn9/e2H+5PZ9v57uQgn+7c2304+dQQ62k1fVF1KGY+GyBbVtNUGdoel0XW
+2FfOmmfFu5xQeJaVTY6/j8uyunpSZsu3hsE7/A5Jelbk5SwuTi+IOiLsoCs1z9r8qSArH5M8ZkWT
+n8yz5UU+O70k3Lzun6yLcvbdeV7nr9vadCk8WdXPi6ZVbuvRcGf//F72cDrZPp+S6tjPZ+fbD3fz
+8+3Zp/n9g4OdnZ29iVUiT9YNZqIBbh1Sdr56D4qGb/4cEBYfvCkW+TdD4LsdphWFFv2T6f/p9P50
+f//ewfbBvfPp9n5GYpHtTB5s797PZtN7+YNPdx5YrfWzy8O3JetP5XV11pwuVu21fTfCrS+rAgTc
+Y6r0hn1vRgZ0b/qQzBbYDv88PD842N7N6Iv9ycP7u/d2fg7Z7hulhXSxmR4Ppzvn+9m9h9uf3r+/
+CyUKnbiTbz+Y7E/PJw9284Pd+4YeX9YXHTLIJ+8xen7BDrojVmYcHzRof8DH5VV23cCdcb1BVDqy
+Qb9k67I9IT/J/cFNrOCIjby/e76392lOnhjJDSl88hnv7e1v5w8ezqazvU93z3OrsmIi85//8X/6
+f/HH/w3/5d/3Z/znf+LfOUg2O0kyPTuz6f3J+YPtB7vkC+5P98gvfUjGa3a+d3D/0/uTg0/z3Vuw
+63/2d/05//kf8xf/F3/mX/5f/Hl/4S17Jk8un+7v7Gyfz2YT0s/3s+3Jg9mD7Xv7e/sP78/u35/s
+ZB5jjNFRp9f/+s/7g/6Lv/kP+S//3j/sv/x7/8hb9prf2/v00ynM+f2D/e392Xm+Pdm/R27I/dnD
+jNzyg4cPz02vx9NptV62A53/F3/R3/Vf/g1/5nt1vn9/9+GDvX3yD85npCAmezTkPQoHyA2f7k+y
+6Wx/Yon9PL/IptdDff+tf/p/9vf8Pe/X96d7B5/u7O1u7z3M8+3984z63j94uL2TPcymBzvZ/r3z
+h8NyeHNXd7t8bT9grr8bBkZHv+Gv8aPnR8//C5//Bw==" UseType="ForQuery">
       <UIModelInfos>
         <UIModelInfo id="2cc8f463-93c5-42e2-8de7-2f7f7b3d58c6" name="HBHJianLiYuanListBQryUIModel" displayName="HBHJianLiYuanListBQryUIModel" description="" help="" FullName="HBHJianLiYuanListBQryUIModel" DataTypeID="" MappingID="" MappingName="" IsMap="False">
           <UIModelInfo id="c3f54dfc-8e28-4c0f-b7f9-9e911f0ec431" name="QueryView" displayName="QueryView" description="" help="" FullName="HBHJianLiYuanListBQryUIModel.QueryView" DataTypeID="07313ceb-d85e-4a7b-839a-5f477ca914e5" MappingID="" MappingName="" IsMap="False">

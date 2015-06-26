@@ -10,6 +10,8 @@ using System.Collections;
 using UFIDA.U9.SCM.SD.ShipUIModel;
 using UFSoft.UBF.UI.Controls;
 using UFSoft.UBF.UI.WebControls;
+using UFIDA.U9.Cust.HBH.Common.CommonLibary;
+using System.Collections.Specialized;
 
 namespace U9.VOB.Cus.HBHJianLiYuan.PlugInUI
 {
@@ -34,6 +36,32 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInUI
             DataGrid10 = (IUFDataGrid)part.GetUFControlByName(part.TopLevelContainer, "DataGrid10");
             //Register_DataGrid10_Item_CallBack();//料品改变事件，自动带出单价
             RegisterGridCellDataChangedCallBack();
+        }
+
+        public override void AfterRender(UFSoft.UBF.UI.IView.IPart Part, EventArgs args)
+        {
+            base.AfterRender(Part, args);
+
+
+            {
+                //string orgID = "1001411156753998";
+                string targetOrgID = PubClass.GetString(this._strongPart.NameValues["TargetOrg"]);
+                string curOId = PubClass.GetString(this._strongPart.NameValues["__curOId"]);
+                string urlID = PubClass.GetString(this._strongPart.NameValues["lnk"]);
+                if (
+                    !PubClass.IsNull(targetOrgID)
+                    && targetOrgID != curOId
+                    )
+                {
+                    NameValueCollection nvs = new NameValueCollection();
+                    nvs.Add("__curOId", targetOrgID);
+                    nvs.Add("SHIP_Type", PubClass.GetString(this._strongPart.NameValues["SHIP_Type"]));
+                    //// 有上面菜单栏，但是组织无法切换
+                    //this._strongPart.NavigatePage("Cust_Rcv", nvs);
+                    // 无上面菜单栏，但组织可以切换；
+                    this._strongPart.NavigateForm(urlID, nvs);
+                }
+            }
         }
 
         /// <summary>

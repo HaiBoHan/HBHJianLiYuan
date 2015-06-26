@@ -3,11 +3,11 @@
   <Imports>
     <Import id="d3f12651-14f7-4f56-8ff7-9906cbc23f08" name="HBHJianLiYuanBE" displayName="HBHJianLiYuanBE" description="" help="" componentid="13a5b6db-0dab-4f3a-aeae-7e9af108a7bc" path="..\..\..\..\..\..\UFIDA\UBFV30\U9.VOB.Product.Metadata\Unconfiged\Metadata\U9.VOB.Cus.HBHJianLiYuan.BE.MetaData.dll" type="BE" isRuntime="True" />
     <Import id="267d2d2b-4aa5-449e-87e0-979c219d6256" name="CBOReferenceUI" displayName="CBOReferenceUI" description="" help="" componentid="2ac4288d-af64-42a9-bbd2-285464e8f707" path="..\..\..\..\..\..\UFIDA\UBFV30\U9.VOB.Product.Metadata\UI\UFIDA.U9.CBO.Ref.CBOReferenceUI.MetaData.dll" type="UI" isRuntime="True" />
-    <Import id="1fd74de0-778d-4432-93c6-b201a20fcbfc" name="CBO_PubBE" displayName="CBO_PubBE" description="" help="" componentid="a743cfe1-fcae-4fcf-ae0c-8d4400990e88" path="..\..\..\..\..\..\UFIDA\UBFV30\U9.VOB.Product.Metadata\App\UFIDA.U9.CBO.PubBE.MetaData.dll" type="BE" isRuntime="True" />
     <Import id="e229a91f-ea0d-4533-9907-27d24ff40689" name="PMReferenceUI" displayName="PMReferenceUI" description="" help="" componentid="343e6fa9-893b-4d7c-a64f-4a00ea2dcb8b" path="..\..\..\..\..\..\UFIDA\UBFV30\U9.VOB.Product.Metadata\UI\UFIDA.U9.SCM.Ref.PM.PMReferenceUI.MetaData.dll" type="UI" isRuntime="True" />
     <Import id="700c1df4-a1c4-491c-b070-0575735fbaa3" name="DepartmentUI" displayName="DepartmentUI" description="" help="" componentid="c35ffee1-7bc3-41fc-a51f-fb5f0dcdfae0" path="..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Metadata\UI\UFIDA.U9.CBO.Pub.Department.DepartmentUI.MetaData.dll" type="UI" isRuntime="True" />
     <Import id="a7621383-962b-41a0-acee-b0bfe33b64ab" name="ItemUI" displayName="ItemUI" description="" help="" componentid="7b6cc2cc-7a33-4e83-b812-0dd14acf4570" path="..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Metadata\UI\UFIDA.U9.CBO.Pub.Item.ItemUI.MetaData.dll" type="UI" isRuntime="True" />
     <Import id="498185df-1042-40e2-ad77-f07ad564f1ac" name="SupplierUI" displayName="SupplierUI" description="" help="" componentid="493cbbe9-979f-4607-a2d4-b4e409c79e84" path="..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Metadata\UI\UFIDA.U9.CBO.Pub.Supplier.SupplierUI.MetaData.dll" type="UI" isRuntime="True" />
+    <Import id="e8bc7e67-8b6e-4b97-a25f-3111abec2bca" name="CBO_PubBE" displayName="CBO_PubBE" description="" help="" componentid="fe8dc9a2-365d-41c0-8f48-c02abb016910" path="..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Metadata\App\UFIDA.U9.CBO.PubBE.MetaData.dll" type="BE" isRuntime="True" />
   </Imports>
   <SourceControl />
   <ItemGroup>
@@ -19,5 +19,7 @@
     <Item id="46e1e10b-fe7d-4c13-91ea-6817cc084fe5" name="DeptRef.ubfref" displayName="DeptRef.ubfref" description="" help="" include="HBHJianLiYuanRef\DeptRef.ubfref" type="" />
     <Item id="0b6838cf-39d3-4ba1-b3c1-1bf9039e8b02" name="ItemMasterRef.ubfref" displayName="ItemMasterRef.ubfref" description="" help="" include="HBHJianLiYuanRef\ItemMasterRef.ubfref" type="" />
     <Item id="8300c914-baad-40c1-a517-bacdcb96efc2" name="DeptItemSupplierFindRef.ubfref" displayName="DeptItemSupplierFindRef.ubfref" description="" help="" include="DeptItemSupplierFindRef.ubfref" type="" />
+    <Item id="a9d92978-880c-4522-bb13-7a24a5bb79a1" name="DepartOrgUIModel.ubfuim" displayName="DepartOrgUIModel.ubfuim" description="" help="" include="DepartOrgUIModel.ubfuim" type="" />
+    <Item id="939f8b17-2736-4744-8def-2391d72f7930" name="DepartOrgUIForm.ubfform" displayName="DepartOrgUIForm.ubfform" description="" help="" include="DepartOrgUIForm.ubfform" type="" />
   </ItemGroup>
 </Project>

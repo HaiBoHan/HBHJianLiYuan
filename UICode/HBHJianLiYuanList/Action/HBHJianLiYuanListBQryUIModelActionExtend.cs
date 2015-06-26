@@ -122,12 +122,12 @@ this.OnLoadData_DefaultImpl(sender,e);
                 if (string.IsNullOrEmpty(filterOpath))
                 {
                     //filterOpath = " Org=" + PDContext.Current.OrgID;
-                    filterOpath = "  PRLineList.DescFlexSegments.PrivateDescSeg3 = '" + Convert.ToInt64(this.CommonAction.CurrentPart.NameValues["SrcPRID"].ToString()) + "'";
+                    filterOpath = "  " + HBHHelper.PRHeadHelper.PRLine_SrcPPListIDBEField + " = '" + Convert.ToInt64(this.CommonAction.CurrentPart.NameValues["SrcPRID"].ToString()) + "'";
                 }
                 else
                 {
                     //filterOpath += " and Org=" + PDContext.Current.OrgID;
-                    filterOpath += " and PRLineList.DescFlexSegments.PrivateDescSeg3 = '" + Convert.ToInt64(this.CommonAction.CurrentPart.NameValues["SrcPRID"].ToString()) + "'";
+                    filterOpath += " and " + HBHHelper.PRHeadHelper.PRLine_SrcPPListIDBEField + " = '" + Convert.ToInt64(this.CommonAction.CurrentPart.NameValues["SrcPRID"].ToString()) + "'";
                 }
                 //if (this.CommonAction.CurrentPart.NameValues["SrcPRID"] != null)
                 //{

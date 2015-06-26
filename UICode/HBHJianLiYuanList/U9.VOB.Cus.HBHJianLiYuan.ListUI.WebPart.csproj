@@ -31,7 +31,14 @@
     <WarningLevel>4</WarningLevel>
     <IncrementalBuild>false</IncrementalBuild>
   </PropertyGroup>
-	<Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />  
-	<Import Project="U9.VOB.Cus.HBHJianLiYuan.ListUI.WebPart.target" />  
-
+  <ItemGroup>
+    <Reference Include="U9.VOB.Cus.HBHJianLiYuan.HBHHelper">
+      <HintPath>..\..\..\..\..\..\UBFV30\U9.VOB.Product.WebPart\U9.VOB.Cus.HBHJianLiYuan.HBHHelper.dll</HintPath>
+    </Reference>
+    <Reference Include="U9.VOB.HBHCommon.HBHCommonUI.WebPart">
+      <HintPath>..\..\..\..\..\..\UBFV30\U9.VOB.Product.WebPart\HBHCommon\U9.VOB.HBHCommon.HBHCommonUI.WebPart.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="U9.VOB.Cus.HBHJianLiYuan.ListUI.WebPart.target" />
 </Project>

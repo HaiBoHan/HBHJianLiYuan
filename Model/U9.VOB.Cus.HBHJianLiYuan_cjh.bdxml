@@ -296,6 +296,20 @@
                         <PartRelations />
                         <Parameters />
                     </Page>
+                    <Page id="49eaf46b-9224-4c86-aeb9-097e68dd6206" code="Cust_DeptOrg" name="部门组织" shortName="" displayName="部门组织" description="" title="部门组织" uri="Cust_DeptOrg" topMargine="10" bottomMargine="10" leftMargine="10" rightMargine="10" columnSpace="10" orientation="Vertical" defaultEntity="">
+                        <Columns>
+                            <Column id="f75b8f74-146c-44d9-83f3-53e9928f4fb1" code="" name="" shortName="" displayName="" description="" widthProportion="100" heightProportion="0" title="" IsMainRegion="True">
+                                <Parts>
+                                    <Part>7e86bbe3-d226-468c-945e-3105d9ea4c43</Part>
+                                </Parts>
+                            </Column>
+                        </Columns>
+                        <Parts>
+                            <Part id="7e86bbe3-d226-468c-945e-3105d9ea4c43" code="7e86bbe3-d226-468c-945e-3105d9ea4c43" name="DepartOrgUIFormWebPart" shortName="DepartOrgUIFormWebPart" displayName="DepartOrgUIFormWebPart" description="DepartOrgUIFormWebPart" title="DepartOrgUIFormWebPart" bindedFormID="b3e00814-979e-43c4-8d91-008053aa00e8" bindedFormName="DepartOrgUIFormWebPart" height="504" width="992" />
+                        </Parts>
+                        <PartRelations />
+                        <Parameters />
+                    </Page>
                 </Pages>
                 <BEComponents>
                     <BEComponent assemblyName="U9.VOB.Cus.HBHJianLiYuan.BE.dll" assemblyID="13a5b6db-0dab-4f3a-aeae-7e9af108a7bc" />
@@ -717,6 +731,7 @@
                         <Menu id="dc70ba09-9c42-409b-ab42-32fd426fd374" code="dc70ba09-9c42-409b-ab42-32fd426fd374" name="申购单" shortName="new menu" displayName="申购单" description="new menu" image="" isDialog="False" pageURI="Cust_PR" pageParameter="PR_Type=PM3020" sequence="0" kind="Task" theApp="" />
                         <Menu id="5b4978b6-e32f-4724-810e-1e07c9e9e81d" code="5b4978b6-e32f-4724-810e-1e07c9e9e81d" name="收货单" shortName="new menu" displayName="收货单" description="new menu" image="" isDialog="False" pageURI="Cust_Rcv" pageParameter="RCV_Type=PM6010" sequence="1" kind="Task" theApp="" />
                         <Menu id="bb487077-259f-4784-a103-d914e22b532a" code="bb487077-259f-4784-a103-d914e22b532a" name="领料单" shortName="new menu" displayName="领料单" description="new menu" image="" isDialog="False" pageURI="Cust_Ship" pageParameter="SHIP_Type=SM6010" sequence="2" kind="Task" theApp="" />
+                        <Menu id="90b03313-5230-41e0-8c2e-24cf9aaf0efa" code="90b03313-5230-41e0-8c2e-24cf9aaf0efa" name="部门组织" shortName="new menu" displayName="部门组织" description="new menu" image="" isDialog="False" pageURI="Cust_DeptOrg" pageParameter="" sequence="3" kind="Task" theApp="9901001" />
                     </Menu>
                 </PrePlacedMenu>
             </App>

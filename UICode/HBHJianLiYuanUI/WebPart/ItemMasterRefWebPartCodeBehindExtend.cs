@@ -145,7 +145,7 @@ namespace ItemMasterRef
 		#region 自定义数据初始化加载和数据收集
 		private void OnLoadData_Extend(object sender)
 		{
-            this.Model.cRef.CurrentFilter.OPath = this.Model.cRef.CurrentFilter.OPath + " Org=" + PDContext.Current.OrgID;
+            //this.Model.cRef.CurrentFilter.OPath = this.Model.cRef.CurrentFilter.OPath + " Org=" + PDContext.Current.OrgID;
 			OnLoadData_DefaultImpl(sender);
 		}
 		private void OnDataCollect_Extend(object sender)
