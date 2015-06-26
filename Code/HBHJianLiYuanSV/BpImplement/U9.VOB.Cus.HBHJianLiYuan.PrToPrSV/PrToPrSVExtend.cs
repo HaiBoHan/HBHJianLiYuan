@@ -12,6 +12,7 @@
     using UFIDA.U9.Base;
     using UFIDA.U9.CBO.SCM.Enums;
     using UFIDA.U9.CBO.Pub.Controller;
+    using U9.VOB.Cus.HBHJianLiYuan.HBHHelper;
 
 	/// <summary>
 	/// PrToPrSV partial 
@@ -24,7 +25,7 @@
 		}		
 	}
 	
-	#region  implement strategy	
+    //#region  implement strategy	
 	/// <summary>
 	/// Impement Implement
 	/// 
@@ -50,8 +51,11 @@
             foreach (PR.EntityKey prDto in bpObj.PR)
             {
                 UFIDA.U9.PR.PurchaseRequest.PR pr = UFIDA.U9.PR.PurchaseRequest.PR.Finder.FindByID(prDto.ID);
-                UFIDA.U9.PR.PurchaseRequest.PRLine findPR = UFIDA.U9.PR.PurchaseRequest.PRLine.Finder.Find("DescFlexSegments.PrivateDescSeg3='" + prDto.ID.ToString() + "'");
-                if (findPR != null)
+                //UFIDA.U9.PR.PurchaseRequest.PRLine execedPR = UFIDA.U9.PR.PurchaseRequest.PRLine.Finder.Find("DescFlexSegments.PrivateDescSeg3='" + prDto.ID.ToString() + "'");
+
+                // 改为头扩展字段
+                UFIDA.U9.PR.PurchaseRequest.PR execedPR = UFIDA.U9.PR.PurchaseRequest.PR.Finder.Find(PRHeadHelper.PRLine_SrcPPListIDBEField + "='" + prDto.ID.ToString() + "'");
+                if (execedPR != null)
                 {
                     resultData.Name = "请购单"+pr.DocNo+"已经下发";
                     resultDataList.Add(resultData);
@@ -164,6 +168,101 @@
                     prDTO.Org = new UFIDA.U9.Base.DTOs.IDCodeNameDTOData();
                     prDTO.Org.Code = org.Code;
                     // 币种放到了行上赋值
+
+                    if (prDTO.DescFlexField == null)
+                    {
+                        prDTO.DescFlexField = new UFIDA.U9.Base.FlexField.DescFlexField.DescFlexSegmentsData();
+                    }
+                    
+                    //prDTO.DescFlexField.PrivateDescSeg1 = pr.DescFlexField.PrivateDescSeg1;
+                    //prDTO.DescFlexField.PrivateDescSeg2 = pr.DescFlexField.PrivateDescSeg2;
+                    //prDTO.DescFlexField.PrivateDescSeg1 = pr.ID.ToString();
+                    //prDTO.DescFlexField.PrivateDescSeg2 = pr.DocNo.ToString();
+                    PRHeadHelper.SetSrcPPListID(prDTO.DescFlexField, pr.ID.ToString());
+                    PRHeadHelper.SetSrcPPListDocNo(prDTO.DescFlexField, pr.DocNo);
+
+                    prDTO.DescFlexField.PrivateDescSeg3 = pr.DescFlexField.PrivateDescSeg3;
+                    prDTO.DescFlexField.PrivateDescSeg4 = pr.DescFlexField.PrivateDescSeg4;
+                    prDTO.DescFlexField.PrivateDescSeg5 = pr.DescFlexField.PrivateDescSeg5;
+                    prDTO.DescFlexField.PrivateDescSeg6 = pr.DescFlexField.PrivateDescSeg6;
+                    prDTO.DescFlexField.PrivateDescSeg7 = pr.DescFlexField.PrivateDescSeg7;
+                    prDTO.DescFlexField.PrivateDescSeg8 = pr.DescFlexField.PrivateDescSeg8;
+                    prDTO.DescFlexField.PrivateDescSeg9 = pr.DescFlexField.PrivateDescSeg9;
+                    prDTO.DescFlexField.PrivateDescSeg10 = pr.DescFlexField.PrivateDescSeg10;
+                    prDTO.DescFlexField.PrivateDescSeg11 = pr.DescFlexField.PrivateDescSeg11;
+                    prDTO.DescFlexField.PrivateDescSeg12 = pr.DescFlexField.PrivateDescSeg12;
+                    prDTO.DescFlexField.PrivateDescSeg13 = pr.DescFlexField.PrivateDescSeg13;
+                    prDTO.DescFlexField.PrivateDescSeg14 = pr.DescFlexField.PrivateDescSeg14;
+                    prDTO.DescFlexField.PrivateDescSeg15 = pr.DescFlexField.PrivateDescSeg15;
+                    prDTO.DescFlexField.PrivateDescSeg16 = pr.DescFlexField.PrivateDescSeg16;
+                    prDTO.DescFlexField.PrivateDescSeg17 = pr.DescFlexField.PrivateDescSeg17;
+                    prDTO.DescFlexField.PrivateDescSeg18 = pr.DescFlexField.PrivateDescSeg18;
+                    prDTO.DescFlexField.PrivateDescSeg19 = pr.DescFlexField.PrivateDescSeg19;
+                    prDTO.DescFlexField.PrivateDescSeg20 = pr.DescFlexField.PrivateDescSeg20;
+                    prDTO.DescFlexField.PrivateDescSeg21 = pr.DescFlexField.PrivateDescSeg21;
+                    prDTO.DescFlexField.PrivateDescSeg22 = pr.DescFlexField.PrivateDescSeg22;
+                    prDTO.DescFlexField.PrivateDescSeg23 = pr.DescFlexField.PrivateDescSeg23;
+                    prDTO.DescFlexField.PrivateDescSeg24 = pr.DescFlexField.PrivateDescSeg24;
+                    prDTO.DescFlexField.PrivateDescSeg25 = pr.DescFlexField.PrivateDescSeg25;
+                    prDTO.DescFlexField.PrivateDescSeg26 = pr.DescFlexField.PrivateDescSeg26;
+                    prDTO.DescFlexField.PrivateDescSeg27 = pr.DescFlexField.PrivateDescSeg27;
+                    prDTO.DescFlexField.PrivateDescSeg28 = pr.DescFlexField.PrivateDescSeg28;
+                    prDTO.DescFlexField.PrivateDescSeg29 = pr.DescFlexField.PrivateDescSeg29;
+                    prDTO.DescFlexField.PrivateDescSeg30 = pr.DescFlexField.PrivateDescSeg30;
+
+
+                    prDTO.DescFlexField.PubDescSeg1 = pr.DescFlexField.PubDescSeg1;
+                    prDTO.DescFlexField.PubDescSeg2 = pr.DescFlexField.PubDescSeg2;
+                    prDTO.DescFlexField.PubDescSeg3 = pr.DescFlexField.PubDescSeg3;
+                    prDTO.DescFlexField.PubDescSeg4 = pr.DescFlexField.PubDescSeg4;
+                    prDTO.DescFlexField.PubDescSeg5 = pr.DescFlexField.PubDescSeg5;
+                    prDTO.DescFlexField.PubDescSeg6 = pr.DescFlexField.PubDescSeg6;
+                    prDTO.DescFlexField.PubDescSeg7 = pr.DescFlexField.PubDescSeg7;
+                    prDTO.DescFlexField.PubDescSeg8 = pr.DescFlexField.PubDescSeg8;
+                    prDTO.DescFlexField.PubDescSeg9 = pr.DescFlexField.PubDescSeg9;
+                    prDTO.DescFlexField.PubDescSeg10 = pr.DescFlexField.PubDescSeg10;
+                    prDTO.DescFlexField.PubDescSeg11 = pr.DescFlexField.PubDescSeg11;
+                    prDTO.DescFlexField.PubDescSeg12 = pr.DescFlexField.PubDescSeg12;
+                    prDTO.DescFlexField.PubDescSeg13 = pr.DescFlexField.PubDescSeg13;
+                    prDTO.DescFlexField.PubDescSeg14 = pr.DescFlexField.PubDescSeg14;
+                    prDTO.DescFlexField.PubDescSeg15 = pr.DescFlexField.PubDescSeg15;
+                    prDTO.DescFlexField.PubDescSeg16 = pr.DescFlexField.PubDescSeg16;
+                    prDTO.DescFlexField.PubDescSeg17 = pr.DescFlexField.PubDescSeg17;
+                    prDTO.DescFlexField.PubDescSeg18 = pr.DescFlexField.PubDescSeg18;
+                    prDTO.DescFlexField.PubDescSeg19 = pr.DescFlexField.PubDescSeg19;
+                    prDTO.DescFlexField.PubDescSeg20 = pr.DescFlexField.PubDescSeg20;
+                    prDTO.DescFlexField.PubDescSeg21 = pr.DescFlexField.PubDescSeg21;
+                    prDTO.DescFlexField.PubDescSeg22 = pr.DescFlexField.PubDescSeg22;
+                    prDTO.DescFlexField.PubDescSeg23 = pr.DescFlexField.PubDescSeg23;
+                    prDTO.DescFlexField.PubDescSeg24 = pr.DescFlexField.PubDescSeg24;
+                    prDTO.DescFlexField.PubDescSeg25 = pr.DescFlexField.PubDescSeg25;
+                    prDTO.DescFlexField.PubDescSeg26 = pr.DescFlexField.PubDescSeg26;
+                    prDTO.DescFlexField.PubDescSeg27 = pr.DescFlexField.PubDescSeg27;
+                    prDTO.DescFlexField.PubDescSeg28 = pr.DescFlexField.PubDescSeg28;
+                    prDTO.DescFlexField.PubDescSeg29 = pr.DescFlexField.PubDescSeg29;
+                    prDTO.DescFlexField.PubDescSeg30 = pr.DescFlexField.PubDescSeg30;
+                    prDTO.DescFlexField.PubDescSeg31 = pr.DescFlexField.PubDescSeg31;
+                    prDTO.DescFlexField.PubDescSeg32 = pr.DescFlexField.PubDescSeg32;
+                    prDTO.DescFlexField.PubDescSeg33 = pr.DescFlexField.PubDescSeg33;
+                    prDTO.DescFlexField.PubDescSeg34 = pr.DescFlexField.PubDescSeg34;
+                    prDTO.DescFlexField.PubDescSeg35 = pr.DescFlexField.PubDescSeg35;
+                    prDTO.DescFlexField.PubDescSeg36 = pr.DescFlexField.PubDescSeg36;
+                    prDTO.DescFlexField.PubDescSeg37 = pr.DescFlexField.PubDescSeg37;
+                    prDTO.DescFlexField.PubDescSeg38 = pr.DescFlexField.PubDescSeg38;
+                    prDTO.DescFlexField.PubDescSeg39 = pr.DescFlexField.PubDescSeg39;
+                    prDTO.DescFlexField.PubDescSeg40 = pr.DescFlexField.PubDescSeg40;
+                    prDTO.DescFlexField.PubDescSeg41 = pr.DescFlexField.PubDescSeg41;
+                    prDTO.DescFlexField.PubDescSeg42 = pr.DescFlexField.PubDescSeg42;
+                    prDTO.DescFlexField.PubDescSeg43 = pr.DescFlexField.PubDescSeg43;
+                    prDTO.DescFlexField.PubDescSeg44 = pr.DescFlexField.PubDescSeg44;
+                    prDTO.DescFlexField.PubDescSeg45 = pr.DescFlexField.PubDescSeg45;
+                    prDTO.DescFlexField.PubDescSeg46 = pr.DescFlexField.PubDescSeg46;
+                    prDTO.DescFlexField.PubDescSeg47 = pr.DescFlexField.PubDescSeg47;
+                    prDTO.DescFlexField.PubDescSeg48 = pr.DescFlexField.PubDescSeg48;
+                    prDTO.DescFlexField.PubDescSeg49 = pr.DescFlexField.PubDescSeg49;
+                    prDTO.DescFlexField.PubDescSeg50 = pr.DescFlexField.PubDescSeg50;
+
+
 
                     prDTO.PRLineList = new List<UFIDA.U9.ISV.PRSV.OtherSystemPRLineDTOData>();
 
@@ -331,8 +430,10 @@
 
                 lineData.DescFlexSegments.PrivateDescSeg1 = prline.DescFlexSegments.PrivateDescSeg1;
                 lineData.DescFlexSegments.PrivateDescSeg2 = prline.DescFlexSegments.PrivateDescSeg2;
-                lineData.DescFlexSegments.PrivateDescSeg3 = prline.PR.ID.ToString();
-                lineData.DescFlexSegments.PrivateDescSeg4 = prline.PR.DocNo.ToString();
+                //lineData.DescFlexSegments.PrivateDescSeg3 = prline.PR.ID.ToString();
+                //lineData.DescFlexSegments.PrivateDescSeg4 = prline.PR.DocNo.ToString();
+                lineData.DescFlexSegments.PrivateDescSeg3 = prline.DescFlexSegments.PrivateDescSeg3;
+                lineData.DescFlexSegments.PrivateDescSeg4 = prline.DescFlexSegments.PrivateDescSeg4;
                 lineData.DescFlexSegments.PrivateDescSeg5 = prline.DescFlexSegments.PrivateDescSeg5;
                 lineData.DescFlexSegments.PrivateDescSeg6 = prline.DescFlexSegments.PrivateDescSeg6;
                 lineData.DescFlexSegments.PrivateDescSeg7 = prline.DescFlexSegments.PrivateDescSeg7;
@@ -412,8 +513,8 @@
                 lineData.DescFlexSegments.PubDescSeg49 = prline.DescFlexSegments.PubDescSeg49;
                 lineData.DescFlexSegments.PubDescSeg50 = prline.DescFlexSegments.PubDescSeg50;
 
-                lineData.DescFlexSegments.ContextValue = prline.DescFlexSegments.ContextValue;
-                lineData.DescFlexSegments.CombineName = prline.DescFlexSegments.CombineName;
+                //lineData.DescFlexSegments.ContextValue = prline.DescFlexSegments.ContextValue;
+                //lineData.DescFlexSegments.CombineName = prline.DescFlexSegments.CombineName;
 
 
 
@@ -424,7 +525,7 @@
         }
 	}
 
-	#endregion
+    //#endregion
 	
 	
 }

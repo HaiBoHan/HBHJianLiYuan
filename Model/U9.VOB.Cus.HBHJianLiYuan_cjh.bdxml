@@ -668,7 +668,7 @@
                             </Column>
                         </Columns>
                         <Parts>
-                            <Part id="e34fdfac-38dc-49e7-a958-44da6198dfcb" code="e34fdfac-38dc-49e7-a958-44da6198dfcb" name="PRMainUIFormWebPart" shortName="PRMainUIFormWebPart" displayName="PRMainUIFormWebPart" description="PRMainUIFormWebPart" title="PRMainUIFormWebPart" bindedFormID="4e0a5ff2-3fcd-4403-8d36-068f37667c4f" bindedFormName="PRMainUIFormWebPart" height="552" width="992" />
+                            <Part id="e34fdfac-38dc-49e7-a958-44da6198dfcb" code="e34fdfac-38dc-49e7-a958-44da6198dfcb" name="PRMainUIFormWebPart" shortName="PRMainUIFormWebPart" displayName="PRMainUIFormWebPart" description="PRMainUIFormWebPart" title="申购单" bindedFormID="4e0a5ff2-3fcd-4403-8d36-068f37667c4f" bindedFormName="PRMainUIFormWebPart" height="552" width="992" />
                         </Parts>
                         <PartRelations />
                         <Parameters />
@@ -682,7 +682,7 @@
                             </Column>
                         </Columns>
                         <Parts>
-                            <Part id="21051bb5-e096-4ce2-971f-452df492d603" code="21051bb5-e096-4ce2-971f-452df492d603" name="ReceivementMainUIFormWebPart" shortName="ReceivementMainUIFormWebPart" displayName="ReceivementMainUIFormWebPart" description="ReceivementMainUIFormWebPart" title="ReceivementMainUIFormWebPart" bindedFormID="91afbfb8-28af-44e6-9cf2-86d66ee16cb1" bindedFormName="ReceivementMainUIFormWebPart" height="504" width="992" />
+                            <Part id="21051bb5-e096-4ce2-971f-452df492d603" code="21051bb5-e096-4ce2-971f-452df492d603" name="ReceivementMainUIFormWebPart" shortName="ReceivementMainUIFormWebPart" displayName="ReceivementMainUIFormWebPart" description="ReceivementMainUIFormWebPart" title="收货单" bindedFormID="91afbfb8-28af-44e6-9cf2-86d66ee16cb1" bindedFormName="ReceivementMainUIFormWebPart" height="504" width="992" />
                         </Parts>
                         <PartRelations />
                         <Parameters />
@@ -696,7 +696,7 @@
                             </Column>
                         </Columns>
                         <Parts>
-                            <Part id="df86a57d-9f8e-4d0c-8e98-c27443e9ae1a" code="df86a57d-9f8e-4d0c-8e98-c27443e9ae1a" name="ShipMainUIFormWebPart" shortName="ShipMainUIFormWebPart" displayName="ShipMainUIFormWebPart" description="ShipMainUIFormWebPart" title="ShipMainUIFormWebPart" bindedFormID="824496cc-bb94-472c-950e-4adfaec2f2c6" bindedFormName="ShipMainUIFormWebPart" height="504" width="992" />
+                            <Part id="df86a57d-9f8e-4d0c-8e98-c27443e9ae1a" code="df86a57d-9f8e-4d0c-8e98-c27443e9ae1a" name="ShipMainUIFormWebPart" shortName="ShipMainUIFormWebPart" displayName="ShipMainUIFormWebPart" description="ShipMainUIFormWebPart" title="领料单" bindedFormID="824496cc-bb94-472c-950e-4adfaec2f2c6" bindedFormName="ShipMainUIFormWebPart" height="504" width="992" />
                         </Parts>
                         <PartRelations />
                         <Parameters />
@@ -713,10 +713,10 @@
                 <WorkflowComponents />
                 <ReportComponents />
                 <PrePlacedMenu>
-                    <Menu id="952bd761-3ac5-4c21-8bff-7182ac3a8242" code="952bd761-3ac5-4c21-8bff-7182ac3a8242" name="健力源" shortName="new menu" displayName="健力源" description="new menu" image="" isDialog="False" pageURI="" pageParameter="" sequence="0" kind="Task" theApp="9901001">
-                        <Menu id="dc70ba09-9c42-409b-ab42-32fd426fd374" code="dc70ba09-9c42-409b-ab42-32fd426fd374" name="申购单" shortName="new menu" displayName="申购单" description="new menu" image="" isDialog="False" pageURI="Cust_PR" pageParameter="PR_Type=PM3020" sequence="0" kind="Task" theApp="9901001" />
-                        <Menu id="5b4978b6-e32f-4724-810e-1e07c9e9e81d" code="5b4978b6-e32f-4724-810e-1e07c9e9e81d" name="收货单" shortName="new menu" displayName="收货单" description="new menu" image="" isDialog="False" pageURI="Cust_Rcv" pageParameter="RCV_Type=PM6010" sequence="1" kind="Task" theApp="9901001" />
-                        <Menu id="bb487077-259f-4784-a103-d914e22b532a" code="bb487077-259f-4784-a103-d914e22b532a" name="领料单" shortName="new menu" displayName="领料单" description="new menu" image="" isDialog="False" pageURI="Cust_Ship" pageParameter="SHIP_Type=SM6010" sequence="2" kind="Task" theApp="9901001" />
+                    <Menu id="952bd761-3ac5-4c21-8bff-7182ac3a8242" code="952bd761-3ac5-4c21-8bff-7182ac3a8242" name="健力源" shortName="new menu" displayName="健力源" description="new menu" image="" isDialog="False" pageURI="" pageParameter="" sequence="0" kind="Task" theApp="">
+                        <Menu id="dc70ba09-9c42-409b-ab42-32fd426fd374" code="dc70ba09-9c42-409b-ab42-32fd426fd374" name="申购单" shortName="new menu" displayName="申购单" description="new menu" image="" isDialog="False" pageURI="Cust_PR" pageParameter="PR_Type=PM3020" sequence="0" kind="Task" theApp="" />
+                        <Menu id="5b4978b6-e32f-4724-810e-1e07c9e9e81d" code="5b4978b6-e32f-4724-810e-1e07c9e9e81d" name="收货单" shortName="new menu" displayName="收货单" description="new menu" image="" isDialog="False" pageURI="Cust_Rcv" pageParameter="RCV_Type=PM6010" sequence="1" kind="Task" theApp="" />
+                        <Menu id="bb487077-259f-4784-a103-d914e22b532a" code="bb487077-259f-4784-a103-d914e22b532a" name="领料单" shortName="new menu" displayName="领料单" description="new menu" image="" isDialog="False" pageURI="Cust_Ship" pageParameter="SHIP_Type=SM6010" sequence="2" kind="Task" theApp="" />
                     </Menu>
                 </PrePlacedMenu>
             </App>

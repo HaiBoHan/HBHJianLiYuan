@@ -5,6 +5,9 @@
     <Import id="267d2d2b-4aa5-449e-87e0-979c219d6256" name="CBOReferenceUI" displayName="CBOReferenceUI" description="" help="" componentid="2ac4288d-af64-42a9-bbd2-285464e8f707" path="..\..\..\..\..\..\UFIDA\UBFV30\U9.VOB.Product.Metadata\UI\UFIDA.U9.CBO.Ref.CBOReferenceUI.MetaData.dll" type="UI" isRuntime="True" />
     <Import id="1fd74de0-778d-4432-93c6-b201a20fcbfc" name="CBO_PubBE" displayName="CBO_PubBE" description="" help="" componentid="a743cfe1-fcae-4fcf-ae0c-8d4400990e88" path="..\..\..\..\..\..\UFIDA\UBFV30\U9.VOB.Product.Metadata\App\UFIDA.U9.CBO.PubBE.MetaData.dll" type="BE" isRuntime="True" />
     <Import id="e229a91f-ea0d-4533-9907-27d24ff40689" name="PMReferenceUI" displayName="PMReferenceUI" description="" help="" componentid="343e6fa9-893b-4d7c-a64f-4a00ea2dcb8b" path="..\..\..\..\..\..\UFIDA\UBFV30\U9.VOB.Product.Metadata\UI\UFIDA.U9.SCM.Ref.PM.PMReferenceUI.MetaData.dll" type="UI" isRuntime="True" />
+    <Import id="700c1df4-a1c4-491c-b070-0575735fbaa3" name="DepartmentUI" displayName="DepartmentUI" description="" help="" componentid="c35ffee1-7bc3-41fc-a51f-fb5f0dcdfae0" path="..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Metadata\UI\UFIDA.U9.CBO.Pub.Department.DepartmentUI.MetaData.dll" type="UI" isRuntime="True" />
+    <Import id="a7621383-962b-41a0-acee-b0bfe33b64ab" name="ItemUI" displayName="ItemUI" description="" help="" componentid="7b6cc2cc-7a33-4e83-b812-0dd14acf4570" path="..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Metadata\UI\UFIDA.U9.CBO.Pub.Item.ItemUI.MetaData.dll" type="UI" isRuntime="True" />
+    <Import id="498185df-1042-40e2-ad77-f07ad564f1ac" name="SupplierUI" displayName="SupplierUI" description="" help="" componentid="493cbbe9-979f-4607-a2d4-b4e409c79e84" path="..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Metadata\UI\UFIDA.U9.CBO.Pub.Supplier.SupplierUI.MetaData.dll" type="UI" isRuntime="True" />
   </Imports>
   <SourceControl />
   <ItemGroup>

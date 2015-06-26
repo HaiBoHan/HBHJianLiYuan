@@ -11,7 +11,8 @@
         <RefField id="8a10817d-fdf8-4e5f-a0df-85eaf6487046" name="PurchaseInfo_Supplier_Name" displayName="主供应商名称" description="" help="供应商.供应商.名称" isKey="False" isEdit="False" isName="False" isVisible="True" isParent="False" sequence="0" length="255" refAttributeName="UFIDA.U9.CBO.SCM.Item.ItemMaster:PurchaseInfo.Supplier.Name" displayNameIndexStr="" />
         <RefField id="b439d7ba-8a5a-481f-a035-ef0445429ec1" name="PurchaseInfo_Supplier_ID" displayName="供应商ID" description="" help="供应商.Key.ID" isKey="False" isEdit="False" isName="False" isVisible="False" isParent="False" sequence="0" length="80" refAttributeName="UFIDA.U9.CBO.SCM.Item.ItemMaster:PurchaseInfo.Supplier.ID" displayNameIndexStr="" />
       </RefFields>
-      <Filter />
+      <Filter>Org = #Context.OrgID#
+</Filter>
     </Reference>
   </References>
 </ReferenceComponent>

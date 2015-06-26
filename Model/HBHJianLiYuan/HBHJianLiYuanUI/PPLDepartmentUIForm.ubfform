@@ -168,12 +168,12 @@
           <Events />
         </NumberColumn>
         <ReferenceColumn ID="81f04209-9545-4898-b702-cff86d9461b4" CodeAttributeName="Code" CodeField="Code" CodeFieldUIFieldID="PurchasePriceList_Code" CodeFieldUIViewID="PPLDepartment" DefaultValue="0" DisplayFormat="19.0" Enabled="True" EntityName="ID" Help="部门子表.Misc.厂商价表" IsNull="True" IsProperty="False" IsSequence="False" Name="PurchasePriceList0" NameAttributeName="Name" NameFieldUIFieldID="PurchasePriceList_Name" NameFieldUIViewID="PPLDepartment" NPos="3" PkeyField="ID" Point="0" RefType="0e6ef255-c67b-4882-a49d-34cdb546c2b4" TextAlign="Right" UIFieldID="PurchasePriceList" UIViewID="PPLDepartment" Visible="False" WindowHeight="408" WindowWidth="580">
-          <ReferenceRelation Action="Clear" ColumnDisplayName="ID" ColumnID="ID" TargetControlType="ReferenceColumnModel" TargetID="PurchasePriceList" TargetProperty="Key" />
-          <ReferenceRelation Action="Clear" ColumnDisplayName="价表编码" ColumnID="Code" TargetControlType="ReferenceColumnModel" TargetID="PurchasePriceList" TargetProperty="Value" />
-          <ReferenceRelation Action="Clear" ColumnDisplayName="名称" ColumnID="Name" TargetControlType="ReferenceColumnModel" TargetID="PurchasePriceList" TargetProperty="Text" />
-          <ReferenceRelation Action="Clear" ColumnDisplayName="描述" ColumnID="Discription" TargetControlType="" TargetID="" TargetProperty="" />
-          <ReferenceRelation Action="Clear" ColumnDisplayName="价格含税" ColumnID="IsIncludeTax" TargetControlType="" TargetID="" TargetProperty="" />
-          <ReferenceRelation Action="Clear" ColumnDisplayName="折扣价表" ColumnID="IsDiscountRate" TargetControlType="" TargetID="" TargetProperty="" />
+          <ReferenceRelation Action="Clear" ColumnDisplayName="ID" ColumnID="ID" Name="ReferenceRelation0" TargetControlType="ReferenceColumnModel" TargetID="PurchasePriceList" TargetProperty="Key" />
+          <ReferenceRelation Action="Clear" ColumnDisplayName="价表编码" ColumnID="Code" Name="ReferenceRelation1" TargetControlType="ReferenceColumnModel" TargetID="PurchasePriceList" TargetProperty="Value" />
+          <ReferenceRelation Action="Clear" ColumnDisplayName="名称" ColumnID="Name" Name="ReferenceRelation2" TargetControlType="ReferenceColumnModel" TargetID="PurchasePriceList" TargetProperty="Text" />
+          <ReferenceRelation Action="Clear" ColumnDisplayName="描述" ColumnID="Discription" Name="ReferenceRelation3" TargetControlType="" TargetID="" TargetProperty="" />
+          <ReferenceRelation Action="Clear" ColumnDisplayName="价格含税" ColumnID="IsIncludeTax" Name="ReferenceRelation4" TargetControlType="" TargetID="" TargetProperty="" />
+          <ReferenceRelation Action="Clear" ColumnDisplayName="折扣价表" ColumnID="IsDiscountRate" Name="ReferenceRelation5" TargetControlType="" TargetID="" TargetProperty="" />
           <RefNameFields>
             <RefNameField UIFieldID="Name" />
           </RefNameFields>
@@ -186,19 +186,38 @@
           </UIFilterBar>
           <Events />
         </ReferenceColumn>
-        <ReferenceColumn ID="d6aef37f-4ab8-4ba1-b856-cafc88a47cef" CodeAttributeName="Code" CodeField="Code" CodeFieldUIFieldID="Department_Code" CodeFieldUIViewID="PPLDepartment" DefaultValue="" DisplayFormat="19.0" Enabled="True" EntityName="ID" Help="部门子表.Misc.部门" IsNull="True" IsProperty="False" IsSequence="False" Name="Department0" NameAttributeName="Name" NameFieldUIFieldID="Department_Name" NameFieldUIViewID="PPLDepartment" NPos="4" PkeyField="ID" Point="0" RefType="18e07fd6-84e7-4e0f-aeb6-eba9713f0bb5" TextAlign="Right" UIFieldID="Department" UIViewID="PPLDepartment" Visible="True" WindowHeight="408" WindowWidth="580">
-          <ReferenceRelation Action="Clear" ColumnDisplayName="ID" ColumnID="ID" TargetControlType="" TargetID="" TargetProperty="" />
-          <ReferenceRelation Action="Clear" ColumnDisplayName="编码" ColumnID="Code" TargetControlType="" TargetID="" TargetProperty="" />
-          <ReferenceRelation Action="Clear" ColumnDisplayName="名称" ColumnID="Name" TargetControlType="" TargetID="" TargetProperty="" />
+        <ReferenceColumn ID="d6aef37f-4ab8-4ba1-b856-cafc88a47cef" CodeAttributeName="Code" CodeField="Code" CodeFieldUIFieldID="Department_Code" CodeFieldUIViewID="PPLDepartment" DefaultValue="" DisplayFormat="19.0" Enabled="True" EntityName="ID" Help="部门子表.Misc.部门" IsNull="True" IsProperty="False" IsSequence="False" Name="Department0" NameAttributeName="Name" NameFieldUIFieldID="Department_Name" NameFieldUIViewID="PPLDepartment" NPos="4" PkeyField="ID" Point="0" RefType="18e07fd6-84e7-4e0f-aeb6-eba9713f0bb5" TextAlign="Right" UIFieldID="Department" UIViewID="PPLDepartment" Visible="True" Width="200" WindowHeight="408" WindowWidth="580">
+          <ReferenceRelation Action="Clear" ColumnDisplayName="ID" ColumnID="ID" Name="ReferenceRelation6" TargetControlType="" TargetID="" TargetProperty="" />
+          <ReferenceRelation Action="Clear" ColumnDisplayName="编码" ColumnID="Code" Name="ReferenceRelation7" TargetControlType="" TargetID="" TargetProperty="" />
+          <ReferenceRelation Action="Clear" ColumnDisplayName="名称" ColumnID="Name" Name="ReferenceRelation8" TargetControlType="" TargetID="" TargetProperty="" />
           <RefNameFields>
             <RefNameField UIFieldID="Name" />
           </RefNameFields>
           <UIFilterBar Name="ReferenceFilter">
             <Parameter ContextID="OrgID" ControlID="" ControlProperty="Value" ControlType="ContextItemModel" Name="DeptOrg" ParameterBindType="Bind2Context" />
           </UIFilterBar>
+          <FormLink FormRefID="beee4a9d-0556-4787-a7f9-38d775f0c4f6" FormRefName="DepartmentMainUIForm.ubfform" FormRefPath="DepartmentMainUIForm.ubfform" FormRefProjectPath="D:\U9Cust\UFIDA\U9Proj\UBFV30\U9.VOB.Product.Metadata\UI\UFIDA.U9.CBO.Pub.Department.DepartmentUI.MetaData.dll" Height="504" IsShowStateBar="True" Width="992">
+            <InParameters>
+              <Parameter ContextID="" ControlID="Department" ControlProperty="Key" ControlType="ReferenceColumnModel" Name="ID" ParameterBindType="Bind2Control" />
+            </InParameters>
+            <OutParameters>
+              <Parameter ContextID="" ControlID="Department" ControlProperty="Key" ControlType="ReferenceColumnModel" Name="ID" />
+              <Parameter ContextID="" ControlID="Department" ControlProperty="Value" ControlType="ReferenceColumnModel" Name="Code" />
+              <Parameter ContextID="" ControlID="Department" ControlProperty="Text" ControlType="ReferenceColumnModel" Name="Name" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="WorkCalendar" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="WorkCalendarName" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="WorkCalendarCode" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="Warehouse" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="WarehouseCode" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="WarehouseName" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="Bin" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="BinCode" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="BinName" />
+            </OutParameters>
+          </FormLink>
           <Events />
         </ReferenceColumn>
-        <TextBoxColumn ID="3e3ed96a-017a-4303-8672-e7bd0e46a60c" DefaultValue="" DisplayFormat="1000" Enabled="True" Help="部门子表.Misc.备注" IsNull="True" IsProperty="False" IsSequence="False" Name="Memo0" NPos="5" Point="0" TextAlign="Left" UIFieldID="Memo" UIViewID="PPLDepartment" Visible="True" Width="300">
+        <TextBoxColumn ID="3e3ed96a-017a-4303-8672-e7bd0e46a60c" DefaultValue="" DisplayFormat="1000" Enabled="True" Help="部门子表.Misc.备注" IsNull="True" IsProperty="False" IsSequence="False" Name="Memo0" NPos="5" Point="0" TextAlign="Left" UIFieldID="Memo" UIViewID="PPLDepartment" Visible="True" Width="250">
           <Events />
         </TextBoxColumn>
       </Columns>

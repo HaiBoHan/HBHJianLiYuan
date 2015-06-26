@@ -63,6 +63,9 @@
     <Reference Include="U9.VOB.Cus.HBHJianLiYuan.BE.Deploy">
       <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\Unconfiged\Component\U9.VOB.Cus.HBHJianLiYuan.BE.Deploy.dll</HintPath>
     </Reference>
+    <Reference Include="U9.VOB.Cus.HBHJianLiYuan.HBHHelper">
+      <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\Unconfiged\Component\U9.VOB.Cus.HBHJianLiYuan.HBHHelper.dll</HintPath>
+    </Reference>
     <Reference Include="UBF.System">
       <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.UBF\UBFStudio\Runtime\UBF.System.dll</HintPath>
     </Reference>

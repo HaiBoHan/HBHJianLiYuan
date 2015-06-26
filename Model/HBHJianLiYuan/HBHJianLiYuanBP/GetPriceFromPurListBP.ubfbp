@@ -1,6 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Component id="09346b9a-9a7f-46f4-9d39-5021a0cd6f88" name="U9.VOB.Cus.HBHJianLiYuan.GetPriceFromPurListBP" displayName="GetPriceFromPurListBP" description="" help="" type="BP" assemblyName="U9.VOB.Cus.HBHJianLiYuan.BP">
   <Namespace id="c68386e2-fa73-49ef-bcf1-76aa14435740" name="U9.VOB.Cus.HBHJianLiYuan.GetPriceFromPurListBP" displayName="U9.VOB.Cus.HBHJianLiYuan.GetPriceFromPurListBP" description="" help="">
+    <PropertyType id="6bd32387-c0a5-4933-a615-b7e398a1214c" name="ItemPrice" displayName="物料价格DTO" description="物料价格DTO" help="" mD_ParentClass_ID="" isFactEntity="False" isQuery="False" isPersistence="False">
+      <Groups>
+        <Group id="df5c796a-5d66-4405-8c51-0f8a4b43a337" name="Misc" displayName="Misc" description="" help="" />
+      </Groups>
+      <Attributes>
+        <Attribute id="9d5953b4-1d41-480f-ab83-164bf4086e68" name="PreDiscountPrice" displayName="折前价" description="" help="物料价格DTO.Misc.折前价" dataTypeID="91031687-94bb-4988-a939-df7bf999ef4f" isKey="False" defaultValue="0" length="9" precise="24" scale="9" isNullable="True" isReadOnly="False" isHide="False" isCalculation="False" valueExpression="" maxValue="" minValue="" sequence="0" isDefaultDimensionAttribute="False" isDefaultMeasureAttribute="False" isGlobalization="False" idGenerator="" groupName="Misc" isEntityKey="False" isEntityData="True" isSystem="False" isBusinessKey="False" isSyncDictionary="False" dictionaryKey="" isExtendCode="False" isQuery="True" isForAsso="True" isModifyControl="False" isDynamic="False" isImpressible="False" isInCache="False" isKeySerializable="False" isColumnDefine="True" isFilterDefine="True" isSortDefine="True" isDefaultColumn="True" forOBAImport="False" />
+        <Attribute id="acbf18bb-712c-488b-9aec-951ead7ac14c" name="FinallyPrice" displayName="最终价(折后)" description="" help="物料价格DTO.Misc.最终价(折后)" dataTypeID="91031687-94bb-4988-a939-df7bf999ef4f" isKey="False" defaultValue="0" length="9" precise="24" scale="9" isNullable="True" isReadOnly="False" isHide="False" isCalculation="False" valueExpression="" maxValue="" minValue="" sequence="1" isDefaultDimensionAttribute="False" isDefaultMeasureAttribute="False" isGlobalization="False" idGenerator="" groupName="Misc" isEntityKey="False" isEntityData="True" isSystem="False" isBusinessKey="False" isSyncDictionary="False" dictionaryKey="" isExtendCode="False" isQuery="True" isForAsso="True" isModifyControl="False" isDynamic="False" isImpressible="False" isInCache="False" isKeySerializable="False" isColumnDefine="True" isFilterDefine="True" isSortDefine="True" isDefaultColumn="True" forOBAImport="False" />
+      </Attributes>
+    </PropertyType>
     <Operation id="099afbb2-d7c6-4694-8a61-e39716cdfab9" name="GetPriceFromPurList" displayName="获取厂商价表料品单价" description="" help="" mD_ParentClass_ID="" isFactEntity="False" returnTypeID="91031687-94bb-4988-a939-df7bf999ef4f" isService="False" isDefault="False" isEntityKey="False" transactionType="2" isAuthorization="True" isISV="False">
       <Groups>
         <Group id="4bf846a4-e623-4262-8625-6328a0ce946e" name="Misc" displayName="Misc" description="" help="" />
@@ -17,6 +26,10 @@
     <Diagram id="b4c4a5dc-4ec8-4b63-8fe5-0157d39de342" name="GetPriceFromPurListBP" displayName="GetPriceFromPurListBP">
       <Class Editable="True" ID="21d59f19-e854-4b9b-b2fd-d3cd73e4816e" Type="Operation" ADID="099afbb2-d7c6-4694-8a61-e39716cdfab9">
         <Location X="128" Y="54" />
+        <Size width="120" height="58" />
+      </Class>
+      <Class Editable="True" ID="45494dd0-d03f-430c-9967-c9b45e789644" Type="PropertyType" ADID="6bd32387-c0a5-4933-a615-b7e398a1214c">
+        <Location X="632" Y="88" />
         <Size width="120" height="58" />
       </Class>
     </Diagram>

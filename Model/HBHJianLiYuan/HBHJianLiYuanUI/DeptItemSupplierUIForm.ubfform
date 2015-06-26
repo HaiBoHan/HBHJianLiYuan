@@ -213,6 +213,25 @@
         <Events />
         <RelationControls />
         <Events />
+        <FormLink FormRefID="beee4a9d-0556-4787-a7f9-38d775f0c4f6" FormRefName="DepartmentMainUIForm.ubfform" FormRefPath="DepartmentMainUIForm.ubfform" FormRefProjectPath="D:\U9Cust\UFIDA\U9Proj\UBFV30\U9.VOB.Product.Metadata\UI\UFIDA.U9.CBO.Pub.Department.DepartmentUI.MetaData.dll" Height="504" IsShowStateBar="True" Width="992">
+          <InParameters>
+            <Parameter ContextID="" ControlID="Department101" ControlProperty="Key" ControlType="ReferenceModel" Name="ID" ParameterBindType="Bind2Control" />
+          </InParameters>
+          <OutParameters>
+            <Parameter ContextID="" ControlID="Department101" ControlProperty="Key" ControlType="ReferenceModel" Name="ID" />
+            <Parameter ContextID="" ControlID="Department101" ControlProperty="Value" ControlType="ReferenceModel" Name="Code" />
+            <Parameter ContextID="" ControlID="Department101" ControlProperty="Text" ControlType="ReferenceModel" Name="Name" />
+            <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="WorkCalendar" />
+            <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="WorkCalendarName" />
+            <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="WorkCalendarCode" />
+            <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="Warehouse" />
+            <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="WarehouseCode" />
+            <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="WarehouseName" />
+            <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="Bin" />
+            <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="BinCode" />
+            <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="BinName" />
+          </OutParameters>
+        </FormLink>
       </Label>
       <Reference ID="806243c6-7483-4bb2-a593-04a5692e571d" CodeAttributeName="Code" CodeField="Code" CodeFieldUIFieldID="Department_Code" CodeFieldUIViewID="DeptItemSupplier" DisplayFormat="19.0" Enabled="True" EntityName="ID" GridHeight="1" GridWidth="1" GridX="2" GridY="0" Height="20" IsNull="True" IsProperty="False" IsSequence="False" Name="Department101" NameAttributeName="Name" NameFieldUIFieldID="Department_Name" NameFieldUIViewID="DeptItemSupplier" PkeyField="ID" RefType="82a8f09a-6081-4b12-8735-10ffcaddca48" RelationControl="lblDepartment101" TabIndex="5" TabStop="True" TextAlign="Right" TitleAlign="Left" TitleLocation="Left" UIFieldID="Department" UIViewID="DeptItemSupplier" Visible="True" Width="153" WindowHeight="408" WindowWidth="580" X="158" Y="0">
         <Events />
@@ -238,7 +257,7 @@
         <RelationControls />
         <Events />
       </Label>
-      <TextBox ID="059016b6-07b3-4c41-9884-9acab1b80a52" DisplayFormat="1000" Enabled="True" GridHeight="2" GridWidth="9" GridX="2" GridY="1" Height="45" IsNull="True" IsProperty="False" IsSequence="False" MultiLine="True" Name="Memo113" RelationControl="lblMemo113" TabIndex="7" TabStop="True" TextAlign="Left" TextBoxMode="MultiLine" TitleAlign="Left" TitleLocation="Left" UIFieldID="Memo" UIViewID="DeptItemSupplier" Visible="True" Width="811" X="158" Y="25">
+      <TextBox ID="059016b6-07b3-4c41-9884-9acab1b80a52" DisplayFormat="1000" Enabled="True" GridHeight="2" GridWidth="2" GridX="1" GridY="1" Height="45" IsNull="True" IsProperty="False" IsSequence="False" MultiLine="True" Name="Memo113" RelationControl="lblMemo113" TabIndex="7" TabStop="True" TextAlign="Left" TextBoxMode="MultiLine" TitleAlign="Left" TitleLocation="Left" UIFieldID="Memo" UIViewID="DeptItemSupplier" Visible="True" Width="158" X="153" Y="25">
         <Events />
         <RelationControls />
       </TextBox>
@@ -274,7 +293,7 @@
           <CurrencyType Name="CurrencyType3" />
           <Events />
         </NumberColumn>
-        <ReferenceColumn ID="209c1f53-da14-43c1-8a95-1c658109b7fe" CodeAttributeName="Code" CodeField="Code" CodeFieldUIFieldID="ItemMaster_Code" CodeFieldUIViewID="DeptItemSupplier_DeptItemSupplierLine" DefaultValue="" DisplayFormat="19.0" Enabled="True" EntityName="ID" Help="部门料品供应商交叉档行.Misc.料品" IsNull="True" IsProperty="False" IsSequence="False" Name="ItemMaster0" NameAttributeName="Name" NameFieldUIFieldID="ItemMaster_Name" NameFieldUIViewID="DeptItemSupplier_DeptItemSupplierLine" NPos="3" PkeyField="ID" Point="0" RefType="f22c8bbd-4b13-4055-926d-f08b45dfdc37" TextAlign="Right" UIFieldID="ItemMaster" UIViewID="DeptItemSupplier_DeptItemSupplierLine" Visible="True" Width="150" WindowHeight="408" WindowWidth="580">
+        <ReferenceColumn ID="209c1f53-da14-43c1-8a95-1c658109b7fe" CodeAttributeName="Code" CodeField="Code" CodeFieldUIFieldID="ItemMaster_Code" CodeFieldUIViewID="DeptItemSupplier_DeptItemSupplierLine" DefaultValue="" DisplayFormat="19.0" Enabled="True" EntityName="ID" Help="部门料品供应商交叉档行.Misc.料品" IsNull="True" IsProperty="False" IsSequence="False" Name="ItemMaster0" NameAttributeName="Name" NameFieldUIFieldID="ItemMaster_Name" NameFieldUIViewID="DeptItemSupplier_DeptItemSupplierLine" NPos="3" PkeyField="ID" Point="0" RefType="f22c8bbd-4b13-4055-926d-f08b45dfdc37" TextAlign="Right" UIFieldID="ItemMaster" UIViewID="DeptItemSupplier_DeptItemSupplierLine" Visible="True" Width="200" WindowHeight="408" WindowWidth="580">
           <ReferenceRelation Action="Clear" ColumnDisplayName="ID" ColumnID="ID" Name="ReferenceRelation20" TargetControlType="" TargetID="" TargetProperty="" />
           <ReferenceRelation Action="Clear" ColumnDisplayName="料品料号" ColumnID="Code" Name="ReferenceRelation21" TargetControlType="" TargetID="" TargetProperty="" />
           <ReferenceRelation Action="Clear" ColumnDisplayName="料品品名" ColumnID="Name" Name="ReferenceRelation22" TargetControlType="" TargetID="" TargetProperty="" />
@@ -283,9 +302,193 @@
             <RefNameField UIFieldID="Name" />
           </RefNameFields>
           <UIFilterBar Name="ReferenceFilter" />
+          <FormLink FormRefID="053a1be3-2c56-428b-b221-b5291644f2cb" FormRefName="ItemMainUIForm.ubfform" FormRefPath="ItemMainUIForm.ubfform" FormRefProjectPath="D:\U9Cust\UFIDA\U9Proj\UBFV30\U9.VOB.Product.Metadata\UI\UFIDA.U9.CBO.Pub.Item.ItemUI.MetaData.dll" Height="520" IsShowStateBar="True" Width="992">
+            <InParameters>
+              <Parameter ContextID="" ControlID="ItemMaster" ControlProperty="Key" ControlType="ReferenceColumnModel" Name="ID" ParameterBindType="Bind2Control" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="IsDisableAdd" />
+            </InParameters>
+            <OutParameters>
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="InventoryUOMID" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="InventoryUOMCode" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="InventoryUOMName" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="ItemForm" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="ManufactureUOM" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="ManufactureUOM_Code" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="ManufactureUOM_Name" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="PurchaseUOM" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="PurchaseUOM_Code" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="PurchaseUOM_Name" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="BuildQuanSelectType" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="BuildBatch" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="BomControlMode" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="Version" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="VersionID" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="IsNegativeInventory" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="InventoryPlanningMethod" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="CostUOM" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="CostUOMCode" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="CostUOMName" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="ItemFormAttribute" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="IsGradeControl" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="StartGrade" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="EndGrade" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="IsPotencyControl" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="StartPotency" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="EndPotency" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="LotParam" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="IsVersionQtyControl" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="IsLimitBin" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="MeterialOut" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="MeterialOutUOMCode" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="MeterialOutUOMName" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="MeterialOutUOMPrecision" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="MeterialOutUOMRoundType" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="MeterialOutUOMRoundValue" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="StandardGrade" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="StandardPotency" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="CostUOMPrecision" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="CostUOMRoundType" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="CostUOMRoundValue" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="InventoryUOMPrcision" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="InventoryUOMRoundType" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="InventoryUOMRoundValue" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="PurchaseUOMPrecision" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="PurchaseUOMRoundType" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="PurchaseUOMRoundValue" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="ManufactureUOMPrecision" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="ManufactureUOMRoundType" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="ManufactureUOMRoundValue" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="IsEcnControl" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="IsTrademark" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="Warehouse" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="WarehouseCode" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="WarehouseName" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="Bin" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="BinCode" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="BinName" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="IsVarRatio" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="IsMisc" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="LotPOVType" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="IsDualQuantity" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="IsLimitWarehouse" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="LotValidDate" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="ChargeProcessMode" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="SnParamID" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="SnParamCode" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="SnParamName" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="IsDualUOM" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="IsMultyUOM" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="PriceUOM" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="PriceUOMName" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="PriceUOMCode" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="IsATP" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="LotProduceTime" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="LotControlType" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="SnProduceTime" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="SnControlType" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="LowLevelCode" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="SupplySource" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="DemandTransType" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="SalesUOM" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="SalesUOM_Code" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="SalesUOM_Name" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="SalesUOM_Round_Precision" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="SalesUOM_Round_RoundType" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="SalesUOM_Round_RoundValue" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="PriceUOM_Round_Precision" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="PriceUOM_Round_RoundType" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="PriceUOM_Round_RoundValue" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="ReceiptModeAllowModify" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="ReceiptMode" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="Buyer" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="Buyer_Code" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="Buyer_Name" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="PurchaseDepartment" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="PurchaseDepartment_Code" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="PurchaseDepartment_Name" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="IsAllowExcessMaterial" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="StandardMaterialScale" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="Code1" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="Code2" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="IsBOMEnable" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="InquireRule" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="InquireFixedPeriod" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="InquireCount" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="StatisticPeriod" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="IsInventoryEnable" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="IsPurchaseEnable" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="IsSalesEnable" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="IsBuildEnable" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="IsOutsideOperationEnable" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="IsMRPEnable" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="IsSpecialItem" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="ManufactureUOM_RatioToBase" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="ManufactureUOM_BaseUOM_ID" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="ManufactureUOM_BaseUOM_Code" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="ManufactureUOM_BaseUOM_Name" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="MaterialOutUOM_RatioToBase" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="MaterialOutUOM_BaseUOM_ID" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="MaterialOutUOM_BaseUOM_Code" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="MaterialOutUOM_BaseUOM_Name" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="IsCTP" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="PurchaseUOM_RatioToBase" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="PurchaseUOM_BaseUOM_Code" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="PurchaseUOM_BaseUOM_Name" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="PurchaseUOM_BaseUOM_ID" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="TimeUom_Round_Precision" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="TimeUom_Round_RoundType" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="TimeUom_Round_RoundValue" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="TimeUom_BaseUOM_ID" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="TimeUom_BaseUOM_Code" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="TimeUom_BaseUOM_Name" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="PreOffsetTime" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="TimeUom" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="TimeUom_Code" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="TimeUom_Name" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="ManufactureUOM_UOMClass" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="MaterialOutUOM_UOMClass" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="PurchaseUOM_UOMClass" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="InventoryUOM_BaseUOM" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="InventoryUOM_BaseUOM_Code" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="InventoryUOM_BaseUOM_Name" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="BulkUom" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="BulkUom_Code" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="BulkUom_Name" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="BulkUom_Round_Precision" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="BulkUom_Round_RoundType" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="BulkUom_Round_RoundValue" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="Weight" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="WeightUom" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="WeightUom_Code" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="WeightUom_Name" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="WeightUom_Round_Precision" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="WeightUom_Round_RoundType" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="WeightUom_Round_RoundValue" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="MinRcvQty" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="MRPPlanningType" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="TimeUom_BaseUOM_RatioToBase" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="ProduceWasteRateType" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="ImmovableWaste" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="FluctuantWaste" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="IsMixLotControl" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="IsSueOverType" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="StandardMaterialQty" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="ProductDepartment" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="ProductDepartmentCode" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="ProductDepartmentName" />
+              <Parameter ContextID="" ControlID="ItemMaster" ControlProperty="Key" ControlType="ReferenceColumnModel" Name="ID" />
+              <Parameter ContextID="" ControlID="ItemMaster" ControlProperty="Value" ControlType="ReferenceColumnModel" Name="Code" />
+              <Parameter ContextID="" ControlID="ItemMaster" ControlProperty="Text" ControlType="ReferenceColumnModel" Name="Name" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="SPECS" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="Effective_IsEffective" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="Effective_EffectiveDate" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="Effective_DisableDate" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="MixTradeMark" />
+            </OutParameters>
+          </FormLink>
           <Events />
         </ReferenceColumn>
-        <ReferenceColumn ID="7a40c74e-b0e3-45cb-8d33-e690ba40230b" CodeAttributeName="Code" CodeField="Code" CodeFieldUIFieldID="Supplier_Code" CodeFieldUIViewID="DeptItemSupplier_DeptItemSupplierLine" DefaultValue="" DisplayFormat="19.0" Enabled="True" EntityName="ID" Help="部门料品供应商交叉档行.Misc.建议供应商" IsNull="True" IsProperty="False" IsSequence="False" Name="Supplier0" NameAttributeName="Name" NameFieldUIFieldID="Supplier_Name" NameFieldUIViewID="DeptItemSupplier_DeptItemSupplierLine" NPos="4" PkeyField="ID" Point="0" RefType="ea01ca72-c3a4-4563-b9b9-d47c720f051c" TextAlign="Right" UIFieldID="Supplier" UIViewID="DeptItemSupplier_DeptItemSupplierLine" Visible="True" Width="150" WindowHeight="408" WindowWidth="580">
+        <ReferenceColumn ID="7a40c74e-b0e3-45cb-8d33-e690ba40230b" CodeAttributeName="Code" CodeField="Code" CodeFieldUIFieldID="Supplier_Code" CodeFieldUIViewID="DeptItemSupplier_DeptItemSupplierLine" DefaultValue="" DisplayFormat="19.0" Enabled="True" EntityName="ID" Help="部门料品供应商交叉档行.Misc.建议供应商" IsNull="True" IsProperty="False" IsSequence="False" Name="Supplier0" NameAttributeName="Name" NameFieldUIFieldID="Supplier_Name" NameFieldUIViewID="DeptItemSupplier_DeptItemSupplierLine" NPos="4" PkeyField="ID" Point="0" RefType="ea01ca72-c3a4-4563-b9b9-d47c720f051c" TextAlign="Right" UIFieldID="Supplier" UIViewID="DeptItemSupplier_DeptItemSupplierLine" Visible="True" Width="200" WindowHeight="408" WindowWidth="580">
           <ReferenceRelation Action="Clear" ColumnDisplayName="ID" ColumnID="ID" Name="ReferenceRelation14" TargetControlType="ReferenceColumnModel" TargetID="Supplier" TargetProperty="Key" />
           <ReferenceRelation Action="Clear" ColumnDisplayName="编码" ColumnID="Code" Name="ReferenceRelation15" TargetControlType="ReferenceColumnModel" TargetID="Supplier" TargetProperty="Value" />
           <ReferenceRelation Action="Clear" ColumnDisplayName="名称" ColumnID="Name" Name="ReferenceRelation16" TargetControlType="ReferenceColumnModel" TargetID="Supplier" TargetProperty="Text" />
@@ -296,9 +499,31 @@
             <RefNameField UIFieldID="Name" />
           </RefNameFields>
           <UIFilterBar Name="ReferenceFilter" />
+          <FormLink FormRefID="a75ec3fa-0408-4482-b8b2-a32e6a78d8a7" FormRefName="SupplierMainUIForm.ubfform" FormRefPath="SupplierMainUIForm.ubfform" FormRefProjectPath="D:\U9Cust\UFIDA\U9Proj\UBFV30\U9.VOB.Product.Metadata\UI\UFIDA.U9.CBO.Pub.Supplier.SupplierUI.MetaData.dll" Height="504" IsShowStateBar="True" Width="992">
+            <InParameters>
+              <Parameter ContextID="" ControlID="Supplier" ControlProperty="Key" ControlType="ReferenceColumnModel" Name="ID" ParameterBindType="Bind2Control" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="SupplierSiteID" />
+            </InParameters>
+            <OutParameters>
+              <Parameter ContextID="" ControlID="Supplier" ControlProperty="Key" ControlType="ReferenceColumnModel" Name="ID" />
+              <Parameter ContextID="" ControlID="Supplier" ControlProperty="Value" ControlType="ReferenceColumnModel" Name="Code" />
+              <Parameter ContextID="" ControlID="Supplier" ControlProperty="Text" ControlType="ReferenceColumnModel" Name="Name" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="OfficialLocationID" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="OfficialLocationCode" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="OfficialLocationName" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="ContactObjectID" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="ContactObjectCode" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="ContactObjectName" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="SupplierSiteID" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="SupplierSiteCode" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="SupplierSiteName" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="ShortName" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="IsMISC" />
+            </OutParameters>
+          </FormLink>
           <Events />
         </ReferenceColumn>
-        <TextBoxColumn ID="78c00999-9f2c-43bd-9f15-873c957d397a" DefaultValue="" DisplayFormat="1000" Enabled="True" Help="部门料品供应商交叉档行.Misc.备注" IsNull="True" IsProperty="False" IsSequence="False" Name="Memo114" NPos="5" Point="0" TextAlign="Left" UIFieldID="Memo" UIViewID="DeptItemSupplier_DeptItemSupplierLine" Visible="True" Width="500">
+        <TextBoxColumn ID="78c00999-9f2c-43bd-9f15-873c957d397a" DefaultValue="" DisplayFormat="1000" Enabled="True" Help="部门料品供应商交叉档行.Misc.备注" IsNull="True" IsProperty="False" IsSequence="False" Name="Memo114" NPos="5" Point="0" TextAlign="Left" UIFieldID="Memo" UIViewID="DeptItemSupplier_DeptItemSupplierLine" Visible="True" Width="400">
           <Events />
         </TextBoxColumn>
       </Columns>
