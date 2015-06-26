@@ -119,7 +119,9 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInUI
         {
             base.AfterRender(Part, args);
 
-            if (_strongPart.Model.Views["PR"].FocusedRecord != null)
+            if (_strongPart.Model.Views["PR"].FocusedRecord != null
+                && _strongPart.Model.Views["PR"].FocusedRecord["ReqDepartment"] != null
+                )
             {
                 string id = _strongPart.Model.Views["PR"].FocusedRecord["ReqDepartment"].ToString();
                 IUFFldReferenceColumn itemRef = (IUFFldReferenceColumn)DataGrid8.Columns["ItemInfo_ItemID"];
@@ -218,9 +220,11 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInUI
                     this.part.Model.ErrorMessage.Message = "生成请购单失败";
                     return;
                 }
-                else if (resultDataList[0].Name != "")
+                else if (!PubClass.IsNull(resultDataList[0].Code))
                 {
-                    this.part.Model.ErrorMessage.Message = resultDataList[0].Name;
+                    //this.part.Model.ErrorMessage.Message = resultDataList[0].Name;
+
+                    BtnQueryPR_ItemClick(null, null);
                     return;
                 }
             }
