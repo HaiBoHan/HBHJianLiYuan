@@ -51,7 +51,7 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInBE
                                 line.SuggestedSupplier = new UFIDA.U9.CBO.SCM.Supplier.SupplierMISCInfo();
                                 line.SuggestedSupplier.Code = deptLine.Supplier.Code;
                                 line.SuggestedSupplier.Name = deptLine.Supplier.Name;
-                                line.SuggestedSupplier.Supplier = new UFIDA.U9.CBO.SCM.Supplier.Supplier();
+                                line.SuggestedSupplier.Supplier = deptLine.Supplier;
                                 // 不可以改这个，改这个等于改供应商实体的属性了
                                 //line.SuggestedSupplier.Supplier.Code = deptLine.Supplier.Code;
                             }
