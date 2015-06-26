@@ -50,13 +50,13 @@
             //返回结果
             UFIDA.U9.CBO.Pub.Controller.CommonArchiveDataDTO resultData = new UFIDA.U9.CBO.Pub.Controller.CommonArchiveDataDTO();
             List<UFIDA.U9.CBO.Pub.Controller.CommonArchiveDataDTO> resultDataList  = new List<UFIDA.U9.CBO.Pub.Controller.CommonArchiveDataDTO>();
-            foreach (PR.EntityKey prDto in bpObj.PR)
+            foreach (PR.EntityKey srcPr in bpObj.PR)
             {
-                UFIDA.U9.PR.PurchaseRequest.PR pr = UFIDA.U9.PR.PurchaseRequest.PR.Finder.FindByID(prDto.ID);
+                UFIDA.U9.PR.PurchaseRequest.PR pr = UFIDA.U9.PR.PurchaseRequest.PR.Finder.FindByID(srcPr.ID);
                 //UFIDA.U9.PR.PurchaseRequest.PRLine execedPR = UFIDA.U9.PR.PurchaseRequest.PRLine.Finder.Find("DescFlexSegments.PrivateDescSeg3='" + prDto.ID.ToString() + "'");
 
                 // 改为头扩展字段
-                UFIDA.U9.PR.PurchaseRequest.PR execedPR = UFIDA.U9.PR.PurchaseRequest.PR.Finder.Find(PRHeadHelper.PRLine_SrcPPListIDBEField + "='" + prDto.ID.ToString() + "'");
+                UFIDA.U9.PR.PurchaseRequest.PR execedPR = UFIDA.U9.PR.PurchaseRequest.PR.Finder.Find(PRHeadHelper.PRLine_SrcPPListIDBEField + "='" + srcPr.ID.ToString() + "'");
                 if (execedPR != null)
                 {
                     resultData.Name = "请购单"+pr.DocNo+"已经下发";
@@ -170,6 +170,7 @@
                     prDTO.Org = new UFIDA.U9.Base.DTOs.IDCodeNameDTOData();
                     prDTO.Org.Code = org.Code;
                     // 币种放到了行上赋值
+
 
                     if (prDTO.DescFlexField == null)
                     {
@@ -373,7 +374,7 @@
                 {
                     strOrgCode = prline.ReqDept.DescFlexField.PrivateDescSeg1;//需求组织
 
-                    if (String.IsNullOrEmpty(strOrgCode))
+                    if (!String.IsNullOrEmpty(strOrgCode))
                     {
                         lineData.CurrentOrg = new UFIDA.U9.Base.DTOs.IDCodeNameDTOData();
                         lineData.CurrentOrg.Code = strOrgCode;
