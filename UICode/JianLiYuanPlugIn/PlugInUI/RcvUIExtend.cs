@@ -80,7 +80,8 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInUI
             AssociationControl control = new AssociationControl();
             control.SourceServerControl = lineDataGrid;
             control.SourceControl.EventName = "OnCellDataChanged";
-            ((IUFClientAssoGrid)control.SourceControl).FireEventCols.Add(HBHHelper.DescFlexFieldHelper.DescFlexField_PreDiscountPriceUIField);
+            //((IUFClientAssoGrid)control.SourceControl).FireEventCols.Add(this._strongPart.Model.Receivement_RcvLines.FieldDescFlexSegments_PubDescSeg3);
+            ((IUFClientAssoGrid)control.SourceControl).FireEventCols.Add(HBHHelper.RcvLineHelper.DescFlexSegments_PreDiscountPriceUIField);
             //((IUFClientAssoGrid)control.SourceControl).FireEventCols.Add(FieldName_FinallyPriceTC);
             CodeBlock block = new CodeBlock();
             UFWebClientGridAdapter adapter = new UFWebClientGridAdapter(lineDataGrid);
