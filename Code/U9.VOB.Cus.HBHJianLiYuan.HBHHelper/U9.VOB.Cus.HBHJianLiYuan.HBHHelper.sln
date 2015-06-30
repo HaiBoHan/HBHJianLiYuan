@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "U9.VOB.Cus.HBHJianLiYuan.HBHHelper", "U9.VOB.Cus.HBHJianLiYuan.HBHHelper.csproj", "{358F2E65-E768-465F-A3FB-4B8C81E2BC92}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{358F2E65-E768-465F-A3FB-4B8C81E2BC92}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{358F2E65-E768-465F-A3FB-4B8C81E2BC92}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{358F2E65-E768-465F-A3FB-4B8C81E2BC92}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{358F2E65-E768-465F-A3FB-4B8C81E2BC92}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
