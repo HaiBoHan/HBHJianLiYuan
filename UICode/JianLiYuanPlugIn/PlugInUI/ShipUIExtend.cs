@@ -12,6 +12,10 @@ using UFSoft.UBF.UI.Controls;
 using UFSoft.UBF.UI.WebControls;
 using UFIDA.U9.Cust.HBH.Common.CommonLibary;
 using System.Collections.Specialized;
+using UFSoft.UBF.UI.MD.Runtime;
+using UFIDA.U9.CBO.SCM.Enums;
+using U9.VOB.Cus.HBHJianLiYuan.GetPriceFromPurListBP;
+using U9.VOB.Cus.HBHJianLiYuan.GetPriceFromPurListBP.Proxy;
 
 namespace U9.VOB.Cus.HBHJianLiYuan.PlugInUI
 {
@@ -35,7 +39,10 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInUI
 
             DataGrid10 = (IUFDataGrid)part.GetUFControlByName(part.TopLevelContainer, "DataGrid10");
             //Register_DataGrid10_Item_CallBack();//料品改变事件，自动带出单价
-            RegisterGridCellDataChangedCallBack();
+            //RegisterGridCellDataChangedCallBack();
+
+            // 料品改变Post，自动带出单价(部门、料品-->供应商-->价表行-->价格)
+            Regist_OnChangePostBack_DataGrid10_ItemID();
         }
 
         public override void AfterRender(UFSoft.UBF.UI.IView.IPart Part, EventArgs args)
@@ -64,57 +71,6 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInUI
             }
         }
 
-        /// <summary>
-        /// 注册表格单元格内容改变的回调事件
-        /// </summary>
-        private void RegisterGridCellDataChangedCallBack()
-        {
-            AssociationControl assocControl = new AssociationControl();
-            assocControl.SourceServerControl = this.DataGrid10;
-            assocControl.SourceControl.EventName = "OnCellDataValueChanged";
-            ((IUFClientAssoGrid)assocControl.SourceControl).FireEventCols.Add("ItemID");
-            CodeBlock cb = new CodeBlock();
-            UFWebClientGridAdapter gridAdapter = new UFWebClientGridAdapter(this.DataGrid10);
-            gridAdapter.IsPostBack = true;
-            gridAdapter.PostBackTag = "OnCellDataValueChanged";
-            cb.TargetControls.addControl(gridAdapter);
-            assocControl.addBlock(cb);
-            UFGrid itemGrid = this.DataGrid10 as UFGrid;
-            itemGrid.GridCustomerPostBackEvent += new GridCustomerPostBackDelegate(GridCellOnChanged_DoCustomerAction_Grid);
-
-        }
-
-        /// <summary>
-        /// 表格的CallBack处理方式
-        /// </summary>
-        /// <param name="args"></param>
-        /// <returns></returns>
-        private void GridCellOnChanged_DoCustomerAction_Grid(object sender, GridCustomerPostBackEventArgs e)
-        {
-            //获取最后的行号
-            Ship_ShipLinesRecord record = _strongPart.Model.Ship_ShipLines.FocusedRecord;
-            if (record != null)
-            {
-                //定价
-                decimal price = 0;
-                //取部门+料品，定了供应商，取供应商价目表
-                if (_strongPart.Model.Ship_ShipLines.FocusedRecord.SaleDept > 0 && _strongPart.Model.Ship_ShipLines.FocusedRecord.ItemID != 0)
-                {
-                    VOB.Cus.HBHJianLiYuan.GetPriceFromPurListBP.Proxy.GetPriceFromPurListProxy proxy = new GetPriceFromPurListBP.Proxy.GetPriceFromPurListProxy();
-                    proxy.Dept = _strongPart.Model.Ship_ShipLines.FocusedRecord.SaleDept.ToString();
-                    proxy.ItemMaster = (_strongPart.Model.Ship_ShipLines.FocusedRecord.ItemID ?? 0).ToString();
-                    price = proxy.Do();
-                    record.OrderPriceTC = price; 
-                    _strongPart.Cus_PriceList23_TextChanged(sender, e);
-                    //_strongPart.OrderPriceTC54_TextChanged(sender, e);
-                    //record.OrderPriceTC = 5;
-                }
-                _strongPart.DataBind();
-                _strongPart.DataCollect();
-                DataGrid10.BindData();
-                DataGrid10.CollectData();
-            }
-        }
         public override void BeforeEventProcess(UFSoft.UBF.UI.IView.IPart Part, string eventName, object sender, EventArgs args, out bool executeDefault)
         {
             base.BeforeEventProcess(Part, eventName, sender, args, out executeDefault);
@@ -136,76 +92,415 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInUI
         }
 
         #region CallBack定价同步外销价
-        private void Register_DataGrid10_Item_CallBack()
-        {
-            if (DataGrid10 == null)
-            {
-                return;
-            }
-            //2）创建表格适配器对象
-            //UFWebClientGridAdapter _clientGrid = new UFWebClientGridAdapter(DataGrid10);
-            //3）注册：事件源、事件名称、事件关联的列
-            AssociationControl AssCtrl = new AssociationControl();
-            AssCtrl.SourceServerControl = DataGrid10;
-            AssCtrl.SourceControl.EventName = "OnCellDataChanged";
-            ((UFWebClientGridAdapter)AssCtrl.SourceControl).FireEventCols.Add("ItemID");
 
-            //4）创建：CallBack窗体、事件方法、CallBack对象、事件相关
-            ClientCallBackFrm frm = new ClientCallBackFrm();
-            //添加参数控件	
-            frm.ParameterControls.Add(DataGrid10);
-            frm.DoCustomerAction += new ClientCallBackFrm.ActionCustomer(DataGrid10_Price_OnCellDataChanged);
-            frm.Add(AssCtrl);
+        #region Old，事件不是GridCustomerPostBackDelegate，不太好用，已注释
+
+        ///// <summary>
+        ///// 注册表格单元格内容改变的回调事件
+        ///// </summary>
+        //private void RegisterGridCellDataChangedCallBack()
+        //{
+        //    AssociationControl assocControl = new AssociationControl();
+        //    assocControl.SourceServerControl = this.DataGrid10;
+        //    assocControl.SourceControl.EventName = "OnCellDataValueChanged";
+        //    ((IUFClientAssoGrid)assocControl.SourceControl).FireEventCols.Add("ItemID");
+        //    CodeBlock cb = new CodeBlock();
+        //    UFWebClientGridAdapter gridAdapter = new UFWebClientGridAdapter(this.DataGrid10);
+        //    gridAdapter.IsPostBack = true;
+        //    gridAdapter.PostBackTag = "OnCellDataValueChanged";
+        //    cb.TargetControls.addControl(gridAdapter);
+        //    assocControl.addBlock(cb);
+        //    UFGrid itemGrid = this.DataGrid10 as UFGrid;
+        //    itemGrid.GridCustomerPostBackEvent += new GridCustomerPostBackDelegate(GridCellOnChanged_DoCustomerAction_Grid);
+
+        //}
+
+        ///// <summary>
+        ///// 表格的CallBack处理方式
+        ///// </summary>
+        ///// <param name="args"></param>
+        ///// <returns></returns>
+        //private void GridCellOnChanged_DoCustomerAction_Grid(object sender, GridCustomerPostBackEventArgs e)
+        //{
+        //    //获取最后的行号
+        //    Ship_ShipLinesRecord record = _strongPart.Model.Ship_ShipLines.FocusedRecord;
+        //    if (record != null)
+        //    {
+        //        //定价
+        //        decimal price = 0;
+        //        //取部门+料品，定了供应商，取供应商价目表
+        //        if (_strongPart.Model.Ship_ShipLines.FocusedRecord.SaleDept > 0 && _strongPart.Model.Ship_ShipLines.FocusedRecord.ItemID != 0)
+        //        {
+        //            VOB.Cus.HBHJianLiYuan.GetPriceFromPurListBP.Proxy.GetPriceFromPurListProxy proxy = new GetPriceFromPurListBP.Proxy.GetPriceFromPurListProxy();
+        //            proxy.Dept = _strongPart.Model.Ship_ShipLines.FocusedRecord.SaleDept.ToString();
+        //            proxy.ItemMaster = (_strongPart.Model.Ship_ShipLines.FocusedRecord.ItemID ?? 0).ToString();
+        //            price = proxy.Do();
+        //            record.OrderPriceTC = price;
+        //            _strongPart.Cus_PriceList23_TextChanged(sender, e);
+        //            //_strongPart.OrderPriceTC54_TextChanged(sender, e);
+        //            //record.OrderPriceTC = 5;
+        //        }
+        //        _strongPart.DataBind();
+        //        _strongPart.DataCollect();
+        //        DataGrid10.BindData();
+        //        DataGrid10.CollectData();
+        //    }
+        //}
+
+
+        //private void Register_DataGrid10_Item_CallBack()
+        //{
+        //    if (DataGrid10 == null)
+        //    {
+        //        return;
+        //    }
+        //    //2）创建表格适配器对象
+        //    //UFWebClientGridAdapter _clientGrid = new UFWebClientGridAdapter(DataGrid10);
+        //    //3）注册：事件源、事件名称、事件关联的列
+        //    AssociationControl AssCtrl = new AssociationControl();
+        //    AssCtrl.SourceServerControl = DataGrid10;
+        //    AssCtrl.SourceControl.EventName = "OnCellDataChanged";
+        //    ((UFWebClientGridAdapter)AssCtrl.SourceControl).FireEventCols.Add("ItemID");
+
+        //    //4）创建：CallBack窗体、事件方法、CallBack对象、事件相关
+        //    ClientCallBackFrm frm = new ClientCallBackFrm();
+        //    //添加参数控件	
+        //    frm.ParameterControls.Add(DataGrid10);
+        //    frm.DoCustomerAction += new ClientCallBackFrm.ActionCustomer(DataGrid10_Price_OnCellDataChanged);
+        //    frm.Add(AssCtrl);
+        //}
+        //object DataGrid10_Price_OnCellDataChanged(CustomerActionEventArgs args)
+        //{
+        //    if (DataGrid10 == null)
+        //        DataGrid10 = (IUFDataGrid)part.GetUFControlByName(part.TopLevelContainer, "DataGrid10");
+        //    this.part.DataCollect();
+        //    this.part.DataBinding();
+        //    DataGrid10.BindData();
+        //    DataGrid10.CollectData();
+        //    ArrayList list = (ArrayList)args.ArgsHash[UFWebClientGridAdapter.ALL_GRIDDATA_SelectedRows];
+        //    ArrayList lstAllData = (ArrayList)args.ArgsHash[DataGrid10.ClientID];
+        //    int colIndex = Convert.ToInt32(args.ArgsHash["ALL_GRIDDATA_FocusColumn"]); //取列号
+        //    int rowIndex = Convert.ToInt32(args.ArgsHash["ALL_GRIDDATA_FocusRow"]);    //取行号
+        //    Hashtable hs = lstAllData[rowIndex] as Hashtable;
+
+        //    UFWebClientGridAdapter grid = new UFWebClientGridAdapter(DataGrid10);
+        //    long itemID = long.Parse(hs["ItemID"].ToString());
+        //    if (itemID > 0)
+        //    {
+        //        if (String.IsNullOrEmpty(hs["OrderPriceTC"].ToString()) || decimal.Parse(hs["OrderPriceTC"].ToString()) == 0)
+        //        {
+        //            //定价
+        //            decimal price = 0;
+        //            //取部门+料品，定了供应商，取供应商价目表
+        //            if (_strongPart.Model.Ship_ShipLines.FocusedRecord != null)
+        //            {
+        //                if (_strongPart.Model.Ship_ShipLines.FocusedRecord.SaleDept > 0 && _strongPart.Model.Ship_ShipLines.FocusedRecord.ItemID != 0)
+        //                {
+        //                    VOB.Cus.HBHJianLiYuan.GetPriceFromPurListBP.Proxy.GetPriceFromPurListProxy proxy = new GetPriceFromPurListBP.Proxy.GetPriceFromPurListProxy();
+        //                    proxy.Dept = _strongPart.Model.Ship_ShipLines.FocusedRecord.SaleDept.ToString();
+        //                    proxy.ItemMaster = (_strongPart.Model.Ship_ShipLines.FocusedRecord.ItemID ?? 0).ToString();
+        //                    price = proxy.Do();
+        //                    if (price > 0)
+        //                    {
+        //                        //行记录
+        //                        grid.CellValue.Add(new Object[] { rowIndex, "OrderPriceTC", new string[] { price.ToString(), price.ToString(), price.ToString() } });
+        //                    }
+        //                }
+        //                args.ArgsResult.Add(grid.ClientInstanceWithValue);
+        //            }
+
+        //        }
+        //    }
+
+        //    //this.part.DataCollect();
+        //    //this.part.DataBinding();
+        //    //DataGrid10.BindData();
+        //    //DataGrid10.CollectData();
+        //    return args;
+        //}
+
+        #endregion
+
+
+
+        private void Regist_OnChangePostBack_DataGrid10_ItemID()
+        {
+            AssociationControl control = new AssociationControl();
+            control.SourceServerControl = DataGrid10;
+            control.SourceControl.EventName = "OnCellDataChanged";
+            ((IUFClientAssoGrid)control.SourceControl).FireEventCols.Add(_strongPart.Model.Ship_ShipLines.FieldItemID.Name);
+            //((IUFClientAssoGrid)control.SourceControl).FireEventCols.Add(FieldName_FinallyPriceTC);
+            CodeBlock block = new CodeBlock();
+            UFWebClientGridAdapter adapter = new UFWebClientGridAdapter(DataGrid10);
+            adapter.IsPostBack = true;
+            adapter.PostBackTag = DataGrid10.ID + "_" + control.SourceControl.EventName;
+            block.TargetControls.addControl(adapter);
+            control.addBlock(block);
+            UFGrid dataGrid = DataGrid10 as UFGrid;
+            dataGrid.GridCustomerPostBackEvent += new GridCustomerPostBackDelegate(OnChangePostBack_DataGrid10_ItemID);
         }
-        object DataGrid10_Price_OnCellDataChanged(CustomerActionEventArgs args)
+
+        private void OnChangePostBack_DataGrid10_ItemID(object sender, GridCustomerPostBackEventArgs e)
         {
-            if (DataGrid10 == null)
-                DataGrid10 = (IUFDataGrid)part.GetUFControlByName(part.TopLevelContainer, "DataGrid10");
-            this.part.DataCollect();
-            this.part.DataBinding();
-            DataGrid10.BindData();
-            DataGrid10.CollectData();
-            ArrayList list = (ArrayList)args.ArgsHash[UFWebClientGridAdapter.ALL_GRIDDATA_SelectedRows];
-            ArrayList lstAllData = (ArrayList)args.ArgsHash[DataGrid10.ClientID];
-            int colIndex = Convert.ToInt32(args.ArgsHash["ALL_GRIDDATA_FocusColumn"]); //取列号
-            int rowIndex = Convert.ToInt32(args.ArgsHash["ALL_GRIDDATA_FocusRow"]);    //取行号
-            Hashtable hs = lstAllData[rowIndex] as Hashtable;
-
-            UFWebClientGridAdapter grid = new UFWebClientGridAdapter(DataGrid10);
-            long itemID = long.Parse(hs["ItemID"].ToString());
-            if (itemID > 0)
+            if (e.PostTag.ToString().EndsWith("OnCellDataChanged")
+                )
             {
-                if (String.IsNullOrEmpty(hs["OrderPriceTC"].ToString()) || decimal.Parse(hs["OrderPriceTC"].ToString()) == 0)
-                {
-                    //定价
-                    decimal price = 0;
-                    //取部门+料品，定了供应商，取供应商价目表
-                    if (_strongPart.Model.Ship_ShipLines.FocusedRecord != null)
-                    {
-                        if (_strongPart.Model.Ship_ShipLines.FocusedRecord.SaleDept > 0 && _strongPart.Model.Ship_ShipLines.FocusedRecord.ItemID != 0)
-                        {
-                            VOB.Cus.HBHJianLiYuan.GetPriceFromPurListBP.Proxy.GetPriceFromPurListProxy proxy = new GetPriceFromPurListBP.Proxy.GetPriceFromPurListProxy();
-                            proxy.Dept = _strongPart.Model.Ship_ShipLines.FocusedRecord.SaleDept.ToString();
-                            proxy.ItemMaster = (_strongPart.Model.Ship_ShipLines.FocusedRecord.ItemID ?? 0).ToString();
-                            price = proxy.Do();
-                            if (price > 0)
-                            {
-                                //行记录
-                                grid.CellValue.Add(new Object[] { rowIndex, "OrderPriceTC", new string[] { price.ToString(), price.ToString(), price.ToString() } });
-                            }
-                        }
-                        args.ArgsResult.Add(grid.ClientInstanceWithValue);
-                    }
+                //int qtyIndex = GetColIndex(datagrid, FieldName_ItemID);
+                //&& e.ColIndex == qtyIndex
 
+                //string uIFieldID = this.DataGrid10.Columns[e.ColIndex].UIFieldID;
+                //if (uIFieldID == view.FieldCust_CustomerItemID.Name)
+
+                string uIFieldID = DataGrid10.Columns[e.ColIndex].UIFieldID;
+                if (uIFieldID == _strongPart.Model.Ship_ShipLines.FieldItemID.Name)
+                {
+                    // 物料可以多选,还可以在物料参照里录入数量
+                    // 只计算最终价为0的行
+                    GetAllFinallyPrice(sender, e, false);
+                }
+                // 定价不可改，可能为扩展字段
+                else if (uIFieldID == _strongPart.Model.Ship_ShipLines.FieldOrderPriceTC.Name)
+                {
+                    //    Ship_ShipLinesRecord line = curPart.Model.Ship_ShipLines.FocusedRecord;
+
+                    //    // 设置售价状态 (正常售价,高于售价,低于售价)
+                    //    SetPriceStatus(line);
+
+                    // 手工录入最终价时，如果物料没有价格，物料变更时候没带出来，那么
                 }
             }
-            //this.part.DataCollect();
-            //this.part.DataBinding();
-            //DataGrid10.BindData();
-            //DataGrid10.CollectData();
-            return args;
         }
+
+        private void GetAllFinallyPrice(object sender, GridCustomerPostBackEventArgs e, bool isAllLines)
+        {
+            ShipRecord shipHead = _strongPart.Model.Ship.FocusedRecord;
+
+            if(shipHead == null)
+                return;
+
+            IUIRecordCollection lstSOLines = _strongPart.Model.Ship_ShipLines.Records;
+            if (lstSOLines != null
+                && lstSOLines.Count > 0
+                )
+            {
+                List<long> listItem = new List<long>();
+
+                IUIRecord changedSource = null;
+                if (e != null)
+                {
+                    changedSource = GetRecordByDataGridIndex(lstSOLines, e.RowIndex);
+                }
+
+                List<ItemPriceData> lstItemDTO = new List<ItemPriceData>(); 
+                foreach (Ship_ShipLinesRecord line in _strongPart.Model.Ship_ShipLines.Records)
+                {
+                    if (line != null
+                        && line.ItemInfo_ItemID.GetValueOrDefault(-1) > 0
+                        )
+                    {
+                        //// 赋值价格来源 = 手工,因为不赋值价格来源，无法价格联动
+                        //if (line.PriceSource == (int)PriceSourceEnumData.Empty)
+                        //{
+                        //    line.PriceSource = (int)PriceSourceEnumData.Custom;
+                        //}
+
+                        if (
+                            // 是否此行物料变更
+                            IsChangedSOline(changedSource, line)
+                            // 或其他行需要取价格(物料多选返回)
+                            || IsGetPrice(isAllLines, line)
+                            )
+                        {
+                            //listItem.Add(line.ItemInfo_ItemID.GetValueOrDefault(-1));
+
+                            ItemPriceData dto = new ItemPriceData();
+                            dto.DepartmentName = shipHead.SaleDept_Name;
+                            dto.ItemCode = line.ItemCode;
+
+                            lstItemDTO.Add(dto);
+                        }
+                    }
+                }
+
+
+                if (lstItemDTO.Count > 0)
+                {
+                    GetPriceFromPurListProxy proxy = new GetPriceFromPurListProxy();
+                    proxy.ItemPrices = lstItemDTO;
+
+                    List<ItemPriceData> lstPrices = proxy.Do();
+
+                    if (lstPrices != null
+                        && lstPrices.Count > 0
+                        )
+                    {
+                        foreach (ItemPriceData price in lstPrices)
+                        {
+                            if (price != null)
+                            {
+                                foreach (Ship_ShipLinesRecord line in _strongPart.Model.Ship_ShipLines.Records)
+                                {
+                                    //bool isResetPrice = false;
+
+                                    if (line != null
+                                        && line.ItemInfo_ItemID.GetValueOrDefault(-1) > 0
+                                        && !PubClass.IsNull(price.ItemCode)
+                                        && price.FinallyPrice > 0
+                                        && IsGetPrice(isAllLines, line)
+                                        && line.ItemCode == price.ItemCode
+                                        )
+                                    {
+                                        //isResetPrice = true;
+
+                                        decimal oldPrice = line.FinallyPriceTC.GetValueOrDefault(0);
+                                        // 折前价
+                                        line[HBHHelper.DescFlexFieldHelper.DescFlexField_PreDiscountPriceUIField] = price.PreDiscountPrice;
+                                        line[HBHHelper.DescFlexFieldHelper.DescFlexField_DiscountRateUIField] = price.DiscountRate;
+                                        line[HBHHelper.DescFlexFieldHelper.DescFlexField_DiscountLimitUIField] = price.DiscountLimit;
+                                        // 最终价
+                                        line.FinallyPriceTC = price.FinallyPrice;
+                                        line.FinallyPrice = price.FinallyPrice;
+
+                                        /*
+                                        UFIDA.U9.SCM.SD.ShipUIModel.ShipMainUIFormWebPart
+		private object cF1_DoCustomerAction_ShipLine_Price(UFSoft.UBF.UI.WebControls.ClientCallBack.CustomerActionEventArgs args)
+		{}
+                                         */
+                                        // 调用价格变更
+                                        _strongPart.FinallyPriceTC101_TextChanged(oldPrice, null);
+
+                                        //// 最终价不等
+                                        //// if (itemInfo.SalePrice != line.FinallyPriceTC)
+                                        //{
+                                        //    decimal oldPrice = line.OrderPriceTC;
+
+                                        //    bool isChangedLine = IsChangedSOline(changedSource, line);
+                                        //    // 如果最终价不等,不是用户修改(定价小于0,定价与最新价不等)
+                                        //    if (
+                                        //        // 是否此行物料变更
+                                        //        isChangedLine
+                                        //        // 如果非变更行，没有最终价
+                                        //        || line.OrderPriceTC <= 0
+                                        //        // 如果非变更行，如果定价不等于最新价，那认为取错了，重取最新价
+                                        //        || (oldPrice != itemInfo.SalePrice
+                                        //        // 新增行
+                                        //            && line.DataRecordState == System.Data.DataRowState.Added
+                                        //            )
+                                        //        )
+                                        //    {
+                                        //        // 最终价
+                                        //        line.FinallyPriceTC = itemInfo.SalePrice;
+
+                                        //        // 定价,复制时定价不变; 所以这里更改定价
+                                        //        if (line.OrderPriceTC != itemInfo.SalePrice)
+                                        //            line.OrderPriceTC = itemInfo.SalePrice;
+
+                                        //        // 有数量,则 联动金额     代码来源:
+                                        //        /*
+                                        //         * UFIDA.U9.SCM.SD.SOUI.WebPart             UFIDA.U9.SCM.SM.SOUIModel.StandardSOMainUIFormWebPart        搜索  FinallyPriceTC
+                                        //         * grid_SOLineGridPostBack(
+                                        //         * FinallyPriceTC140_TextChanged_Extend(
+                                        //         */
+                                        //        //if (line.OrderByQtyTU > 0)
+                                        //        {
+                                        //            Hashtable hashtable = new Hashtable(2);
+                                        //            hashtable["RECORDID"] = line.ID;
+                                        //            hashtable["OLDVALUE"] = oldPrice;
+                                        //            UIActionEventArgs args2 = new UIActionEventArgs
+                                        //            {
+                                        //                Tag = hashtable
+                                        //            };
+                                        //            // 标准产品,如果不录入客户;那么没有联动订单  定价（OrderPriceTC）
+                                        //            curPart.Action.OnFinallyPriceTCChange(sender, args2);
+
+                                        //        }
+                                        //    }
+                                        //}
+                                    }
+
+                                    // 因为还要根据运费计算 售价状态，所以在BE里做，不在UI里写了；
+                                    //// 复制时,会重按定价重算;所以原来按最终价设置的 价格状态 ,要重置;
+                                    //if (isResetPrice
+                                    //    || isAllLines
+                                    //    )
+                                    //{
+                                    //    // 设置售价状态 (正常售价,高于售价,低于售价)
+                                    //    SetPriceStatus(line);
+                                    //}
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        // 是否此行物料变更
+        /// <summary>
+        /// 是否此行物料变更
+        /// </summary>
+        /// <param name="changedSource"></param>
+        /// <param name="line"></param>
+        /// <returns></returns>
+        private static bool IsChangedSOline(IUIRecord changedSource, IUIRecord line)
+        {
+            return // 复制时，没有变更来源
+                    changedSource != null
+                    // 如果是当前行物料改变
+                    && changedSource.PrimaryKey == line.PrimaryKey;
+        }
+
+        private static bool IsGetPrice(bool isAllLines, Ship_ShipLinesRecord line)
+        {
+            return isAllLines
+                    //|| line.FinallyPriceTC <= 0
+                    || (line.DataRecordState == System.Data.DataRowState.Added
+                // && salePrice > 0
+                        //&& line.OrderPriceTC != salePrice
+                        && line.FinallyPriceTC <= 0
+                        )
+                    ;
+        }
+
         #endregion
+
+
+
+        private int GetColIndex(IUFDataGrid grid, string ColName)
+        {
+            for (int i = 0; i < grid.Columns.Count; i++)
+            {
+                if (grid.Columns[i].UIFieldID.Equals(ColName) || grid.Columns[i].ID.Equals(ColName))
+                {
+                    return i;
+                }
+            }
+            return -1;
+        }
+
+        private IUIRecord GetRecordByDataGridIndex(IUIRecordCollection records, int index)
+        {
+            if (records != null
+                && records.Count > 0
+                )
+            {
+                int gridIndex = 0;
+                for (int i = 0; i < records.Count; i++)
+                {
+                    IUIRecord record = records[i];
+                    if (record != null
+                        && !record.Hidden
+                        )
+                    {
+                        if (gridIndex == index)
+                            return record;
+
+                        gridIndex++;
+                    }
+                }
+            }
+            return null;
+        }
 
     }
 }
