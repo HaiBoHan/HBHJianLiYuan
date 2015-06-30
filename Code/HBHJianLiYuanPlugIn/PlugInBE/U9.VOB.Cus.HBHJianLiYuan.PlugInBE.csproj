@@ -278,6 +278,7 @@
     <Compile Include="PubHelperBE\PubHelperExtend.cs" />
     <Compile Include="Rcv_AfterUpdated.cs" />
     <Compile Include="Ship_AfterUpdated.cs" />
+    <Compile Include="Rcv_BeforeDefaultValueExtend.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">

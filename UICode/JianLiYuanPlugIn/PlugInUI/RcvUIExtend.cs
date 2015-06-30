@@ -105,7 +105,7 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInUI
                 //if (uIFieldID == view.FieldCust_CustomerItemID.Name)
 
                 string uIFieldID = lineDataGrid.Columns[e.ColIndex].UIFieldID;
-                if (uIFieldID == HBHHelper.DescFlexFieldHelper.DescFlexField_PreDiscountPriceUIField)
+                if (uIFieldID == HBHHelper.RcvLineHelper.DescFlexSegments_PreDiscountPriceUIField)
                 {
                     //清除错误信息
                     _strongPart.Model.ClearErrorMessage();
@@ -119,11 +119,14 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInUI
                     //GetAllFinallyPrice(sender, e, false);
 
                     Receivement_RcvLinesRecord line = _strongPart.Model.Receivement_RcvLines.FocusedRecord;
-                    decimal preDiscountPrice = PubClass.GetDecimal(line[HBHHelper.DescFlexFieldHelper.DescFlexField_PreDiscountPriceUIField]);
-                    decimal discountRate = PubClass.GetDecimal(line[HBHHelper.DescFlexFieldHelper.DescFlexField_DiscountRateUIField]);
-                    decimal discountLimit = PubClass.GetDecimal(line[HBHHelper.DescFlexFieldHelper.DescFlexField_DiscountLimitUIField]);
+                    decimal preDiscountPrice = PubClass.GetDecimal(line[HBHHelper.RcvLineHelper.DescFlexSegments_PreDiscountPriceUIField]);
+                    decimal discountRate = PubClass.GetDecimal(line[HBHHelper.RcvLineHelper.DescFlexSegments_DiscountRateUIField]);
+                    decimal discountLimit = PubClass.GetDecimal(line[HBHHelper.RcvLineHelper.DescFlexSegments_DiscountLimitUIField]);
 
                     decimal finallyPrice = HBHHelper.PPLineHelper.GetFinallyPrice(preDiscountPrice, discountRate, discountLimit);
+
+                    // 差额
+                    line[HBHHelper.RcvLineHelper.DescFlexSegments_PriceDifUIField] = preDiscountPrice - finallyPrice;
 
                     if (line.FinallyPriceTC != finallyPrice)
                     {

@@ -127,6 +127,14 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInBE
                                     DescFlexFieldHelper.SetPreDiscountPrice(line.DescFlexSegments, preDiscountPrice);
                                     DescFlexFieldHelper.SetDiscountRate(line.DescFlexSegments, DescFlexFieldHelper.GetDiscountRate(purPriceLine.DescFlexField));
                                     DescFlexFieldHelper.SetDiscountLimit(line.DescFlexSegments, DescFlexFieldHelper.GetDiscountLimit(purPriceLine.DescFlexField));
+
+
+                                    // 赋值差额
+                                    decimal dif = preDiscountPrice - discountedPrice;
+                                    if (dif != HBHHelper.DescFlexFieldHelper.GetPriceDif(line.DescFlexSegments))
+                                    {
+                                        HBHHelper.DescFlexFieldHelper.SetPriceDif(line.DescFlexSegments, dif);
+                                    }
                                 }
                             }
                         }

@@ -74,17 +74,18 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInBE
                                 UFIDA.U9.PPR.PurPriceList.PurPriceLine purPriceLine = UFIDA.U9.PPR.PurPriceList.PurPriceLine.Finder.Find("ItemInfo.ItemID.Code='" + line.ItemInfo.ItemID.Code + "' and Active=1 and FromDate<=getdate() and ToDate >=getdate() and PurPriceList.Supplier.Code='" + deptLine.Supplier.Code + "' and PurPriceList.ID in (select PurchasePriceList from U9::VOB::Cus::HBHJianLiYuan::PPLDepartmentBE::PPLDepartment where Department.Name='" + line.ReqDept.Name + "')");
                                 if (purPriceLine != null)
                                 {
+                                    // 修改为 取折前价，折后价不取
                                     decimal preDiscountPrice = HBHHelper.PPLineHelper.GetPreDiscountPrice(purPriceLine);
                                     decimal discountedPrice = HBHHelper.PPLineHelper.GetFinallyPrice(purPriceLine);
 
                                     if (pr.AC != null)
                                     {
-                                        line.SuggestedPrice = pr.AC.PriceRound.GetRoundValue(discountedPrice);
+                                        line.SuggestedPrice = pr.AC.PriceRound.GetRoundValue(preDiscountPrice);
                                         line.MoneyAC = pr.AC.MoneyRound.GetRoundValue(line.SuggestedPrice * line.ReqQtyTU);
                                     }
                                     else
                                     {
-                                        line.SuggestedPrice = discountedPrice;
+                                        line.SuggestedPrice = preDiscountPrice;
                                         line.MoneyAC = line.SuggestedPrice * line.ReqQtyTU;
                                     }
 
@@ -102,6 +103,13 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInBE
                                     DescFlexFieldHelper.SetPreDiscountPrice(line.DescFlexSegments, preDiscountPrice);
                                     DescFlexFieldHelper.SetDiscountRate(line.DescFlexSegments, purPriceLine.DescFlexField);
                                     DescFlexFieldHelper.SetDiscountLimit(line.DescFlexSegments, purPriceLine.DescFlexField);
+
+                                    // 赋值差额
+                                    decimal dif = preDiscountPrice - discountedPrice;
+                                    if (dif != HBHHelper.DescFlexFieldHelper.GetPriceDif(line.DescFlexSegments))
+                                    {
+                                        HBHHelper.DescFlexFieldHelper.SetPriceDif(line.DescFlexSegments, dif);
+                                    }
                                 }
                             }
                             Session.Current.InList(line);

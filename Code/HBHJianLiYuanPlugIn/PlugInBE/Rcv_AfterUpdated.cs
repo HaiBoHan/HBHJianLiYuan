@@ -23,8 +23,8 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInBE
            if (entity == null)
                return;
            bool isUpdateLot = false;
-           if (entity.OriginalData.Status != RcvStatusEnum.InStoreConfirmed
-               && entity.Status == RcvStatusEnum.InStoreConfirmed
+           if (entity.OriginalData.Status != RcvStatusEnum.Closed
+               && entity.Status == RcvStatusEnum.Closed
                )
            {
                isUpdateLot = true;

@@ -15,6 +15,7 @@
     using U9.VOB.Cus.HBHJianLiYuan.HBHHelper;
     using UFIDA.U9.CBO.HR.Department;
     using UFIDA.U9.Base.Organization;
+    using UFIDA.U9.Base.UserRole;
 
 	/// <summary>
 	/// PrToPrSV partial 
@@ -170,7 +171,36 @@
                     prDTO.Org = new UFIDA.U9.Base.DTOs.IDCodeNameDTOData();
                     prDTO.Org.Code = org.Code;
                     // 币种放到了行上赋值
+                    if (pr.AC != null)
+                    {
+                        prDTO.AC = new UFIDA.U9.Base.DTOs.IDCodeNameDTOData();
+                        prDTO.AC.Code = pr.AC.Code;
+                    }
+                    prDTO.ACFCRate = 1;
 
+                    // dto里面没有部门,shit
+                    //if (pr.ReqDepartment != null)
+                    //{
+                    //    string deptName = .ReqDepartment.Name;
+                    //    Department targetDept = Department.Finder.Find("Name=@Name and Org=@Org"
+                    //        , new OqlParam(deptName)
+                    //        , new OqlParam(org.ID)
+                    //        );
+
+                    //    if (targetDept != null)
+                    //    {
+                    //        prDTO. = new UFIDA.U9.Base.DTOs.IDCodeNameDTOData();
+                    //        //lineData.ReqDept.Code = prline.ReqDept.Code;
+                    //        //lineData.ReqDept.Name = prline.ReqDept.Name;
+                    //        prDTO.ReqDept.Code = targetDept.Code;
+                    //    }
+                    //    else
+                    //    {
+                    //        string msg = string.Format("组织[{0}]中没有名称为[{1}]的部门!"
+                    //            , org.Name, deptName);
+                    //        throw new BusinessException(msg);
+                    //    }
+                    //}
 
                     if (prDTO.DescFlexField == null)
                     {
@@ -294,12 +324,16 @@
                             PR prhead = PR.Finder.Find("DocNo=@DocNo and Org=@Org", new OqlParam(prheadDTO.DocNo), new OqlParam(prheadDTO.Org.ID));
                             if (prhead != null)
                             {
+                                // 组织切换，如果不切换组织，那么需求接口表里的需求组织(ReqOrgItem)不对
+                                User user = User.Finder.FindByID(Context.LoginUserID);
+                                GetContext(user.Code, prheadDTO.Org.Code);
+
                                 resultData.ID = prhead.ID;
                                 resultData.Code = prhead.DocNo;
                                 // 提交请购单
                                 using (ISession session = Session.Open())
                                 {
-                                    prhead.ActivityType = ActivityTypeEnum.SrvUpdate;
+                                    prhead.ActivityType = ActivityTypeEnum.UIUpdate;
                                     prhead.Status = PRStatusEnum.Approving;
 
                                     foreach (PRLine line in prhead.PRLineList)
@@ -307,6 +341,7 @@
                                         if (line != null)
                                         {
                                             line.Status = prhead.Status;
+                                            line.ActivityType = ActivityTypeEnum.UIUpdate;
                                         }
                                     }
 
@@ -317,7 +352,7 @@
                                 // 审核请购单
                                 using (ISession session = Session.Open())
                                 {
-                                    prhead.ActivityType = ActivityTypeEnum.SrvUpdate;
+                                    prhead.ActivityType = ActivityTypeEnum.UIUpdate;
                                     prhead.Status = PRStatusEnum.Approved;
                                     prhead.ApprovedOn = DateTime.Now;
                                     prhead.ApprovedBy = Context.LoginUser;
@@ -329,6 +364,7 @@
                                         if (line != null)
                                         {
                                             line.Status = prhead.Status;
+                                            line.ActivityType = ActivityTypeEnum.UIUpdate;
                                         }
                                     }
 
@@ -387,6 +423,14 @@
 
                         lineData.AccountOrg = new UFIDA.U9.Base.DTOs.IDCodeNameDTOData();
                         lineData.AccountOrg.Code = strOrgCode;
+
+                        if (org != null)
+                        {
+                            lineData.CurrentOrg.ID = org.ID;
+                            lineData.RegOrg.ID = org.ID;
+                            lineData.RcvOrg.ID = org.ID;
+                            lineData.AccountOrg.ID = org.ID;
+                        }
                     }
 
                 }
@@ -429,6 +473,7 @@
                         lineData.ReqDept = new UFIDA.U9.Base.DTOs.IDCodeNameDTOData();
                         //lineData.ReqDept.Code = prline.ReqDept.Code;
                         //lineData.ReqDept.Name = prline.ReqDept.Name;
+                        lineData.ReqDept.ID = targetDept.ID;
                         lineData.ReqDept.Code = targetDept.Code;
                     }
                     else
@@ -557,6 +602,19 @@
 
             return null;
         }
+
+        // 代码来源于建华 服务中切换组织;
+        // UFIDA.U9.Cust.GS.INV.INVSV.PublicContextExtend
+        public static ContextDTO GetContext(string userCode, string OrgCode)
+        {
+            ContextDTO contextDTO = new ContextDTO();
+            contextDTO.UserCode = userCode;
+            contextDTO.OrgCode = OrgCode;
+            contextDTO.EntCode = "001";
+            contextDTO.WriteToContext();
+            return contextDTO;
+        }
+
 	}
 
     //#endregion
