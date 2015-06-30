@@ -6,6 +6,7 @@ using UFSoft.UBF.Business;
 using UFIDA.U9.SM.SO;
 using UFSoft.UBF.PL;
 using UFIDA.U9.PM.Rcv;
+using UFIDA.U9.Cust.HBH.Common.CommonLibary;
 
 namespace U9.VOB.Cus.HBHJianLiYuan.PlugInBE
 {
@@ -39,9 +40,19 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInBE
                     UFIDA.U9.PM.PO.POLine poLine = UFIDA.U9.PM.PO.POLine.Finder.FindByID(line.SrcPO.SrcDocLine.EntityID);
                     if (poLine != null)
                     {
-                        if (line.FinallyPriceTC > poLine.FinallyPriceTC)
+                        decimal rcvPrePrice = HBHHelper.DescFlexFieldHelper.GetPreDiscountPrice(line.DescFlexSegments);
+                        decimal poPrePrice = HBHHelper.DescFlexFieldHelper.GetPreDiscountPrice(poLine.DescFlexSegments);
+
+                        //if (line.FinallyPriceTC > poLine.FinallyPriceTC)
+                        if(poPrePrice > 0
+                            && rcvPrePrice > poPrePrice
+                            )
                         {
-                            throw new Exception("修改后的最终价不能大于采购订单单价");
+                            string msg = string.Format("单[{0}]行[{1}]价格[{2}]不能高于来源订单行价格[{3}]",line.Receivement.DocNo,line.DocLineNo
+                                , PubClass.GetStringRemoveZero(rcvPrePrice)
+                                , PubClass.GetStringRemoveZero(poPrePrice)
+                                );
+                            throw new Exception(msg);
                         }
                     }
                 }

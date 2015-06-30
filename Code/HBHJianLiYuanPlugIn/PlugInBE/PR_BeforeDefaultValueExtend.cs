@@ -8,6 +8,9 @@ using UFSoft.UBF.PL;
 using UFIDA.U9.SM.Enums;
 using UFIDA.U9.PR.PurchaseRequest;
 using U9.VOB.Cus.HBHJianLiYuan.HBHHelper;
+using UFIDA.U9.Cust.HBH.Common.CommonLibary;
+using UFIDA.U9.CBO.SCM.Supplier;
+using UFIDA.U9.Base;
 
 namespace U9.VOB.Cus.HBHJianLiYuan.PlugInBE
 {
@@ -37,28 +40,38 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInBE
             }
             if (isSubmit)
             {
-                VOB.Cus.HBHJianLiYuan.DeptItemSupplierBE.DeptItemSupplierLine deptLine = null;
+                U9.VOB.Cus.HBHJianLiYuan.DeptItemSupplierBE.DeptItemSupplierLine deptLine = null;
                 foreach (PRLine line in pr.PRLineList)
                 {
                     if (line.ReqDept != null && line.ItemInfo != null)
                     {
-                        deptLine = VOB.Cus.HBHJianLiYuan.DeptItemSupplierBE.DeptItemSupplierLine.Finder.Find("ItemMaster=" + line.ItemInfo.ItemID.ID + " and DeptItemSupplier.Department=" + line.ReqDept.ID + "");
-                        if (deptLine != null)
+                        deptLine = U9.VOB.Cus.HBHJianLiYuan.DeptItemSupplierBE.DeptItemSupplierLine.Finder.Find("ItemMaster.Code='" + line.ItemInfo.ItemID.Code + "' and DeptItemSupplier.Department.Name='" + line.ReqDept.Name + "'");
+                        if (deptLine != null
+                            && deptLine.Supplier != null
+                            )
                         {
+                            // 提交强制赋值
                             //建议供应商
-                            if (line.SuggestedSupplier == null || line.SuggestedSupplier.Supplier == null)
+                            //if (line.SuggestedSupplier == null || line.SuggestedSupplier.Supplier == null)
                             {
-                                line.SuggestedSupplier = new UFIDA.U9.CBO.SCM.Supplier.SupplierMISCInfo();
-                                line.SuggestedSupplier.Code = deptLine.Supplier.Code;
-                                line.SuggestedSupplier.Name = deptLine.Supplier.Name;
-                                line.SuggestedSupplier.Supplier = deptLine.Supplier;
-                                // 不可以改这个，改这个等于改供应商实体的属性了
-                                //line.SuggestedSupplier.Supplier.Code = deptLine.Supplier.Code;
+                                string suptCode = deptLine.Supplier.Code;
+                                Supplier sugSupt = Supplier.Finder.Find("Code=@Code and Org=@Org", new OqlParam(suptCode),new OqlParam(Context.LoginOrg.ID));
+
+                                if (sugSupt != null)
+                                {
+                                    line.SuggestedSupplier = new UFIDA.U9.CBO.SCM.Supplier.SupplierMISCInfo();
+                                    line.SuggestedSupplier.Code = sugSupt.Code;
+                                    line.SuggestedSupplier.Name = sugSupt.Name;
+                                    line.SuggestedSupplier.Supplier = sugSupt;
+                                    // 不可以改这个，改这个等于改供应商实体的属性了
+                                    //line.SuggestedSupplier.Supplier.Code = sugSupt.Code;
+                                }
                             }
+                            // 提交强制赋值
                             //建议价格
-                            if (line.SuggestedPrice == 0)
+                            //if (line.SuggestedPrice == 0)
                             {
-                                UFIDA.U9.PPR.PurPriceList.PurPriceLine purPriceLine = UFIDA.U9.PPR.PurPriceList.PurPriceLine.Finder.Find("ItemInfo.ItemID.ID=" + line.ItemInfo.ItemID.ID + " and Active=1 and FromDate<=getdate() and ToDate >=getdate() and PurPriceList.Supplier.ID=" + deptLine.Supplier.ID + " and PurPriceList.ID in (select PurchasePriceList from U9::VOB::Cus::HBHJianLiYuan::PPLDepartmentBE::PPLDepartment where Department.ID=" + line.ReqDept.ID + ")");
+                                UFIDA.U9.PPR.PurPriceList.PurPriceLine purPriceLine = UFIDA.U9.PPR.PurPriceList.PurPriceLine.Finder.Find("ItemInfo.ItemID.Code='" + line.ItemInfo.ItemID.Code + "' and Active=1 and FromDate<=getdate() and ToDate >=getdate() and PurPriceList.Supplier.Code='" + deptLine.Supplier.Code + "' and PurPriceList.ID in (select PurchasePriceList from U9::VOB::Cus::HBHJianLiYuan::PPLDepartmentBE::PPLDepartment where Department.Name='" + line.ReqDept.Name + "')");
                                 if (purPriceLine != null)
                                 {
                                     decimal preDiscountPrice = HBHHelper.PPLineHelper.GetPreDiscountPrice(purPriceLine);
@@ -68,11 +81,15 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInBE
                                     {
                                         line.SuggestedPrice = pr.AC.PriceRound.GetRoundValue(discountedPrice);
                                         line.MoneyAC = pr.AC.MoneyRound.GetRoundValue(line.SuggestedPrice * line.ReqQtyTU);
-
-                                        line.SuggestPriceFC = line.SuggestedPrice;
-                                        line.MoneyAC = line.MoneyFC;
+                                    }
+                                    else
+                                    {
+                                        line.SuggestedPrice = discountedPrice;
+                                        line.MoneyAC = line.SuggestedPrice * line.ReqQtyTU;
                                     }
 
+                                    line.SuggestPriceFC = line.SuggestedPrice;
+                                    line.MoneyFC = line.MoneyAC;
                                     //line.DescFlexSegments.PrivateDescSeg1 = purPriceLine.PurPriceList.Code;
                                     //line.DescFlexSegments.PrivateDescSeg2 = purPriceLine.DocLineNo.ToString();
                                     //line.DescFlexSegments.PubDescSeg1 = purPriceLine.DescFlexField.PubDescSeg1;
@@ -83,18 +100,47 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInBE
 
                                     // 后面考虑是不是在 PRLineHelper里加个方法实现这个；
                                     DescFlexFieldHelper.SetPreDiscountPrice(line.DescFlexSegments, preDiscountPrice);
-                                    DescFlexFieldHelper.SetDiscountRate(line.DescFlexSegments, DescFlexFieldHelper.GetDiscountRate(purPriceLine.DescFlexField));
-                                    DescFlexFieldHelper.SetDiscountLimit(line.DescFlexSegments, DescFlexFieldHelper.GetDiscountLimit(purPriceLine.DescFlexField));
+                                    DescFlexFieldHelper.SetDiscountRate(line.DescFlexSegments, purPriceLine.DescFlexField);
+                                    DescFlexFieldHelper.SetDiscountLimit(line.DescFlexSegments, purPriceLine.DescFlexField);
                                 }
                             }
-
+                            Session.Current.InList(line);
                         }
                     }
-                    Session.Current.InList(line);
                 }
 
             #endregion
 
+            }
+
+            // 跨组织生成的PR，头需求部门为空
+            if (pr.SysState == UFSoft.UBF.PL.Engine.ObjectState.Inserted)
+            {
+                string srcPRID = PRHeadHelper.GetSrcPPListID(pr.DescFlexField);
+
+                if (!PubClass.IsNull(srcPRID)
+                    && pr.PRLineList != null
+                    && pr.PRLineList.Count > 0
+                    )
+                {
+                    PRLine prline = pr.PRLineList[0];
+                    if (prline != null)
+                    {
+                        if (pr.ReqDepartmentKey == null
+                            && prline.ReqDeptKey != null
+                            )
+                        {
+                            pr.ReqDepartmentKey = prline.ReqDeptKey;
+                        }
+
+                        if (pr.AccountOrgKey == null
+                            && prline.AccountOrgKey != null
+                            )
+                        {
+                            pr.AccountOrgKey = prline.AccountOrgKey;
+                        }
+                    }
+                }
             }
         }
     }

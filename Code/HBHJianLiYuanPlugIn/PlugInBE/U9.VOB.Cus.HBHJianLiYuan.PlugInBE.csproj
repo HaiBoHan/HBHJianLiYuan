@@ -133,6 +133,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\App\UFIDA.U9.CM.CMBP.Deploy.dll</HintPath>
     </Reference>
+    <Reference Include="UFIDA.U9.Cust.HBH.Common.CommonLibary, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\Unconfiged\Component\UFIDA.U9.Cust.HBH.Common.CommonLibary.dll</HintPath>
+    </Reference>
     <Reference Include="UFIDA.U9.FA.FABE">
       <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\App\UFIDA.U9.FA.FABE.dll</HintPath>
     </Reference>
@@ -272,8 +276,8 @@
     <Compile Include="PR_BeforeDefaultValueExtend.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PubHelperBE\PubHelperExtend.cs" />
-    <Compile Include="Rcv_BeforeDefaultValueExtend.cs" />
-    <Compile Include="Ship_Updated.cs" />
+    <Compile Include="Rcv_AfterUpdated.cs" />
+    <Compile Include="Ship_AfterUpdated.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">

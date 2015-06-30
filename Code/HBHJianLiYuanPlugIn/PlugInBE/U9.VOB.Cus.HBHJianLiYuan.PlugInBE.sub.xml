@@ -15,8 +15,11 @@
   <subcription event="UFIDA.U9.PM.Rcv.Receivement.AfterValidate">
     <subscriber type="U9.VOB.Cus.HBHJianLiYuan.PlugInBE.Rcv_AfterValidateExtend,U9.VOB.Cus.HBHJianLiYuan.PlugInBE.dll" />
   </subcription>
+  <subcription event="UFIDA.U9.PM.Rcv.Receivement.AfterUpdated">
+    <subscriber type="U9.VOB.Cus.HBHJianLiYuan.PlugInBE.Rcv_AfterUpdated,U9.VOB.Cus.HBHJianLiYuan.PlugInBE.dll" />
+  </subcription>
 
-  <subcription event="UFIDA.U9.SM.Ship.Ship.Updated">
-    <subscriber type="U9.VOB.Cus.HBHJianLiYuan.PlugInBE.Ship_Updated,U9.VOB.Cus.HBHJianLiYuan.PlugInBE.dll" />
+  <subcription event="UFIDA.U9.SM.Ship.Ship.AfterUpdated">
+    <subscriber type="U9.VOB.Cus.HBHJianLiYuan.PlugInBE.Ship_AfterUpdated,U9.VOB.Cus.HBHJianLiYuan.PlugInBE.dll" />
   </subcription>
 </pub-sub>
