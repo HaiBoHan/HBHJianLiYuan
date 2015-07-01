@@ -46,18 +46,37 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInUI
             Regist_OnChangePostBack_DataGrid10_ItemID();
 
             // 部门参照PostBack
-            // Card3    TabPage1    SaleDept259
+            // Card3    TabControl0     TabPage1    SaleDept259
             IUFCard card3 = (IUFCard)part.GetUFControlByName(part.TopLevelContainer, "Card3");
             if (card3 != null)
             {
-                IUFTabPage tp1 = (IUFTabPage)part.GetUFControlByName(card3, "TabPage1");
-                if (tp1 != null)
+                IUFTabControl tc0 = (IUFTabControl)part.GetUFControlByName(card3, "TabControl0");
+                if (tc0 != null
+                    && tc0.TabPages != null
+                    && tc0.TabPages.Count > 0
+                    )
                 {
-                    IUFFldReference refDept = (IUFFldReference)part.GetUFControlByName(tp1, "SaleDept259");
+                    IUFTabPage tp1 = null;
 
-                    if (refDept != null)
+                    foreach (IUFTabPage page in tc0.TabPages)
                     {
-                        refDept.ContentChanged += new EventHandler(refDept_ContentChanged);
+                        if (page != null
+                            && page.ID == "TabPage1"
+                            )
+                        {
+                            tp1 = page;
+                            break;
+                        }
+                    }
+
+                    if (tp1 != null)
+                    {
+                        IUFFldReference refDept = (IUFFldReference)part.GetUFControlByName(tp1, "SaleDept259");
+
+                        if (refDept != null)
+                        {
+                            refDept.ContentChanged += new EventHandler(refDept_ContentChanged);
+                        }
                     }
                 }
             }
