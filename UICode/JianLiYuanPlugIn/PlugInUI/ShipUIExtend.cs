@@ -44,6 +44,33 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInUI
 
             // 料品改变Post，自动带出单价(部门、料品-->供应商-->价表行-->价格)
             Regist_OnChangePostBack_DataGrid10_ItemID();
+
+            // 部门参照PostBack
+            // Card3    TabPage1    SaleDept259
+            IUFCard card3 = (IUFCard)part.GetUFControlByName(part.TopLevelContainer, "Card3");
+            if (card3 != null)
+            {
+                IUFTabPage tp1 = (IUFTabPage)part.GetUFControlByName(card3, "TabPage1");
+                if (tp1 != null)
+                {
+                    IUFFldReference refDept = (IUFFldReference)part.GetUFControlByName(tp1, "SaleDept259");
+
+                    if (refDept != null)
+                    {
+                        refDept.ContentChanged += new EventHandler(refDept_ContentChanged);
+                    }
+                }
+            }
+        }
+
+        void refDept_ContentChanged(object sender, EventArgs e)
+        {
+            //清除错误信息
+            _strongPart.Model.ClearErrorMessage();
+
+            _strongPart.DataCollect();
+            _strongPart.IsDataBinding = true; //当前事件执行后会进行数据绑定
+            _strongPart.IsConsuming = false;
         }
 
         public override void AfterRender(UFSoft.UBF.UI.IView.IPart Part, EventArgs args)
@@ -51,7 +78,7 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInUI
             base.AfterRender(Part, args);
 
             if (_strongPart.Model.Ship.FocusedRecord != null
-                && _strongPart.Model.Ship.FocusedRecord.SaleDept.GetValueOrDefault(-1) > 0
+                //&& _strongPart.Model.Ship.FocusedRecord.SaleDept.GetValueOrDefault(-1) > 0
                 )
             {
                 IUFFldReferenceColumn itemRef = (IUFFldReferenceColumn)DataGrid10.Columns["ItemID"];
@@ -62,7 +89,9 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInUI
                 string opath = "Code in (select disLine.ItemMaster.Code from U9::VOB::Cus::HBHJianLiYuan::DeptItemSupplierBE::DeptItemSupplierLine disLine where disLine.DeptItemSupplier.Department.Name='" + _strongPart.Model.Ship.FocusedRecord.SaleDept_Name + "')";
                 //string opath = "Code = '000001'";
 
-                string custFilter = BaseAction.Symbol_AddCustomFilter + "=";
+                // 特殊参照，用的是这个条件
+                //string custFilter = BaseAction.Symbol_AddCustomFilter + "=";
+                string custFilter = "ItemRefCondition=";
                 if (itemRef.CustomInParams != null
                     && itemRef.CustomInParams.Contains(custFilter)
                     )
@@ -72,6 +101,18 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInUI
                 else
                 {
                     itemRef.CustomInParams = custFilter + opath;
+                }
+
+                string oldItemRef = PubClass.GetString(_strongPart.CurrentState["ItemRefCondition"]);
+                //CurrentState["ItemRefCondition"] = value;
+                if (!PubClass.IsNull(oldItemRef)
+                    )
+                {
+                    _strongPart.CurrentState["ItemRefCondition"] = string.Format("({0}) and ({1})", opath, oldItemRef);
+                }
+                else
+                {
+                    _strongPart.CurrentState["ItemRefCondition"] = opath;
                 }
             }
 
@@ -279,6 +320,13 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInUI
                 string uIFieldID = DataGrid10.Columns[e.ColIndex].UIFieldID;
                 if (uIFieldID == _strongPart.Model.Ship_ShipLines.FieldItemID.Name)
                 {
+                    //清除错误信息
+                    _strongPart.Model.ClearErrorMessage();
+
+                    _strongPart.DataCollect();
+                    _strongPart.IsDataBinding = true; //当前事件执行后会进行数据绑定
+                    _strongPart.IsConsuming = false;
+
                     // 物料可以多选,还可以在物料参照里录入数量
                     // 只计算最终价为0的行
                     GetAllFinallyPrice(sender, e, false);

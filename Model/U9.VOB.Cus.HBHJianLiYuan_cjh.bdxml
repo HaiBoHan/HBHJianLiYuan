@@ -727,11 +727,11 @@
                 <WorkflowComponents />
                 <ReportComponents />
                 <PrePlacedMenu>
-                    <Menu id="952bd761-3ac5-4c21-8bff-7182ac3a8242" code="952bd761-3ac5-4c21-8bff-7182ac3a8242" name="健力源" shortName="new menu" displayName="健力源" description="new menu" image="" isDialog="False" pageURI="" pageParameter="" sequence="0" kind="Task" theApp="">
-                        <Menu id="dc70ba09-9c42-409b-ab42-32fd426fd374" code="dc70ba09-9c42-409b-ab42-32fd426fd374" name="申购单" shortName="new menu" displayName="申购单" description="new menu" image="" isDialog="False" pageURI="Cust_PR" pageParameter="PR_Type=PM3020" sequence="0" kind="Task" theApp="" />
-                        <Menu id="5b4978b6-e32f-4724-810e-1e07c9e9e81d" code="5b4978b6-e32f-4724-810e-1e07c9e9e81d" name="收货单" shortName="new menu" displayName="收货单" description="new menu" image="" isDialog="False" pageURI="Cust_Rcv" pageParameter="RCV_Type=PM6010" sequence="1" kind="Task" theApp="" />
-                        <Menu id="bb487077-259f-4784-a103-d914e22b532a" code="bb487077-259f-4784-a103-d914e22b532a" name="领料单" shortName="new menu" displayName="领料单" description="new menu" image="" isDialog="False" pageURI="Cust_Ship" pageParameter="SHIP_Type=SM6010" sequence="2" kind="Task" theApp="" />
-                        <Menu id="90b03313-5230-41e0-8c2e-24cf9aaf0efa" code="90b03313-5230-41e0-8c2e-24cf9aaf0efa" name="部门组织" shortName="new menu" displayName="部门组织" description="new menu" image="" isDialog="False" pageURI="Cust_DeptOrg" pageParameter="" sequence="3" kind="Task" theApp="9901001" />
+                    <Menu id="952bd761-3ac5-4c21-8bff-7182ac3a8242" code="952bd761-3ac5-4c21-8bff-7182ac3a8242" name="采购管理" shortName="new menu" displayName="采购管理" description="new menu" image="" isDialog="False" pageURI="" pageParameter="" sequence="0" kind="Task" theApp="">
+                        <Menu id="dc70ba09-9c42-409b-ab42-32fd426fd374" code="dc70ba09-9c42-409b-ab42-32fd426fd374" name="采购申购单" shortName="new menu" displayName="采购申购单" description="new menu" image="" isDialog="False" pageURI="Cust_PR" pageParameter="PR_Type=PM3020" sequence="0" kind="Task" theApp="" />
+                        <Menu id="5b4978b6-e32f-4724-810e-1e07c9e9e81d" code="5b4978b6-e32f-4724-810e-1e07c9e9e81d" name="采购收货单" shortName="new menu" displayName="采购收货单" description="new menu" image="" isDialog="False" pageURI="Cust_Rcv" pageParameter="RCV_Type=PM6010" sequence="1" kind="Task" theApp="" />
+                        <Menu id="bb487077-259f-4784-a103-d914e22b532a" code="bb487077-259f-4784-a103-d914e22b532a" name="领料发货单" shortName="new menu" displayName="领料发货单" description="new menu" image="" isDialog="False" pageURI="Cust_Ship" pageParameter="SHIP_Type=SM6010" sequence="2" kind="Task" theApp="" />
+                        <Menu id="90b03313-5230-41e0-8c2e-24cf9aaf0efa" code="90b03313-5230-41e0-8c2e-24cf9aaf0efa" name="部门组织" shortName="new menu" displayName="部门组织" description="new menu" image="" isDialog="False" pageURI="Cust_DeptOrg" pageParameter="" sequence="3" kind="Task" theApp="" />
                     </Menu>
                 </PrePlacedMenu>
             </App>
