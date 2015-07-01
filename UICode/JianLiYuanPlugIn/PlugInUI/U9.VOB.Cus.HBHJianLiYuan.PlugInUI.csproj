@@ -225,6 +225,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.UBF\UBFStudio\Runtime\UFSoft.UBF.UI.IView.dll</HintPath>
     </Reference>
+    <Reference Include="UFSoft.UBF.UI.JMF.Base">
+      <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.UBF\UBFStudio\Runtime\UFSoft.UBF.UI.JMF.Base.dll</HintPath>
+    </Reference>
     <Reference Include="UFSoft.UBF.UI.MD.Runtime, Version=2.0.668.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.UBF\UBFStudio\Runtime\UFSoft.UBF.UI.MD.Runtime.dll</HintPath>

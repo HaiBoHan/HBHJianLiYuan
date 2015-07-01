@@ -16,6 +16,7 @@ using UFSoft.UBF.UI.MD.Runtime;
 using UFIDA.U9.CBO.SCM.Enums;
 using U9.VOB.Cus.HBHJianLiYuan.GetPriceFromPurListBP;
 using U9.VOB.Cus.HBHJianLiYuan.GetPriceFromPurListBP.Proxy;
+using UFSoft.UBF.UI.JMF.ActionProcess;
 
 namespace U9.VOB.Cus.HBHJianLiYuan.PlugInUI
 {
@@ -49,6 +50,30 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInUI
         {
             base.AfterRender(Part, args);
 
+            if (_strongPart.Model.Ship.FocusedRecord != null
+                && _strongPart.Model.Ship.FocusedRecord.SaleDept.GetValueOrDefault(-1) > 0
+                )
+            {
+                IUFFldReferenceColumn itemRef = (IUFFldReferenceColumn)DataGrid10.Columns["ItemID"];
+                //if (_strongPart.Model.Views["PR"].FocusedRecord["ReqDepartment"] == null || (long)_strongPart.Model.Views["PR"].FocusedRecord["ReqDepartment"] ==0)
+                //_strongPart.Model.ErrorMessage.Message = "请先选择需求部门";
+                // itemRef.CustomInParams = BaseAction.Symbol_AddCustomFilter + "= ID in (select ItemMaster from U9::VOB::Cus::HBHJianLiYuan::DeptItemSupplierBE::DeptItemSupplierLine where DeptItemSupplier.Department.ID=" + _strongPart.Model.Views["PR"].FocusedRecord["ReqDepartment"] + ")";
+
+                string opath = "Code in (select disLine.ItemMaster.Code from U9::VOB::Cus::HBHJianLiYuan::DeptItemSupplierBE::DeptItemSupplierLine disLine where disLine.DeptItemSupplier.Department.Name='" + _strongPart.Model.Ship.FocusedRecord.SaleDept_Name + "')";
+                //string opath = "Code = '000001'";
+
+                string custFilter = BaseAction.Symbol_AddCustomFilter + "=";
+                if (itemRef.CustomInParams != null
+                    && itemRef.CustomInParams.Contains(custFilter)
+                    )
+                {
+                    itemRef.CustomInParams = itemRef.CustomInParams.Replace(custFilter, custFilter + opath + " and ");
+                }
+                else
+                {
+                    itemRef.CustomInParams = custFilter + opath;
+                }
+            }
 
             {
                 //string orgID = "1001411156753998";
