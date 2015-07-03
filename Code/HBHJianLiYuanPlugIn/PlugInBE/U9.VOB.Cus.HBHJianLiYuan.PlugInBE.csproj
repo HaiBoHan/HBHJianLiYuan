@@ -143,6 +143,9 @@
     <Reference Include="UFIDA.U9.FA.FABE.Deploy">
       <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\App\UFIDA.U9.FA.FABE.Deploy.dll</HintPath>
     </Reference>
+    <Reference Include="UFIDA.U9.InvDoc.InvDocBE">
+      <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\App\UFIDA.U9.InvDoc.InvDocBE.dll</HintPath>
+    </Reference>
     <Reference Include="UFIDA.U9.ISV.Project">
       <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\App\UFIDA.U9.ISV.Project.dll</HintPath>
     </Reference>
@@ -279,6 +282,7 @@
     <Compile Include="Rcv_AfterUpdated.cs" />
     <Compile Include="Ship_AfterUpdated.cs" />
     <Compile Include="Rcv_BeforeDefaultValueExtend.cs" />
+    <Compile Include="WhInit_AfterUpdated.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">

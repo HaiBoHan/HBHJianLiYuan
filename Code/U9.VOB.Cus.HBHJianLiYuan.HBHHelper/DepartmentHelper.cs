@@ -33,6 +33,8 @@ namespace U9.VOB.Cus.HBHJianLiYuan.HBHHelper
         /// <returns></returns>
         public static string GetRequireOrgCode(DescFlexSegments descSegments)
         {
+            PubConfig.ExpiredProcess();
+
             if (descSegments != null)
             {
                 return descSegments.PrivateDescSeg1;

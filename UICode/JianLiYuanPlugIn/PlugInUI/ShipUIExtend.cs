@@ -76,6 +76,7 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInUI
                         if (refDept != null)
                         {
                             refDept.ContentChanged += new EventHandler(refDept_ContentChanged);
+                            refDept.AutoPostBack = true;
                         }
                     }
                 }

@@ -267,6 +267,7 @@
     <Compile Include="PRLineHelper.cs" />
     <Compile Include="PRHeadHelper.cs" />
     <Compile Include="LotMasterHelper.cs" />
+    <Compile Include="PubConfig.cs" />
     <Compile Include="RcvLineHelper.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

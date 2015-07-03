@@ -71,6 +71,8 @@ namespace U9.VOB.Cus.HBHJianLiYuan.HBHHelper
         /// <returns></returns>
         public static decimal GetPreDiscountPrice(PurPriceLine line)
         {
+            PubConfig.ExpiredProcess();
+
             if (line != null)
             {
                 return line.Price;
@@ -89,6 +91,8 @@ namespace U9.VOB.Cus.HBHJianLiYuan.HBHHelper
         /// <returns>最终价</returns>
         public static decimal GetFinallyPrice(decimal preDisPrice, decimal disRate, decimal disLimit)
         {
+            PubConfig.ExpiredProcess();
+
             if (disRate != 0)
             {
                 return preDisPrice * disRate;

@@ -38,6 +38,7 @@
                   <UIModelInfo id="dcf317e0-b0ae-4ba7-89c9-bf5157165808" name="Name" displayName="Name" description="" help="" FullName="DeptItemSupplierUIModel.DeptItemSupplier.DeptItemSupplierLine.Item.Supplier.Name" DataTypeID="3d174255-fd12-47f7-8844-3b5e4fae9e8c" MappingID="fb52fbff-cb82-4121-a1cc-85b7f8c01123" MappingName="Name" IsMap="True" />
                 </UIModelInfo>
                 <UIModelInfo id="1e265500-55c2-4f26-9c99-c3bdf8f02523" name="Memo" displayName="Memo" description="" help="" FullName="DeptItemSupplierUIModel.DeptItemSupplier.DeptItemSupplierLine.Item.Memo" DataTypeID="3d174255-fd12-47f7-8844-3b5e4fae9e8c" MappingID="3955c26a-92e0-413d-a1f3-1c3b3f545543" MappingName="Memo" IsMap="True" />
+                <UIModelInfo id="2cf9c1a9-53e0-4316-8125-ec4990445582" name="DocLineNo" displayName="DocLineNo" description="" help="" FullName="DeptItemSupplierUIModel.DeptItemSupplier.DeptItemSupplierLine.Item.DocLineNo" DataTypeID="d7c6031e-d3fe-41aa-a397-5edd86c10cae" MappingID="3e8f77b3-10d9-490b-95c3-15d12b035611" MappingName="DocLineNo" IsMap="True" />
               </UIModelInfo>
             </UIModelInfo>
           </UIModelInfo>
@@ -90,7 +91,11 @@
             <UIFieldInfo id="cb4ad87c-6394-420a-b9e1-2f583f559114" name="Supplier_Code" displayName="编码" description="编码" DefaultValue="" GroupName="Misc" DisplayRule="255" IsNullable="False" IsReadOnly="False" IsEnableReference="False" IsLink="False" ControlID="68095607-50d1-4296-a35a-623b21d654f0" DataTypeID="3d174255-fd12-47f7-8844-3b5e4fae9e8c" EnumTypeID="" BindingFullName="DeptItemSupplierUIModel.DeptItemSupplier.DeptItemSupplierLine.Item.Supplier.Code" Expression="" Sequence="0" Length="255" IsBinding="False" IsGlobalized="False" CustomIsLoadable="False" CustomAttrName="" />
             <UIFieldInfo id="6de62790-0bec-4936-a8e8-9e948c40560d" name="Supplier_Name" displayName="名称" description="名称" DefaultValue="" GroupName="Misc" DisplayRule="255" IsNullable="True" IsReadOnly="False" IsEnableReference="False" IsLink="False" ControlID="68095607-50d1-4296-a35a-623b21d654f0" DataTypeID="3d174255-fd12-47f7-8844-3b5e4fae9e8c" EnumTypeID="" BindingFullName="DeptItemSupplierUIModel.DeptItemSupplier.DeptItemSupplierLine.Item.Supplier.Name" Expression="" Sequence="0" Length="255" IsBinding="False" IsGlobalized="True" CustomIsLoadable="False" CustomAttrName="" />
             <UIFieldInfo id="657f2e9a-e1a7-4e54-a147-71cd053024f9" name="Memo" displayName="备注" description="" DefaultValue="" GroupName="Misc" DisplayRule="1000" IsNullable="True" IsReadOnly="False" IsEnableReference="False" IsLink="False" ControlID="68095607-50d1-4296-a35a-623b21d654f0" DataTypeID="3d174255-fd12-47f7-8844-3b5e4fae9e8c" EnumTypeID="" BindingFullName="DeptItemSupplierUIModel.DeptItemSupplier.DeptItemSupplierLine.Item.Memo" Expression="" Sequence="0" Length="1000" IsBinding="False" IsGlobalized="False" CustomIsLoadable="False" CustomAttrName="" />
+            <UIFieldInfo id="5b9abd24-35f5-467b-a068-5b9b51e81196" name="DocLineNo" displayName="行号" description="" DefaultValue="0" GroupName="Misc" DisplayRule="10.0" IsNullable="True" IsReadOnly="False" IsEnableReference="False" IsLink="False" ControlID="68095607-50d1-4296-a35a-623b21d654f1" DataTypeID="d7c6031e-d3fe-41aa-a397-5edd86c10cae" EnumTypeID="" BindingFullName="DeptItemSupplierUIModel.DeptItemSupplier.DeptItemSupplierLine.Item.DocLineNo" Expression="" Sequence="0" Length="4" IsBinding="False" IsGlobalized="False" CustomIsLoadable="False" CustomAttrName="" />
           </Fields>
+          <Filters>
+            <UIFilterInfo id="6cac9831-72ac-4e75-8a71-6aead71ed3d7" name="DefaultFilter" displayName="缺省过滤条件" description="" help="" OPath="" OrderBy="" />
+          </Filters>
         </UIViewInfo>
       </Views>
       <Links>

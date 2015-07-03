@@ -6,6 +6,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
+using UFSoft.UBF.Business;
 
 #endregion
 
@@ -29,9 +30,40 @@ namespace U9.VOB.Cus.HBHJianLiYuan.DeptItemSupplierBE {
 		/// </summary>
 		protected override void OnSetDefaultValue()
 		{
+			base.OnSetDefaultValue();
+
             if (this.Org == null)
                 this.Org = UFIDA.U9.Base.Context.LoginOrg;
-			base.OnSetDefaultValue();
+
+            // 赋值行号
+            int maxLineNo = 0;
+            if (this.DeptItemSupplierLine != null
+                && this.DeptItemSupplierLine.Count > 0
+                )
+            {
+                foreach (DeptItemSupplierLine line in this.DeptItemSupplierLine)
+                {
+                    if (line != null
+                        && line.DocLineNo > maxLineNo
+                        )
+                    {
+                        maxLineNo = line.DocLineNo;
+                    }
+                }
+
+                foreach (DeptItemSupplierLine line in this.DeptItemSupplierLine)
+                {
+                    if (line != null
+                        )
+                    {
+                        if (line.DocLineNo <= 0)
+                        {
+                            maxLineNo += 10;
+                            line.DocLineNo = maxLineNo;
+                        }
+                    }
+                }
+            }
 		}
 		/// <summary>
 		/// before Insert
@@ -89,6 +121,48 @@ namespace U9.VOB.Cus.HBHJianLiYuan.DeptItemSupplierBE {
 			base.OnValidate();
 			this.SelfEntityValidator();
 			// TO DO: write your business code here...
+
+            // 王希提：2、现在部门料品交叉档案上，同一部门同一物料可以有多个建议供应商，需要进行控制，同一部门同一无物料只允许有一个建议供应商
+            if (this.DeptItemSupplierLine != null
+                && this.DeptItemSupplierLine.Count > 0
+                )
+            { 
+                StringBuilder msg = new StringBuilder();
+                Dictionary<long, string> dicItemDocLineNo = new Dictionary<long, string>();
+                foreach (DeptItemSupplierLine line in this.DeptItemSupplierLine)
+                {
+                    if (line != null
+                        && line.ItemMasterKey != null
+                        )
+                    {
+                        long itemID = line.ItemMasterKey.ID;
+
+                        if (itemID > 0)
+                        {
+                            string info = string.Format("行{0}物料{1}"
+                                , line.DocLineNo.ToString()
+                                , line.ItemMaster.Name
+                                );
+                            if (!dicItemDocLineNo.ContainsKey(itemID))
+                            {
+                                dicItemDocLineNo.Add(itemID, info);
+                            }
+                            else
+                            {
+                                msg.Append(string.Format("[{0}]与[{1}] 物料相同! /r/n"
+                                    , dicItemDocLineNo[itemID]
+                                    , info
+                                    ));
+                            }
+                        }
+                    }
+                }
+
+                if (msg.Length > 0)
+                {
+                    throw new BusinessException(msg.ToString());
+                }
+            }
 		}
 		#endregion
 		

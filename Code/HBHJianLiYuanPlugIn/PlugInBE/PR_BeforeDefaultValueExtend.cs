@@ -30,10 +30,11 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInBE
             //赋值建议供应商
             #region 赋值建议供应商
 
+            // 王希提： 1、请购单上指导单价是在单据提交后才带过去，需要调整为保存的时候就带过去单价（主要是为了满足：没有价格时候不允许提交）
             // 提交时机赋值吧，要不每次都调用，浪费；
             bool isSubmit = false;
             if (pr.OriginalData.Status == PRStatusEnum.OpenOpen 
-                && pr.Status == PRStatusEnum.Approving
+                || pr.Status == PRStatusEnum.Approving
                 )
             {
                 isSubmit = true;

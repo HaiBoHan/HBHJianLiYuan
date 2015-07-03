@@ -213,7 +213,7 @@
         <Events />
         <RelationControls />
         <Events />
-        <FormLink FormRefID="beee4a9d-0556-4787-a7f9-38d775f0c4f6" FormRefName="DepartmentMainUIForm.ubfform" FormRefPath="DepartmentMainUIForm.ubfform" FormRefProjectPath="D:\U9Cust\UFIDA\U9Proj\UBFV30\U9.VOB.Product.Metadata\UI\UFIDA.U9.CBO.Pub.Department.DepartmentUI.MetaData.dll" Height="504" IsShowStateBar="True" Width="992">
+        <FormLink FormRefID="beee4a9d-0556-4787-a7f9-38d775f0c4f6" FormRefName="DepartmentMainUIForm.ubfform" FormRefPath="DepartmentMainUIForm.ubfform" FormRefProjectPath="D:\U9Cust\UFIDA\U9Proj\UBFV30\U9.VOB.Product.Metadata\UI\UFIDA.U9.CBO.Pub.Department.DepartmentUI.MetaData.dll" Height="504" IsShowStateBar="True" Name="FormLink0" Width="992">
           <InParameters>
             <Parameter ContextID="" ControlID="Department101" ControlProperty="Key" ControlType="ReferenceModel" Name="ID" ParameterBindType="Bind2Control" />
           </InParameters>
@@ -272,6 +272,7 @@
         <HeaderRow Name="DefaultRow">
           <HeaderCell ID="a0a518bc-34b3-4384-8ffa-1a995b74b9fe" ColSpan="1" Name="HeaderCell0" OwnerColName="ID36" RowSpan="1" />
           <HeaderCell ID="318732b4-88f6-49ca-82af-b0a011bb8d9e" ColSpan="1" Name="HeaderCell1" OwnerColName="SysVersion75" RowSpan="1" />
+          <HeaderCell ID="7ff6657e-ca2c-4a50-9fd8-921fe16cb217" ColSpan="1" DisplayName="行号" DisplayNameIndexStr="" DisplayNameResourceID="" DisplaySrcUIFieldID="" DisplaySrcUIViewID="" Name="HeaderCell6" OwnerColName="DocLineNo0" RowSpan="1" />
           <HeaderCell ID="f26ff114-17b0-411f-97cc-8fafa1a3a978" ColSpan="1" Name="HeaderCell2" OwnerColName="ItemMaster0" RowSpan="1" />
           <HeaderCell ID="483b39bc-08c1-4b90-bef5-c9902576c5a6" ColSpan="1" Name="HeaderCell3" OwnerColName="Supplier0" RowSpan="1" />
           <HeaderCell ID="30eaaee6-c7ad-4c8b-a55f-39892b5809ba" ColSpan="1" Name="HeaderCell4" OwnerColName="Memo114" RowSpan="1" />
@@ -293,7 +294,14 @@
           <CurrencyType Name="CurrencyType3" />
           <Events />
         </NumberColumn>
-        <ReferenceColumn ID="209c1f53-da14-43c1-8a95-1c658109b7fe" CodeAttributeName="Code" CodeField="Code" CodeFieldUIFieldID="ItemMaster_Code" CodeFieldUIViewID="DeptItemSupplier_DeptItemSupplierLine" DefaultValue="" DisplayFormat="19.0" Enabled="True" EntityName="ID" Help="部门料品供应商交叉档行.Misc.料品" IsNull="True" IsProperty="False" IsSequence="False" Name="ItemMaster0" NameAttributeName="Name" NameFieldUIFieldID="ItemMaster_Name" NameFieldUIViewID="DeptItemSupplier_DeptItemSupplierLine" NPos="3" PkeyField="ID" Point="0" RefType="f22c8bbd-4b13-4055-926d-f08b45dfdc37" TextAlign="Right" UIFieldID="ItemMaster" UIViewID="DeptItemSupplier_DeptItemSupplierLine" Visible="True" Width="200" WindowHeight="408" WindowWidth="580">
+        <NumberColumn ID="b25521c0-19eb-4c63-9884-b84d352aca6e" DefaultValue="0" DisplayFormat="10.0" Enabled="True" Help="部门料品供应商交叉档行.Misc.行号" IsNull="True" IsProperty="False" IsSequence="False" Name="DocLineNo0" NPos="3" Point="0" Sequence="True" SequenceStart="10" SequenceStep="10" UIFieldID="DocLineNo" UIViewID="DeptItemSupplier_DeptItemSupplierLine" Visible="True">
+          <PrecisionBind />
+          <RoundRuleBind />
+          <ValueOfRoundByValueBind />
+          <CurrencyType />
+          <Events />
+        </NumberColumn>
+        <ReferenceColumn ID="209c1f53-da14-43c1-8a95-1c658109b7fe" CodeAttributeName="Code" CodeField="Code" CodeFieldUIFieldID="ItemMaster_Code" CodeFieldUIViewID="DeptItemSupplier_DeptItemSupplierLine" DefaultValue="" DisplayFormat="19.0" Enabled="True" EntityName="ID" Help="部门料品供应商交叉档行.Misc.料品" IsNull="True" IsProperty="False" IsSequence="False" Name="ItemMaster0" NameAttributeName="Name" NameFieldUIFieldID="ItemMaster_Name" NameFieldUIViewID="DeptItemSupplier_DeptItemSupplierLine" NPos="4" PkeyField="ID" Point="0" RefType="f22c8bbd-4b13-4055-926d-f08b45dfdc37" TextAlign="Right" UIFieldID="ItemMaster" UIViewID="DeptItemSupplier_DeptItemSupplierLine" Visible="True" Width="200" WindowHeight="408" WindowWidth="580">
           <ReferenceRelation Action="Clear" ColumnDisplayName="ID" ColumnID="ID" Name="ReferenceRelation20" TargetControlType="" TargetID="" TargetProperty="" />
           <ReferenceRelation Action="Clear" ColumnDisplayName="料品料号" ColumnID="Code" Name="ReferenceRelation21" TargetControlType="" TargetID="" TargetProperty="" />
           <ReferenceRelation Action="Clear" ColumnDisplayName="料品品名" ColumnID="Name" Name="ReferenceRelation22" TargetControlType="" TargetID="" TargetProperty="" />
@@ -302,7 +310,7 @@
             <RefNameField UIFieldID="Name" />
           </RefNameFields>
           <UIFilterBar Name="ReferenceFilter" />
-          <FormLink FormRefID="053a1be3-2c56-428b-b221-b5291644f2cb" FormRefName="ItemMainUIForm.ubfform" FormRefPath="ItemMainUIForm.ubfform" FormRefProjectPath="D:\U9Cust\UFIDA\U9Proj\UBFV30\U9.VOB.Product.Metadata\UI\UFIDA.U9.CBO.Pub.Item.ItemUI.MetaData.dll" Height="520" IsShowStateBar="True" Width="992">
+          <FormLink FormRefID="053a1be3-2c56-428b-b221-b5291644f2cb" FormRefName="ItemMainUIForm.ubfform" FormRefPath="ItemMainUIForm.ubfform" FormRefProjectPath="D:\U9Cust\UFIDA\U9Proj\UBFV30\U9.VOB.Product.Metadata\UI\UFIDA.U9.CBO.Pub.Item.ItemUI.MetaData.dll" Height="520" IsShowStateBar="True" Name="FormLink1" Width="992">
             <InParameters>
               <Parameter ContextID="" ControlID="ItemMaster" ControlProperty="Key" ControlType="ReferenceColumnModel" Name="ID" ParameterBindType="Bind2Control" />
               <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="IsDisableAdd" />
@@ -488,7 +496,7 @@
           </FormLink>
           <Events />
         </ReferenceColumn>
-        <ReferenceColumn ID="7a40c74e-b0e3-45cb-8d33-e690ba40230b" CodeAttributeName="Code" CodeField="Code" CodeFieldUIFieldID="Supplier_Code" CodeFieldUIViewID="DeptItemSupplier_DeptItemSupplierLine" DefaultValue="" DisplayFormat="19.0" Enabled="True" EntityName="ID" Help="部门料品供应商交叉档行.Misc.建议供应商" IsNull="True" IsProperty="False" IsSequence="False" Name="Supplier0" NameAttributeName="Name" NameFieldUIFieldID="Supplier_Name" NameFieldUIViewID="DeptItemSupplier_DeptItemSupplierLine" NPos="4" PkeyField="ID" Point="0" RefType="ea01ca72-c3a4-4563-b9b9-d47c720f051c" TextAlign="Right" UIFieldID="Supplier" UIViewID="DeptItemSupplier_DeptItemSupplierLine" Visible="True" Width="200" WindowHeight="408" WindowWidth="580">
+        <ReferenceColumn ID="7a40c74e-b0e3-45cb-8d33-e690ba40230b" CodeAttributeName="Code" CodeField="Code" CodeFieldUIFieldID="Supplier_Code" CodeFieldUIViewID="DeptItemSupplier_DeptItemSupplierLine" DefaultValue="" DisplayFormat="19.0" Enabled="True" EntityName="ID" Help="部门料品供应商交叉档行.Misc.建议供应商" IsNull="True" IsProperty="False" IsSequence="False" Name="Supplier0" NameAttributeName="Name" NameFieldUIFieldID="Supplier_Name" NameFieldUIViewID="DeptItemSupplier_DeptItemSupplierLine" NPos="5" PkeyField="ID" Point="0" RefType="ea01ca72-c3a4-4563-b9b9-d47c720f051c" TextAlign="Right" UIFieldID="Supplier" UIViewID="DeptItemSupplier_DeptItemSupplierLine" Visible="True" Width="200" WindowHeight="408" WindowWidth="580">
           <ReferenceRelation Action="Clear" ColumnDisplayName="ID" ColumnID="ID" Name="ReferenceRelation14" TargetControlType="ReferenceColumnModel" TargetID="Supplier" TargetProperty="Key" />
           <ReferenceRelation Action="Clear" ColumnDisplayName="编码" ColumnID="Code" Name="ReferenceRelation15" TargetControlType="ReferenceColumnModel" TargetID="Supplier" TargetProperty="Value" />
           <ReferenceRelation Action="Clear" ColumnDisplayName="名称" ColumnID="Name" Name="ReferenceRelation16" TargetControlType="ReferenceColumnModel" TargetID="Supplier" TargetProperty="Text" />
@@ -499,7 +507,7 @@
             <RefNameField UIFieldID="Name" />
           </RefNameFields>
           <UIFilterBar Name="ReferenceFilter" />
-          <FormLink FormRefID="a75ec3fa-0408-4482-b8b2-a32e6a78d8a7" FormRefName="SupplierMainUIForm.ubfform" FormRefPath="SupplierMainUIForm.ubfform" FormRefProjectPath="D:\U9Cust\UFIDA\U9Proj\UBFV30\U9.VOB.Product.Metadata\UI\UFIDA.U9.CBO.Pub.Supplier.SupplierUI.MetaData.dll" Height="504" IsShowStateBar="True" Width="992">
+          <FormLink FormRefID="a75ec3fa-0408-4482-b8b2-a32e6a78d8a7" FormRefName="SupplierMainUIForm.ubfform" FormRefPath="SupplierMainUIForm.ubfform" FormRefProjectPath="D:\U9Cust\UFIDA\U9Proj\UBFV30\U9.VOB.Product.Metadata\UI\UFIDA.U9.CBO.Pub.Supplier.SupplierUI.MetaData.dll" Height="504" IsShowStateBar="True" Name="FormLink2" Width="992">
             <InParameters>
               <Parameter ContextID="" ControlID="Supplier" ControlProperty="Key" ControlType="ReferenceColumnModel" Name="ID" ParameterBindType="Bind2Control" />
               <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="SupplierSiteID" />
@@ -523,7 +531,7 @@
           </FormLink>
           <Events />
         </ReferenceColumn>
-        <TextBoxColumn ID="78c00999-9f2c-43bd-9f15-873c957d397a" DefaultValue="" DisplayFormat="1000" Enabled="True" Help="部门料品供应商交叉档行.Misc.备注" IsNull="True" IsProperty="False" IsSequence="False" Name="Memo114" NPos="5" Point="0" TextAlign="Left" UIFieldID="Memo" UIViewID="DeptItemSupplier_DeptItemSupplierLine" Visible="True" Width="400">
+        <TextBoxColumn ID="78c00999-9f2c-43bd-9f15-873c957d397a" DefaultValue="" DisplayFormat="1000" Enabled="True" Help="部门料品供应商交叉档行.Misc.备注" IsNull="True" IsProperty="False" IsSequence="False" Name="Memo114" NPos="6" Point="0" TextAlign="Left" UIFieldID="Memo" UIViewID="DeptItemSupplier_DeptItemSupplierLine" Visible="True" Width="400">
           <Events />
         </TextBoxColumn>
       </Columns>
