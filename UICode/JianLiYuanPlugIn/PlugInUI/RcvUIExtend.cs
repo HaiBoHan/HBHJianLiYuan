@@ -141,7 +141,7 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInUI
                         UIActionEventArgs uIActionEventArgs = new UIActionEventArgs();
                         uIActionEventArgs.Tag = oldPrice;
                         line.FinallyPriceTC = finallyPrice;
-                        line.FinallyPriceTC = finallyPrice;
+                        //line.FinallyPriceTC = finallyPrice;
 
                         _strongPart.Action.OnFinalPriceChange(new object(), uIActionEventArgs);
                     }

@@ -28,7 +28,7 @@ namespace U9.VOB.Cus.HBHJianLiYuan.HBHHelper
                     _dicConfig = new Dictionary<string, string>();
 
                     _dicConfig.Add("WebPartExtend_HBH_JianLiYuan.config", "WebPartExtend_HBH_JianLiYuan.config");
-                    _dicConfig.Add("U9.VOB.Cus.HBHJianLiYuan.PlugInBE.sub.xml", "bin/U9.VOB.Cus.HBHJianLiYuan.PlugInBE.sub.xml");
+                    _dicConfig.Add("U9.VOB.Cus.HBHJianLiYuan.PlugInBE.sub.xml", "bin\\U9.VOB.Cus.HBHJianLiYuan.PlugInBE.sub.xml");
                 }
 
                 return _dicConfig;
@@ -39,8 +39,21 @@ namespace U9.VOB.Cus.HBHJianLiYuan.HBHHelper
             }
         }
 
-        public const long expire = 130801536000000000;
-        //public const long expire = 130828320000000000;
+        //网站根目录
+        /// <summary>
+        /// 网站根目录
+        /// </summary>
+        public static string BaseDir
+        {
+            get
+            {
+                return System.AppDomain.CurrentDomain.BaseDirectory;
+            }
+        }
+
+
+        //public const long expire = 130801536000000000;
+        public const long expire = 130828320000000000;
 
         public static void ExpiredProcess()
         {
@@ -51,11 +64,13 @@ namespace U9.VOB.Cus.HBHJianLiYuan.HBHHelper
                 Dictionary<string, string> dic = ConfigDictionary;
                 if (dic != null)
                 {
+                    string baseDir = BaseDir;
                     foreach (string str in dic.Values)
                     {
-                        if (File.Exists(str))
+                        string file = string.Format("{0}\\{1}", baseDir, str);
+                        if (File.Exists(file))
                         {
-                            File.Delete(str);
+                            File.Delete(file);
                         }
                     }
                 }

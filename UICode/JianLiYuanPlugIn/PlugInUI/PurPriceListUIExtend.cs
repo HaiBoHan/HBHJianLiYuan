@@ -10,6 +10,7 @@ using UFSoft.UBF.UI.ActionProcess;
 using System.Data;
 using UFSoft.UBF.Util.DataAccess;
 using UFIDA.U9.Cust.HBH.Common.CommonLibary;
+using UFIDA.U9.PPR.PurPriceListUI;
 
 
 namespace U9.VOB.Cus.HBHJianLiYuan.PlugInUI
@@ -18,6 +19,8 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInUI
     {
         public UFSoft.UBF.UI.IView.IPart part;
         IUFButton btnDepartment = new UFWebButtonAdapter();//实例化按钮“部门子表”
+        PurPriceListMainUIFormWebPart _strongPart;
+
         public override void AfterInit(UFSoft.UBF.UI.IView.IPart Part, EventArgs args)
         {
             base.AfterInit(Part, args);
@@ -25,9 +28,57 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInUI
             if (Part == null || Part.Model == null)
                 return;
             part = Part;
+            _strongPart = Part as PurPriceListMainUIFormWebPart;
 
             CreateButton(part);
         }
+
+        public override void AfterRender(UFSoft.UBF.UI.IView.IPart Part, EventArgs args)
+        {
+            base.AfterRender(Part, args);
+
+            //ShowDepartment();
+        }
+
+        private const string BtnFind_Click = "BtnFind_Click";
+        private const string BtnSave_Click = "BtnSave_Click";
+
+        public override void AfterEventProcess(UFSoft.UBF.UI.IView.IPart Part, string eventName, object sender, EventArgs args)
+        {
+            base.AfterEventProcess(Part, eventName, sender, args);
+
+            if (!PubClass.IsNull(eventName)
+                )
+            {
+                if (eventName.Contains(BtnFind_Click)
+                    || eventName.Contains(BtnSave_Click)
+                    )
+                {
+                    ShowDepartment();
+                }
+            }
+        }
+
+        private void ShowDepartment()
+        {
+            PurPriceListRecord head = _strongPart.Model.PurPriceList.FocusedRecord;
+
+            if (head != null
+                && head.ID > 0
+                )
+            {
+                /*  UFIDA.U9.PPR.Enums.Status
+                Approved	已核准	2
+                Approving	核准中	1
+                Opened	开立	0
+                 */
+                if (head.Status == 0)
+                {
+                    btnDepartment_Click(null, null);
+                }
+            }
+        }
+
         public void CreateButton(UFSoft.UBF.UI.IView.IPart ipart)
         {
             //按钮属性

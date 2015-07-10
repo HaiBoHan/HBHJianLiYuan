@@ -283,6 +283,7 @@
     <Compile Include="Ship_AfterUpdated.cs" />
     <Compile Include="Rcv_BeforeDefaultValueExtend.cs" />
     <Compile Include="WhInit_AfterUpdated.cs" />
+    <Compile Include="PR_AfterValidateExtend.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
