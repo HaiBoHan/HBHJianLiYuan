@@ -7,6 +7,7 @@ using UFIDA.U9.PM.PO;
 using UFIDA.U9.PR.PurchaseRequest;
 using UFIDA.U9.CBO.HR.Department;
 using U9.VOB.Cus.HBHJianLiYuan.HBHHelper;
+using UFSoft.UBF.PL;
 
 namespace U9.VOB.Cus.HBHJianLiYuan.PlugInBE
 {
@@ -108,7 +109,21 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInBE
                             //deptLine = VOB.Cus.HBHJianLiYuan.DeptItemSupplierBE.DeptItemSupplierLine.Finder.Find("ItemMaster=" + line.ItemInfo.ItemID.ID + " and DeptItemSupplier.Department.Name=" + lineDept.Name + "");
                             //if (deptLine != null)
                             {
-                                UFIDA.U9.PPR.PurPriceList.PurPriceLine purPriceLine = UFIDA.U9.PPR.PurPriceList.PurPriceLine.Finder.Find("ItemInfo.ItemID.ID=" + line.ItemInfo.ItemID.ID + " and Active=1 and FromDate<=getdate() and ToDate >=getdate() and PurPriceList.Supplier.ID=" + po.Supplier.SupplierKey.ID + " and PurPriceList.ID in (select PurchasePriceList from U9::VOB::Cus::HBHJianLiYuan::PPLDepartmentBE::PPLDepartment where Department.Name='" + lineDept.Name + "')");
+                                DateTime dt = DateTime.Today;
+                                DateTime docDate = GetDocDate(line);
+                                if (docDate != null
+                                    && docDate.Year > 2000
+                                    )
+                                {
+                                    dt = docDate;
+                                }
+
+                                UFIDA.U9.PPR.PurPriceList.PurPriceLine purPriceLine = UFIDA.U9.PPR.PurPriceList.PurPriceLine.Finder.Find("ItemInfo.ItemID.Code=@ItemCode and Active=1 and FromDate<=@Date and ToDate >=@Date and PurPriceList.Supplier.Code=@SuptCode and PurPriceList.ID in (select PurchasePriceList from U9::VOB::Cus::HBHJianLiYuan::PPLDepartmentBE::PPLDepartment where Department.Name=@DeptName)"
+                                    ,new OqlParam("ItemCode",line.ItemInfo.ItemID.Code)
+                                    , new OqlParam("Date", dt)
+                                    , new OqlParam("SuptCode", po.Supplier.SupplierKey.ID)
+                                    , new OqlParam("DeptName", lineDept.Name)
+                                    );
                                 if (purPriceLine != null)
                                 {
                                     decimal preDiscountPrice = HBHHelper.PPLineHelper.GetPreDiscountPrice(purPriceLine);
@@ -155,6 +170,24 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInBE
             }
 
             #endregion
+        }
+
+        private DateTime GetDocDate(POLine line)
+        {
+            if (line != null
+                && line.POShiplines != null
+                && line.POShiplines.Count > 0
+                )
+            {
+                POShipLine subline = line.POShiplines[0];
+
+                if (subline != null)
+                {
+                    return subline.DeliveryDate;
+                }
+            }
+
+            return DateTime.Today;
         }
     }
 }

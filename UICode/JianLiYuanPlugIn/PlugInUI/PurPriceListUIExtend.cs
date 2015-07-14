@@ -40,18 +40,21 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInUI
             //ShowDepartment();
         }
 
-        private const string BtnFind_Click = "BtnFind_Click";
-        private const string BtnSave_Click = "BtnSave_Click";
+        private const string SaveClick = "SaveClick";
+        private const string FindClick = "FindClick";
+        private const string UndoApproveClick = "UndoApproveClick";
 
         public override void AfterEventProcess(UFSoft.UBF.UI.IView.IPart Part, string eventName, object sender, EventArgs args)
         {
             base.AfterEventProcess(Part, eventName, sender, args);
 
-            if (!PubClass.IsNull(eventName)
-                )
+            UFSoft.UBF.UI.WebControlAdapter.UFWebButton4ToolbarAdapter webButton = sender as UFSoft.UBF.UI.WebControlAdapter.UFWebButton4ToolbarAdapter;
+
+            if (webButton != null)
             {
-                if (eventName.Contains(BtnFind_Click)
-                    || eventName.Contains(BtnSave_Click)
+                if (webButton.Action == SaveClick
+                    || webButton.Action == FindClick
+                    || webButton.Action == UndoApproveClick
                     )
                 {
                     ShowDepartment();

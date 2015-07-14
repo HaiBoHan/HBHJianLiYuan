@@ -72,7 +72,20 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInBE
                             //建议价格
                             //if (line.SuggestedPrice == 0)
                             {
-                                UFIDA.U9.PPR.PurPriceList.PurPriceLine purPriceLine = UFIDA.U9.PPR.PurPriceList.PurPriceLine.Finder.Find("ItemInfo.ItemID.Code='" + line.ItemInfo.ItemID.Code + "' and Active=1 and FromDate<=getdate() and ToDate >=getdate() and PurPriceList.Supplier.Code='" + deptLine.Supplier.Code + "' and PurPriceList.ID in (select PurchasePriceList from U9::VOB::Cus::HBHJianLiYuan::PPLDepartmentBE::PPLDepartment where Department.Name='" + line.ReqDept.Name + "')");
+                                DateTime dt = DateTime.Today;
+                                if (pr.BusinessDate != null
+                                    && pr.BusinessDate.Year > 2000
+                                    )
+                                {
+                                    dt = pr.BusinessDate;
+                                }
+
+                                UFIDA.U9.PPR.PurPriceList.PurPriceLine purPriceLine = UFIDA.U9.PPR.PurPriceList.PurPriceLine.Finder.Find("ItemInfo.ItemID.Code=@ItemCode and Active=1 and FromDate<=@Date and ToDate >=@Date and PurPriceList.Supplier.Code=@SuptCode and PurPriceList.ID in (select PurchasePriceList from U9::VOB::Cus::HBHJianLiYuan::PPLDepartmentBE::PPLDepartment where Department.Name=@DeptName)"
+                                    , new OqlParam("ItemCode",line.ItemInfo.ItemID.Code)
+                                    , new OqlParam("Date", dt)
+                                    , new OqlParam("SuptCode", deptLine.Supplier.Code)
+                                    , new OqlParam("DeptName", line.ReqDept.Name)
+                                    );
                                 if (purPriceLine != null)
                                 {
                                     // 修改为 取折前价，折后价不取

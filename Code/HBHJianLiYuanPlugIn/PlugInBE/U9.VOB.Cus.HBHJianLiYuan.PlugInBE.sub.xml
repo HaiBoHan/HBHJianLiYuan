@@ -30,4 +30,8 @@
     <subscriber type="U9.VOB.Cus.HBHJianLiYuan.PlugInBE.WhInit_AfterUpdated,U9.VOB.Cus.HBHJianLiYuan.PlugInBE.dll" />
   </subcription>
   
+  <subcription event="UFIDA.U9.PPR.PurPriceList.PurPriceList.AfterValidate">
+    <subscriber type="U9.VOB.Cus.HBHJianLiYuan.PlugInBE.PurPriceList_AfterValidateExtend,U9.VOB.Cus.HBHJianLiYuan.PlugInBE.dll" />
+  </subcription>
+  
 </pub-sub>
