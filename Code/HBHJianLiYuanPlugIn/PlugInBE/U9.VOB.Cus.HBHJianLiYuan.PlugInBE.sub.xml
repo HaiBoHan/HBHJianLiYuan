@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <pub-sub>
 
-  <subcription event="UFIDA.U9.PR.PurchaseRequest.PR.BeforeDefaultValue">
-    <subscriber type="U9.VOB.Cus.HBHJianLiYuan.PlugInBE.PR_BeforeDefaultValueExtend,U9.VOB.Cus.HBHJianLiYuan.PlugInBE.dll" />
+  <subcription event="UFIDA.U9.PR.PurchaseRequest.PR.AfterDefaultValue">
+    <subscriber type="U9.VOB.Cus.HBHJianLiYuan.PlugInBE.PR_AfterDefaultValueExtend,U9.VOB.Cus.HBHJianLiYuan.PlugInBE.dll" />
   </subcription>
   <subcription event="UFIDA.U9.PR.PurchaseRequest.PR.AfterValidate">
     <subscriber type="U9.VOB.Cus.HBHJianLiYuan.PlugInBE.PR_AfterValidateExtend,U9.VOB.Cus.HBHJianLiYuan.PlugInBE.dll" />
@@ -24,6 +24,10 @@
 
   <subcription event="UFIDA.U9.SM.Ship.Ship.AfterUpdated">
     <subscriber type="U9.VOB.Cus.HBHJianLiYuan.PlugInBE.Ship_AfterUpdated,U9.VOB.Cus.HBHJianLiYuan.PlugInBE.dll" />
+  </subcription>
+
+  <subcription event="UFIDA.U9.SM.Ship.Ship.BeforeDefaultValue">
+    <subscriber type="U9.VOB.Cus.HBHJianLiYuan.PlugInBE.Ship_BeforeDefaultValue,U9.VOB.Cus.HBHJianLiYuan.PlugInBE.dll" />
   </subcription>
 
   <subcription event="UFIDA.U9.InvDoc.WhInit.WhInit.AfterUpdated">

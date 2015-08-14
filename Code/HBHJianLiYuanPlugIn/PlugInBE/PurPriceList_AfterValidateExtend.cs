@@ -9,6 +9,7 @@ using UFIDA.U9.PM.Rcv;
 using UFIDA.U9.Cust.HBH.Common.CommonLibary;
 using UFIDA.U9.PPR.PurPriceList;
 using U9.VOB.Cus.HBHJianLiYuan.PPLDepartmentBE;
+using UFIDA.U9.PPR.PurPriceAdjustment;
 
 namespace U9.VOB.Cus.HBHJianLiYuan.PlugInBE
 {
@@ -46,6 +47,49 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInBE
                 {
                     string msg = string.Format("提交失败,价表[{0}]必须设置归属部门。",entity.Code);
                     throw new BusinessException(msg);
+                }
+            }
+
+
+            // 调价单，调价新增价表行.扩展字段 = 调价单行扩展字段；
+            foreach (PurPriceLine line in entity.PurPriceLines)
+            {
+                if (line != null
+                    && line.SysState == UFSoft.UBF.PL.Engine.ObjectState.Inserted
+                    // && line.SrcDoc != null
+                    && line.SrcType == PurPLSrcTypeEnum.Adjustment
+                    )
+                {
+                    long srcLineID = line.SrcRowID;
+
+                    PurPriceAdjustLine srcLine = PurPriceAdjustLine.Finder.FindByID(srcLineID);
+
+                    if (srcLine != null)
+                    {
+                        string priSeg = "PrivateDescSeg";
+                        string pubSeg = "PubDescSeg";
+
+                        for (int i = 1; i <= 50; i++)
+                        {
+                            string propName = pubSeg + i.ToString();
+                            string strDesc = PubClass.GetString(line.DescFlexField.GetValue(propName));
+                            if (PubClass.IsNull(strDesc))
+                            {
+                                line.DescFlexField.SetValue(propName, srcLine.DescFlexField.GetValue(propName));
+                            }
+                        }
+
+                        for (int i = 1; i <= 30; i++)
+                        {
+                            string propName = priSeg + i.ToString();
+                            string strDesc = PubClass.GetString(line.DescFlexField.GetValue(propName));
+                            if (PubClass.IsNull(strDesc))
+                            {
+                                line.DescFlexField.SetValue(propName, srcLine.DescFlexField.GetValue(propName));
+                            }
+                        }
+
+                    }
                 }
             }
         }

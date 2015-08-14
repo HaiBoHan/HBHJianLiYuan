@@ -69,9 +69,13 @@
 
                 foreach (ItemPrice dto in bpObj.ItemPrices)
                 {
-                    string opath = "ItemInfo.ItemID.Code =@ItemCode and Active=1 and FromDate<=getdate() and ToDate >=getdate() and PurPriceList.Supplier in (select deptItemSuptLine.Supplier from U9::VOB::Cus::HBHJianLiYuan::DeptItemSupplierBE::DeptItemSupplierLine deptItemSuptLine where deptItemSuptLine.ItemMaster.Code = @ItemCode and deptItemSuptLine.DeptItemSupplier.Department.Name=@DeptName ) and PurPriceList.ID in (select pplDept.PurchasePriceList from U9::VOB::Cus::HBHJianLiYuan::PPLDepartmentBE::PPLDepartment pplDept where pplDept.Department.Name=@DeptName  )";
+                    string opath = "ItemInfo.ItemID.Code =@ItemCode and Active=1 and @DocDate between FromDate and ToDate and PurPriceList.Supplier in (select deptItemSuptLine.Supplier from U9::VOB::Cus::HBHJianLiYuan::DeptItemSupplierBE::DeptItemSupplierLine deptItemSuptLine where deptItemSuptLine.ItemMaster.Code = @ItemCode and deptItemSuptLine.DeptItemSupplier.Department.Name=@DeptName ) and PurPriceList.ID in (select pplDept.PurchasePriceList from U9::VOB::Cus::HBHJianLiYuan::PPLDepartmentBE::PPLDepartment pplDept where pplDept.Department.Name=@DeptName  )";
 
-                    UFIDA.U9.PPR.PurPriceList.PurPriceLine priceLine = UFIDA.U9.PPR.PurPriceList.PurPriceLine.Finder.Find(opath, new OqlParam("ItemCode", dto.ItemCode), new OqlParam("DeptName", dto.DepartmentName));
+                    UFIDA.U9.PPR.PurPriceList.PurPriceLine priceLine = UFIDA.U9.PPR.PurPriceList.PurPriceLine.Finder.Find(opath
+                        , new OqlParam("ItemCode", dto.ItemCode)
+                        , new OqlParam("DocDate", dto.DocDate)
+                        , new OqlParam("DeptName", dto.DepartmentName)
+                        );
 
                     if (priceLine != null)
                     {

@@ -164,15 +164,15 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInUI
             #region//提交按钮
              if (webButton != null && webButton.Action == "SubmitClick")
              {
-                 //拣货
-                 if (_strongPart.Model.Ship.FocusedRecord != null && _strongPart.Model.Ship.FocusedRecord.DocNo != "")
-                 {
-                     VOB.Cus.HBHJianLiYuan.ShipPickByDocBP.Proxy.ShipPickByDocProxy proxy = new ShipPickByDocBP.Proxy.ShipPickByDocProxy();
-                     List<String> docList = new List<string>();
-                     docList.Add(_strongPart.Model.Ship.FocusedRecord.DocNo);
-                     proxy.ShipNos = docList;
-                     proxy.Do();
-                 }
+                 ////拣货
+                 //if (_strongPart.Model.Ship.FocusedRecord != null && _strongPart.Model.Ship.FocusedRecord.DocNo != "")
+                 //{
+                 //    VOB.Cus.HBHJianLiYuan.ShipPickByDocBP.Proxy.ShipPickByDocProxy proxy = new ShipPickByDocBP.Proxy.ShipPickByDocProxy();
+                 //    List<String> docList = new List<string>();
+                 //    docList.Add(_strongPart.Model.Ship.FocusedRecord.DocNo);
+                 //    proxy.ShipNos = docList;
+                 //    proxy.Do();
+                 //}
              }
             #endregion
         }
@@ -409,6 +409,7 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInUI
                             ItemPriceData dto = new ItemPriceData();
                             dto.DepartmentName = shipHead.SaleDept_Name;
                             dto.ItemCode = line.ItemCode;
+                            dto.DocDate = shipHead.BusinessDate;
 
                             lstItemDTO.Add(dto);
                         }

@@ -11,6 +11,7 @@ using UFSoft.UBF.PL;
 
 namespace U9.VOB.Cus.HBHJianLiYuan.PlugInBE
 {
+    // Before改为After，因为可能会OBA导入，这时候After取值更好，而且PR价格金额都是自己写的，不触发产品
     public class PO_BeforeDefaultValueExtend : UFSoft.UBF.Eventing.IEventSubscriber
     {
         public void Notify(params object[] args)
@@ -118,10 +119,11 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInBE
                                     dt = docDate;
                                 }
 
-                                UFIDA.U9.PPR.PurPriceList.PurPriceLine purPriceLine = UFIDA.U9.PPR.PurPriceList.PurPriceLine.Finder.Find("ItemInfo.ItemID.Code=@ItemCode and Active=1 and FromDate<=@Date and ToDate >=@Date and PurPriceList.Supplier.Code=@SuptCode and PurPriceList.ID in (select PurchasePriceList from U9::VOB::Cus::HBHJianLiYuan::PPLDepartmentBE::PPLDepartment where Department.Name=@DeptName)"
+                                // 王忠伟,如果有日期重叠会怎么样,应该取创建日期更近的
+                                UFIDA.U9.PPR.PurPriceList.PurPriceLine purPriceLine = UFIDA.U9.PPR.PurPriceList.PurPriceLine.Finder.Find("ItemInfo.ItemID.Code=@ItemCode and Active=1 and FromDate<=@Date and ToDate >=@Date and PurPriceList.Supplier.Code=@SuptCode and PurPriceList.ID in (select PurchasePriceList from U9::VOB::Cus::HBHJianLiYuan::PPLDepartmentBE::PPLDepartment where Department.Name=@DeptName) order by CreatedOn desc "
                                     ,new OqlParam("ItemCode",line.ItemInfo.ItemID.Code)
                                     , new OqlParam("Date", dt)
-                                    , new OqlParam("SuptCode", po.Supplier.SupplierKey.ID)
+                                    , new OqlParam("SuptCode", po.Supplier.Supplier.Code)
                                     , new OqlParam("DeptName", lineDept.Name)
                                     );
                                 if (purPriceLine != null)

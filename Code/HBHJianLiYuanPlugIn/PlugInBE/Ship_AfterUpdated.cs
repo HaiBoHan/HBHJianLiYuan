@@ -8,7 +8,7 @@ using U9.VOB.Cus.HBHJianLiYuan.HBHHelper;
 
 namespace U9.VOB.Cus.HBHJianLiYuan.PlugInBE
 {
-   public class Ship_AfterUpdated : UFSoft.UBF.Eventing.IEventSubscriber
+    public class Ship_AfterUpdated : UFSoft.UBF.Eventing.IEventSubscriber
     {
        public void Notify(params object[] args)
        {

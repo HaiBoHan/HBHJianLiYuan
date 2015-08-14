@@ -156,45 +156,50 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInUI
         /// </summary>
         private void CreateButton(UFIDA.U9.SCM.PM.PRUIModel.PRMainUIFormWebPart aa)
         {
-            #region 在操作按钮下添加按钮
-            //获取操作下拉按钮
-            UFSoft.UBF.UI.ControlModel.IUFDropDownButton dpOperatePR = (UFSoft.UBF.UI.ControlModel.IUFDropDownButton)this.part.GetUFControlByName(this.part.TopLevelContainer, "DDBtnOperation");
-            //下发请购 
-            BtnCreatBR = new UFWebMenuAdapter();
-            BtnCreatBR.Text = "下发请购";
-            BtnCreatBR.ID = "BtnDPCreatPR";
-            BtnCreatBR.ItemClick += new UFSoft.UBF.UI.WebControls.MenuItemHandle(BtnCreatBR_ItemClick);
-            BtnCreatBR.AutoPostBack = true;
+            #region 取消 下发请购 功能 (流程改为 : 健力源请购单 -- 人力组织 需求接口表 -- 人力组织 采购订单 -- 健力源采购收货 )
+
+            //#region 在操作按钮下添加 "下发请购" 按钮
+            ////获取操作下拉按钮
+            //UFSoft.UBF.UI.ControlModel.IUFDropDownButton dpOperatePR = (UFSoft.UBF.UI.ControlModel.IUFDropDownButton)this.part.GetUFControlByName(this.part.TopLevelContainer, "DDBtnOperation");
+            ////下发请购 
+            //BtnCreatBR = new UFWebMenuAdapter();
+            //BtnCreatBR.Text = "下发请购";
+            //BtnCreatBR.ID = "BtnDPCreatPR";
+            //BtnCreatBR.ItemClick += new UFSoft.UBF.UI.WebControls.MenuItemHandle(BtnCreatBR_ItemClick);
+            //BtnCreatBR.AutoPostBack = true;
 
 
-            dpOperatePR.MenuItems.Add(BtnCreatBR);
+            //dpOperatePR.MenuItems.Add(BtnCreatBR);
 
-            #endregion
+            //#endregion
 
-            #region 在查询按钮下添加按钮
-            //获取操作下拉按钮
-            UFSoft.UBF.UI.ControlModel.IUFDropDownButton dpCustQuery = (UFSoft.UBF.UI.ControlModel.IUFDropDownButton)this.part.GetUFControlByName(this.part.TopLevelContainer, "DDSourceQuery");
-            //下发请购 
-            BtnQueryPR = new UFWebMenuAdapter();
-            BtnQueryPR.Text = "请购追溯";
-            BtnQueryPR.ID = "BtnDDQuery";
-            BtnQueryPR.ItemClick += new UFSoft.UBF.UI.WebControls.MenuItemHandle(BtnQueryPR_ItemClick);
-            BtnQueryPR.AutoPostBack = true;
-            dpCustQuery.MenuItems.Add(BtnQueryPR);
+            //#region 在查询按钮下添加 "请购追溯" 按钮
 
-            #endregion
+            ////获取操作下拉按钮
+            //UFSoft.UBF.UI.ControlModel.IUFDropDownButton dpCustQuery = (UFSoft.UBF.UI.ControlModel.IUFDropDownButton)this.part.GetUFControlByName(this.part.TopLevelContainer, "DDSourceQuery");
+            ////下发请购 
+            //BtnQueryPR = new UFWebMenuAdapter();
+            //BtnQueryPR.Text = "请购追溯";
+            //BtnQueryPR.ID = "BtnDDQuery";
+            //BtnQueryPR.ItemClick += new UFSoft.UBF.UI.WebControls.MenuItemHandle(BtnQueryPR_ItemClick);
+            //BtnQueryPR.AutoPostBack = true;
+            //dpCustQuery.MenuItems.Add(BtnQueryPR);
 
-            #region 自定义按钮
+            //#endregion
 
-            BtnCreatPR1 = new UFWebButtonAdapter();
-            BtnCreatPR1.Text = "下发请购";
-            BtnCreatPR1.ID = "BtnCreatPR1";
-            BtnCreatPR1.AutoPostBack = true;
-            BtnCreatPR1.Click += new EventHandler(BtnCreatPR1_Click);
+            //#region 自定义按钮 "下发请购"
 
-            IUFCard card = (IUFCard)part.GetUFControlByName(part.TopLevelContainer, "Card0");
-            card.Controls.Add(BtnCreatPR1);
-            CommonFunctionExtend.Layout(card, BtnCreatPR1, 18, 0);
+            //BtnCreatPR1 = new UFWebButtonAdapter();
+            //BtnCreatPR1.Text = "下发请购";
+            //BtnCreatPR1.ID = "BtnCreatPR1";
+            //BtnCreatPR1.AutoPostBack = true;
+            //BtnCreatPR1.Click += new EventHandler(BtnCreatPR1_Click);
+
+            //IUFCard card = (IUFCard)part.GetUFControlByName(part.TopLevelContainer, "Card0");
+            //card.Controls.Add(BtnCreatPR1);
+            //CommonFunctionExtend.Layout(card, BtnCreatPR1, 18, 0);
+
+            //#endregion
 
             #endregion
 

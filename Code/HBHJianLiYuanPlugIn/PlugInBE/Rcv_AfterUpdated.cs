@@ -6,6 +6,7 @@ using UFSoft.UBF.Business;
 using UFIDA.U9.SM.Ship;
 using U9.VOB.Cus.HBHJianLiYuan.HBHHelper;
 using UFIDA.U9.PM.Rcv;
+using UFIDA.U9.PM.PO;
 
 namespace U9.VOB.Cus.HBHJianLiYuan.PlugInBE
 {
@@ -53,6 +54,45 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInBE
                            UFIDA.U9.Lot.LotMaster lotMaster = line.InvLot;
                            UpdateLotPrice(lotMaster, line);
 
+                           isUpdated = true;
+                       }
+                   }
+               }
+
+               // 更新来源订单为关闭状态
+               // UFIDA.U9.PM.PurchaseOrderUIModel.PurchaseOrderMainUIFormWebPart       MenuClose
+               // MenuClose_Click_Extend
+               List<long> lstPO = new List<long>();
+               foreach (RcvLine line in entity.RcvLines)
+               {
+                   if (line != null
+                       && line.SrcDoc != null
+                       && line.SrcDoc.SrcDoc != null
+                       && line.SrcDoc.SrcDoc.EntityID > 0
+                       )
+                   { 
+                       long srcPOID = line.SrcDoc.SrcDoc.EntityID;
+
+                       if (!lstPO.Contains(srcPOID))
+                       {
+                           lstPO.Add(srcPOID);
+                       }
+                   }
+               }
+
+               if (lstPO.Count > 0)
+               {
+                   foreach (long srcPOID in lstPO)
+                   {
+                       PurchaseOrder po = PurchaseOrder.Finder.FindByID(srcPOID);
+
+                       // 已审核，则关闭
+                       if (po != null
+                           && po.Status == PODOCStatusEnum.Approved
+                           )
+                       {
+                           po.Status = PODOCStatusEnum.Closed;
+                           
                            isUpdated = true;
                        }
                    }

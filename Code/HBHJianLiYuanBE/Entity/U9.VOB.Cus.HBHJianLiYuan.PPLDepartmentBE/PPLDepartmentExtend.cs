@@ -6,6 +6,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
+using UFIDA.U9.PPR.Enums;
+using UFSoft.UBF.Business;
 
 #endregion
 
@@ -29,9 +31,10 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PPLDepartmentBE {
 		/// </summary>
 		protected override void OnSetDefaultValue()
 		{
+			base.OnSetDefaultValue();
+
             if (this.Org == null)
                 this.Org = UFIDA.U9.Base.Context.LoginOrg;
-			base.OnSetDefaultValue();
 		}
 		/// <summary>
 		/// before Insert
@@ -89,6 +92,15 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PPLDepartmentBE {
 			base.OnValidate();
 			this.SelfEntityValidator();
 			// TO DO: write your business code here...
+
+            // 在已审核状态下应不能修改部门子表
+            if (this.PurchasePriceList != null
+                && this.PurchasePriceList.Status == Status.Approved
+                )
+            {
+                string msg = string.Format("价表[{0}]已审核,不允许修改部门。",PurchasePriceList.Code);
+                throw new BusinessException(msg);
+            }
 		}
 		#endregion
 		
