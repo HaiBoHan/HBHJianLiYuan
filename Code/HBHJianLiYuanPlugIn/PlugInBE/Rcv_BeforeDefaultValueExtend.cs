@@ -12,6 +12,7 @@ using UFIDA.U9.Cust.HBH.Common.CommonLibary;
 using UFIDA.U9.CBO.SCM.Supplier;
 using UFIDA.U9.Base;
 using UFIDA.U9.PM.Rcv;
+using UFIDA.U9.CBO.SCM.Enums;
 
 namespace U9.VOB.Cus.HBHJianLiYuan.PlugInBE
 {
@@ -29,23 +30,31 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInBE
             if (entity == null)
                 return;
 
-            // 提交时机赋值吧，要不每次都调用，浪费；
-            bool isSubmit = false;
-            if (entity.OriginalData.Status == RcvStatusEnum.Opened 
-                && entity.Status == RcvStatusEnum.Approving
+            // 收货才赋值，退货等不赋值
+            if (entity.RcvDocType != null
+                && entity.RcvDocType.ReceivementType != null
+                && entity.RcvDocType.ReceivementType == ReceivementTypeEnum.RCV
                 )
             {
-                isSubmit = true;
-            }
-            if (isSubmit)
-            {
-                foreach (RcvLine line in entity.RcvLines)
+
+                // 提交时机赋值吧，要不每次都调用，浪费；
+                bool isSubmit = false;
+                if (entity.OriginalData.Status == RcvStatusEnum.Opened
+                    && entity.Status == RcvStatusEnum.Approving
+                    )
                 {
-                    // 赋值差额
-                    decimal dif = HBHHelper.DescFlexFieldHelper.GetPreDiscountPrice(line.DescFlexSegments) - line.FinallyPriceTC;
-                    if (dif != HBHHelper.DescFlexFieldHelper.GetPriceDif(line.DescFlexSegments))
+                    isSubmit = true;
+                }
+                if (isSubmit)
+                {
+                    foreach (RcvLine line in entity.RcvLines)
                     {
-                        HBHHelper.DescFlexFieldHelper.SetPriceDif(line.DescFlexSegments, dif);
+                        // 赋值差额
+                        decimal dif = HBHHelper.DescFlexFieldHelper.GetPreDiscountPrice(line.DescFlexSegments) - line.FinallyPriceTC;
+                        if (dif != HBHHelper.DescFlexFieldHelper.GetPriceDif(line.DescFlexSegments))
+                        {
+                            HBHHelper.DescFlexFieldHelper.SetPriceDif(line.DescFlexSegments, dif);
+                        }
                     }
                 }
             }

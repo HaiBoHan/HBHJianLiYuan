@@ -2,10 +2,13 @@
 <Project id="ae783a81-e39f-40ad-a8f6-4f3342468bbd" name="HBHJianLiYuanList" displayName="HBHJianLiYuanList" description="" help="" type="UI" assemblyName="U9.VOB.Cus.HBHJianLiYuan.ListUI" mapProject="" resourceName="" projectVersion="Normal">
   <Imports>
     <Import id="44d5df38-3ed5-4fa6-8877-645c80393758" name="PRBE" displayName="PRBE" description="" help="" componentid="69173939-365a-43ab-8e54-47cfa8b25abb" path="..\..\..\..\..\..\..\..\..\UFIDA\UBFV30\U9.VOB.Product.Metadata\App\UFIDA.U9.PR.PRBE.MetaData.dll" type="BE" isRuntime="True" />
+    <Import id="cff00b9f-87d8-4d11-988d-554ed9dc35b0" name="HBHJianLiYuanBE" displayName="HBHJianLiYuanBE" description="" help="" componentid="13a5b6db-0dab-4f3a-aeae-7e9af108a7bc" path="..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Metadata\Unconfiged\Metadata\U9.VOB.Cus.HBHJianLiYuan.BE.MetaData.dll" type="BE" isRuntime="True" />
   </Imports>
   <SourceControl />
   <ItemGroup>
     <Item id="e9753807-61da-41dc-bbb2-f172395b5dd3" name="HBHJianLiYuanListBQryUIModel.ubfuim" displayName="HBHJianLiYuanListBQryUIModel.ubfuim" description="" help="" include="HBHJianLiYuanListBQryUIModel.ubfuim" type="" />
     <Item id="147d48b2-0bfa-4460-8743-b555ff39ba42" name="HBHJianLiYuanListBQryUIForm.ubfform" displayName="HBHJianLiYuanListBQryUIForm.ubfform" description="" help="" include="HBHJianLiYuanListBQryUIForm.ubfform" type="" />
+    <Item id="ff2e4f28-ffaa-4618-9107-9f499824c8ef" name="DeptItemSupplierBListUIModel.ubfuim" displayName="DeptItemSupplierBListUIModel.ubfuim" description="" help="" include="DeptItemSupplierBListUIModel.ubfuim" type="" />
+    <Item id="4b5449d9-9076-4ea3-915c-b6d645d9caf7" name="DeptItemSupplierBListUIForm.ubfform" displayName="DeptItemSupplierBListUIForm.ubfform" description="" help="" include="DeptItemSupplierBListUIForm.ubfform" type="" />
   </ItemGroup>
 </Project>

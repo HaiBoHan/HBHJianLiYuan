@@ -86,15 +86,15 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInBE
                    {
                        PurchaseOrder po = PurchaseOrder.Finder.FindByID(srcPOID);
 
-                       // 已审核，则关闭
-                       if (po != null
-                           && po.Status == PODOCStatusEnum.Approved
-                           )
-                       {
-                           po.Status = PODOCStatusEnum.Closed;
+                       //// 已审核，则关闭
+                       //if (po != null
+                       //    && po.Status == PODOCStatusEnum.Approved
+                       //    )
+                       //{
+                       //    po.Status = PODOCStatusEnum.Closed;
                            
-                           isUpdated = true;
-                       }
+                       //    isUpdated = true;
+                       //}
                    }
                }
 

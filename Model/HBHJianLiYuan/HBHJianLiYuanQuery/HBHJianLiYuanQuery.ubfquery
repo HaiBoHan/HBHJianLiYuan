@@ -4,22 +4,22 @@
   <BPRefInfo id="ddce4696-f3e5-411c-89d4-d1051457d25c" name="" displayName="" description="" help="" ProjectID="" ProjectPath="" BPItemID="" BPOperationID="" DTOID="" BPAgentDll="" BPAgentProxy="" />
   <UIRefInfo id="db472828-a8ed-43a1-b2ce-1c290413554e" name="" displayName="" description="" help="" ProjectID="" ProjectPath="" UIModelItemID="e9753807-61da-41dc-bbb2-f172395b5dd3" UIFormItemID="147d48b2-0bfa-4460-8743-b555ff39ba42" UIModelID="3100447a-cd6f-46f4-9b90-113e11241546" />
   <FilterDefines>
-    <FilterDefine id="cbf30deb-3ca2-4b52-94cd-e1b8ec0319b6" name="DocNo" displayName="DocNo" description="" help="" ParentName="" Alias="DocNo" IsFixed="False" IsAllowBlank="True" Visible="True" DescFieldContextValue="" FilterNodeType="Item" DateDisplayType="" RaiseChangedEvent="False" IsBuildWhereStr="True" OperatorList="" />
-    <FilterDefine id="04f3a9cb-fc75-4edf-91ef-d6e5880002b3" name="BusinessDate" displayName="BusinessDate" description="" help="" ParentName="" Alias="BusinessDate" IsFixed="False" IsAllowBlank="True" Visible="True" DescFieldContextValue="" FilterNodeType="Item" DateDisplayType="DateTime" RaiseChangedEvent="False" IsBuildWhereStr="True" OperatorList="" />
+    <FilterDefine id="59f28171-d83a-4cc3-b65d-8eff08a7803e" name="DocNo" displayName="DocNo" description="" help="" ParentName="" Alias="DocNo" IsFixed="False" IsAllowBlank="True" Visible="True" DescFieldContextValue="" FilterNodeType="Item" DateDisplayType="" RaiseChangedEvent="False" IsBuildWhereStr="True" OperatorList="" />
+    <FilterDefine id="219a310d-9477-44fb-83ea-369d0fe053b3" name="BusinessDate" displayName="BusinessDate" description="" help="" ParentName="" Alias="BusinessDate" IsFixed="False" IsAllowBlank="True" Visible="True" DescFieldContextValue="" FilterNodeType="Item" DateDisplayType="DateTime" RaiseChangedEvent="False" IsBuildWhereStr="True" OperatorList="" />
   </FilterDefines>
   <ColumnDefines>
-    <ColumnDefine id="6c5c4438-83fc-4a7a-a0b7-15adc3e7607c" name="DocNo" displayName="DocNo" description="" help="" ParentName="" Alias="DocNo" IsFixed="False" Visible="True" DescFieldContextValue="" ZeroIsEmpty="False" DateDisplayType="" Point="2" />
-    <ColumnDefine id="3d4162c9-4875-4875-9f88-1ad414b95130" name="BusinessDate" displayName="BusinessDate" description="" help="" ParentName="" Alias="BusinessDate" IsFixed="False" Visible="True" DescFieldContextValue="" ZeroIsEmpty="False" DateDisplayType="Date" Point="2" />
-    <ColumnDefine id="9c0f4a39-6551-4464-9b0e-7b4cfb71e815" name="Org" displayName="Org" description="" help="" ParentName="" Alias="Org" IsFixed="True" Visible="False" DescFieldContextValue="" ZeroIsEmpty="False" DateDisplayType="" Point="2" AlwaysLoaded="True" />
+    <ColumnDefine id="74a9ce89-d369-48c3-93b9-013c6a7406bd" name="DocNo" displayName="DocNo" description="" help="" ParentName="" Alias="DocNo" IsFixed="False" Visible="True" DescFieldContextValue="" ZeroIsEmpty="False" DateDisplayType="" Point="2" />
+    <ColumnDefine id="85813d55-e9e1-4b0e-ac8c-d3d07ef5a6ed" name="BusinessDate" displayName="BusinessDate" description="" help="" ParentName="" Alias="BusinessDate" IsFixed="False" Visible="True" DescFieldContextValue="" ZeroIsEmpty="False" DateDisplayType="Date" Point="2" />
+    <ColumnDefine id="83791e58-d3b4-48ad-8520-f8397f0cd605" name="Org" displayName="Org" description="" help="" ParentName="" Alias="Org" IsFixed="True" Visible="False" DescFieldContextValue="" ZeroIsEmpty="False" DateDisplayType="" Point="2" AlwaysLoaded="True" />
   </ColumnDefines>
   <DefaultCase>
     <DefaultColumns>
-      <Column id="d51f226e-8c38-4cdf-8324-e79dcd261fe3" name="DocNo" displayName="单据编号" description="" help="" />
-      <Column id="90dc5bf7-710a-4c20-b96f-df28565b86e1" name="BusinessDate" displayName="业务日期" description="" help="" />
-      <Column id="727ec400-fddb-4e5a-b7d7-342495d55b0a" name="Org.Name" displayName="需求组织" description="" help="" />
-      <Column id="e3266cfa-4584-4dfe-b43e-15d9a953899f" name="AccountOrg.Name" displayName="核算组织" description="" help="" />
-      <Column id="4519724a-cfd9-4b2a-b25b-70ac4bacd4b1" name="LegacyOrg.Name" displayName="法人组织" description="" help="" />
-      <Column id="46286021-29ee-4faa-b489-0a9ac80a43f9" name="Org" displayName="组织" description="" help="" />
+      <Column id="387e7985-048c-4875-841e-dd76074e0473" name="DocNo" displayName="单据编号" description="" help="" />
+      <Column id="4c7f631f-9830-4925-984a-0c46227bc6cd" name="BusinessDate" displayName="业务日期" description="" help="" />
+      <Column id="20e40cca-5fc7-4d09-88d5-397aa388a223" name="Org.Name" displayName="需求组织" description="" help="" />
+      <Column id="cea3bd7e-14f3-4168-acd4-5330c4f656a2" name="AccountOrg.Name" displayName="核算组织" description="" help="" />
+      <Column id="c2317e51-822a-4ffc-b53c-d796f38ccc31" name="LegacyOrg.Name" displayName="法人组织" description="" help="" />
+      <Column id="f4e1ea08-a661-4a62-83b6-6e8b8845b846" name="Org" displayName="组织" description="" help="" />
     </DefaultColumns>
   </DefaultCase>
 </QueryComponent>

@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ServiceGroup>
-  <ServiceGroupInfo id="6c2d60cf-0599-44f1-ad1e-030aae6b280b" name="HBHJianLiYuan" displayName="HBHJianLiYuan" description="" help="" fullPath="D:\U9客开\健力源\HBHJianLiYuan.git\Model\HBHJianLiYuan\HBHJianLiYuan.sg" applicationID="" />
+  <ServiceGroupInfo id="6c2d60cf-0599-44f1-ad1e-030aae6b280b" name="HBHJianLiYuan" displayName="HBHJianLiYuan" description="" help="" fullPath="D:\U9Cust\UFIDA\U9Proj\U9AppCode\U9.VOB.Apps.Cus\CusApp\HBHJianLiYuan\Model\HBHJianLiYuan\HBHJianLiYuan.sg" applicationID="" />
   <AssemblyGroup>
     <Assembly ID="13a5b6db-0dab-4f3a-aeae-7e9af108a7bc" name="U9.VOB.Cus.HBHJianLiYuan.BE" type="BE" path="" />
     <Assembly ID="99f8a4d8-2108-4d7c-8ff4-83a82cc252be" name="U9.VOB.Cus.HBHJianLiYuan.PMUI" type="UI" path="" />
     <Assembly ID="7b2a5db4-baa2-4078-b2d4-7603589ea9aa" name="U9.VOB.Cus.HBHJianLiYuan.SV" type="SV" path="" />
-    <Assembly ID="ae783a81-e39f-40ad-a8f6-4f3342468bbd" name="U9.VOB.Cus.HBHJianLiYuan" type="UI" path="" />
-    <Assembly ID="5268c858-a083-48af-84de-2d0b3d423efa" name="HBHJianLiYuanListBP" type="BP" path="" />
     <Assembly ID="5ae8d531-325c-4dfc-90ba-5774b52b574a" name="HBHJianLiYuanQuery" type="" path="" />
     <Assembly ID="9fcaf04f-7330-4117-8678-f4bab3ec0930" name="U9.VOB.Cus.HBHJianLiYuan.BP" type="BP" path="" />
+    <Assembly ID="ae783a81-e39f-40ad-a8f6-4f3342468bbd" name="U9.VOB.Cus.HBHJianLiYuan.ListUI" type="UI" path="" />
+    <Assembly ID="5268c858-a083-48af-84de-2d0b3d423efa" name="HBHJianLiYuanListBP" type="BP" path="" />
   </AssemblyGroup>
 </ServiceGroup>

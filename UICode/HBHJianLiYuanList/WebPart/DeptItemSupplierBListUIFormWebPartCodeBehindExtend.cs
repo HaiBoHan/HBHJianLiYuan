@@ -22,6 +22,8 @@ using UFSoft.UBF.UI.Engine;
 using UFSoft.UBF.UI.MD.Runtime;
 using UFSoft.UBF.UI.ActionProcess;
 using UFSoft.UBF.UI.WebControls.ClientCallBack;
+using UFIDA.U9.Cust.HBH.Common.CommonLibary;
+using System.Collections.Specialized;
 
 
 
@@ -40,9 +42,11 @@ namespace DeptItemSupplierBListUIModel
 		private void BtnNew_Click_Extend(object sender, EventArgs  e)
 		{
 			//调用模版提供的默认实现.--默认实现可能会调用相应的Action.
-			
-		
-			BtnNew_Click_DefaultImpl(sender,e);
+
+
+            //BtnNew_Click_DefaultImpl(sender, e);
+
+            this.NavigatePage("U9.VOB.Cus.HBHJianLiYuan.DeptItemSupplierURI", null);
 		}	
 		 
 				//BtnDelete_Click...
@@ -102,9 +106,32 @@ namespace DeptItemSupplierBListUIModel
 			//调用模版提供的默认实现.--默认实现可能会调用相应的Action.
 			
 		
-			DataGrid1_GridRowDbClicked_DefaultImpl(sender,e);
+            //DataGrid1_GridRowDbClicked_DefaultImpl(sender,e);
+
+            DeptItemSupplierRecord head = this.Model.DeptItemSupplier.FocusedRecord;
+            if (head != null
+                )
+            {
+                long id = PubClass.GetLong(head["MainID"]);
+
+                if (id > 0)
+                {
+                    //this.NavigatePage("d85d3974-ac43-4311-853d-bb47f4196b03", null);
+                    this.OnNavigatCard("Browse", id.ToString(), "d85d3974-ac43-4311-853d-bb47f4196b03");
+                }
+            }
 		}
 
+        private void OnNavigatCard(string cardType, string recordID, string pageID)
+        {
+            if (!string.IsNullOrEmpty(recordID) || (string.Compare(cardType, "Browse", true) != 0))
+            {
+                NameValueCollection querystrings = new NameValueCollection();
+                querystrings.Add("PDPageStatus", cardType);
+                querystrings.Add("ID", recordID);
+                NavigatePage(pageID, querystrings);
+            }
+        }
 		
             
             

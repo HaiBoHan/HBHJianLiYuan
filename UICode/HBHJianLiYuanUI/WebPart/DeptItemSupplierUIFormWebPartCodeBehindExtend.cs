@@ -115,9 +115,10 @@ namespace U9.VOB.Cus.HBHJianLiYuan
 		private void BtnList_Click_Extend(object sender, EventArgs  e)
 		{
 			//调用模版提供的默认实现.--默认实现可能会调用相应的Action.
-			
-		
-			BtnList_Click_DefaultImpl(sender,e);
+
+            //BtnList_Click_DefaultImpl(sender,e);
+
+            this.NavigatePage("Cust_DeptItemSupplierUIList", null);
 		}	
 		 
 				//BtnFirstPage_Click...
@@ -203,6 +204,8 @@ namespace U9.VOB.Cus.HBHJianLiYuan
             this.CloseDialog(false);
             BtnClose_Click_DefaultImpl(sender, e);
         }    
+		
+        #endregion
             
 
 		#region 自定义数据初始化加载和数据收集
@@ -314,8 +317,6 @@ namespace U9.VOB.Cus.HBHJianLiYuan
         }
         #endregion
 
-        #endregion
-		
         #endregion
 		
     }
