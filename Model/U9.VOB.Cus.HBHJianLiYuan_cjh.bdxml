@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <AppPackage id="b2219373-42ac-4e50-b41f-055ab8900488" code="AppPackCode01" name="应用组装包" shortName="" displayName="应用组装包" description="" version="">
     <Apps>
         <App id="3110" code="01" shortName="CBO" name="基础设置" uri="">
@@ -678,7 +678,7 @@
                 <PrePlacedMenu />
             </App>
         </App>
-        <App id="99010" code="99010" shortName="JLYTC" name="贸易中心" uri="">
+        <App id="99010" code="99010" shortName="JLYTC" name="运营中心" uri="">
             <Pages />
             <BEComponents />
             <BPComponents />
@@ -687,7 +687,7 @@
             <WorkflowComponents />
             <ReportComponents />
             <PrePlacedMenu />
-            <App id="9901001" code="9901001" shortName="JLYTC01" name="贸易中心" uri="">
+            <App id="9901001" code="9901001" shortName="JLYTC01" name="运营中心" uri="">
                 <Pages>
                     <Page id="ba8ddc41-bbce-4d39-99a7-fd8078b6ce5d" code="Cust_PR" name="计划单" shortName="" displayName="计划单" description="" title="计划单" uri="Cust_PR" topMargine="10" bottomMargine="10" leftMargine="10" rightMargine="10" columnSpace="10" orientation="Vertical" defaultEntity="">
                         <Columns>
