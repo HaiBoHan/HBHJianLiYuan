@@ -159,6 +159,9 @@
     <Reference Include="UFIDA.U9.SCM.PM.ReceivementUI.WebPart">
       <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.WebPart\UFIDA.U9.SCM.PM.ReceivementUI.WebPart.dll</HintPath>
     </Reference>
+    <Reference Include="UFIDA.U9.SCM.PM.ReturnUI.WebPart">
+      <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.WebPart\UFIDA.U9.SCM.PM.ReturnUI.WebPart.dll</HintPath>
+    </Reference>
     <Reference Include="UFIDA.U9.SCM.SD.ShipUI.WebPart">
       <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.WebPart\UFIDA.U9.SCM.SD.ShipUI.WebPart.dll</HintPath>
     </Reference>
@@ -273,6 +276,7 @@
     <Compile Include="PRPlugUIExtend.cs" />
     <Compile Include="RcvUIExtend.cs" />
     <Compile Include="ShipUIExtend.cs" />
+    <Compile Include="RcvReturnUIExtend.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
@@ -294,6 +298,7 @@
   <ItemGroup>
     <None Include="U9.VOB.Cus.HBHJianLiYuan.PlugInUI.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </None>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

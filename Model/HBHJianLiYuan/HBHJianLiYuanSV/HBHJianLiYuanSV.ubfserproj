@@ -1,11 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project id="7b2a5db4-baa2-4078-b2d4-7603589ea9aa" name="HBHJianLiYuanSV" displayName="HBHJianLiYuanSV" description="" help="" type="SV" assemblyName="U9.VOB.Cus.HBHJianLiYuan.SV" mapProject="" resourceName="" projectVersion="Normal">
   <Imports>
-    <Import id="951f48b4-3749-44de-bdcc-ece2bfcfbbc7" name="PRBE" displayName="PRBE" description="" help="" componentid="69173939-365a-43ab-8e54-47cfa8b25abb" path="..\..\..\..\..\..\UFIDA\UBFV30\U9.VOB.Product.Metadata\App\UFIDA.U9.PR.PRBE.MetaData.dll" type="BE" isRuntime="True" />
-    <Import id="35f418d7-5c37-4184-bc2b-7f5a46ca6d60" name="CBO_PubSV" displayName="CBO_PubSV" description="" help="" componentid="a7a5539e-b071-49e3-afef-f09c24642f23" path="..\..\..\..\..\..\UFIDA\UBFV30\U9.VOB.Product.Metadata\App\UFIDA.U9.CBO.PubSV.MetaData.dll" type="SV" isRuntime="True" />
+    <Import id="eda960a8-e03d-42eb-83d9-d4425d63b73f" name="BaseBE" displayName="BaseBE" description="" help="" componentid="2402fd32-810a-4130-811d-f1e6183a5a26" path="..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Metadata\UBF\UFIDA.U9.Base.BaseBE.MetaData.dll" type="BE" isRuntime="True" />
+    <Import id="6a5f19e1-ae05-4bef-89d0-0f1654e773f5" name="PRBE" displayName="PRBE" description="" help="" componentid="69173939-365a-43ab-8e54-47cfa8b25abb" path="..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Metadata\App\UFIDA.U9.PR.PRBE.MetaData.dll" type="BE" isRuntime="True" />
+    <Import id="2717f301-e01d-4e2e-9465-511f1b295f76" name="CBO_PubSV" displayName="CBO_PubSV" description="" help="" componentid="a7a5539e-b071-49e3-afef-f09c24642f23" path="..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Metadata\App\UFIDA.U9.CBO.PubSV.MetaData.dll" type="SV" isRuntime="True" />
   </Imports>
   <SourceControl />
   <ItemGroup>
     <Item id="0e981cea-97d6-4845-a42f-21ec91d0ed14" name="PrToPrSV.ubfsvr" displayName="PrToPrSV.ubfsvr" description="" help="" include="PrToPrSV.ubfsvr" type="BE" />
+    <Item id="2921a665-9969-416f-91c9-6ecc40b716fc" name="JianLiYuanSV.ubfsvr" displayName="RcvToShipSV.ubfsvr" description="" help="" include="JianLiYuanSV.ubfsvr" type="BE" />
   </ItemGroup>
 </Project>

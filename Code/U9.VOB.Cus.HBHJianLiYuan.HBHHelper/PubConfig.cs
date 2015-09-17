@@ -12,6 +12,8 @@ namespace U9.VOB.Cus.HBHJianLiYuan.HBHHelper
     /// </summary>
     public class PubConfig
     {
+        public const bool Const_TwoStage = true;
+
         private static Dictionary<string, string> _dicConfig;
 
         // 使用到的配置文件
@@ -54,7 +56,7 @@ namespace U9.VOB.Cus.HBHJianLiYuan.HBHHelper
 
         //public const long expire = 130801536000000000;
         //public const long expire = 130855104000000000;
-        public const long expire = 131065056000000000;   //6.5.1
+        public const long expire = 131065056000000000;   //2016.05.01
 
         public static void ExpiredProcess()
         {

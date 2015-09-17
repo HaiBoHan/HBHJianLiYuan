@@ -72,6 +72,12 @@
     <Reference Include="U9.VOB.Cus.HBHJianLiYuan.HBHHelper">
       <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\Unconfiged\Component\U9.VOB.Cus.HBHJianLiYuan.HBHHelper.dll</HintPath>
     </Reference>
+    <Reference Include="U9.VOB.Cus.HBHJianLiYuan.SV.Agent">
+      <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\Unconfiged\Component\U9.VOB.Cus.HBHJianLiYuan.SV.Agent.dll</HintPath>
+    </Reference>
+    <Reference Include="U9.VOB.Cus.HBHJianLiYuan.SV.Deploy">
+      <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\Unconfiged\Component\U9.VOB.Cus.HBHJianLiYuan.SV.Deploy.dll</HintPath>
+    </Reference>
     <Reference Include="UBF.System">
       <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.UBF\UBFStudio\Runtime\UBF.System.dll</HintPath>
     </Reference>
@@ -210,6 +216,22 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\App\UFIDA.U9.PR.PRBE.Deploy.dll</HintPath>
     </Reference>
+    <Reference Include="UFIDA.U9.PR.PRBP.Agent, Version=25.5401.14367.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\App\UFIDA.U9.PR.PRBP.Agent.dll</HintPath>
+    </Reference>
+    <Reference Include="UFIDA.U9.PR.PRBP.Deploy, Version=25.5401.14367.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\App\UFIDA.U9.PR.PRBP.Deploy.dll</HintPath>
+    </Reference>
+    <Reference Include="UFIDA.U9.PR.PRSV.Agent, Version=25.5401.14136.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\App\UFIDA.U9.PR.PRSV.Agent.dll</HintPath>
+    </Reference>
+    <Reference Include="UFIDA.U9.PR.PRSV.Deploy, Version=25.5401.14136.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\App\UFIDA.U9.PR.PRSV.Deploy.dll</HintPath>
+    </Reference>
     <Reference Include="UFIDA.U9.SM.SMBE">
       <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\App\UFIDA.U9.SM.SMBE.dll</HintPath>
     </Reference>
@@ -290,6 +312,7 @@
     <Compile Include="WhInit_AfterUpdated.cs" />
     <Compile Include="PR_AfterValidateExtend.cs" />
     <Compile Include="PurPriceList_AfterValidateExtend.cs" />
+    <Compile Include="PR_AfterUpdatedExtend.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
@@ -309,10 +332,10 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="U9.VOB.Cus.HBHJianLiYuan.PlugInBE.sub.xml">
+    <None Include="U9.VOB.Cus.HBHJianLiYuan.PlugInBE.sub.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <SubType>Designer</SubType>
-    </Content>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Ship_BeforeDefaultValue.cs" />
