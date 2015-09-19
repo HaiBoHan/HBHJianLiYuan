@@ -9,6 +9,17 @@ namespace U9.VOB.Cus.HBHJianLiYuan
 {
     internal static class PubHelperExtend
     {
+        // 领料单（出货单）单据类型
+        /// <summary>
+        /// 领料单（出货单）单据类型
+        /// </summary>
+        public const string Const_ShipDocTypeCode = "SM1";
+        // 领料单客户编码
+        /// <summary>
+        /// 领料单客户编码
+        /// </summary>
+        public const string Const_ShipCustomerCode = "99999";
+
         public static UOMInfoDTOData GetUomData(this UOM uom)
         {
             if (uom != null)
@@ -21,5 +32,6 @@ namespace U9.VOB.Cus.HBHJianLiYuan
             }
             return null;
         }
+
     }
 }

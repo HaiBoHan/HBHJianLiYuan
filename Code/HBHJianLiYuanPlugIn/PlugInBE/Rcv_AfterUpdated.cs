@@ -8,6 +8,7 @@ using U9.VOB.Cus.HBHJianLiYuan.HBHHelper;
 using UFIDA.U9.PM.Rcv;
 using UFIDA.U9.PM.PO;
 using UFIDA.U9.PM.Enums;
+using U9.VOB.Cus.HBHJianLiYuan.Proxy;
 
 namespace U9.VOB.Cus.HBHJianLiYuan.PlugInBE
 {
@@ -178,6 +179,27 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInBE
                 if (isUpdated)
                 {
                     session.Commit();
+                }
+
+                // 审核，则自动生成领料单
+                if (isApproveAction)
+                {
+                    RcvToShipSVProxy toShipProxy = new RcvToShipSVProxy();
+
+                    toShipProxy.RcvIDs = new List<long>();
+                    toShipProxy.RcvIDs.Add(entity.ID);
+
+                    toShipProxy.Do();
+                }
+                else if (isUnApproveAction)
+                {
+                    RcvToShipSVProxy toShipProxy = new RcvToShipSVProxy();
+
+                    toShipProxy.IsRemove = true;
+                    toShipProxy.RcvIDs = new List<long>();
+                    toShipProxy.RcvIDs.Add(entity.ID);
+
+                    toShipProxy.Do();
                 }
             }
         }

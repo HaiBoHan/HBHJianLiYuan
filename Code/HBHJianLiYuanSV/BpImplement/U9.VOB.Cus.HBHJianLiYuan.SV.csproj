@@ -68,6 +68,23 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\App\UFIDA.U9.ISV.PM.PMISV.Deploy.dll</HintPath>
     </Reference>
+    <Reference Include="UFIDA.U9.ISV.SM.SDIndustryChainSV">
+      <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\App\UFIDA.U9.ISV.SM.SDIndustryChainSV.dll</HintPath>
+    </Reference>
+    <Reference Include="UFIDA.U9.ISV.SM.SDIndustryChainSV.Agent">
+      <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\App\UFIDA.U9.ISV.SM.SDIndustryChainSV.Agent.dll</HintPath>
+    </Reference>
+    <Reference Include="UFIDA.U9.ISV.SM.SDIndustryChainSV.Deploy">
+      <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\App\UFIDA.U9.ISV.SM.SDIndustryChainSV.Deploy.dll</HintPath>
+    </Reference>
+    <Reference Include="UFIDA.U9.Lot.LotBE, Version=25.5401.15063.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\App\UFIDA.U9.Lot.LotBE.dll</HintPath>
+    </Reference>
+    <Reference Include="UFIDA.U9.Lot.LotBE.Deploy, Version=25.5401.13060.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\App\UFIDA.U9.Lot.LotBE.Deploy.dll</HintPath>
+    </Reference>
     <Reference Include="UFIDA.U9.PM.PMBE">
       <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\App\UFIDA.U9.PM.PMBE.dll</HintPath>
     </Reference>
@@ -97,6 +114,9 @@
     <Reference Include="UFIDA.U9.PR.PRSV.Deploy, Version=25.5401.14136.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\App\UFIDA.U9.PR.PRSV.Deploy.dll</HintPath>
+    </Reference>
+    <Reference Include="UFIDA.U9.SM.SMBE">
+      <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\App\UFIDA.U9.SM.SMBE.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

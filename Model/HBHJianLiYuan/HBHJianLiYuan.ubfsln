@@ -10,5 +10,5 @@
     <Item id="2b09f5c2-d960-413e-8f91-fd071521d31d" include="HBHJianLiYuanList\HBHJianLiYuanList.ubfuiproj" />
     <Item id="ad49444b-bba3-48b7-95d4-e0d842d97423" include="HBHJianLiYuanListBP\HBHJianLiYuanListBP.ubfbpproj" />
   </ItemGroup>
-  <ServiceGroupInfo id="6c2d60cf-0599-44f1-ad1e-030aae6b280b" name="HBHJianLiYuan" displayName="HBHJianLiYuan" description="" help="" fullPath="D:\U9客开\健力源\HBHJianLiYuan.git\Model\HBHJianLiYuan\HBHJianLiYuan.ubfsln" applicationID="" />
+  <ServiceGroupInfo id="6c2d60cf-0599-44f1-ad1e-030aae6b280b" name="HBHJianLiYuan" displayName="HBHJianLiYuan" description="" help="" fullPath="D:\U9Cust\UFIDA\U9Proj\U9AppCode\U9.VOB.Apps.Cus\CusApp\HBHJianLiYuan\Model\HBHJianLiYuan\HBHJianLiYuan.ubfsln" applicationID="" />
 </Solution>
