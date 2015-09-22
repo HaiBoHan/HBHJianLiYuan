@@ -21,5 +21,6 @@
     <Item id="8300c914-baad-40c1-a517-bacdcb96efc2" name="DeptItemSupplierFindRef.ubfref" displayName="DeptItemSupplierFindRef.ubfref" description="" help="" include="DeptItemSupplierFindRef.ubfref" type="" />
     <Item id="a9d92978-880c-4522-bb13-7a24a5bb79a1" name="DepartOrgUIModel.ubfuim" displayName="DepartOrgUIModel.ubfuim" description="" help="" include="DepartOrgUIModel.ubfuim" type="" />
     <Item id="939f8b17-2736-4744-8def-2391d72f7930" name="DepartOrgUIForm.ubfform" displayName="DepartOrgUIForm.ubfform" description="" help="" include="DepartOrgUIForm.ubfform" type="" />
+    <Item id="7a3a7e54-9279-418b-af2a-fd7b8bb8f384" name="OperatorRef.ubfref" displayName="OperatorRef.ubfref" description="" help="" include="HBHJianLiYuanRef\OperatorRef.ubfref" type="" />
   </ItemGroup>
 </Project>

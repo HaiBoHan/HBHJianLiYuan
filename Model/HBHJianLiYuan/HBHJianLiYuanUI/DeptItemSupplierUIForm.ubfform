@@ -270,21 +270,23 @@
         <RelationControls />
         <Events />
       </Label>
-      <Reference ID="f41476ff-1e4c-4d0e-8e30-384db6f33900" CodeAttributeName="Code" CodeField="Code" CodeFieldUIFieldID="SaleMan_Code" CodeFieldUIViewID="DeptItemSupplier" DisplayFormat="19.0" Enabled="True" EntityName="ID" GridHeight="1" GridWidth="1" GridX="6" GridY="0" Height="20" IsNull="True" IsProperty="False" IsSequence="False" Name="SaleMan185" NameAttributeName="Name" NameFieldUIFieldID="SaleMan_Name" NameFieldUIViewID="DeptItemSupplier" PkeyField="ID" RefType="bb70ff35-2ff8-4384-b766-7f49779888c8" RelationControl="lblSaleMan185" TabIndex="10" TabStop="True" TextAlign="Right" TitleAlign="Left" TitleLocation="Left" UIFieldID="SaleMan" UIViewID="DeptItemSupplier" Visible="True" Width="152" WindowHeight="408" WindowWidth="580" X="488" Y="0">
+      <Reference ID="f41476ff-1e4c-4d0e-8e30-384db6f33900" CodeAttributeName="Code" CodeField="Code" CodeFieldUIFieldID="SaleMan_Code" CodeFieldUIViewID="DeptItemSupplier" DisplayFormat="19.0" Enabled="True" EntityName="ID" GridHeight="1" GridWidth="1" GridX="6" GridY="0" Height="20" IsNull="True" IsProperty="False" IsSequence="False" Name="SaleMan185" NameAttributeName="Name" NameFieldUIFieldID="SaleMan_Name" NameFieldUIViewID="DeptItemSupplier" PkeyField="ID" RefType="47ce95c2-3bce-43fc-ba7e-724988386695" RelationControl="lblSaleMan185" TabIndex="10" TabStop="True" TextAlign="Right" TitleAlign="Left" TitleLocation="Left" UIFieldID="SaleMan" UIViewID="DeptItemSupplier" Visible="True" Width="152" WindowHeight="408" WindowWidth="580" X="488" Y="0">
         <Events />
         <RelationControls />
         <ReferenceRelation Action="Clear" ColumnDisplayName="ID" ColumnID="ID" TargetControlType="" TargetID="" TargetProperty="" />
         <ReferenceRelation Action="Clear" ColumnDisplayName="编码" ColumnID="Code" TargetControlType="" TargetID="" TargetProperty="" />
         <ReferenceRelation Action="Clear" ColumnDisplayName="名称" ColumnID="Name" TargetControlType="" TargetID="" TargetProperty="" />
-        <ReferenceRelation Action="Clear" ColumnDisplayName="部门编码" ColumnID="Dept_Code" TargetControlType="" TargetID="" TargetProperty="" />
-        <ReferenceRelation Action="Clear" ColumnDisplayName="部门名称" ColumnID="Dept_Name" TargetControlType="" TargetID="" TargetProperty="" />
-        <ReferenceRelation Action="Clear" ColumnDisplayName="部门ID" ColumnID="Dept_ID" TargetControlType="" TargetID="" TargetProperty="" />
-        <RefNameFields>
-          <RefNameField UIFieldID="Name" />
-        </RefNameFields>
+        <ReferenceRelation Action="Clear" ColumnDisplayName="简称" ColumnID="ShortName" TargetControlType="" TargetID="" TargetProperty="" />
+        <ReferenceRelation Action="Clear" ColumnDisplayName="部门编码" ColumnID="Dept_Code" TargetControlType="ReferenceModel" TargetID="Department101" TargetProperty="Value" />
+        <ReferenceRelation Action="Clear" ColumnDisplayName="部门名称" ColumnID="Dept_Name" TargetControlType="ReferenceModel" TargetID="Department101" TargetProperty="Text" />
+        <ReferenceRelation Action="Clear" ColumnDisplayName="描述" ColumnID="Description" TargetControlType="" TargetID="" TargetProperty="" />
+        <ReferenceRelation Action="Clear" ColumnDisplayName="生效" ColumnID="Effective_IsEffective" TargetControlType="" TargetID="" TargetProperty="" />
+        <ReferenceRelation Action="Clear" ColumnDisplayName="生效日期" ColumnID="Effective_EffectiveDate" TargetControlType="" TargetID="" TargetProperty="" />
+        <ReferenceRelation Action="Clear" ColumnDisplayName="失效日期" ColumnID="Effective_DisableDate" TargetControlType="" TargetID="" TargetProperty="" />
+        <ReferenceRelation Action="Clear" ColumnDisplayName="部门ID" ColumnID="Dept_ID" TargetControlType="ReferenceModel" TargetID="Department101" TargetProperty="Key" />
+        <RefNameFields />
         <UIFilterBar Name="ReferenceFilter">
-          <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="DateTime1" />
-          <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="DateTime2" />
+          <Parameter ContextID="" ControlID="Department101" ControlProperty="Key" ControlType="ReferenceModel" Name="DeptID" ParameterBindType="Bind2Control" />
         </UIFilterBar>
         <Events />
       </Reference>
