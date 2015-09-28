@@ -118,6 +118,29 @@
     <Reference Include="UFIDA.U9.SM.SMBE">
       <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\App\UFIDA.U9.SM.SMBE.dll</HintPath>
     </Reference>
+    <Reference Include="UFIDA.U9.SM.SMBP.Agent, Version=25.5401.1183.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\App\UFIDA.U9.SM.SMBP.Agent.dll</HintPath>
+    </Reference>
+    <Reference Include="UFIDA.U9.SM.SMBP.Deploy">
+      <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\App\UFIDA.U9.SM.SMBP.Deploy.dll</HintPath>
+    </Reference>
+    <Reference Include="UFIDA.U9.SM.SMPub.Agent, Version=21.5200.785.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\App\UFIDA.U9.SM.SMPub.Agent.dll</HintPath>
+    </Reference>
+    <Reference Include="UFIDA.U9.SM.SMPub.Deploy, Version=21.5200.785.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\App\UFIDA.U9.SM.SMPub.Deploy.dll</HintPath>
+    </Reference>
+    <Reference Include="UFIDA.U9.SM.SMSV.Agent, Version=25.5401.16435.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\App\UFIDA.U9.SM.SMSV.Agent.dll</HintPath>
+    </Reference>
+    <Reference Include="UFIDA.U9.SM.SMSV.Deploy, Version=25.5401.16435.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\App\UFIDA.U9.SM.SMSV.Deploy.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="PubHelperExtend.cs" />

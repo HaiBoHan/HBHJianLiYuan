@@ -313,6 +313,7 @@
     <Compile Include="PR_AfterValidateExtend.cs" />
     <Compile Include="PurPriceList_AfterValidateExtend.cs" />
     <Compile Include="PR_AfterUpdatedExtend.cs" />
+    <Compile Include="Rcv_AfterUpdating.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">

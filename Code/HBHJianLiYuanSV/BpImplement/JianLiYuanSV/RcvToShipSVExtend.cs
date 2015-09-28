@@ -19,6 +19,7 @@
     using UFIDA.U9.CBO.SCM.Enums;
     using UFIDA.U9.CBO.SCM.Item;
     using UFIDA.U9.CBO.SCM.Customer;
+    using UFIDA.U9.SM.Common;
 
 	/// <summary>
 	/// RcvToShipSV partial 
@@ -332,33 +333,41 @@
 
                             List<DocKeyDTOData> list = createSV.Do();
 
-                            //if (list != null
-                            //    && list.Count > 0
-                            //    && list[0] != null
-                            //    )
-                            //{
-                            //    DocKeyDTOData shipKey = list[0];
+                            // 自动审核
+                            if (list != null
+                                && list.Count > 0
+                                && list[0] != null
+                                )
+                            {
+                                DocKeyDTOData shipKey = list[0];
 
-                            //    if (shipKey != null)
-                            //    {
-                            //        oldShip = Ship.Finder.FindByID(shipKey.DocID);
-                            //        using (ISession session = Session.Open())
-                            //        {
-                            //            if (entity.U9DocInfo == null)
-                            //            {
-                            //                entity.U9DocInfo = new U9DocInfo();
-                            //            }
+                                if (shipKey != null)
+                                {
+                                    Ship ship = Ship.Finder.FindByID(shipKey.DocID);
 
-                            //            entity.U9DocInfo.U9DocID = shipKey.DocID;
-                            //            entity.U9DocInfo.U9DocNo = shipKey.DocNO;
-                            //            entity.U9DocInfo.CreatedOn = DateTime.Now;
-                            //            entity.U9DocInfo.IsSuccess = true;
-                            //            entity.U9DocInfo.Message = string.Empty;
+                                    if (ship != null)
+                                    {
+                                        // 提交
+                                        UFIDA.U9.SM.Ship.Proxy.ShipmentSubmitProxy proxySumit = new UFIDA.U9.SM.Ship.Proxy.ShipmentSubmitProxy();
+                                        proxySumit.ShipmentKey = ship.ID;
+                                        proxySumit.SysVersion = ship.SysVersion;
+                                        ErrorMessageDTOData dataSumit = proxySumit.Do();
 
-                            //            session.Commit();
-                            //        }
-                            //    }
-                            //}
+                                        //审核
+                                        ship = Ship.Finder.FindByID(shipKey.DocID);
+                                        if (ship != null)
+                                        {
+                                            UFIDA.U9.SM.Ship.Proxy.ShipmentApproveProxy proxyApp = new UFIDA.U9.SM.Ship.Proxy.ShipmentApproveProxy();
+                                            proxyApp.ShipmentKey = ship.ID;
+                                            proxyApp.SysVersion = ship.SysVersion;
+                                            proxyApp.IsUnApprove = false;
+
+                                            ErrorMessageDTOData dataApp = proxyApp.Do();
+                                        }
+                                    }
+
+                                }
+                            }
 
                         }
                     }
@@ -379,7 +388,22 @@
                                 {
                                     Ship ship = lstShip[i];
 
-                                    ship.Remove();
+                                    if (ship != null)
+                                    {
+                                        // 弃审
+                                        if (ship.Status == ShipStateEnum.Approved)
+                                        {
+                                            UFIDA.U9.SM.Ship.Proxy.ShipmentApproveProxy proxyApp = new UFIDA.U9.SM.Ship.Proxy.ShipmentApproveProxy();
+                                            proxyApp.ShipmentKey = ship.ID;
+                                            proxyApp.SysVersion = ship.SysVersion;
+                                            proxyApp.IsUnApprove = true;
+
+                                            ErrorMessageDTOData dataApp = proxyApp.Do();
+                                        }
+
+                                        ship = Ship.Finder.FindByID(ship.ID);
+                                        ship.Remove();
+                                    }
                                 }
 
                                 session.Commit();

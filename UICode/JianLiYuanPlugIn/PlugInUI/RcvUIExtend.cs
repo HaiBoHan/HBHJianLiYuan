@@ -187,30 +187,30 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInUI
 
 
 
-            //object lnk = this._strongPart.NameValues["lnk"];
-            //string url = "Cust_Rcv";
-            //if (lnk != null
-            //    && lnk.ToString() == url
-            //    )
-            {
-                //string orgID = "1001411156753998";
-                string targetOrgID = PubClass.GetString(this._strongPart.NameValues["TargetOrg"]);
-                string curOId = PubClass.GetString(this._strongPart.NameValues["__curOId"]);
-                string urlID = PubClass.GetString(this._strongPart.NameValues["lnk"]);
-                if (
-                    !PubClass.IsNull(targetOrgID)
-                    && targetOrgID != curOId
-                    )
-                {
-                    NameValueCollection nvs = new NameValueCollection();
-                    nvs.Add("__curOId", targetOrgID);
-                    nvs.Add("RCV_Type", PubClass.GetString(this._strongPart.NameValues["RCV_Type"]));
-                    //// 有上面菜单栏，但是组织无法切换
-                    //this._strongPart.NavigatePage("Cust_Rcv", nvs);
-                    // 无上面菜单栏，但组织可以切换；
-                    this._strongPart.NavigateForm(urlID, nvs);
-                }
-            }
+            ////object lnk = this._strongPart.NameValues["lnk"];
+            ////string url = "Cust_Rcv";
+            ////if (lnk != null
+            ////    && lnk.ToString() == url
+            ////    )
+            //{
+            //    //string orgID = "1001411156753998";
+            //    string targetOrgID = PubClass.GetString(this._strongPart.NameValues["TargetOrg"]);
+            //    string curOId = PubClass.GetString(this._strongPart.NameValues["__curOId"]);
+            //    string urlID = PubClass.GetString(this._strongPart.NameValues["lnk"]);
+            //    if (
+            //        !PubClass.IsNull(targetOrgID)
+            //        && targetOrgID != curOId
+            //        )
+            //    {
+            //        NameValueCollection nvs = new NameValueCollection();
+            //        nvs.Add("__curOId", targetOrgID);
+            //        nvs.Add("RCV_Type", PubClass.GetString(this._strongPart.NameValues["RCV_Type"]));
+            //        //// 有上面菜单栏，但是组织无法切换
+            //        //this._strongPart.NavigatePage("Cust_Rcv", nvs);
+            //        // 无上面菜单栏，但组织可以切换；
+            //        this._strongPart.NavigateForm(urlID, nvs);
+            //    }
+            //}
         }
 
 

@@ -136,25 +136,25 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInUI
                 }
             }
 
-            {
-                //string orgID = "1001411156753998";
-                string targetOrgID = PubClass.GetString(this._strongPart.NameValues["TargetOrg"]);
-                string curOId = PubClass.GetString(this._strongPart.NameValues["__curOId"]);
-                string urlID = PubClass.GetString(this._strongPart.NameValues["lnk"]);
-                if (
-                    !PubClass.IsNull(targetOrgID)
-                    && targetOrgID != curOId
-                    )
-                {
-                    NameValueCollection nvs = new NameValueCollection();
-                    nvs.Add("__curOId", targetOrgID);
-                    nvs.Add("SHIP_Type", PubClass.GetString(this._strongPart.NameValues["SHIP_Type"]));
-                    //// 有上面菜单栏，但是组织无法切换
-                    //this._strongPart.NavigatePage("Cust_Rcv", nvs);
-                    // 无上面菜单栏，但组织可以切换；
-                    this._strongPart.NavigateForm(urlID, nvs);
-                }
-            }
+            //{
+            //    //string orgID = "1001411156753998";
+            //    string targetOrgID = PubClass.GetString(this._strongPart.NameValues["TargetOrg"]);
+            //    string curOId = PubClass.GetString(this._strongPart.NameValues["__curOId"]);
+            //    string urlID = PubClass.GetString(this._strongPart.NameValues["lnk"]);
+            //    if (
+            //        !PubClass.IsNull(targetOrgID)
+            //        && targetOrgID != curOId
+            //        )
+            //    {
+            //        NameValueCollection nvs = new NameValueCollection();
+            //        nvs.Add("__curOId", targetOrgID);
+            //        nvs.Add("SHIP_Type", PubClass.GetString(this._strongPart.NameValues["SHIP_Type"]));
+            //        //// 有上面菜单栏，但是组织无法切换
+            //        //this._strongPart.NavigatePage("Cust_Rcv", nvs);
+            //        // 无上面菜单栏，但组织可以切换；
+            //        this._strongPart.NavigateForm(urlID, nvs);
+            //    }
+            //}
         }
 
         public override void BeforeEventProcess(UFSoft.UBF.UI.IView.IPart Part, string eventName, object sender, EventArgs args, out bool executeDefault)

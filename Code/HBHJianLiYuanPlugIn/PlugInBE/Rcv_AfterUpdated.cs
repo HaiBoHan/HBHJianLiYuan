@@ -191,6 +191,8 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInBE
 
                     toShipProxy.Do();
                 }
+                // 弃审，要先弃审下游 出货单、再删除出货单、再弃审收货单；否则报负库存；
+                // （要先删出货、后弃审），所以改到了 AfterUpdating 中做；
                 else if (isUnApproveAction)
                 {
                     RcvToShipSVProxy toShipProxy = new RcvToShipSVProxy();
