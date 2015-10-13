@@ -308,7 +308,7 @@
                                         shiplineDTO.LotInfo = new UFIDA.U9.CBO.SCM.PropertyTypes.LotInfoData();
                                         shiplineDTO.LotInfo.LotCode = line.RcvLot.LotCode;
                                         shiplineDTO.LotInfo.LotMaster = new UFIDA.U9.Base.PropertyTypes.BizEntityKeyData();
-                                        shiplineDTO.LotInfo.LotMaster.EntityID = line.RcvLot.Key.ID;
+                                        shiplineDTO.LotInfo.LotMaster.EntityID = line.RcvLot.ID;
                                         //shiplineDTO.LotInfo.LotMaster.EntityType = line.RcvLot.GetType();
 
                                     }

@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <AppPackage id="b2219373-42ac-4e50-b41f-055ab8900488" code="AppPackCode01" name="应用组装包" shortName="" displayName="应用组装包" description="" version="">
     <Apps>
         <App id="3110" code="01" shortName="CBO" name="基础设置" uri="">
@@ -343,7 +343,7 @@
                 <PrePlacedMenu>
                     <Menu id="c757c019-2413-464e-bd5a-00ee45cb015e" code="c757c019-2413-464e-bd5a-00ee45cb015e" name="部门料品" shortName="new menu" displayName="部门料品" description="new menu" image="" isDialog="False" pageURI="U9.VOB.Cus.HBHJianLiYuan.DeptItemSupplierURI" pageParameter="" sequence="0" kind="Task" theApp="">
                         <Menu id="dd5faf85-55a7-463a-b297-e9564962420b" code="dd5faf85-55a7-463a-b297-e9564962420b" name="部门料品交叉档" shortName="new menu" displayName="部门料品交叉档" description="new menu" image="" isDialog="False" pageURI="U9.VOB.Cus.HBHJianLiYuan.DeptItemSupplierURI" pageParameter="" sequence="0" kind="Task" theApp="" />
-                        <Menu id="e8989e89-4c10-43e5-bf1a-fff51bdee28f" code="e8989e89-4c10-43e5-bf1a-fff51bdee28f" name="部门料品交叉档列表" shortName="new menu" displayName="部门料品交叉档列表" description="new menu" image="" isDialog="False" pageURI="Cust_DeptItemSupplierUIList" pageParameter="" sequence="1" kind="Task" theApp="3016" />
+                        <Menu id="e8989e89-4c10-43e5-bf1a-fff51bdee28f" code="e8989e89-4c10-43e5-bf1a-fff51bdee28f" name="部门料品交叉档列表" shortName="new menu" displayName="部门料品交叉档列表" description="new menu" image="" isDialog="False" pageURI="Cust_DeptItemSupplierUIList" pageParameter="" sequence="1" kind="Task" theApp="" />
                     </Menu>
                 </PrePlacedMenu>
             </App>
@@ -743,13 +743,33 @@
                 <WorkflowComponents />
                 <ReportComponents />
                 <PrePlacedMenu>
-                    <Menu id="952bd761-3ac5-4c21-8bff-7182ac3a8242" code="952bd761-3ac5-4c21-8bff-7182ac3a8242" name="采购管理" shortName="new menu" displayName="采购管理" description="new menu" image="" isDialog="False" pageURI="" pageParameter="" sequence="0" kind="Task" theApp="">
+                    <Menu id="952bd761-3ac5-4c21-8bff-7182ac3a8242" code="952bd761-3ac5-4c21-8bff-7182ac3a8242" name="运营管理" shortName="new menu" displayName="运营管理" description="new menu" image="" isDialog="False" pageURI="" pageParameter="" sequence="0" kind="Task" theApp="">
                         <Menu id="dc70ba09-9c42-409b-ab42-32fd426fd374" code="dc70ba09-9c42-409b-ab42-32fd426fd374" name="计划单" shortName="new menu" displayName="计划单" description="new menu" image="" isDialog="False" pageURI="Cust_PR" pageParameter="PR_Type=PM3020" sequence="0" kind="Task" theApp="" />
                         <Menu id="5b4978b6-e32f-4724-810e-1e07c9e9e81d" code="5b4978b6-e32f-4724-810e-1e07c9e9e81d" name="入库单" shortName="new menu" displayName="入库单" description="new menu" image="" isDialog="False" pageURI="Cust_Rcv" pageParameter="RCV_Type=PM6010" sequence="1" kind="Task" theApp="" />
                         <Menu id="bb487077-259f-4784-a103-d914e22b532a" code="bb487077-259f-4784-a103-d914e22b532a" name="领料单" shortName="new menu" displayName="领料单" description="new menu" image="" isDialog="False" pageURI="Cust_Ship" pageParameter="SHIP_Type=SM6010" sequence="2" kind="Task" theApp="" />
                         <Menu id="90b03313-5230-41e0-8c2e-24cf9aaf0efa" code="90b03313-5230-41e0-8c2e-24cf9aaf0efa" name="部门组织" shortName="new menu" displayName="部门组织" description="new menu" image="" isDialog="False" pageURI="Cust_DeptOrg" pageParameter="" sequence="3" kind="Task" theApp="" />
                     </Menu>
                 </PrePlacedMenu>
+            </App>
+        </App>
+        <App id="99020" code="99020" shortName="EDaiInterface" name="接口平台" uri="">
+            <Pages />
+            <BEComponents />
+            <BPComponents />
+            <ServiceComponents />
+            <UIComponents />
+            <WorkflowComponents />
+            <ReportComponents />
+            <PrePlacedMenu />
+            <App id="9902001" code="9902001" shortName="EDaiInterface01" name="接口平台" uri="">
+                <Pages />
+                <BEComponents />
+                <BPComponents />
+                <ServiceComponents />
+                <UIComponents />
+                <WorkflowComponents />
+                <ReportComponents />
+                <PrePlacedMenu />
             </App>
         </App>
     </Apps>

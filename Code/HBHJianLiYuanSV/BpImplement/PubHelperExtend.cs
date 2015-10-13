@@ -13,7 +13,7 @@ namespace U9.VOB.Cus.HBHJianLiYuan
         /// <summary>
         /// 领料单（出货单）单据类型
         /// </summary>
-        public const string Const_ShipDocTypeCode = "SM1";
+        public const string Const_ShipDocTypeCode = "SM2";  // "SM1";
         // 领料单客户编码
         /// <summary>
         /// 领料单客户编码

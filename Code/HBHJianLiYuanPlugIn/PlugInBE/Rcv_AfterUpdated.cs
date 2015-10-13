@@ -195,13 +195,13 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInBE
                 // （要先删出货、后弃审），所以改到了 AfterUpdating 中做；
                 else if (isUnApproveAction)
                 {
-                    RcvToShipSVProxy toShipProxy = new RcvToShipSVProxy();
+                    //RcvToShipSVProxy toShipProxy = new RcvToShipSVProxy();
 
-                    toShipProxy.IsRemove = true;
-                    toShipProxy.RcvIDs = new List<long>();
-                    toShipProxy.RcvIDs.Add(entity.ID);
+                    //toShipProxy.IsRemove = true;
+                    //toShipProxy.RcvIDs = new List<long>();
+                    //toShipProxy.RcvIDs.Add(entity.ID);
 
-                    toShipProxy.Do();
+                    //toShipProxy.Do();
                 }
             }
         }

@@ -5,6 +5,7 @@ using System.Text;
 using UFIDA.U9.Base.FlexField.DescFlexField;
 using UFIDA.U9.PPR.PurPriceList;
 using UFIDA.U9.Cust.HBH.Common.CommonLibary;
+using UFIDA.U9.Base.Currency;
 
 namespace U9.VOB.Cus.HBHJianLiYuan.HBHHelper
 {
@@ -43,7 +44,7 @@ namespace U9.VOB.Cus.HBHJianLiYuan.HBHHelper
 
                 // 如果折扣率非空，那么取折扣率，折前价格 * 折扣率 = 折后价；
                 // 如果折扣率为空，折前价格 - 折扣额 = 折后价
-                return GetFinallyPrice(preDisPrice ,disRate, disLimit);
+                return GetFinallyPrice(preDisPrice ,disRate, disLimit,line.PurPriceList.Currency);
             }
             return 0;
         }
@@ -73,11 +74,22 @@ namespace U9.VOB.Cus.HBHJianLiYuan.HBHHelper
         {
             PubConfig.ExpiredProcess();
 
+            decimal result = 0;
             if (line != null)
             {
-                return line.Price;
+                result = line.Price;
             }
-            return 0;
+
+            if(line != null
+                && line.PurPriceList != null
+                && line.PurPriceList.Currency != null
+                && line.PurPriceList.Currency.PriceRound != null
+                )
+            {
+                result = line.PurPriceList.Currency.PriceRound.GetRoundValue(result);
+            }
+
+            return result;
         }
 
 
@@ -89,18 +101,28 @@ namespace U9.VOB.Cus.HBHJianLiYuan.HBHHelper
         /// <param name="disRate">折扣率</param>
         /// <param name="disLimit">折扣额</param>
         /// <returns>最终价</returns>
-        public static decimal GetFinallyPrice(decimal preDisPrice, decimal disRate, decimal disLimit)
+        public static decimal GetFinallyPrice(decimal preDisPrice, decimal disRate, decimal disLimit,Currency currency)
         {
             PubConfig.ExpiredProcess();
 
+            decimal result = 0;
             if (disRate != 0)
             {
-                return preDisPrice * disRate;
+                result = preDisPrice * disRate;
             }
             else
             {
-                return preDisPrice - disLimit;
+                result = preDisPrice - disLimit;
             }
+
+            if (currency != null
+                && currency.PriceRound != null
+                )
+            {
+                result = currency.PriceRound.GetRoundValue(result);
+            }
+
+            return result;
         }
 
         #endregion
