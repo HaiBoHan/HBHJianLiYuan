@@ -130,7 +130,7 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInBE
                                     }
                                 }
                             }
-                            Session.Current.InList(line);
+                            //Session.Current.InList(line);
                         }
                     }
                 }

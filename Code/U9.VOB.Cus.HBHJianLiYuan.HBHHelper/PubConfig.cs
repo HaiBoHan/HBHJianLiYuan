@@ -12,7 +12,17 @@ namespace U9.VOB.Cus.HBHJianLiYuan.HBHHelper
     /// </summary>
     public class PubConfig
     {
+        // 第二部分需求
+        /// <summary>
+        /// 第二部分需求
+        /// </summary>
         public const bool Const_TwoStage = true;
+
+        // 第三阶段需求(HR)
+        /// <summary>
+        /// 第三阶段需求(HR)
+        /// </summary>
+        public const bool Const_ThirdStage = false;
 
         private static Dictionary<string, string> _dicConfig;
 

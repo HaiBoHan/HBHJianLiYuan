@@ -92,6 +92,10 @@ namespace U9.VOB.Cus.HBHJianLiYuan.HBHHelper
             return result;
         }
 
+        public static decimal GetFinallyPrice(decimal preDisPrice, decimal disRate, decimal disLimit)
+        {
+            return GetFinallyPrice(preDisPrice, disRate, disLimit, null);
+        }
 
         // 根据 折前价、折扣率、折扣额，获得最终价
         /// <summary>

@@ -341,7 +341,7 @@
                 <WorkflowComponents />
                 <ReportComponents />
                 <PrePlacedMenu>
-                    <Menu id="c757c019-2413-464e-bd5a-00ee45cb015e" code="c757c019-2413-464e-bd5a-00ee45cb015e" name="部门料品" shortName="new menu" displayName="部门料品" description="new menu" image="" isDialog="False" pageURI="U9.VOB.Cus.HBHJianLiYuan.DeptItemSupplierURI" pageParameter="" sequence="0" kind="Task" theApp="">
+                    <Menu id="c757c019-2413-464e-bd5a-00ee45cb015e" code="c757c019-2413-464e-bd5a-00ee45cb015e" name="部门料品" shortName="new menu" displayName="部门料品" description="new menu" image="" isDialog="False" pageURI="" pageParameter="" sequence="0" kind="Task" theApp="">
                         <Menu id="dd5faf85-55a7-463a-b297-e9564962420b" code="dd5faf85-55a7-463a-b297-e9564962420b" name="部门料品交叉档" shortName="new menu" displayName="部门料品交叉档" description="new menu" image="" isDialog="False" pageURI="U9.VOB.Cus.HBHJianLiYuan.DeptItemSupplierURI" pageParameter="" sequence="0" kind="Task" theApp="" />
                         <Menu id="e8989e89-4c10-43e5-bf1a-fff51bdee28f" code="e8989e89-4c10-43e5-bf1a-fff51bdee28f" name="部门料品交叉档列表" shortName="new menu" displayName="部门料品交叉档列表" description="new menu" image="" isDialog="False" pageURI="Cust_DeptItemSupplierUIList" pageParameter="" sequence="1" kind="Task" theApp="" />
                     </Menu>
