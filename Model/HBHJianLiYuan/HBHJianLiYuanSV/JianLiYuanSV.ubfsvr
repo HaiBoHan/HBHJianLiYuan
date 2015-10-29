@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Component id="13515699-aa02-4c86-a887-e7490afdd529" name="JianLiYuanSV" displayName="JianLiYuanSV" description="JianLiYuanSV" help="" type="SV" assemblyName="U9.VOB.Cus.HBHJianLiYuan.SV">
+  <Namespace id="c38aadf1-4cfd-4949-bfa0-fdc3df55ca34" name="U9.VOB.Cus.HBHJianLiYuan" displayName="U9.VOB.Cus.HBHJianLiYuan" description="U9.VOB.Cus.HBHJianLiYuan" help="">
+    <Operation id="cd2668d6-86a2-4d4a-a8c5-f701bddc4ae2" name="RcvToShipSV" displayName="收货转领料SV" description="收货转领料SV" help="	" mD_ParentClass_ID="" isFactEntity="False" returnTypeID="378d45b4-375d-4b5d-8748-abc9575c26b3" isService="True" isDefault="False" isEntityKey="False" transactionType="0" isAuthorization="True" isISV="False">
+      <Groups>
+        <Group id="933af4f0-30d0-4544-aa0f-19e2a45b8a04" name="Misc" displayName="Misc" description="" help="" />
+      </Groups>
+      <Attributes>
+        <Attribute id="12758f34-c204-46b1-8bed-f4ee41342b7e" name="RcvIDs" displayName="收货单" description="" help="收货转领料SV.Misc.收货单" isCollection="True" dataTypeID="ba391065-6c27-4c82-acc8-b52b1c93a910" isKey="False" defaultValue="" length="50" precise="5" scale="0" isNullable="True" isReadOnly="False" isHide="False" isCalculation="False" valueExpression="" maxValue="" minValue="" sequence="0" isDefaultDimensionAttribute="False" isDefaultMeasureAttribute="False" isGlobalization="False" idGenerator="" groupName="Misc" isEntityKey="False" isEntityData="True" isSystem="False" isBusinessKey="False" isSyncDictionary="False" dictionaryKey="" isExtendCode="False" isQuery="True" isForAsso="True" isModifyControl="False" isDynamic="False" isImpressible="False" isInCache="False" isKeySerializable="False" isColumnDefine="True" isFilterDefine="True" isSortDefine="True" isDefaultColumn="True" forOBAImport="False" />
+        <Attribute id="ca472992-7e25-482e-9a70-5cad0625a04d" name="Date" displayName="日期" description="" help="收货转领料SV.Misc.日期" dataTypeID="3834a958-120f-4ac9-8d60-1a7be6d3f12f" isKey="False" defaultValue="" length="19" precise="0" scale="0" isNullable="True" isReadOnly="False" isHide="False" isCalculation="False" valueExpression="" maxValue="" minValue="" sequence="1" isDefaultDimensionAttribute="False" isDefaultMeasureAttribute="False" isGlobalization="False" idGenerator="" groupName="Misc" isEntityKey="False" isEntityData="True" isSystem="False" isBusinessKey="False" isSyncDictionary="False" dictionaryKey="" isExtendCode="False" isQuery="True" isForAsso="True" isModifyControl="False" isDynamic="False" isImpressible="False" isInCache="False" isKeySerializable="False" isColumnDefine="True" isFilterDefine="True" isSortDefine="True" isDefaultColumn="True" forOBAImport="False" />
+        <Attribute id="74e064b1-16f1-4dd6-8fc0-c58269686f49" name="IsRemove" displayName="是否是删除" description="" help="收货转领料SV.Misc.是否是删除" dataTypeID="5efeea06-cae7-4cc0-82e9-20a789e4e582" isKey="False" defaultValue="false" length="1" precise="0" scale="0" isNullable="True" isReadOnly="False" isHide="False" isCalculation="False" valueExpression="" maxValue="" minValue="" sequence="2" isDefaultDimensionAttribute="False" isDefaultMeasureAttribute="False" isGlobalization="False" idGenerator="" groupName="Misc" isEntityKey="False" isEntityData="True" isSystem="False" isBusinessKey="False" isSyncDictionary="False" dictionaryKey="" isExtendCode="False" isQuery="True" isForAsso="True" isModifyControl="False" isDynamic="False" isImpressible="False" isInCache="False" isKeySerializable="False" isColumnDefine="True" isFilterDefine="True" isSortDefine="True" isDefaultColumn="True" forOBAImport="False" />
+      </Attributes>
+      <Implements>
+        <Operation id="a1c611f5-fecd-49d9-8b5a-589e384414c3" name="Impement" displayName="实现" description="" help="" mD_ParentClass_ID="" isFactEntity="False" returnTypeID="378d45b4-375d-4b5d-8748-abc9575c26b3" isService="False" isDefault="True" isEntityKey="False" transactionType="2" isAuthorization="True" isISV="False" />
+      </Implements>
+    </Operation>
+    <Operation id="64b19704-a350-4943-ba2a-116c5c82e5cc" name="PrToPOSV" displayName="请购转采购订单SV" description="请购转采购订单SV" help="" mD_ParentClass_ID="" isFactEntity="False" returnTypeID="378d45b4-375d-4b5d-8748-abc9575c26b3" isService="True" isDefault="False" isEntityKey="False" transactionType="2" isAuthorization="True" isISV="False">
+      <Groups>
+        <Group id="b3584be2-a646-40a5-8d51-c3f65bfe9e49" name="Misc" displayName="Misc" description="" help="" />
+      </Groups>
+      <Attributes>
+        <Attribute id="0523e319-d59f-4c85-b86c-489af6057304" name="PRList" displayName="请购列表" description="" help="请购转采购订单SV.Misc.请购列表" isCollection="True" dataTypeID="ba391065-6c27-4c82-acc8-b52b1c93a910" isKey="False" defaultValue="" length="50" precise="5" scale="0" isNullable="True" isReadOnly="False" isHide="False" isCalculation="False" valueExpression="" maxValue="" minValue="" sequence="0" isDefaultDimensionAttribute="False" isDefaultMeasureAttribute="False" isGlobalization="False" idGenerator="" groupName="Misc" isEntityKey="False" isEntityData="True" isSystem="False" isBusinessKey="False" isSyncDictionary="False" dictionaryKey="" isExtendCode="False" isQuery="True" isForAsso="True" isModifyControl="False" isDynamic="False" isImpressible="False" isInCache="False" isKeySerializable="False" isColumnDefine="True" isFilterDefine="True" isSortDefine="True" isDefaultColumn="True" forOBAImport="False" />
+      </Attributes>
+      <Implements>
+        <Operation id="de849c6c-fd21-477b-8bfa-5badc1c701bf" name="Impement" displayName="实现" description="" help="" mD_ParentClass_ID="" isFactEntity="False" returnTypeID="378d45b4-375d-4b5d-8748-abc9575c26b3" isService="False" isDefault="True" isEntityKey="False" transactionType="2" isAuthorization="True" isISV="False" />
+      </Implements>
+    </Operation>
+    <Operation id="3c6b44bf-790a-4389-a8a6-b86e8246d3d2" name="DemandToPOSV" displayName="需求接口表转采购订单SV" description="需求接口表转采购订单SV" help="" mD_ParentClass_ID="" isFactEntity="False" returnTypeID="378d45b4-375d-4b5d-8748-abc9575c26b3" isService="True" isDefault="False" isEntityKey="False" transactionType="2" isAuthorization="True" isISV="False">
+      <Groups>
+        <Group id="1cb43448-7c7e-4618-919a-facd03a7f47b" name="Misc" displayName="Misc" description="" help="" />
+      </Groups>
+      <Attributes>
+        <Attribute id="47712ec3-b3ba-47d5-b53f-3087653ebbe0" name="PRList" displayName="请购头集合" description="" help="需求接口表转采购订单SV.Misc.请购头集合" isCollection="True" dataTypeID="ba391065-6c27-4c82-acc8-b52b1c93a910" isKey="False" defaultValue="" length="8" precise="19" scale="0" isNullable="True" isReadOnly="False" isHide="False" isCalculation="False" valueExpression="" maxValue="" minValue="" sequence="0" isDefaultDimensionAttribute="False" isDefaultMeasureAttribute="False" isGlobalization="False" idGenerator="" groupName="Misc" isEntityKey="False" isEntityData="True" isSystem="False" isBusinessKey="False" isSyncDictionary="False" dictionaryKey="" isExtendCode="False" isQuery="True" isForAsso="True" isModifyControl="False" isDynamic="False" isImpressible="False" isInCache="False" isKeySerializable="False" isColumnDefine="True" isFilterDefine="True" isSortDefine="True" isDefaultColumn="True" forOBAImport="False" />
+        <Attribute id="d9537126-4a91-439c-b98b-c8b3a6f27d78" name="PRLineList" displayName="请购行集合" description="" help="需求接口表转采购订单SV.Misc.请购行集合" isCollection="True" dataTypeID="ba391065-6c27-4c82-acc8-b52b1c93a910" isKey="False" defaultValue="" length="50" precise="5" scale="0" isNullable="True" isReadOnly="False" isHide="False" isCalculation="False" valueExpression="" maxValue="" minValue="" sequence="1" isDefaultDimensionAttribute="False" isDefaultMeasureAttribute="False" isGlobalization="False" idGenerator="" groupName="Misc" isEntityKey="False" isEntityData="True" isSystem="False" isBusinessKey="False" isSyncDictionary="False" dictionaryKey="" isExtendCode="False" isQuery="True" isForAsso="True" isModifyControl="False" isDynamic="False" isImpressible="False" isInCache="False" isKeySerializable="False" isColumnDefine="True" isFilterDefine="True" isSortDefine="True" isDefaultColumn="True" forOBAImport="False" />
+      </Attributes>
+      <Implements>
+        <Operation id="7e8339f1-7086-4941-a2a6-7d67d4620cde" name="Impement" displayName="实现" description="" help="" mD_ParentClass_ID="" isFactEntity="False" returnTypeID="378d45b4-375d-4b5d-8748-abc9575c26b3" isService="False" isDefault="True" isEntityKey="False" transactionType="2" isAuthorization="True" isISV="False" />
+      </Implements>
+    </Operation>
+    <Diagram id="541a8906-95d4-4ab8-a16a-ee8821c7f70c" name="RcvToShipSV" displayName="RcvToShipSV">
+      <Class Editable="True" ID="086ca88b-4054-4572-9499-d66ff30cd93e" Type="Service" ADID="cd2668d6-86a2-4d4a-a8c5-f701bddc4ae2">
+        <Location X="94" Y="81" />
+        <Size width="120" height="58" />
+      </Class>
+      <Class Editable="True" ID="007582a5-8554-44a0-96f8-391e96dc0682" Type="Service" ADID="64b19704-a350-4943-ba2a-116c5c82e5cc">
+        <Location X="347" Y="92" />
+        <Size width="120" height="58" />
+      </Class>
+      <Class Editable="True" ID="aff7a63d-0b68-44c6-93ab-29dd86656221" Type="Service" ADID="3c6b44bf-790a-4389-a8a6-b86e8246d3d2">
+        <Location X="570" Y="111" />
+        <Size width="120" height="58" />
+      </Class>
+    </Diagram>
+  </Namespace>
+</Component>

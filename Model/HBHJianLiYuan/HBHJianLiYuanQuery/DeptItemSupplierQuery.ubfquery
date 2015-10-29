@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<QueryComponent id="e79cbe7f-bd1e-422d-b1e3-2e2dbf0a47d2" name="DeptItemSupplierQuery" displayName="DeptItemSupplierQuery" description="" help="" QueryType="List" QueryURI="f19f0971-c8fe-4988-af27-d810f81e73b9" QuerySourceFullName="U9.VOB.Cus.HBHJianLiYuan.DeptItemSupplierBE.DeptItemSupplier" UIViewDragType="DragDown" RefInfoLoadType="Cache">
+  <BasicInfo id="768c8a93-1654-4fcb-bfdf-c2382bfcbfc4" name="" displayName="" description="" help="" RefToken="" RootDescContextValue="" FilterTabVisible="True" ColumnTabVisible="True" SortTabVisible="True" FilterExpandLevel="3" ColumnExpandLevel="3" SortExpandLevel="3" />
+  <BPRefInfo id="f3a15b0d-e092-4bf7-9e02-ef0477e2b581" name="" displayName="" description="" help="" ProjectID="" ProjectPath="" BPItemID="" BPOperationID="" DTOID="" BPAgentDll="" BPAgentProxy="" />
+  <UIRefInfo id="16c489ca-7ca9-4f16-ab6c-ac15dc809c83" name="" displayName="" description="" help="" ProjectID="" ProjectPath="" UIModelItemID="ff2e4f28-ffaa-4618-9107-9f499824c8ef" UIFormItemID="4b5449d9-9076-4ea3-915c-b6d645d9caf7" UIModelID="575eb9c0-5312-4946-a15b-207c314144fe" />
+  <FilterDefines>
+    <FilterDefine id="d3a09b77-0a8d-45e3-a823-a0d2c7553f90" name="Department" displayName="Department" description="" help="" ParentName="" Alias="Department" IsFixed="False" IsAllowBlank="True" Visible="True" DescFieldContextValue="" FilterNodeType="Item" DateDisplayType="" RaiseChangedEvent="False" IsBuildWhereStr="True" OperatorList="" />
+    <FilterDefine id="de6bfc17-1dc2-4d9d-bf3a-af6305f65ed7" name="SaleMan" displayName="SaleMan" description="" help="" ParentName="" Alias="SaleMan" IsFixed="False" IsAllowBlank="True" Visible="True" DescFieldContextValue="" FilterNodeType="Item" DateDisplayType="" RaiseChangedEvent="False" IsBuildWhereStr="True" OperatorList="" />
+  </FilterDefines>
+  <ColumnDefines>
+    <ColumnDefine id="c3e94942-a6ff-4dbe-ad1e-b548f3f1bd29" name="Department.Name" displayName="Department.Name" description="" help="" ParentName="Department" Alias="Department_Name" IsFixed="False" Visible="True" DescFieldContextValue="" ZeroIsEmpty="False" DateDisplayType="" Point="2" />
+    <ColumnDefine id="ecf596f4-de82-4073-bac3-d0de2b986155" name="SaleMan.Name" displayName="SaleMan.Name" description="" help="" ParentName="SaleMan" Alias="SaleMan_Name" IsFixed="False" Visible="True" DescFieldContextValue="" ZeroIsEmpty="False" DateDisplayType="" Point="2" />
+  </ColumnDefines>
+  <DefaultCase>
+    <BasicFilters>
+      <BasicFilter id="8e35aed3-4ec9-41b0-b7e1-ad47a09ff468" name="Department" displayName="部门" description="" help="" />
+      <BasicFilter id="e432aac0-e770-4176-a870-31c977f34790" name="SaleMan" displayName="业务员" description="" help="" />
+    </BasicFilters>
+    <DefaultColumns>
+      <Column id="2cafb1bc-99ed-485d-aab7-af068dcd3c1e" name="Department.Name" displayName="部门" description="" help="" />
+      <Column id="b6fbad8f-bf14-493a-8720-e88370de6afa" name="SaleMan.Name" displayName="业务员" description="" help="" />
+    </DefaultColumns>
+  </DefaultCase>
+</QueryComponent>

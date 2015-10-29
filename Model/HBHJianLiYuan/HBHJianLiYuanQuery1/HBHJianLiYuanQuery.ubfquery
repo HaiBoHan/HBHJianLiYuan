@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<QueryComponent id="0564a1af-8d0f-435b-9530-b287d0cf959c" name="HBHJianLiYuanQuery" displayName="HBHJianLiYuanQuery" description="" help="" QueryType="BEQuery" QueryURI="3110970a-0f13-440b-8c02-0416d8ab0207" QuerySourceFullName="UFIDA.U9.PR.PurchaseRequest.PR" UIViewDragType="DragDown" RefInfoLoadType="Cache">
+  <BasicInfo id="e83a3afb-de18-4853-8275-738727aa5cc3" name="" displayName="" description="" help="" RefToken="" RootDescContextValue="" FilterTabVisible="True" ColumnTabVisible="True" SortTabVisible="True" FilterExpandLevel="3" ColumnExpandLevel="3" SortExpandLevel="3" />
+  <BPRefInfo id="ddce4696-f3e5-411c-89d4-d1051457d25c" name="" displayName="" description="" help="" ProjectID="" ProjectPath="" BPItemID="" BPOperationID="" DTOID="" BPAgentDll="" BPAgentProxy="" />
+  <UIRefInfo id="db472828-a8ed-43a1-b2ce-1c290413554e" name="" displayName="" description="" help="" ProjectID="" ProjectPath="" UIModelItemID="e9753807-61da-41dc-bbb2-f172395b5dd3" UIFormItemID="147d48b2-0bfa-4460-8743-b555ff39ba42" UIModelID="3100447a-cd6f-46f4-9b90-113e11241546" />
+  <FilterDefines>
+    <FilterDefine id="6f40ceea-1acb-4957-921c-d78af6ead393" name="DocNo" displayName="DocNo" description="" help="" ParentName="" Alias="DocNo" IsFixed="False" IsAllowBlank="True" Visible="True" DescFieldContextValue="" FilterNodeType="Item" DateDisplayType="" RaiseChangedEvent="False" IsBuildWhereStr="True" OperatorList="" />
+    <FilterDefine id="7d55690a-6c3c-4c57-b8e3-2caa8bbb2b2c" name="BusinessDate" displayName="BusinessDate" description="" help="" ParentName="" Alias="BusinessDate" IsFixed="False" IsAllowBlank="True" Visible="True" DescFieldContextValue="" FilterNodeType="Item" DateDisplayType="DateTime" RaiseChangedEvent="False" IsBuildWhereStr="True" OperatorList="" />
+  </FilterDefines>
+  <DefaultCase>
+    <DefaultColumns>
+      <Column id="b2402079-defd-40e2-bbad-70115309ed02" name="DocNo" displayName="单据编号" description="" help="" />
+      <Column id="9e3fd59e-b4bd-42a2-9e84-e78d513c9b4f" name="BusinessDate" displayName="业务日期" description="" help="" />
+      <Column id="ddcc12ee-6c13-4cd2-bc7a-a164a1b04ad9" name="Org.Name" displayName="需求组织" description="" help="" />
+      <Column id="fb64fc15-8a75-40a2-a615-b0aecc9182de" name="AccountOrg.Name" displayName="核算组织" description="" help="" />
+      <Column id="f6ef3a2b-84da-4cfe-8a4a-dd42737a3798" name="LegacyOrg.Name" displayName="法人组织" description="" help="" />
+    </DefaultColumns>
+  </DefaultCase>
+</QueryComponent>
