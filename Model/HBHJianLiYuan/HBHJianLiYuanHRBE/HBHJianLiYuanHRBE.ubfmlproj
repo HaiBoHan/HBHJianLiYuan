@@ -4,9 +4,13 @@
     <Import id="264a194a-bb84-4e97-a4e4-362d2b326d0c" name="CBOHRBE" displayName="CBOHRBE" description="" help="" componentid="73580c4b-cc6f-42ed-848d-0379d0700884" path="..\..\..\..\..\..\..\U9Product\U9.VOB.Product.Metadata\App\UFIDA.U9.CBO.HRBE.MetaData.dll" type="BE" isRuntime="True" />
     <Import id="2d8f8bf8-d48c-40e4-b074-7635c5033c1d" name="CBO_PubBE" displayName="CBO_PubBE" description="" help="" componentid="fe8dc9a2-365d-41c0-8f48-c02abb016910" path="..\..\..\..\..\..\..\U9Product\U9.VOB.Product.Metadata\App\UFIDA.U9.CBO.PubBE.MetaData.dll" type="BE" isRuntime="True" />
     <Import id="2012e3c4-0b86-4edc-9c2d-17c6eb47355e" name="BaseBE" displayName="BaseBE" description="" help="" componentid="2402fd32-810a-4130-811d-f1e6183a5a26" path="..\..\..\..\..\..\..\U9Product\U9.VOB.Product.Metadata\UBF\UFIDA.U9.Base.BaseBE.MetaData.dll" type="BE" isRuntime="True" />
+    <Import id="76e929b2-e788-4b58-8cd3-a559ef35b9d2" name="PayBE" displayName="PayBE" description="" help="" componentid="064c9428-982e-4d33-aad3-6bb5362c4652" path="..\..\..\..\..\..\..\U9Product\U9.VOB.Product.Metadata\App\UFIDA.U9.PAY.PayBE.MetaData.dll" type="BE" isRuntime="True" />
   </Imports>
   <SourceControl />
   <ItemGroup>
     <Item id="8358eec6-1858-4396-8eee-111d73390a05" name="DayCheckInBE.ubfbe" displayName="HBHJianLiYuanHRBE.ubfbe" description="" help="" include="DayCheckInBE.ubfbe" type="BE" />
+    <Item id="e7e4cc9c-e50b-4eb3-8d1b-de1f6bd499cf" name="DepartmentTransferBE.ubfbe" displayName="DepartmentTransferBE.ubfbe" description="" help="" include="DepartmentTransferBE.ubfbe" type="BE" />
+    <Item id="c078c642-7c4a-40ed-801d-eb7baf019ccf" name="PubEnum.ubfbe" displayName="PubEnum.ubfbe" description="" help="" include="PubEnum.ubfbe" type="BE" />
+    <Item id="ae9f1853-b983-430e-919f-20d58710047a" name="TotalPayrollDoc.ubfbe" displayName="TotalPayrollDoc.ubfbe" description="" help="" include="TotalPayrollDoc.ubfbe" type="BE" />
   </ItemGroup>
 </Project>

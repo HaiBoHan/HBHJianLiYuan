@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project id="786a4bb4-3b15-4f9c-86b2-d164e25b1c15" name="HBHJianLiYuanHRUI" displayName="HBHJianLiYuanHRUI" description="U9.VOB.Cus.HBHJianLiYuan.HRUI" help="" type="UI" assemblyName="U9.VOB.Cus.HBHJianLiYuan.HRUI" mapProject="" resourceName="">
+  <Imports>
+    <Import id="3dafe39b-3d51-48b3-a023-60124f09ad1d" name="HBHJianLiYuanUI" displayName="HBHJianLiYuanUI" description="" help="" componentid="99f8a4d8-2108-4d7c-8ff4-83a82cc252be" path="..\..\..\..\..\..\..\U9Product\U9.VOB.Product.Metadata\UI\U9.VOB.Cus.HBHJianLiYuan.PMUI.MetaData.dll" type="UI" isRuntime="True" />
+    <Import id="40c72098-8f6e-4264-b363-617ff091b092" name="ItemUI" displayName="ItemUI" description="" help="" componentid="7b6cc2cc-7a33-4e83-b812-0dd14acf4570" path="..\..\..\..\..\..\..\U9Product\U9.VOB.Product.Metadata\UI\UFIDA.U9.CBO.Pub.Item.ItemUI.MetaData.dll" type="UI" isRuntime="True" />
+    <Import id="9dd7ca85-9244-47a9-9bf6-526c4e2ea6ad" name="DepartmentUI" displayName="DepartmentUI" description="" help="" componentid="c35ffee1-7bc3-41fc-a51f-fb5f0dcdfae0" path="..\..\..\..\..\..\..\U9Product\U9.VOB.Product.Metadata\UI\UFIDA.U9.CBO.Pub.Department.DepartmentUI.MetaData.dll" type="UI" isRuntime="True" />
+    <Import id="58c3f1e7-093c-4190-99a3-1c040dc2bb3b" name="OperatorUI" displayName="OperatorUI" description="" help="" componentid="7b57b553-0671-4319-9f13-f22c4e5ada23" path="..\..\..\..\..\..\..\U9Product\U9.VOB.Product.Metadata\UI\UFIDA.U9.CBO.Pub.Operator.OperatorUI.MetaData.dll" type="UI" isRuntime="True" />
+    <Import id="67d10c73-7515-4f24-b76e-28cfd4b681f1" name="CBOHRBE" displayName="CBOHRBE" description="" help="" componentid="73580c4b-cc6f-42ed-848d-0379d0700884" path="..\..\..\..\..\..\..\U9Product\U9.VOB.Product.Metadata\App\UFIDA.U9.CBO.HRBE.MetaData.dll" type="BE" isRuntime="True" />
+    <Import id="25052d0e-ba23-4283-b79c-78aea67cf32d" name="CBO_PubBE" displayName="CBO_PubBE" description="" help="" componentid="fe8dc9a2-365d-41c0-8f48-c02abb016910" path="..\..\..\..\..\..\..\U9Product\U9.VOB.Product.Metadata\App\UFIDA.U9.CBO.PubBE.MetaData.dll" type="BE" isRuntime="True" />
+    <Import id="d6acc6c0-7e54-4c52-8eb0-abeb818f8df7" name="HBHJianLiYuanHRBE" displayName="HBHJianLiYuanHRBE" description="" help="" componentid="7170c766-f82d-41bb-abeb-7018386a027d" path="..\..\..\..\..\..\..\U9Product\U9.VOB.Product.Metadata\Unconfiged\Metadata\U9.VOB.Cus.HBHJianLiYuan.HRBE.MetaData.dll" type="BE" isRuntime="True" />
+    <Import id="069f132b-0da8-43e9-9512-caea3296ec43" name="SalarySolutionUI" displayName="SalarySolutionUI" description="" help="" componentid="06d7268b-87c4-441b-85b5-2dabf6c2b2e1" path="..\..\..\..\..\..\..\U9Product\U9.VOB.Product.Metadata\UI\UFIDA.U9.HR.PAY.SalarySolution.SalarySolutionUI.MetaData.dll" type="UI" isRuntime="True" />
+  </Imports>
+  <SourceControl />
+  <ItemGroup>
+    <Item id="13da4438-a0e0-416c-ad19-5cbe8e906b16" name="DayCheckInUIModel.ubfuim" displayName="HBHJianLiYuanHRUI.ubfuim" description="" help="" include="DayCheckInUIModel.ubfuim" type="" />
+    <Item id="1beb12e7-fa0d-48b8-a36c-2abf2a040aac" name="DayCheckInUIForm.ubfform" displayName="DayCheckInUIForm.ubfform" description="" help="" include="DayCheckInUIForm.ubfform" type="" />
+    <Item id="ccf441de-3595-4083-a2d4-44c3377dd14a" name="DepartmentTransferUIModel.ubfuim" displayName="DepartmentTransferUIModel.ubfuim" description="" help="" include="DepartmentTransferUIModel.ubfuim" type="" />
+    <Item id="0d74278c-031e-48c0-98d8-a5cd62abbc77" name="DepartmentTransferUIForm.ubfform" displayName="DepartmentTransferUIForm.ubfform" description="" help="" include="DepartmentTransferUIForm.ubfform" type="" />
+    <Item id="0a492aaf-b906-49f1-9bdc-c4f9ce64e2d6" name="TotalPayrollDocUIModel.ubfuim" displayName="TotalPayrollDocUIModel.ubfuim" description="" help="" include="TotalPayrollDocUIModel.ubfuim" type="" />
+    <Item id="727deb6b-60aa-4065-835f-02ffca991466" name="TotalPayrollDocUIForm.ubfform" displayName="TotalPayrollDocUIForm.ubfform" description="" help="" include="TotalPayrollDocUIForm.ubfform" type="" />
+  </ItemGroup>
+</Project>

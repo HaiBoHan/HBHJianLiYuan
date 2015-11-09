@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Component id="fb6a3f58-7880-48c4-b992-c8a9719528b5" name="HBHJianLiYuanHRBP" displayName="HBHJianLiYuanHRBP" description="" help="" type="BP" assemblyName="U9.VOB.Cus.HBHJianLiYuan.HRBP">
+  <Namespace id="628cbac7-8e43-42b3-b08e-ee34c619516b" name="U9.VOB.Cus.HBHJianLiYuan" displayName="U9.VOB.Cus.HBHJianLiYuan" description="U9.VOB.Cus.HBHJianLiYuan" help="">
+    <Operation id="a7fb583d-5637-42f9-985a-f33ef1f793ce" name="DepartImportCheckInBP" displayName="按部门导入日考勤BP" description="按部门导入日考勤BP" help="" mD_ParentClass_ID="" isFactEntity="False" returnTypeID="378d45b4-375d-4b5d-8748-abc9575c26b3" isService="False" isDefault="False" isEntityKey="False" transactionType="0" isAuthorization="True">
+      <Groups>
+        <Group id="5e3f8f9e-7633-457f-bc84-97fca7213f80" name="Misc" displayName="Misc" description="" help="" />
+      </Groups>
+      <Attributes>
+        <Attribute id="14a9b2c0-6013-4b37-ba64-b922dca26d40" name="CheckInIDs" displayName="日考勤ID" description="" help="按部门导入日考勤BP.Misc.日考勤ID" isCollection="True" dataTypeID="ba391065-6c27-4c82-acc8-b52b1c93a910" isKey="False" defaultValue="" length="50" precise="5" scale="0" isNullable="True" isReadOnly="False" isHide="False" isCalculation="False" valueExpression="" maxValue="" minValue="" sequence="0" isDefaultDimensionAttribute="False" isDefaultMeasureAttribute="False" isGlobalization="False" idGenerator="" groupName="Misc" isEntityKey="False" isEntityData="True" isSystem="False" isBusinessKey="False" isSyncDictionary="False" dictionaryKey="" isExtendCode="False" isQuery="True" isForAsso="True" isModifyControl="False" isDynamic="False" isImpressible="False" isInCache="False" isKeySerializable="False" isColumnDefine="True" isFilterDefine="True" isSortDefine="True" isDefaultColumn="True" forOBAImport="False" />
+      </Attributes>
+      <Implements>
+        <Operation id="78a604d6-1753-4bfb-9a4c-6b394fb719dc" name="Impement" displayName="实现" description="" help="" mD_ParentClass_ID="" isFactEntity="False" returnTypeID="378d45b4-375d-4b5d-8748-abc9575c26b3" isService="False" isDefault="True" isEntityKey="False" transactionType="2" isAuthorization="True" />
+      </Implements>
+    </Operation>
+    <Diagram id="aa797570-0691-4551-a442-ee4753c18508" name="HBHJianLiYuanHRBP" displayName="HBHJianLiYuanHRBP">
+      <Class Editable="True" ID="9cef8186-b012-472a-b25f-d14d6515d632" Type="Operation" ADID="a7fb583d-5637-42f9-985a-f33ef1f793ce">
+        <Location X="209" Y="73" />
+        <Size width="120" height="58" />
+      </Class>
+    </Diagram>
+  </Namespace>
+</Component>

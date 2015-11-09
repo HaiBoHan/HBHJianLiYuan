@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project id="20e01a33-453a-4f0c-8dae-e4e88512d6e1" name="HBHJianLiYuanHRBP" displayName="HBHJianLiYuanHRBP" description="U9.VOB.Cus.HBHJianLiYuan.HRBP" help="" type="BP" assemblyName="U9.VOB.Cus.HBHJianLiYuan.HRBP" mapProject="" resourceName="">
+  <SourceControl />
+  <ItemGroup>
+    <Item id="26b23ae8-ea5e-4ec4-99b8-fe9517e10c64" name="HBHJianLiYuanHRBP.ubfbp" displayName="HBHJianLiYuanHRBP.ubfbp" description="" help="" include="HBHJianLiYuanHRBP.ubfbp" type="BE" />
+  </ItemGroup>
+</Project>

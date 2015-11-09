@@ -211,14 +211,55 @@
                 <PrePlacedMenu />
             </App>
             <App id="3036" code="0306" shortName="AM" name="考勤管理" uri="">
-                <Pages />
-                <BEComponents />
-                <BPComponents />
+                <Pages>
+                    <Page id="0d5743b0-d5aa-4f16-ad55-d8ae4e967acb" code="Cust_DayCheckIn" name="日考勤记录" shortName="" displayName="日考勤记录" description="" title="日考勤记录" uri="Cust_DayCheckIn" topMargine="10" bottomMargine="10" leftMargine="10" rightMargine="10" columnSpace="10" orientation="Vertical" defaultEntity="">
+                        <Columns>
+                            <Column id="62cb7ceb-ebed-47ce-b8fb-e2395dfe5481" code="" name="" shortName="" displayName="" description="" widthProportion="100" heightProportion="0" title="" IsMainRegion="True">
+                                <Parts>
+                                    <Part>5c4ff4a8-57f4-445e-a755-1b437918367c</Part>
+                                </Parts>
+                            </Column>
+                        </Columns>
+                        <Parts>
+                            <Part id="5c4ff4a8-57f4-445e-a755-1b437918367c" code="5c4ff4a8-57f4-445e-a755-1b437918367c" name="DayCheckInUIFormWebPart" shortName="DayCheckInUIFormWebPart" displayName="DayCheckInUIFormWebPart" description="DayCheckInUIFormWebPart" title="日考勤记录" bindedFormID="eff032a7-ce78-48c1-bb3f-f992965caa0d" bindedFormName="DayCheckInUIFormWebPart" height="504" width="992" />
+                        </Parts>
+                        <PartRelations />
+                        <Parameters />
+                    </Page>
+                    <Page id="c1306a71-2800-4455-919a-85a32c7741a9" code="Cust_DayCheckIn_UIList" name="日考勤列表" shortName="" displayName="日考勤列表" description="" title="日考勤列表" uri="Cust_DayCheckIn_UIList" topMargine="10" bottomMargine="10" leftMargine="10" rightMargine="10" columnSpace="10" orientation="Vertical" defaultEntity="">
+                        <Columns>
+                            <Column id="98457f5a-eba3-4106-9e75-aac3f6e5fd7d" code="" name="" shortName="" displayName="" description="" widthProportion="100" heightProportion="0" title="" IsMainRegion="True">
+                                <Parts>
+                                    <Part>d03fbce7-b928-4532-8b0f-4ee88c5be0d0</Part>
+                                </Parts>
+                            </Column>
+                        </Columns>
+                        <Parts>
+                            <Part id="d03fbce7-b928-4532-8b0f-4ee88c5be0d0" code="d03fbce7-b928-4532-8b0f-4ee88c5be0d0" name="DayCheckInBListUIFormWebPart" shortName="DayCheckInBListUIFormWebPart" displayName="DayCheckInBListUIFormWebPart" description="DayCheckInBListUIFormWebPart" title="日考勤列表" bindedFormID="85e017eb-b5de-4844-90fa-daee637d1228" bindedFormName="DayCheckInBListUIFormWebPart" height="504" width="992" />
+                        </Parts>
+                        <PartRelations />
+                        <Parameters />
+                    </Page>
+                </Pages>
+                <BEComponents>
+                    <BEComponent assemblyName="U9.VOB.Cus.HBHJianLiYuan.HRBE.dll" assemblyID="7170c766-f82d-41bb-abeb-7018386a027d" />
+                </BEComponents>
+                <BPComponents>
+                    <BPComponent assemblyName="U9.VOB.Cus.HBHJianLiYuan.HRBP.dll" assemblyID="20e01a33-453a-4f0c-8dae-e4e88512d6e1" />
+                </BPComponents>
                 <ServiceComponents />
-                <UIComponents />
+                <UIComponents>
+                    <UIComponent assemblyName="U9.VOB.Cus.HBHJianLiYuan.HRUI.WebPart.dll" assemblyID="786a4bb4-3b15-4f9c-86b2-d164e25b1c15" />
+                    <UIComponent assemblyName="U9.VOB.Cus.HBHJianLiYuan.HRUIList.WebPart.dll" assemblyID="7de2413b-40f0-44fa-a339-851ae3df2ed1" />
+                </UIComponents>
                 <WorkflowComponents />
                 <ReportComponents />
-                <PrePlacedMenu />
+                <PrePlacedMenu>
+                    <Menu id="42386100-04c4-4d60-bab4-8f32fbd980eb" code="42386100-04c4-4d60-bab4-8f32fbd980eb" name="健力源考勤" shortName="new menu" displayName="健力源考勤" description="new menu" image="" isDialog="False" pageURI="" pageParameter="" sequence="0" kind="Task" theApp="">
+                        <Menu id="d4f9d5ed-4a42-4501-b0f4-518c6136909f" code="d4f9d5ed-4a42-4501-b0f4-518c6136909f" name="日考勤记录" shortName="new menu" displayName="日考勤记录" description="new menu" image="" isDialog="False" pageURI="Cust_DayCheckIn" pageParameter="" sequence="0" kind="Task" theApp="" />
+                        <Menu id="8a73a0da-8a7f-4260-a332-b45b8aaa80d7" code="8a73a0da-8a7f-4260-a332-b45b8aaa80d7" name="日考勤列表" shortName="new menu" displayName="日考勤列表" description="new menu" image="" isDialog="False" pageURI="Cust_DayCheckIn_UIList" pageParameter="" sequence="1" kind="Task" theApp="" />
+                    </Menu>
+                </PrePlacedMenu>
             </App>
             <App id="3037" code="0307" shortName="PW" name="计件工资" uri="">
                 <Pages />
