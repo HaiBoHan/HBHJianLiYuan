@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project id="5ae8d531-325c-4dfc-90ba-5774b52b574a" name="HBHJianLiYuanQuery" displayName="HBHJianLiYuanQuery" description="" help="" type="" assemblyName="HBHJianLiYuanQuery" mapProject="" resourceName="" projectVersion="Normal">
+<Project id="5ae8d531-325c-4dfc-90ba-5774b52b574a" name="HBHJianLiYuanQuery" displayName="HBHJianLiYuanQuery" description="" help="" type="" assemblyName="HBHJianLiYuanQuery" mapProject="" resourceName="">
   <Imports>
     <Import id="06088d21-5e60-4258-b596-b998899565c1" name="HBHJianLiYuanList" displayName="HBHJianLiYuanList" description="" help="" componentid="ae783a81-e39f-40ad-a8f6-4f3342468bbd" path="..\HBHJianLiYuanList\HBHJianLiYuanList.ubfuiproj" type="UI" isRuntime="False" />
     <Import id="628479fc-b509-4810-89fd-a63ed00190f0" name="HBHJianLiYuanListBP" displayName="HBHJianLiYuanListBP" description="" help="" componentid="5268c858-a083-48af-84de-2d0b3d423efa" path="..\HBHJianLiYuanListBP\HBHJianLiYuanListBP.ubfbpproj" type="BP" isRuntime="False" />
   </Imports>
   <SourceControl />
   <ItemGroup>
-    <Item id="a9a929f2-9f1b-43cb-9ef5-6f97669665d8" name="HBHJianLiYuanQuery.ubfquery" displayName="HBHJianLiYuanQuery.ubfquery" description="" help="" include="HBHJianLiYuanQuery.ubfquery" type="" />
+    <Item id="a9a929f2-9f1b-43cb-9ef5-6f97669665d8" name="PRQuery.ubfquery" displayName="HBHJianLiYuanQuery.ubfquery" description="" help="" include="PRQuery.ubfquery" type="" />
     <Item id="10932d75-2c6c-4cd1-8dd6-e59196e31722" name="DeptItemSupplierQuery.ubfquery" displayName="DeptItemSupplierQuery.ubfquery" description="" help="" include="DeptItemSupplierQuery.ubfquery" type="" />
   </ItemGroup>
 </Project>
