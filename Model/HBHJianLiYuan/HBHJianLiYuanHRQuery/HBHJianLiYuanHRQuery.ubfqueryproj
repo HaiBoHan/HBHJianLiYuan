@@ -7,5 +7,7 @@
   <SourceControl />
   <ItemGroup>
     <Item id="85dc37ad-cd55-4c30-b9d2-7ac70429f88e" name="DayCheckInQuery.ubfquery" displayName="HBHJianLiYuanHRQuery.ubfquery" description="" help="" include="DayCheckInQuery.ubfquery" type="" />
+    <Item id="6b7284bf-8bdd-4c9e-b433-8601cd56e45a" name="DepartmentTransferQuery.ubfquery" displayName="DepartmentTransferQuery.ubfquery" description="" help="" include="DepartmentTransferQuery.ubfquery" type="" />
+    <Item id="81ae1459-39d9-407f-92db-6f5f17b45b1f" name="TotalPayrollDocQuery.ubfquery" displayName="TotalPayrollDocQuery.ubfquery" description="" help="" include="TotalPayrollDocQuery.ubfquery" type="" />
   </ItemGroup>
 </Project>
