@@ -76,12 +76,20 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInBE
                             //if (line.SuggestedPrice == 0)
                             {
                                 DateTime dt = DateTime.Today;
+                                // 不能有单据日期改为 交期，因为请购是计划，所以价格也是计划的，而交期可能会引起取不到价格，导致无法做计划单据；
                                 if (pr.BusinessDate != null
                                     && pr.BusinessDate.Year > 2000
                                     )
                                 {
                                     dt = pr.BusinessDate;
                                 }
+                                //// 由单据日期改为 行要求交货日期，这样转到采购订单，与订单用交期取 价格逻辑相同；
+                                //if (line.RequiredDeliveryDate != null
+                                //    && line.RequiredDeliveryDate.Year > 2000
+                                //    )
+                                //{
+                                //    dt = line.RequiredDeliveryDate;
+                                //}
 
                                 // 王忠伟,如果有日期重叠会怎么样,应该取创建日期更近的
                                 UFIDA.U9.PPR.PurPriceList.PurPriceLine purPriceLine = UFIDA.U9.PPR.PurPriceList.PurPriceLine.Finder.Find("ItemInfo.ItemID.Code=@ItemCode and Active=1 and FromDate<=@Date and ToDate >=@Date and PurPriceList.Supplier.Code=@SuptCode and PurPriceList.ID in (select PurchasePriceList from U9::VOB::Cus::HBHJianLiYuan::PPLDepartmentBE::PPLDepartment where Department.Name=@DeptName) order by CreatedOn desc "

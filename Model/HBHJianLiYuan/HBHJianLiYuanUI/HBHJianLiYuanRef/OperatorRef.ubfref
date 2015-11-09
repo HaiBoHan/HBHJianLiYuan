@@ -4,16 +4,16 @@
     <Reference id="614e25bc-5327-449e-bdac-62837fe3b3e4" name="cRef" displayName="cRef" description="" help="业务员" refEntityId="198b0f81-207e-4707-8a8c-e0475b7674bd" refEntityName="UFIDA.U9.CBO.HR.Operator.Operators" refType="1" isMain="False">
       <RefFields>
         <RefField id="0842ad4e-604f-4bee-96d3-c73c30a89ee8" name="ID" displayName="ID" description="" help="业务员.Key.ID" isKey="True" isEdit="False" isName="False" isVisible="False" isParent="False" sequence="0" length="80" refAttributeName="UFIDA.U9.CBO.HR.Operator.Operators:ID" displayNameIndexStr="2" />
-        <RefField id="54122304-bc58-4f5f-ae8e-b8c5e61045d2" name="Code" displayName="编码" description="" help="业务员.Misc.编码" isKey="False" isEdit="False" isName="False" isVisible="True" isParent="False" sequence="0" length="80" refAttributeName="UFIDA.U9.CBO.HR.Operator.Operators:Code" displayNameIndexStr="2" />
-        <RefField id="800873a4-3301-4366-ae71-cc6c09fe92a1" name="Name" displayName="名称" description="" help="业务员.Misc.名称" isKey="False" isEdit="False" isName="False" isVisible="True" isParent="False" sequence="0" length="80" refAttributeName="UFIDA.U9.CBO.HR.Operator.Operators:Name" displayNameIndexStr="2" />
+        <RefField id="54122304-bc58-4f5f-ae8e-b8c5e61045d2" name="Code" displayName="编码" description="" help="业务员.Misc.编码" isKey="False" isEdit="True" isName="False" isVisible="True" isParent="False" sequence="0" length="80" refAttributeName="UFIDA.U9.CBO.HR.Operator.Operators:Code" displayNameIndexStr="2" />
+        <RefField id="800873a4-3301-4366-ae71-cc6c09fe92a1" name="Name" displayName="名称" description="" help="业务员.Misc.名称" isKey="False" isEdit="False" isName="True" isVisible="True" isParent="False" sequence="0" length="80" refAttributeName="UFIDA.U9.CBO.HR.Operator.Operators:Name" displayNameIndexStr="2" />
         <RefField id="27cd0d57-01a1-49a6-9445-3802d89598a6" name="ShortName" displayName="简称" description="" help="业务员.Misc.简称" isKey="False" isEdit="False" isName="False" isVisible="True" isParent="False" sequence="0" length="80" refAttributeName="UFIDA.U9.CBO.HR.Operator.Operators:ShortName" displayNameIndexStr="2" />
+        <RefField id="ba4e28d4-1da0-4832-988b-19f297dde05a" name="Dept_ID" displayName="部门ID" description="" help="部门.Key.ID" isKey="False" isEdit="False" isName="False" isVisible="False" isParent="False" sequence="0" length="80" refAttributeName="UFIDA.U9.CBO.HR.Operator.Operators:Dept.ID" displayNameIndexStr="" />
         <RefField id="fa67fc51-0d8d-48ca-8e46-238dff9bae52" name="Dept_Code" displayName="部门编码" description="" help="部门.Misc.编码" isKey="False" isEdit="False" isName="False" isVisible="True" isParent="False" sequence="0" length="80" refAttributeName="UFIDA.U9.CBO.HR.Operator.Operators:Dept.Code" displayNameIndexStr="" />
         <RefField id="191fadb7-f129-4b28-a505-d09a3a2ab0df" name="Dept_Name" displayName="部门名称" description="" help="部门.Misc.名称" isKey="False" isEdit="False" isName="False" isVisible="True" isParent="False" sequence="0" length="80" refAttributeName="UFIDA.U9.CBO.HR.Operator.Operators:Dept.Name" displayNameIndexStr="" />
         <RefField id="327bb138-89c8-4347-aac6-e7e50c51e7d0" name="Description" displayName="描述" description="" help="业务员.Misc.描述" isKey="False" isEdit="False" isName="False" isVisible="False" isParent="False" sequence="0" length="2000" refAttributeName="UFIDA.U9.CBO.HR.Operator.Operators:Description" displayNameIndexStr="2" />
         <RefField id="9a7bab0a-a434-482c-84c2-4d52e5bde207" name="Effective_IsEffective" displayName="生效" description="" help="状态.Misc.生效" isKey="False" isEdit="False" isName="False" isVisible="False" isParent="False" sequence="0" length="80" refAttributeName="UFIDA.U9.CBO.HR.Operator.Operators:Effective.IsEffective" displayNameIndexStr="" />
         <RefField id="3a0faf16-3b1f-41f4-bb16-4c5ce4ab3502" name="Effective_EffectiveDate" displayName="生效日期" description="" help="状态.Misc.生效日期" isKey="False" isEdit="False" isName="False" isVisible="False" isParent="False" sequence="0" length="80" refAttributeName="UFIDA.U9.CBO.HR.Operator.Operators:Effective.EffectiveDate" displayNameIndexStr="" />
         <RefField id="7254df19-9aac-4f40-9a86-886a7382623e" name="Effective_DisableDate" displayName="失效日期" description="" help="状态.Misc.失效日期" isKey="False" isEdit="False" isName="False" isVisible="False" isParent="False" sequence="0" length="80" refAttributeName="UFIDA.U9.CBO.HR.Operator.Operators:Effective.DisableDate" displayNameIndexStr="" />
-        <RefField id="ba4e28d4-1da0-4832-988b-19f297dde05a" name="Dept_ID" displayName="部门ID" description="" help="部门.Key.ID" isKey="False" isEdit="False" isName="False" isVisible="False" isParent="False" sequence="0" length="80" refAttributeName="UFIDA.U9.CBO.HR.Operator.Operators:Dept.ID" displayNameIndexStr="" />
       </RefFields>
       <OrderFields>
         <OrderField id="d7ed59bf-bca1-4ef9-a1fb-02809f85ade7" name="Code" displayName="编码" description="" help="业务员.Misc.编码" direction="0" sequence="0" refAttributeName="UFIDA.U9.CBO.HR.Operator.Operators:Code" />
@@ -22,6 +22,6 @@
     </Reference>
   </References>
   <RefParameters>
-    <RefParam id="39f94274-bc1d-4003-8708-d508636ff23b" name="DeptID" displayName="部门ID" description="" help="" dataType="Int64" defaultValue="" />
+    <RefParam id="c73284e8-bc9b-439a-b60e-029f1ad99f0c" name="DeptID" displayName="部门ID" description="" help="" dataType="Int64" defaultValue="" />
   </RefParameters>
 </ReferenceComponent>

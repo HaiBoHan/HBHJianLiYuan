@@ -1,9 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project id="13a5b6db-0dab-4f3a-aeae-7e9af108a7bc" name="HBHJianLiYuanBE" displayName="HBHJianLiYuanBE" description="U9.VOB.Cus.HBHJianLiYuan.BE" help="" type="BE" assemblyName="U9.VOB.Cus.HBHJianLiYuan.BE" mapProject=".\..\HBHJianLiYuanBE_DB\HBHJianLiYuanBE_DB.ubfdbproj" resourceName="" projectVersion="Normal">
+<Project id="13a5b6db-0dab-4f3a-aeae-7e9af108a7bc" name="HBHJianLiYuanBE" displayName="HBHJianLiYuanBE" description="U9.VOB.Cus.HBHJianLiYuan.BE" help="" type="BE" assemblyName="U9.VOB.Cus.HBHJianLiYuan.BE" mapProject=".\..\HBHJianLiYuanBE_DB\HBHJianLiYuanBE_DB.ubfdbproj" resourceName="">
   <Imports>
     <Import id="8b587325-3188-4805-82f0-35e47aaea522" name="BaseBE" displayName="BaseBE" description="" help="" componentid="2402fd32-810a-4130-811d-f1e6183a5a26" path="..\..\..\..\..\..\UFIDA\UBFV30\U9.VOB.Product.Metadata\UBF\UFIDA.U9.Base.BaseBE.MetaData.dll" type="BE" isRuntime="True" />
     <Import id="0e7bdfdd-fb85-4eba-9cc8-001be5d1d906" name="CBO_PubBE" displayName="CBO_PubBE" description="" help="" componentid="fe8dc9a2-365d-41c0-8f48-c02abb016910" path="..\..\..\..\..\..\UFIDA\UBFV30\U9.VOB.Product.Metadata\App\UFIDA.U9.CBO.PubBE.MetaData.dll" type="BE" isRuntime="True" />
     <Import id="176896b2-5e4b-4fdd-a2a0-38613e8fc77f" name="PPRBE" displayName="PPRBE" description="" help="" componentid="4c943525-2446-44d8-816c-94464a526e34" path="..\..\..\..\..\..\UFIDA\UBFV30\U9.VOB.Product.Metadata\App\UFIDA.U9.PPR.PPRBE.MetaData.dll" type="BE" isRuntime="True" />
+    <Import id="ae9be808-1104-4f0a-b508-9113d03bf877" name="CBOHRBE" displayName="CBOHRBE" description="" help="" componentid="73580c4b-cc6f-42ed-848d-0379d0700884" path="..\..\..\..\..\..\..\U9Product\U9.VOB.Product.Metadata\App\UFIDA.U9.CBO.HRBE.MetaData.dll" type="BE" isRuntime="True" />
   </Imports>
   <SourceControl />
   <ItemGroup>

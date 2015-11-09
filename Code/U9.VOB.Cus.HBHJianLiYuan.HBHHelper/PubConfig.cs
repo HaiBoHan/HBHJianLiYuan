@@ -22,7 +22,7 @@ namespace U9.VOB.Cus.HBHJianLiYuan.HBHHelper
         /// <summary>
         /// 第三阶段需求(HR)
         /// </summary>
-        public const bool Const_ThirdStage = false;
+        public const bool Const_ThirdHRStage = false;
 
         private static Dictionary<string, string> _dicConfig;
 

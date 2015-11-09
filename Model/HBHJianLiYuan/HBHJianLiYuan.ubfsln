@@ -9,6 +9,9 @@
     <Item id="97573cb1-ce19-4964-81c6-4fc41a30563f" include="HBHJianLiYuanBP\HBHJianLiYuanBP.ubfbpproj" />
     <Item id="2b09f5c2-d960-413e-8f91-fd071521d31d" include="HBHJianLiYuanList\HBHJianLiYuanList.ubfuiproj" />
     <Item id="ad49444b-bba3-48b7-95d4-e0d842d97423" include="HBHJianLiYuanListBP\HBHJianLiYuanListBP.ubfbpproj" />
+    <Item id="56c83d81-3006-45a0-a05d-d5ddba4141c0" include="HBHJianLiYuanHRBE\HBHJianLiYuanHRBE.ubfmlproj" />
+    <Item id="bcac71f7-22b6-41a4-83a5-e430352c7284" include="HBHJianLiYuanHRUI\HBHJianLiYuanHRUI.ubfuiproj" />
+    <Item id="051595e4-5253-4c23-a318-15ab7f476709" include="HBHJianLiYuanHRBP\HBHJianLiYuanHRBP.ubfbpproj" />
   </ItemGroup>
   <ServiceGroupInfo id="6c2d60cf-0599-44f1-ad1e-030aae6b280b" name="HBHJianLiYuan" displayName="HBHJianLiYuan" description="" help="" fullPath="D:\U9Cust\UFIDA\U9Proj\U9AppCode\U9.VOB.Apps.Cus\CusApp\HBHJianLiYuan\Model\HBHJianLiYuan\HBHJianLiYuan.ubfsln" applicationID="" />
 </Solution>
