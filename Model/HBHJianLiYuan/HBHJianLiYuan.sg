@@ -12,8 +12,8 @@
     <Assembly ID="7170c766-f82d-41bb-abeb-7018386a027d" name="U9.VOB.Cus.HBHJianLiYuan.HRBE" type="BE" path="" />
     <Assembly ID="786a4bb4-3b15-4f9c-86b2-d164e25b1c15" name="U9.VOB.Cus.HBHJianLiYuan.HRUI" type="UI" path="" />
     <Assembly ID="20e01a33-453a-4f0c-8dae-e4e88512d6e1" name="U9.VOB.Cus.HBHJianLiYuan.HRBP" type="BP" path="" />
+    <Assembly ID="7de2413b-40f0-44fa-a339-851ae3df2ed1" name="U9.VOB.Cus.HBHJianLiYuan.HRUIList" type="UI" path="" />
     <Assembly ID="0b6b2d10-9daf-4408-b048-beadc7acfd88" name="HBHJianLiYuanListBP" type="BP" path="" />
     <Assembly ID="20b76885-b04f-4fc3-808f-724b50c278ae" name="HBHJianLiYuanHRQuery" type="" path="" />
-    <Assembly ID="7de2413b-40f0-44fa-a339-851ae3df2ed1" name="U9.VOB.Cus.HBHJianLiYuan.HRUIList" type="UI" path="" />
   </AssemblyGroup>
 </ServiceGroup>

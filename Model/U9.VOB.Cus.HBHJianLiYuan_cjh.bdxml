@@ -11,11 +11,103 @@
             <ReportComponents />
             <PrePlacedMenu />
             <App id="3000" code="0101" shortName="CBO" name="基础设置" uri="">
-                <Pages />
-                <BEComponents />
-                <BPComponents />
+                <Pages>
+                    <Page id="db693037-ea3d-4231-8d44-ba867f52d2ce" code="Cust_DayCheckIn" name="日考勤记录" shortName="" displayName="日考勤记录" description="" title="日考勤记录" uri="Cust_DayCheckIn" topMargine="10" bottomMargine="10" leftMargine="10" rightMargine="10" columnSpace="10" orientation="Vertical" defaultEntity="">
+                        <Columns>
+                            <Column id="12efefbf-5d4e-4f7b-982d-9f4cb90e7b94" code="" name="" shortName="" displayName="" description="" widthProportion="100" heightProportion="0" title="" IsMainRegion="True">
+                                <Parts>
+                                    <Part>1e20c107-239e-49f0-9b31-3606d9e9c47f</Part>
+                                </Parts>
+                            </Column>
+                        </Columns>
+                        <Parts>
+                            <Part id="1e20c107-239e-49f0-9b31-3606d9e9c47f" code="1e20c107-239e-49f0-9b31-3606d9e9c47f" name="DayCheckInUIFormWebPart" shortName="DayCheckInUIFormWebPart" displayName="DayCheckInUIFormWebPart" description="DayCheckInUIFormWebPart" title="日考勤记录" bindedFormID="eff032a7-ce78-48c1-bb3f-f992965caa0d" bindedFormName="DayCheckInUIFormWebPart" height="504" width="992" />
+                        </Parts>
+                        <PartRelations />
+                        <Parameters />
+                    </Page>
+                    <Page id="beda9606-d4e4-41eb-9c08-4c75a03e923e" code="Cust_DayCheckIn_UIList" name="日考勤列表" shortName="" displayName="日考勤列表" description="" title="日考勤列表" uri="Cust_DayCheckIn_UIList" topMargine="10" bottomMargine="10" leftMargine="10" rightMargine="10" columnSpace="10" orientation="Vertical" defaultEntity="">
+                        <Columns>
+                            <Column id="f771b14d-0594-46bf-b3e3-1f65e85fe20d" code="" name="" shortName="" displayName="" description="" widthProportion="100" heightProportion="0" title="" IsMainRegion="True">
+                                <Parts>
+                                    <Part>ccb6c377-6dd7-474e-98e3-327b1bd2dbf1</Part>
+                                </Parts>
+                            </Column>
+                        </Columns>
+                        <Parts>
+                            <Part id="ccb6c377-6dd7-474e-98e3-327b1bd2dbf1" code="ccb6c377-6dd7-474e-98e3-327b1bd2dbf1" name="DayCheckInBListUIFormWebPart" shortName="DayCheckInBListUIFormWebPart" displayName="DayCheckInBListUIFormWebPart" description="DayCheckInBListUIFormWebPart" title="日考勤列表" bindedFormID="85e017eb-b5de-4844-90fa-daee637d1228" bindedFormName="DayCheckInBListUIFormWebPart" height="504" width="992" />
+                        </Parts>
+                        <PartRelations />
+                        <Parameters />
+                    </Page>
+                    <Page id="ee97b361-2b75-4871-93cf-d24cfb601cde" code="Cust_DepartmentTransfer" name="部门调动" shortName="" displayName="部门调动" description="" title="部门调动" uri="Cust_DepartmentTransfer" topMargine="10" bottomMargine="10" leftMargine="10" rightMargine="10" columnSpace="10" orientation="Vertical" defaultEntity="">
+                        <Columns>
+                            <Column id="14775a88-5c20-41d6-ae6d-80f36adb5ac6" code="" name="" shortName="" displayName="" description="" widthProportion="100" heightProportion="0" title="" IsMainRegion="True">
+                                <Parts>
+                                    <Part>eaa09b35-a4d5-40a9-8107-1408dd018c13</Part>
+                                </Parts>
+                            </Column>
+                        </Columns>
+                        <Parts>
+                            <Part id="eaa09b35-a4d5-40a9-8107-1408dd018c13" code="eaa09b35-a4d5-40a9-8107-1408dd018c13" name="DepartmentTransferUIFormWebPart" shortName="DepartmentTransferUIFormWebPart" displayName="DepartmentTransferUIFormWebPart" description="DepartmentTransferUIFormWebPart" title="部门调动" bindedFormID="a6b16b6b-290b-4a08-8e7e-0705df746128" bindedFormName="DepartmentTransferUIFormWebPart" height="504" width="992" />
+                        </Parts>
+                        <PartRelations />
+                        <Parameters />
+                    </Page>
+                    <Page id="64bf0e31-5125-4698-a323-7c3cddec0e7a" code="Cust_DepartmentTransfer_UIList" name="部门调动列表" shortName="" displayName="部门调动列表" description="" title="部门调动列表" uri="Cust_DepartmentTransfer_UIList" topMargine="10" bottomMargine="10" leftMargine="10" rightMargine="10" columnSpace="10" orientation="Vertical" defaultEntity="">
+                        <Columns>
+                            <Column id="adb22715-2377-493e-9290-b2a54d2a01c8" code="" name="" shortName="" displayName="" description="" widthProportion="100" heightProportion="0" title="" IsMainRegion="True">
+                                <Parts>
+                                    <Part>d262d7db-a02c-4941-9174-728ec4cdd9f8</Part>
+                                </Parts>
+                            </Column>
+                        </Columns>
+                        <Parts>
+                            <Part id="d262d7db-a02c-4941-9174-728ec4cdd9f8" code="d262d7db-a02c-4941-9174-728ec4cdd9f8" name="DepartmentTransferBListUIFormWebPart" shortName="DepartmentTransferBListUIFormWebPart" displayName="DepartmentTransferBListUIFormWebPart" description="DepartmentTransferBListUIFormWebPart" title="部门调动列表" bindedFormID="37ab0f67-3e28-4045-8e43-fce68f115ce1" bindedFormName="DepartmentTransferBListUIFormWebPart" height="504" width="992" />
+                        </Parts>
+                        <PartRelations />
+                        <Parameters />
+                    </Page>
+                    <Page id="0bf63b11-ce6e-4913-be87-b83282206f87" code="Cust_TotalPayrollDoc" name="薪资申请汇总表" shortName="" displayName="薪资申请汇总表" description="" title="薪资申请汇总表" uri="Cust_TotalPayrollDoc" topMargine="10" bottomMargine="10" leftMargine="10" rightMargine="10" columnSpace="10" orientation="Vertical" defaultEntity="">
+                        <Columns>
+                            <Column id="1988c3aa-3f11-4f68-a5e9-e066c2814dba" code="" name="" shortName="" displayName="" description="" widthProportion="100" heightProportion="0" title="" IsMainRegion="True">
+                                <Parts>
+                                    <Part>c9b1cfc2-f2e7-479f-bf3b-8e1ed64d5810</Part>
+                                </Parts>
+                            </Column>
+                        </Columns>
+                        <Parts>
+                            <Part id="c9b1cfc2-f2e7-479f-bf3b-8e1ed64d5810" code="c9b1cfc2-f2e7-479f-bf3b-8e1ed64d5810" name="TotalPayrollDocUIFormWebPart" shortName="TotalPayrollDocUIFormWebPart" displayName="TotalPayrollDocUIFormWebPart" description="TotalPayrollDocUIFormWebPart" title="薪资申请汇总表" bindedFormID="fe9fb407-7e59-4dfa-a7dd-c841afbbc35d" bindedFormName="TotalPayrollDocUIFormWebPart" height="504" width="992" />
+                        </Parts>
+                        <PartRelations />
+                        <Parameters />
+                    </Page>
+                    <Page id="8518ebcb-237d-4eb5-a266-8f8565419df6" code="Cust_TotalPayrollDoc_UIList" name="薪资申请汇总列表" shortName="" displayName="薪资申请汇总列表" description="" title="薪资申请汇总列表" uri="Cust_TotalPayrollDoc_UIList" topMargine="10" bottomMargine="10" leftMargine="10" rightMargine="10" columnSpace="10" orientation="Vertical" defaultEntity="">
+                        <Columns>
+                            <Column id="edb47ea6-a372-43a0-9eaa-c64e56762636" code="" name="" shortName="" displayName="" description="" widthProportion="100" heightProportion="0" title="" IsMainRegion="True">
+                                <Parts>
+                                    <Part>2cc32276-35eb-4eb3-b2a3-4055fbebf7ba</Part>
+                                </Parts>
+                            </Column>
+                        </Columns>
+                        <Parts>
+                            <Part id="2cc32276-35eb-4eb3-b2a3-4055fbebf7ba" code="2cc32276-35eb-4eb3-b2a3-4055fbebf7ba" name="TotalPayrollDocBListUIFormWebPart" shortName="TotalPayrollDocBListUIFormWebPart" displayName="TotalPayrollDocBListUIFormWebPart" description="TotalPayrollDocBListUIFormWebPart" title="薪资申请汇总列表" bindedFormID="2432275f-084f-4d70-b3e8-3549622e6379" bindedFormName="TotalPayrollDocBListUIFormWebPart" height="504" width="992" />
+                        </Parts>
+                        <PartRelations />
+                        <Parameters />
+                    </Page>
+                </Pages>
+                <BEComponents>
+                    <BEComponent assemblyName="U9.VOB.Cus.HBHJianLiYuan.HRBE.dll" assemblyID="7170c766-f82d-41bb-abeb-7018386a027d" />
+                </BEComponents>
+                <BPComponents>
+                    <BPComponent assemblyName="U9.VOB.Cus.HBHJianLiYuan.HRBP.dll" assemblyID="20e01a33-453a-4f0c-8dae-e4e88512d6e1" />
+                </BPComponents>
                 <ServiceComponents />
-                <UIComponents />
+                <UIComponents>
+                    <UIComponent assemblyName="U9.VOB.Cus.HBHJianLiYuan.HRUI.WebPart.dll" assemblyID="786a4bb4-3b15-4f9c-86b2-d164e25b1c15" />
+                    <UIComponent assemblyName="U9.VOB.Cus.HBHJianLiYuan.HRUIList.WebPart.dll" assemblyID="7de2413b-40f0-44fa-a339-851ae3df2ed1" />
+                </UIComponents>
                 <WorkflowComponents />
                 <ReportComponents />
                 <PrePlacedMenu />
@@ -198,7 +290,12 @@
                 <UIComponents />
                 <WorkflowComponents />
                 <ReportComponents />
-                <PrePlacedMenu />
+                <PrePlacedMenu>
+                    <Menu id="851fdfb2-985c-4c2a-ba72-102ca5192064" code="851fdfb2-985c-4c2a-ba72-102ca5192064" name="薪资汇总" shortName="new menu" displayName="薪资汇总" description="new menu" image="" isDialog="False" pageURI="" pageParameter="" sequence="0" kind="Task" theApp="">
+                        <Menu id="22f963bf-e907-49be-b067-b2b77796c8c7" code="22f963bf-e907-49be-b067-b2b77796c8c7" name="薪资申请汇总表" shortName="new menu" displayName="薪资申请汇总表" description="new menu" image="" isDialog="False" pageURI="Cust_TotalPayrollDoc" pageParameter="" sequence="0" kind="Task" theApp="" />
+                        <Menu id="dffc4fc9-bccf-4883-88fa-2167127cb454" code="dffc4fc9-bccf-4883-88fa-2167127cb454" name="薪资申请汇总列表" shortName="new menu" displayName="薪资申请汇总列表" description="new menu" image="" isDialog="False" pageURI="Cust_TotalPayrollDoc_UIList" pageParameter="" sequence="1" kind="Task" theApp="" />
+                    </Menu>
+                </PrePlacedMenu>
             </App>
             <App id="3035" code="0303" shortName="BEN" name="福利保险" uri="">
                 <Pages />
@@ -211,55 +308,14 @@
                 <PrePlacedMenu />
             </App>
             <App id="3036" code="0306" shortName="AM" name="考勤管理" uri="">
-                <Pages>
-                    <Page id="0d5743b0-d5aa-4f16-ad55-d8ae4e967acb" code="Cust_DayCheckIn" name="日考勤记录" shortName="" displayName="日考勤记录" description="" title="日考勤记录" uri="Cust_DayCheckIn" topMargine="10" bottomMargine="10" leftMargine="10" rightMargine="10" columnSpace="10" orientation="Vertical" defaultEntity="">
-                        <Columns>
-                            <Column id="62cb7ceb-ebed-47ce-b8fb-e2395dfe5481" code="" name="" shortName="" displayName="" description="" widthProportion="100" heightProportion="0" title="" IsMainRegion="True">
-                                <Parts>
-                                    <Part>5c4ff4a8-57f4-445e-a755-1b437918367c</Part>
-                                </Parts>
-                            </Column>
-                        </Columns>
-                        <Parts>
-                            <Part id="5c4ff4a8-57f4-445e-a755-1b437918367c" code="5c4ff4a8-57f4-445e-a755-1b437918367c" name="DayCheckInUIFormWebPart" shortName="DayCheckInUIFormWebPart" displayName="DayCheckInUIFormWebPart" description="DayCheckInUIFormWebPart" title="日考勤记录" bindedFormID="eff032a7-ce78-48c1-bb3f-f992965caa0d" bindedFormName="DayCheckInUIFormWebPart" height="504" width="992" />
-                        </Parts>
-                        <PartRelations />
-                        <Parameters />
-                    </Page>
-                    <Page id="c1306a71-2800-4455-919a-85a32c7741a9" code="Cust_DayCheckIn_UIList" name="日考勤列表" shortName="" displayName="日考勤列表" description="" title="日考勤列表" uri="Cust_DayCheckIn_UIList" topMargine="10" bottomMargine="10" leftMargine="10" rightMargine="10" columnSpace="10" orientation="Vertical" defaultEntity="">
-                        <Columns>
-                            <Column id="98457f5a-eba3-4106-9e75-aac3f6e5fd7d" code="" name="" shortName="" displayName="" description="" widthProportion="100" heightProportion="0" title="" IsMainRegion="True">
-                                <Parts>
-                                    <Part>d03fbce7-b928-4532-8b0f-4ee88c5be0d0</Part>
-                                </Parts>
-                            </Column>
-                        </Columns>
-                        <Parts>
-                            <Part id="d03fbce7-b928-4532-8b0f-4ee88c5be0d0" code="d03fbce7-b928-4532-8b0f-4ee88c5be0d0" name="DayCheckInBListUIFormWebPart" shortName="DayCheckInBListUIFormWebPart" displayName="DayCheckInBListUIFormWebPart" description="DayCheckInBListUIFormWebPart" title="日考勤列表" bindedFormID="85e017eb-b5de-4844-90fa-daee637d1228" bindedFormName="DayCheckInBListUIFormWebPart" height="504" width="992" />
-                        </Parts>
-                        <PartRelations />
-                        <Parameters />
-                    </Page>
-                </Pages>
-                <BEComponents>
-                    <BEComponent assemblyName="U9.VOB.Cus.HBHJianLiYuan.HRBE.dll" assemblyID="7170c766-f82d-41bb-abeb-7018386a027d" />
-                </BEComponents>
-                <BPComponents>
-                    <BPComponent assemblyName="U9.VOB.Cus.HBHJianLiYuan.HRBP.dll" assemblyID="20e01a33-453a-4f0c-8dae-e4e88512d6e1" />
-                </BPComponents>
+                <Pages />
+                <BEComponents />
+                <BPComponents />
                 <ServiceComponents />
-                <UIComponents>
-                    <UIComponent assemblyName="U9.VOB.Cus.HBHJianLiYuan.HRUI.WebPart.dll" assemblyID="786a4bb4-3b15-4f9c-86b2-d164e25b1c15" />
-                    <UIComponent assemblyName="U9.VOB.Cus.HBHJianLiYuan.HRUIList.WebPart.dll" assemblyID="7de2413b-40f0-44fa-a339-851ae3df2ed1" />
-                </UIComponents>
+                <UIComponents />
                 <WorkflowComponents />
                 <ReportComponents />
-                <PrePlacedMenu>
-                    <Menu id="42386100-04c4-4d60-bab4-8f32fbd980eb" code="42386100-04c4-4d60-bab4-8f32fbd980eb" name="健力源考勤" shortName="new menu" displayName="健力源考勤" description="new menu" image="" isDialog="False" pageURI="" pageParameter="" sequence="0" kind="Task" theApp="">
-                        <Menu id="d4f9d5ed-4a42-4501-b0f4-518c6136909f" code="d4f9d5ed-4a42-4501-b0f4-518c6136909f" name="日考勤记录" shortName="new menu" displayName="日考勤记录" description="new menu" image="" isDialog="False" pageURI="Cust_DayCheckIn" pageParameter="" sequence="0" kind="Task" theApp="" />
-                        <Menu id="8a73a0da-8a7f-4260-a332-b45b8aaa80d7" code="8a73a0da-8a7f-4260-a332-b45b8aaa80d7" name="日考勤列表" shortName="new menu" displayName="日考勤列表" description="new menu" image="" isDialog="False" pageURI="Cust_DayCheckIn_UIList" pageParameter="" sequence="1" kind="Task" theApp="" />
-                    </Menu>
-                </PrePlacedMenu>
+                <PrePlacedMenu />
             </App>
             <App id="3037" code="0307" shortName="PW" name="计件工资" uri="">
                 <Pages />
@@ -271,7 +327,7 @@
                 <ReportComponents />
                 <PrePlacedMenu />
             </App>
-            <App id="3041" code="0301" shortName="HM" name="人事管理" uri="">
+            <App id="3041" code="0301" shortName="HM" name="人员管理" uri="">
                 <Pages />
                 <BEComponents />
                 <BPComponents />
@@ -279,7 +335,12 @@
                 <UIComponents />
                 <WorkflowComponents />
                 <ReportComponents />
-                <PrePlacedMenu />
+                <PrePlacedMenu>
+                    <Menu id="60cd0710-35cb-480a-89ed-c54de974973c" code="60cd0710-35cb-480a-89ed-c54de974973c" name="部门调动" shortName="new menu" displayName="部门调动" description="new menu" image="" isDialog="False" pageURI="" pageParameter="" sequence="0" kind="Task" theApp="">
+                        <Menu id="201eab9c-08a8-4c4c-a7d0-81b0fd100d73" code="201eab9c-08a8-4c4c-a7d0-81b0fd100d73" name="部门调动" shortName="new menu" displayName="部门调动" description="new menu" image="" isDialog="False" pageURI="Cust_DepartmentTransfer" pageParameter="" sequence="0" kind="Task" theApp="" />
+                        <Menu id="1eff2976-be3d-4ae2-b2f9-9ee9203bc383" code="1eff2976-be3d-4ae2-b2f9-9ee9203bc383" name="部门调动列表" shortName="new menu" displayName="部门调动列表" description="new menu" image="" isDialog="False" pageURI="Cust_DepartmentTransfer_UIList" pageParameter="" sequence="1" kind="Task" theApp="" />
+                    </Menu>
+                </PrePlacedMenu>
             </App>
             <App id="3042" code="0304" shortName="LC" name="人员合同" uri="">
                 <Pages />
@@ -300,6 +361,21 @@
                 <WorkflowComponents />
                 <ReportComponents />
                 <PrePlacedMenu />
+            </App>
+            <App id="301101" code="301101" shortName="JLYCheck" name="健力源考勤" uri="">
+                <Pages />
+                <BEComponents />
+                <BPComponents />
+                <ServiceComponents />
+                <UIComponents />
+                <WorkflowComponents />
+                <ReportComponents />
+                <PrePlacedMenu>
+                    <Menu id="b7135407-3eef-46a2-9d2c-dd74c7bf7fae" code="b7135407-3eef-46a2-9d2c-dd74c7bf7fae" name="考勤" shortName="new menu" displayName="考勤" description="new menu" image="" isDialog="False" pageURI="" pageParameter="" sequence="0" kind="Task" theApp="">
+                        <Menu id="f76347fe-ea57-480b-b7ea-4e56b646fac6" code="f76347fe-ea57-480b-b7ea-4e56b646fac6" name="日考勤" shortName="new menu" displayName="日考勤" description="new menu" image="" isDialog="False" pageURI="Cust_DayCheckIn" pageParameter="" sequence="0" kind="Task" theApp="" />
+                        <Menu id="c874897a-1ed9-4a6d-a4cf-9b9792f28725" code="c874897a-1ed9-4a6d-a4cf-9b9792f28725" name="日考勤列表" shortName="new menu" displayName="日考勤列表" description="new menu" image="" isDialog="False" pageURI="Cust_DayCheckIn_UIList" pageParameter="" sequence="1" kind="Task" theApp="" />
+                    </Menu>
+                </PrePlacedMenu>
             </App>
         </App>
         <App id="3012" code="05" shortName="SCM" name="供应链" uri="">
