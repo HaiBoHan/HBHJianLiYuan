@@ -81,6 +81,8 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInUI
                     }
                 }
             }
+
+            RegisterGridItemIDFilterAssociation();
         }
 
         void refDept_ContentChanged(object sender, EventArgs e)
@@ -97,44 +99,7 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInUI
         {
             base.AfterRender(Part, args);
 
-            if (_strongPart.Model.Ship.FocusedRecord != null
-                //&& _strongPart.Model.Ship.FocusedRecord.SaleDept.GetValueOrDefault(-1) > 0
-                )
-            {
-                IUFFldReferenceColumn itemRef = (IUFFldReferenceColumn)DataGrid10.Columns["ItemID"];
-                //if (_strongPart.Model.Views["PR"].FocusedRecord["ReqDepartment"] == null || (long)_strongPart.Model.Views["PR"].FocusedRecord["ReqDepartment"] ==0)
-                //_strongPart.Model.ErrorMessage.Message = "请先选择需求部门";
-                // itemRef.CustomInParams = BaseAction.Symbol_AddCustomFilter + "= ID in (select ItemMaster from U9::VOB::Cus::HBHJianLiYuan::DeptItemSupplierBE::DeptItemSupplierLine where DeptItemSupplier.Department.ID=" + _strongPart.Model.Views["PR"].FocusedRecord["ReqDepartment"] + ")";
-
-                string opath = "Code in (select disLine.ItemMaster.Code from U9::VOB::Cus::HBHJianLiYuan::DeptItemSupplierBE::DeptItemSupplierLine disLine where disLine.DeptItemSupplier.Department.Name='" + _strongPart.Model.Ship.FocusedRecord.SaleDept_Name + "')";
-                //string opath = "Code = '000001'";
-
-                // 特殊参照，用的是这个条件
-                //string custFilter = BaseAction.Symbol_AddCustomFilter + "=";
-                string custFilter = "ItemRefCondition=";
-                if (itemRef.CustomInParams != null
-                    && itemRef.CustomInParams.Contains(custFilter)
-                    )
-                {
-                    itemRef.CustomInParams = itemRef.CustomInParams.Replace(custFilter, custFilter + opath + " and ");
-                }
-                else
-                {
-                    itemRef.CustomInParams = custFilter + opath;
-                }
-
-                string oldItemRef = PubClass.GetString(_strongPart.CurrentState["ItemRefCondition"]);
-                //CurrentState["ItemRefCondition"] = value;
-                if (!PubClass.IsNull(oldItemRef)
-                    )
-                {
-                    _strongPart.CurrentState["ItemRefCondition"] = string.Format("({0}) and ({1})", opath, oldItemRef);
-                }
-                else
-                {
-                    _strongPart.CurrentState["ItemRefCondition"] = opath;
-                }
-            }
+            AddItemRefCondition();
 
             //{
             //    //string orgID = "1001411156753998";
@@ -596,5 +561,99 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInUI
             return null;
         }
 
+        #region ItemID  OnBeforeCellFocusEnter
+
+        private void RegisterGridItemIDFilterAssociation()
+        {
+            AssociationControl associationControl = new AssociationControl();
+            associationControl.SourceServerControl = (this.DataGrid10);
+            associationControl.SourceControl.EventName = "OnBeforeCellFocusEnter";
+            ((UFWebClientGridAdapter)associationControl.SourceControl).FireEventCols.Add("ItemID");
+            ClientCallBackFrm clientCallBackFrm = new ClientCallBackFrm();
+            clientCallBackFrm.DoCustomerAction += (new ClientCallBackFrm.ActionCustomer(this.AppendItemFilterPath));
+            clientCallBackFrm.ParameterControls.Add(this.DataGrid10);
+            clientCallBackFrm.Add(associationControl);
+            _strongPart.Controls.Add(clientCallBackFrm);
+        }
+        private object AppendItemFilterPath(CustomerActionEventArgs args)
+        {
+            //ArrayList arrayList = (ArrayList)args.get_ArgsHash()[UFWebClientGridAdapter.ALL_GRIDDATA_SelectedRows];
+            //ArrayList arrayList2 = args.get_ArgsHash()[this.DataGrid10.get_ClientID()] as ArrayList;
+            //int num = Convert.ToInt32(args.get_ArgsHash()[UFWebClientGridAdapter.FocusRow]);
+            //object result;
+            //if (num < 0 || num >= arrayList2.Count)
+            //{
+            //    result = args;
+            //}
+            //else
+            //{
+            //    Hashtable hashtable = (Hashtable)arrayList2[num];
+            //    int num2 = Convert.ToInt32(args.get_ArgsHash()[UFWebClientGridAdapter.FocusColumn]);
+            //    long num3 = Convert.ToInt64(hashtable["ID"]);
+            //    IUIRecord iUIRecord = this.Model.Ship_ShipLines.FindRecordByFieldValue("ID", num3);
+            //    Ship_ShipLinesRecord ship_ShipLinesRecord = iUIRecord as Ship_ShipLinesRecord;
+            //    if (ship_ShipLinesRecord == null)
+            //    {
+            //        result = args;
+            //    }
+            //    else
+            //    {
+            //        UFWebClientGridAdapter uFWebClientGridAdapter = new UFWebClientGridAdapter(this.DataGrid10);
+            //        string bOMFilterOPath = this.GetBOMFilterOPath(ship_ShipLinesRecord);
+            //        uFWebClientGridAdapter.ResetColumnEditorAttribute("BomIDRef", UFWebClientRefControlAdapter.Attributes_CustomInParams, bOMFilterOPath);
+            //        args.get_ArgsResult().Add(uFWebClientGridAdapter.get_ClientInstanceWithRefCustomInParams());
+            //        result = args;
+            //    }
+            //}
+            //return result;
+            AddItemRefCondition();
+
+            return args;
+        }
+
+        #endregion
+
+        private void AddItemRefCondition()
+        {
+
+            if (_strongPart.Model.Ship.FocusedRecord != null
+                //&& _strongPart.Model.Ship.FocusedRecord.SaleDept.GetValueOrDefault(-1) > 0
+                )
+            {
+                IUFFldReferenceColumn itemRef = (IUFFldReferenceColumn)DataGrid10.Columns["ItemID"];
+                //if (_strongPart.Model.Views["PR"].FocusedRecord["ReqDepartment"] == null || (long)_strongPart.Model.Views["PR"].FocusedRecord["ReqDepartment"] ==0)
+                //_strongPart.Model.ErrorMessage.Message = "请先选择需求部门";
+                // itemRef.CustomInParams = BaseAction.Symbol_AddCustomFilter + "= ID in (select ItemMaster from U9::VOB::Cus::HBHJianLiYuan::DeptItemSupplierBE::DeptItemSupplierLine where DeptItemSupplier.Department.ID=" + _strongPart.Model.Views["PR"].FocusedRecord["ReqDepartment"] + ")";
+
+                string opath = "Code in (select disLine.ItemMaster.Code from U9::VOB::Cus::HBHJianLiYuan::DeptItemSupplierBE::DeptItemSupplierLine disLine where disLine.DeptItemSupplier.Department.Name='" + _strongPart.Model.Ship.FocusedRecord.SaleDept_Name + "')";
+                //string opath = "Code = '000001'";
+
+                // 特殊参照，用的是这个条件
+                //string custFilter = BaseAction.Symbol_AddCustomFilter + "=";
+                string custFilter = "ItemRefCondition=";
+                if (itemRef.CustomInParams != null
+                    && itemRef.CustomInParams.Contains(custFilter)
+                    )
+                {
+                    itemRef.CustomInParams = itemRef.CustomInParams.Replace(custFilter, custFilter + opath + " and ");
+                }
+                else
+                {
+                    itemRef.CustomInParams = custFilter + opath;
+                }
+
+                string oldItemRef = PubClass.GetString(_strongPart.CurrentState["ItemRefCondition"]);
+                //CurrentState["ItemRefCondition"] = value;
+                if (!PubClass.IsNull(oldItemRef)
+                    )
+                {
+                    _strongPart.CurrentState["ItemRefCondition"] = string.Format("({0}) and ({1})", opath, oldItemRef);
+                }
+                else
+                {
+                    _strongPart.CurrentState["ItemRefCondition"] = opath;
+                }
+            }
+        }
     }
 }
