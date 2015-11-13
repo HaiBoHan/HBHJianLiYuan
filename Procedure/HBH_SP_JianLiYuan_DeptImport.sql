@@ -2,12 +2,12 @@
 
 
 
-if exists(select * from sys.objects where name='HBH_SP_JianLiYuan_DayCheckinDeptImport')
+if exists(select * from sys.objects where name='HBH_SP_JianLiYuan_DeptImport')
 -- 如果存在则删掉
-	drop proc HBH_SP_JianLiYuan_DayCheckinDeptImport
+	drop proc HBH_SP_JianLiYuan_DeptImport
 go
 -- 创建存储过程
-create proc HBH_SP_JianLiYuan_DayCheckinDeptImport  (
+create proc HBH_SP_JianLiYuan_DeptImport  (
 @DocHeadID bigint = -1
 --,@ShipLineID bigint =-1
 --,@LotCode varchar(125) = ''
@@ -32,7 +32,7 @@ declare @SysMlFlag varchar(11) = 'zh-CN'
 
 if exists(select name from sys.objects where name = 'HBH_Debug_Param')
 begin
-	declare @Debugger bit = (select top 1 Debugger from HBH_Debug_Param where ProcName = 'HBH_SP_HuaTong_UpdateMoPicklistWhqohQty' or ProcName is null or ProcName = '' order by ProcName desc)
+	declare @Debugger bit = (select top 1 Debugger from HBH_Debug_Param where ProcName = 'HBH_SP_JianLiYuan_DeptImport' or ProcName is null or ProcName = '' order by ProcName desc)
 	if(@Debugger=1)
 	begin	
 		if not exists(select name from sys.objects where name = 'HBH_SPParamRecord')
@@ -48,9 +48,9 @@ begin
 
 		insert into HBH_SPParamRecord
 		(ProcName,ParamName,ParamValue,CreatedOn)
-		select 'HBH_SP_HuaTong_UpdateMoPicklistWhqohQty','@DocHeadID',IsNull(cast(@DocHeadID as varchar(max)),'null'),GETDATE()
-		--union select 'HBH_SP_HuaTong_UpdateMoPicklistWhqohQty','@IsCalcAll',IsNull(cast(@IsCalcAll as varchar(max)),'null'),GETDATE()
-		union select 'HBH_SP_HuaTong_UpdateMoPicklistWhqohQty','ProcSql','exec HBH_SP_HuaTong_UpdateMoPicklistWhqohQty '
+		select 'HBH_SP_JianLiYuan_DeptImport','@DocHeadID',IsNull(cast(@DocHeadID as varchar(max)),'null'),GETDATE()
+		--union select 'HBH_SP_JianLiYuan_DeptImport','@IsCalcAll',IsNull(cast(@IsCalcAll as varchar(max)),'null'),GETDATE()
+		union select 'HBH_SP_JianLiYuan_DeptImport','ProcSql','exec HBH_SP_JianLiYuan_DeptImport '
 				+ IsNull('''' + cast(@DocHeadID as varchar(501)) + '''' ,'null')
 				--+ ',' + IsNull(cast(@IsCalcAll as varchar(501)),'null') 
 			   ,GETDATE()
