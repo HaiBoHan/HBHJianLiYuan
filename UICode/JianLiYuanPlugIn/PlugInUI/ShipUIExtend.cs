@@ -43,7 +43,7 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInUI
             //RegisterGridCellDataChangedCallBack();
 
             // 料品改变Post，自动带出单价(部门、料品-->供应商-->价表行-->价格)
-            Regist_OnChangePostBack_DataGrid10_ItemID();
+            //Regist_OnChangePostBack_DataGrid10_ItemID();
 
             // 部门参照PostBack
             // Card3    TabControl0     TabPage1    SaleDept259
