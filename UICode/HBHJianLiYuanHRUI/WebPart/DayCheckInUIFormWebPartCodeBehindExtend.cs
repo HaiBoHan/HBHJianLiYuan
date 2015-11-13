@@ -267,8 +267,22 @@ namespace DayCheckInUIModel
 
         public void AfterCreateChildControls()
         {
+            //查找对话框。
+            UFIDA.U9.UI.PDHelper.PDFormMessage.ShowConfirmDialog(this.Page, "c1be31b7-e785-4b0f-a6f5-7154b7dbf796", "580", "408", Title, wpFindID.ClientID, this.BtnFind, null);
 
+            // 取得提示信息资源：是否删除当前记录
+            string message = UFIDA.U9.UI.PDHelper.PDResource.GetDeleteConfirmInfo();
+            // 绑定注册弹出对话框到删除按钮 
+            UFIDA.U9.UI.PDHelper.PDFormMessage.ShowDelConfirmDialog(this.Page, message, "", this.BtnDelete);
 
+            // 启用页面个性化 
+            UFIDA.U9.UI.PDHelper.PersonalizationHelper.SetPersonalizationEnable(this, true);
+            // 启用弹性域
+            //UFIDA.U9.UI.PDHelper.FlexFieldHelper.SetDescFlexField(new UFIDA.U9.UI.PDHelper.DescFlexFieldParameter(this.FlexFieldPicker0, this.Model.DayCheckIn),
+            //    new UFIDA.U9.UI.PDHelper.DescFlexFieldParameter(this.DataGrid5, UISceneHelper.GetSegColumnIndex(this.DataGrid5)));
+
+            // 绑定注册弹出对话框
+            UFIDA.U9.UI.PDHelper.PDFormMessage.ShowDelConfirmDialog(this.Page, "导入将情况原有数据，确认导入？", "确认导入", this.BtnDepartImport);
 		
         }
         

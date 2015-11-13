@@ -11,7 +11,7 @@
     <RootNamespace>U9.VOB.Cus.HBHJianLiYuan.HRBP</RootNamespace>
     <NoStandardLibraries>false</NoStandardLibraries>
     <AssemblyName>U9.VOB.Cus.HBHJianLiYuan.HRBP</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <OldToolsVersion>2.0</OldToolsVersion>
@@ -72,10 +72,7 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UFSoft.UBF.Util.DataAccess">
-      <HintPath>..\..\..\..\..\..\..\U9Product\U9.VOB.Product.UBF\UBFStudio\Runtime\UFSoft.UBF.Util.DataAccess.dll</HintPath>
-    </Reference>
-    <Reference Include="UFSoft.UBF.View.Query">
-      <HintPath>..\..\..\..\..\..\..\U9Product\U9.VOB.Product.UBF\UBFStudio\Runtime\UFSoft.UBF.View.Query.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.UBF\UBFStudio\Runtime\UFSoft.UBF.Util.DataAccess.dll</HintPath>
     </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

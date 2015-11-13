@@ -214,7 +214,10 @@ namespace TotalPayrollDocUIModel
 			
 		
 			BtnClose_Click_DefaultImpl(sender,e);
-		}
+        }
+
+        #endregion
+		
 
 		
             
@@ -240,9 +243,19 @@ namespace TotalPayrollDocUIModel
 
         public void AfterCreateChildControls()
         {
+            //查找对话框。
+            UFIDA.U9.UI.PDHelper.PDFormMessage.ShowConfirmDialog(this.Page, "f3740355-ee66-46c3-9efe-c573fd2bacf3", "580", "408", Title, wpFindID.ClientID, this.BtnFind, null);
 
+            // 取得提示信息资源：是否删除当前记录
+            string message = UFIDA.U9.UI.PDHelper.PDResource.GetDeleteConfirmInfo();
+            // 绑定注册弹出对话框到删除按钮 
+            UFIDA.U9.UI.PDHelper.PDFormMessage.ShowDelConfirmDialog(this.Page, message, "", this.BtnDelete);
 
-		
+            // 启用页面个性化 
+            UFIDA.U9.UI.PDHelper.PersonalizationHelper.SetPersonalizationEnable(this, true);
+            // 启用弹性域
+            //UFIDA.U9.UI.PDHelper.FlexFieldHelper.SetDescFlexField(new UFIDA.U9.UI.PDHelper.DescFlexFieldParameter(this.FlexFieldPicker0, this.Model.DayCheckIn),
+            //    new UFIDA.U9.UI.PDHelper.DescFlexFieldParameter(this.DataGrid5, UISceneHelper.GetSegColumnIndex(this.DataGrid5)));
         }
         
         public void AfterEventBind()
@@ -262,8 +275,5 @@ namespace TotalPayrollDocUIModel
 
 
         #endregion
-		
-        #endregion
-		
     }
 }
