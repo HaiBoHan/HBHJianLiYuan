@@ -16,7 +16,7 @@
     </Enum>
     <Diagram id="7878d3bf-1e82-497e-b919-6de86619bb62" name="PubEnum" displayName="PubEnum">
       <Class Editable="True" ID="bf0035d3-f509-4702-9485-68c0e76c1a79" Type="EnumType" ADID="abfaa342-ff05-4e6b-bd98-836d0ddf53a5">
-        <Location X="91" Y="66" />
+        <Location X="90" Y="66" />
         <Size width="120" height="58" />
       </Class>
       <Class Editable="True" ID="f6dcfb5d-afb1-46e0-8169-8af10fec9020" Type="EnumType" ADID="b7d2876b-a029-4c1e-b259-601b03d72265">

@@ -107,6 +107,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\App\UFIDA.U9.CBO.PubSV.Deploy.dll</HintPath>
     </Reference>
+    <Reference Include="UFIDA.U9.CBO.Ref.WhQohSpecialRefUI.WebPart">
+      <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.WebPart\UFIDA.U9.CBO.Ref.WhQohSpecialRefUI.WebPart.dll</HintPath>
+    </Reference>
     <Reference Include="UFIDA.U9.CBO.SCMBE.Deploy">
       <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\App\UFIDA.U9.CBO.SCMBE.Deploy.dll</HintPath>
     </Reference>
@@ -277,6 +280,7 @@
     <Compile Include="RcvUIExtend.cs" />
     <Compile Include="ShipUIExtend.cs" />
     <Compile Include="RcvReturnUIExtend.cs" />
+    <Compile Include="ItemWhQohRefUIExtend.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">

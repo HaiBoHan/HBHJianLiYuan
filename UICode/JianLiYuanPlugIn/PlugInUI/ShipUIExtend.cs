@@ -82,7 +82,8 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInUI
                 }
             }
 
-            RegisterGridItemIDFilterAssociation();
+            //  不用了，不知道跟产品的什么东西冲突，导致，有时候物料放大镜 点击无反应；改为在弹出参照页面做过滤条件吧；
+            //RegisterGridItemIDFilterAssociation();
         }
 
         void refDept_ContentChanged(object sender, EventArgs e)
@@ -561,7 +562,7 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInUI
             return null;
         }
 
-        #region ItemID  OnBeforeCellFocusEnter
+        #region ItemID  OnBeforeCellFocusEnter  不用了，不知道跟产品的什么东西冲突，导致，有时候物料放大镜 点击无反应；改为在弹出参照页面做过滤条件吧；
 
         private void RegisterGridItemIDFilterAssociation()
         {

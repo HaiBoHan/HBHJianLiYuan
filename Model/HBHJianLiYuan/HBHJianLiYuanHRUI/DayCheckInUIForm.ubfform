@@ -273,7 +273,7 @@
           <HeaderCell ID="72ab10b6-835b-44a6-ae3f-bc147b53c709" ColSpan="1" Name="HeaderCell0" OwnerColName="ID0" RowSpan="1" />
           <HeaderCell ID="33cdaf2e-6351-4896-911a-987c02d8fac1" ColSpan="1" Name="HeaderCell1" OwnerColName="DocLineNo0" RowSpan="1" />
           <HeaderCell ID="90279b6c-f781-426b-92dd-43301c3046b4" ColSpan="1" Name="HeaderCell2" OwnerColName="StaffMember0" RowSpan="1" />
-          <HeaderCell ID="89ca62f0-5db8-49fc-9092-036fc4a7d62c" ColSpan="1" Name="HeaderCell3" OwnerColName="CheckType0" RowSpan="1" />
+          <HeaderCell ID="4be511ae-cd80-4aae-be13-d0db115ca05c" ColSpan="1" DisplayName="考勤类别" DisplayNameIndexStr="" DisplayNameResourceID="" DisplaySrcUIFieldID="" DisplaySrcUIViewID="" Name="HeaderCell11" OwnerColName="CheckType0" RowSpan="1" />
           <HeaderCell ID="41538b4d-ba4b-4662-a043-01753bfb9211" ColSpan="1" Name="HeaderCell4" OwnerColName="FullTimeDay0" RowSpan="1" />
           <HeaderCell ID="ad2938b1-51de-4d7e-aff6-1924c15848b1" ColSpan="1" Name="HeaderCell5" OwnerColName="PartTimeDay0" RowSpan="1" />
           <HeaderCell ID="9077362c-fe34-4f9e-a1f2-6bfd66178425" ColSpan="1" Name="HeaderCell6" OwnerColName="HourlyDay0" RowSpan="1" />
@@ -380,7 +380,7 @@
           </FormLink>
           <Events />
         </ReferenceColumn>
-        <DropDownListColumn ID="b097c740-0076-4383-ae5a-73a9709727fa" DefaultValue="-1" DisplayFormat="10.0" Enabled="True" EnumFullName="U9.VOB.Cus.HBHJianLiYuan.CheckTypeEnum" EnumID="3d80b32f-ada2-4ebd-ada4-b0cbb5325bc6" Help="日考勤行.Misc.考勤类别" IsNull="True" IsProperty="False" IsSequence="False" Name="CheckType0" NPos="4" Point="0" UIFieldID="CheckType" UIViewID="DayCheckIn_DayCheckInLine" Visible="True">
+        <DropDownListColumn ID="0b1153a9-acd7-4e6b-b8d7-61e5ef0e7ca0" DefaultValue="0" DisplayFormat="10.0" Enabled="True" EnumFullName="U9.VOB.Cus.HBHJianLiYuan.CheckTypeEnum" EnumID="abfaa342-ff05-4e6b-bd98-836d0ddf53a5" Help="日考勤行.Misc.考勤类别" IsNull="True" IsProperty="False" IsSequence="False" Name="CheckType0" NPos="4" Point="0" UIFieldID="CheckType" UIViewID="DayCheckIn_DayCheckInLine" Visible="True">
           <Events />
         </DropDownListColumn>
         <NumberColumn ID="d26a98a9-c7a7-4d87-b3bf-1536024695ef" DefaultValue="0" DisplayFormat="10.0" Enabled="True" Help="日考勤行.Misc.全日制员工出勤" IsNull="True" IsProperty="False" IsSequence="False" MinValue="0" Name="FullTimeDay0" NPos="5" Point="0" UIFieldID="FullTimeDay" UIViewID="DayCheckIn_DayCheckInLine" Visible="True" Width="120">
