@@ -73,8 +73,8 @@ end
 	left join Base_ProfileValue b on b.Profile=a.ID 
 	where Code='SysLineNo'
 
-	select @CurDate = BusinessDate
-	from Cust_StockupSummary
+	select @CurDate = CheckInDate
+	from [Cust_DayCheckIn]
 	where ID = @DocHeadID
 
 -- 清空所有 明细行
@@ -86,14 +86,19 @@ where [DayCheckIn] = @DocHeadID
 -- CBO.HR.PersonInfo
 -- CBO_Person
 
+If OBJECT_ID('tempdb..#hbh_tmp_DayCheckInLine') is not null
+	Drop Table #hbh_tmp_DayCheckInLine
+
+
+insert into #hbh_tmp_DayCheckInLine
 select 
 	--person.PersonID
 	--,deptTrl.Name
 	--,dept.Code
 	--,arch.*
 	--,person.*
-	checkIn.ID
-	,arch.
+	checkIn.ID as DayCheckIn
+	,person.ID as Person
 from CBO_Person person
 	inner join CBO_EmployeeArchive arch
 	on person.ID = arch.Person
@@ -102,12 +107,36 @@ from CBO_Person person
 	--left join CBO_Department_Trl deptTrl
 	--on dept.ID = deptTrl.ID
 	inner join Cust_DayCheckIn checkIn
-	on arch.Dept = checkin.Dept
+	on arch.Dept = checkin.Department
 where -- person.PersonID = '370211198801212020'
-	checkin.Dept > 0
 	-- and arch.Dept = 
 
-order by
-	person.PersonID
+	checkIn.ID = @DocHeadID
+	and checkin.Department > 0
+	and (arch.EntranceDate is null or arch.EntranceDate <= @CurDate)
+	and (arch.EntranceEndDate is null or arch.EntranceEndDate >= @CurDate)
+
+--order by
+--	person.PersonID
+
+
+
+
+insert into Cust_CheckInLine
+(
+	DayCheckIn
+	,DocLineNo
+	,StaffMember
+	,CheckType
+)select 
+	line.DayCheckIn
+	,(row_number() over (order by ID) * 10)  as DocLineNo
+	,line.Person as StaffMember
+	-- 默认考勤类别 = 空 ，让用户手工必须录入
+	,-1 as CheckType
+from #hbh_tmp_DayCheckInLine line
+
+
+
 
 
