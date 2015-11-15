@@ -371,7 +371,7 @@
                 <WorkflowComponents />
                 <ReportComponents />
                 <PrePlacedMenu>
-                    <Menu id="b7135407-3eef-46a2-9d2c-dd74c7bf7fae" code="b7135407-3eef-46a2-9d2c-dd74c7bf7fae" name="考勤" shortName="new menu" displayName="考勤" description="new menu" image="" isDialog="False" pageURI="" pageParameter="" sequence="0" kind="Task" theApp="">
+                    <Menu id="b7135407-3eef-46a2-9d2c-dd74c7bf7fae" code="b7135407-3eef-46a2-9d2c-dd74c7bf7fae" name="健力源考勤" shortName="new menu" displayName="健力源考勤" description="new menu" image="" isDialog="False" pageURI="" pageParameter="" sequence="0" kind="Task" theApp="">
                         <Menu id="f76347fe-ea57-480b-b7ea-4e56b646fac6" code="f76347fe-ea57-480b-b7ea-4e56b646fac6" name="日考勤" shortName="new menu" displayName="日考勤" description="new menu" image="" isDialog="False" pageURI="Cust_DayCheckIn" pageParameter="" sequence="0" kind="Task" theApp="" />
                         <Menu id="c874897a-1ed9-4a6d-a4cf-9b9792f28725" code="c874897a-1ed9-4a6d-a4cf-9b9792f28725" name="日考勤列表" shortName="new menu" displayName="日考勤列表" description="new menu" image="" isDialog="False" pageURI="Cust_DayCheckIn_UIList" pageParameter="" sequence="1" kind="Task" theApp="" />
                     </Menu>

@@ -235,9 +235,9 @@ namespace DayCheckInUIModel
                 proxy.CheckInIDs.Add(this.Model.DayCheckIn.FocusedRecord.ID);
 
                 proxy.Do();
-
-                this.Action.NavigateAction.Refresh(null);
             }
+
+            this.Action.NavigateAction.Refresh(null);
         }
 
 
@@ -282,7 +282,7 @@ namespace DayCheckInUIModel
             //    new UFIDA.U9.UI.PDHelper.DescFlexFieldParameter(this.DataGrid5, UISceneHelper.GetSegColumnIndex(this.DataGrid5)));
 
             // 绑定注册弹出对话框
-            UFIDA.U9.UI.PDHelper.PDFormMessage.ShowDelConfirmDialog(this.Page, "导入将情况原有数据，确认导入？", "确认导入", this.BtnDepartImport);
+            UFIDA.U9.UI.PDHelper.PDFormMessage.ShowDelConfirmDialog(this.Page, "导入将清空原有行，确认导入？", "确认导入", this.BtnDepartImport);
 		
         }
         

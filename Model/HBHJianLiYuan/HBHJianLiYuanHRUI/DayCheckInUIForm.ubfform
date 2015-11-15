@@ -145,8 +145,10 @@
         <Event EnableEvent="True" EventType="PostBack" IsDataBinding="True" IsDataCollect="True" Name="Click" Parameter="" Template="" />
       </Events>
     </Button>
-    <Button ID="d6c5636a-9de7-44ec-a504-0cfcff4ddf9a" DisplayName="按部门导入" DisplayNameIndexStr="" DisplayNameResourceID="" DisplaySrcType="Custom" DisplaySrcUIFieldID="" DisplaySrcUIViewID="" GridHeight="1" GridWidth="1" GridX="0" GridY="0" Height="20" Name="BtnDepartImport" TabIndex="11" TabStop="True" Width="90" X="10" Y="3">
-      <Events />
+    <Button ID="d6c5636a-9de7-44ec-a504-0cfcff4ddf9a" AccessKey="" DisplayName="按部门导入" DisplayNameIndexStr="" DisplayNameResourceID="" DisplaySrcType="Custom" DisplaySrcUIFieldID="" DisplaySrcUIViewID="" GridHeight="1" GridWidth="1" GridX="0" GridY="0" Height="20" Name="BtnDepartImport" TabIndex="11" TabStop="True" Width="90" X="10" Y="3">
+      <Events>
+        <Event EnableEvent="True" EventType="PostBack" IsDataBinding="True" IsDataCollect="True" Name="Click" Parameter="" Template="" />
+      </Events>
     </Button>
   </Card>
   <Card ID="50d5bd89-f669-4814-994e-ce661a6ce3e6" ChildLabelWidth="60" ChildRefWidth="20" GridBottomMargin="0" GridColumnCount="2" GridColumnSpace="0" GridHeight="1" GridLeftMargin="10" GridRightMargin="10" GridRowCount="3" GridRowSpace="10" GridTopMargin="0" GridWidth="1" GridX="0" GridY="1" Height="421" LayoutType="GridBag" Name="Card4" TabIndex="2" TabStop="False" Width="992" X="0" Y="38">

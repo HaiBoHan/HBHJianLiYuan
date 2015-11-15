@@ -314,6 +314,15 @@
       <Events />
       <RelationControls />
     </FlexFieldPicker>
+    <Label ID="5c1a74a3-6c17-4dd1-b925-a87414b33a10" Enabled="True" GridHeight="1" GridWidth="1" GridX="0" GridY="9" Height="20" IsNull="True" IsSequence="False" Name="lblStatus133" RelationControl="Status133" TabIndex="15" TabStop="True" TitleAlign="Right" TitleLocation="Left" UIFieldID="" UIViewID="" Visible="True" Width="153" X="10" Y="225">
+      <Events />
+      <RelationControls />
+      <Events />
+    </Label>
+    <DropDownList ID="9544afe1-a189-45d0-881e-1f44566c4ac5" DisplayFormat="10.0" Enabled="False" EnumFullName="U9.VOB.HBHCommon.U9CommonBE.DocStatus" EnumID="34af30f0-a7d9-4005-962e-21076f509a72" GridHeight="1" GridWidth="1" GridX="2" GridY="9" Height="20" IsNull="True" IsProperty="False" IsSequence="False" Name="Status133" RelationControl="lblStatus133" TabIndex="16" TabStop="True" TitleAlign="Left" TitleLocation="Left" UIFieldID="Status" UIViewID="DepartmentTransfer" Visible="True" Width="153" X="168" Y="225">
+      <Events />
+      <RelationControls />
+    </DropDownList>
   </Card>
   <Events />
 </View>

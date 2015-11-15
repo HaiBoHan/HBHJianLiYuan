@@ -43,7 +43,7 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInUI
             //RegisterGridCellDataChangedCallBack();
 
             // 料品改变Post，自动带出单价(部门、料品-->供应商-->价表行-->价格)
-            //Regist_OnChangePostBack_DataGrid10_ItemID();
+            Regist_OnChangePostBack_DataGrid10_ItemID();
 
             // 部门参照PostBack
             // Card3    TabControl0     TabPage1    SaleDept259
@@ -414,9 +414,9 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInUI
 
                                         decimal oldPrice = line.FinallyPriceTC.GetValueOrDefault(0);
                                         // 折前价
-                                        line[HBHHelper.DescFlexFieldHelper.DescFlexField_PreDiscountPriceUIField] = price.PreDiscountPrice;
-                                        line[HBHHelper.DescFlexFieldHelper.DescFlexField_DiscountRateUIField] = price.DiscountRate;
-                                        line[HBHHelper.DescFlexFieldHelper.DescFlexField_DiscountLimitUIField] = price.DiscountLimit;
+                                        line[HBHHelper.DescFlexFieldHelper.DescFlexField_PreDiscountPriceUIField] = price.PreDiscountPrice.ToString("G0");
+                                        line[HBHHelper.DescFlexFieldHelper.DescFlexField_DiscountRateUIField] = price.DiscountRate.ToString("G0");
+                                        line[HBHHelper.DescFlexFieldHelper.DescFlexField_DiscountLimitUIField] = price.DiscountLimit.ToString("G0");
                                         // 最终价
                                         line.FinallyPriceTC = price.FinallyPrice;
                                         line.FinallyPrice = price.FinallyPrice;
