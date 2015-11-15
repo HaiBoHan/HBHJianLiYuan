@@ -70,6 +70,11 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup>
+    <Reference Include="U9.VOB.HBHCommon.HBHCommonUI.WebPart">
+      <HintPath>..\..\..\..\..\..\UBFV30\U9.VOB.Product.WebPart\HBHCommon\U9.VOB.HBHCommon.HBHCommonUI.WebPart.dll</HintPath>
+    </Reference>
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="U9.VOB.Cus.HBHJianLiYuan.HRUIList.WebPart.target" />
 </Project>

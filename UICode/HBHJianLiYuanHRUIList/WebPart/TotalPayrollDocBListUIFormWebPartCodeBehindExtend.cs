@@ -40,9 +40,8 @@ namespace TotalPayrollDocBListUIModel
 		private void BtnNew_Click_Extend(object sender, EventArgs  e)
 		{
 			//调用模版提供的默认实现.--默认实现可能会调用相应的Action.
-			
-		
-			BtnNew_Click_DefaultImpl(sender,e);
+            //BtnNew_Click_DefaultImpl(sender,e);
+            U9.VOB.HBHCommon.HBHCommonUI.HBHUIHelper.UIList_BtnNew_Click(this, "TotalPayrollDoc");
 		}	
 		 
 				//BtnDelete_Click...
@@ -103,7 +102,9 @@ namespace TotalPayrollDocBListUIModel
 			
 		
 			DataGrid1_GridRowDbClicked_DefaultImpl(sender,e);
-		}
+        }
+
+        #endregion
 
 		
             
@@ -133,9 +134,16 @@ namespace TotalPayrollDocBListUIModel
         {
 									
 			AfterCreateChildControls_Qry_DefaultImpl();//BE列表自动产生的代码
-		
 
-		
+
+            // 取得提示信息资源：是否删除当前记录
+            string message = UFIDA.U9.UI.PDHelper.PDResource.GetDeleteConfirmInfo();
+            // 绑定注册弹出对话框到删除按钮 
+            UFIDA.U9.UI.PDHelper.PDFormMessage.ShowDelConfirmDialog(this.Page, message, "", this.BtnDelete);
+
+            // 启用页面个性化 
+            UFIDA.U9.UI.PDHelper.PersonalizationHelper.SetPersonalizationEnable(this, true);
+				
         }
         
         public void AfterEventBind()
@@ -156,8 +164,6 @@ namespace TotalPayrollDocBListUIModel
 		}
 
 
-        #endregion
-		
         #endregion
 		
     }

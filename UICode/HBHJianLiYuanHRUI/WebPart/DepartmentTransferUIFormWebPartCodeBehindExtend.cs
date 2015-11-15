@@ -22,6 +22,8 @@ using UFSoft.UBF.UI.Engine;
 using UFSoft.UBF.UI.MD.Runtime;
 using UFSoft.UBF.UI.ActionProcess;
 using UFSoft.UBF.UI.WebControls.ClientCallBack;
+using U9.VOB.Cus.HBHJianLiYuan.Proxy;
+using U9.VOB.HBHCommon.U9CommonBE;
 
 
 
@@ -85,27 +87,27 @@ namespace DepartmentTransferUIModel
 		private void BtnSubmit_Click_Extend(object sender, EventArgs  e)
 		{
 			//调用模版提供的默认实现.--默认实现可能会调用相应的Action.
-			
-		
-			BtnSubmit_Click_DefaultImpl(sender,e);
+            //BtnSubmit_Click_DefaultImpl(sender,e);
+
+            UpdateStatus((int)DocStatusData.Approving);
 		}	
 		 
 				//BtnApprove_Click...
-		private void BtnApprove_Click_Extend(object sender, EventArgs  e)
-		{
-			//调用模版提供的默认实现.--默认实现可能会调用相应的Action.
-			
-		
-			BtnApprove_Click_DefaultImpl(sender,e);
-		}	
+        private void BtnApprove_Click_Extend(object sender, EventArgs e)
+        {
+            //调用模版提供的默认实现.--默认实现可能会调用相应的Action.
+            //BtnApprove_Click_DefaultImpl(sender,e);
+
+            UpdateStatus((int)DocStatusData.Approved);
+        }
 		 
 				//BtnUndoApprove_Click...
 		private void BtnUndoApprove_Click_Extend(object sender, EventArgs  e)
 		{
 			//调用模版提供的默认实现.--默认实现可能会调用相应的Action.
-			
-		
-			BtnUndoApprove_Click_DefaultImpl(sender,e);
+            //BtnUndoApprove_Click_DefaultImpl(sender,e);
+
+            UpdateStatus((int)DocStatusData.Opened);
 		}	
 		 
 				//BtnFind_Click...
@@ -121,10 +123,9 @@ namespace DepartmentTransferUIModel
 		private void BtnList_Click_Extend(object sender, EventArgs  e)
 		{
 			//调用模版提供的默认实现.--默认实现可能会调用相应的Action.
-			
-		
-			BtnList_Click_DefaultImpl(sender,e);
-		}	
+            //BtnList_Click_DefaultImpl(sender,e);
+            U9.VOB.HBHCommon.HBHCommonUI.HBHUIHelper.UIForm_BtnList_Click(this,"DepartmentTransfer");
+		}
 		 
 				//BtnFirstPage_Click...
 		private void BtnFirstPage_Click_Extend(object sender, EventArgs  e)
@@ -268,11 +269,49 @@ namespace DepartmentTransferUIModel
 		}
 
 		public void AfterUIModelBinding()
-		{
+        {
+            DepartmentTransferRecord focusedHead = this.Model.DepartmentTransfer.FocusedRecord;
+
+            if (focusedHead == null)
+                return;
+
+            //U9.VOB.HBHCommon.HBHCommonUI.UISceneHelper.SetToolBarStatus(this.Toolbar2
+            //    , status, focusedHead.DataRecordState, false, 0, 1, 2, 2);
+
+            U9.VOB.HBHCommon.HBHCommonUI.UISceneHelper.SetToolBarStatus(this.Toolbar2
+                , focusedHead.Status ?? (int)DocStatusData.Empty, focusedHead.DataRecordState, false, (int)DocStatusData.Opened, (int)DocStatusData.Approving, (int)DocStatusData.Approved, 1);
 
 
+            //this.BtnSave.Enabled = true;
+
+            this.BtnOk.Visible = false;
+            this.BtnClose.Visible = false;
+            
 		}
 
+
+        #endregion
+
+        #region Customer Method
+
+
+        private void UpdateStatus(int targetStatus)
+        {
+            DepartmentTransferRecord focusedRecord = this.Model.DepartmentTransfer.FocusedRecord;
+
+            if (focusedRecord != null
+                && focusedRecord.ID > 0
+                )
+            {
+                UpdateDeptTransferStatusBPProxy proxy = new UpdateDeptTransferStatusBPProxy();
+                proxy.TargetStatus = targetStatus;
+
+                proxy.HeadIDs = new System.Collections.Generic.List<long>();
+                proxy.HeadIDs.Add(focusedRecord.ID);
+
+                proxy.Do();
+            }
+        }
 
         #endregion
     }

@@ -22,8 +22,8 @@ using UFSoft.UBF.UI.Engine;
 using UFSoft.UBF.UI.MD.Runtime;
 using UFSoft.UBF.UI.ActionProcess;
 using UFSoft.UBF.UI.WebControls.ClientCallBack;
-using U9.VOB.Cus.HBHJianLiYuan.Proxy;
 using System.Collections.Generic;
+using U9.VOB.Cus.HBHJianLiYuan.Proxy;
 
 
 
@@ -123,9 +123,9 @@ namespace DayCheckInUIModel
 		private void BtnList_Click_Extend(object sender, EventArgs  e)
 		{
 			//调用模版提供的默认实现.--默认实现可能会调用相应的Action.
-			
-		
-			BtnList_Click_DefaultImpl(sender,e);
+            //BtnList_Click_DefaultImpl(sender,e);
+            //this.NavigatePage("Cust_DayCheckIn_UIList", null);
+            U9.VOB.HBHCommon.HBHCommonUI.HBHUIHelper.UIForm_BtnList_Click(this, "DayCheckIn");
 		}	
 		 
 				//BtnFirstPage_Click...
@@ -225,19 +225,24 @@ namespace DayCheckInUIModel
             //调用模版提供的默认实现.--默认实现可能会调用相应的Action.
             //BtnDepartImport_Click_DefaultImpl(sender,e);
 
+            this.Model.ClearErrorMessage();
+
             BtnSave_Click_Extend(sender, e);
 
-            if (this.Model.DayCheckIn.FocusedRecord != null)
+            if (!this.Model.ErrorMessage.hasErrorMessage)
             {
-                DepartImportCheckInBPProxy proxy = new DepartImportCheckInBPProxy();
-                proxy.CheckInIDs = new List<long>();
+                if (this.Model.DayCheckIn.FocusedRecord != null)
+                {
+                    DepartImportCheckInBPProxy proxy = new DepartImportCheckInBPProxy();
+                    proxy.CheckInIDs = new List<long>();
 
-                proxy.CheckInIDs.Add(this.Model.DayCheckIn.FocusedRecord.ID);
+                    proxy.CheckInIDs.Add(this.Model.DayCheckIn.FocusedRecord.ID);
 
-                proxy.Do();
+                    proxy.Do();
+                }
+
+                this.Action.NavigateAction.Refresh(null);
             }
-
-            this.Action.NavigateAction.Refresh(null);
         }
 
 
@@ -296,9 +301,21 @@ namespace DayCheckInUIModel
 		}
 
 		public void AfterUIModelBinding()
-		{
+        {
+            DayCheckInRecord focusedHead = this.Model.DayCheckIn.FocusedRecord;
 
+            if (focusedHead == null)
+                return;
 
+            //// 如果保存过，不能修改维度，只能删除重新汇总
+            //if (focusedHead.ID > 0)
+            //{
+            //    this.Department116.Enabled = false;
+            //}
+            //else
+            //{
+            //    this.Department116.Enabled = true;
+            //}
 		}
 
 

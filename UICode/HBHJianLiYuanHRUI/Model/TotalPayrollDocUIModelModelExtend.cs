@@ -5,6 +5,7 @@ using System.Collections;
 using System.Data;
 using UFSoft.UBF.UI.MD.Runtime;
 using UFSoft.UBF.UI.MD.Runtime.Implement;
+using UFIDA.U9.UI.PDHelper;
 
 #endregion
 
@@ -15,6 +16,7 @@ namespace TotalPayrollDocUIModel
         public override  void AfterInitModel()
         {
             //this.Views[0].Fields[0].DefaultValue = thsi.co
+            this.TotalPayrollDoc.FieldPayDate.DefaultValue = PDContext.Current.LoginDate;
         }
         
         //UIModel提交保存之前的校验操作.

@@ -5,7 +5,7 @@
       <Groups>
         <Group id="9f252924-5cb3-4882-a446-6b44e05c6024" name="Key" displayName="Key" description="" help="" />
         <Group id="2a423c0f-daab-4198-a013-81682883f916" name="Sys" displayName="Sys" description="" help="" />
-        <Group id="a475e717-b659-4395-885c-c29edd4e8e69" name="Misc" displayName="Misc" description="" help="" />
+        <Group id="869d8eca-cac4-49fb-b5d0-f06f4f4e1c25" name="Misc" displayName="Misc" description="" help="" />
       </Groups>
       <Attributes>
         <Attribute id="a419f0f7-af0b-47d6-b1a2-0a2cb773ca84" name="ID" displayName="ID" description="" help="部门料品供应商交叉档.Key.ID" dataTypeID="ba391065-6c27-4c82-acc8-b52b1c93a910" isKey="True" defaultValue="" length="8" precise="19" scale="0" isNullable="False" isReadOnly="False" isHide="True" isCalculation="False" valueExpression="" maxValue="" minValue="" sequence="0" isDefaultDimensionAttribute="False" isDefaultMeasureAttribute="False" isGlobalization="False" idGenerator="db" groupName="Key" isEntityKey="False" isEntityData="True" isSystem="True" isBusinessKey="False" isSyncDictionary="False" dictionaryKey="" isExtendCode="False" isQuery="True" isForAsso="True" isModifyControl="False" isDynamic="False" isImpressible="False" isInCache="False" isKeySerializable="False" isColumnDefine="True" isFilterDefine="True" isSortDefine="True" isDefaultColumn="True" forOBAImport="False" />
@@ -41,7 +41,7 @@
       <Groups>
         <Group id="c736a99b-2491-49b4-bfba-41b076ada9de" name="Key" displayName="Key" description="" help="" />
         <Group id="3eac3601-a1f1-4d36-87d3-798e594dacfc" name="Sys" displayName="Sys" description="" help="" />
-        <Group id="eaedf8b4-6bda-47dd-b305-0a53e30e18f6" name="Misc" displayName="Misc" description="" help="" />
+        <Group id="7225f598-a450-4681-bb16-b4f110078c38" name="Misc" displayName="Misc" description="" help="" />
       </Groups>
       <Attributes>
         <Attribute id="de88f01e-e815-4530-8157-222682f6f359" name="ID" displayName="ID" description="" help="部门料品供应商交叉档行.Key.ID" dataTypeID="ba391065-6c27-4c82-acc8-b52b1c93a910" isKey="True" defaultValue="" length="8" precise="19" scale="0" isNullable="False" isReadOnly="False" isHide="True" isCalculation="False" valueExpression="" maxValue="" minValue="" sequence="0" isDefaultDimensionAttribute="False" isDefaultMeasureAttribute="False" isGlobalization="False" idGenerator="db" groupName="Key" isEntityKey="False" isEntityData="True" isSystem="True" isBusinessKey="False" isSyncDictionary="False" dictionaryKey="" isExtendCode="False" isQuery="True" isForAsso="True" isModifyControl="False" isDynamic="False" isImpressible="False" isInCache="False" isKeySerializable="False" isColumnDefine="True" isFilterDefine="True" isSortDefine="True" isDefaultColumn="True" forOBAImport="False" />

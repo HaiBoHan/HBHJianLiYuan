@@ -176,12 +176,12 @@
         <Row Fixed="True" Height="20" Name="Row17" />
         <Row Fixed="True" Height="20" Name="Row15" />
       </Rows>
-      <Label ID="32b88a57-332f-4cb2-828b-aa2356dde69a" Enabled="True" GridHeight="1" GridWidth="1" GridX="0" GridY="1" Height="20" IsNull="True" IsSequence="False" Name="lblPayDate110" RelationControl="PayDate110" TabIndex="0" TabStop="True" TitleAlign="Right" TitleLocation="Left" UIFieldID="" UIViewID="" Visible="True" Width="153" X="0" Y="25">
+      <Label ID="32b88a57-332f-4cb2-828b-aa2356dde69a" Enabled="True" GridHeight="1" GridWidth="1" GridX="0" GridY="0" Height="20" IsNull="True" IsSequence="False" Name="lblPayDate110" RelationControl="PayDate110" TabIndex="0" TabStop="True" TitleAlign="Right" TitleLocation="Left" UIFieldID="" UIViewID="" Visible="True" Width="153" X="0" Y="0">
         <Events />
         <RelationControls />
         <Events />
       </Label>
-      <DatePicker ID="6e5afab3-9eaa-44ab-bd70-2456026f3340" DateTimeFormat="Date" DisplayFormat="17" Enabled="True" GridHeight="1" GridWidth="1" GridX="2" GridY="1" Height="20" IsNull="True" IsProperty="False" IsSequence="False" Name="PayDate110" RelationControl="lblPayDate110" TabIndex="1" TabStop="True" TitleAlign="Left" TitleLocation="Left" UIFieldID="PayDate" UIViewID="TotalPayrollDoc" Visible="True" Width="153" X="158" Y="25">
+      <DatePicker ID="6e5afab3-9eaa-44ab-bd70-2456026f3340" DateTimeFormat="Date" DisplayFormat="17" Enabled="True" GridHeight="1" GridWidth="1" GridX="2" GridY="0" Height="20" IsNull="True" IsProperty="False" IsSequence="False" Name="PayDate110" RelationControl="lblPayDate110" TabIndex="1" TabStop="True" TitleAlign="Left" TitleLocation="Left" UIFieldID="PayDate" UIViewID="TotalPayrollDoc" Visible="True" Width="153" X="158" Y="0">
         <Events />
         <RelationControls />
       </DatePicker>
@@ -189,6 +189,15 @@
         <Events />
         <RelationControls />
       </FlexFieldPicker>
+      <Label ID="bdbfb0d0-21c6-479a-88d9-be843726ac35" Enabled="True" GridHeight="1" GridWidth="1" GridX="0" GridY="2" Height="20" IsNull="True" IsSequence="False" Name="lblMemo110" RelationControl="Memo110" TabIndex="3" TabStop="True" TitleAlign="Right" TitleLocation="Left" UIFieldID="" UIViewID="" Visible="True" Width="153" X="0" Y="50">
+        <Events />
+        <RelationControls />
+        <Events />
+      </Label>
+      <TextBox ID="f6900bba-971c-4d0a-a9bf-ef9e07ec18c1" DisplayFormat="50" Enabled="True" GridHeight="2" GridWidth="1" GridX="2" GridY="1" Height="45" IsNull="True" IsProperty="False" IsSequence="False" MultiLine="True" Name="Memo110" RelationControl="lblMemo110" TabIndex="4" TabStop="True" TextAlign="Left" TextBoxMode="MultiLine" TitleAlign="Left" TitleLocation="Left" UIFieldID="Memo" UIViewID="TotalPayrollDoc" Visible="True" Width="153" X="158" Y="25">
+        <Events />
+        <RelationControls />
+      </TextBox>
     </Card>
     <DataGrid ID="fbf614c3-c7d8-4adb-8916-d00edc5adadd" EditStatus="edit" Enabled="True" GridHeight="2" GridWidth="2" GridX="0" GridY="1" HasSum="False" Height="339" Name="DataGrid5" PageSize="20" Paging="True" TabIndex="2" TabStop="True" Width="972" X="10" Y="82">
       <Events />

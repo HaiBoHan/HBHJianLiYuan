@@ -267,6 +267,15 @@
         <Events />
         <RelationControls />
       </FlexFieldPicker>
+      <Label ID="a096d1fc-e45e-461f-ad0b-89771f592e9a" Enabled="True" GridHeight="1" GridWidth="1" GridX="4" GridY="2" Height="20" IsNull="True" IsSequence="False" Name="lblMemo164" RelationControl="Memo164" TabIndex="7" TabStop="True" TitleAlign="Right" TitleLocation="Left" UIFieldID="" UIViewID="" Visible="True" Width="152" X="331" Y="50">
+        <Events />
+        <RelationControls />
+        <Events />
+      </Label>
+      <TextBox ID="b7ceef0d-4465-49f4-8f78-839e8ec8967b" DisplayFormat="50" Enabled="True" GridHeight="3" GridWidth="1" GridX="6" GridY="0" Height="70" IsNull="True" IsProperty="False" IsSequence="False" MultiLine="True" Name="Memo164" RelationControl="lblMemo164" TabIndex="8" TabStop="True" TextAlign="Left" TextBoxMode="MultiLine" TitleAlign="Left" TitleLocation="Left" UIFieldID="Memo" UIViewID="DayCheckIn" Visible="True" Width="152" X="488" Y="0">
+        <Events />
+        <RelationControls />
+      </TextBox>
     </Card>
     <DataGrid ID="4b366f14-453a-4a3a-9566-52032b4587e5" EditStatus="edit" Enabled="True" GridHeight="2" GridWidth="2" GridX="0" GridY="1" HasSum="False" Height="339" Name="DataGrid5" PageSize="20" Paging="True" TabIndex="2" TabStop="True" Width="972" X="10" Y="82">
       <Events />

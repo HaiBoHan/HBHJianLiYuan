@@ -106,17 +106,16 @@ namespace OperatorRef
 
 		#region 自定义数据初始化加载和数据收集
 		private void OnLoadData_Extend(object sender)
-		{
+        {
+            long deptID = -1;
             object objDeptID = this.NameValues["DeptID"];
             if (objDeptID != null)
             {
-                long deptID = -1;
                 long.TryParse(objDeptID.ToString(), out deptID);
-
-                if (deptID <= 0)
-                {
-                    this.Model.cRef.CurrentFilter.OPath = this.Model.cRef.CurrentFilter.OPath.Replace("@DeptID", "Dept");
-                }
+            }
+            if (deptID <= 0)
+            {
+                this.Model.cRef.CurrentFilter.OPath = this.Model.cRef.CurrentFilter.OPath.Replace("@DeptID", "Dept");
             }
 
 			OnLoadData_DefaultImpl(sender);

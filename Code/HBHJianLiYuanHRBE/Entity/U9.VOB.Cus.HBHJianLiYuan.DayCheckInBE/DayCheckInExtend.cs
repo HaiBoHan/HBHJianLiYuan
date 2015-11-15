@@ -6,6 +6,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
+using UFSoft.UBF.PL;
+using UFSoft.UBF.Business;
 
 #endregion
 
@@ -87,6 +89,24 @@ namespace U9.VOB.Cus.HBHJianLiYuan {
 			base.OnValidate();
 			this.SelfEntityValidator();
 			// TO DO: write your business code here...
+
+            if (this.DepartmentKey == null)
+                throw new BusinessException("部门不可为空!");
+
+
+            DayCheckIn old = DayCheckIn.Finder.Find("Department=@Dept and ID!=@ID and Convert(char(6),CheckInDate,112)=Convert(char(6),@CheckInDate,112)"
+                ,new OqlParam(this.DepartmentKey.ID)
+                ,new OqlParam(this.ID)
+                ,new OqlParam(this.CheckInDate)
+                );
+            if (old != null)
+            {
+                string strMsg = string.Format("存在相同部门[{0}],相同月份[{1}]的考勤记录!"
+                        , this.Department.Name
+                        , this.CheckInDate.ToString("yyyy-MM")
+                        );
+                throw new BusinessException(strMsg);
+            }
 		}
 		#endregion
 		

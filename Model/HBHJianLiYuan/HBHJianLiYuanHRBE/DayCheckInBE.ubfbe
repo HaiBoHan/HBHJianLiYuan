@@ -5,7 +5,7 @@
       <Groups>
         <Group id="b13cf47a-447e-46c1-bfcd-615a1bfeac19" name="Key" displayName="Key" description="" help="" />
         <Group id="6ae66a23-7306-4ff7-8554-c2d3d0134e08" name="Sys" displayName="Sys" description="" help="" />
-        <Group id="e14db3ee-dba4-4491-84e6-cd05a69024f8" name="Misc" displayName="Misc" description="" help="" />
+        <Group id="88c580c8-19af-4862-b4a8-1ff41af06eb2" name="Misc" displayName="Misc" description="" help="" />
       </Groups>
       <Attributes>
         <Attribute id="bfe351c6-c3b9-4d6e-b2f2-e935e9098cf4" name="ID" displayName="ID" description="" help="日考勤.Key.ID" dataTypeID="ba391065-6c27-4c82-acc8-b52b1c93a910" isKey="True" defaultValue="" length="8" precise="19" scale="0" isNullable="False" isReadOnly="False" isHide="True" isCalculation="False" valueExpression="" maxValue="" minValue="" sequence="0" isDefaultDimensionAttribute="False" isDefaultMeasureAttribute="False" isGlobalization="False" idGenerator="db" groupName="Key" isEntityKey="False" isEntityData="True" isSystem="True" isBusinessKey="False" isSyncDictionary="False" dictionaryKey="" isExtendCode="False" isQuery="True" isForAsso="True" isModifyControl="False" isDynamic="False" isImpressible="False" isInCache="False" isKeySerializable="False" isColumnDefine="True" isFilterDefine="True" isSortDefine="True" isDefaultColumn="True" forOBAImport="False" />
@@ -33,7 +33,7 @@
       <Groups>
         <Group id="dc6d642c-f7ee-48e6-887b-d0842f50713e" name="Key" displayName="Key" description="" help="" />
         <Group id="2a1fa4ba-1141-4eaa-959b-ceb870e9419a" name="Sys" displayName="Sys" description="" help="" />
-        <Group id="93af570e-1ead-4df6-87ac-88a5c946e7d9" name="Misc" displayName="Misc" description="" help="" />
+        <Group id="7a018e9b-1894-4dbe-8235-dbea6d04f296" name="Misc" displayName="Misc" description="" help="" />
       </Groups>
       <Attributes>
         <Attribute id="f287c889-0bed-4920-95d3-0b2bab89a0b7" name="ID" displayName="ID" description="" help="日考勤行.Key.ID" dataTypeID="ba391065-6c27-4c82-acc8-b52b1c93a910" isKey="True" defaultValue="" length="8" precise="19" scale="0" isNullable="False" isReadOnly="False" isHide="True" isCalculation="False" valueExpression="" maxValue="" minValue="" sequence="0" isDefaultDimensionAttribute="False" isDefaultMeasureAttribute="False" isGlobalization="False" idGenerator="db" groupName="Key" isEntityKey="False" isEntityData="True" isSystem="True" isBusinessKey="False" isSyncDictionary="False" dictionaryKey="" isExtendCode="False" isQuery="True" isForAsso="True" isModifyControl="False" isDynamic="False" isImpressible="False" isInCache="False" isKeySerializable="False" isColumnDefine="True" isFilterDefine="True" isSortDefine="True" isDefaultColumn="True" forOBAImport="False" />

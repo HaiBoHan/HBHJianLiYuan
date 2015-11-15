@@ -1,5 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project id="20e01a33-453a-4f0c-8dae-e4e88512d6e1" name="HBHJianLiYuanHRBP" displayName="HBHJianLiYuanHRBP" description="U9.VOB.Cus.HBHJianLiYuan.HRBP" help="" type="BP" assemblyName="U9.VOB.Cus.HBHJianLiYuan.HRBP" mapProject="" resourceName="">
+<Project id="20e01a33-453a-4f0c-8dae-e4e88512d6e1" name="HBHJianLiYuanHRBP" displayName="HBHJianLiYuanHRBP" description="U9.VOB.Cus.HBHJianLiYuan.HRBP" help="" type="BP" assemblyName="U9.VOB.Cus.HBHJianLiYuan.HRBP" mapProject="" resourceName="" projectVersion="Normal">
+  <Imports>
+    <Import id="f98aa5aa-bed9-48d4-8a7a-9076a6ffbb3e" name="HBHJianLiYuanHRBE" displayName="HBHJianLiYuanHRBE" description="" help="" componentid="7170c766-f82d-41bb-abeb-7018386a027d" path="..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Metadata\Unconfiged\Metadata\U9.VOB.Cus.HBHJianLiYuan.HRBE.MetaData.dll" type="BE" isRuntime="True" />
+    <Import id="1a81f640-e68f-46f7-b1ae-2da782cf204d" name="HBHJianLiYuanBE" displayName="HBHJianLiYuanBE" description="" help="" componentid="13a5b6db-0dab-4f3a-aeae-7e9af108a7bc" path="..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Metadata\Unconfiged\Metadata\U9.VOB.Cus.HBHJianLiYuan.BE.MetaData.dll" type="BE" isRuntime="True" />
+    <Import id="233c61a3-9edb-4b3f-af82-27b090ef032b" name="HBHCommonUI" displayName="HBHCommonUI" description="" help="" componentid="6a715ed2-9779-4b09-98da-1fed5d15e903" path="..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Metadata\HBHCommon\UI\U9.VOB.HBHCommon.HBHCommonUI.MetaData.dll" type="UI" isRuntime="True" />
+    <Import id="2bb0e3f1-ba29-488d-8e4e-ca95ae9b7956" name="U9CommonBE" displayName="U9CommonBE" description="" help="" componentid="a952c547-7b63-4c00-a775-ee62609639eb" path="..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Metadata\HBHCommon\U9.VOB.HBHCommon.U9CommonBE.MetaData.dll" type="BE" isRuntime="True" />
+  </Imports>
   <SourceControl />
   <ItemGroup>
     <Item id="26b23ae8-ea5e-4ec4-99b8-fe9517e10c64" name="HBHJianLiYuanHRBP.ubfbp" displayName="HBHJianLiYuanHRBP.ubfbp" description="" help="" include="HBHJianLiYuanHRBP.ubfbp" type="BE" />
