@@ -211,49 +211,6 @@
         <UIFilterBar Name="ReferenceFilter" />
         <Events />
       </Reference>
-      <Label ID="bfdbce78-e0e3-45ee-b4b6-bc2682e58614" Enabled="True" GridHeight="1" GridWidth="1" GridX="0" GridY="1" Height="20" IsNull="True" IsSequence="False" Name="lblCurrentOperator104" RelationControl="CurrentOperator104" TabIndex="2" TabStop="True" TitleAlign="Right" TitleLocation="Left" UIFieldID="" UIViewID="" Visible="True" Width="153" X="0" Y="25">
-        <Events />
-        <RelationControls />
-        <Events />
-        <FormLink FormRefID="28c124ba-9e0d-4248-a4c7-58b9e3fe0ea0" FormRefName="OperatorMainUIForm.ubfform" FormRefPath="OperatorMainUIForm.ubfform" FormRefProjectPath="UFIDA.U9.CBO.Pub.Operator.OperatorUI.MetaData.dll" Height="504" IsShowStateBar="True" Name="FormLink1" Width="992">
-          <InParameters>
-            <Parameter ContextID="" ControlID="CurrentOperator104" ControlProperty="Key" ControlType="ReferenceModel" Name="ID" ParameterBindType="Bind2Control" />
-          </InParameters>
-          <OutParameters>
-            <Parameter ContextID="" ControlID="CurrentOperator104" ControlProperty="Key" ControlType="ReferenceModel" Name="ID" />
-            <Parameter ContextID="" ControlID="CurrentOperator104" ControlProperty="Value" ControlType="ReferenceModel" Name="Code" />
-            <Parameter ContextID="" ControlID="CurrentOperator104" ControlProperty="Text" ControlType="ReferenceModel" Name="Name" />
-            <Parameter ContextID="" ControlID="Department116" ControlProperty="Key" ControlType="ReferenceModel" Name="DeptID" />
-            <Parameter ContextID="" ControlID="Department116" ControlProperty="Value" ControlType="ReferenceModel" Name="DeptCode" />
-            <Parameter ContextID="" ControlID="Department116" ControlProperty="Text" ControlType="ReferenceModel" Name="DeptName" />
-            <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="OrgID" />
-            <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="OrgCode" />
-            <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="OrgName" />
-          </OutParameters>
-        </FormLink>
-      </Label>
-      <Reference ID="7bc9515c-fba6-49a1-941a-bc94e56ddec9" CodeAttributeName="Code" CodeField="Code" CodeFieldUIFieldID="CurrentOperator_Code" CodeFieldUIViewID="DayCheckIn" DisplayFormat="19.0" Enabled="True" EntityName="ID" GridHeight="1" GridWidth="1" GridX="2" GridY="1" Height="20" IsNull="True" IsProperty="False" IsSequence="False" Name="CurrentOperator104" NameAttributeName="Name" NameFieldUIFieldID="CurrentOperator_Name" NameFieldUIViewID="DayCheckIn" PkeyField="ID" RefType="47ce95c2-3bce-43fc-ba7e-724988386695" RelationControl="lblCurrentOperator104" TabIndex="3" TabStop="True" TextAlign="Right" TitleAlign="Left" TitleLocation="Left" UIFieldID="CurrentOperator" UIViewID="DayCheckIn" Visible="True" Width="153" WindowHeight="408" WindowWidth="580" X="158" Y="25">
-        <Events />
-        <RelationControls />
-        <ReferenceRelation Action="Clear" ColumnDisplayName="ID" ColumnID="ID" TargetControlType="" TargetID="" TargetProperty="" />
-        <ReferenceRelation Action="Clear" ColumnDisplayName="编码" ColumnID="Code" TargetControlType="" TargetID="" TargetProperty="" />
-        <ReferenceRelation Action="Clear" ColumnDisplayName="名称" ColumnID="Name" TargetControlType="" TargetID="" TargetProperty="" />
-        <ReferenceRelation Action="Clear" ColumnDisplayName="简称" ColumnID="ShortName" TargetControlType="" TargetID="" TargetProperty="" />
-        <ReferenceRelation Action="Clear" ColumnDisplayName="部门ID" ColumnID="Dept_ID" TargetControlType="ReferenceModel" TargetID="Department116" TargetProperty="Key" />
-        <ReferenceRelation Action="Clear" ColumnDisplayName="部门编码" ColumnID="Dept_Code" TargetControlType="ReferenceModel" TargetID="Department116" TargetProperty="Value" />
-        <ReferenceRelation Action="Clear" ColumnDisplayName="部门名称" ColumnID="Dept_Name" TargetControlType="ReferenceModel" TargetID="Department116" TargetProperty="Text" />
-        <ReferenceRelation Action="Clear" ColumnDisplayName="描述" ColumnID="Description" TargetControlType="" TargetID="" TargetProperty="" />
-        <ReferenceRelation Action="Clear" ColumnDisplayName="生效" ColumnID="Effective_IsEffective" TargetControlType="" TargetID="" TargetProperty="" />
-        <ReferenceRelation Action="Clear" ColumnDisplayName="生效日期" ColumnID="Effective_EffectiveDate" TargetControlType="" TargetID="" TargetProperty="" />
-        <ReferenceRelation Action="Clear" ColumnDisplayName="失效日期" ColumnID="Effective_DisableDate" TargetControlType="" TargetID="" TargetProperty="" />
-        <RefNameFields>
-          <RefNameField UIFieldID="Name" />
-        </RefNameFields>
-        <UIFilterBar Name="ReferenceFilter">
-          <Parameter ContextID="" ControlID="Department116" ControlProperty="Key" ControlType="ReferenceModel" Name="DeptID" ParameterBindType="Bind2Control" />
-        </UIFilterBar>
-        <Events />
-      </Reference>
       <Label ID="8f328479-3c75-49d7-88a9-c467cbc47f79" Enabled="True" GridHeight="1" GridWidth="1" GridX="0" GridY="2" Height="20" IsNull="True" IsSequence="False" Name="lblCheckInDate116" RelationControl="CheckInDate116" TabIndex="4" TabStop="True" TitleAlign="Right" TitleLocation="Left" UIFieldID="" UIViewID="" Visible="True" Width="153" X="0" Y="50">
         <Events />
         <RelationControls />
@@ -276,6 +233,23 @@
         <Events />
         <RelationControls />
       </TextBox>
+      <Label ID="12dd1aee-4861-457d-96d1-3a410bddd5d3" Enabled="True" GridHeight="1" GridWidth="1" GridX="0" GridY="1" Height="20" IsNull="True" IsSequence="False" Name="lblCurrentOperator233" RelationControl="CurrentOperator233" TabIndex="9" TabStop="True" TitleAlign="Right" TitleLocation="Left" UIFieldID="" UIViewID="" Visible="True" Width="153" X="0" Y="25">
+        <Events />
+        <RelationControls />
+        <Events />
+      </Label>
+      <Reference ID="c2ea12c4-5a66-463a-946a-ae33437e6040" CodeAttributeName="PersonID" CodeField="PersonID" CodeFieldUIFieldID="CurrentOperator_PersonID" CodeFieldUIViewID="DayCheckIn" DisplayFormat="19.0" Enabled="True" EntityName="ID" GridHeight="1" GridWidth="1" GridX="2" GridY="1" Height="20" IsNull="True" IsProperty="False" IsSequence="False" Name="CurrentOperator233" NameAttributeName="Name" NameFieldUIFieldID="CurrentOperator_Name" NameFieldUIViewID="DayCheckIn" PkeyField="ID" RefType="03788828-6e52-4b9a-a10b-5789d715a4db" RelationControl="lblCurrentOperator233" TabIndex="10" TabStop="True" TextAlign="Right" TitleAlign="Left" TitleLocation="Left" UIFieldID="CurrentOperator" UIViewID="DayCheckIn" Visible="True" Width="153" WindowHeight="408" WindowWidth="580" X="158" Y="25">
+        <Events />
+        <RelationControls />
+        <ReferenceRelation Action="Clear" ColumnDisplayName="ID" ColumnID="ID" TargetControlType="" TargetID="" TargetProperty="" />
+        <ReferenceRelation Action="Clear" ColumnDisplayName="证件号码" ColumnID="PersonID" TargetControlType="" TargetID="" TargetProperty="" />
+        <ReferenceRelation Action="Clear" ColumnDisplayName="姓名" ColumnID="Name" TargetControlType="" TargetID="" TargetProperty="" />
+        <RefNameFields>
+          <RefNameField UIFieldID="Name" />
+        </RefNameFields>
+        <UIFilterBar Name="ReferenceFilter" />
+        <Events />
+      </Reference>
     </Card>
     <DataGrid ID="4b366f14-453a-4a3a-9566-52032b4587e5" EditStatus="edit" Enabled="True" GridHeight="2" GridWidth="2" GridX="0" GridY="1" HasSum="False" Height="339" Name="DataGrid5" PageSize="20" Paging="True" TabIndex="2" TabStop="True" Width="972" X="10" Y="82">
       <Events />

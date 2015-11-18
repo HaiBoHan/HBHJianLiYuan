@@ -5,7 +5,7 @@
       <Groups>
         <Group id="87363161-426c-480d-a26e-aecaac0e7600" name="Key" displayName="Key" description="" help="" />
         <Group id="7407c1cd-e855-454f-b825-7aea9720c492" name="Sys" displayName="Sys" description="" help="" />
-        <Group id="fbd96f57-ff8f-4209-a72b-36a5b14651e1" name="Misc" displayName="Misc" description="" help="" />
+        <Group id="bc7e8893-c398-47a3-adf6-bbf47784dcf9" name="Misc" displayName="Misc" description="" help="" />
       </Groups>
       <Attributes>
         <Attribute id="2b6d3d50-23ea-4b13-8f7d-80fd56ddc05b" name="ID" displayName="ID" description="" help="薪资申请汇总表.Key.ID" dataTypeID="ba391065-6c27-4c82-acc8-b52b1c93a910" isKey="True" defaultValue="" length="8" precise="19" scale="0" isNullable="False" isReadOnly="False" isHide="True" isCalculation="False" valueExpression="" maxValue="" minValue="" sequence="0" isDefaultDimensionAttribute="False" isDefaultMeasureAttribute="False" isGlobalization="False" idGenerator="db" groupName="Key" isEntityKey="False" isEntityData="True" isSystem="True" isBusinessKey="False" isSyncDictionary="False" dictionaryKey="" isExtendCode="False" isQuery="True" isForAsso="True" isModifyControl="False" isDynamic="False" isImpressible="False" isInCache="False" isKeySerializable="False" isColumnDefine="True" isFilterDefine="True" isSortDefine="True" isDefaultColumn="True" forOBAImport="False" />
@@ -29,7 +29,7 @@
       <Groups>
         <Group id="13510c43-e311-4d7e-a2bc-5a8c9e45c7a5" name="Key" displayName="Key" description="" help="" />
         <Group id="01488b5e-aff4-489a-b826-f0a49dd459fd" name="Sys" displayName="Sys" description="" help="" />
-        <Group id="9f7f1e20-5a26-443f-9de2-090fec1d838c" name="Misc" displayName="Misc" description="" help="" />
+        <Group id="fb3933c8-2e18-4207-a74f-47ec009c419b" name="Misc" displayName="Misc" description="" help="" />
       </Groups>
       <Attributes>
         <Attribute id="b9bba5d2-f714-4572-836e-1a229c7506e4" name="ID" displayName="ID" description="" help="薪资申请汇总行.Key.ID" dataTypeID="ba391065-6c27-4c82-acc8-b52b1c93a910" isKey="True" defaultValue="" length="8" precise="19" scale="0" isNullable="False" isReadOnly="False" isHide="True" isCalculation="False" valueExpression="" maxValue="" minValue="" sequence="0" isDefaultDimensionAttribute="False" isDefaultMeasureAttribute="False" isGlobalization="False" idGenerator="db" groupName="Key" isEntityKey="False" isEntityData="True" isSystem="True" isBusinessKey="False" isSyncDictionary="False" dictionaryKey="" isExtendCode="False" isQuery="True" isForAsso="True" isModifyControl="False" isDynamic="False" isImpressible="False" isInCache="False" isKeySerializable="False" isColumnDefine="True" isFilterDefine="True" isSortDefine="True" isDefaultColumn="True" forOBAImport="False" />
@@ -58,7 +58,7 @@
     </Entity>
     <Diagram id="fbe20cf1-bf09-478b-9010-7857a617dc61" name="TotalPayrollDoc" displayName="TotalPayrollDoc">
       <Class Editable="True" ID="9f6e7c0e-92fe-4915-8522-466591b29948" Type="Entity" ADID="7883dcca-92ce-408e-938b-0a4d08fe0202">
-        <Location X="148" Y="98" />
+        <Location X="149" Y="97" />
         <Size width="120" height="58" />
       </Class>
       <Class Editable="True" ID="aae92cf1-1764-424c-b5c8-29017e9ea662" Type="Entity" ADID="eda0f8d1-5a03-4cf6-b278-a6e1914da235">

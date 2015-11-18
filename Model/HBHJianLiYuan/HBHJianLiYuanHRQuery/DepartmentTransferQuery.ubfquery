@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<QueryComponent id="de4097f8-797b-4c5b-9727-062d011eb3c7" name="DepartmentTransferQuery" displayName="DepartmentTransferQuery" description="" help="" QueryType="List" QueryURI="e95fef7a-226c-4009-bb41-355e4b9c0c67" QuerySourceFullName="U9.VOB.Cus.HBHJianLiYuan.DepartmentTransfer" UIViewDragType="DragUp" RefInfoLoadType="Cache">
+  <BasicInfo id="cc4b7c48-1a92-4f34-a00e-1b5b3ea19b76" name="" displayName="" description="" help="" RefToken="" RootDescContextValue="" FilterTabVisible="True" ColumnTabVisible="True" SortTabVisible="True" FilterExpandLevel="3" ColumnExpandLevel="3" SortExpandLevel="3" />
+  <BPRefInfo id="fe84feff-2d1c-400e-86d1-8b759cabbd42" name="" displayName="" description="" help="" ProjectID="" ProjectPath="" BPItemID="" BPOperationID="" DTOID="" BPAgentDll="" BPAgentProxy="" />
+  <UIRefInfo id="d82cde72-096c-4bb6-a546-3d762a940156" name="" displayName="" description="" help="" ProjectID="" ProjectPath="" UIModelItemID="1af9addd-9f58-447d-a1f1-02bbe20b1c2e" UIFormItemID="22eab520-b2e6-49b5-b43b-393e7b7dff98" UIModelID="91eaffe3-2f17-45ee-8d4a-73bd63116a22" />
+  <FilterDefines>
+    <FilterDefine id="b8250d26-9dfc-458c-beae-cd6bdced50fb" name="ChangeType" displayName="ChangeType" description="" help="" ParentName="" Alias="ChangeType" IsFixed="False" IsAllowBlank="True" Visible="True" DescFieldContextValue="" FilterNodeType="Item" DateDisplayType="" RaiseChangedEvent="False" IsBuildWhereStr="True" OperatorList="" />
+    <FilterDefine id="f9183aa0-9b21-4d62-88e8-a625cc599cce" name="ChangedDate" displayName="ChangedDate" description="" help="" ParentName="" Alias="ChangedDate" IsFixed="False" IsAllowBlank="True" Visible="True" DescFieldContextValue="" FilterNodeType="Item" DateDisplayType="DateTime" RaiseChangedEvent="False" IsBuildWhereStr="True" OperatorList="" />
+    <FilterDefine id="06db5601-1e1e-4977-b64b-b038c1b0b013" name="ChangedBeforeDept" displayName="ChangedBeforeDept" description="" help="" ParentName="" Alias="ChangedBeforeDept" IsFixed="False" IsAllowBlank="True" Visible="True" DescFieldContextValue="" FilterNodeType="Item" DateDisplayType="" RaiseChangedEvent="False" IsBuildWhereStr="True" OperatorList="" />
+    <FilterDefine id="d0717d94-424d-431f-b6ee-09a219d46d02" name="ChangedAfterDept" displayName="ChangedAfterDept" description="" help="" ParentName="" Alias="ChangedAfterDept" IsFixed="False" IsAllowBlank="True" Visible="True" DescFieldContextValue="" FilterNodeType="Item" DateDisplayType="" RaiseChangedEvent="False" IsBuildWhereStr="True" OperatorList="" />
+  </FilterDefines>
+  <ColumnDefines>
+    <ColumnDefine id="1cd44bd5-9b76-46dc-9d46-4367e4d91015" name="ChangeType" displayName="ChangeType" description="" help="" ParentName="" Alias="ChangeType" IsFixed="False" Visible="True" DescFieldContextValue="" ZeroIsEmpty="False" DateDisplayType="" Point="2" />
+    <ColumnDefine id="b257c39a-b2a6-4893-8fc0-8ab5c573b177" name="ChangedBeforeDept.Name" displayName="ChangedBeforeDept.Name" description="" help="" ParentName="" Alias="ChangedBeforeDept_Name" IsFixed="False" Visible="True" DescFieldContextValue="" ZeroIsEmpty="False" DateDisplayType="" Point="2" />
+    <ColumnDefine id="2cecaa7e-e3c2-4074-8ea0-76fa93b198df" name="ChangedAfterDept.Name" displayName="ChangedAfterDept.Name" description="" help="" ParentName="" Alias="ChangedAfterDept_Name" IsFixed="False" Visible="True" DescFieldContextValue="" ZeroIsEmpty="False" DateDisplayType="" Point="2" />
+    <ColumnDefine id="bc3cc1d2-8157-4184-b18f-f1cead8c9779" name="ChangedDate" displayName="ChangedDate" description="" help="" ParentName="" Alias="ChangedDate" IsFixed="False" Visible="True" DescFieldContextValue="" ZeroIsEmpty="False" DateDisplayType="DateTime" Point="2" />
+    <ColumnDefine id="ddac531d-291f-4173-ab3e-1fe5a5d1075d" name="Memo" displayName="Memo" description="" help="" ParentName="" Alias="Memo" IsFixed="False" Visible="True" DescFieldContextValue="" ZeroIsEmpty="False" DateDisplayType="" Point="2" />
+    <ColumnDefine id="15b9fe56-0ee2-45d0-9eb3-ebd899de6d8e" name="ApplyMan.Name" displayName="ApplyMan.Name" description="" help="" ParentName="ApplyMan" Alias="ApplyMan_Name" IsFixed="False" Visible="True" DescFieldContextValue="" ZeroIsEmpty="False" DateDisplayType="" Point="2" />
+  </ColumnDefines>
+  <SortDefines>
+    <SortDefine id="3bb3feee-5e30-4774-aed6-bda8b40a0482" name="ChangedDate" displayName="" description="" help="" ParentName="" Alias="ChangedDate" IsFixed="False" Visible="True" DescFieldContextValue="" />
+  </SortDefines>
+  <DefaultCase>
+    <BasicFilters>
+      <BasicFilter id="a7498d86-6260-4216-95c5-f3e403af60cb" name="ChangeType" displayName="变动类型" description="" help="" />
+      <BasicFilter id="ee610ede-f130-40e0-b751-8d0ddb58255e" name="ChangedBeforeDept" displayName="变动前部门" description="" help="" />
+      <BasicFilter id="7353ad04-c2ca-4f51-92e7-7982855da65a" name="ChangedAfterDept" displayName="变动后部门" description="" help="" />
+      <BasicFilter id="4456ac21-6ca0-4e6a-9ea3-d830d051f6b7" name="ChangedDate" displayName="调动日期" description="" help="" />
+    </BasicFilters>
+    <DefaultColumns>
+      <Column id="6f1a53f6-8bfc-4608-99b8-fd8ae27e9843" name="ChangeType" displayName="变动类型" description="" help="" />
+      <Column id="36947cd7-cd22-45c5-ba37-ef6bb738782a" name="ChangedBeforeDept.Name" displayName="变动前部门.名称" description="" help="" />
+      <Column id="d985ad62-09ae-4175-a605-27e25628618b" name="ChangedAfterDept.Name" displayName="变动后部门.名称" description="" help="" />
+      <Column id="2dd21d5a-5d56-46c5-9980-b57af860514f" name="ChangedDate" displayName="调动日期" description="" help="" />
+      <Column id="83d81e0f-ed78-404b-9e10-41ca0a6123e4" name="Memo" displayName="备注" description="" help="" />
+      <Column id="43cdd6a4-038c-423f-9aa6-a2e59329ecf7" name="ApplyMan.Name" displayName="申请人.名称" description="" help="" />
+    </DefaultColumns>
+    <DefaultSorts>
+      <Sort id="e031269f-b1a6-403c-86bd-c757e9a799a7" name="ChangedDate" displayName="" description="" help="" SortType="DESC" />
+    </DefaultSorts>
+  </DefaultCase>
+</QueryComponent>

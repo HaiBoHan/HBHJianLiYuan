@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ReferenceComponent id="038da604-4a02-478c-ac00-29caf99cd534" name="DepartmentTransferFindRef" displayName="部门调动" description="" help="" refType="1" isMultiSelect="False" isDefault="False" isClientReturn="False" width="580" height="408" isBinding="False" displayNameResourceID="" URI="U9.VOB.Cus.HBHJianLiYuan.HRUI.DepartmentTransferFindRef" Classify="" ForMultOrg="False">
+  <References>
+    <Reference id="fd1e2012-bc44-482a-878a-3af2e425c328" name="cRef" displayName="cRef" description="" help="部门调动" refEntityId="af496f03-a5b5-4d6a-a551-e5fcc22d3575" refEntityName="U9.VOB.Cus.HBHJianLiYuan.DepartmentTransfer" refType="1" isMain="False">
+      <RefFields>
+        <RefField id="df90cb05-7051-4889-8318-e8f6e481e2f6" name="ID" displayName="ID" description="" help="部门调动.Key.ID" isKey="True" isEdit="False" isName="False" isVisible="False" isParent="False" sequence="0" length="80" refAttributeName="U9.VOB.Cus.HBHJianLiYuan.DepartmentTransfer:ID" displayNameIndexStr="2" />
+        <RefField id="ce2f40de-ba8b-415f-bd2b-ccaf4daf08f8" name="ChangeType" displayName="变动类型" description="" help="部门调动.Misc.变动类型" isKey="False" isEdit="True" isName="True" isVisible="True" isParent="False" sequence="0" length="80" refAttributeName="U9.VOB.Cus.HBHJianLiYuan.DepartmentTransfer:ChangeType" displayNameIndexStr="2" />
+        <RefField id="9e9dd902-3a59-4609-bc23-5111d66275e6" name="ChangedBeforeDept_Name" displayName="变更前部门" description="" help="部门.Misc.名称" isKey="False" isEdit="False" isName="False" isVisible="True" isParent="False" sequence="0" length="100" refAttributeName="U9.VOB.Cus.HBHJianLiYuan.DepartmentTransfer:ChangedBeforeDept.Name" displayNameIndexStr="" />
+        <RefField id="263d4413-bdfc-46a4-93dd-512c209cd51e" name="ChangedAfterDept_Name" displayName="变更后部门" description="" help="部门.Misc.名称" isKey="False" isEdit="False" isName="False" isVisible="True" isParent="False" sequence="0" length="100" refAttributeName="U9.VOB.Cus.HBHJianLiYuan.DepartmentTransfer:ChangedAfterDept.Name" displayNameIndexStr="" />
+        <RefField id="6d0f0f22-3bb1-47ac-9aec-fc1e63ed75e7" name="ChangedDate" displayName="调动日期" description="" help="部门调动.Misc.调动日期" isKey="False" isEdit="False" isName="False" isVisible="True" isParent="False" sequence="0" length="80" refAttributeName="U9.VOB.Cus.HBHJianLiYuan.DepartmentTransfer:ChangedDate" displayNameIndexStr="2" />
+        <RefField id="06cc6bda-58f6-4866-97ae-c7444ce6454f" name="ApplyMan_Name" displayName="申请人" description="" help="业务员.Misc.名称" isKey="False" isEdit="False" isName="False" isVisible="True" isParent="False" sequence="0" length="80" refAttributeName="U9.VOB.Cus.HBHJianLiYuan.DepartmentTransfer:ApplyMan.Name" displayNameIndexStr="" />
+        <RefField id="41e7662c-a20d-4e6c-81b4-f4d389d4bcb1" name="Memo" displayName="备注" description="" help="部门调动.Misc.备注" isKey="False" isEdit="False" isName="False" isVisible="True" isParent="False" sequence="0" length="80" refAttributeName="U9.VOB.Cus.HBHJianLiYuan.DepartmentTransfer:Memo" displayNameIndexStr="2" />
+      </RefFields>
+      <OrderFields>
+        <OrderField id="25a303a4-c210-429e-b5f0-4fba063efc5e" name="ChangedDate" displayName="调动日期" description="" help="部门调动.Misc.调动日期" direction="1" sequence="0" refAttributeName="U9.VOB.Cus.HBHJianLiYuan.DepartmentTransfer:ChangedDate" />
+        <OrderField id="f5347eae-07f6-43bc-a97e-51b0e3a84964" name="ChangedBeforeDept_Name" displayName="名称" description="" help="部门.Misc.名称" direction="0" sequence="0" refAttributeName="U9.VOB.Cus.HBHJianLiYuan.DepartmentTransfer:ChangedBeforeDept.Name" />
+        <OrderField id="80dce9b6-144e-455c-8e1d-1da962a0138a" name="ChangedAfterDept_Name" displayName="名称1" description="" help="部门.Misc.名称" direction="0" sequence="0" refAttributeName="U9.VOB.Cus.HBHJianLiYuan.DepartmentTransfer:ChangedAfterDept.Name" />
+      </OrderFields>
+      <Filter />
+    </Reference>
+  </References>
+</ReferenceComponent>

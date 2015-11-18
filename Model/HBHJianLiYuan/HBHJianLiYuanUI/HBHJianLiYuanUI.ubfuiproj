@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project id="99f8a4d8-2108-4d7c-8ff4-83a82cc252be" name="HBHJianLiYuanUI" displayName="HBHJianLiYuanUI" description="U9.VOB.Cus.HBHJianLiYuan.PMUI" help="" type="UI" assemblyName="U9.VOB.Cus.HBHJianLiYuan.PMUI" mapProject="" resourceName="">
+<Project id="99f8a4d8-2108-4d7c-8ff4-83a82cc252be" name="HBHJianLiYuanUI" displayName="HBHJianLiYuanUI" description="U9.VOB.Cus.HBHJianLiYuan.PMUI" help="" type="UI" assemblyName="U9.VOB.Cus.HBHJianLiYuan.PMUI" mapProject="" resourceName="" projectVersion="Normal">
   <Imports>
     <Import id="d3f12651-14f7-4f56-8ff7-9906cbc23f08" name="HBHJianLiYuanBE" displayName="HBHJianLiYuanBE" description="" help="" componentid="13a5b6db-0dab-4f3a-aeae-7e9af108a7bc" path="..\..\..\..\..\..\UFIDA\UBFV30\U9.VOB.Product.Metadata\Unconfiged\Metadata\U9.VOB.Cus.HBHJianLiYuan.BE.MetaData.dll" type="BE" isRuntime="True" />
     <Import id="267d2d2b-4aa5-449e-87e0-979c219d6256" name="CBOReferenceUI" displayName="CBOReferenceUI" description="" help="" componentid="2ac4288d-af64-42a9-bbd2-285464e8f707" path="..\..\..\..\..\..\UFIDA\UBFV30\U9.VOB.Product.Metadata\UI\UFIDA.U9.CBO.Ref.CBOReferenceUI.MetaData.dll" type="UI" isRuntime="True" />
@@ -24,5 +24,6 @@
     <Item id="939f8b17-2736-4744-8def-2391d72f7930" name="DepartOrgUIForm.ubfform" displayName="DepartOrgUIForm.ubfform" description="" help="" include="DepartOrgUIForm.ubfform" type="" />
     <Item id="7a3a7e54-9279-418b-af2a-fd7b8bb8f384" name="OperatorRef.ubfref" displayName="OperatorRef.ubfref" description="" help="" include="HBHJianLiYuanRef\OperatorRef.ubfref" type="" />
     <Item id="4f489bca-c4e0-46c6-bddf-7a322fe9ef59" name="PersonRef.ubfref" displayName="PersonRef.ubfref" description="" help="" include="PersonRef.ubfref" type="" />
+    <Item id="dce78bbc-e811-4688-b1d1-1c1fa2148d98" name="EmployeeArchiveRef.ubfref" displayName="EmployeeArchiveRef.ubfref" description="" help="" include="EmployeeArchiveRef.ubfref" type="" />
   </ItemGroup>
 </Project>

@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ReferenceComponent id="c1be31b7-e785-4b0f-a6f5-7154b7dbf796" name="DayCheckInFindRef" displayName="日考勤" description="" help="" refType="1" isMultiSelect="False" isDefault="False" isClientReturn="False" width="580" height="408" isBinding="False" displayNameResourceID="" URI="U9.VOB.Cus.HBHJianLiYuan.HRUI.DayCheckInFindRef" Classify="" ForMultOrg="False">
+  <References>
+    <Reference id="cca92f19-0914-41ff-93cc-00cb59fadad8" name="cRef" displayName="cRef" description="" help="日考勤" refEntityId="cc00309b-67ad-43bd-9ede-0bf3540e899a" refEntityName="U9.VOB.Cus.HBHJianLiYuan.DayCheckIn" refType="1" isMain="False">
+      <RefFields>
+        <RefField id="f56469f0-4c10-4d1f-982b-145d0a00bdb3" name="ID" displayName="ID" description="" help="日考勤.Key.ID" isKey="True" isEdit="False" isName="False" isVisible="False" isParent="False" sequence="0" length="80" refAttributeName="U9.VOB.Cus.HBHJianLiYuan.DayCheckIn:ID" displayNameIndexStr="2" />
+        <RefField id="3ee17bbc-1436-4c6d-bde5-8b946f33a77e" name="Department_Code" displayName="部门编码" description="" help="部门.Misc.编码" isKey="False" isEdit="True" isName="False" isVisible="True" isParent="False" sequence="0" length="80" refAttributeName="U9.VOB.Cus.HBHJianLiYuan.DayCheckIn:Department.Code" displayNameIndexStr="" />
+        <RefField id="65756078-ab1f-4317-9b94-9b4aaf4c7082" name="Department_Name" displayName="部门名称" description="" help="部门.Misc.名称" isKey="False" isEdit="False" isName="True" isVisible="True" isParent="False" sequence="0" length="80" refAttributeName="U9.VOB.Cus.HBHJianLiYuan.DayCheckIn:Department.Name" displayNameIndexStr="" />
+        <RefField id="d7acfb6c-1b93-481b-a7ed-f1b9bb8f2452" name="CheckInDate" displayName="考勤日期" description="" help="日考勤.Misc.考勤日期" isKey="False" isEdit="False" isName="False" isVisible="True" isParent="False" sequence="0" length="80" refAttributeName="U9.VOB.Cus.HBHJianLiYuan.DayCheckIn:CheckInDate" displayNameIndexStr="2" />
+        <RefField id="ec420522-3762-4296-a761-9cebf26a0ddf" name="Memo" displayName="备注" description="" help="日考勤.Misc.备注" isKey="False" isEdit="False" isName="False" isVisible="True" isParent="False" sequence="0" length="220" refAttributeName="U9.VOB.Cus.HBHJianLiYuan.DayCheckIn:Memo" displayNameIndexStr="2" />
+      </RefFields>
+      <OrderFields>
+        <OrderField id="6cd9351d-cd5e-4f86-af16-87cceb821707" name="BusinessDate" displayName="日期" description="" help="日考勤.Misc.日期" direction="1" sequence="0" refAttributeName="U9.VOB.Cus.HBHJianLiYuan.DayCheckIn:BusinessDate" />
+        <OrderField id="e71537ea-a269-40dd-b24d-699837a33b14" name="Department_Code" displayName="编码" description="" help="部门.Misc.编码" direction="0" sequence="0" refAttributeName="U9.VOB.Cus.HBHJianLiYuan.DayCheckIn:Department.Code" />
+        <OrderField id="de104328-e2f3-4c06-96ff-eeebd25e26d4" name="Department_Name" displayName="名称" description="" help="部门.Misc.名称" direction="0" sequence="0" refAttributeName="U9.VOB.Cus.HBHJianLiYuan.DayCheckIn:Department.Name" />
+      </OrderFields>
+      <Filter />
+    </Reference>
+  </References>
+</ReferenceComponent>

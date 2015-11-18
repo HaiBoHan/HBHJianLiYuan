@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<QueryComponent id="3a00e3be-204b-40a8-a3ae-88c60e290c48" name="TotalPayrollDocQuery" displayName="TotalPayrollDocQuery" description="" help="" QueryType="List" QueryURI="8733ffeb-d24b-457d-a9f6-65c23995988c" QuerySourceFullName="U9.VOB.Cus.HBHJianLiYuan.TotalPayrollDoc" UIViewDragType="DragDown" RefInfoLoadType="Cache">
+  <BasicInfo id="0caac512-3d0a-4b2f-b704-46af479c6477" name="" displayName="" description="" help="" RefToken="" RootDescContextValue="" FilterTabVisible="True" ColumnTabVisible="True" SortTabVisible="True" FilterExpandLevel="3" ColumnExpandLevel="3" SortExpandLevel="3" />
+  <BPRefInfo id="3777e841-0c47-4d94-8041-920483a3f3df" name="" displayName="" description="" help="" ProjectID="" ProjectPath="" BPItemID="" BPOperationID="" DTOID="" BPAgentDll="" BPAgentProxy="" />
+  <UIRefInfo id="8e81e322-389c-4ea6-96b3-7b4081256c47" name="" displayName="" description="" help="" ProjectID="" ProjectPath="" UIModelItemID="a33506f2-181e-4e94-8fd6-6aa1bb8f49b6" UIFormItemID="00214818-e29e-4c97-8e0a-8110be812732" UIModelID="96fae97a-5d3d-4ac9-8973-2ef22eafb04c" />
+  <FilterDefines>
+    <FilterDefine id="603f0cad-0657-4caa-af8b-e62186b10c6a" name="PayDate" displayName="PayDate" description="" help="" ParentName="" Alias="PayDate" IsFixed="False" IsAllowBlank="True" Visible="True" DescFieldContextValue="" FilterNodeType="Item" DateDisplayType="DateTime" RaiseChangedEvent="False" IsBuildWhereStr="True" OperatorList="" />
+  </FilterDefines>
+  <ColumnDefines>
+    <ColumnDefine id="b3cb5032-e07e-4ce3-91b2-0d00cf9c0a31" name="PayDate" displayName="PayDate" description="" help="" ParentName="" Alias="PayDate" IsFixed="False" Visible="True" DescFieldContextValue="" ZeroIsEmpty="False" DateDisplayType="DateTime" Point="2" />
+  </ColumnDefines>
+  <SortDefines>
+    <SortDefine id="5f3c125e-468d-46ae-8b07-6aef4df35b9f" name="PayDate" displayName="" description="" help="" ParentName="" Alias="PayDate" IsFixed="False" Visible="True" DescFieldContextValue="" />
+  </SortDefines>
+  <DefaultCase>
+    <DefaultColumns>
+      <Column id="53367214-3034-4f36-bf8d-3719e68fcac6" name="PayDate" displayName="" description="" help="" />
+    </DefaultColumns>
+    <DefaultSorts>
+      <Sort id="13fc1e0f-2175-4aa7-9507-4dc6c01a3bdc" name="PayDate" displayName="" description="" help="" SortType="DESC" />
+    </DefaultSorts>
+  </DefaultCase>
+</QueryComponent>
