@@ -260,6 +260,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DepartmentTransferHelper.cs" />
     <Compile Include="PPLineHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DepartmentHelper.cs" />

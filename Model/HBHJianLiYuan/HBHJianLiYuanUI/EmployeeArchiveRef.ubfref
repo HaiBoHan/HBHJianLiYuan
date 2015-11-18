@@ -6,6 +6,8 @@
         <RefField id="7f40334b-9092-425b-b87a-38157b2ff32e" name="ID" displayName="ID" description="" help="员工工作记录.Key.ID" isKey="True" isEdit="False" isName="False" isVisible="False" isParent="False" sequence="0" length="80" refAttributeName="UFIDA.U9.CBO.HR.Person.EmployeeArchive:ID" displayNameIndexStr="2" />
         <RefField id="54573121-22b4-4bc9-85b3-4266812c0680" name="EmployeeCode" displayName="员工编号" description="" help="员工工作记录.基本.员工编号" isKey="False" isEdit="True" isName="False" isVisible="True" isParent="False" sequence="0" length="80" refAttributeName="UFIDA.U9.CBO.HR.Person.EmployeeArchive:EmployeeCode" displayNameIndexStr="2" />
         <RefField id="2ab30538-ba66-4e62-bda3-946d0ba047cf" name="Name" displayName="人员名称" description="" help="员工工作记录.Hide.人员名称" isKey="False" isEdit="False" isName="True" isVisible="True" isParent="False" sequence="0" length="80" refAttributeName="UFIDA.U9.CBO.HR.Person.EmployeeArchive:Name" displayNameIndexStr="2" />
+        <RefField id="5e4cf391-f5fd-4a22-a8cb-350b2bd76867" name="Dept_ID" displayName="部门ID" description="" help="部门.Key.ID" isKey="False" isEdit="False" isName="False" isVisible="False" isParent="False" sequence="0" length="80" refAttributeName="UFIDA.U9.CBO.HR.Person.EmployeeArchive:Dept.ID" displayNameIndexStr="" />
+        <RefField id="9f2124f8-8499-4dea-bd45-c5209906732d" name="Dept_Code" displayName="部门编码" description="" help="部门.Misc.编码" isKey="False" isEdit="False" isName="False" isVisible="False" isParent="False" sequence="0" length="80" refAttributeName="UFIDA.U9.CBO.HR.Person.EmployeeArchive:Dept.Code" displayNameIndexStr="" />
         <RefField id="765c90e4-96e7-4baa-b1f4-c9ff3d80a177" name="Dept_Name" displayName="部门" description="" help="部门.Misc.名称" isKey="False" isEdit="False" isName="False" isVisible="True" isParent="False" sequence="0" length="80" refAttributeName="UFIDA.U9.CBO.HR.Person.EmployeeArchive:Dept.Name" displayNameIndexStr="0" />
         <RefField id="29ab50bf-22c1-41fb-af3e-55e78863943e" name="Job_Name" displayName="职务" description="" help="职务.基本.名称" isKey="False" isEdit="False" isName="False" isVisible="True" isParent="False" sequence="0" length="80" refAttributeName="UFIDA.U9.CBO.HR.Person.EmployeeArchive:Job.Name" displayNameIndexStr="0" />
         <RefField id="00f6a922-d85b-4e4f-8340-71ffc3aff012" name="Position_Name" displayName="岗位" description="" help="岗位.基本.名称" isKey="False" isEdit="False" isName="False" isVisible="True" isParent="False" sequence="0" length="80" refAttributeName="UFIDA.U9.CBO.HR.Person.EmployeeArchive:Position.Name" displayNameIndexStr="0" />
@@ -14,10 +16,10 @@
         <OrderField id="3c3ac53b-3923-4baf-ac8d-d100e184edc2" name="EmployeeCode" displayName="员工编号" description="" help="员工工作记录.基本.员工编号" direction="0" sequence="0" refAttributeName="UFIDA.U9.CBO.HR.Person.EmployeeArchive:EmployeeCode" />
         <OrderField id="0ee7d9ef-7468-4ce7-95f4-4bbf561c0811" name="Name" displayName="人员名称" description="" help="员工工作记录.Hide.人员名称" direction="0" sequence="0" refAttributeName="UFIDA.U9.CBO.HR.Person.EmployeeArchive:Name" />
       </OrderFields>
-      <Filter>((OwnerOrg.ID="#Context.OrgID#" and Person.HRChangeOrg=0 ) or (WorkingOrg.ID="#Context.OrgID#" and Person.HRChangeOrg=1 ))  and DimissionDate is null and UFIDA::U9::CBO::HR::Person::EmployeeArchive.Dept = @Dept</Filter>
+      <Filter>((OwnerOrg.ID='#Context.OrgID#' and Person.HRChangeOrg=0 ) or (WorkingOrg.ID='#Context.OrgID#' and Person.HRChangeOrg=1 ))  and DimissionDate is null and Dept = @Dept</Filter>
     </Reference>
   </References>
   <RefParameters>
-    <RefParam id="13019851-c4a7-468a-9ba6-8265a096ec2b" name="Dept" displayName="部门" description="" help="" dataType="Int64" defaultValue="" />
+    <RefParam id="be1e223e-c5a7-42a0-87ac-0c1aef9f0934" name="Dept" displayName="部门" description="" help="" dataType="Int64" defaultValue="" />
   </RefParameters>
 </ReferenceComponent>

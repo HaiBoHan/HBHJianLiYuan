@@ -295,6 +295,8 @@ namespace TotalPayrollDocUIModel
                 proxy.HeadIDs.Add(focusedRecord.ID);
 
                 proxy.Do();
+
+                this.Action.NavigateAction.Refresh(null);
             }
         }
 

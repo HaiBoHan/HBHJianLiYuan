@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Text;
 using UFSoft.UBF.PL;
 using UFSoft.UBF.Business;
+using UFIDA.U9.Base;
 
 #endregion
 
@@ -31,7 +32,12 @@ namespace U9.VOB.Cus.HBHJianLiYuan {
 		/// </summary>
 		protected override void OnSetDefaultValue()
 		{
-			base.OnSetDefaultValue();
+            base.OnSetDefaultValue();
+
+            if (this.Org == null)
+            {
+                this.Org = Context.LoginOrg;
+            }
 		}
 		/// <summary>
 		/// before Insert

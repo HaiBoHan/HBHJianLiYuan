@@ -310,6 +310,8 @@ namespace DepartmentTransferUIModel
                 proxy.HeadIDs.Add(focusedRecord.ID);
 
                 proxy.Do();
+
+                this.Action.NavigateAction.Refresh(null);
             }
         }
 
