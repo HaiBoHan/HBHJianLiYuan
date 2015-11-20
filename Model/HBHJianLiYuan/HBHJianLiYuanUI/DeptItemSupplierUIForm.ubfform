@@ -47,6 +47,9 @@
         <Event ActionName="ApproveClick" EnableEvent="True" EventType="PostBack" IsDataBinding="True" IsDataCollect="True" Name="Click" Parameter="ApproveClick" Template=".\UITpls\WebPart\ViewCodeBehindCommon.tpl" />
       </Events>
     </Button>
+    <Button ID="dd494c0a-8541-43eb-a91f-c3a1a241c402" AccessKey="" DisplayName="回收" DisplayNameIndexStr="" DisplayNameResourceID="" DisplaySrcType="Custom" DisplaySrcUIFieldID="" DisplaySrcUIViewID="" GridHeight="1" GridWidth="1" GridX="0" GridY="0" Height="28" Name="BtnRecovery" TabIndex="25" TabStop="True" Visible="False" Width="35" X="261" Y="0">
+      <Events />
+    </Button>
     <Button ID="b98e1d7f-8de8-4bad-9417-7b6b18854f88" DisplayName="" DisplayNameResourceID="ae796775-bce3-4aed-89a9-20eaa4648a67" DisplaySrcType="PublicResource" Height="28" Name="BtnUndoApprove" TabIndex="10" TabStop="True" Width="35" X="261" Y="0">
       <Events />
     </Button>

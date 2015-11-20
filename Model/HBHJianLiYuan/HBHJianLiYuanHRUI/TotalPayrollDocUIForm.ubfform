@@ -47,55 +47,60 @@
         <Event ActionName="ApproveClick" EnableEvent="True" EventType="PostBack" IsDataBinding="True" IsDataCollect="True" Name="Click" Parameter="ApproveClick" Template=".\UITpls\WebPart\ViewCodeBehindCommon.tpl" />
       </Events>
     </Button>
-    <Button ID="ffb71070-77aa-4df2-b462-04db438befa2" AccessKey="" DisplayName="" DisplayNameResourceID="ae796775-bce3-4aed-89a9-20eaa4648a67" DisplaySrcType="PublicResource" Height="28" Name="BtnUndoApprove" TabIndex="10" TabStop="True" Width="35" X="261" Y="0">
+    <Button ID="f0356d35-fc77-478e-aca6-f9f1a60d88b7" AccessKey="" DisplayName="回收" DisplayNameIndexStr="" DisplayNameResourceID="" DisplaySrcType="Custom" DisplaySrcUIFieldID="" DisplaySrcUIViewID="" Height="28" Name="BtnRecovery" TabIndex="25" TabStop="True" Width="35" X="261" Y="0">
       <Events>
         <Event EnableEvent="True" EventType="PostBack" IsDataBinding="True" IsDataCollect="True" Name="Click" Parameter="" Template="" />
       </Events>
     </Button>
-    <Separator ID="ae2aaf72-e4fc-46d2-a19d-259072a8b300" Height="28" Name="Separator2" TabIndex="11" TabStop="True" Width="8" X="296" Y="0" />
-    <Button ID="c28ddfd5-15ee-46f7-865c-fb5276323880" AccessKey="F" DisplayNameResourceID="27621430-7bc7-4c0e-979e-f0108439d13e" DisplaySrcType="PublicResource" Height="28" Name="BtnFind" TabIndex="12" TabStop="True" Width="35" X="304" Y="0">
+    <Button ID="ffb71070-77aa-4df2-b462-04db438befa2" AccessKey="" DisplayName="" DisplayNameResourceID="ae796775-bce3-4aed-89a9-20eaa4648a67" DisplaySrcType="PublicResource" Height="28" Name="BtnUndoApprove" TabIndex="10" TabStop="True" Width="35" X="296" Y="0">
+      <Events>
+        <Event EnableEvent="True" EventType="PostBack" IsDataBinding="True" IsDataCollect="True" Name="Click" Parameter="" Template="" />
+      </Events>
+    </Button>
+    <Separator ID="ae2aaf72-e4fc-46d2-a19d-259072a8b300" Height="28" Name="Separator2" TabIndex="11" TabStop="True" Width="8" X="331" Y="0" />
+    <Button ID="c28ddfd5-15ee-46f7-865c-fb5276323880" AccessKey="F" DisplayNameResourceID="27621430-7bc7-4c0e-979e-f0108439d13e" DisplaySrcType="PublicResource" Height="28" Name="BtnFind" TabIndex="12" TabStop="True" Width="35" X="339" Y="0">
       <Events>
         <Event ActionName="FindClick" EnableEvent="True" EventType="PostBack" IsDataBinding="True" IsDataCollect="True" Name="Click" Parameter="FindClick" Template=".\UITpls\WebPart\ViewCodeBehindCommon.tpl" />
       </Events>
     </Button>
-    <Button ID="1d81ebde-5e87-4a8b-89a5-1107a4b0fa46" AccessKey="L" DisplayNameResourceID="c639596b-5a8c-4fc1-88bb-a3d670cda992" DisplaySrcType="PublicResource" Height="28" Name="BtnList" TabIndex="13" TabStop="True" Width="35" X="339" Y="0">
+    <Button ID="1d81ebde-5e87-4a8b-89a5-1107a4b0fa46" AccessKey="L" DisplayNameResourceID="c639596b-5a8c-4fc1-88bb-a3d670cda992" DisplaySrcType="PublicResource" Height="28" Name="BtnList" TabIndex="13" TabStop="True" Width="35" X="374" Y="0">
       <Events>
         <Event ActionName="ListClick" EnableEvent="True" EventType="PostBack" IsDataBinding="True" IsDataCollect="True" Name="Click" Parameter="ListClick" Template=".\UITpls\WebPart\ViewCodeBehindCommon.tpl" />
       </Events>
     </Button>
-    <Separator ID="0d682548-ee87-4def-a679-86d747a8ff48" Height="28" Name="Separator3" TabIndex="14" TabStop="True" Width="8" X="374" Y="0" />
-    <Button ID="6b127d00-3615-4831-806a-ee75ca4422e6" AccessKey="[" DisplayNameResourceID="f229e163-fcd1-4f6a-a645-df86c0efd8ec" DisplaySrcType="PublicResource" Height="28" Name="BtnFirstPage" TabIndex="15" TabStop="True" Width="35" X="382" Y="0">
+    <Separator ID="0d682548-ee87-4def-a679-86d747a8ff48" Height="28" Name="Separator3" TabIndex="14" TabStop="True" Width="8" X="409" Y="0" />
+    <Button ID="6b127d00-3615-4831-806a-ee75ca4422e6" AccessKey="[" DisplayNameResourceID="f229e163-fcd1-4f6a-a645-df86c0efd8ec" DisplaySrcType="PublicResource" Height="28" Name="BtnFirstPage" TabIndex="15" TabStop="True" Width="35" X="417" Y="0">
       <Events>
         <Event ActionName="FirstPage" EnableEvent="True" EventType="PostBack" IsDataBinding="True" IsDataCollect="True" Name="Click" Parameter="FirstPage" Template=".\UITpls\WebPart\ViewCodeBehindCommon.tpl" />
       </Events>
     </Button>
-    <Button ID="d9dfadc9-00d4-4793-8ea3-664c59836903" AccessKey="," DisplayNameResourceID="5ed368d8-7616-4696-b671-3f1c895f3b43" DisplaySrcType="PublicResource" Height="28" Name="BtnPrevPage" TabIndex="16" TabStop="True" Width="35" X="417" Y="0">
+    <Button ID="d9dfadc9-00d4-4793-8ea3-664c59836903" AccessKey="," DisplayNameResourceID="5ed368d8-7616-4696-b671-3f1c895f3b43" DisplaySrcType="PublicResource" Height="28" Name="BtnPrevPage" TabIndex="16" TabStop="True" Width="35" X="452" Y="0">
       <Events>
         <Event ActionName="PrevPage" EnableEvent="True" EventType="PostBack" IsDataBinding="True" IsDataCollect="True" Name="Click" Parameter="PrevPage" Template=".\UITpls\WebPart\ViewCodeBehindCommon.tpl" />
       </Events>
     </Button>
-    <Button ID="c6504ca4-5689-457e-827f-a8d15122700c" AccessKey="." DisplayNameResourceID="36afec41-957c-493a-97a4-eddb136af5b4" DisplaySrcType="PublicResource" Height="28" Name="BtnNextPage" TabIndex="17" TabStop="True" Width="35" X="452" Y="0">
+    <Button ID="c6504ca4-5689-457e-827f-a8d15122700c" AccessKey="." DisplayNameResourceID="36afec41-957c-493a-97a4-eddb136af5b4" DisplaySrcType="PublicResource" Height="28" Name="BtnNextPage" TabIndex="17" TabStop="True" Width="35" X="487" Y="0">
       <Events>
         <Event ActionName="NextPage" EnableEvent="True" EventType="PostBack" IsDataBinding="True" IsDataCollect="True" Name="Click" Parameter="NextPage" Template=".\UITpls\WebPart\ViewCodeBehindCommon.tpl" />
       </Events>
     </Button>
-    <Button ID="dc445f8b-a536-4a6b-90b5-ad908b61aa18" AccessKey="]" DisplayNameResourceID="dc4a37d1-35de-4016-81dd-582aef3cdeb0" DisplaySrcType="PublicResource" Height="28" Name="BtnLastPage" TabIndex="18" TabStop="True" Width="35" X="487" Y="0">
+    <Button ID="dc445f8b-a536-4a6b-90b5-ad908b61aa18" AccessKey="]" DisplayNameResourceID="dc4a37d1-35de-4016-81dd-582aef3cdeb0" DisplaySrcType="PublicResource" Height="28" Name="BtnLastPage" TabIndex="18" TabStop="True" Width="35" X="522" Y="0">
       <Events>
         <Event ActionName="LastPage" EnableEvent="True" EventType="PostBack" IsDataBinding="True" IsDataCollect="True" Name="Click" Parameter="LastPage" Template=".\UITpls\WebPart\ViewCodeBehindCommon.tpl" />
       </Events>
     </Button>
-    <Separator ID="e5956b9b-24f1-41e1-bc77-4a23c528f82d" Height="28" Name="Separator4" TabIndex="19" TabStop="True" Width="8" X="522" Y="0" />
-    <Button ID="a1154483-7d7d-428c-ad0b-dedd9172418c" AccessKey="A" DisplayNameResourceID="92ccef79-ad54-438c-a16e-20a4fd407b97" DisplaySrcType="PublicResource" Height="28" Name="BtnAttachment" TabIndex="20" TabStop="True" Width="35" X="530" Y="0">
+    <Separator ID="e5956b9b-24f1-41e1-bc77-4a23c528f82d" Height="28" Name="Separator4" TabIndex="19" TabStop="True" Width="8" X="557" Y="0" />
+    <Button ID="a1154483-7d7d-428c-ad0b-dedd9172418c" AccessKey="A" DisplayNameResourceID="92ccef79-ad54-438c-a16e-20a4fd407b97" DisplaySrcType="PublicResource" Height="28" Name="BtnAttachment" TabIndex="20" TabStop="True" Width="35" X="565" Y="0">
       <Events>
         <Event ActionName="AttachmentClick" EnableEvent="True" EventType="PostBack" IsDataBinding="True" IsDataCollect="True" Name="Click" Parameter="AttachmentClick" Template=".\UITpls\WebPart\ViewCodeBehindCommon.tpl" />
       </Events>
     </Button>
-    <Button ID="445e9ff1-d9d6-4073-bfca-dc97692cf98e" AccessKey="F" DisplayNameResourceID="e222698c-ae3c-470a-8053-1b69905c510a" DisplaySrcType="PublicResource" Height="28" Name="BtnFlow" TabIndex="21" TabStop="True" Width="35" X="565" Y="0">
+    <Button ID="445e9ff1-d9d6-4073-bfca-dc97692cf98e" AccessKey="F" DisplayNameResourceID="e222698c-ae3c-470a-8053-1b69905c510a" DisplaySrcType="PublicResource" Height="28" Name="BtnFlow" TabIndex="21" TabStop="True" Width="35" X="600" Y="0">
       <Events>
         <Event ActionName="FlowClick" EnableEvent="True" EventType="PostBack" IsDataBinding="True" IsDataCollect="True" Name="Click" Parameter="FlowClick" Template=".\UITpls\WebPart\ViewCodeBehindCommon.tpl" />
       </Events>
     </Button>
-    <Separator ID="0f4992bb-0ffc-40a1-bc71-1d98d78d3b33" Height="28" Name="Separator5" TabIndex="22" TabStop="True" Width="8" X="600" Y="0" />
+    <Separator ID="0f4992bb-0ffc-40a1-bc71-1d98d78d3b33" Height="28" Name="Separator5" TabIndex="22" TabStop="True" Width="8" X="635" Y="0" />
     <Button ID="334a34a4-277d-4554-9cd2-8085820bf668" AccessKey="O" DisplayNameResourceID="688fd549-5a92-49cc-8072-6d5377f6409a" DisplaySrcType="PublicResource" GridHeight="1" GridWidth="1" GridX="0" GridY="0" Height="28" Name="BtnOutput" TabIndex="23" TabStop="True" Visible="False" Width="35" X="608" Y="0">
       <Events>
         <Event ActionName="OutputClick" EnableEvent="True" EventType="PostBack" IsDataBinding="True" IsDataCollect="True" Name="Click" Parameter="OutputClick" Template=".\UITpls\WebPart\ViewCodeBehindCommon.tpl" />
@@ -109,27 +114,27 @@
   </Toolbar>
   <Card ID="d9fc48e9-2675-4920-bebc-092d912b5291" ChildLabelWidth="60" ChildRefWidth="20" FunctionBar="FunctionBar" GridBottomMargin="2" GridColumnCount="22" GridColumnSpace="0" GridHeight="1" GridLeftMargin="10" GridRightMargin="10" GridRowCount="1" GridRowSpace="5" GridTopMargin="3" GridWidth="1" GridX="0" GridY="2" Height="25" LayoutType="GridBag" Name="Card0" TabIndex="3" TabStop="False" Width="992" X="0" Y="469">
     <Columns>
-      <Column Fixed="True" Name="Column0" Type="Spacing" Width="80" />
+      <Column Fixed="True" Name="Column0" Type="Title" Width="80" />
       <Column Fixed="True" Name="Column1" Type="Spacing" Width="10" />
-      <Column Fixed="True" Name="Column2" Type="Spacing" Width="80" />
+      <Column Fixed="True" Name="Column2" Type="Title" Width="80" />
       <Column Fixed="True" Name="Column3" Type="Spacing" Width="10" />
-      <Column Fixed="True" Name="Column4" Type="Spacing" Width="80" />
+      <Column Fixed="True" Name="Column4" Type="Title" Width="80" />
       <Column Fixed="True" Name="Column5" Type="Spacing" Width="10" />
-      <Column Fixed="True" Name="Column6" Type="Spacing" Width="80" />
+      <Column Fixed="True" Name="Column6" Type="Title" Width="80" />
       <Column Fixed="True" Name="Column13" Type="Spacing" Width="10" />
-      <Column Fixed="True" Name="Column12" Type="Spacing" Width="80" />
+      <Column Fixed="True" Name="Column12" Type="Title" Width="80" />
       <Column Fixed="True" Name="Column11" Type="Spacing" Width="10" />
-      <Column Fixed="True" Name="Column10" Type="Spacing" Width="80" />
+      <Column Fixed="True" Name="Column10" Type="Title" Width="80" />
       <Column Fixed="True" Name="Column9" Type="Spacing" Width="11" />
-      <Column Fixed="True" Name="Column19" Type="Spacing" Width="79" />
+      <Column Fixed="True" Name="Column19" Type="Title" Width="79" />
       <Column Fixed="True" Name="Column18" Type="Spacing" Width="10" />
-      <Column Fixed="True" Name="Column17" Type="Spacing" Width="80" />
+      <Column Fixed="True" Name="Column17" Type="Title" Width="80" />
       <Column Fixed="True" Name="Column21" Type="Spacing" Width="10" />
       <Column Fixed="True" Name="Column22" Type="Value" Width="71" />
       <Column Fixed="True" Name="Column16" Type="Spacing" Width="10" />
-      <Column Fixed="True" Name="Column15" Type="Spacing" Width="80" />
+      <Column Fixed="True" Name="Column15" Type="Title" Width="80" />
       <Column Fixed="True" Name="Column14" Type="Spacing" Width="10" />
-      <Column Fixed="True" Name="Column7" Type="Spacing" Width="80" />
+      <Column Fixed="True" Name="Column7" Type="Title" Width="80" />
       <Column Fixed="False" Name="Column8" Type="Spacing" Width="1" />
     </Columns>
     <Rows>
@@ -141,6 +146,11 @@
       </Events>
     </Button>
     <Button ID="df1223ca-bcda-40a0-a906-ad8f60e543ba" AccessKey="" DisplayNameResourceID="020a5365-8f12-4970-b8df-17ce3ae60a68" DisplaySrcType="PublicResource" GridHeight="1" GridWidth="1" GridX="20" GridY="0" Height="20" Name="BtnClose" TabIndex="10" TabStop="True" Width="80" X="901" Y="3">
+      <Events>
+        <Event EnableEvent="True" EventType="PostBack" IsDataBinding="True" IsDataCollect="True" Name="Click" Parameter="" Template="" />
+      </Events>
+    </Button>
+    <Button ID="327046da-ab43-43ce-b2d0-b40b96bf6a41" AccessKey="" DisplayName="汇总薪资" DisplayNameIndexStr="" DisplayNameResourceID="" DisplaySrcType="Custom" DisplaySrcUIFieldID="" DisplaySrcUIViewID="" GridHeight="1" GridWidth="1" GridX="0" GridY="0" Height="20" Name="BtnSumPayroll" TabIndex="11" TabStop="True" Width="80" X="10" Y="3">
       <Events>
         <Event EnableEvent="True" EventType="PostBack" IsDataBinding="True" IsDataCollect="True" Name="Click" Parameter="" Template="" />
       </Events>
@@ -199,114 +209,177 @@
         <RelationControls />
       </TextBox>
     </Card>
-    <DataGrid ID="fbf614c3-c7d8-4adb-8916-d00edc5adadd" EditStatus="edit" Enabled="True" GridHeight="2" GridWidth="2" GridX="0" GridY="1" HasSum="False" Height="339" Name="DataGrid5" PageSize="20" Paging="True" TabIndex="2" TabStop="True" Width="972" X="10" Y="82">
+    <TabControl ID="853a3c09-6e2a-4a47-9680-5895232b3846" GridHeight="1" GridWidth="1" GridX="0" GridY="1" Height="328" Name="TabControl0" TabIndex="2" TabStop="True" Width="971" X="10" Y="82">
+      <TabPage ID="132e2b90-e4c1-49ed-833d-e82082c41c05" ChildLabelWidth="60" ChildRefWidth="20" GridBottomMargin="10" GridColumnCount="1" GridColumnSpace="0" GridLeftMargin="10" GridRightMargin="10" GridRowCount="1" GridRowSpace="5" GridTopMargin="10" Height="295" Name="TabPage0" TabStop="False" Width="963" X="0" Y="0">
+        <Columns>
+          <Column Fixed="True" Name="Column0" Type="Title" Width="943" />
+        </Columns>
+        <Rows>
+          <Row Fixed="False" Height="275" Name="Row0" />
+        </Rows>
+        <DataGrid ID="fbf614c3-c7d8-4adb-8916-d00edc5adadd" EditStatus="edit" Enabled="True" GridHeight="1" GridWidth="1" GridX="0" GridY="0" HasSum="False" Height="275" Name="DataGrid5" PageSize="20" Paging="True" TabIndex="2" TabStop="True" Width="943" X="10" Y="10">
+          <Events />
+          <Header ID="3894d826-866e-471b-9069-808ada69fdcf" Name="Header5">
+            <HeaderRow Name="DefaultRow">
+              <HeaderCell ID="567ff111-870e-46f1-927c-c3f3b3c55c10" ColSpan="1" Name="HeaderCell0" OwnerColName="ID0" RowSpan="1" />
+              <HeaderCell ID="93e5706f-3f4c-451f-b4e6-3580f7d151dd" ColSpan="1" DisplayName="行号" DisplayNameIndexStr="" DisplayNameResourceID="" DisplaySrcUIFieldID="" DisplaySrcUIViewID="" Name="HeaderCell9" OwnerColName="DocLineNo0" RowSpan="1" />
+              <HeaderCell ID="6637e91f-7f1e-44fc-aa08-fc0674c6470d" ColSpan="1" Name="HeaderCell1" OwnerColName="Department0" RowSpan="1" />
+              <HeaderCell ID="bd9aac06-d887-40d5-a39f-80e0445e40ee" ColSpan="1" Name="HeaderCell2" OwnerColName="PeopleNumber0" RowSpan="1" />
+              <HeaderCell ID="fcb53b12-4d4c-4f85-b569-0b783c64e3bc" ColSpan="1" Name="HeaderCell4" OwnerColName="SalarySolution0" RowSpan="1" />
+              <HeaderCell ID="c369b85a-650d-496f-9c6e-e0d1a1d6b4f7" ColSpan="1" Name="HeaderCell5" OwnerColName="TotalOrigPay0" RowSpan="1" />
+              <HeaderCell ID="e3965377-635b-4269-bb27-242e9e38841e" ColSpan="1" Name="HeaderCell6" OwnerColName="TotalActPay0" RowSpan="1" />
+              <HeaderCell ID="63fced5b-905a-464d-a74c-e4c54f3f27ff" ColSpan="1" Name="HeaderCell7" OwnerColName="Memo0" RowSpan="1" />
+              <HeaderCell ID="facdf373-035b-4689-b944-5d478bc4d80e" ColSpan="1" DisplayName="DescFlexField" DisplayNameIndexStr="" DisplayNameResourceID="" DisplaySrcUIFieldID="" DisplaySrcUIViewID="" Name="HeaderCell10" OwnerColName="DescFlexField" RowSpan="1" />
+            </HeaderRow>
+          </Header>
+          <UIFilterBar Name="LocateBar" />
+          <Columns>
+            <NumberColumn ID="6149ec20-28dd-47dd-a412-4a47f8b92acf" DefaultValue="" DisplayFormat="19.0" Enabled="True" Help="薪资申请汇总行.Key.ID" IsNull="False" IsProperty="False" IsSequence="True" Name="ID0" NPos="1" Point="0" UIFieldID="ID" UIViewID="TotalPayrollDoc_TotalPayrollDocLine" Visible="False">
+              <PrecisionBind Name="PrecisionBind0" />
+              <RoundRuleBind Name="RoundRuleBind0" />
+              <ValueOfRoundByValueBind Name="ValueOfRoundByValueBind0" />
+              <CurrencyType Name="CurrencyType0" />
+              <Events />
+            </NumberColumn>
+            <NumberColumn ID="ce80fa79-43bc-4e58-83d2-e862b6fed581" DefaultValue="0" DisplayFormat="10.0" Enabled="True" Help="薪资申请汇总行.Misc.行号" IsNull="True" IsProperty="False" IsSequence="False" Name="DocLineNo0" NPos="2" Point="0" UIFieldID="DocLineNo" UIViewID="TotalPayrollDoc_TotalPayrollDocLine" Visible="True">
+              <PrecisionBind Name="PrecisionBind1" />
+              <RoundRuleBind Name="RoundRuleBind1" />
+              <ValueOfRoundByValueBind Name="ValueOfRoundByValueBind1" />
+              <CurrencyType Name="CurrencyType1" />
+              <Events />
+            </NumberColumn>
+            <ReferenceColumn ID="03a82636-e7b4-4c22-82ad-100c567490c4" CodeAttributeName="Code" CodeField="Code" CodeFieldUIFieldID="Department_Code" CodeFieldUIViewID="TotalPayrollDoc_TotalPayrollDocLine" DefaultValue="" DisplayFormat="19.0" Enabled="True" EntityName="ID" Help="薪资申请汇总行.Misc.部门" IsNull="True" IsProperty="False" IsSequence="False" Name="Department0" NameAttributeName="Name" NameFieldUIFieldID="Department_Name" NameFieldUIViewID="TotalPayrollDoc_TotalPayrollDocLine" NPos="3" PkeyField="ID" Point="0" RefType="18e07fd6-84e7-4e0f-aeb6-eba9713f0bb5" TextAlign="Right" UIFieldID="Department" UIViewID="TotalPayrollDoc_TotalPayrollDocLine" Visible="True" WindowHeight="408" WindowWidth="580">
+              <ReferenceRelation Action="Clear" ColumnDisplayName="ID" ColumnID="ID" Name="ReferenceRelation0" TargetControlType="" TargetID="" TargetProperty="" />
+              <ReferenceRelation Action="Clear" ColumnDisplayName="编码" ColumnID="Code" Name="ReferenceRelation1" TargetControlType="" TargetID="" TargetProperty="" />
+              <ReferenceRelation Action="Clear" ColumnDisplayName="名称" ColumnID="Name" Name="ReferenceRelation2" TargetControlType="" TargetID="" TargetProperty="" />
+              <RefNameFields>
+                <RefNameField UIFieldID="Name" />
+              </RefNameFields>
+              <UIFilterBar Name="ReferenceFilter" />
+              <FormLink FormRefID="beee4a9d-0556-4787-a7f9-38d775f0c4f6" FormRefName="DepartmentMainUIForm.ubfform" FormRefPath="DepartmentMainUIForm.ubfform" FormRefProjectPath="UFIDA.U9.CBO.Pub.Department.DepartmentUI.MetaData.dll" Height="504" IsShowStateBar="True" Name="FormLink0" Width="992">
+                <InParameters>
+                  <Parameter ContextID="" ControlID="Department" ControlProperty="Key" ControlType="ReferenceColumnModel" Name="ID" ParameterBindType="Bind2Control" />
+                </InParameters>
+                <OutParameters>
+                  <Parameter ContextID="" ControlID="Department" ControlProperty="Key" ControlType="ReferenceColumnModel" Name="ID" />
+                  <Parameter ContextID="" ControlID="Department" ControlProperty="Value" ControlType="ReferenceColumnModel" Name="Code" />
+                  <Parameter ContextID="" ControlID="Department" ControlProperty="Text" ControlType="ReferenceColumnModel" Name="Name" />
+                  <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="WorkCalendar" />
+                  <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="WorkCalendarName" />
+                  <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="WorkCalendarCode" />
+                </OutParameters>
+              </FormLink>
+              <Events />
+            </ReferenceColumn>
+            <NumberColumn ID="dbbe05aa-d207-4d3b-98b9-3f2ab2d6d48a" DefaultValue="0" DisplayFormat="10.0" Enabled="True" Help="薪资申请汇总行.Misc.人数" IsNull="True" IsProperty="False" IsSequence="False" MinValue="0" Name="PeopleNumber0" NPos="4" Point="0" UIFieldID="PeopleNumber" UIViewID="TotalPayrollDoc_TotalPayrollDocLine" Visible="True">
+              <PrecisionBind Name="PrecisionBind2" />
+              <RoundRuleBind Name="RoundRuleBind2" />
+              <ValueOfRoundByValueBind Name="ValueOfRoundByValueBind2" />
+              <CurrencyType Name="CurrencyType2" />
+              <Events />
+            </NumberColumn>
+            <ReferenceColumn ID="8c5b7bbe-58cf-4bcf-b0b8-476deff3b94d" CodeAttributeName="Code" CodeField="Code" CodeFieldUIFieldID="SalarySolution_Code" CodeFieldUIViewID="TotalPayrollDoc_TotalPayrollDocLine" DefaultValue="" DisplayFormat="19.0" Enabled="True" EntityName="ID" Help="薪资申请汇总行.Misc.计薪方案" IsNull="True" IsProperty="False" IsSequence="False" Name="SalarySolution0" NameAttributeName="Name" NameFieldUIFieldID="SalarySolution_Name" NameFieldUIViewID="TotalPayrollDoc_TotalPayrollDocLine" NPos="5" PkeyField="ID" Point="0" RefType="9d8bf6e0-9c4f-435f-b106-7acfc84f4756" TextAlign="Right" UIFieldID="SalarySolution" UIViewID="TotalPayrollDoc_TotalPayrollDocLine" Visible="True" WindowHeight="408" WindowWidth="580">
+              <ReferenceRelation Action="Clear" ColumnDisplayName="ID" ColumnID="ID" Name="ReferenceRelation3" TargetControlType="" TargetID="" TargetProperty="" />
+              <ReferenceRelation Action="Clear" ColumnDisplayName="编码" ColumnID="Code" Name="ReferenceRelation4" TargetControlType="" TargetID="" TargetProperty="" />
+              <ReferenceRelation Action="Clear" ColumnDisplayName="名称" ColumnID="Name" Name="ReferenceRelation5" TargetControlType="" TargetID="" TargetProperty="" />
+              <ReferenceRelation Action="Clear" ColumnDisplayName="描述" ColumnID="Description" Name="ReferenceRelation6" TargetControlType="" TargetID="" TargetProperty="" />
+              <ReferenceRelation Action="Clear" ColumnDisplayName="币种" ColumnID="Currency_Name" Name="ReferenceRelation7" TargetControlType="" TargetID="" TargetProperty="" />
+              <ReferenceRelation Action="Clear" ColumnDisplayName="最小发放单位" ColumnID="PayUnit" Name="ReferenceRelation8" TargetControlType="" TargetID="" TargetProperty="" />
+              <ReferenceRelation Action="Clear" ColumnDisplayName="零头处理方式" ColumnID="OddmentsMode" Name="ReferenceRelation9" TargetControlType="" TargetID="" TargetProperty="" />
+              <ReferenceRelation Action="Clear" ColumnDisplayName="包括全部项目" ColumnID="IsIncludeAllItem" Name="ReferenceRelation10" TargetControlType="" TargetID="" TargetProperty="" />
+              <RefNameFields>
+                <RefNameField UIFieldID="Name" />
+              </RefNameFields>
+              <UIFilterBar Name="ReferenceFilter" />
+              <FormLink FormRefID="24d164c6-6f49-491b-b1b5-547e60fe7914" FormRefName="SalarySolutionMainUIForm.ubfform" FormRefPath="SalarySolutionMainUIForm.ubfform" FormRefProjectPath="UFIDA.U9.HR.PAY.SalarySolution.SalarySolutionUI.MetaData.dll" Height="504" IsShowStateBar="True" Name="FormLink1" Width="992">
+                <InParameters>
+                  <Parameter ContextID="" ControlID="SalarySolution" ControlProperty="Key" ControlType="ReferenceColumnModel" Name="ID" ParameterBindType="Bind2Control" />
+                </InParameters>
+                <OutParameters>
+                  <Parameter ContextID="" ControlID="SalarySolution" ControlProperty="Key" ControlType="ReferenceColumnModel" Name="ID" />
+                  <Parameter ContextID="" ControlID="SalarySolution" ControlProperty="Value" ControlType="ReferenceColumnModel" Name="Code" />
+                  <Parameter ContextID="" ControlID="SalarySolution" ControlProperty="Text" ControlType="ReferenceColumnModel" Name="Name" />
+                </OutParameters>
+              </FormLink>
+              <Events />
+            </ReferenceColumn>
+            <NumberColumn ID="5fa32609-a24a-465c-9bfc-3031260db491" DefaultValue="0" DisplayFormat="24.9" Enabled="True" Help="薪资申请汇总行.Misc.应发合计" IsNull="True" IsProperty="False" IsSequence="False" MinValue="0" Name="TotalOrigPay0" NPos="6" Point="0" UIFieldID="TotalOrigPay" UIViewID="TotalPayrollDoc_TotalPayrollDocLine" Visible="True">
+              <PrecisionBind Name="PrecisionBind3" />
+              <RoundRuleBind Name="RoundRuleBind3" />
+              <ValueOfRoundByValueBind Name="ValueOfRoundByValueBind3" />
+              <CurrencyType Name="CurrencyType3" />
+              <Events />
+            </NumberColumn>
+            <NumberColumn ID="4e571ea8-6e86-46c8-9b3b-c91b6e4ba5a5" DefaultValue="0" DisplayFormat="24.9" Enabled="True" Help="薪资申请汇总行.Misc.实发合计" IsNull="True" IsProperty="False" IsSequence="False" MinValue="0" Name="TotalActPay0" NPos="7" Point="0" UIFieldID="TotalActPay" UIViewID="TotalPayrollDoc_TotalPayrollDocLine" Visible="True">
+              <PrecisionBind Name="PrecisionBind4" />
+              <RoundRuleBind Name="RoundRuleBind4" />
+              <ValueOfRoundByValueBind Name="ValueOfRoundByValueBind4" />
+              <CurrencyType Name="CurrencyType4" />
+              <Events />
+            </NumberColumn>
+            <TextBoxColumn ID="6e9d559e-c266-4809-ad51-1436ee4e5584" DefaultValue="" DisplayFormat="50" Enabled="True" Help="薪资申请汇总行.Misc.备注" IsNull="True" IsProperty="False" IsSequence="False" Name="Memo0" NPos="8" Point="0" TextAlign="Left" UIFieldID="Memo" UIViewID="TotalPayrollDoc_TotalPayrollDocLine" Visible="True">
+              <Events />
+            </TextBoxColumn>
+            <TextBoxColumn ID="4a4a33fb-4501-4c1f-aec4-eee840b07b0b" DisplayFormat="" Enabled="True" IsNull="True" Name="DescFlexField" NPos="9" Point="0" TextAlign="Left" Visible="False">
+              <Events />
+            </TextBoxColumn>
+          </Columns>
+        </DataGrid>
+      </TabPage>
+      <TabPage ID="9f12cd4f-49d5-44b2-b1a1-ec9b909f4f45" ChildLabelWidth="60" ChildRefWidth="20" GridBottomMargin="10" GridColumnCount="1" GridColumnSpace="0" GridLeftMargin="10" GridRightMargin="10" GridRowCount="1" GridRowSpace="5" GridTopMargin="10" Height="295" Name="TabPage1" TabStop="False" Width="963" X="0" Y="0">
+        <Columns>
+          <Column Fixed="True" Name="Column0" Type="Title" Width="943" />
+        </Columns>
+        <Rows>
+          <Row Fixed="False" Height="275" Name="Row0" />
+        </Rows>
+        <DataGrid ID="dac69759-a037-4d5d-bcaf-f2ac300a2311" EditStatus="edit" Enabled="True" GridHeight="1" GridWidth="1" GridX="0" GridY="0" HasSum="False" Height="275" Name="DataGrid6" PageSize="20" Paging="True" TabIndex="0" TabStop="True" Width="943" X="10" Y="10">
+          <Events />
+          <Header ID="5744f616-58d5-4672-b29b-c53d9daf84ee" Name="Header6">
+            <HeaderRow ID="d868d5ef-0e64-4fc5-a31a-1076d1218488" Name="DefaultRow">
+              <HeaderCell ID="75705138-f7b1-4512-80c0-83b3f6b41130" ColSpan="1" Name="HeaderCell12" OwnerColName="ID0" RowSpan="1" />
+              <HeaderCell ID="4ceaa658-b29d-4693-acf0-8f130e7b9e2c" ColSpan="1" Name="HeaderCell13" OwnerColName="PayrollLine0" RowSpan="1" />
+              <HeaderCell ID="4d47126f-28ac-4136-8ac2-e018e1424c1e" ColSpan="1" Name="HeaderCell14" OwnerColName="PayrollLine_PayrollDoc_DocNo0" RowSpan="1" />
+              <HeaderCell ID="9c1196af-1764-4f04-ba2f-89acc64dd736" ColSpan="1" Name="HeaderCell15" OwnerColName="PayrollLine_PayrollDoc_ID0" RowSpan="1" />
+              <HeaderCell ID="df6f180e-e77f-40ab-bb45-622b966fa7d7" ColSpan="1" Name="HeaderCell16" OwnerColName="PayrollLine_PayrollDoc_Status0" RowSpan="1" />
+              <HeaderCell ID="d8c2bb6a-8a52-4547-a9e3-f9b8f8989d68" ColSpan="1" Name="HeaderCell17" OwnerColName="PayrollLine_PayrollDoc_PayDate0" RowSpan="1" />
+            </HeaderRow>
+          </Header>
+          <UIFilterBar Name="LocateBar" />
+          <Columns>
+            <NumberColumn ID="88dab73d-8e7c-46df-b7f7-c4715bc8ed7a" DefaultValue="" DisplayFormat="19.0" Enabled="True" Help="发薪明细.Key.ID" IsNull="False" IsProperty="False" IsSequence="True" Name="ID0" NPos="1" Point="0" UIFieldID="ID" UIViewID="TotalPayrollDoc_TotalPayrollDocLine_PayrollLineDetail" Visible="False">
+              <PrecisionBind />
+              <RoundRuleBind />
+              <ValueOfRoundByValueBind />
+              <CurrencyType />
+              <Events />
+            </NumberColumn>
+            <ReferenceColumn ID="cd519b96-f2e4-4c71-afca-f90289d526bd" DefaultValue="" DisplayFormat="19.0" Enabled="True" Help="发薪明细.Misc.发薪申请行" IsNull="True" IsProperty="False" IsSequence="False" Name="PayrollLine0" NPos="2" Point="0" TextAlign="Right" UIFieldID="PayrollLine" UIViewID="TotalPayrollDoc_TotalPayrollDocLine_PayrollLineDetail" Visible="True">
+              <RefNameFields />
+              <UIFilterBar Name="ReferenceFilter" />
+              <Events />
+            </ReferenceColumn>
+            <TextBoxColumn ID="aefa43cf-f69b-40df-941e-32d004635dd5" DefaultValue="" DisplayFormat="50" Enabled="True" Help="单据基类.Misc.单号" IsNull="False" IsProperty="False" IsSequence="False" Name="PayrollLine_PayrollDoc_DocNo0" NPos="3" Point="0" TextAlign="Left" UIFieldID="PayrollLine_PayrollDoc_DocNo" UIViewID="TotalPayrollDoc_TotalPayrollDocLine_PayrollLineDetail" Visible="True">
+              <Events />
+            </TextBoxColumn>
+            <NumberColumn ID="c7642267-8122-49b1-b3be-89d9f24f4047" DefaultValue="" DisplayFormat="8.0" Enabled="True" Help="单据基类.Key.ID" IsNull="False" IsProperty="False" IsSequence="False" Name="PayrollLine_PayrollDoc_ID0" NPos="4" Point="0" UIFieldID="PayrollLine_PayrollDoc_ID" UIViewID="TotalPayrollDoc_TotalPayrollDocLine_PayrollLineDetail" Visible="True">
+              <PrecisionBind />
+              <RoundRuleBind />
+              <ValueOfRoundByValueBind />
+              <CurrencyType />
+              <Events />
+            </NumberColumn>
+            <DropDownListColumn ID="af669437-0816-4354-9c6f-58bf50ec2666" DefaultValue="0" DisplayFormat="10.0" Enabled="True" EnumFullName="UFIDA.U9.PAY.Enums.PayrollDocStatusEnum" EnumID="437366e9-e3e9-433c-8687-d2c4dad844e0" Help="发薪申请单.Misc.状态" IsNull="False" IsProperty="False" IsSequence="False" Name="PayrollLine_PayrollDoc_Status0" NPos="5" Point="0" UIFieldID="PayrollLine_PayrollDoc_Status" UIViewID="TotalPayrollDoc_TotalPayrollDocLine_PayrollLineDetail" Visible="True">
+              <Events />
+            </DropDownListColumn>
+            <DatePickerColumn ID="9c78f0c1-88e8-40c2-8d72-39f47a48abbd" DefaultValue="" DisplayFormat="10" Enabled="True" Help="发薪申请单.Misc.发薪日期" IsNull="False" IsProperty="False" IsSequence="False" Name="PayrollLine_PayrollDoc_PayDate0" NPos="6" Point="0" UIFieldID="PayrollLine_PayrollDoc_PayDate" UIViewID="TotalPayrollDoc_TotalPayrollDocLine_PayrollLineDetail" Visible="True">
+              <Events />
+            </DatePickerColumn>
+          </Columns>
+        </DataGrid>
+      </TabPage>
       <Events />
-      <Header ID="3894d826-866e-471b-9069-808ada69fdcf" Name="Header5">
-        <HeaderRow Name="DefaultRow">
-          <HeaderCell ID="567ff111-870e-46f1-927c-c3f3b3c55c10" ColSpan="1" Name="HeaderCell0" OwnerColName="ID0" RowSpan="1" />
-          <HeaderCell ID="93e5706f-3f4c-451f-b4e6-3580f7d151dd" ColSpan="1" DisplayName="行号" DisplayNameIndexStr="" DisplayNameResourceID="" DisplaySrcUIFieldID="" DisplaySrcUIViewID="" Name="HeaderCell9" OwnerColName="DocLineNo0" RowSpan="1" />
-          <HeaderCell ID="6637e91f-7f1e-44fc-aa08-fc0674c6470d" ColSpan="1" Name="HeaderCell1" OwnerColName="Department0" RowSpan="1" />
-          <HeaderCell ID="bd9aac06-d887-40d5-a39f-80e0445e40ee" ColSpan="1" Name="HeaderCell2" OwnerColName="PeopleNumber0" RowSpan="1" />
-          <HeaderCell ID="fcb53b12-4d4c-4f85-b569-0b783c64e3bc" ColSpan="1" Name="HeaderCell4" OwnerColName="SalarySolution0" RowSpan="1" />
-          <HeaderCell ID="c369b85a-650d-496f-9c6e-e0d1a1d6b4f7" ColSpan="1" Name="HeaderCell5" OwnerColName="TotalOrigPay0" RowSpan="1" />
-          <HeaderCell ID="e3965377-635b-4269-bb27-242e9e38841e" ColSpan="1" Name="HeaderCell6" OwnerColName="TotalActPay0" RowSpan="1" />
-          <HeaderCell ID="63fced5b-905a-464d-a74c-e4c54f3f27ff" ColSpan="1" Name="HeaderCell7" OwnerColName="Memo0" RowSpan="1" />
-          <HeaderCell ID="facdf373-035b-4689-b944-5d478bc4d80e" ColSpan="1" DisplayName="DescFlexField" DisplayNameIndexStr="" DisplayNameResourceID="" DisplaySrcUIFieldID="" DisplaySrcUIViewID="" Name="HeaderCell10" OwnerColName="DescFlexField" RowSpan="1" />
-        </HeaderRow>
-      </Header>
-      <UIFilterBar Name="LocateBar" />
-      <Columns>
-        <NumberColumn ID="6149ec20-28dd-47dd-a412-4a47f8b92acf" DefaultValue="" DisplayFormat="19.0" Enabled="True" Help="薪资申请汇总行.Key.ID" IsNull="False" IsProperty="False" IsSequence="True" Name="ID0" NPos="1" Point="0" UIFieldID="ID" UIViewID="TotalPayrollDoc_TotalPayrollDocLine" Visible="False">
-          <PrecisionBind Name="PrecisionBind0" />
-          <RoundRuleBind Name="RoundRuleBind0" />
-          <ValueOfRoundByValueBind Name="ValueOfRoundByValueBind0" />
-          <CurrencyType Name="CurrencyType0" />
-          <Events />
-        </NumberColumn>
-        <NumberColumn ID="ce80fa79-43bc-4e58-83d2-e862b6fed581" DefaultValue="0" DisplayFormat="10.0" Enabled="True" Help="薪资申请汇总行.Misc.行号" IsNull="True" IsProperty="False" IsSequence="False" Name="DocLineNo0" NPos="2" Point="0" UIFieldID="DocLineNo" UIViewID="TotalPayrollDoc_TotalPayrollDocLine" Visible="True">
-          <PrecisionBind Name="PrecisionBind1" />
-          <RoundRuleBind Name="RoundRuleBind1" />
-          <ValueOfRoundByValueBind Name="ValueOfRoundByValueBind1" />
-          <CurrencyType Name="CurrencyType1" />
-          <Events />
-        </NumberColumn>
-        <ReferenceColumn ID="03a82636-e7b4-4c22-82ad-100c567490c4" CodeAttributeName="Code" CodeField="Code" CodeFieldUIFieldID="Department_Code" CodeFieldUIViewID="TotalPayrollDoc_TotalPayrollDocLine" DefaultValue="" DisplayFormat="19.0" Enabled="True" EntityName="ID" Help="薪资申请汇总行.Misc.部门" IsNull="True" IsProperty="False" IsSequence="False" Name="Department0" NameAttributeName="Name" NameFieldUIFieldID="Department_Name" NameFieldUIViewID="TotalPayrollDoc_TotalPayrollDocLine" NPos="3" PkeyField="ID" Point="0" RefType="18e07fd6-84e7-4e0f-aeb6-eba9713f0bb5" TextAlign="Right" UIFieldID="Department" UIViewID="TotalPayrollDoc_TotalPayrollDocLine" Visible="True" WindowHeight="408" WindowWidth="580">
-          <ReferenceRelation Action="Clear" ColumnDisplayName="ID" ColumnID="ID" Name="ReferenceRelation0" TargetControlType="" TargetID="" TargetProperty="" />
-          <ReferenceRelation Action="Clear" ColumnDisplayName="编码" ColumnID="Code" Name="ReferenceRelation1" TargetControlType="" TargetID="" TargetProperty="" />
-          <ReferenceRelation Action="Clear" ColumnDisplayName="名称" ColumnID="Name" Name="ReferenceRelation2" TargetControlType="" TargetID="" TargetProperty="" />
-          <RefNameFields>
-            <RefNameField UIFieldID="Name" />
-          </RefNameFields>
-          <UIFilterBar Name="ReferenceFilter" />
-          <FormLink FormRefID="beee4a9d-0556-4787-a7f9-38d775f0c4f6" FormRefName="DepartmentMainUIForm.ubfform" FormRefPath="DepartmentMainUIForm.ubfform" FormRefProjectPath="UFIDA.U9.CBO.Pub.Department.DepartmentUI.MetaData.dll" Height="504" IsShowStateBar="True" Name="FormLink0" Width="992">
-            <InParameters>
-              <Parameter ContextID="" ControlID="Department" ControlProperty="Key" ControlType="ReferenceColumnModel" Name="ID" ParameterBindType="Bind2Control" />
-            </InParameters>
-            <OutParameters>
-              <Parameter ContextID="" ControlID="Department" ControlProperty="Key" ControlType="ReferenceColumnModel" Name="ID" />
-              <Parameter ContextID="" ControlID="Department" ControlProperty="Value" ControlType="ReferenceColumnModel" Name="Code" />
-              <Parameter ContextID="" ControlID="Department" ControlProperty="Text" ControlType="ReferenceColumnModel" Name="Name" />
-              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="WorkCalendar" />
-              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="WorkCalendarName" />
-              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="WorkCalendarCode" />
-            </OutParameters>
-          </FormLink>
-          <Events />
-        </ReferenceColumn>
-        <NumberColumn ID="dbbe05aa-d207-4d3b-98b9-3f2ab2d6d48a" DefaultValue="0" DisplayFormat="10.0" Enabled="True" Help="薪资申请汇总行.Misc.人数" IsNull="True" IsProperty="False" IsSequence="False" MinValue="0" Name="PeopleNumber0" NPos="4" Point="0" UIFieldID="PeopleNumber" UIViewID="TotalPayrollDoc_TotalPayrollDocLine" Visible="True">
-          <PrecisionBind Name="PrecisionBind2" />
-          <RoundRuleBind Name="RoundRuleBind2" />
-          <ValueOfRoundByValueBind Name="ValueOfRoundByValueBind2" />
-          <CurrencyType Name="CurrencyType2" />
-          <Events />
-        </NumberColumn>
-        <ReferenceColumn ID="8c5b7bbe-58cf-4bcf-b0b8-476deff3b94d" CodeAttributeName="Code" CodeField="Code" CodeFieldUIFieldID="SalarySolution_Code" CodeFieldUIViewID="TotalPayrollDoc_TotalPayrollDocLine" DefaultValue="" DisplayFormat="19.0" Enabled="True" EntityName="ID" Help="薪资申请汇总行.Misc.计薪方案" IsNull="True" IsProperty="False" IsSequence="False" Name="SalarySolution0" NameAttributeName="Name" NameFieldUIFieldID="SalarySolution_Name" NameFieldUIViewID="TotalPayrollDoc_TotalPayrollDocLine" NPos="5" PkeyField="ID" Point="0" RefType="9d8bf6e0-9c4f-435f-b106-7acfc84f4756" TextAlign="Right" UIFieldID="SalarySolution" UIViewID="TotalPayrollDoc_TotalPayrollDocLine" Visible="True" WindowHeight="408" WindowWidth="580">
-          <ReferenceRelation Action="Clear" ColumnDisplayName="ID" ColumnID="ID" Name="ReferenceRelation3" TargetControlType="" TargetID="" TargetProperty="" />
-          <ReferenceRelation Action="Clear" ColumnDisplayName="编码" ColumnID="Code" Name="ReferenceRelation4" TargetControlType="" TargetID="" TargetProperty="" />
-          <ReferenceRelation Action="Clear" ColumnDisplayName="名称" ColumnID="Name" Name="ReferenceRelation5" TargetControlType="" TargetID="" TargetProperty="" />
-          <ReferenceRelation Action="Clear" ColumnDisplayName="描述" ColumnID="Description" Name="ReferenceRelation6" TargetControlType="" TargetID="" TargetProperty="" />
-          <ReferenceRelation Action="Clear" ColumnDisplayName="币种" ColumnID="Currency_Name" Name="ReferenceRelation7" TargetControlType="" TargetID="" TargetProperty="" />
-          <ReferenceRelation Action="Clear" ColumnDisplayName="最小发放单位" ColumnID="PayUnit" Name="ReferenceRelation8" TargetControlType="" TargetID="" TargetProperty="" />
-          <ReferenceRelation Action="Clear" ColumnDisplayName="零头处理方式" ColumnID="OddmentsMode" Name="ReferenceRelation9" TargetControlType="" TargetID="" TargetProperty="" />
-          <ReferenceRelation Action="Clear" ColumnDisplayName="包括全部项目" ColumnID="IsIncludeAllItem" Name="ReferenceRelation10" TargetControlType="" TargetID="" TargetProperty="" />
-          <RefNameFields>
-            <RefNameField UIFieldID="Name" />
-          </RefNameFields>
-          <UIFilterBar Name="ReferenceFilter" />
-          <FormLink FormRefID="24d164c6-6f49-491b-b1b5-547e60fe7914" FormRefName="SalarySolutionMainUIForm.ubfform" FormRefPath="SalarySolutionMainUIForm.ubfform" FormRefProjectPath="UFIDA.U9.HR.PAY.SalarySolution.SalarySolutionUI.MetaData.dll" Height="504" IsShowStateBar="True" Name="FormLink1" Width="992">
-            <InParameters>
-              <Parameter ContextID="" ControlID="SalarySolution" ControlProperty="Key" ControlType="ReferenceColumnModel" Name="ID" ParameterBindType="Bind2Control" />
-            </InParameters>
-            <OutParameters>
-              <Parameter ContextID="" ControlID="SalarySolution" ControlProperty="Key" ControlType="ReferenceColumnModel" Name="ID" />
-              <Parameter ContextID="" ControlID="SalarySolution" ControlProperty="Value" ControlType="ReferenceColumnModel" Name="Code" />
-              <Parameter ContextID="" ControlID="SalarySolution" ControlProperty="Text" ControlType="ReferenceColumnModel" Name="Name" />
-            </OutParameters>
-          </FormLink>
-          <Events />
-        </ReferenceColumn>
-        <NumberColumn ID="5fa32609-a24a-465c-9bfc-3031260db491" DefaultValue="0" DisplayFormat="24.9" Enabled="True" Help="薪资申请汇总行.Misc.应发合计" IsNull="True" IsProperty="False" IsSequence="False" MinValue="0" Name="TotalOrigPay0" NPos="6" Point="0" UIFieldID="TotalOrigPay" UIViewID="TotalPayrollDoc_TotalPayrollDocLine" Visible="True">
-          <PrecisionBind Name="PrecisionBind3" />
-          <RoundRuleBind Name="RoundRuleBind3" />
-          <ValueOfRoundByValueBind Name="ValueOfRoundByValueBind3" />
-          <CurrencyType Name="CurrencyType3" />
-          <Events />
-        </NumberColumn>
-        <NumberColumn ID="4e571ea8-6e86-46c8-9b3b-c91b6e4ba5a5" DefaultValue="0" DisplayFormat="24.9" Enabled="True" Help="薪资申请汇总行.Misc.实发合计" IsNull="True" IsProperty="False" IsSequence="False" MinValue="0" Name="TotalActPay0" NPos="7" Point="0" UIFieldID="TotalActPay" UIViewID="TotalPayrollDoc_TotalPayrollDocLine" Visible="True">
-          <PrecisionBind Name="PrecisionBind4" />
-          <RoundRuleBind Name="RoundRuleBind4" />
-          <ValueOfRoundByValueBind Name="ValueOfRoundByValueBind4" />
-          <CurrencyType Name="CurrencyType4" />
-          <Events />
-        </NumberColumn>
-        <TextBoxColumn ID="6e9d559e-c266-4809-ad51-1436ee4e5584" DefaultValue="" DisplayFormat="50" Enabled="True" Help="薪资申请汇总行.Misc.备注" IsNull="True" IsProperty="False" IsSequence="False" Name="Memo0" NPos="8" Point="0" TextAlign="Left" UIFieldID="Memo" UIViewID="TotalPayrollDoc_TotalPayrollDocLine" Visible="True">
-          <Events />
-        </TextBoxColumn>
-        <TextBoxColumn ID="4a4a33fb-4501-4c1f-aec4-eee840b07b0b" DisplayFormat="" Enabled="True" IsNull="True" Name="DescFlexField" NPos="9" Point="0" TextAlign="Left" Visible="False">
-          <Events />
-        </TextBoxColumn>
-      </Columns>
-    </DataGrid>
+    </TabControl>
   </Card>
   <Events />
 </View>

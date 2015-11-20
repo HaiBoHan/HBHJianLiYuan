@@ -36,6 +36,18 @@
         <Operation id="23eb4df7-1b74-4bac-b7b9-4c0072537b66" name="Impement" displayName="实现" description="" help="" mD_ParentClass_ID="" isFactEntity="False" returnTypeID="378d45b4-375d-4b5d-8748-abc9575c26b3" isService="False" isDefault="True" isEntityKey="False" transactionType="2" isAuthorization="True" isISV="False" />
       </Implements>
     </Operation>
+    <Operation id="bda04ef4-72ec-4b0d-98ce-8d107c3cf9b3" name="UpdateDayCheckInStatusBP" displayName="更新日考勤状态操作" description="更新日考勤状态操作" help="" mD_ParentClass_ID="" isFactEntity="False" returnTypeID="378d45b4-375d-4b5d-8748-abc9575c26b3" isService="False" isDefault="False" isEntityKey="False" transactionType="2" isAuthorization="True" isISV="False">
+      <Groups>
+        <Group id="5f3c3820-ec4c-4bd4-863e-4c218eaaa9dd" name="Misc" displayName="Misc" description="" help="" />
+      </Groups>
+      <Attributes>
+        <Attribute id="83ab8980-2dd5-457b-b9de-c8c06ab17ad4" name="HeadIDs" displayName="头ID集合" description="" help="更新日考勤状态操作.Misc.头ID集合" isCollection="True" dataTypeID="cc00309b-67ad-43bd-9ede-0bf3540e899a" isKey="False" defaultValue="" length="50" precise="5" scale="0" isNullable="True" isReadOnly="False" isHide="False" isCalculation="False" valueExpression="" maxValue="" minValue="" sequence="0" isDefaultDimensionAttribute="False" isDefaultMeasureAttribute="False" isGlobalization="False" idGenerator="" groupName="Misc" isEntityKey="True" isEntityData="True" isSystem="False" isBusinessKey="False" isSyncDictionary="False" dictionaryKey="" isExtendCode="False" isQuery="True" isForAsso="True" isModifyControl="False" isDynamic="False" isImpressible="False" isInCache="False" isKeySerializable="False" isColumnDefine="True" isFilterDefine="True" isSortDefine="True" isDefaultColumn="True" forOBAImport="False" />
+        <Attribute id="0851f78d-d82c-4f67-8421-dcb1ef5f3a57" name="TargetStatus" displayName="目标状态" description="" help="更新日考勤状态操作.Misc.目标状态" dataTypeID="34af30f0-a7d9-4005-962e-21076f509a72" isKey="False" defaultValue="0" length="50" precise="5" scale="0" isNullable="True" isReadOnly="False" isHide="False" isCalculation="False" valueExpression="" maxValue="" minValue="" sequence="1" isDefaultDimensionAttribute="False" isDefaultMeasureAttribute="False" isGlobalization="False" idGenerator="" groupName="Misc" isEntityKey="False" isEntityData="True" isSystem="False" isBusinessKey="False" isSyncDictionary="False" dictionaryKey="" isExtendCode="False" isQuery="True" isForAsso="True" isModifyControl="False" isDynamic="False" isImpressible="False" isInCache="False" isKeySerializable="False" isColumnDefine="True" isFilterDefine="True" isSortDefine="True" isDefaultColumn="True" forOBAImport="False" />
+      </Attributes>
+      <Implements>
+        <Operation id="cb3b0ac5-50e5-4607-8ffb-0d73f4c86bd1" name="Impement" displayName="实现" description="" help="" mD_ParentClass_ID="" isFactEntity="False" returnTypeID="378d45b4-375d-4b5d-8748-abc9575c26b3" isService="False" isDefault="True" isEntityKey="False" transactionType="2" isAuthorization="True" isISV="False" />
+      </Implements>
+    </Operation>
     <Diagram id="aa797570-0691-4551-a442-ee4753c18508" name="HBHJianLiYuanHRBP" displayName="HBHJianLiYuanHRBP">
       <Class Editable="True" ID="9cef8186-b012-472a-b25f-d14d6515d632" Type="Operation" ADID="a7fb583d-5637-42f9-985a-f33ef1f793ce">
         <Location X="105" Y="55" />
@@ -46,7 +58,11 @@
         <Size width="120" height="58" />
       </Class>
       <Class Editable="True" ID="5a73117f-26b1-4d5f-b0a1-8b5b1c01ae8b" Type="Operation" ADID="5b2cce80-6ac4-4575-a265-00e43fbf4ea3">
-        <Location X="551" Y="52" />
+        <Location X="547" Y="52" />
+        <Size width="120" height="58" />
+      </Class>
+      <Class Editable="True" ID="e6e539e2-614d-4e23-915d-f3307ff1f6b5" Type="Operation" ADID="bda04ef4-72ec-4b0d-98ce-8d107c3cf9b3">
+        <Location X="742" Y="51" />
         <Size width="120" height="58" />
       </Class>
     </Diagram>

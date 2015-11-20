@@ -47,55 +47,60 @@
         <Event ActionName="ApproveClick" EnableEvent="True" EventType="PostBack" IsDataBinding="True" IsDataCollect="True" Name="Click" Parameter="ApproveClick" Template=".\UITpls\WebPart\ViewCodeBehindCommon.tpl" />
       </Events>
     </Button>
-    <Button ID="9f5a767e-3012-4cb9-8aeb-cb4f07f1b533" AccessKey="" DisplayName="" DisplayNameResourceID="ae796775-bce3-4aed-89a9-20eaa4648a67" DisplaySrcType="PublicResource" Height="28" Name="BtnUndoApprove" TabIndex="10" TabStop="True" Width="35" X="261" Y="0">
+    <Button ID="b3b5f402-9402-4706-936b-3a58dce39974" AccessKey="" DisplayName="回收" DisplayNameIndexStr="" DisplayNameResourceID="" DisplaySrcType="Custom" DisplaySrcUIFieldID="" DisplaySrcUIViewID="" Height="28" Name="BtnRecovery" TabIndex="25" TabStop="True" Width="35" X="261" Y="0">
       <Events>
         <Event EnableEvent="True" EventType="PostBack" IsDataBinding="True" IsDataCollect="True" Name="Click" Parameter="" Template="" />
       </Events>
     </Button>
-    <Separator ID="bf2891fe-a131-44b8-b660-3da86067e311" Height="28" Name="Separator2" TabIndex="11" TabStop="True" Width="8" X="296" Y="0" />
-    <Button ID="06089255-bec7-4c0c-8e56-352a55d7165d" AccessKey="F" DisplayNameResourceID="27621430-7bc7-4c0e-979e-f0108439d13e" DisplaySrcType="PublicResource" Height="28" Name="BtnFind" TabIndex="12" TabStop="True" Width="35" X="304" Y="0">
+    <Button ID="9f5a767e-3012-4cb9-8aeb-cb4f07f1b533" AccessKey="" DisplayName="" DisplayNameResourceID="ae796775-bce3-4aed-89a9-20eaa4648a67" DisplaySrcType="PublicResource" Height="28" Name="BtnUndoApprove" TabIndex="10" TabStop="True" Width="35" X="296" Y="0">
+      <Events>
+        <Event EnableEvent="True" EventType="PostBack" IsDataBinding="True" IsDataCollect="True" Name="Click" Parameter="" Template="" />
+      </Events>
+    </Button>
+    <Separator ID="bf2891fe-a131-44b8-b660-3da86067e311" Height="28" Name="Separator2" TabIndex="11" TabStop="True" Width="8" X="331" Y="0" />
+    <Button ID="06089255-bec7-4c0c-8e56-352a55d7165d" AccessKey="F" DisplayNameResourceID="27621430-7bc7-4c0e-979e-f0108439d13e" DisplaySrcType="PublicResource" Height="28" Name="BtnFind" TabIndex="12" TabStop="True" Width="35" X="339" Y="0">
       <Events>
         <Event ActionName="FindClick" EnableEvent="True" EventType="PostBack" IsDataBinding="True" IsDataCollect="True" Name="Click" Parameter="FindClick" Template=".\UITpls\WebPart\ViewCodeBehindCommon.tpl" />
       </Events>
     </Button>
-    <Button ID="45d6eade-b554-45e7-b7a5-1236504ee250" AccessKey="L" DisplayNameResourceID="c639596b-5a8c-4fc1-88bb-a3d670cda992" DisplaySrcType="PublicResource" Height="28" Name="BtnList" TabIndex="13" TabStop="True" Width="35" X="339" Y="0">
+    <Button ID="45d6eade-b554-45e7-b7a5-1236504ee250" AccessKey="L" DisplayNameResourceID="c639596b-5a8c-4fc1-88bb-a3d670cda992" DisplaySrcType="PublicResource" Height="28" Name="BtnList" TabIndex="13" TabStop="True" Width="35" X="374" Y="0">
       <Events>
         <Event ActionName="ListClick" EnableEvent="True" EventType="PostBack" IsDataBinding="True" IsDataCollect="True" Name="Click" Parameter="ListClick" Template=".\UITpls\WebPart\ViewCodeBehindCommon.tpl" />
       </Events>
     </Button>
-    <Separator ID="18de177c-a4d5-4125-b439-5408d5dfcecd" Height="28" Name="Separator3" TabIndex="14" TabStop="True" Width="8" X="374" Y="0" />
-    <Button ID="66062ebf-567e-4422-b955-923d97cad7d6" AccessKey="[" DisplayNameResourceID="f229e163-fcd1-4f6a-a645-df86c0efd8ec" DisplaySrcType="PublicResource" Height="28" Name="BtnFirstPage" TabIndex="15" TabStop="True" Width="35" X="382" Y="0">
+    <Separator ID="18de177c-a4d5-4125-b439-5408d5dfcecd" Height="28" Name="Separator3" TabIndex="14" TabStop="True" Width="8" X="409" Y="0" />
+    <Button ID="66062ebf-567e-4422-b955-923d97cad7d6" AccessKey="[" DisplayNameResourceID="f229e163-fcd1-4f6a-a645-df86c0efd8ec" DisplaySrcType="PublicResource" Height="28" Name="BtnFirstPage" TabIndex="15" TabStop="True" Width="35" X="417" Y="0">
       <Events>
         <Event ActionName="FirstPage" EnableEvent="True" EventType="PostBack" IsDataBinding="True" IsDataCollect="True" Name="Click" Parameter="FirstPage" Template=".\UITpls\WebPart\ViewCodeBehindCommon.tpl" />
       </Events>
     </Button>
-    <Button ID="1af936ee-6f70-4679-98e1-3056c5d31091" AccessKey="," DisplayNameResourceID="5ed368d8-7616-4696-b671-3f1c895f3b43" DisplaySrcType="PublicResource" Height="28" Name="BtnPrevPage" TabIndex="16" TabStop="True" Width="35" X="417" Y="0">
+    <Button ID="1af936ee-6f70-4679-98e1-3056c5d31091" AccessKey="," DisplayNameResourceID="5ed368d8-7616-4696-b671-3f1c895f3b43" DisplaySrcType="PublicResource" Height="28" Name="BtnPrevPage" TabIndex="16" TabStop="True" Width="35" X="452" Y="0">
       <Events>
         <Event ActionName="PrevPage" EnableEvent="True" EventType="PostBack" IsDataBinding="True" IsDataCollect="True" Name="Click" Parameter="PrevPage" Template=".\UITpls\WebPart\ViewCodeBehindCommon.tpl" />
       </Events>
     </Button>
-    <Button ID="53f14f1f-bf04-4f14-93a4-1de317507d33" AccessKey="." DisplayNameResourceID="36afec41-957c-493a-97a4-eddb136af5b4" DisplaySrcType="PublicResource" Height="28" Name="BtnNextPage" TabIndex="17" TabStop="True" Width="35" X="452" Y="0">
+    <Button ID="53f14f1f-bf04-4f14-93a4-1de317507d33" AccessKey="." DisplayNameResourceID="36afec41-957c-493a-97a4-eddb136af5b4" DisplaySrcType="PublicResource" Height="28" Name="BtnNextPage" TabIndex="17" TabStop="True" Width="35" X="487" Y="0">
       <Events>
         <Event ActionName="NextPage" EnableEvent="True" EventType="PostBack" IsDataBinding="True" IsDataCollect="True" Name="Click" Parameter="NextPage" Template=".\UITpls\WebPart\ViewCodeBehindCommon.tpl" />
       </Events>
     </Button>
-    <Button ID="e0ca5fcf-2da7-4901-95b8-a4091cfc56db" AccessKey="]" DisplayNameResourceID="dc4a37d1-35de-4016-81dd-582aef3cdeb0" DisplaySrcType="PublicResource" Height="28" Name="BtnLastPage" TabIndex="18" TabStop="True" Width="35" X="487" Y="0">
+    <Button ID="e0ca5fcf-2da7-4901-95b8-a4091cfc56db" AccessKey="]" DisplayNameResourceID="dc4a37d1-35de-4016-81dd-582aef3cdeb0" DisplaySrcType="PublicResource" Height="28" Name="BtnLastPage" TabIndex="18" TabStop="True" Width="35" X="522" Y="0">
       <Events>
         <Event ActionName="LastPage" EnableEvent="True" EventType="PostBack" IsDataBinding="True" IsDataCollect="True" Name="Click" Parameter="LastPage" Template=".\UITpls\WebPart\ViewCodeBehindCommon.tpl" />
       </Events>
     </Button>
-    <Separator ID="533cd1bd-ec99-42b7-b122-be094f20e7e9" Height="28" Name="Separator4" TabIndex="19" TabStop="True" Width="8" X="522" Y="0" />
-    <Button ID="60d22d55-4bfa-4bf0-abf1-facbe01779a2" AccessKey="A" DisplayNameResourceID="92ccef79-ad54-438c-a16e-20a4fd407b97" DisplaySrcType="PublicResource" Height="28" Name="BtnAttachment" TabIndex="20" TabStop="True" Width="35" X="530" Y="0">
+    <Separator ID="533cd1bd-ec99-42b7-b122-be094f20e7e9" Height="28" Name="Separator4" TabIndex="19" TabStop="True" Width="8" X="557" Y="0" />
+    <Button ID="60d22d55-4bfa-4bf0-abf1-facbe01779a2" AccessKey="A" DisplayNameResourceID="92ccef79-ad54-438c-a16e-20a4fd407b97" DisplaySrcType="PublicResource" Height="28" Name="BtnAttachment" TabIndex="20" TabStop="True" Width="35" X="565" Y="0">
       <Events>
         <Event ActionName="AttachmentClick" EnableEvent="True" EventType="PostBack" IsDataBinding="True" IsDataCollect="True" Name="Click" Parameter="AttachmentClick" Template=".\UITpls\WebPart\ViewCodeBehindCommon.tpl" />
       </Events>
     </Button>
-    <Button ID="a1a0c53d-a239-4962-aac6-073c249e2a20" AccessKey="F" DisplayNameResourceID="e222698c-ae3c-470a-8053-1b69905c510a" DisplaySrcType="PublicResource" Height="28" Name="BtnFlow" TabIndex="21" TabStop="True" Width="35" X="565" Y="0">
+    <Button ID="a1a0c53d-a239-4962-aac6-073c249e2a20" AccessKey="F" DisplayNameResourceID="e222698c-ae3c-470a-8053-1b69905c510a" DisplaySrcType="PublicResource" Height="28" Name="BtnFlow" TabIndex="21" TabStop="True" Width="35" X="600" Y="0">
       <Events>
         <Event ActionName="FlowClick" EnableEvent="True" EventType="PostBack" IsDataBinding="True" IsDataCollect="True" Name="Click" Parameter="FlowClick" Template=".\UITpls\WebPart\ViewCodeBehindCommon.tpl" />
       </Events>
     </Button>
-    <Separator ID="bf9cae24-f88f-4199-8b0d-84c9bf498bfe" Height="28" Name="Separator5" TabIndex="22" TabStop="True" Width="8" X="600" Y="0" />
+    <Separator ID="bf9cae24-f88f-4199-8b0d-84c9bf498bfe" Height="28" Name="Separator5" TabIndex="22" TabStop="True" Width="8" X="635" Y="0" />
     <Button ID="483a843f-f78c-41c4-8083-6a3abd1ae1b2" AccessKey="O" DisplayNameResourceID="688fd549-5a92-49cc-8072-6d5377f6409a" DisplaySrcType="PublicResource" GridHeight="1" GridWidth="1" GridX="0" GridY="0" Height="28" Name="BtnOutput" TabIndex="23" TabStop="True" Visible="False" Width="35" X="608" Y="0">
       <Events>
         <Event ActionName="OutputClick" EnableEvent="True" EventType="PostBack" IsDataBinding="True" IsDataCollect="True" Name="Click" Parameter="OutputClick" Template=".\UITpls\WebPart\ViewCodeBehindCommon.tpl" />

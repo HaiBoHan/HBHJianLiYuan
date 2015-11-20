@@ -78,9 +78,13 @@ namespace DepartmentTransferUIModel
 		private void BtnCopy_Click_Extend(object sender, EventArgs  e)
 		{
 			//调用模版提供的默认实现.--默认实现可能会调用相应的Action.
-			
-		
 			BtnCopy_Click_DefaultImpl(sender,e);
+
+            DepartmentTransferRecord focused = this.Model.DepartmentTransfer.FocusedRecord;
+            if (focused != null)
+            {
+                focused.Status = (int)DocStatusData.Opened;
+            }
 		}	
 		 
 				//BtnSubmit_Click...
@@ -99,6 +103,15 @@ namespace DepartmentTransferUIModel
             //BtnApprove_Click_DefaultImpl(sender,e);
 
             UpdateStatus((int)DocStatusData.Approved);
+        }
+
+        //BtnRecovery_Click...
+        private void BtnRecovery_Click_Extend(object sender, EventArgs e)
+        {
+            //调用模版提供的默认实现.--默认实现可能会调用相应的Action.
+            //BtnRecovery_Click_DefaultImpl(sender,e);
+
+            UpdateStatus((int)DocStatusData.Opened);
         }
 		 
 				//BtnUndoApprove_Click...
@@ -257,6 +270,9 @@ namespace DepartmentTransferUIModel
             // 启用弹性域
             //UFIDA.U9.UI.PDHelper.FlexFieldHelper.SetDescFlexField(new UFIDA.U9.UI.PDHelper.DescFlexFieldParameter(this.FlexFieldPicker0, this.Model.DayCheckIn),
             //    new UFIDA.U9.UI.PDHelper.DescFlexFieldParameter(this.DataGrid5, UISceneHelper.GetSegColumnIndex(this.DataGrid5)));
+
+            // 绑定注册弹出对话框到删除按钮 
+            UFIDA.U9.UI.PDHelper.PDFormMessage.ShowDelConfirmDialog(this.Page, "确认审核?", "确认审核", this.BtnApprove);
         }
         
         public void AfterEventBind()

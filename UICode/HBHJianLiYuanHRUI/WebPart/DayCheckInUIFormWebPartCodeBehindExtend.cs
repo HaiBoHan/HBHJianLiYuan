@@ -24,6 +24,7 @@ using UFSoft.UBF.UI.ActionProcess;
 using UFSoft.UBF.UI.WebControls.ClientCallBack;
 using System.Collections.Generic;
 using U9.VOB.Cus.HBHJianLiYuan.Proxy;
+using U9.VOB.HBHCommon.U9CommonBE;
 
 
 
@@ -86,28 +87,37 @@ namespace DayCheckInUIModel
 				//BtnSubmit_Click...
 		private void BtnSubmit_Click_Extend(object sender, EventArgs  e)
 		{
-			//调用模版提供的默认实现.--默认实现可能会调用相应的Action.
-			
-		
-			BtnSubmit_Click_DefaultImpl(sender,e);
+            //调用模版提供的默认实现.--默认实现可能会调用相应的Action.
+            //BtnSubmit_Click_DefaultImpl(sender,e);
+
+            UpdateStatus((int)DocStatusData.Approving);
 		}	
 		 
 				//BtnApprove_Click...
 		private void BtnApprove_Click_Extend(object sender, EventArgs  e)
 		{
-			//调用模版提供的默认实现.--默认实现可能会调用相应的Action.
-			
-		
-			BtnApprove_Click_DefaultImpl(sender,e);
-		}	
+            //调用模版提供的默认实现.--默认实现可能会调用相应的Action.
+            //BtnApprove_Click_DefaultImpl(sender,e);
+
+            UpdateStatus((int)DocStatusData.Approved);
+		}
+
+        //BtnRecovery_Click...
+        private void BtnRecovery_Click_Extend(object sender, EventArgs e)
+        {
+            //调用模版提供的默认实现.--默认实现可能会调用相应的Action.
+            //BtnRecovery_Click_DefaultImpl(sender,e);
+
+            UpdateStatus((int)DocStatusData.Opened);
+        }
 		 
 				//BtnUndoApprove_Click...
 		private void BtnUndoApprove_Click_Extend(object sender, EventArgs  e)
 		{
-			//调用模版提供的默认实现.--默认实现可能会调用相应的Action.
-			
-		
-			BtnUndoApprove_Click_DefaultImpl(sender,e);
+            //调用模版提供的默认实现.--默认实现可能会调用相应的Action.
+            //BtnUndoApprove_Click_DefaultImpl(sender,e);
+
+            UpdateStatus((int)DocStatusData.Opened);
 		}	
 		 
 				//BtnFind_Click...
@@ -321,5 +331,30 @@ namespace DayCheckInUIModel
 
         #endregion
 		
+
+        #region Customer Method
+
+
+        private void UpdateStatus(int targetStatus)
+        {
+            DayCheckInRecord focusedRecord = this.Model.DayCheckIn.FocusedRecord;
+
+            if (focusedRecord != null
+                && focusedRecord.ID > 0
+                )
+            {
+                UpdateDayCheckInStatusBPProxy proxy = new UpdateDayCheckInStatusBPProxy();
+                proxy.TargetStatus = targetStatus;
+
+                proxy.HeadIDs = new System.Collections.Generic.List<long>();
+                proxy.HeadIDs.Add(focusedRecord.ID);
+
+                proxy.Do();
+
+                this.Action.NavigateAction.Refresh(null);
+            }
+        }
+
+        #endregion
     }
 }

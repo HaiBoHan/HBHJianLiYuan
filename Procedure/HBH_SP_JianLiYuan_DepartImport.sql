@@ -65,6 +65,8 @@ end
 	declare @StartID bigint = -1
 	declare @TotalIDCount int = 0
 	declare @LineCount int = 0
+
+	declare @Now datetime = GetDate();
 	
 	select @SysLineNo=cast(isnull(b.Value,a.DefaultValue) as int)
 	from Base_Profile a
@@ -96,6 +98,7 @@ select
 	--,person.*
 	checkIn.ID as DayCheckIn
 	,person.ID as Person
+	,arch.ID as EmployeeArchive
 into #hbh_tmp_DayCheckInLine
 from CBO_Person person
 	inner join CBO_EmployeeArchive arch
@@ -106,13 +109,20 @@ from CBO_Person person
 	--on dept.ID = deptTrl.ID
 	inner join Cust_DayCheckIn checkIn
 	on arch.Dept = checkin.Department
+	
+	inner join CBO_EmployeeAssignment Ass
+	on arch.ID = Ass.Employee
+		and checkIn.CheckInDate between Ass.AssgnBeginDate and Ass.AssgnEndDate
+
 where -- person.PersonID = '370211198801212020'
 	-- and arch.Dept = 
 
 	checkIn.ID = @ID
 	and checkin.Department > 0
-	and (arch.EntranceDate is null or arch.EntranceDate <= @CurDate)
-	and (arch.EntranceEndDate is null or arch.EntranceEndDate >= @CurDate)
+	--and (arch.EntranceDate is null or arch.EntranceDate <= @CurDate)
+	--and (arch.EntranceEndDate is null or arch.EntranceEndDate >= @CurDate)
+	
+	and checkIn.CheckInDate between Ass.AssgnBeginDate and Ass.AssgnEndDate
 
 --order by
 --	person.PersonID
@@ -130,8 +140,6 @@ begin
 	-- select @StartID=0,@Count=@Count+1
 	execute AllocSerials @TotalIDCount,@StartID output		
 
-	declare @Now datetime = GetDate();
-
 	insert into Cust_DayCheckInLine
 	(
 		ID
@@ -144,6 +152,7 @@ begin
 		,DayCheckIn
 		,DocLineNo
 		,StaffMember
+		,EmployeeArchive
 		,CheckType
 	)select 
 		(@StartID + row_number() over (order by Person) - 1)
@@ -155,7 +164,10 @@ begin
 
 		,line.DayCheckIn
 		,(row_number() over (order by Person) * 10)  as DocLineNo
+		-- 人员基本信息
 		,line.Person as StaffMember
+		-- 员工工作记录
+		,line.EmployeeArchive as EmployeeArchive
 		-- 默认考勤类别 = 空 ，让用户手工必须录入
 		,-1 as CheckType
 	from #hbh_tmp_DayCheckInLine line

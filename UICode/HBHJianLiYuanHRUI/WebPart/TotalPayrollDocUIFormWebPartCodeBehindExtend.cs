@@ -24,6 +24,7 @@ using UFSoft.UBF.UI.ActionProcess;
 using UFSoft.UBF.UI.WebControls.ClientCallBack;
 using U9.VOB.Cus.HBHJianLiYuan.Proxy;
 using U9.VOB.HBHCommon.U9CommonBE;
+using U9.VOB.HBHCommon.HBHCommonUI;
 
 
 
@@ -99,6 +100,15 @@ namespace TotalPayrollDocUIModel
             //BtnApprove_Click_DefaultImpl(sender,e);
 
             UpdateStatus((int)DocStatusData.Approved);
+        }
+
+        //BtnRecovery_Click...
+        private void BtnRecovery_Click_Extend(object sender, EventArgs e)
+        {
+            //调用模版提供的默认实现.--默认实现可能会调用相应的Action.
+            //BtnRecovery_Click_DefaultImpl(sender,e);
+
+            UpdateStatus((int)DocStatusData.Opened);
         }
 
         //BtnUndoApprove_Click...
@@ -215,6 +225,83 @@ namespace TotalPayrollDocUIModel
 			
 		
 			BtnClose_Click_DefaultImpl(sender,e);
+        }
+
+        // BtnSumPayroll_Click...
+        private void BtnSumPayroll_Click_Extend(object sender, EventArgs e)
+        {
+            //调用模版提供的默认实现.--默认实现可能会调用相应的Action.
+            //BtnSumPayroll_Click_DefaultImpl(sender, e);
+
+            TotalPayrollDocRecord head = this.Model.TotalPayrollDoc.FocusedRecord;
+
+            if (head == null
+                || (head.PayDate == null
+                    || head.PayDate.GetValueOrDefault(new DateTime(2000,1,1)).Year <= 2000
+                    )
+                )
+            {
+               HBHUIHelper.ShowErrorInfo(this, "汇总计算,必须选择一个汇总维度(客户、业务员、部门、产品线).");
+                return;
+            }
+
+
+            this.BtnSave_Click(null, null);
+
+            head = this.Model.StockupSummary.FocusedRecord;
+
+            if (head != null
+                && head.ID > 0
+                )
+            {
+                HBH.DoNet.DevPlatform.U9Mapping.ProcedureMapping procMapping = new HBH.DoNet.DevPlatform.U9Mapping.ProcedureMapping();
+                procMapping.ProcedureName = "HBH_SP_ShangLuo_StockupSummaryCalc";
+                procMapping.Params = new List<HBH.DoNet.DevPlatform.U9Mapping.ParamDTO>();
+
+                {
+                    HBH.DoNet.DevPlatform.U9Mapping.ParamDTO suptParam = new HBH.DoNet.DevPlatform.U9Mapping.ParamDTO();
+                    suptParam.ParamName = "SummaryID";
+                    suptParam.ParamType = System.Data.DbType.Int64;
+                    //suptParam.ParamDirection = ParameterDirection.Input;
+                    suptParam.ParamValue = head.ID;
+                    procMapping.Params.Add(suptParam);
+                }
+
+
+                U9.VOB.HBHCommon.Proxy.U9CommonSVProxy proxy = new U9.VOB.HBHCommon.Proxy.U9CommonSVProxy();
+
+                // "HBH.DoNet.DevPlatform.U9Mapping.ProcedureMapping";
+                proxy.EntityFullName = typeof(HBH.DoNet.DevPlatform.U9Mapping.ProcedureMapping).FullName;
+                proxy.EntityContent = HBH.DoNet.DevPlatform.EntityMapping.EntitySerialization.EntitySerial(procMapping);
+
+                string strResult = proxy.Do();
+
+                if (!PubClass.IsNull(strResult))
+                {
+                    HBH.DoNet.DevPlatform.EntityMapping.EntityResult result = HBH.DoNet.DevPlatform.EntityMapping.EntitySerialization.EntityDeserial<HBH.DoNet.DevPlatform.EntityMapping.EntityResult>(strResult);
+
+                    if (result != null)
+                    {
+                        if (result.Sucessfull)
+                        {
+                            //if (!PubClass.IsNull(result.StringValue))
+                            //{
+                            //    DataSet ds = EntitySerialization.EntityDeserial<DataSet>(result.StringValue);
+                            //}
+
+                            this.Action.NavigateAction.Refresh(null);
+                        }
+                        else
+                        {
+                            U9.VOB.Cus.HBHShangLuo.HBHShangLuoUIsll.WebPart.HBHUIHelper.ShowErrorInfo(this, result.Message);
+                        }
+                    }
+                    else
+                    {
+                        U9.VOB.Cus.HBHShangLuo.HBHShangLuoUIsll.WebPart.HBHUIHelper.ShowErrorInfo(this, "执行异常,无返回结果!");
+                    }
+                }
+            }
         }
 
         #endregion

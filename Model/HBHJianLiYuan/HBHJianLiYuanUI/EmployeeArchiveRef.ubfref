@@ -20,6 +20,6 @@
     </Reference>
   </References>
   <RefParameters>
-    <RefParam id="be1e223e-c5a7-42a0-87ac-0c1aef9f0934" name="Dept" displayName="部门" description="" help="" dataType="Int64" defaultValue="" />
+    <RefParam id="a72eb6c5-cf4d-4d9a-b118-f5bd35c504e2" name="Dept" displayName="部门" description="" help="" dataType="Int64" defaultValue="" />
   </RefParameters>
 </ReferenceComponent>
