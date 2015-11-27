@@ -192,6 +192,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\App\UFIDA.U9.NM.NMBP.Deploy.dll</HintPath>
     </Reference>
+    <Reference Include="UFIDA.U9.PAY.PayBE">
+      <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\App\UFIDA.U9.PAY.PayBE.dll</HintPath>
+    </Reference>
     <Reference Include="UFIDA.U9.PM.PMBE, Version=25.5401.1182.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\App\UFIDA.U9.PM.PMBE.dll</HintPath>
@@ -301,6 +304,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PayrollDoc_BeforeDefaultValueExtend.cs" />
     <Compile Include="PO_BeforeDefaultValueExtend..cs" />
     <Compile Include="Rcv_AfterValidateExtend.cs" />
     <Compile Include="PR_AfterDefaultValueExtend.cs" />

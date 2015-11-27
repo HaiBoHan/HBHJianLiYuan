@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "U9.VOB.Cus.HBHJianLiYuan.PlugInBE", "PlugInBE\U9.VOB.Cus.HBHJianLiYuan.PlugInBE.csproj", "{DB815F82-4098-417E-B3EF-7A135277DA92}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "U9.VOB.Cus.HBHJianLiYuan.PlugInBP", "U9.VOB.Cus.HBHJianLiYuan.PlugInBP\U9.VOB.Cus.HBHJianLiYuan.PlugInBP.csproj", "{96D7D3D7-460A-458F-8E30-7DA52A4A3E45}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,6 +15,10 @@ Global
 		{DB815F82-4098-417E-B3EF-7A135277DA92}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DB815F82-4098-417E-B3EF-7A135277DA92}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DB815F82-4098-417E-B3EF-7A135277DA92}.Release|Any CPU.Build.0 = Release|Any CPU
+		{96D7D3D7-460A-458F-8E30-7DA52A4A3E45}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{96D7D3D7-460A-458F-8E30-7DA52A4A3E45}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{96D7D3D7-460A-458F-8E30-7DA52A4A3E45}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{96D7D3D7-460A-458F-8E30-7DA52A4A3E45}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

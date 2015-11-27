@@ -10,6 +10,7 @@
     <Import id="d6acc6c0-7e54-4c52-8eb0-abeb818f8df7" name="HBHJianLiYuanHRBE" displayName="HBHJianLiYuanHRBE" description="" help="" componentid="7170c766-f82d-41bb-abeb-7018386a027d" path="..\..\..\..\..\..\..\U9Product\U9.VOB.Product.Metadata\Unconfiged\Metadata\U9.VOB.Cus.HBHJianLiYuan.HRBE.MetaData.dll" type="BE" isRuntime="True" />
     <Import id="069f132b-0da8-43e9-9512-caea3296ec43" name="SalarySolutionUI" displayName="SalarySolutionUI" description="" help="" componentid="06d7268b-87c4-441b-85b5-2dabf6c2b2e1" path="..\..\..\..\..\..\..\U9Product\U9.VOB.Product.Metadata\UI\UFIDA.U9.HR.PAY.SalarySolution.SalarySolutionUI.MetaData.dll" type="UI" isRuntime="True" />
     <Import id="7b1ecc67-f9b9-4442-9abe-653319089631" name="PersonInfoUI" displayName="PersonInfoUI" description="" help="" componentid="92a222eb-7a17-4da9-b3d5-dfe83bac160c" path="..\..\..\..\..\..\..\U9Product\U9.VOB.Product.Metadata\UI\UFIDA.U9.CBO.HR.PersonInfoUI.MetaData.dll" type="UI" isRuntime="True" />
+    <Import id="fe96b153-a451-49de-b601-3e271e43c925" name="PayrollDocUI" displayName="PayrollDocUI" description="" help="" componentid="4dc0700e-bcae-4715-bf4f-37731766fc81" path="..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Metadata\UI\UFIDA.U9.HR.PAY.PayrollDoc.PayrollDocUI.MetaData.dll" type="UI" isRuntime="True" />
   </Imports>
   <SourceControl />
   <ItemGroup>

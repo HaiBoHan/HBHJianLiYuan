@@ -25,7 +25,9 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInUI
         public UFSoft.UBF.UI.IView.IPart part;
         private UFIDA.U9.SCM.SD.ShipUIModel.ShipMainUIFormWebPart _strongPart;
 
+        public const string Const_SaleDeptID = "SaleDept259";
         IUFDataGrid DataGrid10;
+        IUFFldReferenceColumn itemRef;
         public override void AfterInit(UFSoft.UBF.UI.IView.IPart Part, EventArgs args)
         {
             base.AfterInit(Part, args);
@@ -71,7 +73,8 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInUI
 
                     if (tp1 != null)
                     {
-                        IUFFldReference refDept = (IUFFldReference)part.GetUFControlByName(tp1, "SaleDept259");
+                        //IUFFldReference refDept = (IUFFldReference)part.GetUFControlByName(tp1, "SaleDept259");
+                        IUFFldReference refDept = (IUFFldReference)part.GetUFControlByName(tp1, Const_SaleDeptID);
 
                         if (refDept != null)
                         {
@@ -84,6 +87,11 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInUI
 
             //  不用了，不知道跟产品的什么东西冲突，导致，有时候物料放大镜 点击无反应；改为在弹出参照页面做过滤条件吧；
             //RegisterGridItemIDFilterAssociation();
+
+            itemRef = (IUFFldReferenceColumn)DataGrid10.Columns["ItemID"];
+
+            // 物料添加部门名称参数
+            itemRef.AddReferenceInParameter("JianLiYuanDeptName", Const_SaleDeptID, "Text");
         }
 
         void refDept_ContentChanged(object sender, EventArgs e)
@@ -621,12 +629,12 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInUI
                 //&& _strongPart.Model.Ship.FocusedRecord.SaleDept.GetValueOrDefault(-1) > 0
                 )
             {
-                IUFFldReferenceColumn itemRef = (IUFFldReferenceColumn)DataGrid10.Columns["ItemID"];
                 //if (_strongPart.Model.Views["PR"].FocusedRecord["ReqDepartment"] == null || (long)_strongPart.Model.Views["PR"].FocusedRecord["ReqDepartment"] ==0)
                 //_strongPart.Model.ErrorMessage.Message = "请先选择需求部门";
                 // itemRef.CustomInParams = BaseAction.Symbol_AddCustomFilter + "= ID in (select ItemMaster from U9::VOB::Cus::HBHJianLiYuan::DeptItemSupplierBE::DeptItemSupplierLine where DeptItemSupplier.Department.ID=" + _strongPart.Model.Views["PR"].FocusedRecord["ReqDepartment"] + ")";
 
-                string opath = "Code in (select disLine.ItemMaster.Code from U9::VOB::Cus::HBHJianLiYuan::DeptItemSupplierBE::DeptItemSupplierLine disLine where disLine.DeptItemSupplier.Department.Name='" + _strongPart.Model.Ship.FocusedRecord.SaleDept_Name + "')";
+                //string opath = "Code in (select disLine.ItemMaster.Code from U9::VOB::Cus::HBHJianLiYuan::DeptItemSupplierBE::DeptItemSupplierLine disLine where disLine.DeptItemSupplier.Department.Name='" + _strongPart.Model.Ship.FocusedRecord.SaleDept_Name + "')";
+                string opath = "Code in (select disLine.ItemMaster.Code from U9::VOB::Cus::HBHJianLiYuan::DeptItemSupplierBE::DeptItemSupplierLine disLine where disLine.DeptItemSupplier.Department.Name='@JianLiYuanDeptName')";
                 //string opath = "Code = '000001'";
 
                 // 特殊参照，用的是这个条件
@@ -637,23 +645,26 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInUI
                     )
                 {
                     itemRef.CustomInParams = itemRef.CustomInParams.Replace(custFilter, custFilter + opath + " and ");
+                    //itemRef.AddReferenceInParameter.FormReference.Parameters.Add(new LinkParameter("ID", "ItemMaster", enuBindingType.column, enuBindingPropertyType.Key));
+                    //itemRef.AddReferenceInParameter("SOID", "SO", "Key");
+                    //((IUFFldReferenceColumn)column).AddReferenceInParameter("Item", "ItemInfo_ItemCode271", "Value");
                 }
                 else
                 {
                     itemRef.CustomInParams = custFilter + opath;
                 }
 
-                string oldItemRef = PubClass.GetString(_strongPart.CurrentState["ItemRefCondition"]);
-                //CurrentState["ItemRefCondition"] = value;
-                if (!PubClass.IsNull(oldItemRef)
-                    )
-                {
-                    _strongPart.CurrentState["ItemRefCondition"] = string.Format("({0}) and ({1})", opath, oldItemRef);
-                }
-                else
-                {
-                    _strongPart.CurrentState["ItemRefCondition"] = opath;
-                }
+                //string oldItemRef = PubClass.GetString(_strongPart.CurrentState["ItemRefCondition"]);
+                ////CurrentState["ItemRefCondition"] = value;
+                //if (!PubClass.IsNull(oldItemRef)
+                //    )
+                //{
+                //    _strongPart.CurrentState["ItemRefCondition"] = string.Format("({0}) and ({1})", opath, oldItemRef);
+                //}
+                //else
+                //{
+                //    _strongPart.CurrentState["ItemRefCondition"] = opath;
+                //}
             }
         }
     }

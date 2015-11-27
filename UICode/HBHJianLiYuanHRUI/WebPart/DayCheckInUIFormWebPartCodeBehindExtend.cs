@@ -25,6 +25,7 @@ using UFSoft.UBF.UI.WebControls.ClientCallBack;
 using System.Collections.Generic;
 using U9.VOB.Cus.HBHJianLiYuan.Proxy;
 using U9.VOB.HBHCommon.U9CommonBE;
+using U9.VOB.HBHCommon.HBHCommonUI;
 
 
 
@@ -293,8 +294,8 @@ namespace DayCheckInUIModel
             // 启用页面个性化 
             UFIDA.U9.UI.PDHelper.PersonalizationHelper.SetPersonalizationEnable(this, true);
             // 启用弹性域
-            //UFIDA.U9.UI.PDHelper.FlexFieldHelper.SetDescFlexField(new UFIDA.U9.UI.PDHelper.DescFlexFieldParameter(this.FlexFieldPicker0, this.Model.DayCheckIn),
-            //    new UFIDA.U9.UI.PDHelper.DescFlexFieldParameter(this.DataGrid5, UISceneHelper.GetSegColumnIndex(this.DataGrid5)));
+            UFIDA.U9.UI.PDHelper.FlexFieldHelper.SetDescFlexField(new UFIDA.U9.UI.PDHelper.DescFlexFieldParameter(this.FlexFieldPicker0, this.Model.DayCheckIn),
+                new UFIDA.U9.UI.PDHelper.DescFlexFieldParameter(this.DataGrid5, UISceneHelper.GetSegColumnIndex(this.DataGrid5)));
 
             // 绑定注册弹出对话框
             UFIDA.U9.UI.PDHelper.PDFormMessage.ShowDelConfirmDialog(this.Page, "导入将清空原有行，确认导入？", "确认导入", this.BtnDepartImport);
@@ -326,6 +327,9 @@ namespace DayCheckInUIModel
             //{
             //    this.Department116.Enabled = true;
             //}
+
+            U9.VOB.HBHCommon.HBHCommonUI.UISceneHelper.SetToolBarStatus(this.Toolbar2
+                , focusedHead.Status ?? (int)DocStatusData.Empty, focusedHead.DataRecordState, false, (int)DocStatusData.Opened, (int)DocStatusData.Approving, (int)DocStatusData.Approved, 1);
 		}
 
 

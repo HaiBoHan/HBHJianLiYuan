@@ -141,6 +141,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.WebPart\UFIDA.U9.Cust.HBH.Common.CommonLibary.dll</HintPath>
     </Reference>
+    <Reference Include="UFIDA.U9.HR.PAY.PayrollDoc.PayrollDocUI.WebPart">
+      <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.WebPart\UFIDA.U9.HR.PAY.PayrollDoc.PayrollDocUI.WebPart.dll</HintPath>
+    </Reference>
     <Reference Include="UFIDA.U9.PriceCal.PriceCalSV, Version=25.5401.14423.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\App\UFIDA.U9.PriceCal.PriceCalSV.dll</HintPath>
@@ -273,6 +276,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CommonFunctionExtend.cs" />
+    <Compile Include="PayrollDocUIExtend.cs" />
     <Compile Include="PurPriceListUIExtend.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PubHelperUI\PRUIHelperExtend.cs" />

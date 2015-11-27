@@ -25,6 +25,8 @@ using UFSoft.UBF.UI.WebControls.ClientCallBack;
 using U9.VOB.Cus.HBHJianLiYuan.Proxy;
 using U9.VOB.HBHCommon.U9CommonBE;
 using U9.VOB.HBHCommon.HBHCommonUI;
+using System.Collections.Generic;
+using HBH.DoNet.DevPlatform.EntityMapping;
 
 
 
@@ -233,6 +235,8 @@ namespace TotalPayrollDocUIModel
             //调用模版提供的默认实现.--默认实现可能会调用相应的Action.
             //BtnSumPayroll_Click_DefaultImpl(sender, e);
 
+            this.Model.ClearErrorMessage();
+
             TotalPayrollDocRecord head = this.Model.TotalPayrollDoc.FocusedRecord;
 
             if (head == null
@@ -241,26 +245,28 @@ namespace TotalPayrollDocUIModel
                     )
                 )
             {
-               HBHUIHelper.ShowErrorInfo(this, "汇总计算,必须选择一个汇总维度(客户、业务员、部门、产品线).");
+               //HBHUIHelper.ShowErrorInfo(this, "汇总计算,必须选择一个汇总维度(客户、业务员、部门、产品线).");
+                this.Model.ErrorMessage.Message = "发薪日期不可为空!";
+                //this.Model.ErrorMessage.hasErrorMessage = true;
                 return;
             }
 
 
             this.BtnSave_Click(null, null);
 
-            head = this.Model.StockupSummary.FocusedRecord;
+            head = this.Model.TotalPayrollDoc.FocusedRecord;
 
             if (head != null
                 && head.ID > 0
                 )
             {
                 HBH.DoNet.DevPlatform.U9Mapping.ProcedureMapping procMapping = new HBH.DoNet.DevPlatform.U9Mapping.ProcedureMapping();
-                procMapping.ProcedureName = "HBH_SP_ShangLuo_StockupSummaryCalc";
+                procMapping.ProcedureName = "HBH_SP_JianLiYuan_SumPayroll";
                 procMapping.Params = new List<HBH.DoNet.DevPlatform.U9Mapping.ParamDTO>();
 
                 {
                     HBH.DoNet.DevPlatform.U9Mapping.ParamDTO suptParam = new HBH.DoNet.DevPlatform.U9Mapping.ParamDTO();
-                    suptParam.ParamName = "SummaryID";
+                    suptParam.ParamName = "ID";
                     suptParam.ParamType = System.Data.DbType.Int64;
                     //suptParam.ParamDirection = ParameterDirection.Input;
                     suptParam.ParamValue = head.ID;
@@ -293,12 +299,14 @@ namespace TotalPayrollDocUIModel
                         }
                         else
                         {
-                            U9.VOB.Cus.HBHShangLuo.HBHShangLuoUIsll.WebPart.HBHUIHelper.ShowErrorInfo(this, result.Message);
+                            //U9.VOB.Cus.HBHShangLuo.HBHShangLuoUIsll.WebPart.HBHUIHelper.ShowErrorInfo(this, result.Message);
+                            this.Model.ErrorMessage.Message = result.Message;
                         }
                     }
                     else
                     {
-                        U9.VOB.Cus.HBHShangLuo.HBHShangLuoUIsll.WebPart.HBHUIHelper.ShowErrorInfo(this, "执行异常,无返回结果!");
+                        //U9.VOB.Cus.HBHShangLuo.HBHShangLuoUIsll.WebPart.HBHUIHelper.ShowErrorInfo(this, "执行异常,无返回结果!");
+                        this.Model.ErrorMessage.Message = "执行异常,无返回结果!";
                     }
                 }
             }
@@ -342,8 +350,8 @@ namespace TotalPayrollDocUIModel
             // 启用页面个性化 
             UFIDA.U9.UI.PDHelper.PersonalizationHelper.SetPersonalizationEnable(this, true);
             // 启用弹性域
-            //UFIDA.U9.UI.PDHelper.FlexFieldHelper.SetDescFlexField(new UFIDA.U9.UI.PDHelper.DescFlexFieldParameter(this.FlexFieldPicker0, this.Model.DayCheckIn),
-            //    new UFIDA.U9.UI.PDHelper.DescFlexFieldParameter(this.DataGrid5, UISceneHelper.GetSegColumnIndex(this.DataGrid5)));
+            UFIDA.U9.UI.PDHelper.FlexFieldHelper.SetDescFlexField(new UFIDA.U9.UI.PDHelper.DescFlexFieldParameter(this.FlexFieldPicker0, this.Model.TotalPayrollDoc),
+                new UFIDA.U9.UI.PDHelper.DescFlexFieldParameter(this.DataGrid5, UISceneHelper.GetSegColumnIndex(this.DataGrid5)));
         }
         
         public void AfterEventBind()

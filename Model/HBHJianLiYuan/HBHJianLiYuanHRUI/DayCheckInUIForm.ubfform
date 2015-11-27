@@ -242,6 +242,78 @@
         <Events />
         <RelationControls />
         <Events />
+        <FormLink FormRefID="5edfc940-5112-4063-9f46-eb7bb25abf6b" FormRefName="PersonInfoMainUIForm.ubfform" FormRefPath="PersonInfoMainUIForm.ubfform" FormRefProjectPath="UFIDA.U9.CBO.HR.PersonInfoUI.MetaData.dll" Height="504" IsShowStateBar="True" Width="992">
+          <InParameters>
+            <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="ID" ParameterBindType="None" />
+            <Parameter ContextID="" ControlID="CurrentOperator329" ControlProperty="Key" ControlType="ReferenceModel" Name="EmpID" ParameterBindType="Bind2Control" />
+            <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="Org" />
+            <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="Operation" />
+            <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="FuncType" />
+            <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="BizType" />
+            <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="TargetOrganization" />
+            <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="NavPage" />
+          </InParameters>
+          <OutParameters>
+            <Parameter ContextID="" ControlID="CurrentOperator329" ControlProperty="Key" ControlType="ReferenceModel" Name="ID" />
+            <Parameter ContextID="" ControlID="CurrentOperator329" ControlProperty="Value" ControlType="ReferenceModel" Name="Code" />
+            <Parameter ContextID="" ControlID="CurrentOperator329" ControlProperty="Text" ControlType="ReferenceModel" Name="Name" />
+            <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="PID" />
+            <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="PersonID" />
+            <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="WorkOrg" />
+            <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="WorkOrgCode" />
+            <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="WorkOrgName" />
+            <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="EmployeeCategory" />
+            <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="EmployeeCategoryCode" />
+            <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="EmployeeCategoryName" />
+            <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="BusinessOrg" />
+            <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="BusinessOrgCode" />
+            <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="BusinessOrgName" />
+            <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="Dept" />
+            <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="DeptCode" />
+            <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="DeptName" />
+            <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="Job" />
+            <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="JobCode" />
+            <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="JobName" />
+            <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="JobTitle" />
+            <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="JobTitleCode" />
+            <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="JobTitleName" />
+            <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="Position" />
+            <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="PositionCode" />
+            <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="PositionName" />
+            <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="TargetOrg" />
+            <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="OwnerOrg" />
+            <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="OwnerOrgCode" />
+            <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="OwnerOrgName" />
+            <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="AWorkOrg" />
+            <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="AWorkOrgCode" />
+            <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="AWorkOrgName" />
+            <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="ABusinessOrg" />
+            <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="ABusinessOrgCode" />
+            <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="ABusinessOrgName" />
+            <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="ADept" />
+            <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="ADeptCode" />
+            <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="ADeptName" />
+            <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="AJob" />
+            <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="AJobCode" />
+            <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="AJobName" />
+            <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="APostion" />
+            <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="APostionCode" />
+            <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="APostionName" />
+            <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="AJobGrade" />
+            <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="AJobGradeCode" />
+            <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="AJobGradeName" />
+            <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="APersonCategory" />
+            <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="ProSumUp" />
+            <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="ProBeginDate" />
+            <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="ProMonth" />
+            <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="GuideMan" />
+            <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="GuideManCode" />
+            <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="GuideManName" />
+            <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="AID" />
+            <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="AIDCode" />
+            <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="AIDName" />
+          </OutParameters>
+        </FormLink>
       </Label>
       <Reference ID="c6eb3a8a-3297-4fda-a340-c083ed223050" CodeAttributeName="EmployeeCode" CodeField="EmployeeCode" CodeFieldUIFieldID="CurrentOperator_EmployeeCode" CodeFieldUIViewID="DayCheckIn" DisplayFormat="19.0" Enabled="True" EntityName="ID" GridHeight="1" GridWidth="1" GridX="2" GridY="1" Height="20" IsNull="True" IsProperty="False" IsSequence="False" Name="CurrentOperator329" NameAttributeName="Name" NameFieldUIFieldID="CurrentOperator_Name" NameFieldUIViewID="DayCheckIn" PkeyField="ID" RefType="cd089ed1-faaf-4920-8f27-3a2feb7e4b22" RelationControl="lblCurrentOperator329" TabIndex="10" TabStop="True" TextAlign="Right" TitleAlign="Left" TitleLocation="Left" UIFieldID="CurrentOperator" UIViewID="DayCheckIn" Visible="True" Width="153" WindowHeight="408" WindowWidth="580" X="158" Y="25">
         <Events />
@@ -262,6 +334,15 @@
         </UIFilterBar>
         <Events />
       </Reference>
+      <Label ID="e86a840a-32e4-42b9-8418-58d7b230101c" Enabled="True" GridHeight="1" GridWidth="1" GridX="8" GridY="0" Height="20" IsNull="True" IsSequence="False" Name="lblStatus123" RelationControl="Status123" TabIndex="11" TabStop="True" TitleAlign="Right" TitleLocation="Left" UIFieldID="" UIViewID="" Visible="True" Width="152" X="660" Y="0">
+        <Events />
+        <RelationControls />
+        <Events />
+      </Label>
+      <DropDownList ID="85b59994-983d-419b-b662-bfe7fde18cd3" DisplayFormat="10.0" Enabled="False" EnumFullName="U9.VOB.HBHCommon.U9CommonBE.DocStatus" EnumID="34af30f0-a7d9-4005-962e-21076f509a72" GridHeight="1" GridWidth="1" GridX="10" GridY="0" Height="20" IsNull="True" IsProperty="False" IsSequence="False" Name="Status123" RelationControl="lblStatus123" TabIndex="12" TabStop="True" TitleAlign="Left" TitleLocation="Left" UIFieldID="Status" UIViewID="DayCheckIn" Visible="True" Width="152" X="817" Y="0">
+        <Events />
+        <RelationControls />
+      </DropDownList>
     </Card>
     <DataGrid ID="4b366f14-453a-4a3a-9566-52032b4587e5" EditStatus="edit" Enabled="True" GridHeight="2" GridWidth="2" GridX="0" GridY="1" HasSum="False" Height="339" IsSumAllData="True" Name="DataGrid5" PageSize="20" Paging="True" TabIndex="2" TabStop="True" Width="972" X="10" Y="82">
       <Events />
@@ -271,9 +352,9 @@
           <HeaderCell ID="33cdaf2e-6351-4896-911a-987c02d8fac1" ColSpan="1" Name="HeaderCell1" OwnerColName="DocLineNo0" RowSpan="1" />
           <HeaderCell ID="c7cad4bd-e019-408a-a6bc-0da0586c60af" ColSpan="1" DisplayName="员工工作记录" DisplayNameIndexStr="" DisplayNameResourceID="" DisplaySrcUIFieldID="" DisplaySrcUIViewID="" Name="HeaderCell13" OwnerColName="EmployeeArchive1" RowSpan="1" />
           <HeaderCell ID="4be511ae-cd80-4aae-be13-d0db115ca05c" ColSpan="1" DisplayName="考勤类别" DisplayNameIndexStr="" DisplayNameResourceID="" DisplaySrcUIFieldID="" DisplaySrcUIViewID="" Name="HeaderCell11" OwnerColName="CheckType0" RowSpan="1" />
-          <HeaderCell ID="41538b4d-ba4b-4662-a043-01753bfb9211" ColSpan="1" Name="HeaderCell4" OwnerColName="FullTimeDay0" RowSpan="1" />
-          <HeaderCell ID="ad2938b1-51de-4d7e-aff6-1924c15848b1" ColSpan="1" Name="HeaderCell5" OwnerColName="PartTimeDay0" RowSpan="1" />
-          <HeaderCell ID="9077362c-fe34-4f9e-a1f2-6bfd66178425" ColSpan="1" Name="HeaderCell6" OwnerColName="HourlyDay0" RowSpan="1" />
+          <HeaderCell ID="201564fc-4dfe-447d-95e0-0c03388c8514" ColSpan="1" DisplayName="全日制员工出勤" DisplayNameIndexStr="" DisplayNameResourceID="" DisplaySrcUIFieldID="" DisplaySrcUIViewID="" Name="HeaderCell28" OwnerColName="FullTimeDay0" RowSpan="1" />
+          <HeaderCell ID="9cdeac52-91c5-4af6-ae0a-a6f41d275c74" ColSpan="1" DisplayName="非全日制员工出勤" DisplayNameIndexStr="" DisplayNameResourceID="" DisplaySrcUIFieldID="" DisplaySrcUIViewID="" Name="HeaderCell29" OwnerColName="PartTimeDay0" RowSpan="1" />
+          <HeaderCell ID="363f2c1b-4e92-49bb-9dea-9302e6db7276" ColSpan="1" DisplayName="钟点工出勤" DisplayNameIndexStr="" DisplayNameResourceID="" DisplaySrcUIFieldID="" DisplaySrcUIViewID="" Name="HeaderCell30" OwnerColName="HourlyDay0" RowSpan="1" />
           <HeaderCell ID="f664d3d4-57e9-4b54-9586-20f30bf3ec5d" ColSpan="1" Name="HeaderCell7" OwnerColName="Duty0" RowSpan="1" />
           <HeaderCell ID="fed98584-3901-4d4e-98d1-941791d332ed" ColSpan="1" Name="HeaderCell8" OwnerColName="Memo0" RowSpan="1" />
           <HeaderCell ID="2bba5c73-f05e-4765-8fc3-15d6234677ac" ColSpan="1" DisplayName="DescFlexField" DisplayNameIndexStr="" DisplayNameResourceID="" DisplaySrcUIFieldID="" DisplaySrcUIViewID="" Name="HeaderCell9" OwnerColName="DescFlexField" RowSpan="1" />
@@ -306,30 +387,102 @@
             <RefNameField UIFieldID="Name" />
           </RefNameFields>
           <UIFilterBar Name="ReferenceFilter" />
+          <FormLink FormRefID="5edfc940-5112-4063-9f46-eb7bb25abf6b" FormRefName="PersonInfoMainUIForm.ubfform" FormRefPath="PersonInfoMainUIForm.ubfform" FormRefProjectPath="UFIDA.U9.CBO.HR.PersonInfoUI.MetaData.dll" Height="504" IsShowStateBar="True" Name="FormLink1" Width="992">
+            <InParameters>
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="ID" />
+              <Parameter ContextID="" ControlID="EmployeeArchive" ControlProperty="Key" ControlType="ReferenceColumnModel" Name="EmpID" ParameterBindType="Bind2Control" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="Org" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="Operation" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="FuncType" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="BizType" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="TargetOrganization" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="NavPage" />
+            </InParameters>
+            <OutParameters>
+              <Parameter ContextID="" ControlID="EmployeeArchive" ControlProperty="Key" ControlType="ReferenceColumnModel" Name="ID" />
+              <Parameter ContextID="" ControlID="EmployeeArchive" ControlProperty="Value" ControlType="ReferenceColumnModel" Name="Code" />
+              <Parameter ContextID="" ControlID="EmployeeArchive" ControlProperty="Text" ControlType="ReferenceColumnModel" Name="Name" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="PID" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="PersonID" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="WorkOrg" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="WorkOrgCode" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="WorkOrgName" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="EmployeeCategory" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="EmployeeCategoryCode" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="EmployeeCategoryName" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="BusinessOrg" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="BusinessOrgCode" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="BusinessOrgName" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="Dept" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="DeptCode" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="DeptName" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="Job" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="JobCode" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="JobName" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="JobTitle" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="JobTitleCode" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="JobTitleName" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="Position" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="PositionCode" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="PositionName" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="TargetOrg" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="OwnerOrg" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="OwnerOrgCode" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="OwnerOrgName" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="AWorkOrg" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="AWorkOrgCode" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="AWorkOrgName" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="ABusinessOrg" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="ABusinessOrgCode" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="ABusinessOrgName" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="ADept" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="ADeptCode" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="ADeptName" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="AJob" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="AJobCode" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="AJobName" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="APostion" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="APostionCode" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="APostionName" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="AJobGrade" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="AJobGradeCode" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="AJobGradeName" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="APersonCategory" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="ProSumUp" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="ProBeginDate" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="ProMonth" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="GuideMan" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="GuideManCode" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="GuideManName" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="AID" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="AIDCode" />
+              <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="AIDName" />
+            </OutParameters>
+          </FormLink>
           <Events />
         </ReferenceColumn>
         <DropDownListColumn ID="0b1153a9-acd7-4e6b-b8d7-61e5ef0e7ca0" DefaultValue="0" DisplayFormat="10.0" Enabled="True" EnumFullName="U9.VOB.Cus.HBHJianLiYuan.CheckTypeEnum" EnumID="abfaa342-ff05-4e6b-bd98-836d0ddf53a5" Help="日考勤行.Misc.考勤类别" IsNull="True" IsProperty="False" IsSequence="False" Name="CheckType0" NPos="4" Point="0" UIFieldID="CheckType" UIViewID="DayCheckIn_DayCheckInLine" Visible="True">
           <Events />
         </DropDownListColumn>
-        <NumberColumn ID="d26a98a9-c7a7-4d87-b3bf-1536024695ef" DefaultValue="0" DisplayFormat="10.0" Enabled="True" Help="日考勤行.Misc.全日制员工出勤" IsNull="True" IsProperty="False" IsSequence="False" MinValue="0" Name="FullTimeDay0" NPos="5" Point="0" UIFieldID="FullTimeDay" UIViewID="DayCheckIn_DayCheckInLine" Visible="True" Width="120">
-          <PrecisionBind Name="PrecisionBind2" />
-          <RoundRuleBind Name="RoundRuleBind2" />
-          <ValueOfRoundByValueBind Name="ValueOfRoundByValueBind2" />
-          <CurrencyType Name="CurrencyType2" />
+        <NumberColumn ID="1585cd51-0abe-496b-ae94-e39c86434df0" DefaultValue="0" DisplayFormat="24.9" Enabled="True" Help="日考勤行.Misc.全日制员工出勤" IsNull="True" IsProperty="False" IsSequence="False" MinValue="0" Name="FullTimeDay0" NPos="5" Point="0" UIFieldID="FullTimeDay" UIViewID="DayCheckIn_DayCheckInLine" Visible="True" Width="130">
+          <PrecisionBind />
+          <RoundRuleBind />
+          <ValueOfRoundByValueBind />
+          <CurrencyType />
           <Events />
         </NumberColumn>
-        <NumberColumn ID="148eb9cf-abe2-440e-9192-4c82e4d4a30c" DefaultValue="0" DisplayFormat="10.0" Enabled="True" Help="日考勤行.Misc.非全日制员工出勤" IsNull="True" IsProperty="False" IsSequence="False" MinValue="0" Name="PartTimeDay0" NPos="6" Point="0" UIFieldID="PartTimeDay" UIViewID="DayCheckIn_DayCheckInLine" Visible="True" Width="140">
-          <PrecisionBind Name="PrecisionBind3" />
-          <RoundRuleBind Name="RoundRuleBind3" />
-          <ValueOfRoundByValueBind Name="ValueOfRoundByValueBind3" />
-          <CurrencyType Name="CurrencyType3" />
+        <NumberColumn ID="fcdfabb7-294d-4112-b4d5-a29f27f5f1d9" DefaultValue="0" DisplayFormat="24.9" Enabled="True" Help="日考勤行.Misc.非全日制员工出勤" IsNull="True" IsProperty="False" IsSequence="False" MinValue="0" Name="PartTimeDay0" NPos="6" Point="0" UIFieldID="PartTimeDay" UIViewID="DayCheckIn_DayCheckInLine" Visible="True" Width="140">
+          <PrecisionBind />
+          <RoundRuleBind />
+          <ValueOfRoundByValueBind />
+          <CurrencyType />
           <Events />
         </NumberColumn>
-        <NumberColumn ID="886e1b40-62d9-4c43-9afd-0f5b28f3784f" DefaultValue="0" DisplayFormat="10.0" Enabled="True" Help="日考勤行.Misc.钟点工出勤" IsNull="True" IsProperty="False" IsSequence="False" Name="HourlyDay0" NPos="7" Point="0" UIFieldID="HourlyDay" UIViewID="DayCheckIn_DayCheckInLine" Visible="True">
-          <PrecisionBind Name="PrecisionBind4" />
-          <RoundRuleBind Name="RoundRuleBind4" />
-          <ValueOfRoundByValueBind Name="ValueOfRoundByValueBind4" />
-          <CurrencyType Name="CurrencyType4" />
+        <NumberColumn ID="0afaf11c-5cf4-40fc-8fd7-3716b029a02e" DefaultValue="0" DisplayFormat="24.9" Enabled="True" Help="日考勤行.Misc.钟点工出勤" IsNull="True" IsProperty="False" IsSequence="False" MinValue="0" Name="HourlyDay0" NPos="7" Point="0" UIFieldID="HourlyDay" UIViewID="DayCheckIn_DayCheckInLine" Visible="True">
+          <PrecisionBind />
+          <RoundRuleBind />
+          <ValueOfRoundByValueBind />
+          <CurrencyType />
           <Events />
         </NumberColumn>
         <TextBoxColumn ID="a91ac245-67e8-48b9-809a-f8e501287ad6" DefaultValue="" DisplayFormat="50" Enabled="True" Help="日考勤行.Misc.职位" IsNull="True" IsProperty="False" IsSequence="False" Name="Duty0" NPos="8" Point="0" TextAlign="Left" UIFieldID="Duty" UIViewID="DayCheckIn_DayCheckInLine" Visible="True">
@@ -338,73 +491,11 @@
         <TextBoxColumn ID="21a80cf4-5e65-4476-9e13-47aec15a563d" DefaultValue="" DisplayFormat="500" Enabled="True" Help="日考勤行.Misc.备注" IsNull="True" IsProperty="False" IsSequence="False" Name="Memo0" NPos="9" Point="0" TextAlign="Left" UIFieldID="Memo" UIViewID="DayCheckIn_DayCheckInLine" Visible="True">
           <Events />
         </TextBoxColumn>
-        <TextBoxColumn ID="48770754-bf83-4c2a-bbe9-18a741f1a8c7" DisplayFormat="" Enabled="True" IsNull="True" Name="DescFlexField" NPos="10" Point="0" TextAlign="Left" Visible="False">
+        <TextBoxColumn ID="48770754-bf83-4c2a-bbe9-18a741f1a8c7" DisplayFormat="" DisplaySrcType="BindingUIModel" Enabled="True" IsNull="True" Name="DescFlexField" NPos="10" Point="0" TextAlign="Left" Visible="False">
           <Events />
         </TextBoxColumn>
       </Columns>
     </DataGrid>
   </Card>
-  <Label ID="0017f948-53e4-4b90-8fcb-155afb9fbf86" Enabled="True" GridHeight="1" GridWidth="1" GridX="0" GridY="0" Height="20" IsNull="True" IsSequence="False" Name="lblID0" RelationControl="ID0" TabIndex="23" TabStop="True" TitleAlign="Right" TitleLocation="Left" UIFieldID="" UIViewID="" Visible="False" Width="160">
-    <Events />
-    <RelationControls />
-    <Events />
-  </Label>
-  <NumberControl ID="274a2cbb-0187-477c-b0e4-111b1d287819" DisplayFormat="19.0" Enabled="True" GridHeight="1" GridWidth="1" GridX="0" GridY="0" Height="20" IsNull="False" IsProperty="False" IsSequence="True" MultiLine="False" Name="ID0" RelationControl="lblID0" TabIndex="24" TabStop="True" TextAlign="Right" TitleAlign="Left" TitleLocation="Left" UIFieldID="ID" UIViewID="DayCheckIn_DayCheckInLine" Visible="False" Width="160">
-    <Events />
-    <RelationControls />
-    <PrecisionBind Name="PrecisionBind5" />
-    <RoundRuleBind Name="RoundRuleBind5" />
-    <ValueOfRoundByValueBind Name="ValueOfRoundByValueBind5" />
-    <CurrencyType Name="CurrencyType5" />
-  </NumberControl>
-  <Label ID="b61995a4-b478-40f4-9123-83a67df7ecd4" Enabled="True" GridHeight="1" GridWidth="1" GridX="0" GridY="0" Height="20" IsNull="True" IsSequence="False" Name="lblCreatedOn0" RelationControl="CreatedOn0" TabIndex="25" TabStop="True" TitleAlign="Right" TitleLocation="Left" UIFieldID="" UIViewID="" Visible="False" Width="160">
-    <Events />
-    <RelationControls />
-    <Events />
-  </Label>
-  <DatePicker ID="f73d7853-17ae-4e87-9abd-057ba0cc8233" DisplayFormat="17" Enabled="True" GridHeight="1" GridWidth="1" GridX="0" GridY="0" Height="20" IsNull="True" IsProperty="False" IsSequence="False" Name="CreatedOn0" RelationControl="lblCreatedOn0" TabIndex="26" TabStop="True" TitleAlign="Left" TitleLocation="Left" UIFieldID="CreatedOn" UIViewID="DayCheckIn_DayCheckInLine" Visible="False" Width="160">
-    <Events />
-    <RelationControls />
-  </DatePicker>
-  <Label ID="d7cd30ad-3867-4fd7-a40a-f5cd0b2a0cb2" Enabled="True" GridHeight="1" GridWidth="1" GridX="0" GridY="0" Height="20" IsNull="True" IsSequence="False" Name="lblCreatedBy0" RelationControl="CreatedBy0" TabIndex="27" TabStop="True" TitleAlign="Right" TitleLocation="Left" UIFieldID="" UIViewID="" Visible="False" Width="160">
-    <Events />
-    <RelationControls />
-    <Events />
-  </Label>
-  <TextBox ID="063fa3e8-3a66-463f-83aa-7c54219ec0d1" DisplayFormat="50" Enabled="True" GridHeight="1" GridWidth="1" GridX="0" GridY="0" Height="20" IsNull="True" IsProperty="False" IsSequence="False" MultiLine="False" Name="CreatedBy0" RelationControl="lblCreatedBy0" TabIndex="28" TabStop="True" TextAlign="Left" TitleAlign="Left" TitleLocation="Left" UIFieldID="CreatedBy" UIViewID="DayCheckIn_DayCheckInLine" Visible="False" Width="160">
-    <Events />
-    <RelationControls />
-  </TextBox>
-  <Label ID="ec645742-e4f2-4133-af33-061e451c6d87" Enabled="True" GridHeight="1" GridWidth="1" GridX="0" GridY="0" Height="20" IsNull="True" IsSequence="False" Name="lblModifiedOn0" RelationControl="ModifiedOn0" TabIndex="29" TabStop="True" TitleAlign="Right" TitleLocation="Left" UIFieldID="" UIViewID="" Visible="False" Width="160">
-    <Events />
-    <RelationControls />
-    <Events />
-  </Label>
-  <DatePicker ID="ae122e7e-c894-4308-be0e-722520fbd388" DisplayFormat="17" Enabled="True" GridHeight="1" GridWidth="1" GridX="0" GridY="0" Height="20" IsNull="True" IsProperty="False" IsSequence="False" Name="ModifiedOn0" RelationControl="lblModifiedOn0" TabIndex="30" TabStop="True" TitleAlign="Left" TitleLocation="Left" UIFieldID="ModifiedOn" UIViewID="DayCheckIn_DayCheckInLine" Visible="False" Width="160">
-    <Events />
-    <RelationControls />
-  </DatePicker>
-  <Label ID="8dab12b9-58fb-481b-9b27-6e239c1702d0" Enabled="True" GridHeight="1" GridWidth="1" GridX="0" GridY="0" Height="20" IsNull="True" IsSequence="False" Name="lblModifiedBy0" RelationControl="ModifiedBy0" TabIndex="31" TabStop="True" TitleAlign="Right" TitleLocation="Left" UIFieldID="" UIViewID="" Visible="False" Width="160">
-    <Events />
-    <RelationControls />
-    <Events />
-  </Label>
-  <TextBox ID="395fffa3-642e-4c32-8c9c-19168ff92870" DisplayFormat="50" Enabled="True" GridHeight="1" GridWidth="1" GridX="0" GridY="0" Height="20" IsNull="True" IsProperty="False" IsSequence="False" MultiLine="False" Name="ModifiedBy0" RelationControl="lblModifiedBy0" TabIndex="32" TabStop="True" TextAlign="Left" TitleAlign="Left" TitleLocation="Left" UIFieldID="ModifiedBy" UIViewID="DayCheckIn_DayCheckInLine" Visible="False" Width="160">
-    <Events />
-    <RelationControls />
-  </TextBox>
-  <Label ID="006ea01a-2395-4da3-ba9a-bca8e1c6e8fe" Enabled="True" GridHeight="1" GridWidth="1" GridX="0" GridY="0" Height="20" IsNull="True" IsSequence="False" Name="lblSysVersion0" RelationControl="SysVersion0" TabIndex="33" TabStop="True" TitleAlign="Right" TitleLocation="Left" UIFieldID="" UIViewID="" Visible="False" Width="160">
-    <Events />
-    <RelationControls />
-    <Events />
-  </Label>
-  <NumberControl ID="b4816819-5f5b-449c-9deb-da25cc0a3366" DisplayFormat="19.0" Enabled="True" GridHeight="1" GridWidth="1" GridX="0" GridY="0" Height="20" IsNull="True" IsProperty="False" IsSequence="False" MultiLine="False" Name="SysVersion0" RelationControl="lblSysVersion0" TabIndex="34" TabStop="True" TextAlign="Right" TitleAlign="Left" TitleLocation="Left" UIFieldID="SysVersion" UIViewID="DayCheckIn_DayCheckInLine" Visible="False" Width="160">
-    <Events />
-    <RelationControls />
-    <PrecisionBind Name="PrecisionBind6" />
-    <RoundRuleBind Name="RoundRuleBind6" />
-    <ValueOfRoundByValueBind Name="ValueOfRoundByValueBind6" />
-    <CurrencyType Name="CurrencyType6" />
-  </NumberControl>
   <Events />
 </View>
