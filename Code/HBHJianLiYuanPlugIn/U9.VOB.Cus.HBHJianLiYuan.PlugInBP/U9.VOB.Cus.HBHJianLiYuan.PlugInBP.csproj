@@ -1,0 +1,269 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{96D7D3D7-460A-458F-8E30-7DA52A4A3E45}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>U9.VOB.Cus.HBHJianLiYuan.PlugInBP</RootNamespace>
+    <AssemblyName>U9.VOB.Cus.HBHJianLiYuan.PlugInBP</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="HBH.DoNet.DevPlatform.EntityMapping">
+      <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\HBHCommon\HBH.DoNet.DevPlatform.EntityMapping.dll</HintPath>
+    </Reference>
+    <Reference Include="HBH.DoNet.DevPlatform.ErpSvProxy">
+      <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\HBHCommon\HBH.DoNet.DevPlatform.ErpSvProxy.dll</HintPath>
+    </Reference>
+    <Reference Include="HBH.DoNet.DevPlatform.U9Mapping">
+      <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\HBHCommon\HBH.DoNet.DevPlatform.U9Mapping.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="U9.VOB.Cus.HBHJianLiYuan.HBHHelper">
+      <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\Unconfiged\Component\U9.VOB.Cus.HBHJianLiYuan.HBHHelper.dll</HintPath>
+    </Reference>
+    <Reference Include="U9.VOB.Cus.HBHJianLiYuan.HRBE">
+      <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\Unconfiged\Component\U9.VOB.Cus.HBHJianLiYuan.HRBE.dll</HintPath>
+    </Reference>
+    <Reference Include="U9.VOB.Cus.HBHJianLiYuan.HRBE.Deploy">
+      <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\Unconfiged\Component\U9.VOB.Cus.HBHJianLiYuan.HRBE.Deploy.dll</HintPath>
+    </Reference>
+    <Reference Include="U9.VOB.HBHCommon.U9CommonBE">
+      <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\HBHCommon\U9.VOB.HBHCommon.U9CommonBE.dll</HintPath>
+    </Reference>
+    <Reference Include="U9.VOB.HBHCommon.U9CommonBE.Deploy">
+      <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\HBHCommon\U9.VOB.HBHCommon.U9CommonBE.Deploy.dll</HintPath>
+    </Reference>
+    <Reference Include="U9.VOB.HBHCommon.U9CommonSV.Agent">
+      <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\HBHCommon\U9.VOB.HBHCommon.U9CommonSV.Agent.dll</HintPath>
+    </Reference>
+    <Reference Include="U9.VOB.HBHCommon.U9CommonSV.Deploy">
+      <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\HBHCommon\U9.VOB.HBHCommon.U9CommonSV.Deploy.dll</HintPath>
+    </Reference>
+    <Reference Include="UBF.System, Version=21.5100.337.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.UBF\UBFStudio\Runtime\UBF.System.dll</HintPath>
+    </Reference>
+    <Reference Include="UFIDA.U9.Base.BaseBE, Version=21.5100.337.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.UBF\UBFStudio\Runtime\UFIDA.U9.Base.BaseBE.dll</HintPath>
+    </Reference>
+    <Reference Include="UFIDA.U9.Base.BaseBE.Deploy, Version=21.5100.337.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.UBF\UBFStudio\Runtime\UFIDA.U9.Base.BaseBE.Deploy.dll</HintPath>
+    </Reference>
+    <Reference Include="UFIDA.U9.CBO.HRBE">
+      <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\App\UFIDA.U9.CBO.HRBE.dll</HintPath>
+    </Reference>
+    <Reference Include="UFIDA.U9.CBO.HRBE.Deploy, Version=25.5401.15615.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\App\UFIDA.U9.CBO.HRBE.Deploy.dll</HintPath>
+    </Reference>
+    <Reference Include="UFIDA.U9.CBO.HRBP.Agent">
+      <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\App\UFIDA.U9.CBO.HRBP.Agent.dll</HintPath>
+    </Reference>
+    <Reference Include="UFIDA.U9.CBO.HRBP.Deploy">
+      <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\App\UFIDA.U9.CBO.HRBP.Deploy.dll</HintPath>
+    </Reference>
+    <Reference Include="UFIDA.U9.CBO.HRSV.Agent">
+      <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\App\UFIDA.U9.CBO.HRSV.Agent.dll</HintPath>
+    </Reference>
+    <Reference Include="UFIDA.U9.CBO.HRSV.Deploy">
+      <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\App\UFIDA.U9.CBO.HRSV.Deploy.dll</HintPath>
+    </Reference>
+    <Reference Include="UFIDA.U9.CBO.MFGBE, Version=21.5100.337.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\App\UFIDA.U9.CBO.MFGBE.dll</HintPath>
+    </Reference>
+    <Reference Include="UFIDA.U9.CBO.MFGBP.Agent, Version=21.5100.337.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\App\UFIDA.U9.CBO.MFGBP.Agent.dll</HintPath>
+    </Reference>
+    <Reference Include="UFIDA.U9.CBO.MFGBP.Deploy, Version=21.5100.337.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\App\UFIDA.U9.CBO.MFGBP.Deploy.dll</HintPath>
+    </Reference>
+    <Reference Include="UFIDA.U9.CBO.PubBE, Version=21.5100.337.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\App\UFIDA.U9.CBO.PubBE.dll</HintPath>
+    </Reference>
+    <Reference Include="UFIDA.U9.CBO.PubBE.Deploy, Version=21.5100.337.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\App\UFIDA.U9.CBO.PubBE.Deploy.dll</HintPath>
+    </Reference>
+    <Reference Include="UFIDA.U9.CBO.SCMBE, Version=21.5100.337.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\App\UFIDA.U9.CBO.SCMBE.dll</HintPath>
+    </Reference>
+    <Reference Include="UFIDA.U9.CBO.SCMBE.Deploy, Version=21.5100.337.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\App\UFIDA.U9.CBO.SCMBE.Deploy.dll</HintPath>
+    </Reference>
+    <Reference Include="UFIDA.U9.ISV.PM.PMISV.Agent, Version=21.5100.337.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\App\UFIDA.U9.ISV.PM.PMISV.Agent.dll</HintPath>
+    </Reference>
+    <Reference Include="UFIDA.U9.ISV.PM.PMISV.Deploy, Version=21.5100.337.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\App\UFIDA.U9.ISV.PM.PMISV.Deploy.dll</HintPath>
+    </Reference>
+    <Reference Include="UFIDA.U9.Lot.LotBE">
+      <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\App\UFIDA.U9.Lot.LotBE.dll</HintPath>
+    </Reference>
+    <Reference Include="UFIDA.U9.MO.MOBE, Version=21.5100.337.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\App\UFIDA.U9.MO.MOBE.dll</HintPath>
+    </Reference>
+    <Reference Include="UFIDA.U9.MO.MOBP, Version=25.5401.8254.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\App\UFIDA.U9.MO.MOBP.dll</HintPath>
+    </Reference>
+    <Reference Include="UFIDA.U9.PAY.PayBE">
+      <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\App\UFIDA.U9.PAY.PayBE.dll</HintPath>
+    </Reference>
+    <Reference Include="UFIDA.U9.PAY.PayBE.Deploy">
+      <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\App\UFIDA.U9.PAY.PayBE.Deploy.dll</HintPath>
+    </Reference>
+    <Reference Include="UFIDA.U9.PAY.PayBP">
+      <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\App\UFIDA.U9.PAY.PayBP.dll</HintPath>
+    </Reference>
+    <Reference Include="UFIDA.U9.PAY.PayBP.Agent">
+      <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\App\UFIDA.U9.PAY.PayBP.Agent.dll</HintPath>
+    </Reference>
+    <Reference Include="UFIDA.U9.PAY.PayBP.Deploy">
+      <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\App\UFIDA.U9.PAY.PayBP.Deploy.dll</HintPath>
+    </Reference>
+    <Reference Include="UFIDA.U9.PAY.PaySV">
+      <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\App\UFIDA.U9.PAY.PaySV.dll</HintPath>
+    </Reference>
+    <Reference Include="UFIDA.U9.PAY.PaySV.Agent">
+      <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\App\UFIDA.U9.PAY.PaySV.Agent.dll</HintPath>
+    </Reference>
+    <Reference Include="UFIDA.U9.PAY.PaySV.Deploy">
+      <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\App\UFIDA.U9.PAY.PaySV.Deploy.dll</HintPath>
+    </Reference>
+    <Reference Include="UFIDA.U9.PM.PMBE, Version=21.5200.3000.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\App\UFIDA.U9.PM.PMBE.dll</HintPath>
+    </Reference>
+    <Reference Include="UFIDA.U9.PM.PMBE.Deploy, Version=21.5100.337.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\App\UFIDA.U9.PM.PMBE.Deploy.dll</HintPath>
+    </Reference>
+    <Reference Include="UFIDA.U9.PM.PMSV, Version=21.5100.337.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\App\UFIDA.U9.PM.PMSV.dll</HintPath>
+    </Reference>
+    <Reference Include="UFIDA.U9.PM.PMSV.Agent, Version=21.5100.337.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\App\UFIDA.U9.PM.PMSV.Agent.dll</HintPath>
+    </Reference>
+    <Reference Include="UFIDA.U9.PM.PMSV.Deploy, Version=21.5100.337.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\App\UFIDA.U9.PM.PMSV.Deploy.dll</HintPath>
+    </Reference>
+    <Reference Include="UFIDA.U9.SM.SMBE, Version=21.5200.3000.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\App\UFIDA.U9.SM.SMBE.dll</HintPath>
+    </Reference>
+    <Reference Include="UFIDA.U9.SM.SMBP">
+      <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\App\UFIDA.U9.SM.SMBP.dll</HintPath>
+    </Reference>
+    <Reference Include="UFIDA.U9.SM.SMBP.Agent, Version=21.5200.666.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\App\UFIDA.U9.SM.SMBP.Agent.dll</HintPath>
+    </Reference>
+    <Reference Include="UFIDA.U9.SM.SMBP.Deploy, Version=21.5200.666.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\App\UFIDA.U9.SM.SMBP.Deploy.dll</HintPath>
+    </Reference>
+    <Reference Include="UFIDA.U9.SM.SMSV, Version=21.5200.3000.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\App\UFIDA.U9.SM.SMSV.dll</HintPath>
+    </Reference>
+    <Reference Include="UFIDA.U9.SM.SMSV.Agent, Version=21.5200.3000.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\App\UFIDA.U9.SM.SMSV.Agent.dll</HintPath>
+    </Reference>
+    <Reference Include="UFIDA.U9.SM.SMSV.Deploy, Version=21.5200.3000.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\App\UFIDA.U9.SM.SMSV.Deploy.dll</HintPath>
+    </Reference>
+    <Reference Include="UFSoft.UBF.AopFrame, Version=21.5100.337.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.UBF\UBFStudio\Runtime\UFSoft.UBF.AopFrame.dll</HintPath>
+    </Reference>
+    <Reference Include="UFSoft.UBF.Business, Version=21.5100.337.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.UBF\UBFStudio\Runtime\UFSoft.UBF.Business.dll</HintPath>
+    </Reference>
+    <Reference Include="UFSoft.UBF.Execution, Version=21.5100.337.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.UBF\UBFStudio\Runtime\UFSoft.UBF.Execution.dll</HintPath>
+    </Reference>
+    <Reference Include="UFSoft.UBF.PL, Version=21.5100.337.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.UBF\UBFStudio\Runtime\UFSoft.UBF.PL.dll</HintPath>
+    </Reference>
+    <Reference Include="UFSoft.UBF.Sys.Database, Version=21.5100.337.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.UBF\UBFStudio\Runtime\UFSoft.UBF.Sys.Database.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CalculateActualPayBP_Plugin.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PayrollCalculateBP_Plugin.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="U9.VOB.Cus.HBHJianLiYuan.PlugInBP.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+      if exist "$(ProjectDir)\.\..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\Unconfiged\Component\\" goto copyfile
+      Md "$(ProjectDir)\.\..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\Unconfiged\Component\\"
+      :copyfile
+      Copy $(TargetDir)\$(TargetName).dll $(ProjectDir)\.\..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\Unconfiged\Component\\
+      Copy $(TargetDir)\$(TargetName).pdb $(ProjectDir)\.\..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\Unconfiged\Component\\
+      Copy $(TargetDir)\$(TargetName).config $(ProjectDir)\.\..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\Unconfiged\Component\\
+</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

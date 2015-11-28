@@ -10,6 +10,9 @@ create proc HBH_SP_JianLiYuan_GetAllCheckIn  (
 
 @PayrollDoc bigint = -1
 
+,@PayrollCalculate bigint = -1
+--,@PayrollResults varchar(max) = ''
+
 -- @PlanDate datetime = null
 --,@ShipLineID bigint =-1
 --,@LotCode varchar(125) = ''
@@ -52,11 +55,13 @@ begin
 		insert into HBH_SPParamRecord
 		(ProcName,ParamName,ParamValue,CreatedOn)
 		select 'HBH_SP_JianLiYuan_DepartImport','@PayrollDoc',IsNull(cast(@PayrollDoc as varchar(max)),'null'),GETDATE()
+		union select 'HBH_SP_JianLiYuan_DepartImport','@PayrollCalculate',IsNull(cast(@PayrollCalculate as varchar(max)),'null'),GETDATE()
 		-- select 'HBH_SP_JianLiYuan_GetAllCheckIn','@StartDate',IsNull(Convert(varchar,@StartDate,120),'null'),GETDATE()
 		-- union select 'HBH_SP_JianLiYuan_GetAllCheckIn','@EndDate',IsNull(Convert(varchar,@EndDate,120),'null'),GETDATE()
 		--union select 'HBH_SP_JianLiYuan_GetAllCheckIn','@IsCalcAll',IsNull(cast(@IsCalcAll as varchar(max)),'null'),GETDATE()
 		union select 'HBH_SP_JianLiYuan_GetAllCheckIn','ProcSql','exec HBH_SP_JianLiYuan_GetAllCheckIn '
 				+ IsNull('''' + cast(@PayrollDoc as varchar(501)) + '''' ,'null')
+				+ ',' + IsNull('''' + cast(@PayrollCalculate as varchar(501)) + '''' ,'null')
 				-- + IsNull('''' + Convert(varchar,@StartDate,120) + '''' ,'null')
 				-- + ',' + IsNull('''' + Convert(varchar,@EndDate,120) + '''' ,'null')
 				--+ IsNull(cast(@IsCalcAll as varchar(501)),'null') 
@@ -98,12 +103,15 @@ select
 
 	,min(checkIn.CheckInDate) as CheckInDate
 
-from PAY_PayrollDoc payHead
-	inner join Pay_PayrollCalculate payCalc
-	on payHead.PayrollCaculate = payCalc.ID
-	
-	inner join PAY_EmpPayroll as payLine	--发薪明细
+from Pay_PayrollCalculate payCalc
+
+	left join PAY_PayrollDoc payHead
+	on payCalc.ID = payHead.PayrollCaculate
+	left join PAY_EmpPayroll as payLine	--发薪明细
 	on payHead.ID = payLine.PayrollDoc
+
+	left join PAY_PayrollResult payResult
+	on payCalc.ID = payResult.PayrollCaculate
 	
 	left join PAY_PlanPeriod monthPerod
 	on payCalc.PlanPeriodByMonth = monthPerod.ID
@@ -125,10 +133,16 @@ from PAY_PayrollDoc payHead
 		
 	inner join Cust_DayCheckInLine checkInLine
 	on checkIn.ID = checkInLine.DayCheckIn
-		and payLine.Employee = checkInLine.EmployeeArchive
+		and ( checkInLine.EmployeeArchive = payLine.Employee
+			 or checkInLine.EmployeeArchive = payResult.Employee
+			 )
 
 where
-	payHead.ID = @PayrollDoc
+	payCalc.ID = @PayrollCalculate
+	or payHead.ID = @PayrollDoc
+	--or payCalc.ID in (select payHead.PayrollCaculate from PAY_PayrollDoc payHead
+	--					where payHead.ID = @PayrollDoc
+	--					)
 group by
 	checkIn.Department
 	-- ,checkIn.CheckInDate
