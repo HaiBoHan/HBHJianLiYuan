@@ -12,7 +12,7 @@
         <Operation id="78a604d6-1753-4bfb-9a4c-6b394fb719dc" name="Impement" displayName="实现" description="" help="" mD_ParentClass_ID="" isFactEntity="False" returnTypeID="378d45b4-375d-4b5d-8748-abc9575c26b3" isService="False" isDefault="True" isEntityKey="False" transactionType="2" isAuthorization="True" isISV="False" />
       </Implements>
     </Operation>
-    <Operation id="66493cf1-d629-4956-978a-da4112dc54a0" name="UpdateDeptTransferStatusBP" displayName="更新部门调整单状态BP" description="更新部门调整单状态BP" help="" mD_ParentClass_ID="" isFactEntity="False" returnTypeID="378d45b4-375d-4b5d-8748-abc9575c26b3" isService="False" isDefault="False" isEntityKey="False" transactionType="2" isAuthorization="True" isISV="False">
+    <Operation id="66493cf1-d629-4956-978a-da4112dc54a0" name="UpdateDeptTransferStatusBP" displayName="更新部门调整单状态BP" description="更新部门调整单状态BP" help="" mD_ParentClass_ID="" isFactEntity="False" returnTypeID="378d45b4-375d-4b5d-8748-abc9575c26b3" isService="False" isDefault="False" isEntityKey="False" transactionType="0" isAuthorization="True" isISV="False">
       <Groups>
         <Group id="c583c102-7ed3-4459-b62a-384a8b66b7ec" name="Misc" displayName="Misc" description="" help="" />
       </Groups>
@@ -24,7 +24,7 @@
         <Operation id="c13f6c4e-7451-497e-819e-c44f6549d035" name="Impement" displayName="实现" description="" help="" mD_ParentClass_ID="" isFactEntity="False" returnTypeID="378d45b4-375d-4b5d-8748-abc9575c26b3" isService="False" isDefault="True" isEntityKey="False" transactionType="2" isAuthorization="True" isISV="False" />
       </Implements>
     </Operation>
-    <Operation id="5b2cce80-6ac4-4575-a265-00e43fbf4ea3" name="UpdateTotalPayrollDocStatusBP" displayName="更新薪资申请汇总BP" description="更新薪资申请汇总BP" help="" mD_ParentClass_ID="" isFactEntity="False" returnTypeID="378d45b4-375d-4b5d-8748-abc9575c26b3" isService="False" isDefault="False" isEntityKey="False" transactionType="2" isAuthorization="True" isISV="False">
+    <Operation id="5b2cce80-6ac4-4575-a265-00e43fbf4ea3" name="UpdateTotalPayrollDocStatusBP" displayName="更新薪资申请汇总BP" description="更新薪资申请汇总BP" help="" mD_ParentClass_ID="" isFactEntity="False" returnTypeID="378d45b4-375d-4b5d-8748-abc9575c26b3" isService="False" isDefault="False" isEntityKey="False" transactionType="0" isAuthorization="True" isISV="False">
       <Groups>
         <Group id="c8280f1f-6484-4942-bea3-fd76017b31ba" name="Misc" displayName="Misc" description="" help="" />
       </Groups>
@@ -36,7 +36,7 @@
         <Operation id="23eb4df7-1b74-4bac-b7b9-4c0072537b66" name="Impement" displayName="实现" description="" help="" mD_ParentClass_ID="" isFactEntity="False" returnTypeID="378d45b4-375d-4b5d-8748-abc9575c26b3" isService="False" isDefault="True" isEntityKey="False" transactionType="2" isAuthorization="True" isISV="False" />
       </Implements>
     </Operation>
-    <Operation id="bda04ef4-72ec-4b0d-98ce-8d107c3cf9b3" name="UpdateDayCheckInStatusBP" displayName="更新日考勤状态操作" description="更新日考勤状态操作" help="" mD_ParentClass_ID="" isFactEntity="False" returnTypeID="378d45b4-375d-4b5d-8748-abc9575c26b3" isService="False" isDefault="False" isEntityKey="False" transactionType="2" isAuthorization="True" isISV="False">
+    <Operation id="bda04ef4-72ec-4b0d-98ce-8d107c3cf9b3" name="UpdateDayCheckInStatusBP" displayName="更新日考勤状态操作" description="更新日考勤状态操作" help="" mD_ParentClass_ID="" isFactEntity="False" returnTypeID="378d45b4-375d-4b5d-8748-abc9575c26b3" isService="False" isDefault="False" isEntityKey="False" transactionType="0" isAuthorization="True" isISV="False">
       <Groups>
         <Group id="5f3c3820-ec4c-4bd4-863e-4c218eaaa9dd" name="Misc" displayName="Misc" description="" help="" />
       </Groups>
@@ -46,6 +46,17 @@
       </Attributes>
       <Implements>
         <Operation id="cb3b0ac5-50e5-4607-8ffb-0d73f4c86bd1" name="Impement" displayName="实现" description="" help="" mD_ParentClass_ID="" isFactEntity="False" returnTypeID="378d45b4-375d-4b5d-8748-abc9575c26b3" isService="False" isDefault="True" isEntityKey="False" transactionType="2" isAuthorization="True" isISV="False" />
+      </Implements>
+    </Operation>
+    <Operation id="b9294ef1-0726-4f49-84a1-4e6a73cbded4" name="GetCheckinDataBP" displayName="获取考勤数据BP" description="获取考勤数据BP" help="" mD_ParentClass_ID="" isFactEntity="False" returnTypeID="378d45b4-375d-4b5d-8748-abc9575c26b3" isService="False" isDefault="False" isEntityKey="False" transactionType="0" isAuthorization="True" isISV="False">
+      <Groups>
+        <Group id="7fc4876a-9ed5-4f9c-bff4-f1a6faea9b3c" name="Misc" displayName="Misc" description="" help="" />
+      </Groups>
+      <Attributes>
+        <Attribute id="7434022a-6660-4a4c-b817-2d94f0a479a4" name="IDs" displayName="ID集合" description="" help="获取考勤数据BP.Misc.ID集合" isCollection="True" dataTypeID="ba391065-6c27-4c82-acc8-b52b1c93a910" isKey="False" defaultValue="" length="50" precise="5" scale="0" isNullable="True" isReadOnly="False" isHide="False" isCalculation="False" valueExpression="" maxValue="" minValue="" sequence="0" isDefaultDimensionAttribute="False" isDefaultMeasureAttribute="False" isGlobalization="False" idGenerator="" groupName="Misc" isEntityKey="False" isEntityData="True" isSystem="False" isBusinessKey="False" isSyncDictionary="False" dictionaryKey="" isExtendCode="False" isQuery="True" isForAsso="True" isModifyControl="False" isDynamic="False" isImpressible="False" isInCache="False" isKeySerializable="False" isColumnDefine="True" isFilterDefine="True" isSortDefine="True" isDefaultColumn="True" forOBAImport="False" />
+      </Attributes>
+      <Implements>
+        <Operation id="ec44ceec-53ca-4fdd-83ba-b1075b59d5dd" name="Impement" displayName="实现" description="" help="" mD_ParentClass_ID="" isFactEntity="False" returnTypeID="378d45b4-375d-4b5d-8748-abc9575c26b3" isService="False" isDefault="True" isEntityKey="False" transactionType="2" isAuthorization="True" isISV="False" />
       </Implements>
     </Operation>
     <Diagram id="aa797570-0691-4551-a442-ee4753c18508" name="HBHJianLiYuanHRBP" displayName="HBHJianLiYuanHRBP">
@@ -58,11 +69,15 @@
         <Size width="120" height="58" />
       </Class>
       <Class Editable="True" ID="5a73117f-26b1-4d5f-b0a1-8b5b1c01ae8b" Type="Operation" ADID="5b2cce80-6ac4-4575-a265-00e43fbf4ea3">
-        <Location X="547" Y="52" />
+        <Location X="548" Y="52" />
         <Size width="120" height="58" />
       </Class>
       <Class Editable="True" ID="e6e539e2-614d-4e23-915d-f3307ff1f6b5" Type="Operation" ADID="bda04ef4-72ec-4b0d-98ce-8d107c3cf9b3">
         <Location X="742" Y="51" />
+        <Size width="120" height="58" />
+      </Class>
+      <Class Editable="True" ID="0db8e1f3-b196-40df-9367-a36b4ab4c669" Type="Operation" ADID="b9294ef1-0726-4f49-84a1-4e6a73cbded4">
+        <Location X="117" Y="160" />
         <Size width="120" height="58" />
       </Class>
     </Diagram>

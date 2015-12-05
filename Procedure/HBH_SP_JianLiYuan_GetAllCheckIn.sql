@@ -54,8 +54,8 @@ begin
 
 		insert into HBH_SPParamRecord
 		(ProcName,ParamName,ParamValue,CreatedOn)
-		select 'HBH_SP_JianLiYuan_DepartImport','@PayrollDoc',IsNull(cast(@PayrollDoc as varchar(max)),'null'),GETDATE()
-		union select 'HBH_SP_JianLiYuan_DepartImport','@PayrollCalculate',IsNull(cast(@PayrollCalculate as varchar(max)),'null'),GETDATE()
+		select 'HBH_SP_JianLiYuan_GetAllCheckIn','@PayrollDoc',IsNull(cast(@PayrollDoc as varchar(max)),'null'),GETDATE()
+		union select 'HBH_SP_JianLiYuan_GetAllCheckIn','@PayrollCalculate',IsNull(cast(@PayrollCalculate as varchar(max)),'null'),GETDATE()
 		-- select 'HBH_SP_JianLiYuan_GetAllCheckIn','@StartDate',IsNull(Convert(varchar,@StartDate,120),'null'),GETDATE()
 		-- union select 'HBH_SP_JianLiYuan_GetAllCheckIn','@EndDate',IsNull(Convert(varchar,@EndDate,120),'null'),GETDATE()
 		--union select 'HBH_SP_JianLiYuan_GetAllCheckIn','@IsCalcAll',IsNull(cast(@IsCalcAll as varchar(max)),'null'),GETDATE()
@@ -91,6 +91,8 @@ end
 	--where ID = @PayrollDoc
 
 
+/*
+
 select 
 	checkIn.Department as Department
 	-- ,checkIn.CheckInDate as CheckInDate
@@ -113,23 +115,31 @@ from Pay_PayrollCalculate payCalc
 	left join PAY_PayrollResult payResult
 	on payCalc.ID = payResult.PayrollCaculate
 	
-	left join PAY_PlanPeriod monthPerod
-	on payCalc.PlanPeriodByMonth = monthPerod.ID
+	left join PAY_PlanPeriod monthPeriod
+	on payCalc.PlanPeriodByMonth = monthPeriod.ID
 	left join PAY_PlanPeriod fourWeekPeriod
 	on payCalc.PlanPeriodByFourWeek = fourWeekPeriod.ID
 	left join PAY_PlanPeriod twoWeekPeriod
 	on payCalc.PlanPeriodByTwoWeek = twoWeekPeriod.ID
-	left join PAY_PlanPeriod weekPerod
-	on payCalc.PlanPeriodByWeek = weekPerod.ID
-	left join PAY_PlanPeriod dayPerod
-	on payCalc.PlanPeriodByDay = dayPerod.ID
+	left join PAY_PlanPeriod weekPeriod
+	on payCalc.PlanPeriodByWeek = weekPeriod.ID
+	left join PAY_PlanPeriod dayPeriod
+	on payCalc.PlanPeriodByDay = dayPeriod.ID
 
 	inner join Cust_DayCheckIn checkIn
-	on (monthPerod.ID is not null and checkIn.CheckInDate between monthPerod.StartDate and monthPerod.EndDate)
-		or (fourWeekPeriod.ID is not null and checkIn.CheckInDate between fourWeekPeriod.StartDate and fourWeekPeriod.EndDate)
-		or (twoWeekPeriod.ID is not null and checkIn.CheckInDate between twoWeekPeriod.StartDate and twoWeekPeriod.EndDate)
-		or (weekPerod.ID is not null and checkIn.CheckInDate between weekPerod.StartDate and weekPerod.EndDate)
-		or (dayPerod.ID is not null and checkIn.CheckInDate between dayPerod.StartDate and dayPerod.EndDate)
+	/* Approved	已审核	2
+	Approving	审核中	1
+	Closed	已关闭	3
+	Opened	开立	0
+	*/
+	on checkIn.Status in (2)
+		and (
+			(monthPeriod.ID is not null and checkIn.CheckInDate between monthPeriod.StartDate and monthPeriod.EndDate)
+			or (fourWeekPeriod.ID is not null and checkIn.CheckInDate between fourWeekPeriod.StartDate and fourWeekPeriod.EndDate)
+			or (twoWeekPeriod.ID is not null and checkIn.CheckInDate between twoWeekPeriod.StartDate and twoWeekPeriod.EndDate)
+			or (weekPeriod.ID is not null and checkIn.CheckInDate between weekPeriod.StartDate and weekPeriod.EndDate)
+			or (dayPeriod.ID is not null and checkIn.CheckInDate between dayPeriod.StartDate and dayPeriod.EndDate)
+			)
 		
 	inner join Cust_DayCheckInLine checkInLine
 	on checkIn.ID = checkInLine.DayCheckIn
@@ -140,6 +150,79 @@ from Pay_PayrollCalculate payCalc
 where
 	payCalc.ID = @PayrollCalculate
 	or payHead.ID = @PayrollDoc
+	--or payCalc.ID in (select payHead.PayrollCaculate from PAY_PayrollDoc payHead
+	--					where payHead.ID = @PayrollDoc
+	--					)
+group by
+	checkIn.Department
+	-- ,checkIn.CheckInDate
+	,checkInLine.EmployeeArchive
+	,checkInLine.CheckType
+	
+order by
+	min(checkIn.CheckInDate) asc
+
+*/
+
+
+
+select 
+	checkIn.Department as Department
+	-- ,checkIn.CheckInDate as CheckInDate
+	,checkInLine.EmployeeArchive as EmployeeArchive
+	,checkInLine.CheckType as CheckType
+	
+	,sum(checkInLine.FullTimeDay) as FullTimeDay
+	,sum(checkInLine.PartTimeDay) as PartTimeDay
+	,sum(checkInLine.HourlyDay) as HourlyDay
+
+	,min(checkIn.CheckInDate) as CheckInDate
+
+from Pay_PayrollCalculate payCalc
+
+	--left join PAY_PayrollDoc payHead
+	--on payCalc.ID = payHead.PayrollCaculate
+	--left join PAY_EmpPayroll as payLine	--发薪明细
+	--on payHead.ID = payLine.PayrollDoc
+
+	left join PAY_PayrollResult payResult
+	on payCalc.ID = payResult.PayrollCaculate
+	
+	left join PAY_PlanPeriod monthPeriod
+	on payCalc.PlanPeriodByMonth = monthPeriod.ID
+	left join PAY_PlanPeriod fourWeekPeriod
+	on payCalc.PlanPeriodByFourWeek = fourWeekPeriod.ID
+	left join PAY_PlanPeriod twoWeekPeriod
+	on payCalc.PlanPeriodByTwoWeek = twoWeekPeriod.ID
+	left join PAY_PlanPeriod weekPeriod
+	on payCalc.PlanPeriodByWeek = weekPeriod.ID
+	left join PAY_PlanPeriod dayPeriod
+	on payCalc.PlanPeriodByDay = dayPeriod.ID
+
+	inner join Cust_DayCheckIn checkIn
+	/* Approved	已审核	2
+	Approving	审核中	1
+	Closed	已关闭	3
+	Opened	开立	0
+	*/
+	on checkIn.Status in (2)
+		and (
+			(monthPeriod.ID is not null and checkIn.CheckInDate between monthPeriod.StartDate and monthPeriod.EndDate)
+			or (fourWeekPeriod.ID is not null and checkIn.CheckInDate between fourWeekPeriod.StartDate and fourWeekPeriod.EndDate)
+			or (twoWeekPeriod.ID is not null and checkIn.CheckInDate between twoWeekPeriod.StartDate and twoWeekPeriod.EndDate)
+			or (weekPeriod.ID is not null and checkIn.CheckInDate between weekPeriod.StartDate and weekPeriod.EndDate)
+			or (dayPeriod.ID is not null and checkIn.CheckInDate between dayPeriod.StartDate and dayPeriod.EndDate)
+			)
+		
+	inner join Cust_DayCheckInLine checkInLine
+	on checkIn.ID = checkInLine.DayCheckIn
+		and ( checkInLine.EmployeeArchive = payResult.Employee
+			-- or checkInLine.EmployeeArchive = payLine.Employee
+			 )
+
+where
+	payCalc.ID = @PayrollCalculate
+	-- or payHead.ID = @PayrollDoc
 	--or payCalc.ID in (select payHead.PayrollCaculate from PAY_PayrollDoc payHead
 	--					where payHead.ID = @PayrollDoc
 	--					)

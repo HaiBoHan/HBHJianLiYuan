@@ -41,7 +41,7 @@ namespace DayCheckInBListUIModel
 		{
 			//调用模版提供的默认实现.--默认实现可能会调用相应的Action.
             //BtnNew_Click_DefaultImpl(sender, e);
-            U9.VOB.HBHCommon.HBHCommonUI.HBHUIHelper.UIList_BtnNew_Click(this, "DayCheckIn");
+            U9.VOB.HBHCommon.HBHCommonUI.HBHUIHelper.UIList_BtnNew_Click(this);
 		}	
 		 
 				//BtnDelete_Click...
@@ -99,9 +99,10 @@ namespace DayCheckInBListUIModel
 		private void DataGrid1_GridRowDbClicked_Extend(object sender, GridDBClickEventArgs  e)
 		{
 			//调用模版提供的默认实现.--默认实现可能会调用相应的Action.
-			
-		
-			DataGrid1_GridRowDbClicked_DefaultImpl(sender,e);
+            //DataGrid1_GridRowDbClicked_DefaultImpl(sender,e);
+
+            U9.VOB.HBHCommon.HBHCommonUI.HBHUIHelper.UIList_GridRowDbClicked(this);
+            //U9.VOB.HBHCommon.HBHCommonUI.UICommonHelper.OnNavigatCard(this, "DayCheckIn");
 		}
 
 		
@@ -159,7 +160,14 @@ namespace DayCheckInBListUIModel
 		{
 									
 			AfterUIModelBinding_Qry_DefaultImpl();//BE列表自动产生的代码
-		
+
+
+            U9.VOB.HBHCommon.HBHCommonUI.HBHUIHelper.UIList_SetDocNoTitleClick(this,this.DataGrid1
+                , "ID"
+                , "CheckInDate"
+                , "日考勤"
+                // , param
+                );
 
 		}
 

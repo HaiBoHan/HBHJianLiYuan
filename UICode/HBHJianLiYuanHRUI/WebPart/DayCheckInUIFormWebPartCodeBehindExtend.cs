@@ -297,7 +297,7 @@ namespace DayCheckInUIModel
             UFIDA.U9.UI.PDHelper.FlexFieldHelper.SetDescFlexField(new UFIDA.U9.UI.PDHelper.DescFlexFieldParameter(this.FlexFieldPicker0, this.Model.DayCheckIn),
                 new UFIDA.U9.UI.PDHelper.DescFlexFieldParameter(this.DataGrid5, UISceneHelper.GetSegColumnIndex(this.DataGrid5)));
 
-            // 绑定注册弹出对话框
+            // 确认对话框
             UFIDA.U9.UI.PDHelper.PDFormMessage.ShowDelConfirmDialog(this.Page, "导入将清空原有行，确认导入？", "确认导入", this.BtnDepartImport);
 		
         }

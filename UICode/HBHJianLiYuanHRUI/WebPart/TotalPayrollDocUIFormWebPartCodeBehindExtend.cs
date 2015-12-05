@@ -229,6 +229,14 @@ namespace TotalPayrollDocUIModel
 			BtnClose_Click_DefaultImpl(sender,e);
         }
 
+
+        //TabControl0_SelectedIndexChanged...
+        private void TabControl0_SelectedIndexChanged_Extend(object sender, EventArgs e)
+        {
+            //调用模版提供的默认实现.--默认实现可能会调用相应的Action.
+            TabControl0_SelectedIndexChanged_DefaultImpl(sender, e);
+        }	
+
         // BtnSumPayroll_Click...
         private void BtnSumPayroll_Click_Extend(object sender, EventArgs e)
         {
@@ -352,6 +360,10 @@ namespace TotalPayrollDocUIModel
             // 启用弹性域
             UFIDA.U9.UI.PDHelper.FlexFieldHelper.SetDescFlexField(new UFIDA.U9.UI.PDHelper.DescFlexFieldParameter(this.FlexFieldPicker0, this.Model.TotalPayrollDoc),
                 new UFIDA.U9.UI.PDHelper.DescFlexFieldParameter(this.DataGrid5, UISceneHelper.GetSegColumnIndex(this.DataGrid5)));
+
+
+            // 绑定注册弹出对话框到删除按钮 
+            UFIDA.U9.UI.PDHelper.PDFormMessage.ShowDelConfirmDialog(this.Page, "汇总会清空已有明细数据,确认汇总薪资？", "确认汇总薪资？", this.BtnSumPayroll);
         }
         
         public void AfterEventBind()
@@ -364,9 +376,24 @@ namespace TotalPayrollDocUIModel
 		}
 
 		public void AfterUIModelBinding()
-		{
+        {
+            TotalPayrollDocRecord focusedHead = this.Model.TotalPayrollDoc.FocusedRecord;
+
+            if (focusedHead == null)
+                return;
+
+            //U9.VOB.HBHCommon.HBHCommonUI.UISceneHelper.SetToolBarStatus(this.Toolbar2
+            //    , status, focusedHead.DataRecordState, false, 0, 1, 2, 2);
+
+            U9.VOB.HBHCommon.HBHCommonUI.UISceneHelper.SetToolBarStatus(this.Toolbar2
+                , focusedHead.Status ?? (int)DocStatusData.Empty, focusedHead.DataRecordState, false, (int)DocStatusData.Opened, (int)DocStatusData.Approving, (int)DocStatusData.Approved, 1);
 
 
+            //this.BtnSave.Enabled = true;
+
+            this.BtnOk.Visible = false;
+            this.BtnClose.Visible = false;
+            
 		}
 
 

@@ -81,8 +81,15 @@ end
 	where ID = @ID
 
 -- 清空所有 明细行
+delete from Cust_PayrollLineDetail
+where PayrollLine in (select line.ID 
+					from [Cust_TotalPayrollDocLine] as line
+					where line.[TotalPayrollDoc] = @ID 
+					)
+;						
 delete from [Cust_TotalPayrollDocLine]
 where [TotalPayrollDoc] = @ID
+;
 
 
 --  数据源：发薪申请单；
@@ -94,7 +101,8 @@ If OBJECT_ID('tempdb..#hbh_tmp_TotalPayrollDocLine') is not null
 select
 	payDetail.ID as PayDetailID
 	,payHead.ID as PayHeadID
-	
+	,totalPay.ID as TotalPayrollDoc
+
 into #hbh_tmp_TotalPayrollDocLine
 from [Cust_TotalPayrollDoc] totalPay
 	inner join PAY_PayrollDoc payHead
@@ -112,15 +120,16 @@ Closed	关闭	5
 Opened	开立	0
 Rejected	拒绝	3
 */
-	and payHead.Status in (2,5)
+	--and payHead.Status in (2,5)
+	and payHead.Status in (1)
 
 
 
 If OBJECT_ID('tempdb..#hbh_tmp_TotalLine') is not null
 	Drop Table #hbh_tmp_TotalLine
 
-select distinct
-	payDetail.Department as Department
+select distinct tmpLine.TotalPayrollDoc
+	,payDetail.Department as Department
 	,IsNull(payDetail.PayrollCaculate,-1) as PayrollCaculate
 	,IsNull(payCalc.SalarySolution,-1) as SalarySolution
 
@@ -134,8 +143,8 @@ from
 	on tmpLine.PayDetailID = payDetail.ID
 	left join Pay_PayrollCalculate payCalc
 	on payDetail.PayrollCaculate = payCalc.ID
-group by
-	payDetail.Department
+group by tmpLine.TotalPayrollDoc
+	,payDetail.Department
 	,IsNull(payDetail.PayrollCaculate,-1)
 	,IsNull(payCalc.SalarySolution,-1)
 
@@ -183,21 +192,23 @@ begin
 		,@Now
 
 		,@ID
-		,(row_number() over (order by Department) * 10)  as DocLineNo
+		,(row_number() over (order by Department) * 10) --  as DocLineNo
 		-- 部门
-		,line.Department as Department
+		,line.Department
 		-- 计薪期间
-		,line.PayrollCaculate as PayrollCaculate
+		,line.PayrollCaculate
 		-- 计薪方案
-		,line.SalarySolution as SalarySolution
+		,line.SalarySolution
 
 		-- 计薪人数
-		,PeopleNumber
+		,line.PeopleNumber
 		-- 应发合计
-		,TotalOrigPay
+		,line.TotalOrigPay
 		-- 实发合
-		,TotalActPay
+		,line.TotalActPay
 	from #hbh_tmp_TotalLine line
+		inner join [Cust_TotalPayrollDoc] head
+		on line.TotalPayrollDoc = head.ID
 
 	
 
@@ -213,24 +224,25 @@ begin
 		,PayrollLine
 		,TotalPayrollDocLine
 	)select 
-		(@StartID + @TotalLineCount + row_number() over (order by line.PayrollCaculate,line.Department) - 1)
+		(@StartID + @TotalLineCount + row_number() over (order by line.PayHeadID,line.PayDetailID) - 1)
 		,1
 		,head.CreatedBy
 		,head.ModifiedBy
 		,@Now
 		,@Now
 
-		,line.ID
+		,line.PayDetailID
 		,TotalPayrollDocLine = (select top 1 payLine.ID from Cust_TotalPayrollDocLine payLine
 								where payLine.TotalPayrollDoc = @ID
 									and exists(select 1 from PAY_EmpPayroll payDetail
 											where line.PayDetailID = payDetail.ID
 												and payDetail.Department = payLine.Department
-												and payDetail.PayrollCaculate = payLine.PayrollCaculate
+												and payDetail.PayrollCaculate = payLine.PayrollCalculate
 											)
 								)
 	from #hbh_tmp_TotalPayrollDocLine line
-
+		inner join [Cust_TotalPayrollDoc] head
+		on line.TotalPayrollDoc = head.ID
 
 
 	-- 汇总数量

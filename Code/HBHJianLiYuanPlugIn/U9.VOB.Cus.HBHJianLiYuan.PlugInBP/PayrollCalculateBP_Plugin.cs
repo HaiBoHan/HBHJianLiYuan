@@ -247,7 +247,7 @@ private string CalAllEmp()
                                 {
                                     //ExtendMethod.GetListOpath(bpObj.Employee);
                                     //string strOpath = bpObj.Employee.GetListOpath<EmployeeArchive.EntityKey>();
-                                    string strOpath = bpObj.Depts.GetListOpath();
+                                    string strOpath = bpObj.Employee.GetListOpath();
 
                                     if(!string.IsNullOrWhiteSpace(strOpath))
                                     {
@@ -263,7 +263,7 @@ private string CalAllEmp()
                                 {
                                     //ExtendMethod.GetListOpath(bpObj.Employee);
                                     //string strOpath = bpObj.PayrollResults.GetListOpath<PayrollResult.EntityKey>();
-                                    string strOpath = bpObj.Depts.GetListOpath();
+                                    string strOpath = bpObj.PayrollResults.GetListOpath();
 
                                     if(!string.IsNullOrWhiteSpace(strOpath))
                                     {
@@ -348,11 +348,11 @@ private string CalAllEmp()
                                                 SalaryItem _beforeDeptItem = null;
                                                 SalaryItem _transferDayItem = null;
                                                 SalaryItem _workHoursItem = null;
-                                                int checkInDays = 0;
-                                                int fullCheckInDays = 0;
-                                                int workHours = 0;
-                                                int fPartCheckInDays = 0;
-                                                int transferDays = 0;
+                                                decimal checkInDays = 0;
+                                                decimal fullCheckInDays = 0;
+                                                decimal workHours = 0;
+                                                decimal fPartCheckInDays = 0;
+                                                decimal transferDays = 0;
                                                 //long deptID = -1;
 
                                                 List<CheckInDTO> lstDTO = dicEmployee2Checkin[employeeID];
@@ -406,9 +406,10 @@ private string CalAllEmp()
                                                     }
                                                 }
                                             }
+                                            // 如果不存在，那么不覆盖已有的手工录入的记录
                                             else
                                             {
-                                                SetSalaryValue(line, checkinItem, afterDeptItem, beforeDeptItem, fafterDeptItem, fbeforeDeptItem, transferDayItem, workHoursItem, 0, -1, -1, 0, 0);
+                                                //SetSalaryValue(line, checkinItem, afterDeptItem, beforeDeptItem, fafterDeptItem, fbeforeDeptItem, transferDayItem, workHoursItem, 0, -1, -1, 0, 0);
                                             }
                                         }
                                     }
@@ -434,7 +435,7 @@ private string CalAllEmp()
             }
         }
 
-        public static void SetSalaryValue(EmpPayroll line, SalaryItem _checkinItem, SalaryItem _afterDeptItem, SalaryItem _beforeDeptItem, SalaryItem _afterDeptItem2, SalaryItem _beforeDeptItem2, SalaryItem _transferDayItem, SalaryItem _workHoursItem, int checkinDays, long deptID, long deptID2, int workHours, int transferDays)
+        public static void SetSalaryValue(EmpPayroll line, SalaryItem _checkinItem, SalaryItem _afterDeptItem, SalaryItem _beforeDeptItem, SalaryItem _afterDeptItem2, SalaryItem _beforeDeptItem2, SalaryItem _transferDayItem, SalaryItem _workHoursItem, decimal checkinDays, long deptID, long deptID2, decimal workHours, decimal transferDays)
         {
             if (_checkinItem != null)
             {
@@ -442,50 +443,74 @@ private string CalAllEmp()
             }
             if (_afterDeptItem != null)
             {
+                bool isSeted = false;
                 if (deptID > 0)
                 {
                     Department afterDept = Department.Finder.FindByID(deptID);
-                    line.SetSalaryItem(_afterDeptItem, afterDept);
+                    if (afterDept != null)
+                    {
+                        line.SetSalaryItem(_afterDeptItem, afterDept.Name);
+                        isSeted = true;
+                    }
                 }
-                else
+
+                if (!isSeted)
                 {
-                    line.SetSalaryItem(_afterDeptItem, null);
+                    line.SetSalaryItem(_afterDeptItem, string.Empty);
                 }
             }
             if (_beforeDeptItem != null)
             {
+                bool isSeted = false;
                 if (deptID > 0)
                 {
                     Department beforeDept = Department.Finder.FindByID(deptID);
-                    line.SetSalaryItem(_beforeDeptItem, beforeDept);
+                    if (beforeDept != null)
+                    {
+                        line.SetSalaryItem(_beforeDeptItem, beforeDept.Name);
+                        isSeted = true;
+                    }
                 }
-                else
+
+                if (!isSeted)
                 {
-                    line.SetSalaryItem(_beforeDeptItem, null);
+                    line.SetSalaryItem(_beforeDeptItem, string.Empty);
                 }
             }
             if (_afterDeptItem2 != null)
             {
+                bool isSeted = false;
                 if (deptID2 > 0)
                 {
                     Department afterDept = Department.Finder.FindByID(deptID2);
-                    line.SetSalaryItem(_afterDeptItem2, afterDept);
+                    if (afterDept != null)
+                    {
+                        line.SetSalaryItem(_afterDeptItem2, afterDept.Name);
+                        isSeted = true;
+                    }
                 }
-                else
+
+                if (!isSeted)
                 {
-                    line.SetSalaryItem(_afterDeptItem2, null);
+                    line.SetSalaryItem(_afterDeptItem2, string.Empty);
                 }
             }
             if (_beforeDeptItem2 != null)
             {
+                bool isSeted = false;
                 if (deptID2 > 0)
                 {
                     Department beforeDept = Department.Finder.FindByID(deptID2);
-                    line.SetSalaryItem(_beforeDeptItem2, beforeDept);
+                    if (beforeDept != null)
+                    {
+                        line.SetSalaryItem(_beforeDeptItem2, beforeDept.Name);
+                        isSeted = true;
+                    }
                 }
-                else
+
+                if (!isSeted)
                 {
-                    line.SetSalaryItem(_beforeDeptItem2, null);
+                    line.SetSalaryItem(_beforeDeptItem2, string.Empty);
                 }
             }
             if (_workHoursItem != null)
@@ -498,7 +523,7 @@ private string CalAllEmp()
             }
         }
 
-        public static void SetSalaryValue(PayrollResult line, SalaryItem _checkinItem, SalaryItem _afterDeptItem, SalaryItem _beforeDeptItem, SalaryItem _afterDeptItem2, SalaryItem _beforeDeptItem2, SalaryItem _transferDayItem, SalaryItem _workHoursItem, int checkinDays, long deptID, long deptID2, int workHours, int transferDays)
+        public static void SetSalaryValue(PayrollResult line, SalaryItem _checkinItem, SalaryItem _afterDeptItem, SalaryItem _beforeDeptItem, SalaryItem _afterDeptItem2, SalaryItem _beforeDeptItem2, SalaryItem _transferDayItem, SalaryItem _workHoursItem, decimal checkinDays, long deptID, long deptID2, decimal workHours, decimal transferDays)
         {
             if (_checkinItem != null)
             {
@@ -506,50 +531,74 @@ private string CalAllEmp()
             }
             if (_afterDeptItem != null)
             {
+                bool isSeted = false;
                 if (deptID > 0)
                 {
                     Department afterDept = Department.Finder.FindByID(deptID);
-                    line.SetSalaryItem(_afterDeptItem, afterDept);
+                    if (afterDept != null)
+                    {
+                        line.SetSalaryItem(_afterDeptItem, afterDept.Name);
+                        isSeted = true;
+                    }
                 }
-                else
+
+                if (!isSeted)
                 {
-                    line.SetSalaryItem(_afterDeptItem, null);
+                    line.SetSalaryItem(_afterDeptItem, string.Empty);
                 }
             }
             if (_beforeDeptItem != null)
             {
+                bool isSeted = false;
                 if (deptID > 0)
                 {
                     Department beforeDept = Department.Finder.FindByID(deptID);
-                    line.SetSalaryItem(_beforeDeptItem, beforeDept);
+                    if (beforeDept != null)
+                    {
+                        line.SetSalaryItem(_beforeDeptItem, beforeDept.Name);
+                        isSeted = true;
+                    }
                 }
-                else
+
+                if (!isSeted)
                 {
-                    line.SetSalaryItem(_beforeDeptItem, null);
+                    line.SetSalaryItem(_beforeDeptItem, string.Empty);
                 }
             }
             if (_afterDeptItem2 != null)
             {
+                bool isSeted = false;
                 if (deptID2 > 0)
                 {
                     Department afterDept = Department.Finder.FindByID(deptID2);
-                    line.SetSalaryItem(_afterDeptItem2, afterDept);
+                    if (afterDept != null)
+                    {
+                        line.SetSalaryItem(_afterDeptItem2, afterDept.Name);
+                        isSeted = true;
+                    }
                 }
-                else
+
+                if (!isSeted)
                 {
-                    line.SetSalaryItem(_afterDeptItem2, null);
+                    line.SetSalaryItem(_afterDeptItem2, string.Empty);
                 }
             }
             if (_beforeDeptItem2 != null)
             {
+                bool isSeted = false;
                 if (deptID2 > 0)
                 {
                     Department beforeDept = Department.Finder.FindByID(deptID2);
-                    line.SetSalaryItem(_beforeDeptItem2, beforeDept);
+                    if (beforeDept != null)
+                    {
+                        line.SetSalaryItem(_beforeDeptItem2, beforeDept.Name);
+                        isSeted = true;
+                    }
                 }
-                else
+                
+                if(!isSeted)
                 {
-                    line.SetSalaryItem(_beforeDeptItem2, null);
+                    line.SetSalaryItem(_beforeDeptItem2, string.Empty);
                 }
             }
             if (_workHoursItem != null)
@@ -562,7 +611,7 @@ private string CalAllEmp()
             }
         }
 
-        public static void GetLastCheckinItem(SalaryItem checkinItem, SalaryItem beforeDeptItem, SalaryItem afterDeptItem, SalaryItem fbeforeDeptItem, SalaryItem fafterDeptItem, SalaryItem transferDayItem, SalaryItem workHoursItem, SalaryItem ftransferDayItem, SalaryItem fworkHoursItem, CheckInDTO lastCheckIn, out SalaryItem _checkinItem, out SalaryItem _afterDeptItem, out SalaryItem _beforeDeptItem, out SalaryItem _transferDayItem, out SalaryItem _workHoursItem, out int checkinDays, out int fullCheckInDays, out int workHours, out int fPartCheckInDays, out int transferDays)
+        public static void GetLastCheckinItem(SalaryItem checkinItem, SalaryItem beforeDeptItem, SalaryItem afterDeptItem, SalaryItem fbeforeDeptItem, SalaryItem fafterDeptItem, SalaryItem transferDayItem, SalaryItem workHoursItem, SalaryItem ftransferDayItem, SalaryItem fworkHoursItem, CheckInDTO lastCheckIn, out SalaryItem _checkinItem, out SalaryItem _afterDeptItem, out SalaryItem _beforeDeptItem, out SalaryItem _transferDayItem, out SalaryItem _workHoursItem, out decimal checkinDays, out decimal fullCheckInDays, out decimal workHours, out decimal fPartCheckInDays, out decimal transferDays)
         {
             _checkinItem = checkinItem;
 
@@ -594,7 +643,7 @@ private string CalAllEmp()
             }
         }
 
-        public static void GetFirstCheckinItem(SalaryItem checkinItem, SalaryItem beforeDeptItem, SalaryItem afterDeptItem, SalaryItem fbeforeDeptItem, SalaryItem fafterDeptItem, SalaryItem transferDayItem, SalaryItem workHoursItem, SalaryItem ftransferDayItem, SalaryItem fworkHoursItem, CheckInDTO lastCheckIn, out SalaryItem _checkinItem, out SalaryItem _afterDeptItem, out SalaryItem _beforeDeptItem, out SalaryItem _transferDayItem, out SalaryItem _workHoursItem, out int checkinDays, out int fullCheckInDays, out int workHours, out int fPartCheckInDays, out int transferDays)
+        public static void GetFirstCheckinItem(SalaryItem checkinItem, SalaryItem beforeDeptItem, SalaryItem afterDeptItem, SalaryItem fbeforeDeptItem, SalaryItem fafterDeptItem, SalaryItem transferDayItem, SalaryItem workHoursItem, SalaryItem ftransferDayItem, SalaryItem fworkHoursItem, CheckInDTO lastCheckIn, out SalaryItem _checkinItem, out SalaryItem _afterDeptItem, out SalaryItem _beforeDeptItem, out SalaryItem _transferDayItem, out SalaryItem _workHoursItem, out decimal checkinDays, out decimal fullCheckInDays, out decimal workHours, out decimal fPartCheckInDays, out decimal transferDays)
         {
             _checkinItem = checkinItem;
 
@@ -741,13 +790,18 @@ internal class CalculateActualPayBPImpementStrategy : BaseStrategy
         public static string GetListOpath<T>(this List<T> list) where T : BusinessEntity.EntityKey
         {
             StringBuilder sbOpath = new StringBuilder();
-            foreach (BusinessEntity.EntityKey entityKey in list)
+            if (list != null
+                && list.Count > 0
+                )
             {
-                if (entityKey != null
-                    && entityKey.ID > 0
-                    )
+                foreach (BusinessEntity.EntityKey entityKey in list)
                 {
-                    sbOpath.Append(entityKey.ID).Append(",");
+                    if (entityKey != null
+                        && entityKey.ID > 0
+                        )
+                    {
+                        sbOpath.Append(entityKey.ID).Append(",");
+                    }
                 }
             }
 
@@ -796,22 +850,22 @@ internal class CalculateActualPayBPImpementStrategy : BaseStrategy
         }
 
         // 全日制员工出勤
-        private int fullTimeDay;
+        private decimal fullTimeDay;
         /// <summary>
         /// 全日制员工出勤
         /// </summary>
-        public int FullTimeDay
+        public decimal FullTimeDay
         {
             get { return fullTimeDay; }
             set { fullTimeDay = value; }
         }
 
         // 非全日制员工出勤
-        private int partTimeDay;
+        private decimal partTimeDay;
         /// <summary>
         /// 非全日制员工出勤
         /// </summary>
-        public int PartTimeDay
+        public decimal PartTimeDay
         {
             get { return partTimeDay; }
             set { partTimeDay = value; }
@@ -819,11 +873,11 @@ internal class CalculateActualPayBPImpementStrategy : BaseStrategy
 
 
         // 钟点工出勤
-        private int hourlyDay;
+        private decimal hourlyDay;
         /// <summary>
         /// 钟点工出勤
         /// </summary>
-        public int HourlyDay
+        public decimal HourlyDay
         {
             get { return hourlyDay; }
             set { hourlyDay = value; }
@@ -838,9 +892,9 @@ internal class CalculateActualPayBPImpementStrategy : BaseStrategy
             dto.Department = PubClass.GetLong(row.GetValue("Department"));
             dto.CheckType = PubClass.GetInt(row.GetValue("CheckType"));
 
-            dto.FullTimeDay = PubClass.GetInt(row.GetValue("FullTimeDay"));
-            dto.HourlyDay = PubClass.GetInt(row.GetValue("HourlyDay"));
-            dto.PartTimeDay = PubClass.GetInt(row.GetValue("PartTimeDay"));
+            dto.FullTimeDay = PubClass.GetDecimal(row.GetValue("FullTimeDay"));
+            dto.HourlyDay = PubClass.GetDecimal(row.GetValue("HourlyDay"));
+            dto.PartTimeDay = PubClass.GetDecimal(row.GetValue("PartTimeDay"));
 
             return dto;
         }

@@ -71,6 +71,12 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.WebPart\U9.VOB.Cus.HBHJianLiYuan.HBHHelper.dll</HintPath>
     </Reference>
+    <Reference Include="U9.VOB.Cus.HBHJianLiYuan.HRBP.Agent">
+      <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\Unconfiged\Component\U9.VOB.Cus.HBHJianLiYuan.HRBP.Agent.dll</HintPath>
+    </Reference>
+    <Reference Include="U9.VOB.Cus.HBHJianLiYuan.HRBP.Deploy">
+      <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\Unconfiged\Component\U9.VOB.Cus.HBHJianLiYuan.HRBP.Deploy.dll</HintPath>
+    </Reference>
     <Reference Include="U9.VOB.Cus.HBHJianLiYuan.SV.Agent">
       <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\Unconfiged\Component\U9.VOB.Cus.HBHJianLiYuan.SV.Agent.dll</HintPath>
     </Reference>
@@ -140,6 +146,9 @@
     <Reference Include="UFIDA.U9.Cust.HBH.Common.CommonLibary, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.WebPart\UFIDA.U9.Cust.HBH.Common.CommonLibary.dll</HintPath>
+    </Reference>
+    <Reference Include="UFIDA.U9.HR.PAY.PayCaculate.PayCaculateUI.WebPart">
+      <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.WebPart\UFIDA.U9.HR.PAY.PayCaculate.PayCaculateUI.WebPart.dll</HintPath>
     </Reference>
     <Reference Include="UFIDA.U9.HR.PAY.PayrollDoc.PayrollDocUI.WebPart">
       <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.WebPart\UFIDA.U9.HR.PAY.PayrollDoc.PayrollDocUI.WebPart.dll</HintPath>
@@ -276,6 +285,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CommonFunctionExtend.cs" />
+    <Compile Include="PayCaculateUIExtend.cs" />
     <Compile Include="PayrollDocUIExtend.cs" />
     <Compile Include="PurPriceListUIExtend.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

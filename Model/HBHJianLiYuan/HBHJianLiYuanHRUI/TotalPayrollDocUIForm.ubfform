@@ -208,6 +208,15 @@
         <Events />
         <RelationControls />
       </TextBox>
+      <Label ID="fb14acea-43ed-438b-8077-a47561141f58" Enabled="True" GridHeight="1" GridWidth="1" GridX="4" GridY="0" Height="20" IsNull="True" IsSequence="False" Name="lblStatus87" RelationControl="Status87" TabIndex="5" TabStop="True" TitleAlign="Right" TitleLocation="Left" UIFieldID="" UIViewID="" Visible="True" Width="152" X="331" Y="0">
+        <Events />
+        <RelationControls />
+        <Events />
+      </Label>
+      <DropDownList ID="6fc2dc15-d6e9-4850-8f20-63c6d9c1b425" DisplayFormat="10.0" Enabled="False" EnumFullName="U9.VOB.HBHCommon.U9CommonBE.DocStatus" EnumID="34af30f0-a7d9-4005-962e-21076f509a72" GridHeight="1" GridWidth="1" GridX="6" GridY="0" Height="20" IsNull="True" IsProperty="False" IsSequence="False" Name="Status87" RelationControl="lblStatus87" TabIndex="6" TabStop="True" TitleAlign="Left" TitleLocation="Left" UIFieldID="Status" UIViewID="TotalPayrollDoc" Visible="True" Width="152" X="488" Y="0">
+        <Events />
+        <RelationControls />
+      </DropDownList>
     </Card>
     <TabControl ID="853a3c09-6e2a-4a47-9680-5895232b3846" EventResponseType="Server" GridHeight="1" GridWidth="1" GridX="0" GridY="1" Height="328" Name="TabControl0" TabIndex="2" TabStop="True" Width="971" X="10" Y="82">
       <TabPage ID="132e2b90-e4c1-49ed-833d-e82082c41c05" ChildLabelWidth="60" ChildRefWidth="20" DisplayName="薪资汇总" DisplayNameIndexStr="" DisplayNameResourceID="" DisplaySrcType="Custom" DisplaySrcUIFieldID="" DisplaySrcUIViewID="" GridBottomMargin="0" GridColumnCount="1" GridColumnSpace="0" GridLeftMargin="0" GridRightMargin="0" GridRowCount="1" GridRowSpace="5" GridTopMargin="0" Height="295" Name="TabPageTotal" TabStop="False" Width="963" X="0" Y="0">
@@ -361,10 +370,10 @@
               <Events />
             </NumberColumn>
             <NumberColumn ID="6957c443-4a8b-4099-9832-f69f9a36051e" DefaultValue="" DisplayFormat="8.0" Enabled="True" Help="发薪申请单明细.Key.ID" IsNull="False" IsProperty="False" IsSequence="False" Name="PayrollLine_ID0" NPos="2" Point="0" UIFieldID="PayrollLine_ID" UIViewID="TotalPayrollDoc_TotalPayrollDocLine_PayrollLineDetail" Visible="False">
-              <PrecisionBind />
-              <RoundRuleBind />
-              <ValueOfRoundByValueBind />
-              <CurrencyType />
+              <PrecisionBind Name="PrecisionBind7" />
+              <RoundRuleBind Name="RoundRuleBind7" />
+              <ValueOfRoundByValueBind Name="ValueOfRoundByValueBind7" />
+              <CurrencyType Name="CurrencyType7" />
               <Events />
             </NumberColumn>
             <TextBoxColumn ID="aefa43cf-f69b-40df-941e-32d004635dd5" DefaultValue="" DisplayFormat="50" Enabled="False" Help="单据基类.Misc.单号" IsNull="False" IsProperty="False" IsSequence="False" Name="PayrollLine_PayrollDoc_DocNo0" NPos="3" Point="0" TextAlign="Left" UIFieldID="PayrollLine_PayrollDoc_DocNo" UIViewID="TotalPayrollDoc_TotalPayrollDocLine_PayrollLineDetail" Visible="True">
@@ -410,7 +419,9 @@
           </Columns>
         </DataGrid>
       </TabPage>
-      <Events />
+      <Events>
+        <Event EnableEvent="True" EventType="PostBack" IsDataBinding="True" IsDataCollect="True" Name="SelectedIndexChanged" Parameter="" Template="" />
+      </Events>
     </TabControl>
   </Card>
   <Events />

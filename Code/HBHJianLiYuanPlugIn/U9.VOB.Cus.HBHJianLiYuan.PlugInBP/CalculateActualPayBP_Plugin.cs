@@ -181,11 +181,11 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInBP
                                             SalaryItem _beforeDeptItem = null;
                                             SalaryItem _transferDayItem = null;
                                             SalaryItem _workHoursItem = null;
-                                            int checkInDays = 0;
-                                            int fullCheckInDays = 0;
-                                            int workHours = 0;
-                                            int fPartCheckInDays = 0;
-                                            int transferDays = 0;
+                                            decimal checkInDays = 0;
+                                            decimal fullCheckInDays = 0;
+                                            decimal workHours = 0;
+                                            decimal fPartCheckInDays = 0;
+                                            decimal transferDays = 0;
                                             //long deptID = -1;
 
                                             List<CheckInDTO> lstDTO = dicEmployee2Checkin[employeeID];

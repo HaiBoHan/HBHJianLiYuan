@@ -195,35 +195,47 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInBE
 
            // 前台有时候也赋值不上，所以后台开立的时候全赋值
            //if (entity.SysState == UFSoft.UBF.PL.Engine.ObjectState.Inserted)
-            if (entity.SysState == UFSoft.UBF.PL.Engine.ObjectState.Inserted
-                || entity.Status == ShipStateEnum.Creates
+            if (
+                //entity.SysState == UFSoft.UBF.PL.Engine.ObjectState.Inserted
+                //|| 
+                entity.Status == ShipStateEnum.Creates
+                || entity.Status == ShipStateEnum.Script
+                || entity.Status == ShipStateEnum.Empty
                 )
            {
                foreach (ShipLine line in entity.ShipLines)
                {
                    if (line != null
                        && line.DescFlexField != null
-                       && string.IsNullOrEmpty(line.DescFlexField.PrivateDescSeg1)
                        )
                    {
-                       // 预计出库金额=预计出库单机*数量    =  私有段1
-                       decimal preFinallyPrice = 0;
-                       if (!string.IsNullOrEmpty(line.DescFlexField.PubDescSeg3))
+                       // 私有段1，为空，则 赋值
+                       if (string.IsNullOrEmpty(line.DescFlexField.PrivateDescSeg1))
                        {
-                           decimal.TryParse(line.DescFlexField.PubDescSeg3, out preFinallyPrice);
+                           // 预计出库金额=预计出库单机*数量    =  私有段1
+                           decimal preFinallyPrice = 0;
+                           if (!string.IsNullOrEmpty(line.DescFlexField.PubDescSeg3))
+                           {
+                               decimal.TryParse(line.DescFlexField.PubDescSeg3, out preFinallyPrice);
+                           }
+                           line.DescFlexField.PrivateDescSeg1 = (line.ShipQtyTUAmount * preFinallyPrice).ToString("G0");
                        }
-                       line.DescFlexField.PrivateDescSeg1 = (line.ShipQtyTUAmount * preFinallyPrice).ToString("G0");
-                       // 实际出库金额=数量*实际出库单价    =  私有段2
-                       decimal realFinallyPrice = 0;
-                       if (line.LotInfo != null
-                           && line.LotInfo.LotMaster != null
-                           && line.LotInfo.LotMaster.DescFlexSegments != null
-                           && !string.IsNullOrEmpty(line.LotInfo.LotMaster.DescFlexSegments.PubDescSeg3)
-                            )
+
+                       // 私有段2，为空，则 赋值
+                       if (string.IsNullOrEmpty(line.DescFlexField.PrivateDescSeg2))
                        {
-                           decimal.TryParse(line.LotInfo.LotMaster.DescFlexSegments.PubDescSeg3, out realFinallyPrice);
+                           // 实际出库金额=数量*实际出库单价    =  私有段2
+                           decimal realFinallyPrice = 0;
+                           if (line.LotInfo != null
+                               && line.LotInfo.LotMaster != null
+                               && line.LotInfo.LotMaster.DescFlexSegments != null
+                               && !string.IsNullOrEmpty(line.LotInfo.LotMaster.DescFlexSegments.PubDescSeg3)
+                                )
+                           {
+                               decimal.TryParse(line.LotInfo.LotMaster.DescFlexSegments.PubDescSeg3, out realFinallyPrice);
+                           }
+                           line.DescFlexField.PrivateDescSeg2 = (line.ShipQtyTUAmount * realFinallyPrice).ToString("G0");
                        }
-                       line.DescFlexField.PrivateDescSeg2 = (line.ShipQtyTUAmount * realFinallyPrice).ToString("G0");
                    }
                }
            }
