@@ -94,39 +94,57 @@
                                 }
                             }
 
-                            // BP不能跨组织，是个问题
-                            DIToFlowResultDTOData dIToFlowResultDTOData = dIToFollowingDocBPProxy.Do();
-
-                            if (dIToFlowResultDTOData != null
-                                && dIToFlowResultDTOData.LineKeyDTOList != null
-                                && dIToFlowResultDTOData.LineKeyDTOList.Count > 0
-                                )
+                            try
                             {
-                                foreach (LineKeyDTOData lineKey in dIToFlowResultDTOData.LineKeyDTOList)
-                                { 
-                                    UFIDA.U9.PM.PO.PurchaseOrder po = PurchaseOrder.Finder.FindByID(lineKey.ID);
-                                    if (po != null)
+                                // BP不能跨组织，是个问题
+                                DIToFlowResultDTOData dIToFlowResultDTOData = dIToFollowingDocBPProxy.Do();
+
+                                if (dIToFlowResultDTOData != null
+                                    && dIToFlowResultDTOData.LineKeyDTOList != null
+                                    && dIToFlowResultDTOData.LineKeyDTOList.Count > 0
+                                    )
+                                {
+                                    foreach (LineKeyDTOData lineKey in dIToFlowResultDTOData.LineKeyDTOList)
                                     {
-                                        using (ISession session = Session.Open())
+                                        UFIDA.U9.PM.PO.PurchaseOrder po = PurchaseOrder.Finder.FindByID(lineKey.ID);
+                                        if (po != null)
                                         {
-                                            po.Status = PODOCStatusEnum.Approving;
-                                            po.ActionType = ActivateTypeEnum.ApprovingAct;
-                                            po.DGNeedDecompose = false;
+                                            using (ISession session = Session.Open())
+                                            {
+                                                po.Status = PODOCStatusEnum.Approving;
+                                                po.ActionType = ActivateTypeEnum.ApprovingAct;
+                                                po.DGNeedDecompose = false;
 
-                                            session.Commit();
-                                        }
+                                                session.Commit();
+                                            }
 
-                                        po = PurchaseOrder.Finder.FindByID(lineKey.ID);
-                                        using (ISession session = Session.Open())
-                                        {
-                                            po.Status = PODOCStatusEnum.Approved;
-                                            po.ActionType = ActivateTypeEnum.ApprovingAct;
-                                            po.DGNeedDecompose = false;
+                                            po = PurchaseOrder.Finder.FindByID(lineKey.ID);
+                                            using (ISession session = Session.Open())
+                                            {
+                                                po.Status = PODOCStatusEnum.Approved;
+                                                po.ActionType = ActivateTypeEnum.ApprovingAct;
+                                                po.DGNeedDecompose = false;
 
-                                            session.Commit();
+                                                session.Commit();
+                                            }
                                         }
                                     }
                                 }
+                            }
+                            catch (Exception ex)
+                            {
+                                UFSoft.UBF.Util.Log.ILogger logger = UFSoft.UBF.Util.Log.LoggerManager.GetLogger("HBH客开日志");
+
+                                string msg = string.Format("需求接口表自动抛转采购订单失败，请购单号[{0}]，异常信息:[{1}]；错误线索:[{2}]。"
+                                    , entity.DocNo
+                                    , ex.Message
+                                    , ex.StackTrace
+                                    );
+                                logger.Error(msg);
+                            }
+                            finally
+                            { 
+                                
                             }
                         }
                     }

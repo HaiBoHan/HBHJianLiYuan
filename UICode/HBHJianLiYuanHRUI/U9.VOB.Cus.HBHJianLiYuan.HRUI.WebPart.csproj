@@ -80,6 +80,9 @@
     <Reference Include="HBH.DoNet.DevPlatform.U9Mapping">
       <HintPath>..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\HBHCommon\HBH.DoNet.DevPlatform.U9Mapping.dll</HintPath>
     </Reference>
+    <Reference Include="U9.VOB.Cus.HBHJianLiYuan.HBHHelper">
+      <HintPath>..\..\..\..\..\..\UBFV30\U9.VOB.Product.WebPart\U9.VOB.Cus.HBHJianLiYuan.HBHHelper.dll</HintPath>
+    </Reference>
     <Reference Include="U9.VOB.Cus.HBHJianLiYuan.HRBP.Agent">
       <HintPath>..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\Unconfiged\Component\U9.VOB.Cus.HBHJianLiYuan.HRBP.Agent.dll</HintPath>
     </Reference>

@@ -132,13 +132,16 @@ namespace DeptItemSupplierBListUIModel
                 NavigatePage(pageID, querystrings);
             }
         }
-		
-            
-            
-            
 
-		#region 自定义数据初始化加载和数据收集
-		private void OnLoadData_Extend(object sender)
+
+        #endregion
+
+
+
+
+
+        #region 自定义数据初始化加载和数据收集
+        private void OnLoadData_Extend(object sender)
 		{	
 			OnLoadData_DefaultImpl(sender);
 		}
@@ -178,14 +181,18 @@ namespace DeptItemSupplierBListUIModel
 		{
 									
 			AfterUIModelBinding_Qry_DefaultImpl();//BE列表自动产生的代码
-		
 
+            
+            U9.VOB.HBHCommon.HBHCommonUI.HBHUIHelper.UIList_SetDocNoTitleClick(this, this.DataGrid1
+                , "ID"
+                , "Department_Name"
+                , "a6b16b6b-290b-4a08-8e7e-0705df746128"
+                , "部门料品供应商交叉档"
+                // , param
+                );
 		}
 
 
         #endregion
-		
-        #endregion
-		
     }
 }

@@ -101,6 +101,11 @@ namespace U9.VOB.Cus.HBHJianLiYuan {
 			base.OnValidate();
 			this.SelfEntityValidator();
 			// TO DO: write your business code here...
+
+            if (this.PayrollType == null)
+            {
+                throw new BusinessException("计薪类别 不可为空!");
+            }
 		}
 		#endregion
 		

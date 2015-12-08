@@ -165,7 +165,8 @@ namespace DepartmentTransferBListUIModel
 
             U9.VOB.HBHCommon.HBHCommonUI.HBHUIHelper.UIList_SetDocNoTitleClick(this, this.DataGrid1
                 , "ID"
-                , "ChangedBeforeDept"
+                , "ChangedBeforeDept_Name"
+                , "a6b16b6b-290b-4a08-8e7e-0705df746128"
                 , "部门调动单"
                 // , param
                 );

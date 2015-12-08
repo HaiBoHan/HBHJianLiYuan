@@ -17,43 +17,43 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInBE
     public class Ship_BeforeDefaultValue : UFSoft.UBF.Eventing.IEventSubscriber
     {
        public void Notify(params object[] args)
-       {
-           if (args == null || args.Length == 0 || !(args[0] is UFSoft.UBF.Business.EntityEvent))
-               return;
-           BusinessEntity.EntityKey key = ((UFSoft.UBF.Business.EntityEvent)args[0]).EntityKey;
+        {
+            if (args == null || args.Length == 0 || !(args[0] is UFSoft.UBF.Business.EntityEvent))
+                return;
+            BusinessEntity.EntityKey key = ((UFSoft.UBF.Business.EntityEvent)args[0]).EntityKey;
 
-           if (key == null)
-               return;
-           Ship entity = key.GetEntity() as Ship;//出货单实体
-           if (entity == null)
-               return;
+            if (key == null)
+                return;
+            Ship entity = key.GetEntity() as Ship;//出货单实体
+            if (entity == null)
+                return;
 
-           // 收货才写批号,出货同请购赋值价格即可。
-           bool isUpdatePrice = false;
-           if (entity.Status == ShipStateEnum.Creates
-               || entity.Status == ShipStateEnum.Empty
-               // 或单据日期有变化
-               || (entity.OriginalData != null
-                    && entity.OriginalData.BusinessDate != entity.BusinessDate
+            // 收货才写批号,出货同请购赋值价格即可。
+            bool isUpdatePrice = false;
+            if (entity.Status == ShipStateEnum.Creates
+                || entity.Status == ShipStateEnum.Empty
+                // 或单据日期有变化
+                || (entity.OriginalData != null
+                     && entity.OriginalData.BusinessDate != entity.BusinessDate
+                     )
+                )
+            {
+                // 弃审报错，不允许OBA更新
+                if (entity.OriginalData == null
+                    || entity.OriginalData.Status != ShipStateEnum.Approved
                     )
-               )
-           {
-               // 弃审报错，不允许OBA更新
-               if (entity.OriginalData == null
-                   || entity.OriginalData.Status != ShipStateEnum.Approved
-                   )
-               {
-                   isUpdatePrice = true;
-               }
-           }
+                {
+                    isUpdatePrice = true;
+                }
+            }
 
-           if (isUpdatePrice)
-           {
-               Department lineDept = entity.SaleDept;
-               VOB.Cus.HBHJianLiYuan.DeptItemSupplierBE.DeptItemSupplierLine deptLine = null;
-               List<ItemPriceData> lstItemDTO = new List<ItemPriceData>(); 
-               foreach (ShipLine line in entity.ShipLines)
-               {
+            if (isUpdatePrice)
+            {
+                Department lineDept = entity.SaleDept;
+                VOB.Cus.HBHJianLiYuan.DeptItemSupplierBE.DeptItemSupplierLine deptLine = null;
+                List<ItemPriceData> lstItemDTO = new List<ItemPriceData>();
+                foreach (ShipLine line in entity.ShipLines)
+                {
                     if (line.OrderPriceTC == 0)
                     {
                         if (lineDept != null && line.ItemInfo != null
@@ -117,10 +117,10 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInBE
                             }
                         }
                     }
-               }
+                }
 
-               if (lstItemDTO.Count > 0)
-               { 
+                if (lstItemDTO.Count > 0)
+                {
                     GetPriceFromPurListProxy proxy = new GetPriceFromPurListProxy();
                     proxy.ItemPrices = lstItemDTO;
 
@@ -130,8 +130,6 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInBE
                         && lstPrices.Count > 0
                         )
                     {
-                        entity.ActivityType = SMActivityEnum.OBAUpdate;
-
                         //// 只更新扩展字段、不更新数量金额，所以做成服务更新即可。
                         //ship.ActivityType = SMActivityEnum.ServiceUpd;
 
@@ -155,46 +153,116 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInBE
                                         //decimal oldPrice = line.FinallyPriceTC.GetValueOrDefault(0);
                                         // 折前价
                                         DescFlexFieldHelper.SetPreDiscountPrice(line.DescFlexField, price.PreDiscountPrice);
-                                        DescFlexFieldHelper.SetDiscountRate(line.DescFlexField,price.DiscountRate);
-                                        DescFlexFieldHelper.SetDiscountLimit(line.DescFlexField,price.DiscountLimit);
-                                        // 最终价
-                                        line.OrderPrice = price.FinallyPrice;
-                                        line.OrderPriceTC = price.FinallyPrice;
-                                        line.FinallyPriceTC = price.FinallyPrice;
-                                        line.FinallyPrice = price.FinallyPrice;
+                                        DescFlexFieldHelper.SetDiscountRate(line.DescFlexField, price.DiscountRate);
+                                        DescFlexFieldHelper.SetDiscountLimit(line.DescFlexField, price.DiscountLimit);
+
+                                        //// 最终价
+                                        //line.OrderPrice = price.FinallyPrice;
+                                        //line.OrderPriceTC = price.FinallyPrice;
+                                        //line.FinallyPriceTC = price.FinallyPrice;
+                                        //line.FinallyPrice = price.FinallyPrice;
 
 
-                                        // 清空金额
-                                        line.TotalMoney = 0;
-                                        line.TotalMoneyTC = 0;
-                                        line.TotalMoneyFC = 0;
-                                        line.TotalNetMoney = 0;
-                                        line.TotalNetMoneyTC = 0;
-                                        line.TotalNetMoneyFC = 0;
-                                        line.TotalTax = 0;
-                                        line.TotalTaxTC = 0;
-                                        line.TotalTaxFC = 0;
+                                        //// 清空金额
+                                        //line.TotalMoney = 0;
+                                        //line.TotalMoneyTC = 0;
+                                        //line.TotalMoneyFC = 0;
+                                        //line.TotalNetMoney = 0;
+                                        //line.TotalNetMoneyTC = 0;
+                                        //line.TotalNetMoneyFC = 0;
+                                        //line.TotalTax = 0;
+                                        //line.TotalTaxTC = 0;
+                                        //line.TotalTaxFC = 0;
 
-                                        if (line.ShipTaxs != null
-                                            && line.ShipTaxs.Count > 0
-                                            )
-                                        {
-                                            for (int i = line.ShipTaxs.Count - 1; i >= 0; i--)
-                                            {
-                                                line.ShipTaxs.RemoveAt(i);
-                                            }
-                                        }
+                                        //if (line.ShipTaxs != null
+                                        //    && line.ShipTaxs.Count > 0
+                                        //    )
+                                        //{
+                                        //    for (int i = line.ShipTaxs.Count - 1; i >= 0; i--)
+                                        //    {
+                                        //        line.ShipTaxs.RemoveAt(i);
+                                        //    }
+                                        //}
                                     }
                                 }
                             }
                         }
                     }
-               }
+                }
 
-           }
+            }
 
-           // 前台有时候也赋值不上，所以后台开立的时候全赋值
-           //if (entity.SysState == UFSoft.UBF.PL.Engine.ObjectState.Inserted)
+            // 更新行最终价
+            if (entity.ShipLines != null
+                && entity.ShipLines.Count > 0
+                )
+            {
+                foreach (ShipLine line in entity.ShipLines)
+                {
+                    if (line != null)
+                    {
+                        decimal lotFinallyPrice = 0;
+
+                        if (line.LotInfo != null
+                            && line.LotInfo.LotMaster != null
+                            && line.LotInfo.LotMaster.DescFlexSegments != null
+                            )
+                        {
+                            lotFinallyPrice = LotMasterHelper.GetFinallyPrice(line.LotInfo.LotMaster.DescFlexSegments);
+                        }
+
+                        //// 如果批号没取到最终价，则取价表价格
+                        //if (lotFinallyPrice <= 0)
+                        //{
+                        //    lotFinallyPrice = price.FinallyPrice;
+                        //}
+
+                        decimal curPrice = line.FinallyPriceTC;
+
+                        // 最终价不一致
+                        if (lotFinallyPrice > 0
+                            && lotFinallyPrice != curPrice
+                            )
+                        {
+                            if (entity.ActivityType != SMActivityEnum.OBAUpdate)
+                            {
+                                entity.ActivityType = SMActivityEnum.OBAUpdate;
+                            }
+
+                            // 最终价
+                            line.OrderPrice = lotFinallyPrice;
+                            line.OrderPriceTC = lotFinallyPrice;
+                            line.FinallyPriceTC = lotFinallyPrice;
+                            line.FinallyPrice = lotFinallyPrice;
+
+
+                            // 清空金额
+                            line.TotalMoney = 0;
+                            line.TotalMoneyTC = 0;
+                            line.TotalMoneyFC = 0;
+                            line.TotalNetMoney = 0;
+                            line.TotalNetMoneyTC = 0;
+                            line.TotalNetMoneyFC = 0;
+                            line.TotalTax = 0;
+                            line.TotalTaxTC = 0;
+                            line.TotalTaxFC = 0;
+
+                            if (line.ShipTaxs != null
+                                && line.ShipTaxs.Count > 0
+                                )
+                            {
+                                for (int i = line.ShipTaxs.Count - 1; i >= 0; i--)
+                                {
+                                    line.ShipTaxs.RemoveAt(i);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            // 前台有时候也赋值不上，所以后台开立的时候全赋值
+            //if (entity.SysState == UFSoft.UBF.PL.Engine.ObjectState.Inserted)
             if (
                 //entity.SysState == UFSoft.UBF.PL.Engine.ObjectState.Inserted
                 //|| 
@@ -202,43 +270,43 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInBE
                 || entity.Status == ShipStateEnum.Script
                 || entity.Status == ShipStateEnum.Empty
                 )
-           {
-               foreach (ShipLine line in entity.ShipLines)
-               {
-                   if (line != null
-                       && line.DescFlexField != null
-                       )
-                   {
-                       // 私有段1，为空，则 赋值
-                       if (string.IsNullOrEmpty(line.DescFlexField.PrivateDescSeg1))
-                       {
-                           // 预计出库金额=预计出库单机*数量    =  私有段1
-                           decimal preFinallyPrice = 0;
-                           if (!string.IsNullOrEmpty(line.DescFlexField.PubDescSeg3))
-                           {
-                               decimal.TryParse(line.DescFlexField.PubDescSeg3, out preFinallyPrice);
-                           }
-                           line.DescFlexField.PrivateDescSeg1 = (line.ShipQtyTUAmount * preFinallyPrice).ToString("G0");
-                       }
+            {
+                foreach (ShipLine line in entity.ShipLines)
+                {
+                    if (line != null
+                        && line.DescFlexField != null
+                        )
+                    {
+                        // 私有段1，为空，则 赋值
+                        if (string.IsNullOrEmpty(line.DescFlexField.PrivateDescSeg1))
+                        {
+                            // 预计出库金额=预计出库单机*数量    =  私有段1
+                            decimal preFinallyPrice = 0;
+                            if (!string.IsNullOrEmpty(line.DescFlexField.PubDescSeg3))
+                            {
+                                decimal.TryParse(line.DescFlexField.PubDescSeg3, out preFinallyPrice);
+                            }
+                            line.DescFlexField.PrivateDescSeg1 = (line.ShipQtyTUAmount * preFinallyPrice).ToString("G0");
+                        }
 
-                       // 私有段2，为空，则 赋值
-                       if (string.IsNullOrEmpty(line.DescFlexField.PrivateDescSeg2))
-                       {
-                           // 实际出库金额=数量*实际出库单价    =  私有段2
-                           decimal realFinallyPrice = 0;
-                           if (line.LotInfo != null
-                               && line.LotInfo.LotMaster != null
-                               && line.LotInfo.LotMaster.DescFlexSegments != null
-                               && !string.IsNullOrEmpty(line.LotInfo.LotMaster.DescFlexSegments.PubDescSeg3)
-                                )
-                           {
-                               decimal.TryParse(line.LotInfo.LotMaster.DescFlexSegments.PubDescSeg3, out realFinallyPrice);
-                           }
-                           line.DescFlexField.PrivateDescSeg2 = (line.ShipQtyTUAmount * realFinallyPrice).ToString("G0");
-                       }
-                   }
-               }
-           }
-       }
+                        // 私有段2，为空，则 赋值
+                        if (string.IsNullOrEmpty(line.DescFlexField.PrivateDescSeg2))
+                        {
+                            // 实际出库金额=数量*实际出库单价    =  私有段2
+                            decimal realFinallyPrice = 0;
+                            if (line.LotInfo != null
+                                && line.LotInfo.LotMaster != null
+                                && line.LotInfo.LotMaster.DescFlexSegments != null
+                                && !string.IsNullOrEmpty(line.LotInfo.LotMaster.DescFlexSegments.PubDescSeg3)
+                                 )
+                            {
+                                decimal.TryParse(line.LotInfo.LotMaster.DescFlexSegments.PubDescSeg3, out realFinallyPrice);
+                            }
+                            line.DescFlexField.PrivateDescSeg2 = (line.ShipQtyTUAmount * realFinallyPrice).ToString("G0");
+                        }
+                    }
+                }
+            }
+        }
     }
 }

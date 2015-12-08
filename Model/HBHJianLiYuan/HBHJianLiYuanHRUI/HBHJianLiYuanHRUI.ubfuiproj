@@ -11,6 +11,7 @@
     <Import id="069f132b-0da8-43e9-9512-caea3296ec43" name="SalarySolutionUI" displayName="SalarySolutionUI" description="" help="" componentid="06d7268b-87c4-441b-85b5-2dabf6c2b2e1" path="..\..\..\..\..\..\..\U9Product\U9.VOB.Product.Metadata\UI\UFIDA.U9.HR.PAY.SalarySolution.SalarySolutionUI.MetaData.dll" type="UI" isRuntime="True" />
     <Import id="7b1ecc67-f9b9-4442-9abe-653319089631" name="PersonInfoUI" displayName="PersonInfoUI" description="" help="" componentid="92a222eb-7a17-4da9-b3d5-dfe83bac160c" path="..\..\..\..\..\..\..\U9Product\U9.VOB.Product.Metadata\UI\UFIDA.U9.CBO.HR.PersonInfoUI.MetaData.dll" type="UI" isRuntime="True" />
     <Import id="fe96b153-a451-49de-b601-3e271e43c925" name="PayrollDocUI" displayName="PayrollDocUI" description="" help="" componentid="4dc0700e-bcae-4715-bf4f-37731766fc81" path="..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Metadata\UI\UFIDA.U9.HR.PAY.PayrollDoc.PayrollDocUI.MetaData.dll" type="UI" isRuntime="True" />
+    <Import id="0cdd8ec1-b554-49ab-b413-1eaae8b6d0f1" name="BaseBE" displayName="BaseBE" description="" help="" componentid="474b2649-5852-4596-a007-adcfa9b04d13" path="..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Metadata\UBF\UFIDA.U9.Base.BaseBE.MetaData.dll" type="BE" isRuntime="True" />
   </Imports>
   <SourceControl />
   <ItemGroup>
@@ -23,5 +24,6 @@
     <Item id="f25248c0-f827-4542-a94a-a50c3b64fc6f" name="DayCheckInFindRef.ubfref" displayName="DayCheckInFindRef.ubfref" description="" help="" include="DayCheckInFindRef.ubfref" type="" />
     <Item id="98276b5f-af54-456f-9aa5-2b40d02d1d03" name="DepartmentTransferFindRef.ubfref" displayName="DepartmentTransferFindRef.ubfref" description="" help="" include="DepartmentTransferFindRef.ubfref" type="" />
     <Item id="8c9e73b5-5f3b-47c6-bdf2-35a8fcaa50d6" name="TotalPayrollDocFindRef.ubfref" displayName="TotalPayrollDocFindRef.ubfref" description="" help="" include="TotalPayrollDocFindRef.ubfref" type="" />
+    <Item id="3545cc27-358a-41f0-a1f8-accec0d3a75a" name="DefineValueRef.ubfref" displayName="DefineValueRef.ubfref" description="" help="" include="DefineValueRef.ubfref" type="" />
   </ItemGroup>
 </Project>

@@ -236,6 +236,10 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInBE
             DescFlexFieldHelper.SetPreDiscountPrice(lotMaster.DescFlexSegments, line.DescFlexSegments);
             DescFlexFieldHelper.SetDiscountRate(lotMaster.DescFlexSegments, line.DescFlexSegments);
             DescFlexFieldHelper.SetDiscountLimit(lotMaster.DescFlexSegments, line.DescFlexSegments);
+
+            // 小灶物料名称 = 公共段11
+            DescFlexFieldHelper.SetOnceItemNameField(lotMaster.DescFlexSegments, line.DescFlexSegments);
+
         }
     }
 }

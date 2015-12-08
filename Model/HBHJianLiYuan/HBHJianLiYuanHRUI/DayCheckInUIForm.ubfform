@@ -242,7 +242,7 @@
         <Events />
         <RelationControls />
         <Events />
-        <FormLink FormRefID="5edfc940-5112-4063-9f46-eb7bb25abf6b" FormRefName="PersonInfoMainUIForm.ubfform" FormRefPath="PersonInfoMainUIForm.ubfform" FormRefProjectPath="UFIDA.U9.CBO.HR.PersonInfoUI.MetaData.dll" Height="504" IsShowStateBar="True" Width="992">
+        <FormLink FormRefID="5edfc940-5112-4063-9f46-eb7bb25abf6b" FormRefName="PersonInfoMainUIForm.ubfform" FormRefPath="PersonInfoMainUIForm.ubfform" FormRefProjectPath="UFIDA.U9.CBO.HR.PersonInfoUI.MetaData.dll" Height="504" IsShowStateBar="True" Name="FormLink2" Width="992">
           <InParameters>
             <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="ID" ParameterBindType="None" />
             <Parameter ContextID="" ControlID="CurrentOperator329" ControlProperty="Key" ControlType="ReferenceModel" Name="EmpID" ParameterBindType="Bind2Control" />
@@ -344,7 +344,7 @@
         <RelationControls />
       </DropDownList>
     </Card>
-    <DataGrid ID="4b366f14-453a-4a3a-9566-52032b4587e5" EditStatus="edit" Enabled="True" GridHeight="2" GridWidth="2" GridX="0" GridY="1" HasSum="False" Height="339" IsSumAllData="True" Name="DataGrid5" PageSize="20" Paging="True" TabIndex="2" TabStop="True" Width="972" X="10" Y="82">
+    <DataGrid ID="4b366f14-453a-4a3a-9566-52032b4587e5" AllowSelectAllPage="True" EditStatus="edit" Enabled="True" GridHeight="2" GridWidth="2" GridX="0" GridY="1" HasSum="True" Height="339" IsSumAllData="True" Name="DataGrid5" PageSize="20" Paging="True" TabIndex="2" TabStop="True" Width="972" X="10" Y="82">
       <Events />
       <Header ID="3894d826-866e-471b-9069-808ada69fdcf" Name="Header5">
         <HeaderRow Name="DefaultRow">
@@ -464,25 +464,25 @@
         <DropDownListColumn ID="0b1153a9-acd7-4e6b-b8d7-61e5ef0e7ca0" DefaultValue="0" DisplayFormat="10.0" Enabled="True" EnumFullName="U9.VOB.Cus.HBHJianLiYuan.CheckTypeEnum" EnumID="abfaa342-ff05-4e6b-bd98-836d0ddf53a5" Help="日考勤行.Misc.考勤类别" IsNull="True" IsProperty="False" IsSequence="False" Name="CheckType0" NPos="4" Point="0" UIFieldID="CheckType" UIViewID="DayCheckIn_DayCheckInLine" Visible="True">
           <Events />
         </DropDownListColumn>
-        <NumberColumn ID="1585cd51-0abe-496b-ae94-e39c86434df0" DefaultValue="0" DisplayFormat="24.9" Enabled="True" Help="日考勤行.Misc.全日制员工出勤" IsNull="True" IsProperty="False" IsSequence="False" MinValue="0" Name="FullTimeDay0" NPos="5" Point="0" UIFieldID="FullTimeDay" UIViewID="DayCheckIn_DayCheckInLine" Visible="True" Width="130">
-          <PrecisionBind />
-          <RoundRuleBind />
-          <ValueOfRoundByValueBind />
-          <CurrencyType />
+        <NumberColumn ID="1585cd51-0abe-496b-ae94-e39c86434df0" DefaultValue="0" DisplayFormat="24.9" Enabled="True" HasSum="True" Help="日考勤行.Misc.全日制员工出勤" IsNull="True" IsProperty="False" IsSequence="False" MinValue="0" Name="FullTimeDay0" NPos="5" Point="1" UIFieldID="FullTimeDay" UIViewID="DayCheckIn_DayCheckInLine" Visible="True" Width="130">
+          <PrecisionBind Name="PrecisionBind2" />
+          <RoundRuleBind Name="RoundRuleBind2" />
+          <ValueOfRoundByValueBind Name="ValueOfRoundByValueBind2" />
+          <CurrencyType Name="CurrencyType2" />
           <Events />
         </NumberColumn>
-        <NumberColumn ID="fcdfabb7-294d-4112-b4d5-a29f27f5f1d9" DefaultValue="0" DisplayFormat="24.9" Enabled="True" Help="日考勤行.Misc.非全日制员工出勤" IsNull="True" IsProperty="False" IsSequence="False" MinValue="0" Name="PartTimeDay0" NPos="6" Point="0" UIFieldID="PartTimeDay" UIViewID="DayCheckIn_DayCheckInLine" Visible="True" Width="140">
-          <PrecisionBind />
-          <RoundRuleBind />
-          <ValueOfRoundByValueBind />
-          <CurrencyType />
+        <NumberColumn ID="fcdfabb7-294d-4112-b4d5-a29f27f5f1d9" DefaultValue="0" DisplayFormat="24.9" Enabled="True" HasSum="True" Help="日考勤行.Misc.非全日制员工出勤" IsNull="True" IsProperty="False" IsSequence="False" MinValue="0" Name="PartTimeDay0" NPos="6" Point="1" UIFieldID="PartTimeDay" UIViewID="DayCheckIn_DayCheckInLine" Visible="True" Width="140">
+          <PrecisionBind Name="PrecisionBind3" />
+          <RoundRuleBind Name="RoundRuleBind3" />
+          <ValueOfRoundByValueBind Name="ValueOfRoundByValueBind3" />
+          <CurrencyType Name="CurrencyType3" />
           <Events />
         </NumberColumn>
-        <NumberColumn ID="0afaf11c-5cf4-40fc-8fd7-3716b029a02e" DefaultValue="0" DisplayFormat="24.9" Enabled="True" Help="日考勤行.Misc.钟点工出勤" IsNull="True" IsProperty="False" IsSequence="False" MinValue="0" Name="HourlyDay0" NPos="7" Point="0" UIFieldID="HourlyDay" UIViewID="DayCheckIn_DayCheckInLine" Visible="True">
-          <PrecisionBind />
-          <RoundRuleBind />
-          <ValueOfRoundByValueBind />
-          <CurrencyType />
+        <NumberColumn ID="0afaf11c-5cf4-40fc-8fd7-3716b029a02e" DefaultValue="0" DisplayFormat="24.9" Enabled="True" HasSum="True" Help="日考勤行.Misc.钟点工出勤" IsNull="True" IsProperty="False" IsSequence="False" MinValue="0" Name="HourlyDay0" NPos="7" Point="1" UIFieldID="HourlyDay" UIViewID="DayCheckIn_DayCheckInLine" Visible="True">
+          <PrecisionBind Name="PrecisionBind4" />
+          <RoundRuleBind Name="RoundRuleBind4" />
+          <ValueOfRoundByValueBind Name="ValueOfRoundByValueBind4" />
+          <CurrencyType Name="CurrencyType4" />
           <Events />
         </NumberColumn>
         <TextBoxColumn ID="a91ac245-67e8-48b9-809a-f8e501287ad6" DefaultValue="" DisplayFormat="50" Enabled="True" Help="日考勤行.Misc.职位" IsNull="True" IsProperty="False" IsSequence="False" Name="Duty0" NPos="8" Point="0" TextAlign="Left" UIFieldID="Duty" UIViewID="DayCheckIn_DayCheckInLine" Visible="True">

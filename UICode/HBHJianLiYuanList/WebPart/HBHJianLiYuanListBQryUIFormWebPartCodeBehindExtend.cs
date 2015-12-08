@@ -85,7 +85,9 @@ namespace U9.VOB.Cus.HBHJianLiYuan.HBHJianLiYuanListBQryUIModel
 			
 		
 			DataGrid1_GridRowDbClicked_DefaultImpl(sender,e);
-		}
+        }
+
+        #endregion
 
 		
             
@@ -143,13 +145,17 @@ namespace U9.VOB.Cus.HBHJianLiYuan.HBHJianLiYuanListBQryUIModel
 		{
 						
 			AfterUIModelBinding_Qry_DefaultImpl();//BE查询自动产生的代码
-					
 
+            U9.VOB.HBHCommon.HBHCommonUI.HBHUIHelper.UIList_SetDocNoTitleClick(this, this.DataGrid1
+                , "MainID"
+                , "DocNo"
+                , "4E0A5FF2-3FCD-4403-8D36-068F37667C4F"
+                , "请购单"
+                // , param
+                );
 		}
 
 
-        #endregion
-		
         #endregion
 		
     }

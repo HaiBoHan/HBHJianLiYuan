@@ -137,7 +137,9 @@ namespace DepartmentTransferUIModel
 		{
 			//调用模版提供的默认实现.--默认实现可能会调用相应的Action.
             //BtnList_Click_DefaultImpl(sender,e);
-            U9.VOB.HBHCommon.HBHCommonUI.HBHUIHelper.UIForm_BtnList_Click(this,"DepartmentTransfer");
+            //U9.VOB.HBHCommon.HBHCommonUI.HBHUIHelper.UIForm_BtnList_Click(this,"DepartmentTransfer");
+
+            U9.VOB.HBHCommon.HBHCommonUI.HBHUIHelper.UIForm_BtnList_Click(this);
 		}
 		 
 				//BtnFirstPage_Click...

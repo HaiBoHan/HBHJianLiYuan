@@ -327,27 +327,27 @@
                                                              */
 
                                                             {
-                                                                // 调动后部门   =   最后一个部门
-                                                                CheckInDTO lastCheckIn = lstDTO[lstDTO.Count - 1];
+                                                                CheckInDTO firstCheckIn = lstDTO[0];
 
-                                                                if (lastCheckIn != null)
+                                                                if (firstCheckIn != null)
                                                                 {
-                                                                    GetLastCheckinItem(checkinItem, beforeDeptItem, afterDeptItem, fbeforeDeptItem, fafterDeptItem, transferDayItem, workHoursItem, ftransferDayItem, fworkHoursItem, lastCheckIn, out _checkinItem, out _afterDeptItem, out _beforeDeptItem, out _transferDayItem, out _workHoursItem, out checkInDays, out fullCheckInDays, out workHours, out fPartCheckInDays, out transferDays);
+                                                                    GetFirstCheckinItem(checkinItem, beforeDeptItem, afterDeptItem, fbeforeDeptItem, fafterDeptItem, transferDayItem, workHoursItem, ftransferDayItem, fworkHoursItem, firstCheckIn, out _checkinItem, out _afterDeptItem, out _beforeDeptItem, out _transferDayItem, out _workHoursItem, ref checkInDays, ref fullCheckInDays, ref workHours, ref fPartCheckInDays, ref transferDays);
 
-                                                                    SetSalaryValue(line, _checkinItem, _afterDeptItem, _beforeDeptItem, null, null, _transferDayItem, _workHoursItem, checkInDays, lastCheckIn.Department, -1, workHours, transferDays);
+                                                                    SetSalaryValue(line, _checkinItem, _afterDeptItem, _beforeDeptItem, null, null, _transferDayItem, _workHoursItem, checkInDays, firstCheckIn.Department, -1, workHours, transferDays);
                                                                 }
                                                             }
 
                                                             // 如果有多个，那么，调动前部门   =   第一个部门
                                                             if (lstDTO.Count > 1)
                                                             {
-                                                                CheckInDTO firstCheckIn = lstDTO[0];
+                                                                // 调动后部门   =   最后一个部门
+                                                                CheckInDTO lastCheckIn = lstDTO[lstDTO.Count - 1];
 
-                                                                if (firstCheckIn != null)
+                                                                if (lastCheckIn != null)
                                                                 {
-                                                                    GetFirstCheckinItem(checkinItem, beforeDeptItem, afterDeptItem, fbeforeDeptItem, fafterDeptItem, transferDayItem, workHoursItem, ftransferDayItem, fworkHoursItem, firstCheckIn, out _checkinItem, out _afterDeptItem, out _beforeDeptItem, out _transferDayItem, out _workHoursItem, out checkInDays, out fullCheckInDays, out workHours, out fPartCheckInDays, out transferDays);
+                                                                    GetLastCheckinItem(checkinItem, beforeDeptItem, afterDeptItem, fbeforeDeptItem, fafterDeptItem, transferDayItem, workHoursItem, ftransferDayItem, fworkHoursItem, lastCheckIn, out _checkinItem, out _afterDeptItem, out _beforeDeptItem, out _transferDayItem, out _workHoursItem, ref checkInDays, ref fullCheckInDays, ref workHours, ref fPartCheckInDays, ref transferDays);
 
-                                                                    SetSalaryValue(line, _checkinItem, _afterDeptItem, _beforeDeptItem, null, null, _transferDayItem, _workHoursItem, checkInDays, firstCheckIn.Department, -1, workHours, transferDays);
+                                                                    SetSalaryValue(line, _checkinItem, _afterDeptItem, _beforeDeptItem, null, null, _transferDayItem, _workHoursItem, checkInDays, lastCheckIn.Department, -1, workHours, transferDays);
                                                                 }
                                                             }
                                                         }
@@ -566,68 +566,117 @@
             }
         }
 
-        public static void GetLastCheckinItem(SalaryItem checkinItem, SalaryItem beforeDeptItem, SalaryItem afterDeptItem, SalaryItem fbeforeDeptItem, SalaryItem fafterDeptItem, SalaryItem transferDayItem, SalaryItem workHoursItem, SalaryItem ftransferDayItem, SalaryItem fworkHoursItem, CheckInDTO lastCheckIn, out SalaryItem _checkinItem, out SalaryItem _afterDeptItem, out SalaryItem _beforeDeptItem, out SalaryItem _transferDayItem, out SalaryItem _workHoursItem, out decimal checkinDays, out decimal fullCheckInDays, out decimal workHours, out decimal fPartCheckInDays, out decimal transferDays)
+        public static void GetLastCheckinItem(SalaryItem checkinItem, SalaryItem beforeDeptItem, SalaryItem afterDeptItem, SalaryItem fbeforeDeptItem, SalaryItem fafterDeptItem, SalaryItem transferDayItem, SalaryItem workHoursItem, SalaryItem ftransferDayItem, SalaryItem fworkHoursItem, CheckInDTO checkInDTO, out SalaryItem _checkinItem, out SalaryItem _afterDeptItem, out SalaryItem _beforeDeptItem, out SalaryItem _transferDayItem, out SalaryItem _workHoursItem, ref decimal checkinDays, ref decimal fullCheckInDays, ref decimal workHours, ref decimal fPartCheckInDays, ref decimal transferDays)
         {
             _checkinItem = checkinItem;
 
             // 最后一条赋值调动后部门，所以调动前部门为空
             _beforeDeptItem = null;
             //_beforeDeptItem = lastCheckIn.CheckType == CheckTypeEnum.FullTimeStaff.Value ? beforeDeptItem : fbeforeDeptItem;
-            _afterDeptItem = lastCheckIn.CheckType == CheckTypeEnum.FullTimeStaff.Value ? afterDeptItem : fafterDeptItem;
-            _transferDayItem = lastCheckIn.CheckType == CheckTypeEnum.FullTimeStaff.Value ? transferDayItem : ftransferDayItem;
-            _workHoursItem = lastCheckIn.CheckType == CheckTypeEnum.FullTimeStaff.Value ? workHoursItem : fworkHoursItem;
+            _afterDeptItem = checkInDTO.CheckType == CheckTypeEnum.FullTimeStaff.Value ? afterDeptItem : fafterDeptItem;
+            _transferDayItem = checkInDTO.CheckType == CheckTypeEnum.FullTimeStaff.Value ? transferDayItem : ftransferDayItem;
+            _workHoursItem = checkInDTO.CheckType == CheckTypeEnum.FullTimeStaff.Value ? workHoursItem : fworkHoursItem;
 
-            if (lastCheckIn.CheckType == CheckTypeEnum.FullTimeStaff.Value)
+            /*
+            全日制员工出勤薪资取数规则：出勤天数=∑全日制员工出勤
+                        工时=∑钟点工出勤
+            非全日制员工出勤薪资取数规则：F考勤工时=∑非全日制员工出勤+∑钟点工出勤
+             */
+            if (checkInDTO.CheckType == CheckTypeEnum.FullTimeStaff.Value)
             {
-                fullCheckInDays = lastCheckIn.FullTimeDay;
-                workHours = lastCheckIn.HourlyDay;
+                /*
+                全日制考勤取数规则：
+                调动前部门：取计薪期间内第一天所在部门  编码：092  名称：调动前部门
+                调动后部门：取计薪期间内调动后部门    编码：093  名称：调动后部门
+                调动天数：取计薪期间内调动后部门出勤天数   编码：094 名称：调动天数
+                 */
+                fullCheckInDays = checkInDTO.FullTimeDay;
+                workHours = checkInDTO.HourlyDay;
                 fPartCheckInDays = 0;
 
-                checkinDays = lastCheckIn.FullTimeDay;
-                transferDays = fullCheckInDays + workHours;
+                checkinDays += checkInDTO.FullTimeDay;
+                // 调动后才有调动天数
+                // 调动天数：取计薪期间内调动后部门出勤天数   编码：094 名称：调动天数
+                //transferDays = fullCheckInDays + workHours;
+                transferDays = fullCheckInDays;
             }
             else
             {
+                /*
+                非全日制考勤取数规则：
+                F调动前部门：取计薪期间内第一天所在部门 编码：F35  名称：F调动前部门
+                F调动后部门：取计薪期间内调动后部门    编码：F36  名称：F调动后部门
+                F调动天数：取计薪期间内调动后部门出勤天数   编码：F37 名称：F调动天数
+                 */
                 fullCheckInDays = 0;
-                workHours = 0;
+                //workHours = 0;
                 //workHours = lastCheckIn.HourlyDay;
-                fPartCheckInDays = lastCheckIn.PartTimeDay + lastCheckIn.HourlyDay;
+                fPartCheckInDays = checkInDTO.PartTimeDay + checkInDTO.HourlyDay;
 
-                checkinDays = lastCheckIn.PartTimeDay;
-                transferDays = fPartCheckInDays;
+                //checkinDays = lastCheckIn.PartTimeDay;
+                //checkinDays += fPartCheckInDays;
+                checkinDays = 0;
+                // 调动后才有调动天数
+                transferDays = checkInDTO.PartTimeDay;
+
+                workHours += fPartCheckInDays;
             }
         }
 
-        public static void GetFirstCheckinItem(SalaryItem checkinItem, SalaryItem beforeDeptItem, SalaryItem afterDeptItem, SalaryItem fbeforeDeptItem, SalaryItem fafterDeptItem, SalaryItem transferDayItem, SalaryItem workHoursItem, SalaryItem ftransferDayItem, SalaryItem fworkHoursItem, CheckInDTO lastCheckIn, out SalaryItem _checkinItem, out SalaryItem _afterDeptItem, out SalaryItem _beforeDeptItem, out SalaryItem _transferDayItem, out SalaryItem _workHoursItem, out decimal checkinDays, out decimal fullCheckInDays, out decimal workHours, out decimal fPartCheckInDays, out decimal transferDays)
+        public static void GetFirstCheckinItem(SalaryItem checkinItem, SalaryItem beforeDeptItem, SalaryItem afterDeptItem, SalaryItem fbeforeDeptItem, SalaryItem fafterDeptItem, SalaryItem transferDayItem, SalaryItem workHoursItem, SalaryItem ftransferDayItem, SalaryItem fworkHoursItem, CheckInDTO checkInDTO, out SalaryItem _checkinItem, out SalaryItem _afterDeptItem, out SalaryItem _beforeDeptItem, out SalaryItem _transferDayItem, out SalaryItem _workHoursItem, ref decimal checkinDays, ref decimal fullCheckInDays, ref decimal workHours, ref decimal fPartCheckInDays, ref decimal transferDays)
         {
             _checkinItem = checkinItem;
 
-            _beforeDeptItem = lastCheckIn.CheckType == CheckTypeEnum.FullTimeStaff.Value ? beforeDeptItem : fbeforeDeptItem;
+            _beforeDeptItem = checkInDTO.CheckType == CheckTypeEnum.FullTimeStaff.Value ? beforeDeptItem : fbeforeDeptItem;
             // 最后一条赋值调动前部门，所以调动后部门为空
             //_afterDeptItem = lastCheckIn.CheckType == CheckTypeEnum.FullTimeStaff.Value ? afterDeptItem : fafterDeptItem;
             _afterDeptItem = null;
-            _transferDayItem = lastCheckIn.CheckType == CheckTypeEnum.FullTimeStaff.Value ? transferDayItem : ftransferDayItem;
-            _workHoursItem = lastCheckIn.CheckType == CheckTypeEnum.FullTimeStaff.Value ? workHoursItem : fworkHoursItem;
+            _transferDayItem = checkInDTO.CheckType == CheckTypeEnum.FullTimeStaff.Value ? transferDayItem : ftransferDayItem;
+            _workHoursItem = checkInDTO.CheckType == CheckTypeEnum.FullTimeStaff.Value ? workHoursItem : fworkHoursItem;
 
-            if (lastCheckIn.CheckType == CheckTypeEnum.FullTimeStaff.Value)
+            /*
+            全日制员工出勤薪资取数规则：出勤天数=∑全日制员工出勤
+                        工时=∑钟点工出勤
+            非全日制员工出勤薪资取数规则：F考勤工时=∑非全日制员工出勤+∑钟点工出勤
+             */
+            if (checkInDTO.CheckType == CheckTypeEnum.FullTimeStaff.Value)
             {
-                fullCheckInDays = lastCheckIn.FullTimeDay;
-                workHours = lastCheckIn.HourlyDay;
+                /*
+                全日制考勤取数规则：
+                调动前部门：取计薪期间内第一天所在部门  编码：092  名称：调动前部门
+                调动后部门：取计薪期间内调动后部门    编码：093  名称：调动后部门
+                调动天数：取计薪期间内调动后部门出勤天数   编码：094 名称：调动天数
+                 */
+                fullCheckInDays = checkInDTO.FullTimeDay;
+                workHours = checkInDTO.HourlyDay;
                 fPartCheckInDays = 0;
 
-                checkinDays = lastCheckIn.FullTimeDay;
-                transferDays = fullCheckInDays + workHours;
+                checkinDays += checkInDTO.FullTimeDay;
+                // 调动后才有调动天数
+                //transferDays = fullCheckInDays + workHours;
+                transferDays = 0;
             }
             else
             {
+                /*
+                非全日制考勤取数规则：
+                F调动前部门：取计薪期间内第一天所在部门 编码：F35  名称：F调动前部门
+                F调动后部门：取计薪期间内调动后部门    编码：F36  名称：F调动后部门
+                F调动天数：取计薪期间内调动后部门出勤天数   编码：F37 名称：F调动天数
+                 */
                 fullCheckInDays = 0;
-                workHours = 0;
+                //workHours = 0;
                 //workHours = lastCheckIn.HourlyDay;
-                fPartCheckInDays = lastCheckIn.PartTimeDay + lastCheckIn.HourlyDay;
+                fPartCheckInDays = checkInDTO.PartTimeDay + checkInDTO.HourlyDay;
 
-                checkinDays = lastCheckIn.PartTimeDay;
-                transferDays = fPartCheckInDays;
+                //checkinDays += lastCheckIn.PartTimeDay;
+                //checkinDays += fPartCheckInDays;
+                checkinDays = 0;
+                //transferDays = fPartCheckInDays;
+                // 调动后才有调动天数
+                transferDays = 0;
 
+                workHours += fPartCheckInDays;
             }
         }
 

@@ -36,6 +36,13 @@ namespace U9.VOB.Cus.HBHJianLiYuan.HBHHelper
 
         #region 后台字段
 
+        // 小灶物料名称 = 公共段11
+        /// <summary>
+        /// 小灶物料名称 = 公共段11
+        /// </summary>
+        public const string DescFlexField_OnceItemNameField = "PubDescSeg11";
+
+
         // 折前价
         /// <summary>
         /// 折前价
@@ -189,6 +196,25 @@ namespace U9.VOB.Cus.HBHJianLiYuan.HBHHelper
                 descSegments.PubDescSeg6 = PubClass.GetStringRemoveZero(price);
             }
         }
+
+
+        // 小灶物料名称 = 公共段11
+        /// <summary>
+        /// 小灶物料名称 = 公共段11
+        /// </summary>
+        /// <param name="targetSegments">目标扩展字段</param>
+        /// <param name="srcSegments">来源扩展字段</param>
+        /// <returns></returns>
+        public static void SetOnceItemNameField(DescFlexSegments targetSegments, DescFlexSegments srcSegments)
+        {
+            if (targetSegments != null
+                && srcSegments != null
+                )
+            {
+                targetSegments.SetValue(DescFlexField_OnceItemNameField, srcSegments.GetValue(DescFlexField_OnceItemNameField));
+            }
+        }
+
 
         #endregion
 

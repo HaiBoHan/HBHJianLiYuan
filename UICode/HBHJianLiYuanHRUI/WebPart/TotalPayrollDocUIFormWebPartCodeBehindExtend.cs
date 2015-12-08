@@ -27,6 +27,7 @@ using U9.VOB.HBHCommon.U9CommonBE;
 using U9.VOB.HBHCommon.HBHCommonUI;
 using System.Collections.Generic;
 using HBH.DoNet.DevPlatform.EntityMapping;
+using U9.VOB.Cus.HBHJianLiYuan.HBHHelper;
 
 
 
@@ -136,7 +137,9 @@ namespace TotalPayrollDocUIModel
 		{
 			//调用模版提供的默认实现.--默认实现可能会调用相应的Action.
             //BtnList_Click_DefaultImpl(sender, e);
-            U9.VOB.HBHCommon.HBHCommonUI.HBHUIHelper.UIForm_BtnList_Click(this, "TotalPayrollDoc");
+            //U9.VOB.HBHCommon.HBHCommonUI.HBHUIHelper.UIForm_BtnList_Click(this, "TotalPayrollDoc");
+
+            U9.VOB.HBHCommon.HBHCommonUI.HBHUIHelper.UIForm_BtnList_Click(this);
 		}	
 		 
 				//BtnFirstPage_Click...
@@ -364,6 +367,9 @@ namespace TotalPayrollDocUIModel
 
             // 绑定注册弹出对话框到删除按钮 
             UFIDA.U9.UI.PDHelper.PDFormMessage.ShowDelConfirmDialog(this.Page, "汇总会清空已有明细数据,确认汇总薪资？", "确认汇总薪资？", this.BtnSumPayroll);
+
+
+            PayrollType65.CustomInParams = string.Format("ValueSetCode={0}", TotalPayrollDocHelper.Const_PayrollTypeValueSetCode);
         }
         
         public void AfterEventBind()

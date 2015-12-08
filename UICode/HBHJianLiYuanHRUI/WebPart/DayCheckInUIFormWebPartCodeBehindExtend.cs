@@ -136,7 +136,9 @@ namespace DayCheckInUIModel
 			//调用模版提供的默认实现.--默认实现可能会调用相应的Action.
             //BtnList_Click_DefaultImpl(sender,e);
             //this.NavigatePage("Cust_DayCheckIn_UIList", null);
-            U9.VOB.HBHCommon.HBHCommonUI.HBHUIHelper.UIForm_BtnList_Click(this, "DayCheckIn");
+
+            //U9.VOB.HBHCommon.HBHCommonUI.HBHUIHelper.UIForm_BtnList_Click(this, "DayCheckIn");
+            U9.VOB.HBHCommon.HBHCommonUI.HBHUIHelper.UIForm_BtnList_Click(this );
 		}	
 		 
 				//BtnFirstPage_Click...

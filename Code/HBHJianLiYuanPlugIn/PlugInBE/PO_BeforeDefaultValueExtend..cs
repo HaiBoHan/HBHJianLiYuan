@@ -91,6 +91,8 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInBE
 
 
                 VOB.Cus.HBHJianLiYuan.DeptItemSupplierBE.DeptItemSupplierLine deptLine = null;
+                StringBuilder sbErrorMsg = new StringBuilder();
+
                 foreach (POLine line in po.POLines)
                 {
                     if (line.OrderPriceTC == 0)
@@ -121,11 +123,11 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInBE
 
                                 // 王忠伟,如果有日期重叠会怎么样,应该取创建日期更近的
                                 UFIDA.U9.PPR.PurPriceList.PurPriceLine purPriceLine = UFIDA.U9.PPR.PurPriceList.PurPriceLine.Finder.Find("ItemInfo.ItemID.Code=@ItemCode and Active=1 and FromDate<=@Date and ToDate >=@Date and PurPriceList.Supplier.Code=@SuptCode and PurPriceList.ID in (select PurchasePriceList from U9::VOB::Cus::HBHJianLiYuan::PPLDepartmentBE::PPLDepartment where Department.Name=@DeptName) order by CreatedOn desc "
-                                    ,new OqlParam("ItemCode",line.ItemInfo.ItemID.Code)
+                                    , new OqlParam("ItemCode",line.ItemInfo.ItemID.Code)
                                     , new OqlParam("Date", dt)
                                     , new OqlParam("SuptCode", po.Supplier.Supplier.Code)
                                     , new OqlParam("DeptName", lineDept.Name)
-                                    );
+                                    ); 
                                 if (purPriceLine != null)
                                 {
                                     decimal preDiscountPrice = HBHHelper.PPLineHelper.GetPreDiscountPrice(purPriceLine);
@@ -153,6 +155,17 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInBE
                                         HBHHelper.DescFlexFieldHelper.SetPriceDif(line.DescFlexSegments, dif);
                                     }
                                 }
+                                else
+                                {
+                                    string msg = string.Format("行[{0}]供应商[{1}],要求交货日期[{2}],物料[{3}],部门[{4}] 没有取到价表行，请维护价表！"
+                                        , line.DocLineNo
+                                        , po.Supplier.Supplier.Name
+                                        , dt.ToString("yyyy-MM-dd")
+                                        , line.ItemInfo.ItemID.Name
+                                        , lineDept.Name
+                                        );
+                                    sbErrorMsg.Append(msg);
+                                }
                             }
                         }
                     }
@@ -168,6 +181,12 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInBE
                         //    }
                         //}
                     }
+                }
+
+                // 如果没取到价表行，则报错
+                if (sbErrorMsg.Length > 0)
+                {
+                    throw new BusinessException(sbErrorMsg.ToString());
                 }
             }
 
