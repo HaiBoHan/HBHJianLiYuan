@@ -225,7 +225,7 @@
             <UIFieldInfo id="32b7647e-e772-4a25-8eaa-134411c093b7" name="ApplyMan_EmployeeCode" displayName="员工编号" description="员工编号" DefaultValue="" GroupName="Misc" DisplayRule="50" IsNullable="False" IsReadOnly="False" IsEnableReference="False" IsLink="False" ControlID="68095607-50d1-4296-a35a-623b21d654f0" DataTypeID="3d174255-fd12-47f7-8844-3b5e4fae9e8c" EnumTypeID="" BindingFullName="DepartmentTransferUIModel.DepartmentTransfer.ApplyMan.EmployeeCode" Expression="" Sequence="0" Length="50" IsBinding="False" IsGlobalized="False" CustomIsLoadable="False" CustomAttrName="" />
           </Fields>
           <Filters>
-            <UIFilterInfo id="7a32b59d-ceee-4100-b711-1510b6eea41c" name="DefaultFilter" displayName="缺省过滤条件" description="" help="" OPath="" OrderBy="" />
+            <UIFilterInfo id="7a32b59d-ceee-4100-b711-1510b6eea41c" name="DefaultFilter" displayName="缺省过滤条件" description="" help="" OPath="" OrderBy="ChangedDate desc" />
           </Filters>
         </UIViewInfo>
       </Views>

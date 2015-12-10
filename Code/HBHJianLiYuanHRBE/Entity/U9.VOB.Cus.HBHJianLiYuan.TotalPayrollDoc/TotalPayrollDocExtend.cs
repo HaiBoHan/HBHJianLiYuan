@@ -13,6 +13,7 @@ using UFIDA.U9.PAY.PayrollDoc.Proxy;
 using UFIDA.U9.PAY.Enums;
 using UFSoft.UBF.Business;
 using UFSoft.UBF.Transactions;
+using UFIDA.U9.Approval.Util;
 
 #endregion
 
@@ -102,9 +103,21 @@ namespace U9.VOB.Cus.HBHJianLiYuan {
 			this.SelfEntityValidator();
 			// TO DO: write your business code here...
 
-            if (this.PayrollType == null)
+            if (this.SysState != UFSoft.UBF.PL.Engine.ObjectState.Deleted)
             {
-                throw new BusinessException("计薪类别 不可为空!");
+                if (this.PayrollType == null)
+                {
+                    throw new BusinessException("计薪类别 不可为空!");
+                }
+
+                if (ApproveType == null)
+                {
+                    string strMsg = string.Format("计薪方案[{0}]发薪日期[{1}] 的审核方式不可为空!"
+                            , this.PayrollType.Name
+                            , this.PayDate.ToString("yyyy-MM-dd")
+                            );
+                    throw new BusinessException(strMsg);
+                }
             }
 		}
 		#endregion
@@ -237,6 +250,112 @@ namespace U9.VOB.Cus.HBHJianLiYuan {
             }
         }
 
+        #region  工作流
+
+        #region 提交、审核、弃审
+
+        /// <summary>
+        /// 提交
+        /// </summary>
+        public void DoSubmit()
+        {
+            this.Status = DocStatus.Approving;
+            if (IsApprovalFlow()
+                )
+            {
+                this.StateMachineInstance.Initialize();
+                //this.StateMachineInstance.Opend_SumitEvent(new SubmitEvent());
+                this.StateMachineInstance.Opened_SumitEvent(new SumitEvent());
+
+
+                ServiceOrderSubscriber_TotalPayrollDoc serviceOrderSubscriber = new ServiceOrderSubscriber_TotalPayrollDoc();
+                serviceOrderSubscriber.EntityKey = this.Key;
+                ApprovalService.Instance.SubmitApproval(this);
+                EventHelper.SubscribeApprovalResultEvent(this.Key, serviceOrderSubscriber);
+            }
+        }
+
+        private bool IsApprovalFlow()
+        {
+            //if (this.DocType.ConfirmType == Base.Doc.ConfirmTypeEnum.ApproveFlow)
+            return this.ApproveType != null
+                            && this.ApproveType.Name == DayCheckIn.Const_ApproveFlowName;
+        }
+
+        /// <summary>
+        /// 审核
+        /// </summary>
+        public void DoApprove()
+        {
+            this.Status = DocStatus.Approved;
+            if (IsApprovalFlow())
+            {
+                //this.StateMachineInstance.ApprovingState_ApproveEvent(new GeneralEvents.ApprovalResultEvent());
+                this.StateMachineInstance.Approving_ApproveEvent(new ApproveEvent());
+            }
+            this.ApprovedOn = DateTime.Now;
+            this.ApprovedBy = Context.LoginUser;
+
+        }
+
+        /// <summary>
+        /// 弃审
+        /// </summary>
+        public void DoUnApprove()
+        {
+            this.Status = DocStatus.Opened;
+            if (IsApprovalFlow())
+            {
+                //this.StateMachineInstance.ApprovedState_UnApproveEvent(new UnApprovedEvent());
+                this.StateMachineInstance.Approved_UnApproveEvent(new UnApproveEvent());
+            }
+            //this.ApprovedOn = DateTime.MinValue;
+            this.ApprovedOn = new DateTime(2000, 1, 1);
+            this.ApprovedBy = null;
+        }
+
+        #endregion
+
+        #region 工作流 审核相关
+
+        /// <summary>
+        /// 审核
+        /// </summary>
+        //public void DoApprove(ApprovalResultEvent ev)
+        public void DoApprove(ApproveEvent ev)
+        {
+            this.Status = DocStatus.Approved;
+            this.ApprovedOn = DateTime.Now;
+            this.ApprovedBy = Context.LoginUser;
+
+            if (IsApprovalFlow())
+            {
+                this.StateMachineInstance.Approving_ApproveEvent(ev);
+                //this.StateMachineInstance.ApprovingState_ApproveEvent(new ApproveEvent());
+            }
+        }
+
+        /// <summary>
+        /// 终止、拒绝
+        /// </summary>
+        public void DoTerminate()
+        {
+            this.Status = DocStatus.Opened;
+            this.ApprovedOn = new DateTime(2000, 1, 1);
+            this.ApprovedBy = null;
+
+            if (IsApprovalFlow())
+            {
+                ApprovalService.Instance.KillApproval(this);
+            }
+        }
+
+        #endregion
+
+
+        #endregion	
+	
+    
 		#endregion		
 	}
 }

@@ -190,70 +190,71 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInBE
                     }
                 }
 
-            }
 
-            // 更新行最终价
-            if (entity.ShipLines != null
-                && entity.ShipLines.Count > 0
-                )
-            {
-                foreach (ShipLine line in entity.ShipLines)
+
+                // 更新行最终价
+                if (entity.ShipLines != null
+                    && entity.ShipLines.Count > 0
+                    )
                 {
-                    if (line != null)
+                    foreach (ShipLine line in entity.ShipLines)
                     {
-                        decimal lotFinallyPrice = 0;
-
-                        if (line.LotInfo != null
-                            && line.LotInfo.LotMaster != null
-                            && line.LotInfo.LotMaster.DescFlexSegments != null
-                            )
+                        if (line != null)
                         {
-                            lotFinallyPrice = LotMasterHelper.GetFinallyPrice(line.LotInfo.LotMaster.DescFlexSegments);
-                        }
+                            decimal lotFinallyPrice = 0;
 
-                        //// 如果批号没取到最终价，则取价表价格
-                        //if (lotFinallyPrice <= 0)
-                        //{
-                        //    lotFinallyPrice = price.FinallyPrice;
-                        //}
-
-                        decimal curPrice = line.FinallyPriceTC;
-
-                        // 最终价不一致
-                        if (lotFinallyPrice > 0
-                            && lotFinallyPrice != curPrice
-                            )
-                        {
-                            if (entity.ActivityType != SMActivityEnum.OBAUpdate)
-                            {
-                                entity.ActivityType = SMActivityEnum.OBAUpdate;
-                            }
-
-                            // 最终价
-                            line.OrderPrice = lotFinallyPrice;
-                            line.OrderPriceTC = lotFinallyPrice;
-                            line.FinallyPriceTC = lotFinallyPrice;
-                            line.FinallyPrice = lotFinallyPrice;
-
-
-                            // 清空金额
-                            line.TotalMoney = 0;
-                            line.TotalMoneyTC = 0;
-                            line.TotalMoneyFC = 0;
-                            line.TotalNetMoney = 0;
-                            line.TotalNetMoneyTC = 0;
-                            line.TotalNetMoneyFC = 0;
-                            line.TotalTax = 0;
-                            line.TotalTaxTC = 0;
-                            line.TotalTaxFC = 0;
-
-                            if (line.ShipTaxs != null
-                                && line.ShipTaxs.Count > 0
+                            if (line.LotInfo != null
+                                && line.LotInfo.LotMaster != null
+                                && line.LotInfo.LotMaster.DescFlexSegments != null
                                 )
                             {
-                                for (int i = line.ShipTaxs.Count - 1; i >= 0; i--)
+                                lotFinallyPrice = LotMasterHelper.GetFinallyPrice(line.LotInfo.LotMaster.DescFlexSegments);
+                            }
+
+                            //// 如果批号没取到最终价，则取价表价格
+                            //if (lotFinallyPrice <= 0)
+                            //{
+                            //    lotFinallyPrice = price.FinallyPrice;
+                            //}
+
+                            decimal curPrice = line.FinallyPriceTC;
+
+                            // 最终价不一致
+                            if (lotFinallyPrice > 0
+                                && lotFinallyPrice != curPrice
+                                )
+                            {
+                                if (entity.ActivityType != SMActivityEnum.OBAUpdate)
                                 {
-                                    line.ShipTaxs.RemoveAt(i);
+                                    entity.ActivityType = SMActivityEnum.OBAUpdate;
+                                }
+
+                                // 最终价
+                                line.OrderPrice = lotFinallyPrice;
+                                line.OrderPriceTC = lotFinallyPrice;
+                                line.FinallyPriceTC = lotFinallyPrice;
+                                line.FinallyPrice = lotFinallyPrice;
+
+
+                                // 清空金额
+                                line.TotalMoney = 0;
+                                line.TotalMoneyTC = 0;
+                                line.TotalMoneyFC = 0;
+                                line.TotalNetMoney = 0;
+                                line.TotalNetMoneyTC = 0;
+                                line.TotalNetMoneyFC = 0;
+                                line.TotalTax = 0;
+                                line.TotalTaxTC = 0;
+                                line.TotalTaxFC = 0;
+
+                                if (line.ShipTaxs != null
+                                    && line.ShipTaxs.Count > 0
+                                    )
+                                {
+                                    for (int i = line.ShipTaxs.Count - 1; i >= 0; i--)
+                                    {
+                                        line.ShipTaxs.RemoveAt(i);
+                                    }
                                 }
                             }
                         }
@@ -270,6 +271,7 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInBE
                 || entity.Status == ShipStateEnum.Script
                 || entity.Status == ShipStateEnum.Empty
                 )
+            //if (isUpdatePrice)
             {
                 foreach (ShipLine line in entity.ShipLines)
                 {
@@ -278,7 +280,7 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInBE
                         )
                     {
                         // 私有段1，为空，则 赋值
-                        if (string.IsNullOrEmpty(line.DescFlexField.PrivateDescSeg1))
+                        if (IsNullNumber(line.DescFlexField.PrivateDescSeg1))
                         {
                             // 预计出库金额=预计出库单机*数量    =  私有段1
                             decimal preFinallyPrice = 0;
@@ -290,7 +292,7 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInBE
                         }
 
                         // 私有段2，为空，则 赋值
-                        if (string.IsNullOrEmpty(line.DescFlexField.PrivateDescSeg2))
+                        //if (IsNullNumber(line.DescFlexField.PrivateDescSeg2))
                         {
                             // 实际出库金额=数量*实际出库单价    =  私有段2
                             decimal realFinallyPrice = 0;
@@ -302,11 +304,36 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInBE
                             {
                                 decimal.TryParse(line.LotInfo.LotMaster.DescFlexSegments.PubDescSeg3, out realFinallyPrice);
                             }
-                            line.DescFlexField.PrivateDescSeg2 = (line.ShipQtyTUAmount * realFinallyPrice).ToString("G0");
+                            string strRealMoney = (line.ShipQtyTUAmount * realFinallyPrice).ToString("G0");
+
+                            // 不等于就赋值。。。总是有0的。。。
+                            if (line.DescFlexField.PrivateDescSeg2 != strRealMoney)
+                            {
+                                line.DescFlexField.PrivateDescSeg2 = strRealMoney;
+                            }
                         }
                     }
                 }
             }
         }
+
+       public static bool IsNullNumber(string str)
+       {
+           decimal number = 0;
+
+           if (PubClass.IsNull(str))
+           {
+               return true;
+           }
+           else if (decimal.TryParse(str, out number))
+           {
+               if (number == 0)
+               {
+                   return true;
+               }
+           }
+
+           return false;
+       }
     }
 }

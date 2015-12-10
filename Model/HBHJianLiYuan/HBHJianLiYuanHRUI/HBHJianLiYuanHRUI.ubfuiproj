@@ -12,6 +12,7 @@
     <Import id="7b1ecc67-f9b9-4442-9abe-653319089631" name="PersonInfoUI" displayName="PersonInfoUI" description="" help="" componentid="92a222eb-7a17-4da9-b3d5-dfe83bac160c" path="..\..\..\..\..\..\..\U9Product\U9.VOB.Product.Metadata\UI\UFIDA.U9.CBO.HR.PersonInfoUI.MetaData.dll" type="UI" isRuntime="True" />
     <Import id="fe96b153-a451-49de-b601-3e271e43c925" name="PayrollDocUI" displayName="PayrollDocUI" description="" help="" componentid="4dc0700e-bcae-4715-bf4f-37731766fc81" path="..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Metadata\UI\UFIDA.U9.HR.PAY.PayrollDoc.PayrollDocUI.MetaData.dll" type="UI" isRuntime="True" />
     <Import id="0cdd8ec1-b554-49ab-b413-1eaae8b6d0f1" name="BaseBE" displayName="BaseBE" description="" help="" componentid="474b2649-5852-4596-a007-adcfa9b04d13" path="..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Metadata\UBF\UFIDA.U9.Base.BaseBE.MetaData.dll" type="BE" isRuntime="True" />
+    <Import id="9e36e2df-8073-4320-ba4b-acfd5b499508" name="UBFMetadataBE" displayName="UBFMetadataBE" description="" help="" componentid="ed7faf65-e0e9-432b-a939-ea0712a0b4b3" path="..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Metadata\UBF\UFIDA.UBF.MD.Entity.MetaData.dll" type="BE" isRuntime="True" />
   </Imports>
   <SourceControl />
   <ItemGroup>
@@ -25,5 +26,6 @@
     <Item id="98276b5f-af54-456f-9aa5-2b40d02d1d03" name="DepartmentTransferFindRef.ubfref" displayName="DepartmentTransferFindRef.ubfref" description="" help="" include="DepartmentTransferFindRef.ubfref" type="" />
     <Item id="8c9e73b5-5f3b-47c6-bdf2-35a8fcaa50d6" name="TotalPayrollDocFindRef.ubfref" displayName="TotalPayrollDocFindRef.ubfref" description="" help="" include="TotalPayrollDocFindRef.ubfref" type="" />
     <Item id="3545cc27-358a-41f0-a1f8-accec0d3a75a" name="DefineValueRef.ubfref" displayName="DefineValueRef.ubfref" description="" help="" include="DefineValueRef.ubfref" type="" />
+    <Item id="cf9af1a1-47e0-4fc2-a617-e6a8cd5bb39f" name="ApproveTypeRef.ubfref" displayName="ApproveTypeRef.ubfref" description="" help="" include="ApproveTypeRef.ubfref" type="" />
   </ItemGroup>
 </Project>

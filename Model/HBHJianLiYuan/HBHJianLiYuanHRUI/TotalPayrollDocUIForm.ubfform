@@ -186,12 +186,12 @@
         <Row Fixed="True" Height="20" Name="Row17" />
         <Row Fixed="True" Height="20" Name="Row15" />
       </Rows>
-      <Label ID="32b88a57-332f-4cb2-828b-aa2356dde69a" Enabled="True" GridHeight="1" GridWidth="1" GridX="0" GridY="0" Height="20" IsNull="True" IsSequence="False" Name="lblPayDate110" RelationControl="PayDate110" TabIndex="0" TabStop="True" TitleAlign="Right" TitleLocation="Left" UIFieldID="" UIViewID="" Visible="True" Width="153" X="0" Y="0">
+      <Label ID="32b88a57-332f-4cb2-828b-aa2356dde69a" Enabled="True" GridHeight="1" GridWidth="1" GridX="0" GridY="2" Height="20" IsNull="True" IsSequence="False" Name="lblPayDate110" RelationControl="PayDate110" TabIndex="0" TabStop="True" TitleAlign="Right" TitleLocation="Left" UIFieldID="" UIViewID="" Visible="True" Width="153" X="0" Y="50">
         <Events />
         <RelationControls />
         <Events />
       </Label>
-      <DatePicker ID="6e5afab3-9eaa-44ab-bd70-2456026f3340" DateTimeFormat="Date" DisplayFormat="17" Enabled="True" GridHeight="1" GridWidth="1" GridX="2" GridY="0" Height="20" IsNull="True" IsProperty="False" IsSequence="False" Name="PayDate110" RelationControl="lblPayDate110" TabIndex="1" TabStop="True" TitleAlign="Left" TitleLocation="Left" UIFieldID="PayDate" UIViewID="TotalPayrollDoc" Visible="True" Width="153" X="158" Y="0">
+      <DatePicker ID="6e5afab3-9eaa-44ab-bd70-2456026f3340" DateTimeFormat="Date" DisplayFormat="17" Enabled="True" GridHeight="1" GridWidth="1" GridX="2" GridY="2" Height="20" IsNull="True" IsProperty="False" IsSequence="False" Name="PayDate110" RelationControl="lblPayDate110" TabIndex="1" TabStop="True" TitleAlign="Left" TitleLocation="Left" UIFieldID="PayDate" UIViewID="TotalPayrollDoc" Visible="True" Width="153" X="158" Y="50">
         <Events />
         <RelationControls />
       </DatePicker>
@@ -208,12 +208,12 @@
         <Events />
         <RelationControls />
       </TextBox>
-      <Label ID="fb14acea-43ed-438b-8077-a47561141f58" Enabled="True" GridHeight="1" GridWidth="1" GridX="0" GridY="2" Height="20" IsNull="True" IsSequence="False" Name="lblStatus87" RelationControl="Status87" TabIndex="5" TabStop="True" TitleAlign="Right" TitleLocation="Left" UIFieldID="" UIViewID="" Visible="True" Width="153" X="0" Y="50">
+      <Label ID="fb14acea-43ed-438b-8077-a47561141f58" Enabled="True" GridHeight="1" GridWidth="1" GridX="4" GridY="0" Height="20" IsNull="True" IsSequence="False" Name="lblStatus87" RelationControl="Status87" TabIndex="5" TabStop="True" TitleAlign="Right" TitleLocation="Left" UIFieldID="" UIViewID="" Visible="True" Width="152" X="331" Y="0">
         <Events />
         <RelationControls />
         <Events />
       </Label>
-      <DropDownList ID="6fc2dc15-d6e9-4850-8f20-63c6d9c1b425" DisplayFormat="10.0" Enabled="False" EnumFullName="U9.VOB.HBHCommon.U9CommonBE.DocStatus" EnumID="34af30f0-a7d9-4005-962e-21076f509a72" GridHeight="1" GridWidth="1" GridX="2" GridY="2" Height="20" IsNull="True" IsProperty="False" IsSequence="False" Name="Status87" RelationControl="lblStatus87" TabIndex="6" TabStop="True" TitleAlign="Left" TitleLocation="Left" UIFieldID="Status" UIViewID="TotalPayrollDoc" Visible="True" Width="153" X="158" Y="50">
+      <DropDownList ID="6fc2dc15-d6e9-4850-8f20-63c6d9c1b425" DisplayFormat="10.0" Enabled="False" EnumFullName="U9.VOB.HBHCommon.U9CommonBE.DocStatus" EnumID="34af30f0-a7d9-4005-962e-21076f509a72" GridHeight="1" GridWidth="1" GridX="6" GridY="0" Height="20" IsNull="True" IsProperty="False" IsSequence="False" Name="Status87" RelationControl="lblStatus87" TabIndex="6" TabStop="True" TitleAlign="Left" TitleLocation="Left" UIFieldID="Status" UIViewID="TotalPayrollDoc" Visible="True" Width="152" X="488" Y="0">
         <Events />
         <RelationControls />
       </DropDownList>
@@ -236,6 +236,23 @@
         <UIFilterBar Name="ReferenceFilter">
           <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="ValueSetCode" />
         </UIFilterBar>
+        <Events />
+      </Reference>
+      <Label ID="3564bc53-b600-41e2-be0e-384ec2b84c29" Enabled="True" GridHeight="1" GridWidth="1" GridX="0" GridY="0" Height="20" IsNull="True" IsSequence="False" Name="lblApproveType102" RelationControl="ApproveType102" TabIndex="9" TabStop="True" TitleAlign="Right" TitleLocation="Left" UIFieldID="" UIViewID="" Visible="True" Width="153">
+        <Events />
+        <RelationControls />
+        <Events />
+      </Label>
+      <Reference ID="08e56dcf-750d-4f1d-9046-4663dde4b7b5" CodeAttributeName="Name" CodeField="Name" CodeFieldUIFieldID="ApproveType_Name" CodeFieldUIViewID="TotalPayrollDoc" DisplayFormat="19.0" Enabled="True" EntityName="ID" GridHeight="1" GridWidth="1" GridX="2" GridY="0" Height="20" IsNull="True" IsProperty="False" IsSequence="False" Name="ApproveType102" NameAttributeName="DisplayName" NameFieldUIFieldID="ApproveType_DisplayName" NameFieldUIViewID="TotalPayrollDoc" PkeyField="ID" RefType="d7ed54b4-76e7-4c92-a7ae-9551266d1ac5" RelationControl="lblApproveType102" TabIndex="10" TabStop="True" TextAlign="Right" TitleAlign="Left" TitleLocation="Left" UIFieldID="ApproveType" UIViewID="TotalPayrollDoc" Visible="True" Width="153" WindowHeight="408" WindowWidth="580" X="158" Y="0">
+        <Events />
+        <RelationControls />
+        <ReferenceRelation Action="Clear" ColumnDisplayName="ID" ColumnID="ID" TargetControlType="" TargetID="" TargetProperty="" />
+        <ReferenceRelation Action="Clear" ColumnDisplayName="名称" ColumnID="Name" TargetControlType="" TargetID="" TargetProperty="" />
+        <ReferenceRelation Action="Clear" ColumnDisplayName="显示名称" ColumnID="DisplayName" TargetControlType="" TargetID="" TargetProperty="" />
+        <RefNameFields>
+          <RefNameField UIFieldID="DisplayName" />
+        </RefNameFields>
+        <UIFilterBar Name="ReferenceFilter" />
         <Events />
       </Reference>
     </Card>

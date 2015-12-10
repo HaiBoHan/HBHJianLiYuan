@@ -37,6 +37,9 @@
     <Reference Include="U9.VOB.Cus.HBHJianLiYuan.HBHHelper">
       <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\Unconfiged\Component\U9.VOB.Cus.HBHJianLiYuan.HBHHelper.dll</HintPath>
     </Reference>
+    <Reference Include="UFIDA.U9.Approval.Util">
+      <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\UBF\UFIDA.U9.Approval.Util.dll</HintPath>
+    </Reference>
     <Reference Include="UFIDA.U9.HI.HIBE">
       <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\App\UFIDA.U9.HI.HIBE.dll</HintPath>
     </Reference>

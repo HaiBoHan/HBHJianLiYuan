@@ -6,6 +6,7 @@ using System.Data;
 using UFSoft.UBF.UI.MD.Runtime;
 using UFSoft.UBF.UI.MD.Runtime.Implement;
 using UFIDA.U9.UI.PDHelper;
+using U9.VOB.HBHCommon.HBHCommonUI;
 
 #endregion
 
@@ -26,6 +27,13 @@ namespace DayCheckInUIModel
                 this.DayCheckIn.FieldOrg_Code.DefaultValue = PDContext.Current.OrgRef.CodeColumn;
                 this.DayCheckIn.FieldOrg_Name.DefaultValue = PDContext.Current.OrgRef.NameColumn;
             }
+
+            //bool isApproveFlow = false;
+            //string strApproveFlow = UICommonHelper.GetValueSetCode("JLY_IsApproveFlow_DayCheckIn");
+            //if (bool.TryParse(strApproveFlow, out isApproveFlow))
+            //{
+            //    this.DayCheckIn.FieldIsApproveFlow.DefaultValue = isApproveFlow;
+            //}
         }
 
         //UIModel提交保存之前的校验操作.
@@ -35,5 +43,7 @@ namespace DayCheckInUIModel
             OnValidate_DefualtImpl();
             //your coustom code ...
         }
+
+
     }
 }

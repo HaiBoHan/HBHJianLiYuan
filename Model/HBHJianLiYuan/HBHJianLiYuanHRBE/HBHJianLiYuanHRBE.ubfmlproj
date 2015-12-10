@@ -6,6 +6,8 @@
     <Import id="2012e3c4-0b86-4edc-9c2d-17c6eb47355e" name="BaseBE" displayName="BaseBE" description="" help="" componentid="2402fd32-810a-4130-811d-f1e6183a5a26" path="..\..\..\..\..\..\..\U9Product\U9.VOB.Product.Metadata\UBF\UFIDA.U9.Base.BaseBE.MetaData.dll" type="BE" isRuntime="True" />
     <Import id="76e929b2-e788-4b58-8cd3-a559ef35b9d2" name="PayBE" displayName="PayBE" description="" help="" componentid="064c9428-982e-4d33-aad3-6bb5362c4652" path="..\..\..\..\..\..\..\U9Product\U9.VOB.Product.Metadata\App\UFIDA.U9.PAY.PayBE.MetaData.dll" type="BE" isRuntime="True" />
     <Import id="a6ada075-1096-4e94-932e-9641aec54788" name="U9CommonBE" displayName="U9CommonBE" description="" help="" componentid="a952c547-7b63-4c00-a775-ee62609639eb" path="..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Metadata\HBHCommon\U9.VOB.HBHCommon.U9CommonBE.MetaData.dll" type="BE" isRuntime="True" />
+    <Import id="be2f4382-ef2c-4cc2-97ab-a14b14e592d7" name="UFIDA.U9.GeneralEvents" displayName="UFIDA.U9.GeneralEvents" description="" help="" componentid="23e8c972-ec63-412b-bf38-7ce8babf8c91" path="..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Metadata\UBF\UFIDA.U9.GeneralEvents.MetaData.dll" type="BE" isRuntime="True" />
+    <Import id="948e049b-8119-48b8-b9ea-200fd0567986" name="UBFMetadataBE" displayName="UBFMetadataBE" description="" help="" componentid="5dbecb1d-207c-4cb1-87f5-17bed6d8d770" path="..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Metadata\UBF\UFIDA.UBF.MD.Entity.MetaData.dll" type="BE" isRuntime="True" />
   </Imports>
   <SourceControl />
   <ItemGroup>

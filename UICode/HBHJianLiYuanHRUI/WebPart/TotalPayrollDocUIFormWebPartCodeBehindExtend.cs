@@ -82,9 +82,23 @@ namespace TotalPayrollDocUIModel
 		private void BtnCopy_Click_Extend(object sender, EventArgs  e)
 		{
 			//调用模版提供的默认实现.--默认实现可能会调用相应的Action.
-			
-		
 			BtnCopy_Click_DefaultImpl(sender,e);
+
+
+            TotalPayrollDocRecord head = this.Model.TotalPayrollDoc.FocusedRecord;
+
+            if (head != null)
+            {
+                if (this.Model.TotalPayrollDoc.FieldStatus.DefaultValue != null)
+                {
+                    head.Status = (int)this.Model.TotalPayrollDoc.FieldStatus.DefaultValue;
+                }
+
+                if (this.Model.TotalPayrollDoc.FieldPayDate.DefaultValue != null)
+                {
+                    head.PayDate = (DateTime)this.Model.TotalPayrollDoc.FieldPayDate.DefaultValue;
+                }
+            }
         }
 
         //BtnSubmit_Click...
@@ -102,7 +116,24 @@ namespace TotalPayrollDocUIModel
             //调用模版提供的默认实现.--默认实现可能会调用相应的Action.
             //BtnApprove_Click_DefaultImpl(sender,e);
 
-            UpdateStatus((int)DocStatusData.Approved);
+            //UpdateStatus((int)DocStatusData.Approved);
+            TotalPayrollDocRecord head = this.Model.TotalPayrollDoc.FocusedRecord;
+
+            if (head != null
+                && head.ID > 0
+                )
+            {
+                //if (head.IsApproveFlow.GetValueOrDefault(false))
+                if (IsApproveFlow(head))
+                {
+                    UFIDA.U9.UI.PDHelper.PDPopWebPart.ApproveFlow_ApproveBatchUIWebPart(this);
+                }
+                else
+                {
+                    //ActionHelper.DoApprove(entityKeys, entityFullName);//这里是不走工作流时审核处理
+                    UpdateStatus((int)DocStatusData.Approved);
+                }
+            }
         }
 
         //BtnRecovery_Click...
@@ -344,7 +375,9 @@ namespace TotalPayrollDocUIModel
 
         #region 自己扩展 Extended Event handler 
 		public void AfterOnLoad()
-		{
+        {
+            string strIsAFKey = UFIDA.U9.UI.PDHelper.FormAuthorityHelper.GetIsApproveDocKey;
+            this.CurrentState[strIsAFKey] = new UFIDA.U9.UI.PDHelper.SetIsApprovalDoc(SetIsApprovalDoc);//给出工作流标记
 
 		}
 
@@ -427,6 +460,43 @@ namespace TotalPayrollDocUIModel
                 this.Action.NavigateAction.Refresh(null);
             }
         }
+
+
+
+
+        #region 工作流方式
+
+        /// <summary>
+        /// 确认是否工作流方式
+        /// </summary>
+        /// <param name="model">当前Model</param>
+        /// <returns></returns>
+        internal static bool SetIsApprovalDoc(IUIModel model)
+        {
+            bool isAF = false;
+            TotalPayrollDocUIModelModel curModel = model as TotalPayrollDocUIModelModel;
+            if (curModel != null && curModel.TotalPayrollDoc.FocusedRecord != null)
+            {
+                TotalPayrollDocRecord rec = curModel.TotalPayrollDoc.FocusedRecord;
+                //isAF = rec.BillType_ConfirmType == (int)ConfirmTypeEnumData.ApproveFlow;
+                //isAF = rec.IsApproveFlow.GetValueOrDefault(false) ;
+                isAF = IsApproveFlow(rec);
+            }
+            return isAF;
+        }
+
+        public static bool IsApproveFlow(TotalPayrollDocRecord record)
+        {
+            //if (record.IsApproveFlow.GetValueOrDefault(false))
+            if (record.ApproveType_Name == DayCheckInUIModel.DayCheckInUIFormWebPart.Const_ApproveFlowName)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        #endregion
 
         #endregion
     }

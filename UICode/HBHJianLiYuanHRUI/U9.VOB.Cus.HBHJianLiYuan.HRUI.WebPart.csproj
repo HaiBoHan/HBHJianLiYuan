@@ -80,14 +80,32 @@
     <Reference Include="HBH.DoNet.DevPlatform.U9Mapping">
       <HintPath>..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\HBHCommon\HBH.DoNet.DevPlatform.U9Mapping.dll</HintPath>
     </Reference>
+    <Reference Include="U9.VOB.Cus.HBHJianLiYuan.BE.Deploy">
+      <HintPath>..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\Unconfiged\Component\U9.VOB.Cus.HBHJianLiYuan.BE.Deploy.dll</HintPath>
+    </Reference>
+    <Reference Include="U9.VOB.Cus.HBHJianLiYuan.BP.Agent">
+      <HintPath>..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\Unconfiged\Component\U9.VOB.Cus.HBHJianLiYuan.BP.Agent.dll</HintPath>
+    </Reference>
+    <Reference Include="U9.VOB.Cus.HBHJianLiYuan.BP.Deploy">
+      <HintPath>..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\Unconfiged\Component\U9.VOB.Cus.HBHJianLiYuan.BP.Deploy.dll</HintPath>
+    </Reference>
     <Reference Include="U9.VOB.Cus.HBHJianLiYuan.HBHHelper">
       <HintPath>..\..\..\..\..\..\UBFV30\U9.VOB.Product.WebPart\U9.VOB.Cus.HBHJianLiYuan.HBHHelper.dll</HintPath>
+    </Reference>
+    <Reference Include="U9.VOB.Cus.HBHJianLiYuan.HRBE.Deploy">
+      <HintPath>..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\Unconfiged\Component\U9.VOB.Cus.HBHJianLiYuan.HRBE.Deploy.dll</HintPath>
     </Reference>
     <Reference Include="U9.VOB.Cus.HBHJianLiYuan.HRBP.Agent">
       <HintPath>..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\Unconfiged\Component\U9.VOB.Cus.HBHJianLiYuan.HRBP.Agent.dll</HintPath>
     </Reference>
     <Reference Include="U9.VOB.Cus.HBHJianLiYuan.HRBP.Deploy">
       <HintPath>..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\Unconfiged\Component\U9.VOB.Cus.HBHJianLiYuan.HRBP.Deploy.dll</HintPath>
+    </Reference>
+    <Reference Include="U9.VOB.Cus.HBHJianLiYuan.SV.Agent">
+      <HintPath>..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\Unconfiged\Component\U9.VOB.Cus.HBHJianLiYuan.SV.Agent.dll</HintPath>
+    </Reference>
+    <Reference Include="U9.VOB.Cus.HBHJianLiYuan.SV.Deploy">
+      <HintPath>..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\Unconfiged\Component\U9.VOB.Cus.HBHJianLiYuan.SV.Deploy.dll</HintPath>
     </Reference>
     <Reference Include="U9.VOB.HBHCommon.HBHCommonUI.WebPart">
       <HintPath>..\..\..\..\..\..\UBFV30\U9.VOB.Product.WebPart\HBHCommon\U9.VOB.HBHCommon.HBHCommonUI.WebPart.dll</HintPath>
@@ -100,6 +118,15 @@
     </Reference>
     <Reference Include="U9.VOB.HBHCommon.U9CommonSV.Deploy">
       <HintPath>..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\HBHCommon\U9.VOB.HBHCommon.U9CommonSV.Deploy.dll</HintPath>
+    </Reference>
+    <Reference Include="UFIDA.U9.Base.BaseBE.Deploy">
+      <HintPath>..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\UBF\UFIDA.U9.Base.BaseBE.Deploy.dll</HintPath>
+    </Reference>
+    <Reference Include="UFIDA.U9.Base.BaseBP.Agent">
+      <HintPath>..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\UBF\UFIDA.U9.Base.BaseBP.Agent.dll</HintPath>
+    </Reference>
+    <Reference Include="UFIDA.U9.Base.BaseBP.Deploy">
+      <HintPath>..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\UBF\UFIDA.U9.Base.BaseBP.Deploy.dll</HintPath>
     </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

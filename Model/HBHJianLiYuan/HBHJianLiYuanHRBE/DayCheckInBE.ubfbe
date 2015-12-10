@@ -5,7 +5,8 @@
       <Groups>
         <Group id="b13cf47a-447e-46c1-bfcd-615a1bfeac19" name="Key" displayName="Key" description="" help="" />
         <Group id="6ae66a23-7306-4ff7-8554-c2d3d0134e08" name="Sys" displayName="Sys" description="" help="" />
-        <Group id="7fb9e05c-06f6-41be-95de-4ecf57c4f598" name="Misc" displayName="Misc" description="" help="" />
+        <Group id="a2af47b4-f2d5-4a32-a65b-b302523ac409" name="StateMachine" displayName="StateMachine" description="" help="" />
+        <Group id="76741ca4-77f5-46f7-bec5-9ea668633b83" name="Misc" displayName="Misc" description="" help="" />
       </Groups>
       <Attributes>
         <Attribute id="bfe351c6-c3b9-4d6e-b2f2-e935e9098cf4" name="ID" displayName="ID" description="" help="日考勤.Key.ID" dataTypeID="ba391065-6c27-4c82-acc8-b52b1c93a910" isKey="True" defaultValue="" length="8" precise="19" scale="0" isNullable="False" isReadOnly="False" isHide="True" isCalculation="False" valueExpression="" maxValue="" minValue="" sequence="0" isDefaultDimensionAttribute="False" isDefaultMeasureAttribute="False" isGlobalization="False" idGenerator="db" groupName="Key" isEntityKey="False" isEntityData="True" isSystem="True" isBusinessKey="False" isSyncDictionary="False" dictionaryKey="" isExtendCode="False" isQuery="True" isForAsso="True" isModifyControl="False" isDynamic="False" isImpressible="False" isInCache="False" isKeySerializable="False" isColumnDefine="True" isFilterDefine="True" isSortDefine="True" isDefaultColumn="True" forOBAImport="False" />
@@ -23,6 +24,12 @@
         <Attribute id="319ac70b-a567-4f3e-92df-501ad4e2147f" name="DescFlexField" displayName="扩展字段" description="" help="日考勤.Misc.扩展字段" dataTypeID="8ff5f5ae-fb0c-4e6e-b1c1-6a5fa355938a" isKey="False" defaultValue="" length="50" precise="5" scale="0" isNullable="True" isReadOnly="False" isHide="False" isCalculation="False" valueExpression="" maxValue="" minValue="" sequence="6" isDefaultDimensionAttribute="False" isDefaultMeasureAttribute="False" isGlobalization="False" idGenerator="" groupName="Misc" isEntityKey="False" isEntityData="True" isSystem="False" isBusinessKey="False" isSyncDictionary="False" dictionaryKey="" isExtendCode="False" isQuery="True" isForAsso="True" isModifyControl="False" isDynamic="False" isImpressible="False" isInCache="False" isKeySerializable="False" isColumnDefine="True" isFilterDefine="True" isSortDefine="True" isDefaultColumn="True" forOBAImport="True" />
         <Attribute id="9e56e48d-0b51-49f9-9c4a-bd34c1485d43" name="Org" displayName="组织" description="" help="日考勤.Misc.组织" dataTypeID="73eb56da-f25a-4636-94e7-61b0cb4b7784" isKey="False" defaultValue="" length="50" precise="5" scale="0" isNullable="True" isReadOnly="False" isHide="False" isCalculation="False" valueExpression="" maxValue="" minValue="" sequence="7" isDefaultDimensionAttribute="False" isDefaultMeasureAttribute="False" isGlobalization="False" idGenerator="" groupName="Misc" isEntityKey="False" isEntityData="True" isSystem="False" isBusinessKey="False" isSyncDictionary="False" dictionaryKey="" isExtendCode="False" isQuery="True" isForAsso="True" isModifyControl="False" isDynamic="False" isImpressible="False" isInCache="False" isKeySerializable="False" isColumnDefine="True" isFilterDefine="True" isSortDefine="True" isDefaultColumn="True" forOBAImport="True" />
         <Attribute id="119cfee8-07a3-4e00-840d-65de3fb0d41f" name="Status" displayName="状态" description="" help="日考勤.Misc.状态" dataTypeID="34af30f0-a7d9-4005-962e-21076f509a72" isKey="False" defaultValue="0" length="50" precise="5" scale="0" isNullable="True" isReadOnly="False" isHide="False" isCalculation="False" valueExpression="" maxValue="" minValue="" sequence="8" isDefaultDimensionAttribute="False" isDefaultMeasureAttribute="False" isGlobalization="False" idGenerator="" groupName="Misc" isEntityKey="False" isEntityData="True" isSystem="False" isBusinessKey="False" isSyncDictionary="False" dictionaryKey="" isExtendCode="False" isQuery="True" isForAsso="True" isModifyControl="False" isDynamic="False" isImpressible="False" isInCache="False" isKeySerializable="False" isColumnDefine="True" isFilterDefine="True" isSortDefine="True" isDefaultColumn="True" forOBAImport="True" />
+        <Attribute id="88fb07ca-8d84-4ad8-ae36-d63201d45131" name="WFCurrentState" displayName="当前状态" description="" help="日考勤.StateMachine.当前状态" dataTypeID="d7c6031e-d3fe-41aa-a397-5edd86c10cae" isKey="False" defaultValue="0" length="4" precise="10" scale="0" isNullable="False" isReadOnly="False" isHide="True" isCalculation="False" valueExpression="" maxValue="" minValue="" sequence="0" isDefaultDimensionAttribute="False" isDefaultMeasureAttribute="False" isGlobalization="False" idGenerator="" groupName="StateMachine" isEntityKey="False" isEntityData="True" isSystem="True" isBusinessKey="False" isSyncDictionary="False" dictionaryKey="" isExtendCode="False" isQuery="True" isForAsso="True" isModifyControl="False" isDynamic="False" isImpressible="False" isInCache="False" isKeySerializable="False" isColumnDefine="True" isFilterDefine="True" isSortDefine="True" isDefaultColumn="True" forOBAImport="True" />
+        <Attribute id="e070e829-721a-47fb-9870-0e6b6a4ce367" name="WFOriginalState" displayName="之前状态" description="" help="日考勤.StateMachine.之前状态" dataTypeID="d7c6031e-d3fe-41aa-a397-5edd86c10cae" isKey="False" defaultValue="-1" length="0" precise="0" scale="0" isNullable="False" isReadOnly="False" isHide="True" isCalculation="False" valueExpression="" maxValue="" minValue="" sequence="0" isDefaultDimensionAttribute="False" isDefaultMeasureAttribute="False" isGlobalization="False" idGenerator="" groupName="StateMachine" isEntityKey="False" isEntityData="True" isSystem="True" isBusinessKey="False" isSyncDictionary="False" dictionaryKey="" isExtendCode="False" isQuery="True" isForAsso="True" isModifyControl="False" isDynamic="False" isImpressible="False" isInCache="False" isKeySerializable="False" isColumnDefine="True" isFilterDefine="True" isSortDefine="True" isDefaultColumn="True" forOBAImport="True" />
+        <Attribute id="d00a55d4-c74e-4c06-b274-ec02507ca199" name="IsApproveFlow" displayName="审批流作业" description="" help="日考勤.Misc.审批流作业" dataTypeID="5efeea06-cae7-4cc0-82e9-20a789e4e582" isKey="False" defaultValue="false" length="1" precise="0" scale="0" isNullable="True" isReadOnly="False" isHide="False" isCalculation="False" valueExpression="" maxValue="" minValue="" sequence="9" isDefaultDimensionAttribute="False" isDefaultMeasureAttribute="False" isGlobalization="False" idGenerator="" groupName="Misc" isEntityKey="False" isEntityData="True" isSystem="False" isBusinessKey="False" isSyncDictionary="False" dictionaryKey="" isExtendCode="False" isQuery="True" isForAsso="True" isModifyControl="False" isDynamic="False" isImpressible="False" isInCache="False" isKeySerializable="False" isColumnDefine="True" isFilterDefine="True" isSortDefine="True" isDefaultColumn="True" forOBAImport="True" />
+        <Attribute id="7454343c-230e-4a7e-a36f-89bff606552f" name="ApproveType" displayName="审批方式" description="" help="日考勤.Misc.审批方式" dataTypeID="989eb47b-0a7d-4861-af2a-fbb1949b6d9c" isKey="False" defaultValue="" length="50" precise="5" scale="0" isNullable="True" isReadOnly="False" isHide="False" isCalculation="False" valueExpression="" maxValue="" minValue="" sequence="10" isDefaultDimensionAttribute="False" isDefaultMeasureAttribute="False" isGlobalization="False" idGenerator="" groupName="Misc" isEntityKey="False" isEntityData="True" isSystem="False" isBusinessKey="False" isSyncDictionary="False" dictionaryKey="" isExtendCode="False" isQuery="True" isForAsso="True" isModifyControl="False" isDynamic="False" isImpressible="False" isInCache="False" isKeySerializable="False" isColumnDefine="True" isFilterDefine="True" isSortDefine="True" isDefaultColumn="True" forOBAImport="True" />
+        <Attribute id="fc93f9ac-6248-45ca-a0ed-e1fbe4fda64a" name="ApprovedBy" displayName="审核人" description="" help="日考勤.Misc.审核人" dataTypeID="3d174255-fd12-47f7-8844-3b5e4fae9e8c" isKey="False" defaultValue="" length="50" precise="5" scale="0" isNullable="True" isReadOnly="False" isHide="False" isCalculation="False" valueExpression="" maxValue="" minValue="" sequence="11" isDefaultDimensionAttribute="False" isDefaultMeasureAttribute="False" isGlobalization="False" idGenerator="" groupName="Misc" isEntityKey="True" isEntityData="True" isSystem="False" isBusinessKey="False" isSyncDictionary="False" dictionaryKey="" isExtendCode="False" isQuery="True" isForAsso="True" isModifyControl="False" isDynamic="False" isImpressible="False" isInCache="False" isKeySerializable="False" isColumnDefine="True" isFilterDefine="True" isSortDefine="True" isDefaultColumn="True" forOBAImport="True" />
+        <Attribute id="7167d5da-654f-4475-a18a-87cee50d8974" name="ApprovedOn" displayName="审核时间" description="" help="日考勤.Misc.审核时间" dataTypeID="3834a958-120f-4ac9-8d60-1a7be6d3f12f" isKey="False" defaultValue="" length="19" precise="0" scale="0" isNullable="True" isReadOnly="False" isHide="False" isCalculation="False" valueExpression="" maxValue="" minValue="" sequence="12" isDefaultDimensionAttribute="False" isDefaultMeasureAttribute="False" isGlobalization="False" idGenerator="" groupName="Misc" isEntityKey="False" isEntityData="True" isSystem="False" isBusinessKey="False" isSyncDictionary="False" dictionaryKey="" isExtendCode="False" isQuery="True" isForAsso="True" isModifyControl="False" isDynamic="False" isImpressible="False" isInCache="False" isKeySerializable="False" isColumnDefine="True" isFilterDefine="True" isSortDefine="True" isDefaultColumn="True" forOBAImport="True" />
       </Attributes>
       <Associations>
         <Association id="0eb2561a-c258-48e4-a25b-dd2911f991c7" name="DayCheckIn_042f4816-1ede-4b1f-ad5b-b7cd585805ad_DayCheckInLine" displayName="日考勤.日考勤行--&gt;日考勤行" description="" help="" parent_Class_ID="cc00309b-67ad-43bd-9ede-0bf3540e899a" parent_Attribute_ID="042f4816-1ede-4b1f-ad5b-b7cd585805ad" child_Class_ID="29faa43a-fd53-4bb4-9ef0-29e6c1b9108e" child_Attribute_ID="9335a5e2-340b-490f-b354-635bf18f92aa" parentCardinality="0" childCardinality="1" kind="1" direction="1" isCascadeDelete="False" cascadeDeleteRule="0" isCascadeUpdate="False" isEnableCascadeValidation="True" cascadeUpdateRule="0" />
@@ -30,13 +37,50 @@
         <Association id="bef84f94-628a-4d68-ae36-c60d780de56d" name="DayCheckIn_319ac70b-a567-4f3e-92df-501ad4e2147f_DescFlexSegments" displayName="日考勤.扩展字段--&gt;实体扩展字段集合" description="" help="" parent_Class_ID="cc00309b-67ad-43bd-9ede-0bf3540e899a" parent_Attribute_ID="319ac70b-a567-4f3e-92df-501ad4e2147f" child_Class_ID="8ff5f5ae-fb0c-4e6e-b1c1-6a5fa355938a" child_Attribute_ID="00000000-0000-0000-0000-000000000000" parentCardinality="1" childCardinality="0" kind="0" direction="0" isCascadeDelete="False" cascadeDeleteRule="0" isCascadeUpdate="False" isEnableCascadeValidation="True" cascadeUpdateRule="0" />
         <Association id="b320637c-fa03-450b-9f53-56465e96be26" name="DayCheckIn_c5150941-563d-45e1-a609-2407e32a8a69_EmployeeArchive" displayName="日考勤.业务员--&gt;员工工作记录" description="" help="" parent_Class_ID="cc00309b-67ad-43bd-9ede-0bf3540e899a" parent_Attribute_ID="c5150941-563d-45e1-a609-2407e32a8a69" child_Class_ID="5564bf0f-bb59-4b65-9c7e-bed120a7b779" child_Attribute_ID="00000000-0000-0000-0000-000000000000" parentCardinality="1" childCardinality="0" kind="0" direction="0" isCascadeDelete="False" cascadeDeleteRule="0" isCascadeUpdate="False" isEnableCascadeValidation="True" cascadeUpdateRule="0" />
         <Association id="4c548f22-3b69-487c-a325-a0fc5bbc3123" name="DayCheckIn_9e56e48d-0b51-49f9-9c4a-bd34c1485d43_Organization" displayName="日考勤.组织--&gt;组织机构" description="" help="" parent_Class_ID="cc00309b-67ad-43bd-9ede-0bf3540e899a" parent_Attribute_ID="9e56e48d-0b51-49f9-9c4a-bd34c1485d43" child_Class_ID="73eb56da-f25a-4636-94e7-61b0cb4b7784" child_Attribute_ID="00000000-0000-0000-0000-000000000000" parentCardinality="1" childCardinality="0" kind="0" direction="0" isCascadeDelete="False" cascadeDeleteRule="0" isCascadeUpdate="False" isEnableCascadeValidation="True" cascadeUpdateRule="0" />
+        <Association id="e2f40461-4953-49d6-8f99-6e2360fe8f5c" name="DayCheckIn_7454343c-230e-4a7e-a36f-89bff606552f_Attribute" displayName="日考勤.审批方式--&gt;属性" description="" help="" parent_Class_ID="cc00309b-67ad-43bd-9ede-0bf3540e899a" parent_Attribute_ID="7454343c-230e-4a7e-a36f-89bff606552f" child_Class_ID="989eb47b-0a7d-4861-af2a-fbb1949b6d9c" child_Attribute_ID="00000000-0000-0000-0000-000000000000" parentCardinality="1" childCardinality="0" kind="0" direction="0" isCascadeDelete="False" cascadeDeleteRule="0" isCascadeUpdate="False" isEnableCascadeValidation="True" cascadeUpdateRule="0" />
       </Associations>
+      <StateMachine id="5da8fb97-d9ba-4e60-b3df-acc85982d239" name="DayCheckInStateMachine" displayName="日考勤状态机" description="日考勤状态机" help="" initialState="7be7921b-3583-4c05-b14f-c1426ad4aed6" completedState="6b1bb242-dea9-4ead-bba7-f57c355620f7">
+        <States>
+          <State id="7be7921b-3583-4c05-b14f-c1426ad4aed6" name="Opened" displayName="开立" description="开立" help="" isCompletedState="False" location="105,76" size="158,110">
+            <EventDrivens>
+              <EventDriven id="f6fdcf33-fa8a-4d33-977c-3d5643cef4c2" name="SumitEvent" displayName="提交" description="提交" help="" event="cae528a2-55ec-4823-a6f0-b665496aa079">
+                <SetStates>
+                  <SetState id="41513ec6-d4c8-41e9-9f80-c0201392422c" name="SetState" displayName="SetState" description="" help="" sourceID="7be7921b-3583-4c05-b14f-c1426ad4aed6" targetID="ece4ce40-6a6e-4bba-a67d-43edd89e3752" />
+                </SetStates>
+              </EventDriven>
+            </EventDrivens>
+          </State>
+          <State id="6b1bb242-dea9-4ead-bba7-f57c355620f7" name="Approved" displayName="已审核" description="已审核" help="" isCompletedState="True" location="728,1" size="168,170">
+            <EventDrivens>
+              <EventDriven id="e8e03c39-0d66-4af8-a96c-f7d6768e88e8" name="UnApproveEvent" displayName="弃审" description="弃审" help="" event="bfc0ca45-dcbb-4a80-82e4-bfdddb0fee51">
+                <SetStates>
+                  <SetState id="93e0928f-fac3-4565-8173-e00e55a64ec6" name="SetState" displayName="SetState" description="" help="" sourceID="6b1bb242-dea9-4ead-bba7-f57c355620f7" targetID="7be7921b-3583-4c05-b14f-c1426ad4aed6" />
+                </SetStates>
+              </EventDriven>
+            </EventDrivens>
+          </State>
+          <State id="ece4ce40-6a6e-4bba-a67d-43edd89e3752" name="Approving" displayName="审核中" description="审核中" help="" isCompletedState="False" location="436,93" size="158,110">
+            <EventDrivens>
+              <EventDriven id="57041e90-cc7c-4f14-8d27-c4c210a752ec" name="ApproveEvent" displayName="审核" description="审核" help="" event="1b32f707-bb20-413e-a0e9-539d409d33aa">
+                <SetStates>
+                  <SetState id="cac630ad-bdb8-4b9a-8f30-8c1a127bd1f3" name="SetState" displayName="SetState" description="" help="" sourceID="ece4ce40-6a6e-4bba-a67d-43edd89e3752" targetID="6b1bb242-dea9-4ead-bba7-f57c355620f7" />
+                </SetStates>
+              </EventDriven>
+              <EventDriven id="81b03f14-598d-4067-8b27-4f9a69367344" name="RefusedDriven" displayName="拒绝" description="拒绝" help="" event="967b2995-3568-4a52-b709-0b2b7ece0dcf">
+                <SetStates>
+                  <SetState id="f135b49e-84fc-4659-a753-b28a770b01c0" name="SetState" displayName="SetState" description="" help="" sourceID="ece4ce40-6a6e-4bba-a67d-43edd89e3752" targetID="7be7921b-3583-4c05-b14f-c1426ad4aed6" />
+                </SetStates>
+              </EventDriven>
+            </EventDrivens>
+          </State>
+        </States>
+      </StateMachine>
     </Entity>
     <Entity id="29faa43a-fd53-4bb4-9ef0-29e6c1b9108e" name="DayCheckInLine" displayName="日考勤行" description="日考勤行" help="" mD_ParentClass_ID="" isFactEntity="True" defaultTable="Cust_DayCheckInLine" isMain="False" inheritanceMapKind="0" discriminator="DayCheckInLine" isQuery="True" isAbstract="False" isSealed="False" isModifyControl="False" hasImpressibleAttribute="False" isInCache="False" isAuthorization="True" isPKClustered="True" forOBAImport="True">
       <Groups>
         <Group id="dc6d642c-f7ee-48e6-887b-d0842f50713e" name="Key" displayName="Key" description="" help="" />
         <Group id="2a1fa4ba-1141-4eaa-959b-ceb870e9419a" name="Sys" displayName="Sys" description="" help="" />
-        <Group id="75119248-942a-4bc9-ad37-df516c60b68c" name="Misc" displayName="Misc" description="" help="" />
+        <Group id="72b0bbc9-0948-4001-89b6-fbbcddd619d8" name="Misc" displayName="Misc" description="" help="" />
       </Groups>
       <Attributes>
         <Attribute id="f287c889-0bed-4920-95d3-0b2bab89a0b7" name="ID" displayName="ID" description="" help="日考勤行.Key.ID" dataTypeID="ba391065-6c27-4c82-acc8-b52b1c93a910" isKey="True" defaultValue="" length="8" precise="19" scale="0" isNullable="False" isReadOnly="False" isHide="True" isCalculation="False" valueExpression="" maxValue="" minValue="" sequence="0" isDefaultDimensionAttribute="False" isDefaultMeasureAttribute="False" isGlobalization="False" idGenerator="db" groupName="Key" isEntityKey="False" isEntityData="True" isSystem="True" isBusinessKey="False" isSyncDictionary="False" dictionaryKey="" isExtendCode="False" isQuery="True" isForAsso="True" isModifyControl="False" isDynamic="False" isImpressible="False" isInCache="False" isKeySerializable="False" isColumnDefine="True" isFilterDefine="True" isSortDefine="True" isDefaultColumn="True" forOBAImport="False" />
@@ -65,13 +109,33 @@
     </Entity>
     <Diagram id="00000000-0000-0000-0000-000000000000" name="HBHJianLiYuanHRBE" displayName="HBHJianLiYuanHRBE">
       <Class Editable="True" ID="98952e5d-c3e1-4076-95d8-7d48e1c16c02" Type="Entity" ADID="cc00309b-67ad-43bd-9ede-0bf3540e899a">
-        <Location X="175" Y="89" />
+        <Location X="174" Y="89" />
         <Size width="120" height="58" />
       </Class>
       <Class Editable="True" ID="37928769-7fa4-4434-b9e7-1945cac59565" Type="Entity" ADID="29faa43a-fd53-4bb4-9ef0-29e6c1b9108e">
         <Location X="423" Y="111" />
         <Size width="120" height="58" />
       </Class>
+      <Class Editable="True" ID="15ba081e-b2b2-4b51-b55e-59a2df89b1ad" Type="Event" ADID="cae528a2-55ec-4823-a6f0-b665496aa079">
+        <Location X="170" Y="228" />
+        <Size width="120" height="58" />
+      </Class>
+      <Class Editable="True" ID="15819e44-0858-4df2-855c-ec58d070b05e" Type="Event" ADID="1b32f707-bb20-413e-a0e9-539d409d33aa">
+        <Location X="354" Y="239" />
+        <Size width="120" height="58" />
+      </Class>
+      <Class Editable="True" ID="7c61f3a4-06a3-4e05-b099-71e575c98888" Type="Event" ADID="bfc0ca45-dcbb-4a80-82e4-bfdddb0fee51">
+        <Location X="549" Y="238" />
+        <Size width="120" height="58" />
+      </Class>
+      <Class Editable="True" ID="c4b094c1-2a6a-4807-b537-96225d5253f8" Type="Event" ADID="967b2995-3568-4a52-b709-0b2b7ece0dcf">
+        <Location X="705" Y="241" />
+        <Size width="120" height="58" />
+      </Class>
     </Diagram>
+    <Event id="cae528a2-55ec-4823-a6f0-b665496aa079" name="SumitEvent" displayName="提交事件" description="提交事件" help="" eventType="3" mD_ParentClass_ID="" isFactEntity="False" />
+    <Event id="1b32f707-bb20-413e-a0e9-539d409d33aa" name="ApproveEvent" displayName="审核事件" description="审核事件" help="" eventType="3" mD_ParentClass_ID="" isFactEntity="False" />
+    <Event id="bfc0ca45-dcbb-4a80-82e4-bfdddb0fee51" name="UnApproveEvent" displayName="弃审事件" description="弃审事件" help="" eventType="3" mD_ParentClass_ID="" isFactEntity="False" />
+    <Event id="967b2995-3568-4a52-b709-0b2b7ece0dcf" name="RefusedEvent" displayName="拒绝事件" description="拒绝事件" help="" eventType="3" mD_ParentClass_ID="" isFactEntity="False" />
   </Namespace>
 </Component>
