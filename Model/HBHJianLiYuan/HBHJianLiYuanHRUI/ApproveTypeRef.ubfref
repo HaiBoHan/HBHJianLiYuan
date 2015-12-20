@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ReferenceComponent id="d7ed54b4-76e7-4c92-a7ae-9551266d1ac5" name="ApproveTypeRef" displayName="属性" description="" help="" refType="1" isMultiSelect="False" isDefault="False" isClientReturn="False" width="580" height="408" isBinding="False" displayNameResourceID="" URI="U9.VOB.Cus.HBHJianLiYuan.HRUI.ApproveTypeRef" Classify="" ForMultOrg="False">
+  <References>
+    <Reference id="bd3b2af3-3f9d-4dfa-b669-f593bcef40a9" name="cRef" displayName="cRef" description="" help="属性" refEntityId="989eb47b-0a7d-4861-af2a-fbb1949b6d9c" refEntityName="UFIDA.UBF.MD.Business.Attribute" refType="1" isMain="False">
+      <RefFields>
+        <RefField id="d1f496f0-7a55-4fdc-87d0-cff0abaf3642" name="ID" displayName="ID" description="" help="属性.Key.ID" isKey="True" isEdit="False" isName="False" isVisible="False" isParent="False" sequence="0" length="80" refAttributeName="UFIDA.UBF.MD.Business.Attribute:ID" displayNameIndexStr="2" />
+        <RefField id="4f78e2c9-ca99-48be-a1c5-957c0d6aad06" name="Name" displayName="名称" description="" help="属性.Misc.名称" isKey="False" isEdit="True" isName="False" isVisible="True" isParent="False" sequence="0" length="150" refAttributeName="UFIDA.UBF.MD.Business.Attribute:Name" displayNameIndexStr="2" />
+        <RefField id="a1d73192-d604-4c63-8f78-7151e3c5eb5d" name="DisplayName" displayName="显示名称" description="" help="属性.Misc.显示名称" isKey="False" isEdit="False" isName="True" isVisible="True" isParent="False" sequence="0" length="150" refAttributeName="UFIDA.UBF.MD.Business.Attribute:DisplayName" displayNameIndexStr="2" />
+      </RefFields>
+      <Filter />
+    </Reference>
+  </References>
+</ReferenceComponent>
