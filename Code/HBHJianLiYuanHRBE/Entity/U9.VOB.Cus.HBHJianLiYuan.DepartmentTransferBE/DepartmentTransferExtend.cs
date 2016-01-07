@@ -207,10 +207,11 @@ namespace U9.VOB.Cus.HBHJianLiYuan {
 
 
                             // 查出所有的职员
-                            EmployeeArchive.EntityList lstEmployee = EmployeeArchive.Finder.FindAll("Dept=@Dept"
+                            EmployeeArchive.EntityList lstEmployee = EmployeeArchive.Finder.FindAll("Dept=@Dept and (DimissionDate is null or DimissionDate <= '1980-1-1' or DimissionDate >= @Today)"
                                         , new OqlParam(this.ChangedBeforeDeptKey.ID)
+                                        , new OqlParam(DateTime.Today)
                                         );
-
+                            
                             if (lstEmployee != null
                                 && lstEmployee.Count > 0
                                 )

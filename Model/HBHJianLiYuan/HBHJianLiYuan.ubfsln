@@ -11,8 +11,8 @@
     <Item id="56c83d81-3006-45a0-a05d-d5ddba4141c0" include="HBHJianLiYuanHRBE\HBHJianLiYuanHRBE.ubfmlproj" />
     <Item id="bcac71f7-22b6-41a4-83a5-e430352c7284" include="HBHJianLiYuanHRUI\HBHJianLiYuanHRUI.ubfuiproj" />
     <Item id="051595e4-5253-4c23-a318-15ab7f476709" include="HBHJianLiYuanHRBP\HBHJianLiYuanHRBP.ubfbpproj" />
-    <Item id="d3e586b1-0e74-494b-83b4-642f9ce92087" include="..\..\..\..\..\..\U9Product\U9.VOB.Product.UBF\HBHJianLiYuanHRUIList\HBHJianLiYuanHRUIList\HBHJianLiYuanHRUIList.ubfuiproj" />
-    <Item id="55e81df0-f377-41cf-b15a-7a2af172240f" include="..\..\..\..\..\..\U9Product\U9.VOB.Product.UBF\HBHJianLiYuanListBP\HBHJianLiYuanListBP\HBHJianLiYuanListBP.ubfbpproj" />
+    <Item id="d3e586b1-0e74-494b-83b4-642f9ce92087" include="HBHJianLiYuanHRUIList\HBHJianLiYuanHRUIList.ubfuiproj" />
+    <Item id="55e81df0-f377-41cf-b15a-7a2af172240f" include="HBHJianLiYuanListBP\HBHJianLiYuanListBP.ubfbpproj" />
     <Item id="75e0968b-183a-4388-9673-d0a132186036" include="HBHJianLiYuanHRQuery\HBHJianLiYuanHRQuery.ubfqueryproj" />
   </ItemGroup>
   <ServiceGroupInfo id="6c2d60cf-0599-44f1-ad1e-030aae6b280b" name="HBHJianLiYuan" displayName="HBHJianLiYuan" description="" help="" fullPath="D:\U9Cust\UFIDA\U9Proj\U9AppCode\U9.VOB.Apps.Cus\CusApp\HBHJianLiYuan\Model\HBHJianLiYuan\HBHJianLiYuan.sg" applicationID="" />

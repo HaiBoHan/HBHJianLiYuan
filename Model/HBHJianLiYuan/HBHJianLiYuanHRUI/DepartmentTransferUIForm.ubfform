@@ -212,19 +212,24 @@
         </OutParameters>
       </FormLink>
     </Label>
-    <Reference ID="c1585147-518b-4952-98c6-4e8d8d68b2cf" CodeAttributeName="Code" CodeField="Code" CodeFieldUIFieldID="ChangedBeforeDept_Code" CodeFieldUIViewID="DepartmentTransfer" DisplayFormat="19.0" Enabled="True" EntityName="ID" GridHeight="1" GridWidth="1" GridX="2" GridY="3" Height="20" IsNull="True" IsProperty="False" IsSequence="False" Name="ChangedBeforeDept58" NameAttributeName="Name" NameFieldUIFieldID="ChangedBeforeDept_Name" NameFieldUIViewID="DepartmentTransfer" PkeyField="ID" RefType="18e07fd6-84e7-4e0f-aeb6-eba9713f0bb5" RelationControl="lblChangedBeforeDept58" TabIndex="3" TabStop="True" TextAlign="Right" TitleAlign="Left" TitleLocation="Left" UIFieldID="ChangedBeforeDept" UIViewID="DepartmentTransfer" Visible="True" Width="153" WindowHeight="408" WindowWidth="580" X="168" Y="75">
+    <Reference ID="c1585147-518b-4952-98c6-4e8d8d68b2cf" CodeAttributeName="Code" CodeField="Code" CodeFieldUIFieldID="ChangedBeforeDept_Code" CodeFieldUIViewID="DepartmentTransfer" DisplayFormat="19.0" Enabled="True" EntityName="ID" GridHeight="1" GridWidth="1" GridX="2" GridY="3" Height="20" IsNull="True" IsProperty="False" IsSequence="False" Name="ChangedBeforeDept58" NameAttributeName="Name" NameFieldUIFieldID="ChangedBeforeDept_Name" NameFieldUIViewID="DepartmentTransfer" PkeyField="ID" RefType="1e104b8d-a110-4608-a8d4-d41e1c252e1c" RelationControl="lblChangedBeforeDept58" TabIndex="3" TabStop="True" TextAlign="Right" TitleAlign="Left" TitleLocation="Left" UIFieldID="ChangedBeforeDept" UIViewID="DepartmentTransfer" Visible="True" Width="153" WindowHeight="408" WindowWidth="580" X="168" Y="75">
       <Events />
       <RelationControls />
       <ReferenceRelation Action="Clear" ColumnDisplayName="ID" ColumnID="ID" TargetControlType="" TargetID="" TargetProperty="" />
       <ReferenceRelation Action="Clear" ColumnDisplayName="编码" ColumnID="Code" TargetControlType="" TargetID="" TargetProperty="" />
       <ReferenceRelation Action="Clear" ColumnDisplayName="名称" ColumnID="Name" TargetControlType="" TargetID="" TargetProperty="" />
+      <ReferenceRelation Action="Clear" ColumnDisplayName="简称" ColumnID="ShortName" TargetControlType="" TargetID="" TargetProperty="" />
+      <ReferenceRelation Action="Clear" ColumnDisplayName="描述" ColumnID="Description" TargetControlType="" TargetID="" TargetProperty="" />
+      <ReferenceRelation Action="Clear" ColumnDisplayName="上级ID" ColumnID="ParentNode_ID" TargetControlType="" TargetID="" TargetProperty="" />
+      <ReferenceRelation Action="Clear" ColumnDisplayName="上级编码" ColumnID="ParentNode_Code" TargetControlType="" TargetID="" TargetProperty="" />
+      <ReferenceRelation Action="Clear" ColumnDisplayName="上级名称" ColumnID="ParentNode_Name" TargetControlType="TextBoxModel" TargetID="ChangedBeforeDept_ParentNode_Name181" TargetProperty="Value" />
       <RefNameFields>
         <RefNameField UIFieldID="Name" />
       </RefNameFields>
       <UIFilterBar Name="ReferenceFilter" />
       <Events />
     </Reference>
-    <Label ID="d2156a9f-0e2c-48b8-81f7-46c0ecf8f47f" Enabled="True" GridHeight="1" GridWidth="1" GridX="0" GridY="4" Height="20" IsNull="True" IsSequence="False" Name="lblChangedAfterDept97" RelationControl="ChangedAfterDept97" TabIndex="4" TabStop="True" TitleAlign="Right" TitleLocation="Left" UIFieldID="" UIViewID="" Visible="True" Width="153" X="10" Y="100">
+    <Label ID="d2156a9f-0e2c-48b8-81f7-46c0ecf8f47f" Enabled="True" GridHeight="1" GridWidth="1" GridX="0" GridY="5" Height="20" IsNull="True" IsSequence="False" Name="lblChangedAfterDept97" RelationControl="ChangedAfterDept97" TabIndex="4" TabStop="True" TitleAlign="Right" TitleLocation="Left" UIFieldID="" UIViewID="" Visible="True" Width="153" X="10" Y="125">
       <Events />
       <RelationControls />
       <Events />
@@ -242,12 +247,17 @@
         </OutParameters>
       </FormLink>
     </Label>
-    <Reference ID="6cd6f78a-9139-41eb-86b1-3a05c979e9a9" CodeAttributeName="Code" CodeField="Code" CodeFieldUIFieldID="ChangedAfterDept_Code" CodeFieldUIViewID="DepartmentTransfer" DisplayFormat="19.0" Enabled="True" EntityName="ID" GridHeight="1" GridWidth="1" GridX="2" GridY="4" Height="20" IsNull="True" IsProperty="False" IsSequence="False" Name="ChangedAfterDept97" NameAttributeName="Name" NameFieldUIFieldID="ChangedAfterDept_Name" NameFieldUIViewID="DepartmentTransfer" PkeyField="ID" RefType="18e07fd6-84e7-4e0f-aeb6-eba9713f0bb5" RelationControl="lblChangedAfterDept97" TabIndex="5" TabStop="True" TextAlign="Right" TitleAlign="Left" TitleLocation="Left" UIFieldID="ChangedAfterDept" UIViewID="DepartmentTransfer" Visible="True" Width="153" WindowHeight="408" WindowWidth="580" X="168" Y="100">
+    <Reference ID="6cd6f78a-9139-41eb-86b1-3a05c979e9a9" CodeAttributeName="Code" CodeField="Code" CodeFieldUIFieldID="ChangedAfterDept_Code" CodeFieldUIViewID="DepartmentTransfer" DisplayFormat="19.0" Enabled="True" EntityName="ID" GridHeight="1" GridWidth="1" GridX="2" GridY="5" Height="20" IsNull="True" IsProperty="False" IsSequence="False" Name="ChangedAfterDept97" NameAttributeName="Name" NameFieldUIFieldID="ChangedAfterDept_Name" NameFieldUIViewID="DepartmentTransfer" PkeyField="ID" RefType="1e104b8d-a110-4608-a8d4-d41e1c252e1c" RelationControl="lblChangedAfterDept97" TabIndex="5" TabStop="True" TextAlign="Right" TitleAlign="Left" TitleLocation="Left" UIFieldID="ChangedAfterDept" UIViewID="DepartmentTransfer" Visible="True" Width="153" WindowHeight="408" WindowWidth="580" X="168" Y="125">
       <Events />
       <RelationControls />
       <ReferenceRelation Action="Clear" ColumnDisplayName="ID" ColumnID="ID" TargetControlType="" TargetID="" TargetProperty="" />
       <ReferenceRelation Action="Clear" ColumnDisplayName="编码" ColumnID="Code" TargetControlType="" TargetID="" TargetProperty="" />
       <ReferenceRelation Action="Clear" ColumnDisplayName="名称" ColumnID="Name" TargetControlType="" TargetID="" TargetProperty="" />
+      <ReferenceRelation Action="Clear" ColumnDisplayName="简称" ColumnID="ShortName" TargetControlType="" TargetID="" TargetProperty="" />
+      <ReferenceRelation Action="Clear" ColumnDisplayName="描述" ColumnID="Description" TargetControlType="" TargetID="" TargetProperty="" />
+      <ReferenceRelation Action="Clear" ColumnDisplayName="上级ID" ColumnID="ParentNode_ID" TargetControlType="" TargetID="" TargetProperty="" />
+      <ReferenceRelation Action="Clear" ColumnDisplayName="上级编码" ColumnID="ParentNode_Code" TargetControlType="" TargetID="" TargetProperty="" />
+      <ReferenceRelation Action="Clear" ColumnDisplayName="上级名称" ColumnID="ParentNode_Name" TargetControlType="TextBoxModel" TargetID="ChangedAfterDept_ParentNode_Name92" TargetProperty="Value" />
       <RefNameFields>
         <RefNameField UIFieldID="Name" />
       </RefNameFields>
@@ -263,12 +273,12 @@
       <Events />
       <RelationControls />
     </DatePicker>
-    <Label ID="47c209b3-9ec2-4f69-bd8c-8e56f67c829d" Enabled="True" GridHeight="1" GridWidth="1" GridX="0" GridY="8" Height="20" IsNull="True" IsSequence="False" Name="lblMemo88" RelationControl="Memo88" TabIndex="10" TabStop="True" TitleAlign="Right" TitleLocation="Left" UIFieldID="" UIViewID="" Visible="True" Width="153" X="10" Y="200">
+    <Label ID="47c209b3-9ec2-4f69-bd8c-8e56f67c829d" Enabled="True" GridHeight="1" GridWidth="1" GridX="0" GridY="10" Height="20" IsNull="True" IsSequence="False" Name="lblMemo88" RelationControl="Memo88" TabIndex="10" TabStop="True" TitleAlign="Right" TitleLocation="Left" UIFieldID="" UIViewID="" Visible="True" Width="153" X="10" Y="250">
       <Events />
       <RelationControls />
       <Events />
     </Label>
-    <TextBox ID="fb607bc0-af99-4b4c-ae03-f0db5149660c" DisplayFormat="50" Enabled="True" GridHeight="3" GridWidth="1" GridX="2" GridY="6" Height="70" IsNull="True" IsProperty="False" IsSequence="False" MultiLine="True" Name="Memo88" RelationControl="lblMemo88" TabIndex="11" TabStop="True" TextAlign="Left" TextBoxMode="MultiLine" TitleAlign="Left" TitleLocation="Left" UIFieldID="Memo" UIViewID="DepartmentTransfer" Visible="True" Width="153" X="168" Y="150">
+    <TextBox ID="fb607bc0-af99-4b4c-ae03-f0db5149660c" DisplayFormat="50" Enabled="True" GridHeight="3" GridWidth="1" GridX="2" GridY="8" Height="70" IsNull="True" IsProperty="False" IsSequence="False" MultiLine="True" Name="Memo88" RelationControl="lblMemo88" TabIndex="11" TabStop="True" TextAlign="Left" TextBoxMode="MultiLine" TitleAlign="Left" TitleLocation="Left" UIFieldID="Memo" UIViewID="DepartmentTransfer" Visible="True" Width="153" X="168" Y="200">
       <Events />
       <RelationControls />
     </TextBox>
@@ -276,21 +286,21 @@
       <Events />
       <RelationControls />
     </FlexFieldPicker>
-    <Label ID="5c1a74a3-6c17-4dd1-b925-a87414b33a10" Enabled="True" GridHeight="1" GridWidth="1" GridX="0" GridY="9" Height="20" IsNull="True" IsSequence="False" Name="lblStatus133" RelationControl="Status133" TabIndex="15" TabStop="True" TitleAlign="Right" TitleLocation="Left" UIFieldID="" UIViewID="" Visible="True" Width="153" X="10" Y="225">
+    <Label ID="5c1a74a3-6c17-4dd1-b925-a87414b33a10" Enabled="True" GridHeight="1" GridWidth="1" GridX="0" GridY="11" Height="20" IsNull="True" IsSequence="False" Name="lblStatus133" RelationControl="Status133" TabIndex="15" TabStop="True" TitleAlign="Right" TitleLocation="Left" UIFieldID="" UIViewID="" Visible="True" Width="153" X="10" Y="275">
       <Events />
       <RelationControls />
       <Events />
     </Label>
-    <DropDownList ID="9544afe1-a189-45d0-881e-1f44566c4ac5" DisplayFormat="10.0" Enabled="False" EnumFullName="U9.VOB.HBHCommon.U9CommonBE.DocStatus" EnumID="34af30f0-a7d9-4005-962e-21076f509a72" GridHeight="1" GridWidth="1" GridX="2" GridY="9" Height="20" IsNull="True" IsProperty="False" IsSequence="False" Name="Status133" RelationControl="lblStatus133" TabIndex="16" TabStop="True" TitleAlign="Left" TitleLocation="Left" UIFieldID="Status" UIViewID="DepartmentTransfer" Visible="True" Width="153" X="168" Y="225">
+    <DropDownList ID="9544afe1-a189-45d0-881e-1f44566c4ac5" DisplayFormat="10.0" Enabled="False" EnumFullName="U9.VOB.HBHCommon.U9CommonBE.DocStatus" EnumID="34af30f0-a7d9-4005-962e-21076f509a72" GridHeight="1" GridWidth="1" GridX="2" GridY="11" Height="20" IsNull="True" IsProperty="False" IsSequence="False" Name="Status133" RelationControl="lblStatus133" TabIndex="16" TabStop="True" TitleAlign="Left" TitleLocation="Left" UIFieldID="Status" UIViewID="DepartmentTransfer" Visible="True" Width="153" X="168" Y="275">
       <Events />
       <RelationControls />
     </DropDownList>
-    <Label ID="6eb603f5-7631-4791-8033-affa31b76c1a" Enabled="True" GridHeight="1" GridWidth="1" GridX="0" GridY="5" Height="20" IsNull="True" IsSequence="False" Name="lblApplyMan349" RelationControl="ApplyMan349" TabIndex="17" TabStop="True" TitleAlign="Right" TitleLocation="Left" UIFieldID="" UIViewID="" Visible="True" Width="153" X="10" Y="125">
+    <Label ID="6eb603f5-7631-4791-8033-affa31b76c1a" Enabled="True" GridHeight="1" GridWidth="1" GridX="0" GridY="7" Height="20" IsNull="True" IsSequence="False" Name="lblApplyMan349" RelationControl="ApplyMan349" TabIndex="17" TabStop="True" TitleAlign="Right" TitleLocation="Left" UIFieldID="" UIViewID="" Visible="True" Width="153" X="10" Y="175">
       <Events />
       <RelationControls />
       <Events />
     </Label>
-    <Reference ID="72f4d7ac-be09-48cf-b967-c9a620efa030" CodeAttributeName="EmployeeCode" CodeField="EmployeeCode" CodeFieldUIFieldID="ApplyMan_EmployeeCode" CodeFieldUIViewID="DepartmentTransfer" DisplayFormat="19.0" Enabled="True" EntityName="ID" GridHeight="1" GridWidth="1" GridX="2" GridY="5" Height="20" IsNull="True" IsProperty="False" IsSequence="False" Name="ApplyMan349" NameAttributeName="Name" NameFieldUIFieldID="ApplyMan_Name" NameFieldUIViewID="DepartmentTransfer" PkeyField="ID" RefType="cd089ed1-faaf-4920-8f27-3a2feb7e4b22" RelationControl="lblApplyMan349" TabIndex="18" TabStop="True" TextAlign="Right" TitleAlign="Left" TitleLocation="Left" UIFieldID="ApplyMan" UIViewID="DepartmentTransfer" Visible="True" Width="153" WindowHeight="408" WindowWidth="580" X="168" Y="125">
+    <Reference ID="72f4d7ac-be09-48cf-b967-c9a620efa030" CodeAttributeName="EmployeeCode" CodeField="EmployeeCode" CodeFieldUIFieldID="ApplyMan_EmployeeCode" CodeFieldUIViewID="DepartmentTransfer" DisplayFormat="19.0" Enabled="True" EntityName="ID" GridHeight="1" GridWidth="1" GridX="2" GridY="7" Height="20" IsNull="True" IsProperty="False" IsSequence="False" Name="ApplyMan349" NameAttributeName="Name" NameFieldUIFieldID="ApplyMan_Name" NameFieldUIViewID="DepartmentTransfer" PkeyField="ID" RefType="cd089ed1-faaf-4920-8f27-3a2feb7e4b22" RelationControl="lblApplyMan349" TabIndex="18" TabStop="True" TextAlign="Right" TitleAlign="Left" TitleLocation="Left" UIFieldID="ApplyMan" UIViewID="DepartmentTransfer" Visible="True" Width="153" WindowHeight="408" WindowWidth="580" X="168" Y="175">
       <Events />
       <RelationControls />
       <ReferenceRelation Action="Clear" ColumnDisplayName="ID" ColumnID="ID" TargetControlType="" TargetID="" TargetProperty="" />
@@ -305,6 +315,24 @@
       <UIFilterBar Name="ReferenceFilter" />
       <Events />
     </Reference>
+    <Label ID="74896328-2d44-48e2-8642-cb813849de4b" Enabled="True" GridHeight="1" GridWidth="1" GridX="0" GridY="4" Height="20" IsNull="True" IsSequence="False" Name="lblChangedBeforeDept_ParentNode_Name181" RelationControl="ChangedBeforeDept_ParentNode_Name181" TabIndex="19" TabStop="True" TitleAlign="Right" TitleLocation="Left" UIFieldID="" UIViewID="" Visible="True" Width="153" X="10" Y="100">
+      <Events />
+      <RelationControls />
+      <Events />
+    </Label>
+    <TextBox ID="439a3fbf-7c0b-434b-a5e2-b0dc804ec23b" DisplayFormat="50" Enabled="False" GridHeight="1" GridWidth="1" GridX="2" GridY="4" Height="20" IsNull="True" IsProperty="False" IsSequence="False" MultiLine="False" Name="ChangedBeforeDept_ParentNode_Name181" RelationControl="lblChangedBeforeDept_ParentNode_Name181" TabIndex="20" TabStop="True" TextAlign="Left" TitleAlign="Left" TitleLocation="Left" UIFieldID="ChangedBeforeDept_ParentNode_Name" UIViewID="DepartmentTransfer" Visible="True" Width="153" X="168" Y="100">
+      <Events />
+      <RelationControls />
+    </TextBox>
+    <Label ID="c64263d3-b7c5-4020-9ab8-191642bfb68b" Enabled="True" GridHeight="1" GridWidth="1" GridX="0" GridY="6" Height="20" IsNull="True" IsSequence="False" Name="lblChangedAfterDept_ParentNode_Name92" RelationControl="ChangedAfterDept_ParentNode_Name92" TabIndex="21" TabStop="True" TitleAlign="Right" TitleLocation="Left" UIFieldID="" UIViewID="" Visible="True" Width="153" X="10" Y="150">
+      <Events />
+      <RelationControls />
+      <Events />
+    </Label>
+    <TextBox ID="d22dd27f-4227-4617-a1e1-2c63c1dd8458" DisplayFormat="50" Enabled="False" GridHeight="1" GridWidth="1" GridX="2" GridY="6" Height="20" IsNull="True" IsProperty="False" IsSequence="False" MultiLine="False" Name="ChangedAfterDept_ParentNode_Name92" RelationControl="lblChangedAfterDept_ParentNode_Name92" TabIndex="22" TabStop="True" TextAlign="Left" TitleAlign="Left" TitleLocation="Left" UIFieldID="ChangedAfterDept_ParentNode_Name" UIViewID="DepartmentTransfer" Visible="True" Width="153" X="168" Y="150">
+      <Events />
+      <RelationControls />
+    </TextBox>
   </Card>
   <Events />
 </View>

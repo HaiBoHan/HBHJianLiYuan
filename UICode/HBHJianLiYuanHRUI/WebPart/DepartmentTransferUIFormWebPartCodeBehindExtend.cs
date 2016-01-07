@@ -93,6 +93,8 @@ namespace DepartmentTransferUIModel
 			//调用模版提供的默认实现.--默认实现可能会调用相应的Action.
             //BtnSubmit_Click_DefaultImpl(sender,e);
 
+            this.Model.ClearErrorMessage();
+
             UpdateStatus((int)DocStatusData.Approving);
 		}	
 		 
@@ -101,6 +103,8 @@ namespace DepartmentTransferUIModel
         {
             //调用模版提供的默认实现.--默认实现可能会调用相应的Action.
             //BtnApprove_Click_DefaultImpl(sender,e);
+
+            this.Model.ClearErrorMessage();
 
             UpdateStatus((int)DocStatusData.Approved);
         }
@@ -111,6 +115,8 @@ namespace DepartmentTransferUIModel
             //调用模版提供的默认实现.--默认实现可能会调用相应的Action.
             //BtnRecovery_Click_DefaultImpl(sender,e);
 
+            this.Model.ClearErrorMessage();
+
             UpdateStatus((int)DocStatusData.Opened);
         }
 		 
@@ -119,6 +125,8 @@ namespace DepartmentTransferUIModel
 		{
 			//调用模版提供的默认实现.--默认实现可能会调用相应的Action.
             //BtnUndoApprove_Click_DefaultImpl(sender,e);
+
+            this.Model.ClearErrorMessage();
 
             UpdateStatus((int)DocStatusData.Opened);
 		}	
@@ -305,6 +313,8 @@ namespace DepartmentTransferUIModel
             this.BtnOk.Visible = false;
             this.BtnClose.Visible = false;
             
+            // 弃审不可用
+            this.BtnUndoApprove.Enabled = false;
 		}
 
 

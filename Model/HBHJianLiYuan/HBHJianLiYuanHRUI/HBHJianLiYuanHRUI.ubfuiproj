@@ -27,5 +27,6 @@
     <Item id="8c9e73b5-5f3b-47c6-bdf2-35a8fcaa50d6" name="TotalPayrollDocFindRef.ubfref" displayName="TotalPayrollDocFindRef.ubfref" description="" help="" include="TotalPayrollDocFindRef.ubfref" type="" />
     <Item id="3545cc27-358a-41f0-a1f8-accec0d3a75a" name="DefineValueRef.ubfref" displayName="DefineValueRef.ubfref" description="" help="" include="DefineValueRef.ubfref" type="" />
     <Item id="cf9af1a1-47e0-4fc2-a617-e6a8cd5bb39f" name="ApproveTypeRef.ubfref" displayName="ApproveTypeRef.ubfref" description="" help="" include="ApproveTypeRef.ubfref" type="" />
+    <Item id="c18e867e-8ebd-4c18-be4e-a37993e3eb4a" name="DepartmentRef.ubfref" displayName="DepartmentRef.ubfref" description="" help="" include="DepartmentRef.ubfref" type="" />
   </ItemGroup>
 </Project>

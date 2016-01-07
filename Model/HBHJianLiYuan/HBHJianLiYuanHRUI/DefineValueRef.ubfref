@@ -16,6 +16,6 @@
     </Reference>
   </References>
   <RefParameters>
-    <RefParam id="2175b373-6cc5-4f1b-9a6e-1dd81840da13" name="ValueSetCode" displayName="值集编码" description="" help="" dataType="String" defaultValue="" />
+    <RefParam id="4364f2a7-fd1b-49e1-8ec5-2e7fa843c41c" name="ValueSetCode" displayName="值集编码" description="" help="" dataType="String" defaultValue="" />
   </RefParameters>
 </ReferenceComponent>

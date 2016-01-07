@@ -1,15 +1,44 @@
 
 /*
-delete	from Approval_DocumentType 
-where EntityType = 'U9.VOB.Cus.HBHJianLiYuan.DayCheckIn'
 delete	from Approval_DocumentType_Trl
-where Name in ('DayCheckIn','日考勤')
+where ID in (select ID
+			from Approval_DocumentType 
+			where EntityType in ('U9.VOB.Cus.HBHJianLiYuan.DayCheckIn','U9.VOB.Cus.HBHJianLiYuan.TotalPayrollDoc')
+			)
+delete	from Approval_DocumentType 
+where EntityType in ('U9.VOB.Cus.HBHJianLiYuan.DayCheckIn','U9.VOB.Cus.HBHJianLiYuan.TotalPayrollDoc')
 */
 
 	--查出 工作流实体表 最大的ID
 	declare @maxID bigint
 	declare @curID bigint
+	declare @StartID bigint = -1
 
+	
+--如果不存在,才创建
+if not Exists( select ID 
+			from CBO_ApproveData 
+			where Name = '-1' )
+begin
+
+	execute AllocSerials 1,@StartID output			
+
+	insert into CBO_ApproveData
+	(
+	ID,CreatedOn,CreatedBy,ModifiedOn,ModifiedBy,SysVersion
+	,Name,Application,AffirmStyle,IsAuditing,IsAfterAlter,IsAfterAudit
+	,Org,Effective_IsEffective,Effective_EffectiveDate,Effective_DisableDate
+	,ApproveType,IsApprovingCanModify
+
+	)values(
+	@StartID,GETDATE(),'hbh',GETDATE(),'hbh',1
+	,'-1',NULL,2,0,1,0
+	,1001510020000918,1,'2015-12-01','9999-12-31'
+	,1,1
+	)
+
+end
+	
 
 --如果不存在,才创建
 if not Exists( select ID 
@@ -43,6 +72,8 @@ begin
 	(ID,Name,SysMLFlag)
 	(select @curID,'DayCheckIn','en-US'
 	union select @curID,'日考勤','zh-CN')
+
+	
 	
 end
 

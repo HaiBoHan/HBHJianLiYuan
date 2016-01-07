@@ -115,6 +115,8 @@ namespace DayCheckInUIModel
             //调用模版提供的默认实现.--默认实现可能会调用相应的Action.
             //BtnSubmit_Click_DefaultImpl(sender,e);
 
+            this.Model.ClearErrorMessage();
+
             UpdateStatus((int)DocStatusData.Approving);
 		}	
 		 
@@ -123,6 +125,8 @@ namespace DayCheckInUIModel
 		{
             //调用模版提供的默认实现.--默认实现可能会调用相应的Action.
             //BtnApprove_Click_DefaultImpl(sender,e);
+
+            this.Model.ClearErrorMessage();
 
             DayCheckInRecord head = this.Model.DayCheckIn.FocusedRecord;
 
@@ -150,6 +154,8 @@ namespace DayCheckInUIModel
             //调用模版提供的默认实现.--默认实现可能会调用相应的Action.
             //BtnRecovery_Click_DefaultImpl(sender,e);
 
+            this.Model.ClearErrorMessage();
+
             DayCheckInRecord head = this.Model.DayCheckIn.FocusedRecord;
 
             if (head != null
@@ -173,6 +179,8 @@ namespace DayCheckInUIModel
 		{
             //调用模版提供的默认实现.--默认实现可能会调用相应的Action.
             //BtnUndoApprove_Click_DefaultImpl(sender,e);
+
+            this.Model.ClearErrorMessage();
 
             UpdateStatus((int)DocStatusData.Opened);
 		}	
@@ -429,6 +437,8 @@ namespace DayCheckInUIModel
                     }
                 }
             }
+
+            this.DataGrid5.AutoEditModel = false;
 		}
 
 
@@ -499,7 +509,23 @@ namespace DayCheckInUIModel
                     this.IsDataBinding = true; //当前事件执行后会进行数据绑定
                     this.IsConsuming = false;
 
+                    
+                    DayCheckIn_DayCheckInLineView lineView = this.Model.DayCheckIn_DayCheckInLine;
+                    DayCheckIn_DayCheckInLineRecord focusedLine = lineView.FocusedRecord;
+                    if (focusedLine != null)
+                    {
 
+                        if (focusedLine.CheckType.GetValueOrDefault(-1) == (int)CheckTypeEnumData.FullTimeStaff)
+                        {
+                            focusedLine.FullTimeDay = 1;
+                            focusedLine.PartTimeDay = 0;
+                        }
+                        else if (focusedLine.CheckType.GetValueOrDefault(-1) == (int)CheckTypeEnumData.PartTimeStaff)
+                        {
+                            focusedLine.FullTimeDay = 0;
+                            focusedLine.PartTimeDay = 4;
+                        }
+                    }
 
                 }
                 //// 定价不可改，可能为扩展字段

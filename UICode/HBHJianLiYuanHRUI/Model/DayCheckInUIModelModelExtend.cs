@@ -34,6 +34,9 @@ namespace DayCheckInUIModel
             //{
             //    this.DayCheckIn.FieldIsApproveFlow.DefaultValue = isApproveFlow;
             //}
+
+            this.DayCheckIn_DayCheckInLine.FieldFullTimeDay.DefaultValue = 1;
+            //this.DayCheckIn_DayCheckInLine.FieldPartTimeDay.DefaultValue = 4;
         }
 
         //UIModel提交保存之前的校验操作.

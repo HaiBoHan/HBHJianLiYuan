@@ -107,6 +107,8 @@ namespace TotalPayrollDocUIModel
             //调用模版提供的默认实现.--默认实现可能会调用相应的Action.
             //BtnSubmit_Click_DefaultImpl(sender,e);
 
+            this.Model.ClearErrorMessage();
+
             UpdateStatus((int)DocStatusData.Approving);
         }
 
@@ -115,6 +117,8 @@ namespace TotalPayrollDocUIModel
         {
             //调用模版提供的默认实现.--默认实现可能会调用相应的Action.
             //BtnApprove_Click_DefaultImpl(sender,e);
+
+            this.Model.ClearErrorMessage();
 
             //UpdateStatus((int)DocStatusData.Approved);
             TotalPayrollDocRecord head = this.Model.TotalPayrollDoc.FocusedRecord;
@@ -142,6 +146,8 @@ namespace TotalPayrollDocUIModel
             //调用模版提供的默认实现.--默认实现可能会调用相应的Action.
             //BtnRecovery_Click_DefaultImpl(sender,e);
 
+            this.Model.ClearErrorMessage();
+
             UpdateStatus((int)DocStatusData.Opened);
         }
 
@@ -150,6 +156,8 @@ namespace TotalPayrollDocUIModel
         {
             //调用模版提供的默认实现.--默认实现可能会调用相应的Action.
             //BtnUndoApprove_Click_DefaultImpl(sender,e);
+
+            this.Model.ClearErrorMessage();
 
             UpdateStatus((int)DocStatusData.Opened);
         }	

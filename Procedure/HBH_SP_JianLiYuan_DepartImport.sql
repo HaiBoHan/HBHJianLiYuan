@@ -195,8 +195,16 @@ begin
 			else 0
 			end
 
-		,0
-		,0
+		,case when defValueTrl.Name is not null and defValueTrl.Name like '%非全日制%'
+			then 0
+			else 1
+			end
+		,case when defValueTrl.Name is not null and defValueTrl.Name like '%非全日制%'
+			then 4
+			else 0
+			end
+		--,1
+		--,4
 		,0
 	from #hbh_tmp_DayCheckInLine line
 		inner join Cust_DayCheckIn head

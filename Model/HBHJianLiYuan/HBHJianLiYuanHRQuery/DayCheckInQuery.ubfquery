@@ -4,35 +4,36 @@
   <BPRefInfo id="5ede27ef-7197-4efe-a557-f5d64dd2ff00" name="" displayName="" description="" help="" ProjectID="" ProjectPath="" BPItemID="" BPOperationID="" DTOID="" BPAgentDll="" BPAgentProxy="" />
   <UIRefInfo id="de908cb3-5606-4c3d-a68e-65c6be82c6ac" name="" displayName="" description="" help="" ProjectID="" ProjectPath="" UIModelItemID="f7308588-f225-420a-82a1-b18d483803b7" UIFormItemID="94826d74-63c3-4bc3-9eed-7f78cba8306f" UIModelID="08cda4dc-b3f7-43de-be75-f5c25969858a" />
   <FilterDefines>
-    <FilterDefine id="72eafc9f-5b7e-4dc3-9057-c4786cffc793" name="Department" displayName="Department" description="" help="" ParentName="" Alias="Department" IsFixed="False" IsAllowBlank="True" Visible="True" DescFieldContextValue="" FilterNodeType="Item" DateDisplayType="" RaiseChangedEvent="False" IsBuildWhereStr="True" OperatorList="" />
-    <FilterDefine id="4b843f87-ee4d-4c16-8d5f-776bcd18451f" name="CurrentOperator" displayName="CurrentOperator" description="" help="" ParentName="" Alias="CurrentOperator" IsFixed="False" IsAllowBlank="True" Visible="True" DescFieldContextValue="" FilterNodeType="Item" DateDisplayType="" RaiseChangedEvent="False" IsBuildWhereStr="True" OperatorList="" />
-    <FilterDefine id="c25ee31e-1f36-4592-a2b3-1380812a7900" name="CheckInDate" displayName="CheckInDate" description="" help="" ParentName="" Alias="CheckInDate" IsFixed="False" IsAllowBlank="True" Visible="True" DescFieldContextValue="" FilterNodeType="Item" DateDisplayType="DateTime" RaiseChangedEvent="False" IsBuildWhereStr="True" OperatorList="" />
+    <FilterDefine id="ceb2c48b-0950-4732-96ce-b5cacc93cef7" name="Department" displayName="Department" description="" help="" ParentName="" Alias="Department" IsFixed="False" IsAllowBlank="True" Visible="True" DescFieldContextValue="" FilterNodeType="Item" DateDisplayType="" RaiseChangedEvent="False" IsBuildWhereStr="True" OperatorList="" />
+    <FilterDefine id="fb2154d6-2202-41fa-9759-b46b69d686e3" name="CurrentOperator" displayName="CurrentOperator" description="" help="" ParentName="" Alias="CurrentOperator" IsFixed="False" IsAllowBlank="True" Visible="True" DescFieldContextValue="" FilterNodeType="Item" DateDisplayType="" RaiseChangedEvent="False" IsBuildWhereStr="True" OperatorList="" />
+    <FilterDefine id="657173ab-77c8-4686-b93a-9ade4fe818cc" name="CheckInDate" displayName="CheckInDate" description="" help="" ParentName="" Alias="CheckInDate" IsFixed="False" IsAllowBlank="True" Visible="True" DescFieldContextValue="" FilterNodeType="Item" DateDisplayType="DateTime" RaiseChangedEvent="False" IsBuildWhereStr="True" OperatorList="" />
   </FilterDefines>
   <ColumnDefines>
-    <ColumnDefine id="54fef80b-d4a7-4a31-a939-cb3139de83fd" name="Department.Code" displayName="Department.Code" description="" help="" ParentName="Department" Alias="Department_Code" IsFixed="False" Visible="True" DescFieldContextValue="" ZeroIsEmpty="False" DateDisplayType="" Point="2" />
-    <ColumnDefine id="c2155e5e-1c45-42f7-a7e9-b348fa79861f" name="Department.Name" displayName="Department.Name" description="" help="" ParentName="Department" Alias="Department_Name" IsFixed="False" Visible="True" DescFieldContextValue="" ZeroIsEmpty="False" DateDisplayType="" Point="2" />
-    <ColumnDefine id="dd60a0e0-a17d-491c-a8c5-52370c916125" name="CurrentOperator.Code" displayName="CurrentOperator.Code" description="" help="" ParentName="CurrentOperator" Alias="CurrentOperator_Code" IsFixed="False" Visible="True" DescFieldContextValue="" ZeroIsEmpty="False" DateDisplayType="" Point="2" />
-    <ColumnDefine id="c175c9f5-3b79-4628-9796-e0465f898208" name="CurrentOperator.Name" displayName="CurrentOperator.Name" description="" help="" ParentName="CurrentOperator" Alias="CurrentOperator_Name" IsFixed="False" Visible="True" DescFieldContextValue="" ZeroIsEmpty="False" DateDisplayType="" Point="2" />
-    <ColumnDefine id="5c5a69da-d6a8-4aa0-8cf7-c8bc9b28f2c0" name="CheckInDate" displayName="CheckInDate" description="" help="" ParentName="" Alias="CheckInDate" IsFixed="False" Visible="True" DescFieldContextValue="" ZeroIsEmpty="False" DateDisplayType="DateTime" Point="2" />
+    <ColumnDefine id="287ef07a-9182-4158-9c2a-f54bb4d97cb0" name="Department.Code" displayName="Department.Code" description="" help="" ParentName="" Alias="Department_Code" IsFixed="False" Visible="True" DescFieldContextValue="" ZeroIsEmpty="False" DateDisplayType="" Point="2" />
+    <ColumnDefine id="b1056120-8605-4b49-9687-57ad8b3bd7c7" name="Department.Name" displayName="Department.Name" description="" help="" ParentName="" Alias="Department_Name" IsFixed="False" Visible="True" DescFieldContextValue="" ZeroIsEmpty="False" DateDisplayType="" Point="2" />
+    <ColumnDefine id="368524e8-e6a9-4d9a-a4ca-d4bfa8003b80" name="CurrentOperator.Name" displayName="CurrentOperator.Name" description="" help="" ParentName="" Alias="CurrentOperator_Name" IsFixed="False" Visible="True" DescFieldContextValue="" ZeroIsEmpty="False" DateDisplayType="" Point="2" />
+    <ColumnDefine id="e0ff1698-1e71-4a5b-924c-2d7948d1359e" name="CheckInDate" displayName="CheckInDate" description="" help="" ParentName="" Alias="CheckInDate" IsFixed="False" Visible="True" DescFieldContextValue="" ZeroIsEmpty="False" DateDisplayType="DateTime" Point="2" />
+    <ColumnDefine id="404aa788-02de-404e-a3ba-8f668de70da5" name="DayCheckInLine.FullTimeDay" displayName="DayCheckInLine.FullTimeDay" description="" help="" ParentName="DayCheckInLine" Alias="DayCheckInLine_FullTimeDay" IsFixed="False" Visible="True" DescFieldContextValue="" ZeroIsEmpty="False" DateDisplayType="" PrecisionType="Static" NumericType="Numberic" Point="2" />
+    <ColumnDefine id="64fa2325-b1dd-4b1d-88de-71e4a9c7a104" name="DayCheckInLine.PartTimeDay" displayName="DayCheckInLine.PartTimeDay" description="" help="" ParentName="DayCheckInLine" Alias="DayCheckInLine_PartTimeDay" IsFixed="False" Visible="True" DescFieldContextValue="" ZeroIsEmpty="False" DateDisplayType="" PrecisionType="Static" NumericType="Numberic" Point="2" />
+    <ColumnDefine id="a77070af-0d17-4e43-b87c-a374ae330739" name="DayCheckInLine.HourlyDay" displayName="DayCheckInLine.HourlyDay" description="" help="" ParentName="DayCheckInLine" Alias="DayCheckInLine_HourlyDay" IsFixed="False" Visible="True" DescFieldContextValue="" ZeroIsEmpty="False" DateDisplayType="" PrecisionType="Static" NumericType="Numberic" Point="2" />
   </ColumnDefines>
   <SortDefines>
-    <SortDefine id="90e6157d-2870-46ed-9a13-4d9a70f98cfe" name="CheckInDate" displayName="" description="" help="" ParentName="" Alias="CheckInDate" IsFixed="False" Visible="True" DescFieldContextValue="" />
+    <SortDefine id="478a7067-8b05-467e-b936-2cfdf7efcf00" name="CheckInDate" displayName="" description="" help="" ParentName="" Alias="CheckInDate" IsFixed="False" Visible="True" DescFieldContextValue="" />
   </SortDefines>
   <DefaultCase>
     <BasicFilters>
-      <BasicFilter id="2e32da97-f4f8-4618-ab51-9d9266b251d1" name="Department" displayName="Department" description="" help="" />
-      <BasicFilter id="c851421b-4b29-4e4d-b5d4-609615b491ed" name="CurrentOperator" displayName="CurrentOperator" description="" help="" />
-      <BasicFilter id="2b11fa4e-54d6-4a19-8167-1989fd4255c2" name="CheckInDate" displayName="CheckInDate" description="" help="" />
+      <BasicFilter id="b5e73c20-5024-45b7-b85b-f65944fec346" name="Department" displayName="部门" description="" help="" />
+      <BasicFilter id="ee01768c-d033-4c50-b048-a852d2670cc6" name="CurrentOperator" displayName="业务员" description="" help="" />
+      <BasicFilter id="57480448-3fee-48fb-a392-1ff28847c3ce" name="CheckInDate" displayName="考勤日期" description="" help="" />
     </BasicFilters>
     <DefaultColumns>
-      <Column id="3d743f0c-3126-4f48-a704-d68831f3eeb3" name="Department.Code" displayName="" description="" help="" />
-      <Column id="7bd20ec0-5a13-4e27-ab9b-a79bf6de70f7" name="Department.Name" displayName="" description="" help="" />
-      <Column id="f7d5985e-085c-48e0-8131-8e502bd719e8" name="CurrentOperator.Code" displayName="" description="" help="" />
-      <Column id="51f1e10a-b226-4657-86de-19f25dc6c490" name="CurrentOperator.Name" displayName="" description="" help="" />
-      <Column id="d8c88322-3b77-4fdd-b069-4cd58a9efc09" name="CheckInDate" displayName="" description="" help="" />
+      <Column id="be88c0f1-cfbb-42cb-8884-2daff35718c1" name="Department.Code" displayName="部门.编码" description="" help="" />
+      <Column id="4c10f021-ed2e-4051-b935-3f28ed986223" name="Department.Name" displayName="部门.名称" description="" help="" />
+      <Column id="2e0e7215-aa90-439d-a7bf-7d58cd4e9ab2" name="CurrentOperator.Name" displayName="业务员.人员名称" description="" help="" />
+      <Column id="7735d09e-2333-40ac-aa70-026c134994bc" name="CheckInDate" displayName="考勤日期" description="" help="" />
     </DefaultColumns>
     <DefaultSorts>
-      <Sort id="fcf1daa6-6725-4c45-9926-64776df99acd" name="CheckInDate" displayName="" description="" help="" SortType="DESC" />
+      <Sort id="287f8ef3-34e0-4a1b-bab2-21cb234d317d" name="CheckInDate" displayName="" description="" help="" SortType="DESC" />
     </DefaultSorts>
   </DefaultCase>
 </QueryComponent>

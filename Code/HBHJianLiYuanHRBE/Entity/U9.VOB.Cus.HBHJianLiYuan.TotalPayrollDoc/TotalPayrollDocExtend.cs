@@ -14,6 +14,7 @@ using UFIDA.U9.PAY.Enums;
 using UFSoft.UBF.Business;
 using UFSoft.UBF.Transactions;
 using UFIDA.U9.Approval.Util;
+using UFSoft.UBF.PL.Engine;
 
 #endregion
 
@@ -36,13 +37,54 @@ namespace U9.VOB.Cus.HBHJianLiYuan {
 		/// 设置默认值
 		/// </summary>
 		protected override void OnSetDefaultValue()
-		{
+        {
+            if (this.SysState == ObjectState.Inserted)
+            {
+                this.StateMachineInstance.Initialize();
+            }
+
             base.OnSetDefaultValue();
 
             if (this.Org == null)
             {
                 this.Org = Context.LoginOrg;
             }
+
+            if (this.OriginalData != null
+                && this.OriginalData.Status != this.Status
+                )
+            {
+                if (this.Status == DocStatus.Opened)
+                {
+                    // 弃审
+                    if (this.OriginalData.Status == DocStatus.Approved)
+                    {
+                        DoUnApprove();
+                    }
+                    // 回收
+                    else if (this.OriginalData.Status == DocStatus.Approving)
+                    {
+                        DoTerminate();
+                    }
+                }
+                else if (this.Status == DocStatus.Approving)
+                {
+                    // 提交
+                    if (this.OriginalData.Status == DocStatus.Opened)
+                    {
+                        DoSubmit();
+                    }
+                }
+                else if (this.Status == DocStatus.Approved)
+                {
+                    // 审核
+                    if (this.OriginalData.Status == DocStatus.Approving)
+                    {
+                        DoApprove();
+                    }
+                }
+            }
+
 		}
 		/// <summary>
 		/// before Insert
