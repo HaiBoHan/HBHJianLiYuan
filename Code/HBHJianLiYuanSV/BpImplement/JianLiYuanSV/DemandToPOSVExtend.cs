@@ -122,7 +122,7 @@
                                             using (ISession session = Session.Open())
                                             {
                                                 po.Status = PODOCStatusEnum.Approved;
-                                                po.ActionType = ActivateTypeEnum.ApprovingAct;
+                                                po.ActionType = ActivateTypeEnum.ApprovedAct;
                                                 po.DGNeedDecompose = false;
 
                                                 session.Commit();
