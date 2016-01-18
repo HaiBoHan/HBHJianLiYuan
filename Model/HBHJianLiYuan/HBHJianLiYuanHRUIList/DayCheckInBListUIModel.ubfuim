@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<UIModelComponent id="e3919316-6c2b-4894-b4cb-8d28649af359" name="DayCheckInBListUIModel" displayName="DayCheckInBListUIModel" description="" help="">
+  <UIModels>
+    <UIModel id="08cda4dc-b3f7-43de-be75-f5c25969858a" name="DayCheckInBListUIModel" displayName="DayCheckInBListUIModel" description="" help="" Namespace="DayCheckInBListUIModel" QueryInfo="7b0HYBxJliUmL23Ke39K9UrX4HShCIBgEyTYkEAQ7MGIzeaS7B1pRyMpqyqBymVWZV1mFkDM7Z28
+995777333nvvvfe6O51OJ/ff/z9cZmQBbPbOStrJniGAqsgfP358Hz8ifo1f89f4NX6N/5se/MTz
+6+GXv3H78e/xblGml3ndFNXys492xzsfpflyWs2K5cVnH63b8+2Dj36Po8c/sc7r65NqsaqW+bJN
+ixk1nc1284PpbHtvOr2/vb+z9+l2tv9wb3tvlt+fZNnOvXsHs4/SZbbIP/vo20++/Z0iWz4vfp91
+tvz2K4b2UTormlWZXb/Y1CRvpnWxahm5j9J5Xq7wk799c72i954XTasffPXq7LOP8nvZvenBwe72
+/sH5wfb+gwf3tyefzna27+99uv/g3u7B/m4+0/avq3U9zZ+ty1JQ+Orh+Ce/fDI+WTfjAJvx0+z6
+ZJ5P354tP0q/OvvJIr96WmcX0j9+e1pd0Tev8vOz5Xn1vMpm8tVJNp3nHx09fpI1xRRfMd2mDyeT
+nfPde9sP9z49394/f5hvZwfTe9vZ3nR2nt17eH5wf2Lo1qHRID2o6zfV25w/e1VV7VNqdlIt2/xd
++5NZueZXnxVlm9dvsslPFk0xKemzN/U6/yg9qcr1Ytn//HVVt/1PBcrpu1W2nD3PL/Pys4/uGRjd
+TwGh+9ldIsdLpRST434+y/ce5OfbD3YfPtjez8+JHPfvP9g+vz/7dH822zs/39l5X3K8rKufzqft
+2VPvj5dZO8efT16etflCvnry8stVXmd4XT54+uZL883xBTH607L0/iJI767xNw3iqzN/ELP84c7B
+dHJv+/6nO59u70/vzbazTw/y7U/vTz+d5Ad700+z6Tc5iK/OvqhmeWlGcv7g3s7B/YOD7fO9PRLF
+vZ1s+2Av292e7B7M9g/uHezcmzzAS8+qemHeebh/sPfp7MH+9qf3iPn2J/TPwzyfbT84f0AjyQ7u
+7Xx67jqiF2iAs2x/Nt2e3Dunibo3y7cnOUnX+f3p3v2Hnz4kBDImjbDI0/y8WOZN+KcIQD7Zm+4f
+TLZ3Ht7fIQm9t7f98NMpQbs/zabTh/em+fkDQ6yn+Sqr2wURv0O24IsBAmY1fW2ofFwWWRO+d9Y8
+K97lhNGzrGxy/H1cltXVkzJbvjX83mF/CNazIi9ncel6QcQS2QeZqXnW5k8FbfmYxDMrmvxkni0v
+8tnpJeHhdf9kXZSz787zOn/d1qZLYdGqhqJT5uuR9Hyyt3t/f/bp9t7ezt72/u55tv3wwf2H25P9
+TyefPpx9evBpfs+Q9GRdgy4GbIeu/W/fg7i9l///Q+FP7z/YfXAvm2w/eDAls0IU3Z48vEdkzmb5
+/nl+sHswtRKutgKodakbfPM+lPVf/DmgKj54Uyzyb4a6dzsqQsxH9E8m/t4BGYidB0Tt3QOw9/2D
+7YfTvYxUz/5ksj97+GA6sTbCCfj4hEY1qDbMt+8xCe7l319e7k7EbYn+U3ldnTWni1V7bd+NMPLL
+qgB595hmPaJMdnfuf7q7t7N98OkOKf3J/kNSowcPtu8/yGYHk3uT2YNpRI2OMaZhoui3X48o8vLP
+KVHufXpwf28/P9jOP80ebhNrZOSUTrPt2f7kPDvYIUN4YDmlo61ilBlo8h7k6UD4fwON8p3z812y
+19u7+QNyk7P7E3JF96fkuD8gp2C2e+/+w/znSpV9o4RwSmszQfZ39rPsAblPOxS7UCSzTy7ovQn5
+UOeffnowyx/szLL7VpJsKPCcXh8jeEAX9HFXqDY1vJlc4etO2oKPf/8A6s8qLeGC5tMCUaJ88Lol
+v5lM3ov1Iq+LqXxIf0zw100U/3T/PNu7R77qhKJI0l27s+0DojTFAPl+9nD6INvd2R+gOBGpvRXF
+w4bfFMUDqP8fonj24MHOg53sfHtntoswa//e9uTgwZQY/cF+lt+7t/Pg3sMBin+bwuTy+kZ6+82+
+KWp7MP/fS+u7HfcFYW/kD1E1Dw6yBzufPtg+mMBof/oghxtJfvv0fHZOTs7Ui3aHde+tKPzNKlyM
+MxgY/ZKty/Yka3LNcIhT1wR/iadyP39wb0qeyv2dvf3t/fuTB8R7ZHXOP73/cJ+c5+m9/U9vDPj+
+6z/0r/qv/8y/anDkd/vd5vnO7oNPD6bbM8pFUVBOweZkZ/+Asi3392Z7nz7YmU5tt5uDov/s7/pz
+/vM/5i/+z//kP+t9ur//YP9gZ5/6u3ee58hGTUjYKD+2e36+d3Cw/2BKge7NU/1f/UF/6H/+x/5l
+/8Wf+Zf/F3/eX7ip97vhFJjZYc60LrXMRn5wMKUE1Pb0fDKhZMF0Qrr3YJ/Mf3Z+fo/CnIPp7u2c
+aZmS8X/59/0Z/+Vf9AdvQs7rfX+6u3O+s7e7nc/2YGvv70IA7hOR9g7y2cODT/f2bKS62WvV3v/z
+P+mP/y//yr/plr3v5Tv5AwqVt7PsIaUe7j2kPM2DCeWeZvcpu7GfP8wme+/hHlq+GP9nf8/fQz/e
+C5cHD+7dn+1Q9m/vHthzJyNlTLqBnJBPp7v39h8+pJzMN8gfXY7QvyHTqqZMqHV+kJ/f2763nxOF
+st3J9oSIsr23O53s3duf3dt9YLO6X0NBcVJRnLPT1ycBZoqJRZQVy90w8Xz0G/4aP3p+9Pzo+dHz
+o+dHz4+eHz0/em71/D8=" UseType="ForQuery">
+      <UIModelInfos>
+        <UIModelInfo id="6d7aa780-df66-4ed5-81b1-c59421a3b600" name="DayCheckInBListUIModel" displayName="DayCheckInBListUIModel" description="" help="" FullName="DayCheckInBListUIModel" DataTypeID="" MappingID="" MappingName="" IsMap="False">
+          <UIModelInfo id="059f1447-fd5e-4e99-b4de-06c65f056451" name="QueryView" displayName="QueryView" description="" help="" FullName="DayCheckInBListUIModel.QueryView" DataTypeID="87af1c6d-3c60-469a-a85e-bc7743d04909" MappingID="" MappingName="" IsMap="False">
+            <UIModelInfo id="b0935c81-7b33-45fd-a590-96abb3bd64a5" name="ID" displayName="ID" description="" help="" FullName="DayCheckInBListUIModel.QueryView.ID" DataTypeID="ba391065-6c27-4c82-acc8-b52b1c93a910" MappingID="" MappingName="" IsMap="False" />
+          </UIModelInfo>
+          <UIModelInfo id="c4b5f5ea-a318-4eba-ac3e-a4c7bec57f25" name="DayCheckIn" displayName="DayCheckIn" description="" help="" FullName="DayCheckInBListUIModel.DayCheckIn" DataTypeID="cc00309b-67ad-43bd-9ede-0bf3540e899a" MappingID="" MappingName="U9::VOB::Cus::HBHJianLiYuan::DayCheckIn" IsMap="True">
+            <UIModelInfo id="014ec51f-77a5-43f4-bf90-b3ef79a1bf2e" name="ID" displayName="ID" description="" help="" FullName="DayCheckInBListUIModel.DayCheckIn.ID" DataTypeID="ba391065-6c27-4c82-acc8-b52b1c93a910" MappingID="bfe351c6-c3b9-4d6e-b2f2-e935e9098cf4" MappingName="ID" IsMap="True" />
+          </UIModelInfo>
+        </UIModelInfo>
+      </UIModelInfos>
+      <Views>
+        <UIViewInfo id="ab992bfd-f6c3-48c4-a05d-e2a03c02d551" name="DayCheckIn" displayName="日考勤" description="日考勤" RootFullName="DayCheckInBListUIModel.DayCheckIn">
+          <Groups>
+            <Group id="846582d5-22e1-41d0-9ff8-7181dd498fee" name="Key" displayName="Key" description="" help="" />
+            <Group id="ccd9da23-5002-40d6-a415-38c3eda99025" name="Misc" displayName="Misc" description="" help="" />
+          </Groups>
+          <Fields>
+            <UIFieldInfo id="e6ae5a58-2ce2-43da-bafc-f9501a23caa9" name="ID" displayName="ID" description="" DefaultValue="" GroupName="Key" DisplayRule="19.0" IsNullable="False" IsReadOnly="False" IsEnableReference="False" IsLink="False" ControlID="68095607-50d1-4296-a35a-623b21d654f1" DataTypeID="ba391065-6c27-4c82-acc8-b52b1c93a910" EnumTypeID="" BindingFullName="DayCheckInBListUIModel.DayCheckIn.ID" Expression="" Sequence="0" Length="8" IsBinding="False" IsGlobalized="False" CustomIsLoadable="False" CustomAttrName="" />
+          </Fields>
+        </UIViewInfo>
+      </Views>
+      <ActionGroups>
+        <Group id="f4978fdb-adfb-47ae-b691-6b6779d8936f" name="Case" displayName="Case" description="" help="" />
+      </ActionGroups>
+      <Actions>
+        <UIActionInfo id="6eb69acc-7bea-4402-b31c-996f08c9fda5" name="OnLookCase" displayName="查询" description="" help="" CodeTemplate=".\UITpls\UICommonAction.tpl" TemplateParameter="QryClick" GroupName="Case" DictionaryItemKey="" IsSyncDictionary="True" />
+        <UIActionInfo id="d749647d-66f4-4819-ab27-e9f8f5f2a06c" name="OnCaseChanged" displayName="改变方案" description="" help="" CodeTemplate="" TemplateParameter="" GroupName="Case" DictionaryItemKey="" IsSyncDictionary="True" />
+        <UIActionInfo id="464e8fd8-dfe3-4e63-ae02-34528f5646dc" name="OnOutPut" displayName="输出" description="" help="" CodeTemplate=".\UITpls\UICommonAction.tpl" TemplateParameter="OnOutPut" GroupName="Case" DictionaryItemKey="" IsSyncDictionary="True" />
+        <UIActionInfo id="19a404c9-d24f-4532-b105-f3d4a0619e3c" name="OnGridRowDbClick" displayName="双击网格行" description="" help="" CodeTemplate="" TemplateParameter="" GroupName="Case" DictionaryItemKey="" IsSyncDictionary="True" />
+        <UIActionInfo id="b6e07802-2511-4da8-8b25-14ae8000de4d" name="OnNew" displayName="新增" description="" help="" CodeTemplate="" TemplateParameter="" GroupName="Case" DictionaryItemKey="" IsSyncDictionary="True" />
+        <UIActionInfo id="4226ac7e-82a9-4664-8151-932b9df046a0" name="OnPrint" displayName="打印" description="" help="" CodeTemplate=".\UITpls\UICommonAction.tpl" TemplateParameter="OnPrint" GroupName="Case" DictionaryItemKey="" IsSyncDictionary="True" />
+        <UIActionInfo id="1116d4d9-d6a1-48f9-a520-d28808ce106c" name="OnDelete" displayName="删除" description="" help="" CodeTemplate=".\UITpls\UICommonAction.tpl" TemplateParameter="ListDeleteClick" GroupName="Case" DictionaryItemKey="" IsSyncDictionary="True" />
+      </Actions>
+    </UIModel>
+  </UIModels>
+</UIModelComponent>
