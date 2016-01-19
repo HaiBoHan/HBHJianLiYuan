@@ -806,7 +806,7 @@
             <PrePlacedMenu />
             <App id="9901001" code="9901001" shortName="JLYTC01" name="运营中心" uri="">
                 <Pages>
-                    <Page id="ba8ddc41-bbce-4d39-99a7-fd8078b6ce5d" code="Cust_PR" name="计划单" shortName="" displayName="计划单" description="" title="计划单" uri="Cust_PR" topMargine="10" bottomMargine="10" leftMargine="10" rightMargine="10" columnSpace="10" orientation="Vertical" defaultEntity="">
+                    <Page id="ba8ddc41-bbce-4d39-99a7-fd8078b6ce5d" code="Cust_PR" name="计划单" shortName="" displayName="计划单" description="" title="采购计划单" uri="Cust_PR" topMargine="10" bottomMargine="10" leftMargine="10" rightMargine="10" columnSpace="10" orientation="Vertical" defaultEntity="">
                         <Columns>
                             <Column id="6ded0200-2d4c-4ff6-a33c-ca759d7afc69" code="" name="" shortName="" displayName="" description="" widthProportion="100" heightProportion="0" title="" IsMainRegion="True">
                                 <Parts>
@@ -820,7 +820,7 @@
                         <PartRelations />
                         <Parameters />
                     </Page>
-                    <Page id="3be661ea-52a0-4e4b-838e-7367dd820eca" code="Cust_Rcv" name="入库单" shortName="" displayName="入库单" description="" title="入库单" uri="Cust_Rcv" topMargine="10" bottomMargine="10" leftMargine="10" rightMargine="10" columnSpace="10" orientation="Vertical" defaultEntity="">
+                    <Page id="3be661ea-52a0-4e4b-838e-7367dd820eca" code="Cust_Rcv" name="入库单" shortName="" displayName="入库单" description="" title="采购入库单" uri="Cust_Rcv" topMargine="10" bottomMargine="10" leftMargine="10" rightMargine="10" columnSpace="10" orientation="Vertical" defaultEntity="">
                         <Columns>
                             <Column id="f768c3be-e4c7-40dd-b1bf-9f6bb532f9e2" code="" name="" shortName="" displayName="" description="" widthProportion="100" heightProportion="0" title="" IsMainRegion="True">
                                 <Parts>
@@ -834,7 +834,7 @@
                         <PartRelations />
                         <Parameters />
                     </Page>
-                    <Page id="ebf19021-5607-472a-b1c3-ed71891cc70c" code="Cust_Ship" name="领料单" shortName="" displayName="领料单" description="" title="领料单" uri="Cust_Ship" topMargine="10" bottomMargine="10" leftMargine="10" rightMargine="10" columnSpace="10" orientation="Vertical" defaultEntity="">
+                    <Page id="ebf19021-5607-472a-b1c3-ed71891cc70c" code="Cust_Ship" name="领料单" shortName="" displayName="领料单" description="" title="出库领料单" uri="Cust_Ship" topMargine="10" bottomMargine="10" leftMargine="10" rightMargine="10" columnSpace="10" orientation="Vertical" defaultEntity="">
                         <Columns>
                             <Column id="e8db660f-e3ae-46db-863c-cc358830d95c" code="" name="" shortName="" displayName="" description="" widthProportion="100" heightProportion="0" title="" IsMainRegion="True">
                                 <Parts>
