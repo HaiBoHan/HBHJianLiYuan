@@ -110,13 +110,13 @@ namespace U9.VOB.Cus.HBHJianLiYuan {
             this.SelfEntityValidator();
             // TO DO: write your business code here...
 
-            if (this.OriginalData != null
-                && this.OriginalData.Status == DocStatus.Approved
-                && this.Status == DocStatus.Opened
-                )
-            {
-                throw new BusinessException("部门调动单不允许弃审");
-            }
+            //if (this.OriginalData != null
+            //    && this.OriginalData.Status == DocStatus.Approved
+            //    && this.Status == DocStatus.Opened
+            //    )
+            //{
+            //    throw new BusinessException("部门调动单不允许弃审");
+            //}
 
             if (this.SysState != UFSoft.UBF.PL.Engine.ObjectState.Deleted)
             {
