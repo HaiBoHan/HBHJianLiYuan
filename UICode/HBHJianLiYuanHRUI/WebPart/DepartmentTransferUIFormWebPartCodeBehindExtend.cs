@@ -313,8 +313,8 @@ namespace DepartmentTransferUIModel
             this.BtnOk.Visible = false;
             this.BtnClose.Visible = false;
             
-            // 弃审不可用
-            this.BtnUndoApprove.Enabled = false;
+            //// 弃审不可用
+            //this.BtnUndoApprove.Enabled = false;
 		}
 
 

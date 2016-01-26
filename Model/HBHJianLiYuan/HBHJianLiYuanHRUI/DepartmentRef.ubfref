@@ -15,7 +15,7 @@
       <OrderFields>
         <OrderField id="260b0eda-c945-4c06-9cc7-9144678fdc5d" name="Code" displayName="编码" description="" help="部门.Misc.编码" direction="0" sequence="0" refAttributeName="UFIDA.U9.CBO.HR.Department.Department:Code" />
       </OrderFields>
-      <Filter>Effective.IsEffective=1 and Effective.EffectiveDate&lt;='#Context.DateTime#' and Effective.DisableDate&gt;='#Context.DateTime#'</Filter>
+      <Filter>Effective.IsEffective=1 and Effective.EffectiveDate&lt;='#Context.DateTime#' and Effective.DisableDate&gt;='#Context.DateTime#' and Org = #Context.OrgID#</Filter>
     </Reference>
   </References>
 </ReferenceComponent>
