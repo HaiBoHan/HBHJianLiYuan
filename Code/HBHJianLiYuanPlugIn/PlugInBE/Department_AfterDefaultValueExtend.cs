@@ -39,6 +39,19 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInBE
                 {
                     string strPre = parentDeptCode;
                     int parentDeptLen = parentDeptCode.Length;
+
+                    // 3-2-2-3-2-2
+                    int subLength = 0;
+                    // 父是7，则子3；否则为2
+                    if (parentDeptLen == 7)
+                    {
+                        subLength = 3;
+                    }
+                    else
+                    {
+                        subLength = 2;
+                    }
+
                     //string maxOpath = string.Format("Code like @Code + '%' and Code != @Code order by Convert(int,Substring(Code,len(@Code)+1,len(Code)),8) desc"
                                 //);
                     string maxOpath = string.Format("Code like @Code + '%' and Code != @Code2"
@@ -56,7 +69,7 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInBE
                     {
                         foreach (Department dept in lstDept)
                         {
-                            int curFlow = GetFlow(dept.Code, parentDeptLen);
+                            int curFlow = GetFlow(dept.Code, parentDeptLen, subLength);
 
                             if (curFlow > maxFlow)
                                 maxFlow = curFlow;
@@ -74,17 +87,6 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInBE
                     maxFlow++;
                     //entity.Code = strPre + maxFlow.ToString();
 
-                    // 3-2-2-3-2-2
-                    int subLength = 0;
-                    // 父是7，则子3；否则为2
-                    if (parentDeptLen == 7)
-                    {
-                        subLength = 3;
-                    }
-                    else
-                    {
-                        subLength = 2;
-                    }
                     string strNewFlow = maxFlow.ToString().PadLeft(subLength,'0');
 
                     entity.Code = strPre + strNewFlow;
@@ -92,11 +94,12 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInBE
             }
         }
 
-        private int GetFlow(string deptCode,int parentLength)
+        private int GetFlow(string deptCode, int parentLength, int subLength)
         {
             int flow = 0;
 
-            string strFl = deptCode.Remove(0, parentLength);
+            //string strFl = deptCode.Remove(0, parentLength);
+            string strFl = deptCode.Substring(parentLength, subLength);
 
             int.TryParse(strFl, out flow);
 
