@@ -163,7 +163,7 @@ namespace DayCheckInBListUIModel
 
 
             U9.VOB.HBHCommon.HBHCommonUI.HBHUIHelper.UIList_SetDocNoTitleClick(this,this.DataGrid1
-                , "ID"
+                , "MainID"
                 , "CheckInDate"
                 , "eff032a7-ce78-48c1-bb3f-f992965caa0d"
                 , "日考勤"

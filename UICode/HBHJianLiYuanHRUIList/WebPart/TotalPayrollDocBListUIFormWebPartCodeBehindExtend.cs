@@ -164,7 +164,7 @@ namespace TotalPayrollDocBListUIModel
 
 
             U9.VOB.HBHCommon.HBHCommonUI.HBHUIHelper.UIList_SetDocNoTitleClick(this, this.DataGrid1
-                , "ID"
+                , "MainID"
                 , "PayDate"
                 , "fe9fb407-7e59-4dfa-a7dd-c841afbbc35d"
                 , "发薪汇总单"

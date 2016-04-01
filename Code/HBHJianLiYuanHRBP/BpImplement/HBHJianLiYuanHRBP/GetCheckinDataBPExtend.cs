@@ -598,6 +598,7 @@
                 // 调动后才有调动天数
                 // 调动天数：取计薪期间内调动后部门出勤天数   编码：094 名称：调动天数
                 //transferDays = fullCheckInDays + workHours;
+                // 调动后才有调动天数 = 全日制出勤 【因为全日制，有加班工时，考勤天数 天和加班工时 小时 单位不同，所以分开单独计算】
                 transferDays = fullCheckInDays;
             }
             else
@@ -616,8 +617,8 @@
                 //checkinDays = lastCheckIn.PartTimeDay;
                 //checkinDays += fPartCheckInDays;
                 checkinDays = 0;
-                // 调动后才有调动天数
-                transferDays = checkInDTO.PartTimeDay;
+                // 调动后才有调动天数 = 非全日制 + 钟点工出勤(加班公时)  【因为非全日制F，没有加班工时，全部合并到一起了】
+                transferDays = checkInDTO.PartTimeDay + checkInDTO.HourlyDay;
 
                 workHours += fPartCheckInDays;
             }

@@ -40,15 +40,31 @@ namespace U9.VOB.Cus.HBHJianLiYuan {
 		/// <summary>
 		/// 设置默认值
 		/// </summary>
-		protected override void OnSetDefaultValue()
-		{
-			base.OnSetDefaultValue();
+        protected override void OnSetDefaultValue()
+        {
+            base.OnSetDefaultValue();
 
             if (this.Org == null)
             {
                 this.Org = Context.LoginOrg;
             }
-		}
+
+            if (this.Status != DocStatus.Approved)
+            {
+                if (this.ChangedBeforeDept == null
+                    && this.ChangedBeforeDeptKey != null
+                    )
+                {
+                    this.ChangedBeforeDeptKey = null;
+                }
+                if (this.ChangedAfterDept == null
+                    && this.ChangedAfterDeptKey != null
+                    )
+                {
+                    this.ChangedAfterDeptKey = null;
+                }
+            }
+        }
 
 		/// <summary>
 		/// before Insert

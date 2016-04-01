@@ -177,7 +177,8 @@ select
 	,sum(checkInLine.HourlyDay) as HourlyDay
 
 	,min(checkIn.CheckInDate) as CheckInDate
-
+	
+	,arch.Name
 from Pay_PayrollCalculate payCalc
 
 	--left join PAY_PayrollDoc payHead
@@ -220,6 +221,8 @@ from Pay_PayrollCalculate payCalc
 			-- or checkInLine.EmployeeArchive = payLine.Employee
 			 )
 
+	left join CBO_EmployeeArchive arch
+	on checkInLine.EmployeeArchive = arch.ID
 where
 	payCalc.ID = @PayrollCalculate
 	-- or payHead.ID = @PayrollDoc
@@ -231,7 +234,8 @@ group by
 	-- ,checkIn.CheckInDate
 	,checkInLine.EmployeeArchive
 	,checkInLine.CheckType
-	
+	,arch.Name
+
 order by
 	min(checkIn.CheckInDate) asc
 
