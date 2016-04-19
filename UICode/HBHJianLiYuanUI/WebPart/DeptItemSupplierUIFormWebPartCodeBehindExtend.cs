@@ -230,7 +230,7 @@ namespace U9.VOB.Cus.HBHJianLiYuan
             //查找
             //取得当前卡片参照的属性变量：FormID、Width、Height、Title；
             //传递隐藏域wpFindID的客户端ID；注意：隐藏域wpFindID会记录参照选择的记录ID；
-            PDFormMessage.ShowConfirmDialog(this.Page, "51b1ffc6-10c8-4c1a-b2fb-0c5d606c3138 ", Title, wpFindID.ClientID, this.BtnFind, null);
+            PDFormMessage.ShowConfirmDialog(this.Page, "51b1ffc6-10c8-4c1a-b2fb-0c5d606c3138", Title, wpFindID.ClientID, this.BtnFind, null);
 
             // 实现个性化
             UFIDA.U9.UI.PDHelper.PersonalizationHelper.SetPersonalizationEnable(this, true);
