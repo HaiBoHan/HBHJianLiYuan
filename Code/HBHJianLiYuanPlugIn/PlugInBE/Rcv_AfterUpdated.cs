@@ -9,6 +9,8 @@ using UFIDA.U9.PM.Rcv;
 using UFIDA.U9.PM.PO;
 using UFIDA.U9.PM.Enums;
 using U9.VOB.Cus.HBHJianLiYuan.Proxy;
+using UFIDA.U9.ISV.PO.Proxy;
+using UFIDA.U9.ISV.PO;
 
 namespace U9.VOB.Cus.HBHJianLiYuan.PlugInBE
 {
@@ -70,9 +72,17 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInBE
                     }
                 }
 
+                // 甚至都不需要开Session,后面可以试试
+                // Updated ,应该需要开Session
+                if (isUpdated)
+                {
+                    session.Commit();
+                }
+
                 // 更新来源订单为关闭状态
                 // UFIDA.U9.PM.PurchaseOrderUIModel.PurchaseOrderMainUIFormWebPart       MenuClose
                 // MenuClose_Click_Extend
+                long srcDocOrg = -1;
                 List<long> lstPO = new List<long>();
                 foreach (RcvLine line in entity.RcvLines)
                 {
@@ -88,6 +98,13 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInBE
                         {
                             lstPO.Add(srcPOID);
                         }
+
+                        if(srcDocOrg <= 0
+                            && line.SrcDoc.SrcDocOrgKey != null 
+                            )
+                        {
+                            srcDocOrg = line.SrcDoc.SrcDocOrgKey.ID;
+                        }
                     }
                 }
 
@@ -98,17 +115,24 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInBE
                         // 审核操作，整单关闭来源订单
                         if (isApproveAction)
                         {
+                            //bool isClose = false;
+                            ClosePOLineSRVProxy closeProxy = new ClosePOLineSRVProxy();
+
+                            closeProxy.POLineKeyDTOs = new List<UFIDA.U9.ISV.PO.POLineKeyDTOData>();
+
                             foreach (long srcPOID in lstPO)
                             {
                                 PurchaseOrder po = PurchaseOrder.Finder.FindByID(srcPOID);
 
+                                // 关闭服务里，没有设置动作
+                                // // UFIDA.U9.PM.PO.SinglePoShipLineBPImpementStrategy
                                 // 已审核，则关闭
                                 if (po != null
                                     && po.Status == PODOCStatusEnum.Approved
                                     )
                                 {
                                     // po.Status = PODOCStatusEnum.Closed;
-                                    po.ActionType = ActivateTypeEnum.CloseAct;
+                                    //po.ActionType = ActivateTypeEnum.CloseAct;
 
                                     foreach (POLine line in po.POLines)
                                     {
@@ -121,20 +145,37 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInBE
                                         {
                                             if (subline.Status == PODOCStatusEnum.Approved)
                                             {
-                                                subline.Status = PODOCStatusEnum.ClosedShort;
+                                                //subline.Status = PODOCStatusEnum.ClosedShort;
+
+                                                POLineKeyDTOData lineDTO = new POLineKeyDTOData();
+                                                lineDTO.LineKeyDTO = new UFIDA.U9.Base.DTOs.IDCodeNameDTOData();
+                                                lineDTO.LineKeyDTO.ID = line.ID;
+
+                                                closeProxy.POLineKeyDTOs.Add(lineDTO);
+
+                                                break;
                                             }
                                             // subline.TotalArriveQtyTU
                                             // subline.TotalRecievedQtyTU
                                         }
                                     }
 
-                                    isUpdated = true;
+                                    //isUpdated = true;
                                 }
+                            }
+
+                            if (closeProxy.POLineKeyDTOs.Count > 0)
+                            {
+                                closeProxy.Do(srcDocOrg);
                             }
                         }
                         // 弃审操作，整单打开来源订单
                         else if (isUnApproveAction)
                         {
+                            OpenPOLineSRVProxy openProxy = new OpenPOLineSRVProxy();
+
+                            openProxy.POLineKeyDTOs = new List<UFIDA.U9.ISV.PO.POLineKeyDTOData>();
+
                             foreach (long srcPOID in lstPO)
                             {
                                 PurchaseOrder po = PurchaseOrder.Finder.FindByID(srcPOID);
@@ -148,7 +189,7 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInBE
                                     if (IsCanOpen(po))
                                     {
                                         //po.Status = PODOCStatusEnum.Approved;
-                                        po.ActionType = ActivateTypeEnum.OpenAct;
+                                        //po.ActionType = ActivateTypeEnum.OpenAct;
 
                                         foreach (POLine line in po.POLines)
                                         {
@@ -161,24 +202,31 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInBE
                                             {
                                                 if (subline.Status == PODOCStatusEnum.ClosedShort)
                                                 {
-                                                    subline.Status = PODOCStatusEnum.Approved;
+                                                    //subline.Status = PODOCStatusEnum.Approved;
+
+                                                    POLineKeyDTOData lineDTO = new POLineKeyDTOData();
+                                                    lineDTO.LineKeyDTO = new UFIDA.U9.Base.DTOs.IDCodeNameDTOData();
+                                                    lineDTO.LineKeyDTO.ID = line.ID;
+
+                                                    openProxy.POLineKeyDTOs.Add(lineDTO);
+
+                                                    break;
                                                 }
                                             }
                                         }
 
-                                        isUpdated = true;
+                                        //isUpdated = true;
                                     }
                                 }
                             }
+
+
+                            if (openProxy.POLineKeyDTOs.Count > 0)
+                            {
+                                openProxy.Do(srcDocOrg);
+                            }
                         }
                     }
-                }
-
-                // 甚至都不需要开Session,后面可以试试
-                // Updated ,应该需要开Session
-                if (isUpdated)
-                {
-                    session.Commit();
                 }
 
                 // 审核，则自动生成领料单

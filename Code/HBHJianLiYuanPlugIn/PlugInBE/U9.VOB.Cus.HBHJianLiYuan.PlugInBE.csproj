@@ -158,6 +158,12 @@
     <Reference Include="UFIDA.U9.InvDoc.InvDocBE">
       <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\App\UFIDA.U9.InvDoc.InvDocBE.dll</HintPath>
     </Reference>
+    <Reference Include="UFIDA.U9.ISV.PM.PMISV.Agent">
+      <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\App\UFIDA.U9.ISV.PM.PMISV.Agent.dll</HintPath>
+    </Reference>
+    <Reference Include="UFIDA.U9.ISV.PM.PMISV.Deploy">
+      <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\App\UFIDA.U9.ISV.PM.PMISV.Deploy.dll</HintPath>
+    </Reference>
     <Reference Include="UFIDA.U9.ISV.Project">
       <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\App\UFIDA.U9.ISV.Project.dll</HintPath>
     </Reference>
