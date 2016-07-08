@@ -224,10 +224,11 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInBE
                                 && lotFinallyPrice != curPrice
                                 )
                             {
-                                if (entity.ActivityType != SMActivityEnum.OBAUpdate)
-                                {
-                                    entity.ActivityType = SMActivityEnum.OBAUpdate;
-                                }
+                                // 设置这个，有些批号丢失；所以改为不修改更新状态，也能写上金额；
+                                //if (entity.ActivityType != SMActivityEnum.OBAUpdate)
+                                //{
+                                //    entity.ActivityType = SMActivityEnum.OBAUpdate;
+                                //}
 
                                 // 最终价
                                 line.OrderPrice = lotFinallyPrice;
