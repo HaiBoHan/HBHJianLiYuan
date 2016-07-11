@@ -197,6 +197,7 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInBE
                     && entity.ShipLines.Count > 0
                     )
                 {
+                    bool isRecalcPrice = false;
                     foreach (ShipLine line in entity.ShipLines)
                     {
                         if (line != null)
@@ -225,10 +226,11 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInBE
                                 )
                             {
                                 // 设置这个，有些批号丢失；所以改为不修改更新状态，也能写上金额；
-                                if (entity.ActivityType != SMActivityEnum.OBAUpdate)
-                                {
-                                    entity.ActivityType = SMActivityEnum.OBAUpdate;
-                                }
+                                //if (entity.ActivityType != SMActivityEnum.OBAUpdate)
+                                //{
+                                //    entity.ActivityType = SMActivityEnum.OBAUpdate;
+                                //}
+                                isRecalcPrice = true;
 
                                 // 最终价
                                 line.OrderPrice = lotFinallyPrice;
@@ -257,7 +259,24 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInBE
                                         line.ShipTaxs.RemoveAt(i);
                                     }
                                 }
+
+                                //ShipLine.GetMoneyInfo(line);
                             }
+                        }
+                    }
+
+                    if (isRecalcPrice)
+                    {
+                        // 先用OBA重算价格方法，再还原为原有UI更新状态
+                        if (entity.ActivityType != SMActivityEnum.OBAUpdate)
+                        {
+                            SMActivityEnum oldActivity = entity.ActivityType;
+
+                            entity.ActivityType = SMActivityEnum.OBAUpdate;
+
+                            entity.OBAReCalc();
+
+                            entity.ActivityType = oldActivity;
                         }
                     }
                 }
