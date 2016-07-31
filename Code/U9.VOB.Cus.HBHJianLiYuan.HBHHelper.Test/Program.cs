@@ -21,7 +21,8 @@ namespace U9.VOB.Cus.HBHJianLiYuan.HBHHelper.Test
 
 
 
-            DateTime dt = new DateTime(2016,8, 1);
+            //DateTime dt = new DateTime(2016,8, 1);
+            DateTime dt = new DateTime(2016,9, 1);
             //// 时分秒 毫秒；
             //string str = dt.ToString("yyyy-MM-dd hh:mm:ss.fff");
 
