@@ -19,6 +19,11 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInBP
         public override void BeforeDo(object bp)
         {
             //throw new Exception("The method or operation is not implemented.");
+            
+            if (!HBHHelper.PubConfig.Const_ThirdHRStage)
+            {
+                return;
+            }
 
             CalculateActualPayBP bpObj = bp as CalculateActualPayBP;
 

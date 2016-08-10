@@ -92,6 +92,11 @@ private string CalAllEmp()
         {
             //throw new Exception("The method or operation is not implemented.");
 
+            if (!HBHHelper.PubConfig.Const_ThirdHRStage)
+            {
+                return;
+            }
+
             PayrollCalculateBP bpObj = bp as PayrollCalculateBP;
 
             if (bpObj != null

@@ -26,23 +26,26 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInUI
 
             _strongPart = Part as UFIDA.U9.HR.PAY.PayCaculate.PayCaculateUIModel.PayCaculateMainUIFormWebPart;
 
-            // Card0
-            // 13
-            IUFCard card0 = (IUFCard)part.GetUFControlByName(part.TopLevelContainer, "Card0");
-            if (card0 != null)
+            if (HBHHelper.PubConfig.Const_ThirdHRStage)
             {
-                IUFButton btnGetCheckin = new UFWebButtonAdapter();
-                btnGetCheckin.Text = "考勤计算";
-                btnGetCheckin.ID = "btnGetCheckin";
-                btnGetCheckin.AutoPostBack = true;
-                btnGetCheckin.Click += new EventHandler(btnGetCheckin_Click);
+                // Card0
+                // 13
+                IUFCard card0 = (IUFCard)part.GetUFControlByName(part.TopLevelContainer, "Card0");
+                if (card0 != null)
+                {
+                    IUFButton btnGetCheckin = new UFWebButtonAdapter();
+                    btnGetCheckin.Text = "考勤计算";
+                    btnGetCheckin.ID = "btnGetCheckin";
+                    btnGetCheckin.AutoPostBack = true;
+                    btnGetCheckin.Click += new EventHandler(btnGetCheckin_Click);
 
-                card0.Controls.Add(btnGetCheckin);
-                CommonFunctionExtend.Layout(card0, btnGetCheckin, 12, 0);
+                    card0.Controls.Add(btnGetCheckin);
+                    CommonFunctionExtend.Layout(card0, btnGetCheckin, 12, 0);
 
 
-                // 确认对话框
-                UFIDA.U9.UI.PDHelper.PDFormMessage.ShowDelConfirmDialog(_strongPart.Page, "确认重新计算考勤？", "考勤计算", btnGetCheckin);
+                    // 确认对话框
+                    UFIDA.U9.UI.PDHelper.PDFormMessage.ShowDelConfirmDialog(_strongPart.Page, "确认重新计算考勤？", "考勤计算", btnGetCheckin);
+                }
             }
         }
 

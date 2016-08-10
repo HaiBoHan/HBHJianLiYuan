@@ -16,13 +16,13 @@ namespace U9.VOB.Cus.HBHJianLiYuan.HBHHelper
         /// <summary>
         /// 第二部分需求
         /// </summary>
-        public const bool Const_TwoStage = true;
+        public static bool Const_TwoStage = true;
 
         // 第三阶段需求(HR)
         /// <summary>
         /// 第三阶段需求(HR)
         /// </summary>
-        public const bool Const_ThirdHRStage = true;
+        public static bool Const_ThirdHRStage = false;
 
         private static Dictionary<string, string> _dicConfig;
 
@@ -74,7 +74,7 @@ namespace U9.VOB.Cus.HBHJianLiYuan.HBHHelper
         //public const long expire = 131065056000000000;   //2016.05.01
         //public const long expire = 131117760000000000;   //2016.07.01
         //public const long expire = 131144544000000000;   //2016.08.01
-        public const long expire = 131171328000000000;   //2016.08.01
+        public const long expire = 131171328000000000;   //2016.09.01
 
         public static void ExpiredProcess()
         {
