@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<UserDefineRptMenu>
+  <RptMenu AllocSerials="false">
+    <ID>1001512220570001</ID>
+    <CreatedOn>2015/12/22 17:56:46</CreatedOn>
+    <CreatedBy>
+    </CreatedBy>
+    <SysVersion>0</SysVersion>
+    <Parent>0</Parent>
+    <Sequence>1</Sequence>
+    <Name>CheckInRpt</Name>
+    <ShortName>考勤报表</ShortName>
+    <Code>UFSoft.UBF.Report.PersonalMenus!3eb4e903-f30d-4f06-adf8-282ea48316f5</Code>
+    <PageParameter>
+    </PageParameter>
+    <URI>
+    </URI>
+    <Application>301101</Application>
+  </RptMenu>
+  <RptMenu AllocSerials="false">
+    <ID>1001512220570002</ID>
+    <CreatedOn>2015/12/22 17:56:46</CreatedOn>
+    <CreatedBy>
+    </CreatedBy>
+    <SysVersion>1</SysVersion>
+    <Parent>1001512220570001</Parent>
+    <Sequence>0</Sequence>
+    <Name>MonthCheckInRpt</Name>
+    <ShortName>月考勤报表</ShortName>
+    <Code>UFSoft.UBF.Report.PersonalMenus!d15b4f3c-5983-441d-9445-26b57bb69162</Code>
+    <PageParameter>ReportContent=c9f38c9e-7992-4796-a0ab-b142e82ee9a6&amp;ReportDisplayName=月考勤报表</PageParameter>
+    <URI>UFIDA.UBF.Process.Report.IndividualRpt</URI>
+    <Application>301101</Application>
+  </RptMenu>
+</UserDefineRptMenu>

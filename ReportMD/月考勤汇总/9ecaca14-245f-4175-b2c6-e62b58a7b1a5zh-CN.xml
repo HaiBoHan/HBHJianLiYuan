@@ -1,0 +1,1108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Name>MonthCheckInReport</Name>
+  <MyName>MonthCheckInReport</MyName>
+  <ReportID>2920f2e8-fa20-43c7-8d2f-e5832dabdd9f</ReportID>
+  <RuntimNoPagging>false</RuntimNoPagging>
+  <SetPageRows>false</SetPageRows>
+  <RowNumberOnPage>0</RowNumberOnPage>
+  <Language>zh-CN</Language>
+  <Author>wangxif</Author>
+  <Designer>用户自定义报表</Designer>
+  <DynamicMatrixTable />
+  <BaseMeasure>Mil</BaseMeasure>
+  <UserMeasure>Inch</UserMeasure>
+  <Width>8190</Width>
+  <PageSet>
+    <CanNotModifiedOnRuntime>false</CanNotModifiedOnRuntime>
+    <Margin>
+      <Left>300</Left>
+      <Right>300</Right>
+      <Top>300</Top>
+      <Bottom>300</Bottom>
+    </Margin>
+    <Height>11693</Height>
+    <Width>8268</Width>
+    <Landscape>false</Landscape>
+    <PaperType>A4</PaperType>
+  </PageSet>
+  <ReportHeader name="ReportHeader">
+    <Hide>false</Hide>
+    <ReportItems>
+      <TextBoxs>
+        <TextBox name="TextBox_38">
+          <Style>
+            <FormatStyle />
+            <Front />
+            <Alignment>
+              <Horizontal>Center</Horizontal>
+            </Alignment>
+            <Background />
+            <Padding />
+            <Font>
+              <Size>25.8000011</Size>
+            </Font>
+            <Border>
+              <Color>White,White,White,White,White</Color>
+            </Border>
+          </Style>
+          <Location>
+            <Top>350</Top>
+            <Left>980</Left>
+          </Location>
+          <Width>5470</Width>
+          <Height>630</Height>
+          <Text>月考勤报表</Text>
+          <IsBookMark>false</IsBookMark>
+        </TextBox>
+      </TextBoxs>
+      <Cells />
+    </ReportItems>
+    <Style>
+      <Background />
+    </Style>
+    <PrintModel>PrintOnFirstPage</PrintModel>
+  </ReportHeader>
+  <ReportFooter name="ReportFooter">
+    <Hide>false</Hide>
+    <ReportItems>
+      <Cells />
+    </ReportItems>
+    <Style>
+      <Background />
+    </Style>
+    <PrintModel>PrintOnLastPage</PrintModel>
+  </ReportFooter>
+  <ReportBody name="ReportDetail">
+    <Height>1800</Height>
+    <Hide>false</Hide>
+    <ReportItems>
+      <Tables>
+        <Table name="Table_1">
+          <ColumnInfo>
+            <Column>
+              <Width>1000</Width>
+              <Name>Department</Name>
+            </Column>
+            <Column>
+              <Width>1000</Width>
+              <Name>CheckInDay</Name>
+            </Column>
+            <Column>
+              <Width>1000</Width>
+              <Name>FullTimeDay</Name>
+            </Column>
+            <Column>
+              <Width>1000</Width>
+            </Column>
+            <Column>
+              <Width>1000</Width>
+            </Column>
+            <Column>
+              <Width>1000</Width>
+            </Column>
+          </ColumnInfo>
+          <Style>
+            <Border />
+            <Font />
+            <Padding />
+            <Background />
+            <WholeBorder />
+          </Style>
+          <Header>
+            <RowInfos>
+              <RowInfo>
+                <Height>250</Height>
+              </RowInfo>
+            </RowInfos>
+            <Rows>
+              <Row>
+                <Height>250</Height>
+                <TableCells>
+                  <TableCell>
+                    <RowID>0</RowID>
+                    <ColumnID>0</ColumnID>
+                    <ReportItems>
+                      <TextBoxs>
+                        <TextBox name="TextBox_6">
+                          <Style>
+                            <FormatStyle />
+                            <Front />
+                            <Alignment>
+                              <Horizontal>Center</Horizontal>
+                            </Alignment>
+                            <Background />
+                            <Padding />
+                            <Font />
+                            <Border />
+                          </Style>
+                          <Location />
+                          <Width>1000</Width>
+                          <Height>250</Height>
+                          <Text>Department</Text>
+                          <IsBookMark>false</IsBookMark>
+                        </TextBox>
+                      </TextBoxs>
+                    </ReportItems>
+                  </TableCell>
+                  <TableCell>
+                    <RowID>0</RowID>
+                    <ColumnID>1</ColumnID>
+                    <ReportItems>
+                      <TextBoxs>
+                        <TextBox name="TextBox_7">
+                          <Style>
+                            <FormatStyle />
+                            <Front />
+                            <Alignment>
+                              <Horizontal>Center</Horizontal>
+                            </Alignment>
+                            <Background />
+                            <Padding />
+                            <Font />
+                            <Border />
+                          </Style>
+                          <Location />
+                          <Width>1000</Width>
+                          <Height>250</Height>
+                          <Text>CheckInDay</Text>
+                          <IsBookMark>false</IsBookMark>
+                        </TextBox>
+                      </TextBoxs>
+                    </ReportItems>
+                  </TableCell>
+                  <TableCell>
+                    <RowID>0</RowID>
+                    <ColumnID>5</ColumnID>
+                    <ReportItems>
+                      <TextBoxs>
+                        <TextBox name="TextBox_8">
+                          <Style>
+                            <FormatStyle />
+                            <Front />
+                            <Alignment />
+                            <Background />
+                            <Padding />
+                            <Font />
+                            <Border />
+                          </Style>
+                          <Location />
+                          <Width>1000</Width>
+                          <Height>250</Height>
+                          <IsBookMark>false</IsBookMark>
+                        </TextBox>
+                      </TextBoxs>
+                    </ReportItems>
+                  </TableCell>
+                  <TableCell>
+                    <RowID>0</RowID>
+                    <ColumnID>4</ColumnID>
+                    <ReportItems>
+                      <TextBoxs>
+                        <TextBox name="TextBox_15">
+                          <Style>
+                            <FormatStyle />
+                            <Front />
+                            <Alignment />
+                            <Background />
+                            <Padding />
+                            <Font />
+                            <Border />
+                          </Style>
+                          <Location />
+                          <Width>1000</Width>
+                          <Height>250</Height>
+                          <IsBookMark>false</IsBookMark>
+                        </TextBox>
+                      </TextBoxs>
+                    </ReportItems>
+                  </TableCell>
+                  <TableCell>
+                    <RowID>0</RowID>
+                    <ColumnID>3</ColumnID>
+                    <ReportItems>
+                      <TextBoxs>
+                        <TextBox name="TextBox_18">
+                          <Style>
+                            <FormatStyle />
+                            <Front />
+                            <Alignment />
+                            <Background />
+                            <Padding />
+                            <Font />
+                            <Border />
+                          </Style>
+                          <Location />
+                          <Width>1000</Width>
+                          <Height>250</Height>
+                          <IsBookMark>false</IsBookMark>
+                        </TextBox>
+                      </TextBoxs>
+                    </ReportItems>
+                  </TableCell>
+                  <TableCell>
+                    <RowID>0</RowID>
+                    <ColumnID>2</ColumnID>
+                    <ReportItems>
+                      <TextBoxs>
+                        <TextBox name="TextBox_21">
+                          <Style>
+                            <FormatStyle />
+                            <Front />
+                            <Alignment>
+                              <Horizontal>Center</Horizontal>
+                            </Alignment>
+                            <Background />
+                            <Padding />
+                            <Font />
+                            <Border />
+                          </Style>
+                          <Location />
+                          <Width>1000</Width>
+                          <Height>250</Height>
+                          <Text>FullTimeDay</Text>
+                          <IsBookMark>false</IsBookMark>
+                        </TextBox>
+                      </TextBoxs>
+                    </ReportItems>
+                  </TableCell>
+                </TableCells>
+              </Row>
+            </Rows>
+          </Header>
+          <Footer>
+            <RowInfos>
+              <RowInfo>
+                <Height>250</Height>
+              </RowInfo>
+            </RowInfos>
+            <Rows>
+              <Row>
+                <Height>250</Height>
+                <TableCells>
+                  <TableCell>
+                    <RowID>0</RowID>
+                    <ColumnID>0</ColumnID>
+                    <ReportItems>
+                      <TextBoxs>
+                        <TextBox name="TextBox_12">
+                          <Style>
+                            <FormatStyle />
+                            <Front />
+                            <Alignment />
+                            <Background />
+                            <Padding />
+                            <Font />
+                            <Border />
+                          </Style>
+                          <Location />
+                          <Width>1000</Width>
+                          <Height>250</Height>
+                          <IsBookMark>false</IsBookMark>
+                        </TextBox>
+                      </TextBoxs>
+                    </ReportItems>
+                  </TableCell>
+                  <TableCell>
+                    <RowID>0</RowID>
+                    <ColumnID>1</ColumnID>
+                    <ReportItems>
+                      <TextBoxs>
+                        <TextBox name="TextBox_13">
+                          <Style>
+                            <FormatStyle />
+                            <Front />
+                            <Alignment />
+                            <Background />
+                            <Padding />
+                            <Font />
+                            <Border />
+                          </Style>
+                          <Location />
+                          <Width>1000</Width>
+                          <Height>250</Height>
+                          <IsBookMark>false</IsBookMark>
+                        </TextBox>
+                      </TextBoxs>
+                    </ReportItems>
+                  </TableCell>
+                  <TableCell>
+                    <RowID>0</RowID>
+                    <ColumnID>5</ColumnID>
+                    <ReportItems>
+                      <TextBoxs>
+                        <TextBox name="TextBox_14">
+                          <Style>
+                            <FormatStyle />
+                            <Front />
+                            <Alignment />
+                            <Background />
+                            <Padding />
+                            <Font />
+                            <Border />
+                          </Style>
+                          <Location />
+                          <Width>1000</Width>
+                          <Height>250</Height>
+                          <IsBookMark>false</IsBookMark>
+                        </TextBox>
+                      </TextBoxs>
+                    </ReportItems>
+                  </TableCell>
+                  <TableCell>
+                    <RowID>0</RowID>
+                    <ColumnID>4</ColumnID>
+                    <ReportItems>
+                      <TextBoxs>
+                        <TextBox name="TextBox_17">
+                          <Style>
+                            <FormatStyle />
+                            <Front />
+                            <Alignment />
+                            <Background />
+                            <Padding />
+                            <Font />
+                            <Border />
+                          </Style>
+                          <Location />
+                          <Width>1000</Width>
+                          <Height>250</Height>
+                          <IsBookMark>false</IsBookMark>
+                        </TextBox>
+                      </TextBoxs>
+                    </ReportItems>
+                  </TableCell>
+                  <TableCell>
+                    <RowID>0</RowID>
+                    <ColumnID>3</ColumnID>
+                    <ReportItems>
+                      <TextBoxs>
+                        <TextBox name="TextBox_20">
+                          <Style>
+                            <FormatStyle />
+                            <Front />
+                            <Alignment />
+                            <Background />
+                            <Padding />
+                            <Font />
+                            <Border />
+                          </Style>
+                          <Location />
+                          <Width>1000</Width>
+                          <Height>250</Height>
+                          <IsBookMark>false</IsBookMark>
+                        </TextBox>
+                      </TextBoxs>
+                    </ReportItems>
+                  </TableCell>
+                  <TableCell>
+                    <RowID>0</RowID>
+                    <ColumnID>2</ColumnID>
+                    <ReportItems>
+                      <TextBoxs>
+                        <TextBox name="TextBox_23">
+                          <Style>
+                            <FormatStyle />
+                            <Front />
+                            <Alignment />
+                            <Background />
+                            <Padding />
+                            <Font />
+                            <Border />
+                          </Style>
+                          <Location />
+                          <Width>1000</Width>
+                          <Height>250</Height>
+                          <IsBookMark>false</IsBookMark>
+                        </TextBox>
+                      </TextBoxs>
+                    </ReportItems>
+                  </TableCell>
+                </TableCells>
+              </Row>
+            </Rows>
+          </Footer>
+          <Detail>
+            <RowInfos>
+              <RowInfo>
+                <Height>250</Height>
+              </RowInfo>
+            </RowInfos>
+            <Rows>
+              <Row>
+                <Height>250</Height>
+                <TableCells>
+                  <TableCell>
+                    <RowID>0</RowID>
+                    <ColumnID>0</ColumnID>
+                    <ReportItems>
+                      <TextBoxs>
+                        <TextBox name="TextBox_9">
+                          <Style>
+                            <FormatStyle />
+                            <Front />
+                            <Alignment />
+                            <Background />
+                            <Padding />
+                            <Font />
+                            <Border />
+                          </Style>
+                          <Location />
+                          <Width>1000</Width>
+                          <Height>250</Height>
+                          <Text>=Fields!Department.Value</Text>
+                          <IsBookMark>false</IsBookMark>
+                        </TextBox>
+                      </TextBoxs>
+                    </ReportItems>
+                  </TableCell>
+                  <TableCell>
+                    <RowID>0</RowID>
+                    <ColumnID>1</ColumnID>
+                    <ReportItems>
+                      <TextBoxs>
+                        <TextBox name="TextBox_10">
+                          <Style>
+                            <FormatStyle />
+                            <Front />
+                            <Alignment />
+                            <Background />
+                            <Padding />
+                            <Font />
+                            <Border />
+                          </Style>
+                          <Location />
+                          <Width>1000</Width>
+                          <Height>250</Height>
+                          <Text>=Fields!CheckInDay.Value</Text>
+                          <IsBookMark>false</IsBookMark>
+                        </TextBox>
+                      </TextBoxs>
+                    </ReportItems>
+                  </TableCell>
+                  <TableCell>
+                    <RowID>0</RowID>
+                    <ColumnID>5</ColumnID>
+                    <ReportItems>
+                      <TextBoxs>
+                        <TextBox name="TextBox_11">
+                          <Style>
+                            <FormatStyle />
+                            <Front />
+                            <Alignment />
+                            <Background />
+                            <Padding />
+                            <Font />
+                            <Border />
+                          </Style>
+                          <Location />
+                          <Width>1000</Width>
+                          <Height>250</Height>
+                          <IsBookMark>false</IsBookMark>
+                        </TextBox>
+                      </TextBoxs>
+                    </ReportItems>
+                  </TableCell>
+                  <TableCell>
+                    <RowID>0</RowID>
+                    <ColumnID>4</ColumnID>
+                    <ReportItems>
+                      <TextBoxs>
+                        <TextBox name="TextBox_16">
+                          <Style>
+                            <FormatStyle />
+                            <Front />
+                            <Alignment />
+                            <Background />
+                            <Padding />
+                            <Font />
+                            <Border />
+                          </Style>
+                          <Location />
+                          <Width>1000</Width>
+                          <Height>250</Height>
+                          <IsBookMark>false</IsBookMark>
+                        </TextBox>
+                      </TextBoxs>
+                    </ReportItems>
+                  </TableCell>
+                  <TableCell>
+                    <RowID>0</RowID>
+                    <ColumnID>3</ColumnID>
+                    <ReportItems>
+                      <TextBoxs>
+                        <TextBox name="TextBox_19">
+                          <Style>
+                            <FormatStyle />
+                            <Front />
+                            <Alignment />
+                            <Background />
+                            <Padding />
+                            <Font />
+                            <Border />
+                          </Style>
+                          <Location />
+                          <Width>1000</Width>
+                          <Height>250</Height>
+                          <IsBookMark>false</IsBookMark>
+                        </TextBox>
+                      </TextBoxs>
+                    </ReportItems>
+                  </TableCell>
+                  <TableCell>
+                    <RowID>0</RowID>
+                    <ColumnID>2</ColumnID>
+                    <ReportItems>
+                      <TextBoxs>
+                        <TextBox name="TextBox_22">
+                          <Style>
+                            <FormatStyle>
+                              <Format>{n,1}</Format>
+                            </FormatStyle>
+                            <Front />
+                            <Alignment />
+                            <Background />
+                            <Padding />
+                            <Font />
+                            <Border />
+                          </Style>
+                          <Location />
+                          <Width>1000</Width>
+                          <Height>250</Height>
+                          <Text>=Fields!FullTimeDay.Value</Text>
+                          <IsBookMark>false</IsBookMark>
+                        </TextBox>
+                      </TextBoxs>
+                    </ReportItems>
+                  </TableCell>
+                </TableCells>
+              </Row>
+            </Rows>
+          </Detail>
+          <HoldTableHead>false</HoldTableHead>
+          <HeaderPrintModel>PrintOnEachPage</HeaderPrintModel>
+          <FooterPrintModel>PrintOnEachPage</FooterPrintModel>
+          <DetailSolidLines>25</DetailSolidLines>
+          <Location>
+            <Top>160</Top>
+            <Left>370</Left>
+          </Location>
+          <DataSetName>MonthCheckIn</DataSetName>
+          <IsMegerGroup>false</IsMegerGroup>
+        </Table>
+      </Tables>
+      <Matrix name="matrix_1">
+        <Style>
+          <Border />
+          <Font />
+          <Padding />
+          <Background />
+        </Style>
+        <Columns>
+          <Column>
+            <Width>1500</Width>
+          </Column>
+          <Column>
+            <Width>1500</Width>
+          </Column>
+        </Columns>
+        <RowGroupings>
+          <RowGrouping>
+            <DynamicRows>
+              <DynamicTitle>=Fields!FullTimeDay.Value</DynamicTitle>
+              <TitleItems>
+                <TextBoxs>
+                  <TextBox name="TextBox_1">
+                    <Style>
+                      <FormatStyle />
+                      <Front />
+                      <Alignment />
+                      <Background />
+                      <Padding />
+                      <Font />
+                      <Border />
+                    </Style>
+                    <Location />
+                    <Width>1500</Width>
+                    <Height>250</Height>
+                    <Text>=Fields!FullTimeDay.Value</Text>
+                    <IsBookMark>false</IsBookMark>
+                  </TextBox>
+                </TextBoxs>
+              </TitleItems>
+              <Grouping name="autoRowGrouping">
+                <GroupExpression>=Fields!Department.Value</GroupExpression>
+                <Expressions />
+              </Grouping>
+              <ReportItems>
+                <TextBoxs>
+                  <TextBox name="TextBox_3">
+                    <Style>
+                      <FormatStyle />
+                      <Front />
+                      <Alignment />
+                      <Background />
+                      <Padding />
+                      <Font />
+                      <Border />
+                    </Style>
+                    <Location />
+                    <Width>1500</Width>
+                    <Height>250</Height>
+                    <Text>=Fields!Department.Value</Text>
+                    <IsBookMark>false</IsBookMark>
+                  </TextBox>
+                </TextBoxs>
+              </ReportItems>
+            </DynamicRows>
+          </RowGrouping>
+        </RowGroupings>
+        <ColumnGroupings>
+          <ColumnGroup>
+            <Height>250</Height>
+            <DynamicColumns>
+              <Grouping name="autoColumnGrouping">
+                <GroupExpression>=Fields!CheckInDate.Value</GroupExpression>
+                <Expressions />
+              </Grouping>
+              <ReportItems>
+                <TextBoxs>
+                  <TextBox name="TextBox_2">
+                    <Style>
+                      <FormatStyle />
+                      <Front />
+                      <Alignment />
+                      <Background />
+                      <Padding />
+                      <Font />
+                      <Border />
+                    </Style>
+                    <Location />
+                    <Width>1500</Width>
+                    <Height>250</Height>
+                    <Text>=Fields!CheckInDate.Value</Text>
+                    <IsBookMark>false</IsBookMark>
+                  </TextBox>
+                </TextBoxs>
+              </ReportItems>
+            </DynamicColumns>
+          </ColumnGroup>
+        </ColumnGroupings>
+        <MatrixRows>
+          <MatrixRow>
+            <Height>250</Height>
+            <MatrixCells>
+              <MatrixCell>
+                <ReportItems>
+                  <TextBoxs>
+                    <TextBox name="TextBox_4">
+                      <Style>
+                        <FormatStyle />
+                        <Front />
+                        <Alignment />
+                        <Background />
+                        <Padding />
+                        <Font />
+                        <Border />
+                      </Style>
+                      <Location />
+                      <Width>1500</Width>
+                      <Height>250</Height>
+                      <IsBookMark>false</IsBookMark>
+                    </TextBox>
+                  </TextBoxs>
+                </ReportItems>
+              </MatrixCell>
+            </MatrixCells>
+          </MatrixRow>
+        </MatrixRows>
+        <Location>
+          <Top>1000</Top>
+          <Left>330</Left>
+        </Location>
+        <Height>500</Height>
+        <Width>3000</Width>
+        <DataSetName>MonthCheckIn</DataSetName>
+      </Matrix>
+      <Cells />
+    </ReportItems>
+    <Style>
+      <Background />
+    </Style>
+    <Container>Table</Container>
+  </ReportBody>
+  <ReportDataSources>
+    <ReportDataSource name="local">
+      <ShareDataSource>false</ShareDataSource>
+      <IntegratedSecurity>true</IntegratedSecurity>
+      <ProviderType>UFRPT</ProviderType>
+      <ConnectionString>Data Source=121.42.141.121;Initial Catalog=1029;Persist Security Info=True;User ID=sa;Password=jly2015</ConnectionString>
+      <ID>487f078b-bc56-4937-939f-4303da02b748</ID>
+    </ReportDataSource>
+  </ReportDataSources>
+  <ReportDataQuerys>
+    <DataQuery name="MonthCheckIn">
+      <DataSourceName>local</DataSourceName>
+      <Fields>
+        <Field name="Department">
+          <FieldName>Department</FieldName>
+          <DataType>System.Int64</DataType>
+          <DefaultLabel>部门ID</DefaultLabel>
+          <SubFields />
+          <DisplayField>=Fields!Department.Value</DisplayField>
+          <ReferenceFilterName>Department</ReferenceFilterName>
+          <BreakColumnByDisplayField>false</BreakColumnByDisplayField>
+        </Field>
+        <Field name="DepartmentCode">
+          <FieldName>DepartmentCode</FieldName>
+          <DefaultLabel>部门编码</DefaultLabel>
+          <RowGroupEnable>true</RowGroupEnable>
+          <SubFields />
+          <DisplayField>=Fields!DepartmentCode.Value</DisplayField>
+          <ReferenceFilterName>DepartmentCode</ReferenceFilterName>
+          <BreakColumnByDisplayField>false</BreakColumnByDisplayField>
+        </Field>
+        <Field name="DepartmentName">
+          <FieldName>DepartmentName</FieldName>
+          <DefaultLabel>部门</DefaultLabel>
+          <SelectEnable>true</SelectEnable>
+          <RowGroupEnable>true</RowGroupEnable>
+          <RowGroupDefault>true</RowGroupDefault>
+          <SubFields />
+          <DisplayField>=Fields!DepartmentName.Value</DisplayField>
+          <ReferenceFilterName>DepartmentName</ReferenceFilterName>
+          <BreakColumnByDisplayField>false</BreakColumnByDisplayField>
+        </Field>
+        <Field name="EmployeeArchive">
+          <FieldName>EmployeeArchive</FieldName>
+          <DataType>System.Int64</DataType>
+          <DefaultLabel>员工ID</DefaultLabel>
+          <SubFields />
+          <DisplayField>=Fields!EmployeeArchive.Value</DisplayField>
+          <ReferenceFilterName>EmployeeArchive</ReferenceFilterName>
+          <BreakColumnByDisplayField>false</BreakColumnByDisplayField>
+        </Field>
+        <Field name="EmployeeCode">
+          <FieldName>EmployeeCode</FieldName>
+          <DefaultLabel>员工编码</DefaultLabel>
+          <RowGroupEnable>true</RowGroupEnable>
+          <SubFields />
+          <DisplayField>=Fields!EmployeeCode.Value</DisplayField>
+          <ReferenceFilterName>EmployeeCode</ReferenceFilterName>
+          <BreakColumnByDisplayField>false</BreakColumnByDisplayField>
+        </Field>
+        <Field name="EmployeeName">
+          <FieldName>EmployeeName</FieldName>
+          <DefaultLabel>员工</DefaultLabel>
+          <SelectEnable>true</SelectEnable>
+          <RowGroupEnable>true</RowGroupEnable>
+          <RowGroupDefault>true</RowGroupDefault>
+          <SubFields />
+          <DisplayField>=Fields!EmployeeName.Value</DisplayField>
+          <ReferenceFilterName>EmployeeName</ReferenceFilterName>
+          <BreakColumnByDisplayField>false</BreakColumnByDisplayField>
+        </Field>
+        <Field name="CheckType">
+          <FieldName>CheckType</FieldName>
+          <DefaultLabel>考勤类型</DefaultLabel>
+          <SelectEnable>true</SelectEnable>
+          <RowGroupEnable>true</RowGroupEnable>
+          <RowGroupDefault>true</RowGroupDefault>
+          <SubFields />
+          <DisplayField>=Fields!CheckType.Value</DisplayField>
+          <ReferenceFilterName>CheckType</ReferenceFilterName>
+          <BreakColumnByDisplayField>false</BreakColumnByDisplayField>
+        </Field>
+        <Field name="CheckInDate">
+          <FieldName>CheckInDate</FieldName>
+          <DefaultLabel>考勤日期</DefaultLabel>
+          <SelectEnable>true</SelectEnable>
+          <RowGroupEnable>true</RowGroupEnable>
+          <ColumnGroupEnable>true</ColumnGroupEnable>
+          <AggregationEnable>true</AggregationEnable>
+          <ColumnGroupDefault>true</ColumnGroupDefault>
+          <SubFields />
+          <DisplayField>=Fields!CheckInDate.Value</DisplayField>
+          <ReferenceFilterName>CheckInDate</ReferenceFilterName>
+          <BreakColumnByDisplayField>false</BreakColumnByDisplayField>
+        </Field>
+        <Field name="CheckInMouth">
+          <FieldName>CheckInMouth</FieldName>
+          <DataType>System.Int32</DataType>
+          <DefaultLabel>考勤月份</DefaultLabel>
+          <SubFields />
+          <DisplayField>=Fields!CheckInMouth.Value</DisplayField>
+          <ReferenceFilterName>CheckInMouth</ReferenceFilterName>
+          <BreakColumnByDisplayField>false</BreakColumnByDisplayField>
+        </Field>
+        <Field name="CheckInDay">
+          <FieldName>CheckInDay</FieldName>
+          <DataType>System.Int32</DataType>
+          <DefaultLabel>考勤日</DefaultLabel>
+          <SubFields />
+          <DisplayField>=Fields!CheckInDay.Value</DisplayField>
+          <ReferenceFilterName>CheckInDay</ReferenceFilterName>
+          <BreakColumnByDisplayField>false</BreakColumnByDisplayField>
+        </Field>
+        <Field name="SumFullTimeDay">
+          <FieldName>SumFullTimeDay</FieldName>
+          <DataType>System.Decimal</DataType>
+          <DefaultLabel>全日制合计</DefaultLabel>
+          <SelectEnable>true</SelectEnable>
+          <Format>{n,1}</Format>
+          <ColumnDefault>true</ColumnDefault>
+          <SubFields />
+          <DisplayField>=Fields!SumFullTimeDay.Value</DisplayField>
+          <ReferenceFilterName>SumFullTimeDay</ReferenceFilterName>
+          <BreakColumnByDisplayField>false</BreakColumnByDisplayField>
+        </Field>
+        <Field name="SumPartTimeDay">
+          <FieldName>SumPartTimeDay</FieldName>
+          <DataType>System.Decimal</DataType>
+          <DefaultLabel>非全日制合计</DefaultLabel>
+          <SelectEnable>true</SelectEnable>
+          <Format>{n,1}</Format>
+          <ColumnDefault>true</ColumnDefault>
+          <SubFields />
+          <DisplayField>=Fields!SumPartTimeDay.Value</DisplayField>
+          <ReferenceFilterName>SumPartTimeDay</ReferenceFilterName>
+          <BreakColumnByDisplayField>false</BreakColumnByDisplayField>
+        </Field>
+        <Field name="SumHourlyDay">
+          <FieldName>SumHourlyDay</FieldName>
+          <DataType>System.Decimal</DataType>
+          <DefaultLabel>临时工合计</DefaultLabel>
+          <SelectEnable>true</SelectEnable>
+          <Format>{n,1}</Format>
+          <ColumnDefault>true</ColumnDefault>
+          <SubFields />
+          <DisplayField>=Fields!SumHourlyDay.Value</DisplayField>
+          <ReferenceFilterName>SumHourlyDay</ReferenceFilterName>
+          <BreakColumnByDisplayField>false</BreakColumnByDisplayField>
+        </Field>
+        <Field name="FullTimeDay">
+          <FieldName>FullTimeDay</FieldName>
+          <DataType>System.Int32</DataType>
+          <DefaultLabel>全日制</DefaultLabel>
+          <SelectEnable>true</SelectEnable>
+          <Format>{n,1}</Format>
+          <SubFields />
+          <DisplayField>=Fields!FullTimeDay.Value</DisplayField>
+          <ReferenceFilterName>FullTimeDay</ReferenceFilterName>
+          <BreakColumnByDisplayField>false</BreakColumnByDisplayField>
+        </Field>
+        <Field name="PartTimeDay">
+          <FieldName>PartTimeDay</FieldName>
+          <DataType>System.Int32</DataType>
+          <DefaultLabel>非全日制</DefaultLabel>
+          <SelectEnable>true</SelectEnable>
+          <Format>{n,1}</Format>
+          <SubFields />
+          <DisplayField>=Fields!PartTimeDay.Value</DisplayField>
+          <ReferenceFilterName>PartTimeDay</ReferenceFilterName>
+          <BreakColumnByDisplayField>false</BreakColumnByDisplayField>
+        </Field>
+        <Field name="HourlyDay">
+          <FieldName>HourlyDay</FieldName>
+          <DataType>System.Int32</DataType>
+          <DefaultLabel>临时工</DefaultLabel>
+          <SelectEnable>true</SelectEnable>
+          <Format>{n,1}</Format>
+          <SubFields />
+          <DisplayField>=Fields!HourlyDay.Value</DisplayField>
+          <ReferenceFilterName>HourlyDay</ReferenceFilterName>
+          <BreakColumnByDisplayField>false</BreakColumnByDisplayField>
+        </Field>
+      </Fields>
+      <Command>
+        <CommandType>StoredProcedure</CommandType>
+        <CommandText>HBH_SP_JianLiYuanRpt_MonthCheckIn;SalaryPeriod=Parameters!SalaryPeriod.Value&amp;StartDate=Parameters!StartDate.Value&amp;EndDate=Parameters!EndDate.Value&amp;Department=Parameters!Department.Value&amp;IsDetail=Parameters!IsDetail.Value</CommandText>
+        <Identity />
+        <Parameters>
+          <QueryParameter name="@Global_Parameter">
+            <Value>传输全部报表条件...</Value>
+          </QueryParameter>
+        </Parameters>
+      </Command>
+    </DataQuery>
+  </ReportDataQuerys>
+  <Parameters>
+    <FilterDefine>
+      <ID>0</ID>
+      <Name>SalaryPeriod</Name>
+      <Label>考勤期间</Label>
+      <LabelMultiLang />
+      <DataType>Number</DataType>
+      <Reference>
+        <Type>reference</Type>
+        <ReferenceObject>
+          <ReturnValueType />
+          <ReferenceID>c4d6b9f2-f63f-4dee-9bde-9ee3e080bdb8</ReferenceID>
+          <KeyField>ID</KeyField>
+          <ValueField>FiscalPeriod</ValueField>
+          <TextField>DisplayPeriodNo</TextField>
+          <ReturnValueField>ID</ReturnValueField>
+          <RefHeight>408</RefHeight>
+          <RefWidth>580</RefWidth>
+          <RefCondCollection>
+            <RefCondition>
+              <ParameterName />
+              <ParameterValue />
+              <IsFixed>false</IsFixed>
+              <CustomInParams />
+              <IsContext>false</IsContext>
+            </RefCondition>
+          </RefCondCollection>
+          <IsNeedValidate>true</IsNeedValidate>
+          <IsAutoComplete>false</IsAutoComplete>
+        </ReferenceObject>
+        <EnumRestrictList />
+        <EntityClassId>4c593c05-0913-4b43-a0a4-8d3642f4fc34</EntityClassId>
+      </Reference>
+      <OperatorList>
+        <enuOperatorListType>Equal</enuOperatorListType>
+      </OperatorList>
+      <SubFilters />
+      <WeakRefEntityFullName />
+      <WeakRefAttribute />
+      <WeakRefEntityAlias />
+      <DescFieldContextValue />
+      <ItemAttribute />
+      <CustomItemAttribute />
+      <Group />
+      <IsRefView>false</IsRefView>
+      <EnumTypeCode />
+      <ValidationResult />
+      <IsUserDefine>false</IsUserDefine>
+    </FilterDefine>
+    <FilterDefine>
+      <ID>1</ID>
+      <Name>StartDate</Name>
+      <Label>开始日期</Label>
+      <LabelMultiLang />
+      <DataType>DateTime</DataType>
+      <Reference>
+        <Type>date</Type>
+        <EnumeratorKeyPairs />
+        <EnumRestrictList />
+      </Reference>
+      <OperatorList>
+        <enuOperatorListType>Equal</enuOperatorListType>
+      </OperatorList>
+      <SubFilters />
+      <WeakRefEntityFullName />
+      <WeakRefAttribute />
+      <WeakRefEntityAlias />
+      <DescFieldContextValue />
+      <ItemAttribute />
+      <CustomItemAttribute />
+      <Group />
+      <IsRefView>false</IsRefView>
+      <EnumTypeCode />
+      <ValidationResult />
+      <IsUserDefine>false</IsUserDefine>
+    </FilterDefine>
+    <FilterDefine>
+      <ID>2</ID>
+      <Name>EndDate</Name>
+      <Label>结束日期</Label>
+      <LabelMultiLang />
+      <DataType>DateTime</DataType>
+      <Reference>
+        <Type>date</Type>
+        <EnumeratorKeyPairs />
+        <EnumRestrictList />
+      </Reference>
+      <OperatorList>
+        <enuOperatorListType>Equal</enuOperatorListType>
+      </OperatorList>
+      <SubFilters />
+      <WeakRefEntityFullName />
+      <WeakRefAttribute />
+      <WeakRefEntityAlias />
+      <DescFieldContextValue />
+      <ItemAttribute />
+      <CustomItemAttribute />
+      <Group />
+      <IsRefView>false</IsRefView>
+      <EnumTypeCode />
+      <ValidationResult />
+      <IsUserDefine>false</IsUserDefine>
+    </FilterDefine>
+    <FilterDefine>
+      <ID>3</ID>
+      <Name>Department</Name>
+      <Label>部门</Label>
+      <LabelMultiLang />
+      <DataType>Number</DataType>
+      <Reference>
+        <Type>reference</Type>
+        <ReferenceObject>
+          <ReturnValueType />
+          <ReferenceID>d95d0138-6099-4c42-bbdd-c503aa49ade0</ReferenceID>
+          <KeyField>ID</KeyField>
+          <ValueField>Code</ValueField>
+          <TextField>Name</TextField>
+          <ReturnValueField>ID</ReturnValueField>
+          <RefHeight>408</RefHeight>
+          <RefWidth>580</RefWidth>
+          <RefCondCollection>
+            <RefCondition>
+              <ParameterName />
+              <ParameterValue />
+              <IsFixed>false</IsFixed>
+              <CustomInParams />
+              <IsContext>false</IsContext>
+            </RefCondition>
+          </RefCondCollection>
+          <IsNeedValidate>true</IsNeedValidate>
+          <IsAutoComplete>false</IsAutoComplete>
+        </ReferenceObject>
+        <EnumRestrictList />
+        <EntityClassId>3410e657-4f0f-47a9-9cf1-d1c421c116a8</EntityClassId>
+      </Reference>
+      <OperatorList>
+        <enuOperatorListType>Equal</enuOperatorListType>
+      </OperatorList>
+      <SubFilters />
+      <WeakRefEntityFullName />
+      <WeakRefAttribute />
+      <WeakRefEntityAlias />
+      <DescFieldContextValue />
+      <ItemAttribute />
+      <CustomItemAttribute />
+      <Group />
+      <IsRefView>false</IsRefView>
+      <EnumTypeCode />
+      <ValidationResult />
+      <IsUserDefine>false</IsUserDefine>
+    </FilterDefine>
+    <FilterDefine>
+      <ID>4</ID>
+      <Name>IsDetail</Name>
+      <Label>是否显示明细</Label>
+      <LabelMultiLang />
+      <DataType>Boolean</DataType>
+      <Reference>
+        <Type>boolean</Type>
+        <EnumeratorKeyPairs />
+        <EnumRestrictList />
+      </Reference>
+      <OperatorList />
+      <SubFilters />
+      <WeakRefEntityFullName />
+      <WeakRefAttribute />
+      <WeakRefEntityAlias />
+      <DescFieldContextValue />
+      <ItemAttribute />
+      <CustomItemAttribute />
+      <Group />
+      <IsRefView>false</IsRefView>
+      <EnumTypeCode />
+      <ValidationResult />
+      <IsUserDefine>false</IsUserDefine>
+    </FilterDefine>
+  </Parameters>
+  <EmbeddedImages />
+  <CodeModels />
+</Report>

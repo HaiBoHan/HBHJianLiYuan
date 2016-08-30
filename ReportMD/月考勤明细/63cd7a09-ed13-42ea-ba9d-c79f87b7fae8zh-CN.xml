@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Name>MonthCheckInDetailReport</Name>
+  <MyName>MonthCheckInDetailReport</MyName>
+  <ReportID>ae735f24-de3e-4d15-96f9-08b48d42294a</ReportID>
+  <RuntimNoPagging>false</RuntimNoPagging>
+  <SetPageRows>false</SetPageRows>
+  <RowNumberOnPage>0</RowNumberOnPage>
+  <Language>zh-CN</Language>
+  <Author>wangxif</Author>
+  <Designer>用户自定义报表</Designer>
+  <DynamicMatrixTable />
+  <BaseMeasure>Mil</BaseMeasure>
+  <UserMeasure>Inch</UserMeasure>
+  <Width>8200</Width>
+  <PageSet>
+    <CanNotModifiedOnRuntime>false</CanNotModifiedOnRuntime>
+    <Margin>
+      <Left>300</Left>
+      <Right>300</Right>
+      <Top>300</Top>
+      <Bottom>300</Bottom>
+    </Margin>
+    <Height>11693</Height>
+    <Width>8268</Width>
+    <Landscape>false</Landscape>
+    <PaperType>A4</PaperType>
+  </PageSet>
+  <ReportHeader name="ReportHeader">
+    <Hide>false</Hide>
+    <ReportItems>
+      <Cells />
+    </ReportItems>
+    <Style>
+      <Background />
+    </Style>
+    <PrintModel>PrintOnFirstPage</PrintModel>
+  </ReportHeader>
+  <ReportFooter name="ReportFooter">
+    <Hide>false</Hide>
+    <ReportItems>
+      <Cells />
+    </ReportItems>
+    <Style>
+      <Background />
+    </Style>
+    <PrintModel>PrintOnLastPage</PrintModel>
+  </ReportFooter>
+  <ReportBody name="ReportDetail">
+    <Height>1800</Height>
+    <Hide>false</Hide>
+    <ReportItems>
+      <Cells />
+    </ReportItems>
+    <Style>
+      <Background />
+    </Style>
+    <Container>Normal</Container>
+  </ReportBody>
+  <ReportDataSources>
+    <ReportDataSource name="Test">
+      <ShareDataSource>false</ShareDataSource>
+      <IntegratedSecurity>true</IntegratedSecurity>
+      <ProviderType>UFRPT</ProviderType>
+      <ConnectionString>Data Source=121.42.141.121;Initial Catalog=1029;Persist Security Info=True;User ID=sa;Password=jly2015</ConnectionString>
+      <ID>db64d2b1-9d4b-40e9-9e7a-74092f9d9502</ID>
+    </ReportDataSource>
+  </ReportDataSources>
+  <ReportDataQuerys>
+    <DataQuery name="MonthCheckInDetail">
+      <DataSourceName>Test</DataSourceName>
+      <Command>
+        <CommandType>StoredProcedure</CommandType>
+        <CommandText>HBH_SP_JianLiYuanRpt_MonthCheckIn;</CommandText>
+        <Identity />
+        <Parameters>
+          <QueryParameter name="@Global_Parameter">
+            <Value>传输全部报表条件...</Value>
+          </QueryParameter>
+        </Parameters>
+      </Command>
+    </DataQuery>
+  </ReportDataQuerys>
+  <EmbeddedImages />
+  <CodeModels />
+</Report>

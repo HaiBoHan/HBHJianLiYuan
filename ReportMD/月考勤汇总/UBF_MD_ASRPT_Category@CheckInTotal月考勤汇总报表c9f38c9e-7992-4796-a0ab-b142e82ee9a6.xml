@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<UBF_MD_ASRPT_Categorys Type="Report">
+  <UBF_MD_ASRPT_Category>
+    <ID>c9f38c9e-7992-4796-a0ab-b142e82ee9a6</ID>
+    <cName>月考勤汇总报表</cName>
+    <cDescription>月考勤汇总报表</cDescription>
+    <uParent>7d4c4831-286e-46bf-a715-7116c7a5064b</uParent>
+    <iType>1</iType>
+    <iLevel>1</iLevel>
+    <iVisible>1</iVisible>
+    <cCreateBy>wangxif</cCreateBy>
+    <dCreateDate>2015/12/18 10:54:41</dCreateDate>
+    <dModifyDate>2015/12/31 11:24:01</dModifyDate>
+    <IsExportPoint>True</IsExportPoint>
+    <tPropertys>
+    </tPropertys>
+    <cformID>
+    </cformID>
+    <BEKEY>
+    </BEKEY>
+    <iUserDefine>1</iUserDefine>
+    <mDefaultTemplate>0</mDefaultTemplate>
+    <mIndividuation>
+    </mIndividuation>
+  </UBF_MD_ASRPT_Category>
+  <UBF_MD_ASRPT_Category>
+    <ID>7d4c4831-286e-46bf-a715-7116c7a5064b</ID>
+    <cName>JianLiYuan</cName>
+    <cDescription>Cust-JianLiYuan by wf</cDescription>
+    <uParent>
+    </uParent>
+    <iType>0</iType>
+    <iLevel>0</iLevel>
+    <iVisible>1</iVisible>
+    <cCreateBy>wangxif</cCreateBy>
+    <dCreateDate>2015/12/18 10:53:33</dCreateDate>
+    <dModifyDate>2015/12/18 10:53:33</dModifyDate>
+    <IsExportPoint>False</IsExportPoint>
+    <tPropertys>
+    </tPropertys>
+    <cformID>
+    </cformID>
+    <BEKEY>
+    </BEKEY>
+    <iUserDefine>1</iUserDefine>
+    <mDefaultTemplate>
+    </mDefaultTemplate>
+    <mIndividuation>
+    </mIndividuation>
+  </UBF_MD_ASRPT_Category>
+</UBF_MD_ASRPT_Categorys>

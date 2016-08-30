@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<UBF_MD_ASRPT_ReportTemplates>
+  <UBF_MD_ASRPT_ReportTemplate>
+    <ID>63cd7a09-ed13-42ea-ba9d-c79f87b7fae8</ID>
+    <uReportID>e11f3a8e-02a9-46e7-a373-63e50815eb19</uReportID>
+    <cCulture>zh-CN</cCulture>
+    <cUserID>
+    </cUserID>
+    <cCaseName>
+    </cCaseName>
+    <iDefault>1</iDefault>
+    <cCreateBy>wangxif</cCreateBy>
+    <dCreateDate>2015/12/31 11:24:54</dCreateDate>
+    <cType>UFSoft.UBF.Report.Entity.Report</cType>
+    <mContent>63cd7a09-ed13-42ea-ba9d-c79f87b7fae8zh-CN.xml</mContent>
+  </UBF_MD_ASRPT_ReportTemplate>
+</UBF_MD_ASRPT_ReportTemplates>
