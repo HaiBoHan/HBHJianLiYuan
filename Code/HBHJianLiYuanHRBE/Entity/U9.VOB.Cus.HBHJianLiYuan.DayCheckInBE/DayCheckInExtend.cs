@@ -166,7 +166,7 @@ namespace U9.VOB.Cus.HBHJianLiYuan {
 
                 if (ApproveType == null)
                 {
-                    string strMsg = string.Format("部门[{0}]日期[{1}] 的审核方式不可为空!"
+                    string strMsg = string.Format("部门[{0}]日期[{1}] 的审批方式不可为空!"
                             , this.Department.Name
                             , this.CheckInDate.ToString("yyyy-MM-dd")
                             );
