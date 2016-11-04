@@ -1,9 +1,14 @@
 
 
+-- 集团数据库：U9OLAP				(账簿，U9ODS_Template)
+
+
+-- 维度，人员
+-- drop table Dim_U9_Person
 create table Dim_U9_Person
 (
 	ID bigint
-	,PersonID varchar(200)
+	,Code varchar(200)
 	,Name varchar(200)	
 )
 
@@ -12,9 +17,8 @@ create table Dim_U9_Person
 
 
 
-
+-- 事实，日考勤
 -- drop table Fact_U9_DayCheckIn
-
 create table Fact_U9_DayCheckIn
 (
 	Department bigint
