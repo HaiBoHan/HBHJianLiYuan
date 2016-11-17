@@ -13,6 +13,7 @@
         <Attribute id="2df0e856-8750-4bfc-ac39-6639a487f021" name="Combine" displayName="合并" description="" help="变动类型.Misc.合并" dataTypeID="d7c6031e-d3fe-41aa-a397-5edd86c10cae" isKey="False" defaultValue="1" length="4" precise="10" scale="0" isNullable="True" isReadOnly="False" isHide="False" isCalculation="False" valueExpression="" maxValue="" minValue="" sequence="1" isDefaultDimensionAttribute="False" isDefaultMeasureAttribute="False" isGlobalization="False" idGenerator="" groupName="Misc" isEntityKey="False" isEntityData="True" isSystem="False" isBusinessKey="False" isSyncDictionary="False" dictionaryKey="" isExtendCode="False" isQuery="True" isForAsso="True" isModifyControl="False" isDynamic="False" isImpressible="False" isInCache="False" isKeySerializable="False" isColumnDefine="True" isFilterDefine="True" isSortDefine="True" isDefaultColumn="True" forOBAImport="False" />
       </Attributes>
     </Enum>
+    <Enum id="8e368955-03d8-4d91-a935-52610632250a" name="MealTimeEnum" displayName="餐次" description="餐次" help="" mD_ParentClass_ID="" isFactEntity="False" isExtend="True" />
     <Diagram id="7878d3bf-1e82-497e-b919-6de86619bb62" name="PubEnum" displayName="PubEnum">
       <Class Editable="True" ID="bf0035d3-f509-4702-9485-68c0e76c1a79" Type="EnumType" ADID="abfaa342-ff05-4e6b-bd98-836d0ddf53a5">
         <Location X="90" Y="66" />
@@ -20,6 +21,10 @@
       </Class>
       <Class Editable="True" ID="f6dcfb5d-afb1-46e0-8169-8af10fec9020" Type="EnumType" ADID="b7d2876b-a029-4c1e-b259-601b03d72265">
         <Location X="97" Y="143" />
+        <Size width="120" height="58" />
+      </Class>
+      <Class Editable="True" ID="6136d70c-27e7-442c-948a-8d47555f9edd" Type="EnumType" ADID="8e368955-03d8-4d91-a935-52610632250a">
+        <Location X="278" Y="58" />
         <Size width="120" height="58" />
       </Class>
     </Diagram>

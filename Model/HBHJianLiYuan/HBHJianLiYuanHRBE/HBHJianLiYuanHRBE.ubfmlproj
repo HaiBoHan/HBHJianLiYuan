@@ -15,5 +15,6 @@
     <Item id="e7e4cc9c-e50b-4eb3-8d1b-de1f6bd499cf" name="DepartmentTransferBE.ubfbe" displayName="DepartmentTransferBE.ubfbe" description="" help="" include="DepartmentTransferBE.ubfbe" type="BE" />
     <Item id="c078c642-7c4a-40ed-801d-eb7baf019ccf" name="PubEnum.ubfbe" displayName="PubEnum.ubfbe" description="" help="" include="PubEnum.ubfbe" type="BE" />
     <Item id="ae9f1853-b983-430e-919f-20d58710047a" name="TotalPayrollDoc.ubfbe" displayName="TotalPayrollDoc.ubfbe" description="" help="" include="TotalPayrollDoc.ubfbe" type="BE" />
+    <Item id="dbc6fc9d-7f14-47ad-b645-d355940a1fc5" name="CostWarningBE.ubfbe" displayName="CostWarningBE.ubfbe" description="" help="" include="CostWarningBE.ubfbe" type="BE" />
   </ItemGroup>
 </Project>
