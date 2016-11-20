@@ -11,5 +11,7 @@
     <Item id="22eab520-b2e6-49b5-b43b-393e7b7dff98" name="DepartmentTransferBListUIForm.ubfform" displayName="DepartmentTransferBListUIForm.ubfform" description="" help="" include="DepartmentTransferBListUIForm.ubfform" type="" />
     <Item id="a33506f2-181e-4e94-8fd6-6aa1bb8f49b6" name="TotalPayrollDocBListUIModel.ubfuim" displayName="TotalPayrollDocBListUIModel.ubfuim" description="" help="" include="TotalPayrollDocBListUIModel.ubfuim" type="" />
     <Item id="00214818-e29e-4c97-8e0a-8110be812732" name="TotalPayrollDocBListUIForm.ubfform" displayName="TotalPayrollDocBListUIForm.ubfform" description="" help="" include="TotalPayrollDocBListUIForm.ubfform" type="" />
+    <Item id="5002ac39-55d0-4ec5-a22c-0c7bd848ab69" name="CostWaringBListUIModel.ubfuim" displayName="CostWaringBListUIModel.ubfuim" description="" help="" include="CostWaringBListUIModel.ubfuim" type="" />
+    <Item id="21b7cc97-e14f-41e2-8772-642c277fbf79" name="CostWaringBListUIForm.ubfform" displayName="CostWaringBListUIForm.ubfform" description="" help="" include="CostWaringBListUIForm.ubfform" type="" />
   </ItemGroup>
 </Project>

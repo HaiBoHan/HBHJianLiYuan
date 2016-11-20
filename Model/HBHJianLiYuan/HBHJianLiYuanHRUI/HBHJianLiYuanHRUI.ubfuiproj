@@ -13,6 +13,7 @@
     <Import id="fe96b153-a451-49de-b601-3e271e43c925" name="PayrollDocUI" displayName="PayrollDocUI" description="" help="" componentid="4dc0700e-bcae-4715-bf4f-37731766fc81" path="..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Metadata\UI\UFIDA.U9.HR.PAY.PayrollDoc.PayrollDocUI.MetaData.dll" type="UI" isRuntime="True" />
     <Import id="0cdd8ec1-b554-49ab-b413-1eaae8b6d0f1" name="BaseBE" displayName="BaseBE" description="" help="" componentid="474b2649-5852-4596-a007-adcfa9b04d13" path="..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Metadata\UBF\UFIDA.U9.Base.BaseBE.MetaData.dll" type="BE" isRuntime="True" />
     <Import id="9e36e2df-8073-4320-ba4b-acfd5b499508" name="UBFMetadataBE" displayName="UBFMetadataBE" description="" help="" componentid="ed7faf65-e0e9-432b-a939-ea0712a0b4b3" path="..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Metadata\UBF\UFIDA.UBF.MD.Entity.MetaData.dll" type="BE" isRuntime="True" />
+    <Import id="d6a76bd6-e278-45da-b5be-382834b0ce42" name="SDPubRef" displayName="SDPubRef" description="" help="" componentid="a4e651f8-eeba-4fd9-87c3-5b65e89ae58a" path="..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Metadata\UI\UFIDA.U9.SCM.Ref.SDPubRef.MetaData.dll" type="UI" isRuntime="True" />
   </Imports>
   <SourceControl />
   <ItemGroup>
@@ -28,5 +29,7 @@
     <Item id="3545cc27-358a-41f0-a1f8-accec0d3a75a" name="DefineValueRef.ubfref" displayName="DefineValueRef.ubfref" description="" help="" include="DefineValueRef.ubfref" type="" />
     <Item id="cf9af1a1-47e0-4fc2-a617-e6a8cd5bb39f" name="ApproveTypeRef.ubfref" displayName="ApproveTypeRef.ubfref" description="" help="" include="ApproveTypeRef.ubfref" type="" />
     <Item id="c18e867e-8ebd-4c18-be4e-a37993e3eb4a" name="DepartmentRef.ubfref" displayName="DepartmentRef.ubfref" description="" help="" include="DepartmentRef.ubfref" type="" />
+    <Item id="ff7a2706-5792-4480-8305-07361b730adc" name="CostWarningUIModel.ubfuim" displayName="CostWarningUIModel.ubfuim" description="" help="" include="CostWarningUIModel.ubfuim" type="" />
+    <Item id="81ef2841-704f-43a9-befc-480ba64442ad" name="CostWarningUIForm.ubfform" displayName="CostWarningUIForm.ubfform" description="" help="" include="CostWarningUIForm.ubfform" type="" />
   </ItemGroup>
 </Project>

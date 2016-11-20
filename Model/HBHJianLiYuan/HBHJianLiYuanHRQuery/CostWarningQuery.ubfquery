@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<QueryComponent id="2ce638b2-ae2d-4927-ade1-8fbb0ca0b782" name="CostWarningQuery" displayName="CostWarningQuery" description="" help="" QueryType="List" QueryURI="a677277e-f2b3-4b24-880d-4694b0a7dd4c" QuerySourceFullName="U9.VOB.Cus.HBHJianLiYuan.CostWarning" UIViewDragType="DragDown" RefInfoLoadType="Cache">
+  <BasicInfo id="0c49e253-841b-434a-9476-c461a021f1aa" name="" displayName="" description="" help="" RefToken="" RootDescContextValue="" FilterTabVisible="True" ColumnTabVisible="True" SortTabVisible="True" FilterExpandLevel="3" ColumnExpandLevel="3" SortExpandLevel="3" />
+  <BPRefInfo id="a0c8d42e-ed43-4a37-9cbc-9b61eafe0b44" name="" displayName="" description="" help="" ProjectID="" ProjectPath="" BPItemID="" BPOperationID="" DTOID="" BPAgentDll="" BPAgentProxy="" />
+  <UIRefInfo id="79b235f0-ea8f-4c01-9467-14bffd6e6806" name="" displayName="" description="" help="" ProjectID="" ProjectPath="" UIModelItemID="5002ac39-55d0-4ec5-a22c-0c7bd848ab69" UIFormItemID="21b7cc97-e14f-41e2-8772-642c277fbf79" UIModelID="26c2a3b9-cda4-4bf8-8371-0c68b73e7fcc" />
+  <FilterDefines>
+    <FilterDefine id="8875a48b-fe75-41ae-bfe2-f6d09473618d" name="Importer" displayName="Importer" description="" help="" ParentName="" Alias="Importer" IsFixed="False" IsAllowBlank="True" Visible="True" DescFieldContextValue="" FilterNodeType="Item" DateDisplayType="" RaiseChangedEvent="False" IsBuildWhereStr="True" OperatorList="" />
+    <FilterDefine id="ba8e4a40-f47d-4dd0-a3d5-3ac86782adc7" name="ImportDate" displayName="ImportDate" description="" help="" ParentName="" Alias="ImportDate" IsFixed="False" IsAllowBlank="True" Visible="True" DescFieldContextValue="" FilterNodeType="Item" DateDisplayType="DateTime" RaiseChangedEvent="False" IsBuildWhereStr="True" OperatorList="" />
+    <FilterDefine id="10ff2178-6e50-460a-9fa2-ad196270e959" name="Department" displayName="Department" description="" help="" ParentName="" Alias="Department" IsFixed="False" IsAllowBlank="True" Visible="True" DescFieldContextValue="" FilterNodeType="Item" DateDisplayType="" RaiseChangedEvent="False" IsBuildWhereStr="True" OperatorList="" />
+  </FilterDefines>
+  <ColumnDefines>
+    <ColumnDefine id="420fdcce-75e8-4211-930d-10c2829bb4f8" name="Importer" displayName="Importer" description="" help="" ParentName="" Alias="Importer" IsFixed="False" Visible="True" DescFieldContextValue="" ZeroIsEmpty="False" DateDisplayType="" Point="2" />
+    <ColumnDefine id="272d2db1-79a7-4974-9477-7cdcb9c98c81" name="ImportDate" displayName="ImportDate" description="" help="" ParentName="" Alias="ImportDate" IsFixed="False" Visible="True" DescFieldContextValue="" ZeroIsEmpty="False" DateDisplayType="DateTime" Point="2" />
+    <ColumnDefine id="42010493-62ec-481d-89a1-a9f6ac31ffda" name="Department" displayName="Department" description="" help="" ParentName="" Alias="Department" IsFixed="False" Visible="True" DescFieldContextValue="" ZeroIsEmpty="False" DateDisplayType="" Point="2" />
+  </ColumnDefines>
+  <SortDefines>
+    <SortDefine id="94c8af31-3a86-4199-b8d6-ac7264b9deb5" name="ImportDate" displayName="" description="" help="" ParentName="" Alias="ImportDate" IsFixed="False" Visible="True" DescFieldContextValue="" />
+    <SortDefine id="c8fbfbaa-a4c6-4339-857d-1e7fbf8f67e7" name="Department.Name" displayName="" description="" help="" ParentName="Department" Alias="Department_Name" IsFixed="False" Visible="True" DescFieldContextValue="" />
+  </SortDefines>
+  <DefaultCase>
+    <BasicFilters>
+      <BasicFilter id="3fdaaa34-797a-43a1-8af3-82ac9e104507" name="Importer" displayName="导入人" description="" help="" />
+      <BasicFilter id="59ed9682-2762-408c-a867-aa2075d54442" name="ImportDate" displayName="导入日期" description="" help="" />
+      <BasicFilter id="a8a951a5-1e41-45f1-ab74-40f680c86656" name="Department" displayName="部门" description="" help="" />
+    </BasicFilters>
+    <DefaultColumns>
+      <Column id="c91f6536-54d9-401c-86e8-6a6085e306ec" name="ImportDate" displayName="导入日期" description="" help="" />
+    </DefaultColumns>
+    <DefaultSorts>
+      <Sort id="a05d8c56-2731-431d-9c25-6dbe3e84387a" name="ImportDate" displayName="" description="" help="" SortType="DESC" />
+      <Sort id="d128b2a8-11d6-412b-a2c7-e407cd8e69d3" name="Department.Name" displayName="" description="" help="" SortType="ASC" />
+    </DefaultSorts>
+  </DefaultCase>
+</QueryComponent>
