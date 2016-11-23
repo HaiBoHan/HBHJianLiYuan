@@ -13,6 +13,18 @@ create table Dim_U9_Person
 )
 
 
+-- 部门2
+create table Dim_U9_Department2
+(
+	ID bigint
+	,Code varchar(200)
+	,Name varchar(200)	
+	,Level int
+	,Org bigint
+)
+
+
+
 
 
 
@@ -22,7 +34,10 @@ create table Dim_U9_Person
 create table Fact_U9_DayCheckIn
 (
 	Department bigint
-	,CheckInDate datetime 
+	,DepartmentCode varchar(200)
+	,DepartmentName varchar(200)
+	,CheckInDate varchar(200) 
+	,StatisticsPeriod varchar(125)
 	--,Status int
 	--,CurrentOperator bigint
 
@@ -38,10 +53,21 @@ create table Fact_U9_DayCheckIn
 	
 	-- 收入
 	,Income decimal(24,9)
+	-- 劳产率目标
+	,LaborYieldTarget decimal(24,9)
+	-- 人工成本目标
+	,LaborCostTarget decimal(24,9)
 	-- 大区
-	,Region varchar(200)
-	-- 标准工资
+	,Region bigint
+	,RegionCode varchar(200)
+	,RegionName varchar(200)
+	-- 工资
 	,Salary decimal(24,9)
+
+	-- 劳产率 = 
+	-- ,LaborYield decimal(24,9)
+	-- 人工成本比例
+	-- 
 )
 
 
