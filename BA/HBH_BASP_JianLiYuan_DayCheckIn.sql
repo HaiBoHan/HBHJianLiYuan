@@ -140,11 +140,11 @@ select
 	,PersonTime = Sum(IsNull(PartTimeDay,@DefaultZero)) / 4 + Sum(IsNull(HourlyDay,@DefaultZero)) / 8 + Sum(IsNull(FullTimeDay,@DefaultZero))
 	
 	-- 收入
-	,Income = Sum(Income)
+	,Income = Max(Income)
 	-- 劳产率目标
-	,Max(LaborYieldTarget)
+	,LaborYieldTarget = Max(LaborYieldTarget)
 	-- 人工成本目标
-	,Max(LaborCostTarget)
+	,LaborCostTarget = Max(LaborCostTarget)
 	-- 区域
 	,Region = Region
 	,RegionCode
@@ -155,7 +155,17 @@ select
 	-- 员工日工资
 	-- 日工资=标准工资/27 *全日制员工出勤+钟点工工资标准(038)*钟点工出勤+非全日制员工出勤*钟标准工资		;钟点工工资标准取U9维护薪资项目数值点工工资标准
 	-- 27 = 当月天数 - 4
-	,Salary = Sum(StardardSalary / MonthDays * IsNull(FullTimeDay,@DefaultZero) + IsNull(PartTimeDay,@DefaultZero) * IsNull(PartSalary,@DefaultZero) + IsNull(HourlyDay,@DefaultZero) * IsNull(OvertimeSalary,@DefaultZero))
+	--,Salary = Sum(StardardSalary / MonthDays * IsNull(FullTimeDay,@DefaultZero) + IsNull(PartTimeDay,@DefaultZero) * IsNull(PartSalary,@DefaultZero) + IsNull(HourlyDay,@DefaultZero) * IsNull(OvertimeSalary,@DefaultZero))
+	,Salary = Sum(
+		-- 全日制员工工资
+		(StardardSalary / MonthDays * IsNull(FullTimeDay,@DefaultZero) 
+		-- 非全日制员工工资
+		+ IsNull(FPartSalary,@DefaultZero) * IsNull(FPartSalary,@DefaultZero) 
+		-- 全日制加班工资
+		+ IsNull(OvertimeSalary,@DefaultZero) * IsNull(HourlyDay,@DefaultZero) 
+		-- 非全日制加班工资
+		+ IsNull(FOvertimeSalary,@DefaultZero) * IsNull(HourlyDay,@DefaultZero))
+		)
 
 from (
 	select 
@@ -167,8 +177,8 @@ from (
 		,DepartmentName = IsNull(deptTrl.Name,'')
 
 		-- ,checkin.CheckInDate
-		,CheckInDate = DateName(Month,checkin.CheckInDate) + '.' + Right('00' + DateName(day,checkin.CheckInDate),2)
-		,StatisticsPeriod = DateName(year,checkin.CheckInDate) + '年' + Right('00' + DateName(month,checkin.CheckInDate),2) + '月'
+		,CheckInDate = Right('00' + DateName(Month,checkin.CheckInDate),2) + '.' + Right('00' + DateName(day,checkin.CheckInDate),2)
+		,StatisticsPeriod = Right('0000' + DateName(year,checkin.CheckInDate),4) + '年' + Right('00' + DateName(month,checkin.CheckInDate),2) + '月'
 		--,checkin.Status as Status
 		--,checkin.CurrentOperator as CurrentOperator
 
@@ -185,15 +195,20 @@ from (
 		,HourlyDay = IsNull(checkinLine.HourlyDay,@DefaultZero)
 	
 		-- 收入
-		,Income = IsNull(checkin.Income,@DefaultZero)
+		,Income = max(IsNull(checkin.Income,@DefaultZero))
 		-- 劳产率目标
-		,LaborYieldTarget = max(IsNull(checkin.LaborYieldTarget,0))
+		,LaborYieldTarget = max(IsNull(checkin.LaborYieldTarget,@DefaultZero))
 		-- 人工成本目标
-		,LaborCostTarget = max(IsNull(checkin.LaborCostTarget,0))
+		,LaborCostTarget = max(IsNull(checkin.LaborCostTarget,@DefaultZero))
 		-- 区域
 		,Region = IsNull(region.ID,-1)
 		,RegionCode = IsNull(region.Code,'')
 		,RegionName = IsNull(regionTrl.Name,'')
+
+		-- 本月天数	
+		,MonthDays = IsNull(Day(DateAdd(Day,-1,DateAdd(d,- day(checkin.CheckInDate) + 1,checkin.CheckInDate))),27)
+		
+	
 		-- 全日制标准工资=基本工资（01）+周末加班工资（02）+电话补贴（03）+交通补贴(04)+午餐补贴（05）+职务补贴（07）
 		,StardardSalary = Sum(dbo.HBH_Fn_GetDecimal(
 				case when salaryItem.Code in ('01','02','03','04','05','07') 
@@ -201,22 +216,27 @@ from (
 				else @DefaultZero end
 					,@DefaultZero))
 		
-		-- 非全日制标准工资 = 钟点工工资标准(06)			-- (038)
-		,PartSalary = Sum(dbo.HBH_Fn_GetDecimal(
+		-- 加班工资
+		-- 钟点工工资标准 = 钟点工工资标准(06)			-- (038)
+		,OvertimeSalary = Sum(dbo.HBH_Fn_GetDecimal(
 				case when salaryItem.Code in ('06') 
 					then IsNull(salary.SalaryItemVlaue,@DefaultZero) 
 				else @DefaultZero end
 					,@DefaultZero))
-		-- 加班工资
-		-- 加班工资标准=薪资项目中F工资标准项目(F01)					-- （F13）
-		,OvertimeSalary = Sum(dbo.HBH_Fn_GetDecimal(
+		
+		-- F钟点工工资标准（F01） = 钟点工工资标准(F01)			-- (F13)
+		,FPartSalary = Sum(dbo.HBH_Fn_GetDecimal(
 				case when salaryItem.Code in ('F01') 
 					then IsNull(salary.SalaryItemVlaue,@DefaultZero) 
 				else @DefaultZero end
 					,@DefaultZero))
-
-		-- 本月天数	
-		,MonthDays = IsNull(Day(DateAdd(Day,-1,DateAdd(d,- day(checkin.CheckInDate) + 1,checkin.CheckInDate))),27)
+		-- F加班工资
+		-- FJ钟点工工资标准（F06）=薪资项目中F工资标准项目(F06)					-- （F54）
+		,FOvertimeSalary = Sum(dbo.HBH_Fn_GetDecimal(
+				case when salaryItem.Code in ('F06') 
+					then IsNull(salary.SalaryItemVlaue,@DefaultZero) 
+				else @DefaultZero end
+					,@DefaultZero))
 
 	from 		
 		HR20161108.dbo.CBO_EmployeeArchive employee	
@@ -251,8 +271,10 @@ from (
 			-- 全日制标准工资 = 标准工资=基本工资（01）+周末加班工资（02）+电话补贴（03）+交通补贴(04)+午餐补贴（05）+职务补贴（07）
 		-- 非全日制标准工资 = 钟点工工资标准(06)			-- (038)
 		-- 加班工资标准=薪资项目中F工资标准项目(F01)					-- （F13）
-			(salaryItem.Code is null 
-				or salaryItem.Code in ('01','02','03','04','05','07' ,'06','F01'))
+			--(salaryItem.Code is null 
+			--	or salaryItem.Code in ('01','02','03','04','05','07' ,'06','F01'))
+
+		dept.ID is not null
 	group by 
 		-- 员工
 		employee.ID
