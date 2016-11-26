@@ -43,6 +43,7 @@
               <UIModelInfo id="eacf45ec-14f0-4046-9f13-ea5ac869ab17" name="Code" displayName="Code" description="" help="" FullName="CostWarningUIModel.CostWarning.Department.Code" DataTypeID="3d174255-fd12-47f7-8844-3b5e4fae9e8c" MappingID="3c2c3f3f-aa05-4fe7-8b6f-19c0044dbe5b" MappingName="Code" IsMap="True" />
               <UIModelInfo id="a273b814-9b4e-444f-b5c5-03a3de3a2557" name="Name" displayName="Name" description="" help="" FullName="CostWarningUIModel.CostWarning.Department.Name" DataTypeID="3d174255-fd12-47f7-8844-3b5e4fae9e8c" MappingID="dbcaf848-1522-461c-ad8f-18f6caf77ffc" MappingName="Name" IsMap="True" />
             </UIModelInfo>
+            <UIModelInfo id="63cc557a-4af7-47b8-90a9-0e13cc35d6dd" name="Status" displayName="Status" description="" help="" FullName="CostWarningUIModel.CostWarning.Status" DataTypeID="34af30f0-a7d9-4005-962e-21076f509a72" MappingID="fddb3df9-dd03-43ca-bf3a-bbc7109a6ff7" MappingName="Status" IsMap="True" />
           </UIModelInfo>
         </UIModelInfo>
       </UIModelInfos>
@@ -67,7 +68,11 @@
             <UIFieldInfo id="a872d473-de65-432a-a179-5a8b70f8a33e" name="Department" displayName="部门" description="" DefaultValue="" GroupName="Misc" DisplayRule="19.0" IsNullable="True" IsReadOnly="False" IsEnableReference="True" IsLink="False" ControlID="68095608-50d1-4296-a35a-623b21d654f0" DataTypeID="ba391065-6c27-4c82-acc8-b52b1c93a910" EnumTypeID="" BindingFullName="CostWarningUIModel.CostWarning.Department" Expression="" Sequence="0" Length="8" IsBinding="False" IsGlobalized="False" CustomIsLoadable="False" CustomAttrName="" />
             <UIFieldInfo id="80b62293-38e3-44fe-b323-47d786682e3e" name="Department_Code" displayName="编码" description="编码" DefaultValue="" GroupName="Misc" DisplayRule="50" IsNullable="False" IsReadOnly="False" IsEnableReference="False" IsLink="False" ControlID="68095607-50d1-4296-a35a-623b21d654f0" DataTypeID="3d174255-fd12-47f7-8844-3b5e4fae9e8c" EnumTypeID="" BindingFullName="CostWarningUIModel.CostWarning.Department.Code" Expression="" Sequence="0" Length="50" IsBinding="False" IsGlobalized="False" CustomIsLoadable="False" CustomAttrName="" />
             <UIFieldInfo id="01ed449a-2f1e-4d00-857f-57c3efb9a21c" name="Department_Name" displayName="名称" description="名称" DefaultValue="" GroupName="Misc" DisplayRule="50" IsNullable="True" IsReadOnly="False" IsEnableReference="False" IsLink="False" ControlID="68095607-50d1-4296-a35a-623b21d654f0" DataTypeID="3d174255-fd12-47f7-8844-3b5e4fae9e8c" EnumTypeID="" BindingFullName="CostWarningUIModel.CostWarning.Department.Name" Expression="" Sequence="0" Length="50" IsBinding="False" IsGlobalized="True" CustomIsLoadable="False" CustomAttrName="" />
+            <UIFieldInfo id="55cb5604-54db-4e51-919b-ad67cc850f44" name="Status" displayName="状态" description="" DefaultValue="0" GroupName="Misc" DisplayRule="10.0" IsNullable="True" IsReadOnly="False" IsEnableReference="False" IsLink="False" ControlID="68095606-50d1-4296-a35a-623b21d654f0" DataTypeID="d7c6031e-d3fe-41aa-a397-5edd86c10cae" EnumTypeID="34af30f0-a7d9-4005-962e-21076f509a72" BindingFullName="CostWarningUIModel.CostWarning.Status" Expression="" Sequence="0" Length="4" IsBinding="False" IsGlobalized="False" CustomIsLoadable="False" CustomAttrName="" />
           </Fields>
+          <Filters>
+            <UIFilterInfo id="2505d767-f61f-471f-9f7b-b610a6f3c3cb" name="DefaultFilter" displayName="缺省过滤条件" description="" help="" OPath="" OrderBy="" />
+          </Filters>
         </UIViewInfo>
         <UIViewInfo id="8cad7bc7-b86f-492f-997d-c1468779313a" name="CostWarning_CostWarningLine" displayName="成本预警行" description="成本预警行" RootFullName="CostWarningUIModel.CostWarning.CostWarningLine.Item">
           <Groups>

@@ -31,5 +31,6 @@
     <Item id="c18e867e-8ebd-4c18-be4e-a37993e3eb4a" name="DepartmentRef.ubfref" displayName="DepartmentRef.ubfref" description="" help="" include="DepartmentRef.ubfref" type="" />
     <Item id="ff7a2706-5792-4480-8305-07361b730adc" name="CostWarningUIModel.ubfuim" displayName="CostWarningUIModel.ubfuim" description="" help="" include="CostWarningUIModel.ubfuim" type="" />
     <Item id="81ef2841-704f-43a9-befc-480ba64442ad" name="CostWarningUIForm.ubfform" displayName="CostWarningUIForm.ubfform" description="" help="" include="CostWarningUIForm.ubfform" type="" />
+    <Item id="9e7577ac-103b-45cd-9942-3090c736d342" name="CostWarningFindRef.ubfref" displayName="CostWarningFindRef.ubfref" description="" help="" include="CostWarningFindRef.ubfref" type="" />
   </ItemGroup>
 </Project>
