@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ReferenceComponent id="604b4f82-b58e-493f-b635-f8cd53748e0c" name="CostWarningFindRef" displayName="成本预警" description="" help="" refType="1" isMultiSelect="False" isDefault="False" isClientReturn="False" width="580" height="408" isBinding="False" displayNameResourceID="" URI="U9.VOB.Cus.HBHJianLiYuan.HRUI.CostWarningFindRef" Classify="" ForMultOrg="False">
+  <References>
+    <Reference id="b1e79095-6fb1-4076-bdd9-3bbf8d720f2f" name="cRef" displayName="cRef" description="" help="成本预警" refEntityId="eb0340f5-2ba1-45fc-8122-f73e7f980dd6" refEntityName="U9.VOB.Cus.HBHJianLiYuan.CostWarning" refType="1" isMain="False">
+      <RefFields>
+        <RefField id="63e08dcd-be94-4280-8855-a670e4c1c863" name="ID" displayName="ID" description="" help="成本预警.Key.ID" isKey="True" isEdit="False" isName="False" isVisible="False" isParent="False" sequence="0" length="80" refAttributeName="U9.VOB.Cus.HBHJianLiYuan.CostWarning:ID" displayNameIndexStr="2" />
+        <RefField id="2655c1e4-0a9d-4bf6-a9bf-465f803c4495" name="ImportDate" displayName="导入日期" description="" help="成本预警.Misc.导入日期" isKey="False" isEdit="False" isName="False" isVisible="True" isParent="False" sequence="0" length="120" refAttributeName="U9.VOB.Cus.HBHJianLiYuan.CostWarning:ImportDate" displayNameIndexStr="2" />
+        <RefField id="37c40e1c-c7e6-4f9c-be28-71a31b946dab" name="Importer_Name" displayName="业务员" description="" help="业务员.Misc.名称" isKey="False" isEdit="False" isName="False" isVisible="True" isParent="False" sequence="0" length="120" refAttributeName="U9.VOB.Cus.HBHJianLiYuan.CostWarning:Importer.Name" displayNameIndexStr="0" />
+        <RefField id="b96f4b29-c956-4bd8-8db3-77d3e0a647db" name="Department_Name" displayName="部门" description="" help="部门.Misc.名称" isKey="False" isEdit="False" isName="False" isVisible="True" isParent="False" sequence="0" length="120" refAttributeName="U9.VOB.Cus.HBHJianLiYuan.CostWarning:Department.Name" displayNameIndexStr="0" />
+      </RefFields>
+      <OrderFields>
+        <OrderField id="f696b625-f59b-4d28-bc97-9f9ffc4ef5fd" name="ImportDate" displayName="导入日期" description="" help="成本预警.Misc.导入日期" direction="1" sequence="0" refAttributeName="U9.VOB.Cus.HBHJianLiYuan.CostWarning:ImportDate" />
+        <OrderField id="a4794186-e649-4cb3-9f92-21d6afaf3ed0" name="Department_Name" displayName="名称" description="" help="部门.Misc.名称" direction="0" sequence="0" refAttributeName="U9.VOB.Cus.HBHJianLiYuan.CostWarning:Department.Name" />
+      </OrderFields>
+      <Filter />
+    </Reference>
+  </References>
+</ReferenceComponent>
