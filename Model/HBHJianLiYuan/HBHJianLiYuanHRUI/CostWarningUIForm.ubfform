@@ -250,7 +250,7 @@
           <HeaderCell ID="4fcf3bb3-cbdd-4511-b93e-c6fc1faed55b" ColSpan="1" Name="HeaderCell2" OwnerColName="Date0" RowSpan="1" />
           <HeaderCell ID="ee151fcc-8c86-4560-86af-f6c9d3dbad1b" ColSpan="1" Name="HeaderCell3" OwnerColName="MealTime0" RowSpan="1" />
           <HeaderCell ID="d4634b59-cf18-4252-b5a5-dbcf9e9188ba" ColSpan="1" Name="HeaderCell4" OwnerColName="EstimatedQty0" RowSpan="1" />
-          <HeaderCell ID="2644fefb-5713-41d6-adfb-b81efc44023a" ColSpan="1" Name="HeaderCell5" OwnerColName="MealStandard0" RowSpan="1" />
+          <HeaderCell ID="6a528427-aefb-43db-a4a7-c5971028a8c8" ColSpan="1" DisplayName="餐标" DisplayNameIndexStr="" DisplayNameResourceID="" DisplaySrcUIFieldID="" DisplaySrcUIViewID="" Name="HeaderCell11" OwnerColName="MealStandard37" RowSpan="1" />
           <HeaderCell ID="95f996ee-6a4c-41e8-aff5-03db2888b9dd" ColSpan="1" DisplayName="日出勤小时数" DisplayNameIndexStr="" DisplayNameResourceID="" DisplaySrcUIFieldID="" DisplaySrcUIViewID="" Name="HeaderCell9" OwnerColName="AttendanceTime0" RowSpan="1" />
           <HeaderCell ID="909f3c0d-2e5f-4770-ad95-7d368b22cd80" ColSpan="1" Name="HeaderCell6" OwnerColName="Wage0" RowSpan="1" />
           <HeaderCell ID="5fb293f1-02b7-4194-b9e9-de9e9ef068d5" ColSpan="1" Name="HeaderCell8" OwnerColName="GrossProfit0" RowSpan="1" />
@@ -285,9 +285,13 @@
           <CurrencyType Name="CurrencyType2" />
           <Events />
         </NumberColumn>
-        <TextBoxColumn ID="9a8f7b9b-81cf-4372-8c34-ddd815ecd1ff" DefaultValue="" DisplayFormat="50" Enabled="True" Help="成本预警行.Misc.餐标" IsNull="True" IsProperty="False" IsSequence="False" Name="MealStandard0" NPos="6" Point="0" TextAlign="Left" UIFieldID="MealStandard" UIViewID="CostWarning_CostWarningLine" Visible="True">
+        <NumberColumn ID="b9825a93-af8e-413d-8067-c90f66a13db8" DefaultValue="0" DisplayFormat="24.9" Enabled="True" Help="成本预警行.Misc.餐标" IsNull="True" IsProperty="False" IsSequence="False" Name="MealStandard37" NPos="6" Point="2" UIFieldID="MealStandard" UIViewID="CostWarning_CostWarningLine" Visible="True">
+          <PrecisionBind />
+          <RoundRuleBind />
+          <ValueOfRoundByValueBind />
+          <CurrencyType />
           <Events />
-        </TextBoxColumn>
+        </NumberColumn>
         <NumberColumn ID="01fb8174-1146-47a4-961b-967e3e8a77d7" DefaultValue="0" DisplayFormat="24.9" Enabled="True" Help="成本预警行.Misc.日出勤小时数" IsNull="True" IsProperty="False" IsSequence="False" Name="AttendanceTime0" NPos="7" Point="2" UIFieldID="AttendanceTime" UIViewID="CostWarning_CostWarningLine" Visible="True">
           <PrecisionBind Name="PrecisionBind3" />
           <RoundRuleBind Name="RoundRuleBind3" />
@@ -295,7 +299,7 @@
           <CurrencyType Name="CurrencyType3" />
           <Events />
         </NumberColumn>
-        <NumberColumn ID="b013f850-124c-4365-af99-f4ad6a814d5a" DefaultValue="0" DisplayFormat="24.9" Enabled="True" Help="成本预警行.Misc.当日人工工资" IsNull="True" IsProperty="False" IsSequence="False" Name="Wage0" NPos="8" Point="4" UIFieldID="Wage" UIViewID="CostWarning_CostWarningLine" Visible="True">
+        <NumberColumn ID="b013f850-124c-4365-af99-f4ad6a814d5a" DefaultValue="0" DisplayFormat="24.9" Enabled="True" Help="成本预警行.Misc.当日人工工资" IsNull="True" IsProperty="False" IsSequence="False" Name="Wage0" NPos="8" Point="2" UIFieldID="Wage" UIViewID="CostWarning_CostWarningLine" Visible="True">
           <PrecisionBind Name="PrecisionBind4" />
           <RoundRuleBind Name="RoundRuleBind4" />
           <ValueOfRoundByValueBind Name="ValueOfRoundByValueBind4" />
