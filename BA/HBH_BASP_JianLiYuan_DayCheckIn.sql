@@ -122,6 +122,7 @@ select
 	,DepartmentCode
 	,DepartmentName
 	,CheckInDate
+	,DisplayDate
 	,StatisticsPeriod
 	--,checkin.Status as Status
 	--,checkin.CurrentOperator as CurrentOperator
@@ -176,8 +177,8 @@ from (
 		,DepartmentCode = IsNull(dept.Code,'')
 		,DepartmentName = IsNull(deptTrl.Name,'')
 
-		-- ,checkin.CheckInDate
-		,CheckInDate = Right('00' + DateName(Month,checkin.CheckInDate),2) + '.' + Right('00' + DateName(day,checkin.CheckInDate),2)
+		,checkin.CheckInDate
+		,DisplayDate = Right('00' + DateName(Month,checkin.CheckInDate),2) + '.' + Right('00' + DateName(day,checkin.CheckInDate),2)
 		,StatisticsPeriod = Right('0000' + DateName(year,checkin.CheckInDate),4) + 'Äê' + Right('00' + DateName(month,checkin.CheckInDate),2) + 'ÔÂ'
 		--,checkin.Status as Status
 		--,checkin.CurrentOperator as CurrentOperator
@@ -303,6 +304,7 @@ group by
 	,DepartmentCode
 	,DepartmentName
 	,CheckInDate
+	,DisplayDate
 	,StatisticsPeriod
 	,Region
 	,RegionCode

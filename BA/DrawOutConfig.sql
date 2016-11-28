@@ -104,3 +104,32 @@ begin
 		,@ModelID
 end
 
+
+set @ReportID = 'd4d091f4-5e93-4742-bfd8-f60b5e7e578f'
+set @ModelID = '1D61EF22-2ADF-42DD-A3D2-DE5775B160C7'
+set @TableName = 'Fact_U9_HolidayAttendance'
+set @SPName = 'HBH_BASP_JianLiYuan_HolidayAttendance'
+set @Parameters = '@请选择过滤年月,@请选择区域,@请选择大区,@请选择部门'
+
+/*
+delete from ETL_RealTime_Tables
+				where ReportID = @ReportID
+					and ModelID = @ModelID
+*/
+if not exists(select 1 from ETL_RealTime_Tables
+				where ReportID = @ReportID
+					and ModelID = @ModelID
+				)
+begin
+	insert into ETL_RealTime_Tables
+	(
+		TableName,SPName,Parameters,ReportID,ModelID
+	)
+	select
+		@TableName
+		,@SPName
+		,@Parameters
+		,@ReportID		-- 报表--属性--ID
+		,@ModelID
+end
+
