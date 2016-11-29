@@ -90,17 +90,17 @@
       </Events>
     </Button>
     <Separator ID="533cd1bd-ec99-42b7-b122-be094f20e7e9" Height="28" Name="Separator4" TabIndex="19" TabStop="True" Width="8" X="557" Y="0" />
-    <Button ID="60d22d55-4bfa-4bf0-abf1-facbe01779a2" AccessKey="A" DisplayNameResourceID="92ccef79-ad54-438c-a16e-20a4fd407b97" DisplaySrcType="PublicResource" GridHeight="1" GridWidth="1" GridX="0" GridY="0" Height="28" Name="BtnAttachment" TabIndex="20" TabStop="True" Visible="False" Width="35" X="565" Y="0">
+    <Button ID="60d22d55-4bfa-4bf0-abf1-facbe01779a2" AccessKey="A" DisplayNameResourceID="92ccef79-ad54-438c-a16e-20a4fd407b97" DisplaySrcType="PublicResource" GridHeight="1" GridWidth="1" GridX="0" GridY="0" Height="28" Name="BtnAttachment" TabIndex="20" TabStop="True" Visible="True" Width="35" X="565" Y="0">
       <Events>
         <Event ActionName="AttachmentClick" EnableEvent="True" EventType="PostBack" IsDataBinding="True" IsDataCollect="True" Name="Click" Parameter="AttachmentClick" Template=".\UITpls\WebPart\ViewCodeBehindCommon.tpl" />
       </Events>
     </Button>
-    <Button ID="a1a0c53d-a239-4962-aac6-073c249e2a20" AccessKey="F" DisplayNameResourceID="e222698c-ae3c-470a-8053-1b69905c510a" DisplaySrcType="PublicResource" GridHeight="1" GridWidth="1" GridX="0" GridY="0" Height="28" Name="BtnFlow" TabIndex="21" TabStop="True" Visible="False" Width="35" X="600" Y="0">
+    <Button ID="a1a0c53d-a239-4962-aac6-073c249e2a20" AccessKey="F" DisplayNameResourceID="e222698c-ae3c-470a-8053-1b69905c510a" DisplaySrcType="PublicResource" GridHeight="1" GridWidth="1" GridX="0" GridY="0" Height="28" Name="BtnFlow" TabIndex="21" TabStop="True" Visible="True" Width="35" X="600" Y="0">
       <Events>
         <Event ActionName="FlowClick" EnableEvent="True" EventType="PostBack" IsDataBinding="True" IsDataCollect="True" Name="Click" Parameter="FlowClick" Template=".\UITpls\WebPart\ViewCodeBehindCommon.tpl" />
       </Events>
     </Button>
-    <Separator ID="bf9cae24-f88f-4199-8b0d-84c9bf498bfe" Height="28" Name="Separator5" TabIndex="22" TabStop="True" Width="8" X="565" Y="0" />
+    <Separator ID="bf9cae24-f88f-4199-8b0d-84c9bf498bfe" Height="28" Name="Separator5" TabIndex="22" TabStop="True" Width="8" X="635" Y="0" />
     <Button ID="483a843f-f78c-41c4-8083-6a3abd1ae1b2" AccessKey="O" DisplayNameResourceID="688fd549-5a92-49cc-8072-6d5377f6409a" DisplaySrcType="PublicResource" GridHeight="1" GridWidth="1" GridX="0" GridY="0" Height="28" Name="BtnOutput" TabIndex="23" TabStop="True" Visible="False" Width="35" X="608" Y="0">
       <Events>
         <Event ActionName="OutputClick" EnableEvent="True" EventType="PostBack" IsDataBinding="True" IsDataCollect="True" Name="Click" Parameter="OutputClick" Template=".\UITpls\WebPart\ViewCodeBehindCommon.tpl" />
@@ -166,27 +166,31 @@
       <Row Fixed="True" Height="328" Name="Row1" />
       <Row Fixed="False" Height="1" Name="Row2" />
     </Rows>
-    <Card ID="3a0cacf1-75ed-4f10-b61e-af377ac760db" BorderStyle="True" ChildLabelWidth="60" ChildRefWidth="20" GridBottomMargin="0" GridColumnCount="12" GridColumnSpace="0" GridHeight="1" GridLeftMargin="0" GridRightMargin="0" GridRowCount="3" GridRowSpace="5" GridTopMargin="0" GridWidth="2" GridX="0" GridY="0" Height="72" LayoutType="GridBag" Name="Card2" TabIndex="1" TabStop="False" Width="972" X="10" Y="0">
+    <Card ID="3a0cacf1-75ed-4f10-b61e-af377ac760db" BorderStyle="True" ChildLabelWidth="60" ChildRefWidth="20" GridBottomMargin="0" GridColumnCount="16" GridColumnSpace="0" GridHeight="1" GridLeftMargin="0" GridRightMargin="0" GridRowCount="3" GridRowSpace="5" GridTopMargin="0" GridWidth="2" GridX="0" GridY="0" Height="72" LayoutType="GridBag" Name="Card2" TabIndex="1" TabStop="False" Width="972" X="10" Y="0">
       <Columns>
-        <Column Fixed="True" Name="Column0" Type="Title" Width="153" />
+        <Column Fixed="True" Name="Column0" Type="Title" Width="100" />
         <Column Fixed="True" Name="Column1" Type="Spacing" Width="5" />
-        <Column Fixed="True" Name="Column2" Type="Value" Width="153" />
+        <Column Fixed="True" Name="Column2" Type="Value" Width="120" />
         <Column Fixed="True" Name="Column3" Type="Spacing" Width="20" />
-        <Column Fixed="True" Name="Column4" Type="Title" Width="152" />
+        <Column Fixed="True" Name="Column4" Type="Title" Width="100" />
         <Column Fixed="True" Name="Column5" Type="Spacing" Width="5" />
-        <Column Fixed="True" Name="Column6" Type="Value" Width="152" />
+        <Column Fixed="True" Name="Column6" Type="Value" Width="120" />
         <Column Fixed="True" Name="Column7" Type="Spacing" Width="20" />
-        <Column Fixed="True" Name="Column8" Type="Title" Width="152" />
+        <Column Fixed="True" Name="Column8" Type="Title" Width="100" />
         <Column Fixed="True" Name="Column9" Type="Spacing" Width="5" />
-        <Column Fixed="True" Name="Column10" Type="Value" Width="152" />
-        <Column Fixed="False" Name="Column11" Type="Spacing" Width="1" />
+        <Column Fixed="True" Name="Column10" Type="Value" Width="120" />
+        <Column Fixed="False" Name="Column11" Type="Spacing" Width="20" />
+        <Column Fixed="True" Name="Column12" Type="Title" Width="100" />
+        <Column Fixed="True" Name="Column13" Type="Spacing" Width="5" />
+        <Column Fixed="True" Name="Column14" Width="120" />
+        <Column Fixed="True" Name="Column15" Width="1" />
       </Columns>
       <Rows>
         <Row Fixed="True" Height="20" Name="Row0" />
         <Row Fixed="True" Height="20" Name="Row17" />
         <Row Fixed="True" Height="20" Name="Row15" />
       </Rows>
-      <Label ID="37111a84-b211-4aca-a1b8-baa10d08b7b4" Enabled="True" GridHeight="1" GridWidth="1" GridX="0" GridY="0" Height="20" IsNull="True" IsSequence="False" Name="lblDepartment116" RelationControl="Department116" TabIndex="0" TabStop="True" TitleAlign="Right" TitleLocation="Left" UIFieldID="" UIViewID="" Visible="True" Width="153" X="0" Y="0">
+      <Label ID="37111a84-b211-4aca-a1b8-baa10d08b7b4" Enabled="True" GridHeight="1" GridWidth="1" GridX="0" GridY="0" Height="20" IsNull="True" IsSequence="False" Name="lblDepartment116" RelationControl="Department116" TabIndex="0" TabStop="True" TitleAlign="Right" TitleLocation="Left" UIFieldID="" UIViewID="" Visible="True" Width="100" X="0" Y="0">
         <Events />
         <RelationControls />
         <Events />
@@ -204,7 +208,7 @@
           </OutParameters>
         </FormLink>
       </Label>
-      <Reference ID="ee0bc68a-fffc-4eb3-8a85-e8d96d5e234e" CodeAttributeName="Code" CodeField="Code" CodeFieldUIFieldID="Department_Code" CodeFieldUIViewID="DayCheckIn" DisplayFormat="19.0" Enabled="True" EntityName="ID" GridHeight="1" GridWidth="1" GridX="2" GridY="0" Height="20" IsNull="True" IsProperty="False" IsSequence="False" Name="Department116" NameAttributeName="Name" NameFieldUIFieldID="Department_Name" NameFieldUIViewID="DayCheckIn" PkeyField="ID" RefType="18e07fd6-84e7-4e0f-aeb6-eba9713f0bb5" RelationControl="lblDepartment116" TabIndex="1" TabStop="True" TextAlign="Right" TitleAlign="Left" TitleLocation="Left" UIFieldID="Department" UIViewID="DayCheckIn" Visible="True" Width="153" WindowHeight="408" WindowWidth="580" X="158" Y="0">
+      <Reference ID="ee0bc68a-fffc-4eb3-8a85-e8d96d5e234e" CodeAttributeName="Code" CodeField="Code" CodeFieldUIFieldID="Department_Code" CodeFieldUIViewID="DayCheckIn" DisplayFormat="19.0" Enabled="True" EntityName="ID" GridHeight="1" GridWidth="1" GridX="2" GridY="0" Height="20" IsNull="True" IsProperty="False" IsSequence="False" Name="Department116" NameAttributeName="Name" NameFieldUIFieldID="Department_Name" NameFieldUIViewID="DayCheckIn" PkeyField="ID" RefType="18e07fd6-84e7-4e0f-aeb6-eba9713f0bb5" RelationControl="lblDepartment116" TabIndex="1" TabStop="True" TextAlign="Right" TitleAlign="Left" TitleLocation="Left" UIFieldID="Department" UIViewID="DayCheckIn" Visible="True" Width="120" WindowHeight="408" WindowWidth="580" X="105" Y="0">
         <Events />
         <RelationControls />
         <ReferenceRelation Action="Clear" ColumnDisplayName="ID" ColumnID="ID" TargetControlType="" TargetID="" TargetProperty="" />
@@ -216,12 +220,12 @@
         <UIFilterBar Name="ReferenceFilter" />
         <Events />
       </Reference>
-      <Label ID="8f328479-3c75-49d7-88a9-c467cbc47f79" Enabled="True" GridHeight="1" GridWidth="1" GridX="0" GridY="2" Height="20" IsNull="True" IsSequence="False" Name="lblCheckInDate116" RelationControl="CheckInDate116" TabIndex="4" TabStop="True" TitleAlign="Right" TitleLocation="Left" UIFieldID="" UIViewID="" Visible="True" Width="153" X="0" Y="50">
+      <Label ID="8f328479-3c75-49d7-88a9-c467cbc47f79" Enabled="True" GridHeight="1" GridWidth="1" GridX="0" GridY="2" Height="20" IsNull="True" IsSequence="False" Name="lblCheckInDate116" RelationControl="CheckInDate116" TabIndex="4" TabStop="True" TitleAlign="Right" TitleLocation="Left" UIFieldID="" UIViewID="" Visible="True" Width="100" X="0" Y="50">
         <Events />
         <RelationControls />
         <Events />
       </Label>
-      <DatePicker ID="c097f638-8625-438a-a6ef-76f3a58d1307" DateTimeFormat="Date" DisplayFormat="17" Enabled="True" GridHeight="1" GridWidth="1" GridX="2" GridY="2" Height="20" IsNull="True" IsProperty="False" IsSequence="False" Name="CheckInDate116" RelationControl="lblCheckInDate116" TabIndex="5" TabStop="True" TitleAlign="Left" TitleLocation="Left" UIFieldID="CheckInDate" UIViewID="DayCheckIn" Visible="True" Width="153" X="158" Y="50">
+      <DatePicker ID="c097f638-8625-438a-a6ef-76f3a58d1307" DateTimeFormat="Date" DisplayFormat="17" Enabled="True" GridHeight="1" GridWidth="1" GridX="2" GridY="2" Height="20" IsNull="True" IsProperty="False" IsSequence="False" Name="CheckInDate116" RelationControl="lblCheckInDate116" TabIndex="5" TabStop="True" TitleAlign="Left" TitleLocation="Left" UIFieldID="CheckInDate" UIViewID="DayCheckIn" Visible="True" Width="120" X="105" Y="50">
         <Events />
         <RelationControls />
       </DatePicker>
@@ -229,16 +233,16 @@
         <Events />
         <RelationControls />
       </FlexFieldPicker>
-      <Label ID="a096d1fc-e45e-461f-ad0b-89771f592e9a" Enabled="True" GridHeight="1" GridWidth="1" GridX="8" GridY="2" Height="20" IsNull="True" IsSequence="False" Name="lblMemo164" RelationControl="Memo164" TabIndex="7" TabStop="True" TitleAlign="Right" TitleLocation="Left" UIFieldID="" UIViewID="" Visible="True" Width="152" X="660" Y="50">
+      <Label ID="a096d1fc-e45e-461f-ad0b-89771f592e9a" Enabled="True" GridHeight="1" GridWidth="1" GridX="8" GridY="2" Height="20" IsNull="True" IsSequence="False" Name="lblMemo164" RelationControl="Memo164" TabIndex="7" TabStop="True" TitleAlign="Right" TitleLocation="Left" UIFieldID="" UIViewID="" Visible="True" Width="100" X="490" Y="50">
         <Events />
         <RelationControls />
         <Events />
       </Label>
-      <TextBox ID="b7ceef0d-4465-49f4-8f78-839e8ec8967b" DisplayFormat="50" Enabled="True" GridHeight="1" GridWidth="1" GridX="10" GridY="2" Height="20" IsNull="True" IsProperty="False" IsSequence="False" MultiLine="True" Name="Memo164" RelationControl="lblMemo164" TabIndex="8" TabStop="True" TextAlign="Left" TextBoxMode="MultiLine" TitleAlign="Left" TitleLocation="Left" UIFieldID="Memo" UIViewID="DayCheckIn" Visible="True" Width="152" X="817" Y="50">
+      <TextBox ID="b7ceef0d-4465-49f4-8f78-839e8ec8967b" DisplayFormat="50" Enabled="True" GridHeight="1" GridWidth="1" GridX="10" GridY="2" Height="20" IsNull="True" IsProperty="False" IsSequence="False" MultiLine="True" Name="Memo164" RelationControl="lblMemo164" TabIndex="8" TabStop="True" TextAlign="Left" TextBoxMode="MultiLine" TitleAlign="Left" TitleLocation="Left" UIFieldID="Memo" UIViewID="DayCheckIn" Visible="True" Width="120" X="595" Y="50">
         <Events />
         <RelationControls />
       </TextBox>
-      <Label ID="99f55e05-752b-47cf-a725-3a19181fcb9c" Enabled="True" GridHeight="1" GridWidth="1" GridX="0" GridY="1" Height="20" IsNull="True" IsSequence="False" Name="lblCurrentOperator329" RelationControl="CurrentOperator329" TabIndex="9" TabStop="True" TitleAlign="Right" TitleLocation="Left" UIFieldID="" UIViewID="" Visible="True" Width="153" X="0" Y="25">
+      <Label ID="99f55e05-752b-47cf-a725-3a19181fcb9c" Enabled="True" GridHeight="1" GridWidth="1" GridX="0" GridY="1" Height="20" IsNull="True" IsSequence="False" Name="lblCurrentOperator329" RelationControl="CurrentOperator329" TabIndex="9" TabStop="True" TitleAlign="Right" TitleLocation="Left" UIFieldID="" UIViewID="" Visible="True" Width="100" X="0" Y="25">
         <Events />
         <RelationControls />
         <Events />
@@ -315,7 +319,7 @@
           </OutParameters>
         </FormLink>
       </Label>
-      <Reference ID="c6eb3a8a-3297-4fda-a340-c083ed223050" CodeAttributeName="EmployeeCode" CodeField="EmployeeCode" CodeFieldUIFieldID="CurrentOperator_EmployeeCode" CodeFieldUIViewID="DayCheckIn" DisplayFormat="19.0" Enabled="True" EntityName="ID" GridHeight="1" GridWidth="1" GridX="2" GridY="1" Height="20" IsNull="True" IsProperty="False" IsSequence="False" Name="CurrentOperator329" NameAttributeName="Name" NameFieldUIFieldID="CurrentOperator_Name" NameFieldUIViewID="DayCheckIn" PkeyField="ID" RefType="cd089ed1-faaf-4920-8f27-3a2feb7e4b22" RelationControl="lblCurrentOperator329" TabIndex="10" TabStop="True" TextAlign="Right" TitleAlign="Left" TitleLocation="Left" UIFieldID="CurrentOperator" UIViewID="DayCheckIn" Visible="True" Width="153" WindowHeight="408" WindowWidth="580" X="158" Y="25">
+      <Reference ID="c6eb3a8a-3297-4fda-a340-c083ed223050" CodeAttributeName="EmployeeCode" CodeField="EmployeeCode" CodeFieldUIFieldID="CurrentOperator_EmployeeCode" CodeFieldUIViewID="DayCheckIn" DisplayFormat="19.0" Enabled="True" EntityName="ID" GridHeight="1" GridWidth="1" GridX="2" GridY="1" Height="20" IsNull="True" IsProperty="False" IsSequence="False" Name="CurrentOperator329" NameAttributeName="Name" NameFieldUIFieldID="CurrentOperator_Name" NameFieldUIViewID="DayCheckIn" PkeyField="ID" RefType="cd089ed1-faaf-4920-8f27-3a2feb7e4b22" RelationControl="lblCurrentOperator329" TabIndex="10" TabStop="True" TextAlign="Right" TitleAlign="Left" TitleLocation="Left" UIFieldID="CurrentOperator" UIViewID="DayCheckIn" Visible="True" Width="120" WindowHeight="408" WindowWidth="580" X="105" Y="25">
         <Events />
         <RelationControls />
         <ReferenceRelation Action="Clear" ColumnDisplayName="ID" ColumnID="ID" TargetControlType="" TargetID="" TargetProperty="" />
@@ -334,21 +338,21 @@
         </UIFilterBar>
         <Events />
       </Reference>
-      <Label ID="e86a840a-32e4-42b9-8418-58d7b230101c" Enabled="True" GridHeight="1" GridWidth="1" GridX="8" GridY="1" Height="20" IsNull="True" IsSequence="False" Name="lblStatus123" RelationControl="Status123" TabIndex="11" TabStop="True" TitleAlign="Right" TitleLocation="Left" UIFieldID="" UIViewID="" Visible="True" Width="152" X="660" Y="25">
+      <Label ID="e86a840a-32e4-42b9-8418-58d7b230101c" Enabled="True" GridHeight="1" GridWidth="1" GridX="8" GridY="1" Height="20" IsNull="True" IsSequence="False" Name="lblStatus123" RelationControl="Status123" TabIndex="11" TabStop="True" TitleAlign="Right" TitleLocation="Left" UIFieldID="" UIViewID="" Visible="True" Width="100" X="490" Y="25">
         <Events />
         <RelationControls />
         <Events />
       </Label>
-      <DropDownList ID="85b59994-983d-419b-b662-bfe7fde18cd3" DisplayFormat="10.0" Enabled="False" EnumFullName="U9.VOB.HBHCommon.U9CommonBE.DocStatus" EnumID="34af30f0-a7d9-4005-962e-21076f509a72" GridHeight="1" GridWidth="1" GridX="10" GridY="1" Height="20" IsNull="True" IsProperty="False" IsSequence="False" Name="Status123" RelationControl="lblStatus123" TabIndex="12" TabStop="True" TitleAlign="Left" TitleLocation="Left" UIFieldID="Status" UIViewID="DayCheckIn" Visible="True" Width="152" X="817" Y="25">
+      <DropDownList ID="85b59994-983d-419b-b662-bfe7fde18cd3" DisplayFormat="10.0" Enabled="False" EnumFullName="U9.VOB.HBHCommon.U9CommonBE.DocStatus" EnumID="34af30f0-a7d9-4005-962e-21076f509a72" GridHeight="1" GridWidth="1" GridX="10" GridY="1" Height="20" IsNull="True" IsProperty="False" IsSequence="False" Name="Status123" RelationControl="lblStatus123" TabIndex="12" TabStop="True" TitleAlign="Left" TitleLocation="Left" UIFieldID="Status" UIViewID="DayCheckIn" Visible="True" Width="120" X="595" Y="25">
         <Events />
         <RelationControls />
       </DropDownList>
-      <Label ID="409080a8-75f7-4c80-a353-b4f6d5a7af2e" Enabled="True" GridHeight="1" GridWidth="1" GridX="8" GridY="0" Height="20" IsNull="True" IsSequence="False" Name="lblApproveType266" RelationControl="ApproveType266" TabIndex="13" TabStop="True" TitleAlign="Right" TitleLocation="Left" UIFieldID="" UIViewID="" Visible="True" Width="152" X="660" Y="0">
+      <Label ID="409080a8-75f7-4c80-a353-b4f6d5a7af2e" Enabled="True" GridHeight="1" GridWidth="1" GridX="8" GridY="0" Height="20" IsNull="True" IsSequence="False" Name="lblApproveType266" RelationControl="ApproveType266" TabIndex="13" TabStop="True" TitleAlign="Right" TitleLocation="Left" UIFieldID="" UIViewID="" Visible="True" Width="100" X="490" Y="0">
         <Events />
         <RelationControls />
         <Events />
       </Label>
-      <Reference ID="3b49694c-6dc9-4379-bad5-7d36c05057cf" CodeAttributeName="Name" CodeField="Name" CodeFieldUIFieldID="ApproveType_Name" CodeFieldUIViewID="DayCheckIn" DisplayFormat="19.0" Enabled="True" EntityName="ID" GridHeight="1" GridWidth="1" GridX="10" GridY="0" Height="20" IsNull="True" IsProperty="False" IsSequence="False" Name="ApproveType266" NameAttributeName="DisplayName" NameFieldUIFieldID="ApproveType_DisplayName" NameFieldUIViewID="DayCheckIn" PkeyField="ID" RefType="d7ed54b4-76e7-4c92-a7ae-9551266d1ac5" RelationControl="lblApproveType266" TabIndex="14" TabStop="True" TextAlign="Right" TitleAlign="Left" TitleLocation="Left" UIFieldID="ApproveType" UIViewID="DayCheckIn" Visible="True" Width="152" WindowHeight="408" WindowWidth="580" X="817" Y="0">
+      <Reference ID="3b49694c-6dc9-4379-bad5-7d36c05057cf" CodeAttributeName="Name" CodeField="Name" CodeFieldUIFieldID="ApproveType_Name" CodeFieldUIViewID="DayCheckIn" DisplayFormat="19.0" Enabled="True" EntityName="ID" GridHeight="1" GridWidth="1" GridX="10" GridY="0" Height="20" IsNull="True" IsProperty="False" IsSequence="False" Name="ApproveType266" NameAttributeName="DisplayName" NameFieldUIFieldID="ApproveType_DisplayName" NameFieldUIViewID="DayCheckIn" PkeyField="ID" RefType="d7ed54b4-76e7-4c92-a7ae-9551266d1ac5" RelationControl="lblApproveType266" TabIndex="14" TabStop="True" TextAlign="Right" TitleAlign="Left" TitleLocation="Left" UIFieldID="ApproveType" UIViewID="DayCheckIn" Visible="True" Width="120" WindowHeight="408" WindowWidth="580" X="595" Y="0">
         <Events />
         <RelationControls />
         <ReferenceRelation Action="Clear" ColumnDisplayName="ID" ColumnID="ID" TargetControlType="" TargetID="" TargetProperty="" />
@@ -360,12 +364,12 @@
         <UIFilterBar Name="ReferenceFilter" />
         <Events />
       </Reference>
-      <Label ID="1e0756de-9ae6-40f5-a500-fb2a3339cc68" Enabled="True" GridHeight="1" GridWidth="1" GridX="4" GridY="0" Height="20" IsNull="True" IsSequence="False" Name="lblIncome170" RelationControl="Income170" TabIndex="15" TabStop="True" TitleAlign="Right" TitleLocation="Left" UIFieldID="" UIViewID="" Visible="True" Width="152" X="331" Y="0">
+      <Label ID="1e0756de-9ae6-40f5-a500-fb2a3339cc68" Enabled="True" GridHeight="1" GridWidth="1" GridX="4" GridY="0" Height="20" IsNull="True" IsSequence="False" Name="lblIncome170" RelationControl="Income170" TabIndex="15" TabStop="True" TitleAlign="Right" TitleLocation="Left" UIFieldID="" UIViewID="" Visible="True" Width="100" X="245" Y="0">
         <Events />
         <RelationControls />
         <Events />
       </Label>
-      <NumberControl ID="16f41205-645f-4773-a9fb-60eeac954174" DisplayFormat="24.9" Enabled="True" GridHeight="1" GridWidth="1" GridX="6" GridY="0" Height="20" IsNull="True" IsProperty="False" IsSequence="False" MultiLine="False" Name="Income170" Precision="4" RelationControl="lblIncome170" TabIndex="16" TabStop="True" TextAlign="Right" TitleAlign="Left" TitleLocation="Left" UIFieldID="Income" UIViewID="DayCheckIn" Visible="True" Width="152" X="488" Y="0">
+      <NumberControl ID="16f41205-645f-4773-a9fb-60eeac954174" DisplayFormat="24.9" Enabled="True" GridHeight="1" GridWidth="1" GridX="6" GridY="0" Height="20" IsNull="True" IsProperty="False" IsSequence="False" MultiLine="False" Name="Income170" Precision="4" RelationControl="lblIncome170" TabIndex="16" TabStop="True" TextAlign="Right" TitleAlign="Left" TitleLocation="Left" UIFieldID="Income" UIViewID="DayCheckIn" Visible="True" Width="120" X="350" Y="0">
         <Events />
         <RelationControls />
         <PrecisionBind Name="PrecisionBind5" />
@@ -373,12 +377,12 @@
         <ValueOfRoundByValueBind Name="ValueOfRoundByValueBind5" />
         <CurrencyType Name="CurrencyType5" />
       </NumberControl>
-      <Label ID="e7fc51b9-0942-485e-96b4-2d2b2d0ed1a9" Enabled="True" GridHeight="1" GridWidth="1" GridX="4" GridY="1" Height="20" IsNull="True" IsSequence="False" Name="lblLaborYieldTarget143" RelationControl="LaborYieldTarget143" TabIndex="17" TabStop="True" TitleAlign="Right" TitleLocation="Left" UIFieldID="" UIViewID="" Visible="True" Width="152" X="331" Y="25">
+      <Label ID="e7fc51b9-0942-485e-96b4-2d2b2d0ed1a9" Enabled="True" GridHeight="1" GridWidth="1" GridX="4" GridY="1" Height="20" IsNull="True" IsSequence="False" Name="lblLaborYieldTarget143" RelationControl="LaborYieldTarget143" TabIndex="17" TabStop="True" TitleAlign="Right" TitleLocation="Left" UIFieldID="" UIViewID="" Visible="True" Width="100" X="245" Y="25">
         <Events />
         <RelationControls />
         <Events />
       </Label>
-      <NumberControl ID="58c355a9-47a6-422c-b0ca-27a534a1af50" DisplayFormat="24.9" Enabled="True" GridHeight="1" GridWidth="1" GridX="6" GridY="1" Height="20" IsNull="True" IsProperty="False" IsSequence="False" MultiLine="False" Name="LaborYieldTarget143" Precision="4" RelationControl="lblLaborYieldTarget143" TabIndex="18" TabStop="True" TextAlign="Right" TitleAlign="Left" TitleLocation="Left" UIFieldID="LaborYieldTarget" UIViewID="DayCheckIn" Visible="True" Width="152" X="488" Y="25">
+      <NumberControl ID="58c355a9-47a6-422c-b0ca-27a534a1af50" DisplayFormat="24.9" Enabled="True" GridHeight="1" GridWidth="1" GridX="6" GridY="1" Height="20" IsNull="True" IsProperty="False" IsSequence="False" MultiLine="False" Name="LaborYieldTarget143" Precision="4" RelationControl="lblLaborYieldTarget143" TabIndex="18" TabStop="True" TextAlign="Right" TitleAlign="Left" TitleLocation="Left" UIFieldID="LaborYieldTarget" UIViewID="DayCheckIn" Visible="True" Width="120" X="350" Y="25">
         <Events />
         <RelationControls />
         <PrecisionBind Name="PrecisionBind6" />
@@ -386,12 +390,12 @@
         <ValueOfRoundByValueBind Name="ValueOfRoundByValueBind6" />
         <CurrencyType Name="CurrencyType6" />
       </NumberControl>
-      <Label ID="3fd553ed-616d-4eaf-9d47-cc76c7b3f101" Enabled="True" GridHeight="1" GridWidth="1" GridX="4" GridY="2" Height="20" IsNull="True" IsSequence="False" Name="lblLaborCostTarget122" RelationControl="LaborCostTarget122" TabIndex="19" TabStop="True" TitleAlign="Right" TitleLocation="Left" UIFieldID="" UIViewID="" Visible="True" Width="152" X="331" Y="50">
+      <Label ID="3fd553ed-616d-4eaf-9d47-cc76c7b3f101" Enabled="True" GridHeight="1" GridWidth="1" GridX="4" GridY="2" Height="20" IsNull="True" IsSequence="False" Name="lblLaborCostTarget122" RelationControl="LaborCostTarget122" TabIndex="19" TabStop="True" TitleAlign="Right" TitleLocation="Left" UIFieldID="" UIViewID="" Visible="True" Width="100" X="245" Y="50">
         <Events />
         <RelationControls />
         <Events />
       </Label>
-      <NumberControl ID="2a9c608e-df95-4e5c-8341-30276433fede" DisplayFormat="24.9" Enabled="True" GridHeight="1" GridWidth="1" GridX="6" GridY="2" Height="20" IsNull="True" IsProperty="False" IsSequence="False" MultiLine="False" Name="LaborCostTarget122" Precision="4" RelationControl="lblLaborCostTarget122" TabIndex="20" TabStop="True" TextAlign="Right" TitleAlign="Left" TitleLocation="Left" UIFieldID="LaborCostTarget" UIViewID="DayCheckIn" Visible="True" Width="152" X="488" Y="50">
+      <NumberControl ID="2a9c608e-df95-4e5c-8341-30276433fede" DisplayFormat="24.9" Enabled="True" GridHeight="1" GridWidth="1" GridX="6" GridY="2" Height="20" IsNull="True" IsProperty="False" IsSequence="False" MultiLine="False" Name="LaborCostTarget122" Precision="4" RelationControl="lblLaborCostTarget122" TabIndex="20" TabStop="True" TextAlign="Right" TitleAlign="Left" TitleLocation="Left" UIFieldID="LaborCostTarget" UIViewID="DayCheckIn" Visible="True" Width="120" X="350" Y="50">
         <Events />
         <RelationControls />
         <PrecisionBind Name="PrecisionBind7" />
@@ -399,6 +403,15 @@
         <ValueOfRoundByValueBind Name="ValueOfRoundByValueBind7" />
         <CurrencyType Name="CurrencyType7" />
       </NumberControl>
+      <Label ID="255e28c4-8ba6-499c-882d-cbf821b99035" Enabled="True" GridHeight="1" GridWidth="1" GridX="12" GridY="0" Height="20" IsNull="True" IsSequence="False" Name="lblCreatedBy71" RelationControl="CreatedBy71" TabIndex="21" TabStop="True" TitleAlign="Right" TitleLocation="Left" UIFieldID="" UIViewID="" Visible="True" Width="100" X="735" Y="0">
+        <Events />
+        <RelationControls />
+        <Events />
+      </Label>
+      <TextBox ID="2ef2482e-acf5-45dd-832a-3c78fd8ae78e" DisplayFormat="50" Enabled="False" GridHeight="1" GridWidth="1" GridX="14" GridY="0" Height="20" IsNull="True" IsProperty="False" IsSequence="False" MultiLine="False" Name="CreatedBy71" RelationControl="lblCreatedBy71" TabIndex="22" TabStop="True" TextAlign="Left" TitleAlign="Left" TitleLocation="Left" UIFieldID="CreatedBy" UIViewID="DayCheckIn" Visible="True" Width="120" X="840" Y="0">
+        <Events />
+        <RelationControls />
+      </TextBox>
     </Card>
     <DataGrid ID="4b366f14-453a-4a3a-9566-52032b4587e5" AllowSelectAllPage="True" EditStatus="edit" Enabled="True" GridHeight="2" GridWidth="2" GridX="0" GridY="1" HasSum="True" Height="339" IsSumAllData="True" Name="DataGrid5" PageSize="20" Paging="True" TabIndex="2" TabStop="True" Width="972" X="10" Y="82">
       <Events />

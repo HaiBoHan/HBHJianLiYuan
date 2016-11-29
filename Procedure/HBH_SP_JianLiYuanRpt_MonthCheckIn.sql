@@ -156,7 +156,7 @@ select
 		-- 全日制员工工资
 		(StardardSalary / MonthDays * IsNull(FullTimeDay,@DefaultZero) 
 		-- 非全日制员工工资
-		+ IsNull(FPartSalary,@DefaultZero) * IsNull(FPartSalary,@DefaultZero) 
+		+ IsNull(FPartSalary,@DefaultZero) * IsNull(PartTimeDay,@DefaultZero) 
 		-- 全日制加班工资
 		+ IsNull(OvertimeSalary,@DefaultZero) * IsNull(HourlyDay,@DefaultZero) 
 		-- 非全日制加班工资
@@ -341,7 +341,7 @@ begin
 				-- 全日制员工工资
 				(StardardSalary / MonthDays * IsNull(FullTimeDay,@DefaultZero) 
 				-- 非全日制员工工资
-				+ IsNull(FPartSalary,@DefaultZero) * IsNull(FPartSalary,@DefaultZero) 
+				+ IsNull(FPartSalary,@DefaultZero) * IsNull(PartTimeDay,@DefaultZero) 
 				-- 全日制加班工资
 				+ IsNull(OvertimeSalary,@DefaultZero) * IsNull(HourlyDay,@DefaultZero) 
 				-- 非全日制加班工资
@@ -417,7 +417,7 @@ begin
 			-- 全日制员工工资
 			(StardardSalary / MonthDays * IsNull(FullTimeDay,@DefaultZero) 
 			-- 非全日制员工工资
-			+ IsNull(FPartSalary,@DefaultZero) * IsNull(FPartSalary,@DefaultZero) 
+			+ IsNull(FPartSalary,@DefaultZero) * IsNull(PartTimeDay,@DefaultZero) 
 			-- 全日制加班工资
 			+ IsNull(OvertimeSalary,@DefaultZero) * IsNull(HourlyDay,@DefaultZero) 
 			-- 非全日制加班工资

@@ -12,7 +12,7 @@
   <DynamicMatrixTable />
   <BaseMeasure>Mil</BaseMeasure>
   <UserMeasure>Inch</UserMeasure>
-  <Width>12390</Width>
+  <Width>18160</Width>
   <PageSet>
     <CanNotModifiedOnRuntime>false</CanNotModifiedOnRuntime>
     <Margin>
@@ -109,6 +109,9 @@
           <Column>
             <Width>1500</Width>
           </Column>
+          <Column>
+            <Width>6000</Width>
+          </Column>
         </Columns>
         <RowGroupings>
           <RowGrouping>
@@ -138,6 +141,30 @@
                 <GroupExpression>=Fields!EmployeeCode.Value</GroupExpression>
                 <Expressions />
               </Grouping>
+              <SubTotal>
+                <ReportItems>
+                  <TextBoxs>
+                    <TextBox name="subTotal35textBox_03">
+                      <Style>
+                        <FormatStyle />
+                        <Front />
+                        <Alignment />
+                        <Background>
+                          <Color>Yellow</Color>
+                        </Background>
+                        <Padding />
+                        <Font />
+                        <Border />
+                      </Style>
+                      <Location />
+                      <Width>1500</Width>
+                      <Height>250</Height>
+                      <Text>SubTotal</Text>
+                      <IsBookMark>false</IsBookMark>
+                    </TextBox>
+                  </TextBoxs>
+                </ReportItems>
+              </SubTotal>
               <ReportItems>
                 <TextBoxs>
                   <TextBox name="TextBox_94">
@@ -316,6 +343,30 @@
                 <GroupExpression>=Fields!CheckInDate.Value</GroupExpression>
                 <Expressions />
               </Grouping>
+              <SubTotal>
+                <ReportItems>
+                  <TextBoxs>
+                    <TextBox name="subTotal44textBox_80">
+                      <Style>
+                        <FormatStyle />
+                        <Front />
+                        <Alignment />
+                        <Background>
+                          <Color>Yellow</Color>
+                        </Background>
+                        <Padding />
+                        <Font />
+                        <Border />
+                      </Style>
+                      <Location />
+                      <Width>6000</Width>
+                      <Height>250</Height>
+                      <Text>SubTotal</Text>
+                      <IsBookMark>false</IsBookMark>
+                    </TextBox>
+                  </TextBoxs>
+                </ReportItems>
+              </SubTotal>
               <ReportItems>
                 <TextBoxs>
                   <TextBox name="TextBox_93">
@@ -531,8 +582,8 @@
           <Top>110</Top>
           <Left>160</Left>
         </Location>
-        <Height>750</Height>
-        <Width>12000</Width>
+        <Height>1000</Height>
+        <Width>18000</Width>
         <DataSetName>MonthCheckIn</DataSetName>
       </Matrix>
       <Cells />
@@ -632,6 +683,7 @@
           <SelectEnable>true</SelectEnable>
           <RowGroupEnable>true</RowGroupEnable>
           <ColumnGroupEnable>true</ColumnGroupEnable>
+          <AggregationEnable>true</AggregationEnable>
           <ColumnGroupDefault>true</ColumnGroupDefault>
           <SubFields />
           <DisplayField>=Fields!CheckInDate.Value</DisplayField>
