@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using UFIDA.U9.Base.FlexField.DescFlexField;
 using UFIDA.U9.PPR.PurPriceList;
-using UFIDA.U9.Cust.HBH.Common.CommonLibary;
+using HBH.DoNet.DevPlatform.EntityMapping;
 using UFIDA.U9.Base.Currency;
 
 namespace U9.VOB.Cus.HBHJianLiYuan.HBHHelper

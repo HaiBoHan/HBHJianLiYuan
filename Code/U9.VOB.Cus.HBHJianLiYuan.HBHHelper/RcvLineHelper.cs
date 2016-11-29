@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using UFIDA.U9.Base.FlexField.DescFlexField;
-using UFIDA.U9.Cust.HBH.Common.CommonLibary;
+using HBH.DoNet.DevPlatform.EntityMapping;
 
 namespace U9.VOB.Cus.HBHJianLiYuan.HBHHelper
 {

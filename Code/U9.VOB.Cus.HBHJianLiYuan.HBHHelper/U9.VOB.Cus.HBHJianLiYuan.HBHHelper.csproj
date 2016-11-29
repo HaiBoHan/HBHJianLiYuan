@@ -33,6 +33,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="HBH.DoNet.DevPlatform.EntityMapping">
+      <HintPath>..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\HBHCommon\HBH.DoNet.DevPlatform.EntityMapping.dll</HintPath>
+    </Reference>
+    <Reference Include="HBH.DoNet.DevPlatform.U9Mapping">
+      <HintPath>..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\HBHCommon\HBH.DoNet.DevPlatform.U9Mapping.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -148,9 +154,6 @@
     <Reference Include="UFIDA.U9.CS.Workflow.WorkflowBP.Agent, Version=25.5401.10633.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\CS\UFIDA.U9.CS.Workflow.WorkflowBP.Agent.dll</HintPath>
-    </Reference>
-    <Reference Include="UFIDA.U9.Cust.HBH.Common.CommonLibary">
-      <HintPath>..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\Unconfiged\Component\UFIDA.U9.Cust.HBH.Common.CommonLibary.dll</HintPath>
     </Reference>
     <Reference Include="UFIDA.U9.FA.FABE">
       <HintPath>..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\App\UFIDA.U9.FA.FABE.dll</HintPath>
