@@ -225,143 +225,9 @@
                                         && payResultList.Count > 0
                                         )
                                     {
-                                        // UFIDA.U9.PAY.PayrollDoc.PayrollDocItem
-                                        // 薪资项目  SalaryItem       
+                                        //SetSalaryItem_Old(dicEmployee2Checkin, payResultList);  
 
-                                        /*
-                                        全日制员工出勤薪资取数规则：出勤天数=∑全日制员工出勤
-                                        工时=∑钟点工出勤
-                                        非全日制员工出勤薪资取数规则：F考勤工时=∑非全日制员工出勤+∑钟点工出勤
-                                        非全日制出勤、全日制出勤、出勤天数均保留一位小数，其中钟点工出勤、非全日制出勤不能大于4.
-                                         */
-                                        SalaryItem checkinItem = SalaryItem.Finder.Find("Code=@Code"
-                                            , new OqlParam(SalaryItemHelper.SalaryItemCode_CheckInDays)
-                                            );
-
-                                        SalaryItem beforeDeptItem = SalaryItem.Finder.Find("Code=@Code"
-                                            , new OqlParam(SalaryItemHelper.SalaryItemCode_BeforeDept)
-                                            );
-
-                                        SalaryItem afterDeptItem = SalaryItem.Finder.Find("Code=@Code"
-                                            , new OqlParam(SalaryItemHelper.SalaryItemCode_AfterDept)
-                                            );
-
-                                        SalaryItem transferDayItem = SalaryItem.Finder.Find("Code=@Code"
-                                            , new OqlParam(SalaryItemHelper.SalaryItemCode_TransferDays)
-                                            );
-
-                                        SalaryItem workHoursItem = SalaryItem.Finder.Find("Code=@Code"
-                                            , new OqlParam(SalaryItemHelper.SalaryItemCode_WorkHours)
-                                            );
-
-                                        SalaryItem fbeforeDeptItem = SalaryItem.Finder.Find("Code=@Code"
-                                            , new OqlParam(SalaryItemHelper.SalaryItemCode_FBeforeDept)
-                                            );
-
-                                        SalaryItem fafterDeptItem = SalaryItem.Finder.Find("Code=@Code"
-                                            , new OqlParam(SalaryItemHelper.SalaryItemCode_FAfterDept)
-                                            );
-
-                                        SalaryItem ftransferDayItem = SalaryItem.Finder.Find("Code=@Code"
-                                            , new OqlParam(SalaryItemHelper.SalaryItemCode_FTransferDays)
-                                            );
-
-                                        SalaryItem fworkHoursItem = SalaryItem.Finder.Find("Code=@Code"
-                                            , new OqlParam(SalaryItemHelper.SalaryItemCode_FWorkHours)
-                                            );
-
-
-                                        //salaryItem.Code
-
-                                        using (ISession session = Session.Open())
-                                        {
-
-                                            //foreach (EmpPayroll line in payHead.EmpPayrolls)
-                                            foreach (PayrollResult line in payResultList)
-                                            {
-                                                if (line != null
-                                                    && line.EmployeeKey != null
-                                                    )
-                                                {
-                                                    long employeeID = line.EmployeeKey.ID;
-
-                                                    if (employeeID > 0
-                                                        && dicEmployee2Checkin.ContainsKey(employeeID)
-                                                        )
-                                                    {
-                                                        SalaryItem _checkinItem = checkinItem;
-                                                        SalaryItem _afterDeptItem = null;
-                                                        SalaryItem _beforeDeptItem = null;
-                                                        SalaryItem _transferDayItem = null;
-                                                        SalaryItem _workHoursItem = null;
-                                                        decimal checkInDays = 0;
-                                                        decimal fullCheckInDays = 0;
-                                                        decimal workHours = 0;
-                                                        decimal fPartCheckInDays = 0;
-                                                        decimal transferDays = 0;
-                                                        //long deptID = -1;
-
-                                                        List<CheckInDTO> lstDTO = dicEmployee2Checkin[employeeID];
-
-                                                        if (lstDTO != null
-                                                            && lstDTO.Count > 0
-                                                            )
-                                                        {
-
-                                                            /*
-                                                            全日制考勤取数规则：
-                                                            调动前部门：取计薪期间内第一天所在部门  编码：092  名称：调动前部门
-                                                            调动后部门：取计薪期间内调动后部门    编码：093  名称：调动后部门
-                                                            调动天数：取计薪期间内调动后部门出勤天数   编码：094 名称：调动天数
-                                                            非全日制考勤取数规则：
-                                                            F调动前部门：取计薪期间内第一天所在部门 编码：F35  名称：F调动前部门
-                                                            F调动后部门：取计薪期间内调动后部门    编码：F36  名称：F调动后部门
-                                                            F调动天数：取计薪期间内调动后部门出勤天数   编码：F37 名称：F调动天数
-
-                                                
-                                                            全日制员工出勤薪资取数规则：出勤天数=∑全日制员工出勤
-                                        工时=∑钟点工出勤
-            非全日制员工出勤薪资取数规则：F考勤工时=∑非全日制员工出勤+∑钟点工出勤
-            非全日制出勤、全日制出勤、出勤天数均保留一位小数，其中钟点工出勤、非全日制出勤不能大于4.
- 
-                                                             */
-
-                                                            {
-                                                                CheckInDTO firstCheckIn = lstDTO[0];
-
-                                                                if (firstCheckIn != null)
-                                                                {
-                                                                    GetFirstCheckinItem(checkinItem, beforeDeptItem, afterDeptItem, fbeforeDeptItem, fafterDeptItem, transferDayItem, workHoursItem, ftransferDayItem, fworkHoursItem, firstCheckIn, out _checkinItem, out _afterDeptItem, out _beforeDeptItem, out _transferDayItem, out _workHoursItem, ref checkInDays, ref fullCheckInDays, ref workHours, ref fPartCheckInDays, ref transferDays);
-
-                                                                    SetSalaryValue(line, _checkinItem, _afterDeptItem, _beforeDeptItem, null, null, _transferDayItem, _workHoursItem, checkInDays, firstCheckIn.Department, -1, workHours, transferDays);
-                                                                }
-                                                            }
-
-                                                            // 如果有多个，那么，调动前部门   =   第一个部门
-                                                            if (lstDTO.Count > 1)
-                                                            {
-                                                                // 调动后部门   =   最后一个部门
-                                                                CheckInDTO lastCheckIn = lstDTO[lstDTO.Count - 1];
-
-                                                                if (lastCheckIn != null)
-                                                                {
-                                                                    GetLastCheckinItem(checkinItem, beforeDeptItem, afterDeptItem, fbeforeDeptItem, fafterDeptItem, transferDayItem, workHoursItem, ftransferDayItem, fworkHoursItem, lastCheckIn, out _checkinItem, out _afterDeptItem, out _beforeDeptItem, out _transferDayItem, out _workHoursItem, ref checkInDays, ref fullCheckInDays, ref workHours, ref fPartCheckInDays, ref transferDays);
-
-                                                                    SetSalaryValue(line, _checkinItem, _afterDeptItem, _beforeDeptItem, null, null, _transferDayItem, _workHoursItem, checkInDays, lastCheckIn.Department, -1, workHours, transferDays);
-                                                                }
-                                                            }
-                                                        }
-                                                    }
-                                                    // 如果不存在，那么不覆盖已有的手工录入的记录
-                                                    else
-                                                    {
-                                                        //SetSalaryValue(line, checkinItem, afterDeptItem, beforeDeptItem, fafterDeptItem, fbeforeDeptItem, transferDayItem, workHoursItem, 0, -1, -1, 0, 0);
-                                                    }
-                                                }
-                                            }
-
-                                            session.Commit();
-                                        }                                        
+                                        SetSalaryItem_New(dicEmployee2Checkin, payResultList);  
                                     }
 
                                     // this.Action.NavigateAction.Refresh(null);
@@ -387,6 +253,359 @@
 
             return null;
 		}
+
+
+        private static void SetSalaryItem_New(Dictionary<long, List<CheckInDTO>> dicEmployee2Checkin, PayrollResult.EntityList payResultList)
+        {
+            // UFIDA.U9.PAY.PayrollDoc.PayrollDocItem
+            // 薪资项目  SalaryItem       
+
+            /*
+            全日制员工出勤薪资取数规则：出勤天数=∑全日制员工出勤
+            工时=∑钟点工出勤
+            非全日制员工出勤薪资取数规则：F考勤工时=∑非全日制员工出勤+∑钟点工出勤
+            非全日制出勤、全日制出勤、出勤天数均保留一位小数，其中钟点工出勤、非全日制出勤不能大于4.
+             */
+
+            using (ISession session = Session.Open())
+            {
+                bool isSeted = false;
+
+                //foreach (EmpPayroll line in payHead.EmpPayrolls)
+                foreach (PayrollResult line in payResultList)
+                {
+                    if (line != null
+                        && line.EmployeeKey != null
+                        )
+                    {
+                        long employeeID = line.EmployeeKey.ID;
+
+                        if (employeeID > 0
+                            && dicEmployee2Checkin.ContainsKey(employeeID)
+                            )
+                        {
+                            //SalaryItem _checkinItem = SalaryItemHelper.SalaryItem_FirstDept;
+                            //SalaryItem _afterDeptItem = null;
+                            //SalaryItem _beforeDeptItem = null;
+                            //SalaryItem _transferDayItem = null;
+                            //SalaryItem _workHoursItem = null;
+                            //decimal checkInDays = 0;
+                            //decimal fullCheckInDays = 0;
+                            //decimal workHours = 0;
+                            //decimal fPartCheckInDays = 0;
+                            //decimal transferDays = 0;
+                            ////long deptID = -1;
+
+                            List<CheckInDTO> lstDTO = dicEmployee2Checkin[employeeID];
+
+                            if (lstDTO != null
+                                && lstDTO.Count > 0
+                                )
+                            {
+
+                                /*
+                                全日制考勤取数规则：
+                                调动前部门：取计薪期间内第一天所在部门  编码：092  名称：调动前部门
+                                调动后部门：取计薪期间内调动后部门    编码：093  名称：调动后部门
+                                调动天数：取计薪期间内调动后部门出勤天数   编码：094 名称：调动天数
+                                非全日制考勤取数规则：
+                                F调动前部门：取计薪期间内第一天所在部门 编码：F35  名称：F调动前部门
+                                F调动后部门：取计薪期间内调动后部门    编码：F36  名称：F调动后部门
+                                F调动天数：取计薪期间内调动后部门出勤天数   编码：F37 名称：F调动天数
+
+                                                
+                                全日制员工出勤薪资取数规则：出勤天数=∑全日制员工出勤
+            工时=∑钟点工出勤
+非全日制员工出勤薪资取数规则：F考勤工时=∑非全日制员工出勤+∑钟点工出勤
+非全日制出勤、全日制出勤、出勤天数均保留一位小数，其中钟点工出勤、非全日制出勤不能大于4.
+ 
+                                 */
+
+                                decimal allCheckInDay = GetAllCheckInDay(lstDTO);
+                                SalaryItem _allCheckinItem = SalaryItemHelper.SalaryItem_CheckInDays;
+                                if (_allCheckinItem != null)
+                                {
+                                    line.SetSalaryItem(_allCheckinItem, allCheckInDay);
+                                    isSeted = true;
+                                }
+
+                                {
+                                    CheckInDTO firstCheckIn = lstDTO[0];
+
+                                    if (firstCheckIn != null)
+                                    {
+                                        //GetFirstCheckinItem(checkinItem, beforeDeptItem, afterDeptItem, fbeforeDeptItem, fafterDeptItem, transferDayItem, workHoursItem, ftransferDayItem, fworkHoursItem, firstCheckIn, out _checkinItem, out _afterDeptItem, out _beforeDeptItem, out _transferDayItem, out _workHoursItem, ref checkInDays, ref fullCheckInDays, ref workHours, ref fPartCheckInDays, ref transferDays);
+
+                                        //SetSalaryValue(line, _checkinItem, _afterDeptItem, _beforeDeptItem, null, null, _transferDayItem, _workHoursItem, checkInDays, firstCheckIn.Department, -1, workHours, transferDays);
+
+                                        // checkInDTO.CheckType == CheckTypeEnum.FullTimeStaff.Value ? beforeDeptItem : fbeforeDeptItem
+                                        if (firstCheckIn.CheckType == CheckTypeEnum.FullTimeStaff.Value)
+                                        {
+                                            SetSalaryValue(line, firstCheckIn, SalaryItemHelper.SalaryItem_FirstDept, null, SalaryItemHelper.SalaryItem_FirstDeptWorkHours);
+                                        }
+                                        else
+                                        {
+                                            SetSalaryValue(line, firstCheckIn, SalaryItemHelper.SalaryItem_FFirstDept, null,null);
+                                        }
+                                    }
+                                }
+
+                                // 如果有多个，那么，调动前部门   =   第一个部门
+                                if (lstDTO.Count > 1)
+                                {
+                                    // 调动后部门   =   最后一个部门
+                                    CheckInDTO secondCheckIn = lstDTO[1];
+
+                                    if (secondCheckIn != null)
+                                    {
+                                        // checkInDTO.CheckType == CheckTypeEnum.FullTimeStaff.Value ? beforeDeptItem : fbeforeDeptItem
+                                        if (secondCheckIn.CheckType == CheckTypeEnum.FullTimeStaff.Value)
+                                        {
+                                            SetSalaryValue(line, secondCheckIn, SalaryItemHelper.SalaryItem_SecondDept, SalaryItemHelper.SalaryItem_SecondDeptDays, SalaryItemHelper.SalaryItem_SecondDeptWorkHours);
+                                        }
+                                        else
+                                        {
+                                            SetSalaryValue(line, secondCheckIn, SalaryItemHelper.SalaryItem_FSecondDept, SalaryItemHelper.SalaryItem_FSecondDeptDays,null);
+                                        }
+                                    }
+                                }
+
+                                // 如果有多个，那么，调动前部门   =   第一个部门
+                                if (lstDTO.Count > 2)
+                                {
+                                    // 调动后部门   =   最后一个部门
+                                    CheckInDTO thirdCheckIn = lstDTO[2];
+
+                                    if (thirdCheckIn != null)
+                                    {
+
+                                        // checkInDTO.CheckType == CheckTypeEnum.FullTimeStaff.Value ? beforeDeptItem : fbeforeDeptItem
+                                        if (thirdCheckIn.CheckType == CheckTypeEnum.FullTimeStaff.Value)
+                                        {
+                                            SetSalaryValue(line, thirdCheckIn, SalaryItemHelper.SalaryItem_ThirdDept, SalaryItemHelper.SalaryItem_ThirdDeptDays,SalaryItemHelper.SalaryItem_ThirdDeptWorkHours);
+                                        }
+                                        else
+                                        {
+                                            SetSalaryValue(line, thirdCheckIn, SalaryItemHelper.SalaryItem_FThirdDept, SalaryItemHelper.SalaryItem_FThirdDeptDays,null);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        // 如果不存在，那么不覆盖已有的手工录入的记录
+                        else
+                        {
+                            //SetSalaryValue(line, checkinItem, afterDeptItem, beforeDeptItem, fafterDeptItem, fbeforeDeptItem, transferDayItem, workHoursItem, 0, -1, -1, 0, 0);
+                        }
+                    }
+                }
+
+                session.Commit();
+            }
+        }
+
+        private static void SetSalaryValue(PayrollResult line, CheckInDTO checkInDTO, SalaryItem deptSalary, SalaryItem daysSalary, SalaryItem workHoursSalary)
+        {
+            if (line != null
+                && checkInDTO != null
+                )
+            {
+                bool isSeted = false;
+
+                if (deptSalary != null)
+                {
+                    Department dept = null;
+                    long deptID = checkInDTO.Department;
+                    if (deptID > 0)
+                    {
+                        dept = Department.Finder.FindByID(deptID);
+                    }
+                    if (dept != null)
+                    {
+                        line.SetSalaryItem(deptSalary, dept.Name);
+                        isSeted = true;
+                    }
+                    else
+                    {
+                        line.SetSalaryItem(deptSalary, string.Empty);
+                        isSeted = true;
+                    }
+                }
+                if (daysSalary != null)
+                {
+                    line.SetSalaryItem(daysSalary, checkInDTO.Days);
+                    isSeted = true;
+                }
+                if (workHoursSalary != null)
+                {
+                    line.SetSalaryItem(workHoursSalary, checkInDTO.HourlyDay);
+                    isSeted = true;
+                }
+            }
+        }
+
+
+        private static void SetSalaryItem_Old(Dictionary<long, List<CheckInDTO>> dicEmployee2Checkin, PayrollResult.EntityList payResultList)
+        {
+            // UFIDA.U9.PAY.PayrollDoc.PayrollDocItem
+            // 薪资项目  SalaryItem       
+
+            /*
+            全日制员工出勤薪资取数规则：出勤天数=∑全日制员工出勤
+            工时=∑钟点工出勤
+            非全日制员工出勤薪资取数规则：F考勤工时=∑非全日制员工出勤+∑钟点工出勤
+            非全日制出勤、全日制出勤、出勤天数均保留一位小数，其中钟点工出勤、非全日制出勤不能大于4.
+             */
+            SalaryItem checkinItem = SalaryItem.Finder.Find("Code=@Code"
+                , new OqlParam(SalaryItemHelper.SalaryItemCode_CheckInDays)
+                );
+
+            SalaryItem beforeDeptItem = SalaryItem.Finder.Find("Code=@Code"
+                , new OqlParam(SalaryItemHelper.SalaryItemCode_BeforeDept)
+                );
+
+            SalaryItem afterDeptItem = SalaryItem.Finder.Find("Code=@Code"
+                , new OqlParam(SalaryItemHelper.SalaryItemCode_AfterDept)
+                );
+
+            SalaryItem transferDayItem = SalaryItem.Finder.Find("Code=@Code"
+                , new OqlParam(SalaryItemHelper.SalaryItemCode_TransferDays)
+                );
+
+            SalaryItem workHoursItem = SalaryItem.Finder.Find("Code=@Code"
+                , new OqlParam(SalaryItemHelper.SalaryItemCode_WorkHours)
+                );
+
+            SalaryItem fbeforeDeptItem = SalaryItem.Finder.Find("Code=@Code"
+                , new OqlParam(SalaryItemHelper.SalaryItemCode_FBeforeDept)
+                );
+
+            SalaryItem fafterDeptItem = SalaryItem.Finder.Find("Code=@Code"
+                , new OqlParam(SalaryItemHelper.SalaryItemCode_FAfterDept)
+                );
+
+            SalaryItem ftransferDayItem = SalaryItem.Finder.Find("Code=@Code"
+                , new OqlParam(SalaryItemHelper.SalaryItemCode_FTransferDays)
+                );
+
+            SalaryItem fworkHoursItem = SalaryItem.Finder.Find("Code=@Code"
+                , new OqlParam(SalaryItemHelper.SalaryItemCode_FWorkHours)
+                );
+
+
+            //salaryItem.Code
+
+            using (ISession session = Session.Open())
+            {
+                //foreach (EmpPayroll line in payHead.EmpPayrolls)
+                foreach (PayrollResult line in payResultList)
+                {
+                    if (line != null
+                        && line.EmployeeKey != null
+                        )
+                    {
+                        long employeeID = line.EmployeeKey.ID;
+
+                        if (employeeID > 0
+                            && dicEmployee2Checkin.ContainsKey(employeeID)
+                            )
+                        {
+                            SalaryItem _checkinItem = checkinItem;
+                            SalaryItem _afterDeptItem = null;
+                            SalaryItem _beforeDeptItem = null;
+                            SalaryItem _transferDayItem = null;
+                            SalaryItem _workHoursItem = null;
+                            decimal checkInDays = 0;
+                            decimal fullCheckInDays = 0;
+                            decimal workHours = 0;
+                            decimal fPartCheckInDays = 0;
+                            decimal transferDays = 0;
+                            //long deptID = -1;
+
+                            List<CheckInDTO> lstDTO = dicEmployee2Checkin[employeeID];
+
+                            if (lstDTO != null
+                                && lstDTO.Count > 0
+                                )
+                            {
+
+                                /*
+                                全日制考勤取数规则：
+                                调动前部门：取计薪期间内第一天所在部门  编码：092  名称：调动前部门
+                                调动后部门：取计薪期间内调动后部门    编码：093  名称：调动后部门
+                                调动天数：取计薪期间内调动后部门出勤天数   编码：094 名称：调动天数
+                                非全日制考勤取数规则：
+                                F调动前部门：取计薪期间内第一天所在部门 编码：F35  名称：F调动前部门
+                                F调动后部门：取计薪期间内调动后部门    编码：F36  名称：F调动后部门
+                                F调动天数：取计薪期间内调动后部门出勤天数   编码：F37 名称：F调动天数
+
+                                                
+                                全日制员工出勤薪资取数规则：出勤天数=∑全日制员工出勤
+            工时=∑钟点工出勤
+非全日制员工出勤薪资取数规则：F考勤工时=∑非全日制员工出勤+∑钟点工出勤
+非全日制出勤、全日制出勤、出勤天数均保留一位小数，其中钟点工出勤、非全日制出勤不能大于4.
+ 
+                                 */
+
+                                {
+                                    CheckInDTO firstCheckIn = lstDTO[0];
+
+                                    if (firstCheckIn != null)
+                                    {
+                                        GetFirstCheckinItem(checkinItem, beforeDeptItem, afterDeptItem, fbeforeDeptItem, fafterDeptItem, transferDayItem, workHoursItem, ftransferDayItem, fworkHoursItem, firstCheckIn, out _checkinItem, out _afterDeptItem, out _beforeDeptItem, out _transferDayItem, out _workHoursItem, ref checkInDays, ref fullCheckInDays, ref workHours, ref fPartCheckInDays, ref transferDays);
+
+                                        SetSalaryValue(line, _checkinItem, _afterDeptItem, _beforeDeptItem, null, null, _transferDayItem, _workHoursItem, checkInDays, firstCheckIn.Department, -1, workHours, transferDays);
+                                    }
+                                }
+
+                                // 如果有多个，那么，调动前部门   =   第一个部门
+                                if (lstDTO.Count > 1)
+                                {
+                                    // 调动后部门   =   最后一个部门
+                                    CheckInDTO lastCheckIn = lstDTO[lstDTO.Count - 1];
+
+                                    if (lastCheckIn != null)
+                                    {
+                                        GetLastCheckinItem(checkinItem, beforeDeptItem, afterDeptItem, fbeforeDeptItem, fafterDeptItem, transferDayItem, workHoursItem, ftransferDayItem, fworkHoursItem, lastCheckIn, out _checkinItem, out _afterDeptItem, out _beforeDeptItem, out _transferDayItem, out _workHoursItem, ref checkInDays, ref fullCheckInDays, ref workHours, ref fPartCheckInDays, ref transferDays);
+
+                                        SetSalaryValue(line, _checkinItem, _afterDeptItem, _beforeDeptItem, null, null, _transferDayItem, _workHoursItem, checkInDays, lastCheckIn.Department, -1, workHours, transferDays);
+                                    }
+                                }
+                            }
+                        }
+                        // 如果不存在，那么不覆盖已有的手工录入的记录
+                        else
+                        {
+                            //SetSalaryValue(line, checkinItem, afterDeptItem, beforeDeptItem, fafterDeptItem, fbeforeDeptItem, transferDayItem, workHoursItem, 0, -1, -1, 0, 0);
+                        }
+                    }
+                }
+
+                session.Commit();
+            }
+        }
+
+        // 获取所有部门出勤天数
+        /// <summary>
+        /// 获取所有部门出勤天数
+        /// </summary>
+        /// <param name="lstDTO"></param>
+        /// <returns></returns>
+        private static decimal GetAllCheckInDay(List<CheckInDTO> lstDTO)
+        {
+            decimal all = 0;
+            if (lstDTO != null
+                && lstDTO.Count > 0
+                )
+            {
+                foreach (CheckInDTO dto in lstDTO)
+                {
+                    all += dto.FullTimeDay;
+                }
+            }
+
+            return all;
+        }
 
 
 
@@ -810,6 +1029,17 @@
             set { partTimeDay = value; }
         }
 
+        // 员工出勤
+        private decimal days;
+        /// <summary>
+        /// 员工出勤
+        /// </summary>
+        public decimal Days
+        {
+            get { return days; }
+            set { days = value; }
+        }
+
 
         // 钟点工出勤
         private decimal hourlyDay;
@@ -834,6 +1064,7 @@
             dto.FullTimeDay = PubClass.GetDecimal(row.GetValue("FullTimeDay"));
             dto.HourlyDay = PubClass.GetDecimal(row.GetValue("HourlyDay"));
             dto.PartTimeDay = PubClass.GetDecimal(row.GetValue("PartTimeDay"));
+            dto.Days = PubClass.GetDecimal(row.GetValue("Days"));
 
             return dto;
         }

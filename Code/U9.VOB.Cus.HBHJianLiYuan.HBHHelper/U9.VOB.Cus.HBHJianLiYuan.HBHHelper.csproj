@@ -188,6 +188,12 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\App\UFIDA.U9.NM.NMBP.Deploy.dll</HintPath>
     </Reference>
+    <Reference Include="UFIDA.U9.PAY.PayBE">
+      <HintPath>..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\App\UFIDA.U9.PAY.PayBE.dll</HintPath>
+    </Reference>
+    <Reference Include="UFIDA.U9.PAY.PayBE.Deploy">
+      <HintPath>..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\App\UFIDA.U9.PAY.PayBE.Deploy.dll</HintPath>
+    </Reference>
     <Reference Include="UFIDA.U9.PPR.PPRBE">
       <HintPath>..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\App\UFIDA.U9.PPR.PPRBE.dll</HintPath>
     </Reference>

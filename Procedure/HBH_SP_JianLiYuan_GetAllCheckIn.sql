@@ -80,6 +80,7 @@ end
 	declare @TotalIDCount int = 0
 	declare @TotalLineCount int = 0
 	declare @DetailLineCount int = 0
+	declare @DefaultZero decimal(24,9) = 0
 	
 	--select @SysLineNo=cast(isnull(b.Value,a.DefaultValue) as int)
 	--from Base_Profile a
@@ -172,9 +173,17 @@ select
 	,checkInLine.EmployeeArchive as EmployeeArchive
 	,checkInLine.CheckType as CheckType
 	
-	,sum(checkInLine.FullTimeDay) as FullTimeDay
-	,sum(checkInLine.PartTimeDay) as PartTimeDay
-	,sum(checkInLine.HourlyDay) as HourlyDay
+	,sum(IsNull(checkInLine.FullTimeDay,@DefaultZero)) as FullTimeDay
+	,sum(IsNull(checkInLine.PartTimeDay,@DefaultZero)) as PartTimeDay
+	,sum(IsNull(checkInLine.HourlyDay,@DefaultZero)) as HourlyDay
+
+
+	--,[Days] = sum(checkInLine.FullTimeDay + checkInLine.PartTimeDay)
+	,[Days] = sum(case checkInLine.CheckType 
+					when 0 then checkInLine.FullTimeDay
+					when 1 then checkInLine.PartTimeDay
+					else @DefaultZero end
+					)
 
 	,min(checkIn.CheckInDate) as CheckInDate
 	
