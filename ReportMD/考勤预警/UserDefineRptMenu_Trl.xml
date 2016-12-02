@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<UserDefineRptMenuTrl>
+  <RptMenuTrl>
+    <ID>1001512220570001</ID>
+    <SysMLFlag>zh-CN</SysMLFlag>
+    <Description>考勤报表</Description>
+    <DisplayName>考勤报表</DisplayName>
+  </RptMenuTrl>
+  <RptMenuTrl>
+    <ID>1001612010570001</ID>
+    <SysMLFlag>zh-CN</SysMLFlag>
+    <Description>考勤预警</Description>
+    <DisplayName>考勤预警</DisplayName>
+  </RptMenuTrl>
+</UserDefineRptMenuTrl>

@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<UserDefineRptMenu>
+  <RptMenu AllocSerials="false">
+    <ID>1001512220570001</ID>
+    <CreatedOn>2015/12/22 17:56:46</CreatedOn>
+    <CreatedBy>
+    </CreatedBy>
+    <SysVersion>0</SysVersion>
+    <Parent>0</Parent>
+    <Sequence>1</Sequence>
+    <Name>CheckInRpt</Name>
+    <ShortName>考勤报表</ShortName>
+    <Code>UFSoft.UBF.Report.PersonalMenus!3eb4e903-f30d-4f06-adf8-282ea48316f5</Code>
+    <PageParameter>
+    </PageParameter>
+    <URI>
+    </URI>
+    <Application>301101</Application>
+  </RptMenu>
+  <RptMenu AllocSerials="false">
+    <ID>1001612010570001</ID>
+    <CreatedOn>2016/12/1 19:35:40</CreatedOn>
+    <CreatedBy>
+    </CreatedBy>
+    <SysVersion>1</SysVersion>
+    <Parent>1001512220570001</Parent>
+    <Sequence>2</Sequence>
+    <Name>考勤预警</Name>
+    <ShortName>考勤预警</ShortName>
+    <Code>UFSoft.UBF.Report.PersonalMenus!9a303f81-c7fe-4758-b492-b9d27ebce5d3</Code>
+    <PageParameter>ReportContent=a7b559cc-87bd-49f0-912f-f87c8238eab4&amp;ReportDisplayName=考勤预警</PageParameter>
+    <URI>UFIDA.UBF.Process.Report.IndividualRpt</URI>
+    <Application>301101</Application>
+  </RptMenu>
+</UserDefineRptMenu>
