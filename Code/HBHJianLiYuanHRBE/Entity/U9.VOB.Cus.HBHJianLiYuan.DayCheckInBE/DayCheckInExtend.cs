@@ -13,6 +13,7 @@ using UFSoft.UBF.PL.Engine;
 using U9.VOB.HBHCommon.U9CommonBE;
 using UFIDA.U9.Approval.Util;
 using UFIDA.U9.GeneralEvents;
+using UFIDA.U9.CBO.HR.Department;
 
 #endregion
 
@@ -36,8 +37,8 @@ namespace U9.VOB.Cus.HBHJianLiYuan {
 		/// <summary>
 		/// 设置默认值
 		/// </summary>
-		protected override void OnSetDefaultValue()
-		{
+        protected override void OnSetDefaultValue()
+        {
             if (this.SysState == ObjectState.Inserted)
             {
                 this.StateMachineInstance.Initialize();
@@ -86,7 +87,39 @@ namespace U9.VOB.Cus.HBHJianLiYuan {
                 }
             }
 
-		}
+            // 汇总行数量
+            // 开立、或 第一次提交
+            if (this.Status == DocStatus.Opened
+                || (this.Status == DocStatus.Approving
+                    && this.OriginalData != null
+                    && this.OriginalData.Status == DocStatus.Opened
+                    )
+                )
+            {
+                decimal sumFull = 0;
+                decimal sumPart = 0;
+                decimal sumHourly = 0;
+                foreach (DayCheckInLine line in this.DayCheckInLine)
+                {
+                    sumFull += line.FullTimeDay;
+                    sumPart += line.PartTimeDay;
+                    sumHourly += line.HourlyDay;
+                }
+
+                if (this.TotalFullTimeDay != sumFull)
+                {
+                    this.TotalFullTimeDay = sumFull;
+                }
+                if (this.TotalPartTimeDay != sumPart)
+                {
+                    this.TotalPartTimeDay = sumPart;
+                }
+                if (this.TotalHourlyDay != sumHourly)
+                {
+                    this.TotalHourlyDay = sumHourly;
+                }
+            }
+        }
 		/// <summary>
 		/// before Insert
 		/// </summary>
@@ -173,7 +206,25 @@ namespace U9.VOB.Cus.HBHJianLiYuan {
                     throw new BusinessException(strMsg);
                 }
             }
+
+            if (this.Status == DocStatus.Approved
+                || this.Status == DocStatus.Closed
+                )
+            {
+                if (this.OriginalData != null)
+                {
+                    UnchangedValidate<long>("Department");
+                    UnchangedValidate<long>("CurrentOperator");
+
+                    UnchangedValidate<DateTime>("CheckInDate");
+                    UnchangedValidate<decimal>("Income");
+                    UnchangedValidate<decimal>("LaborCostTarget");
+                    UnchangedValidate<decimal>("LaborYieldTarget");
+                    UnchangedValidate<DateTime>("BusinessDate");
+                }
+            }
 		}
+
 		#endregion
 		
 		#region 异常处理，开发人员可以重新封装异常
@@ -311,6 +362,42 @@ namespace U9.VOB.Cus.HBHJianLiYuan {
 
         #endregion
 
+        
+        private void UnchangedValidate<T>(string field)
+        {
+            if (IsChanged<T>(this, field))
+            {
+                throw new BusinessException(string.Format("考勤单据已审核(或关闭)，字段[{0}]不允许修改!"
+                    , DayCheckIn.EntityRes.GetResource(field)
+                    ));
+            }
+        }
+
+
+        public static bool IsChanged<T>(BusinessEntity entity, string field)
+        {
+            if (entity != null
+                && entity.OriginalData != null
+                )
+            {
+                T oldValue = (T)entity.OriginalData.GetValue(field);
+                T newValue = (T)entity.GetValue(field);
+
+                if (oldValue == null)
+                {
+                    if (newValue == null)
+                    {
+                        return true;
+                    }
+                    return false;
+                }
+                if (oldValue.Equals(newValue))
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
 
 		#endregion		
 	}

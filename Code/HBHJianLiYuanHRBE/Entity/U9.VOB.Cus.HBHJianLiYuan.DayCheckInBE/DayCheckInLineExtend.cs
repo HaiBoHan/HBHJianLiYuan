@@ -6,6 +6,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
+using U9.VOB.HBHCommon.U9CommonBE;
+using UFSoft.UBF.Business;
+using UFIDA.U9.CBO.HR.Person;
 
 #endregion
 
@@ -83,11 +86,50 @@ namespace U9.VOB.Cus.HBHJianLiYuan {
 		/// <summary>
 		/// on Validate
 		/// </summary>
-		protected override void OnValidate() {
-			base.OnValidate();
-			this.SelfEntityValidator();
-			// TO DO: write your business code here...
-		}
+        protected override void OnValidate()
+        {
+            base.OnValidate();
+            this.SelfEntityValidator();
+            // TO DO: write your business code here...
+
+            if (this.DayCheckIn != null)
+            {
+                if (this.DayCheckIn.Status == DocStatus.Approved
+                    || this.DayCheckIn.Status == DocStatus.Closed
+                    )
+                {
+                    if (this.OriginalData != null)
+                    {
+                        UnchangedValidate<long>("EmployeeArchive");
+                        UnchangedValidate<int>("CheckType");
+
+                        UnchangedValidate<decimal>("FullTimeDay");
+                        UnchangedValidate<decimal>("PartTimeDay");
+                        UnchangedValidate<decimal>("HourlyDay");
+                    }
+                }
+            }
+
+            if (this.CheckType == CheckTypeEnum.FullTimeStaff)
+            {
+                if (this.PartTimeDay > 0)
+                {
+                    throw new BusinessException(string.Format("行[{0}]考勤类型为 全日制出勤时，非全日制员工出勤字段不允许大于0!"
+                        , this.DocLineNo
+                        ));
+                }
+            }
+            else if (this.CheckType == CheckTypeEnum.PartTimeStaff)
+            {
+                if (this.FullTimeDay > 0)
+                {
+                    throw new BusinessException(string.Format("行[{0}]考勤类型为 非全日制出勤时，全日制员工出勤字段不允许大于0!"
+                        , this.DocLineNo
+                        ));
+                }
+            }
+        }
+
 		#endregion
 		
 		#region 异常处理，开发人员可以重新封装异常
@@ -117,6 +159,20 @@ namespace U9.VOB.Cus.HBHJianLiYuan {
 
 
 		#region Model Methods
+
+
+        private void UnchangedValidate<T>(string field)
+        {
+            if (DayCheckIn.IsChanged<T>(this, field))
+            {
+                throw new BusinessException(string.Format("考勤单据已审核(或关闭)，行[{0}]字段[{1}]不允许修改!"
+                    , this.DocLineNo
+                    , DayCheckInLine.EntityRes.GetResource(field)
+                    ));
+            }
+        }
+
+
 		#endregion		
 	}
 }

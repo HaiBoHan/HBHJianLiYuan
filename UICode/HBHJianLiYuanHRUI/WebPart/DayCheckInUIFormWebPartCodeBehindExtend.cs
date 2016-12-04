@@ -439,6 +439,9 @@ namespace DayCheckInUIModel
             }
 
             this.DataGrid5.AutoEditModel = false;
+
+            //// 审核后修改数据校验，测试
+            //this.BtnSave.Enabled = true;
 		}
 
 
