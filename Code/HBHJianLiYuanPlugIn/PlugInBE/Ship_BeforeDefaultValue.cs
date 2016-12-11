@@ -9,7 +9,7 @@ using UFIDA.U9.CBO.HR.Department;
 using UFSoft.UBF.PL;
 using U9.VOB.Cus.HBHJianLiYuan.GetPriceFromPurListBP;
 using U9.VOB.Cus.HBHJianLiYuan.GetPriceFromPurListBP.Proxy;
-using UFIDA.U9.Cust.HBH.Common.CommonLibary;
+using HBH.DoNet.DevPlatform.EntityMapping;
 using UFIDA.U9.SM.Enums;
 
 namespace U9.VOB.Cus.HBHJianLiYuan.PlugInBE

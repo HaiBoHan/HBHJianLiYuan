@@ -6,7 +6,7 @@ using UFSoft.UBF.Business;
 using UFIDA.U9.SM.SO;
 using UFSoft.UBF.PL;
 using UFIDA.U9.PM.Rcv;
-using UFIDA.U9.Cust.HBH.Common.CommonLibary;
+using HBH.DoNet.DevPlatform.EntityMapping;
 
 namespace U9.VOB.Cus.HBHJianLiYuan.PlugInBE
 {
@@ -29,11 +29,11 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInBE
                 return;
             }
             //转成所需实体，同时判断有效性
-            Receivement rcv = key.GetEntity() as Receivement;
+            Receivement entity = key.GetEntity() as Receivement;
             //修改后的单价不能高于采购订单中的单价
-            if (rcv == null || rcv.SrcDocType.Value != 1)
+            if (entity == null || entity.SrcDocType.Value != 1)
                 return;
-            foreach (RcvLine line in rcv.RcvLines)
+            foreach (RcvLine line in entity.RcvLines)
             {
                 if (line.SrcPO != null)
                 {
@@ -53,6 +53,12 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInBE
                                 , PubClass.GetStringRemoveZero(poPrePrice)
                                 );
                             throw new Exception(msg);
+                        }
+
+                        // 如果新增，则把订单指导价 赋值给 收货单行；因为指导价可以修改，后面可以对比  订单指导价、和 收货指导价  差额
+                        if (entity.SysState == UFSoft.UBF.PL.Engine.ObjectState.Inserted)
+                        {
+                            HBHHelper.DescFlexFieldHelper.SetRcvLinePoPreDiscountPrice(line.DescFlexSegments, poPrePrice);
                         }
                     }
                 }

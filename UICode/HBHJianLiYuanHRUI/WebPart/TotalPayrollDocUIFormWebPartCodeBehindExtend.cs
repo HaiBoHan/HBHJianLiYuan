@@ -411,6 +411,9 @@ namespace TotalPayrollDocUIModel
 
 
             PayrollType65.CustomInParams = string.Format("ValueSetCode={0}", TotalPayrollDocHelper.Const_PayrollTypeValueSetCode);
+            
+            // 单行返回
+            this.SalarySolution90.AddTypeParams(clsMultiSelect.Const_RefType, clsMultiSelect.Const_IsSingleReturn);
         }
         
         public void AfterEventBind()

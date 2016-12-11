@@ -11,6 +11,7 @@ using UFSoft.UBF.UI.WebControls.Association.Adapter;
 using UFSoft.UBF.UI.Controls;
 using UFSoft.UBF.UI.WebControls;
 using UFSoft.UBF.UI.ActionProcess;
+using UFIDA.U9.UI.PDHelper;
 
 namespace U9.VOB.Cus.HBHJianLiYuan.PlugInUI
 {
@@ -117,73 +118,8 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInUI
         {
             base.AfterRender(Part, args);
 
-            // Supplier_Supplier105
 
-
-            if (_strongPart.Model.Receivement.FocusedRecord != null
-                //&& _strongPart.Model.Ship.FocusedRecord.SaleDept.GetValueOrDefault(-1) > 0
-                )
-            {
-                // 供应商过滤条件
-                string suptOpath = "Code in (select disLine.Supplier.Code from U9::VOB::Cus::HBHJianLiYuan::DeptItemSupplierBE::DeptItemSupplierLine disLine where disLine.DeptItemSupplier.Department.Name='" + _strongPart.Model.Receivement.FocusedRecord.RcvDepartment_Name + "')";
-
-                string refCustFilter = BaseAction.Symbol_AddCustomFilter + "=";
-                if (refSupt.CustomInParams != null
-                    && refSupt.CustomInParams.Contains(refCustFilter)
-                    )
-                {
-                    refSupt.CustomInParams = refSupt.CustomInParams.Replace(refCustFilter, refCustFilter + suptOpath + " and ");
-                }
-                else
-                {
-                    refSupt.CustomInParams = refCustFilter + suptOpath;
-                }
-
-                string oldSuptRef = PubClass.GetString(_strongPart.CurrentState["SupplierCondition"]);
-                //CurrentState["ItemRefCondition"] = value;
-                if (!PubClass.IsNull(oldSuptRef)
-                    )
-                {
-                    _strongPart.CurrentState["SupplierCondition"] = string.Format("({0}) and ({1})", suptOpath, oldSuptRef);
-                }
-                else
-                {
-                    _strongPart.CurrentState["SupplierCondition"] = suptOpath;
-                }
-
-
-                // 物料过滤条件
-                IUFFldReferenceColumn itemRef = (IUFFldReferenceColumn)lineDataGrid.Columns["ItemInfo_ItemID"];
-                string opath = "Code in (select disLine.ItemMaster.Code from U9::VOB::Cus::HBHJianLiYuan::DeptItemSupplierBE::DeptItemSupplierLine disLine where disLine.DeptItemSupplier.Department.Name='" + _strongPart.Model.Receivement.FocusedRecord.RcvDepartment_Name + "')";
-                //string opath = "Code = '000001'";
-
-                string custFilter = BaseAction.Symbol_AddCustomFilter + "=";
-                // 特殊物料参照，用的是这个条件
-                //string custFilter = "ItemRefCondition=";
-                // DataGrid参照列
-                if (itemRef.CustomInParams != null
-                    && itemRef.CustomInParams.Contains(custFilter)
-                    )
-                {
-                    itemRef.CustomInParams = itemRef.CustomInParams.Replace(custFilter, custFilter + opath + " and ");
-                }
-                else
-                {
-                    itemRef.CustomInParams = custFilter + opath;
-                }
-                // 参照
-                if (refItemMaster.CustomInParams != null
-                    && refItemMaster.CustomInParams.Contains(custFilter)
-                    )
-                {
-                    refItemMaster.CustomInParams = refItemMaster.CustomInParams.Replace(custFilter, custFilter + opath + " and ");
-                }
-                else
-                {
-                    refItemMaster.CustomInParams = custFilter + opath;
-                }
-            }
-
+            SetSupplierRefCondition();
 
 
 
@@ -211,6 +147,81 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInUI
             //        this._strongPart.NavigateForm(urlID, nvs);
             //    }
             //}
+        }
+
+        private void SetSupplierRefCondition()
+        {
+            // 05	管理中心
+            if (IsSetSupplierCondition)
+            {
+
+                // Supplier_Supplier105
+
+
+                if (_strongPart.Model.Receivement.FocusedRecord != null
+                    //&& _strongPart.Model.Ship.FocusedRecord.SaleDept.GetValueOrDefault(-1) > 0
+                    )
+                {
+                    // 供应商过滤条件
+                    string suptOpath = "Code in (select disLine.Supplier.Code from U9::VOB::Cus::HBHJianLiYuan::DeptItemSupplierBE::DeptItemSupplierLine disLine where disLine.DeptItemSupplier.Department.Name='" + _strongPart.Model.Receivement.FocusedRecord.RcvDepartment_Name + "')";
+
+                    string refCustFilter = BaseAction.Symbol_AddCustomFilter + "=";
+                    if (refSupt.CustomInParams != null
+                        && refSupt.CustomInParams.Contains(refCustFilter)
+                        )
+                    {
+                        refSupt.CustomInParams = refSupt.CustomInParams.Replace(refCustFilter, refCustFilter + suptOpath + " and ");
+                    }
+                    else
+                    {
+                        refSupt.CustomInParams = refCustFilter + suptOpath;
+                    }
+
+                    string oldSuptRef = PubClass.GetString(_strongPart.CurrentState["SupplierCondition"]);
+                    //CurrentState["ItemRefCondition"] = value;
+                    if (!PubClass.IsNull(oldSuptRef)
+                        )
+                    {
+                        _strongPart.CurrentState["SupplierCondition"] = string.Format("({0}) and ({1})", suptOpath, oldSuptRef);
+                    }
+                    else
+                    {
+                        _strongPart.CurrentState["SupplierCondition"] = suptOpath;
+                    }
+
+
+                    // 物料过滤条件
+                    IUFFldReferenceColumn itemRef = (IUFFldReferenceColumn)lineDataGrid.Columns["ItemInfo_ItemID"];
+                    string opath = "Code in (select disLine.ItemMaster.Code from U9::VOB::Cus::HBHJianLiYuan::DeptItemSupplierBE::DeptItemSupplierLine disLine where disLine.DeptItemSupplier.Department.Name='" + _strongPart.Model.Receivement.FocusedRecord.RcvDepartment_Name + "')";
+                    //string opath = "Code = '000001'";
+
+                    string custFilter = BaseAction.Symbol_AddCustomFilter + "=";
+                    // 特殊物料参照，用的是这个条件
+                    //string custFilter = "ItemRefCondition=";
+                    // DataGrid参照列
+                    if (itemRef.CustomInParams != null
+                        && itemRef.CustomInParams.Contains(custFilter)
+                        )
+                    {
+                        itemRef.CustomInParams = itemRef.CustomInParams.Replace(custFilter, custFilter + opath + " and ");
+                    }
+                    else
+                    {
+                        itemRef.CustomInParams = custFilter + opath;
+                    }
+                    // 参照
+                    if (refItemMaster.CustomInParams != null
+                        && refItemMaster.CustomInParams.Contains(custFilter)
+                        )
+                    {
+                        refItemMaster.CustomInParams = refItemMaster.CustomInParams.Replace(custFilter, custFilter + opath + " and ");
+                    }
+                    else
+                    {
+                        refItemMaster.CustomInParams = custFilter + opath;
+                    }
+                }
+            }
         }
 
 
@@ -300,12 +311,25 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInUI
             _strongPart.IsDataBinding = true; //当前事件执行后会进行数据绑定
             _strongPart.IsConsuming = false;
 
-            // 这里需要清空下，否则会导致一直追加(收集完又追加新的)，导致录入部分编码、部分名称，无法过滤到任何供应商(ValueByClick=000)
-            refSupt.CustomInParams = "";
-            //_strongPart.CurrentState["SupplierCondition"] = "";
+            // 05	管理中心
+            if (IsSetSupplierCondition)
+            {
+                // 这里需要清空下，否则会导致一直追加(收集完又追加新的)，导致录入部分编码、部分名称，无法过滤到任何供应商(ValueByClick=000)
+                //_strongPart.CurrentState["SupplierCondition"] = "";
+                refSupt.CustomInParams = "";
 
+            }
         }
 
         #endregion
+
+        public static bool IsSetSupplierCondition
+        {
+            get
+            { 
+                // 05	管理中心
+                return PDContext.Current.OrgRef.CodeColumn != "05";                 
+            }
+        }
     }
 }

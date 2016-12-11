@@ -72,6 +72,20 @@ namespace U9.VOB.Cus.HBHJianLiYuan.HBHHelper
             }
         }
 
+        // 收货单行上，设置订单折前价（指导价）
+        /// <summary>
+        /// 收货单行上，设置订单折前价（指导价）
+        /// </summary>
+        /// <param name="descSegments"></param>
+        /// <returns></returns>
+        public static void SetRcvLinePoPreDiscountPrice(DescFlexSegments descSegments, decimal price)
+        {
+            if (descSegments != null)
+            {
+                descSegments.PrivateDescSeg5 = PubClass.GetStringRemoveZero(price);
+            }
+        }
+
         // 折前价
         /// <summary>
         /// 折前价

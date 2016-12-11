@@ -101,8 +101,16 @@ namespace U9.VOB.Cus.HBHJianLiYuan {
                 decimal sumHourly = 0;
                 foreach (DayCheckInLine line in this.DayCheckInLine)
                 {
-                    sumFull += line.FullTimeDay;
-                    sumPart += line.PartTimeDay;
+                    // 超出的 认为是加班的
+                    if (line.FullTimeDay - 1 > 0)
+                    {
+                        sumFull += line.FullTimeDay - 1;
+                    }
+                    // 超出的 认为是加班的
+                    if (line.PartTimeDay - 4 > 0)
+                    {
+                        sumPart += line.PartTimeDay - 4;
+                    }
                     sumHourly += line.HourlyDay;
                 }
 

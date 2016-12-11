@@ -100,7 +100,7 @@
         <Event ActionName="FlowClick" EnableEvent="True" EventType="PostBack" IsDataBinding="True" IsDataCollect="True" Name="Click" Parameter="FlowClick" Template=".\UITpls\WebPart\ViewCodeBehindCommon.tpl" />
       </Events>
     </Button>
-    <Separator ID="0f4992bb-0ffc-40a1-bc71-1d98d78d3b33" Height="28" Name="Separator5" TabIndex="22" TabStop="True" Width="8" X="635" Y="0" />
+    <Separator ID="0f4992bb-0ffc-40a1-bc71-1d98d78d3b33" Height="28" Name="Separator5" TabIndex="22" TabStop="True" Width="8" X="565" Y="0" />
     <Button ID="334a34a4-277d-4554-9cd2-8085820bf668" AccessKey="O" DisplayNameResourceID="688fd549-5a92-49cc-8072-6d5377f6409a" DisplaySrcType="PublicResource" GridHeight="1" GridWidth="1" GridX="0" GridY="0" Height="28" Name="BtnOutput" TabIndex="23" TabStop="True" Visible="False" Width="35" X="608" Y="0">
       <Events>
         <Event ActionName="OutputClick" EnableEvent="True" EventType="PostBack" IsDataBinding="True" IsDataCollect="True" Name="Click" Parameter="OutputClick" Template=".\UITpls\WebPart\ViewCodeBehindCommon.tpl" />
@@ -217,12 +217,12 @@
         <Events />
         <RelationControls />
       </DropDownList>
-      <Label ID="e5a51211-023f-4a87-a384-c6c7c4b2849f" Enabled="True" GridHeight="1" GridWidth="1" GridX="0" GridY="1" Height="20" IsNull="True" IsSequence="False" Name="lblPayrollType65" RelationControl="PayrollType65" TabIndex="7" TabStop="True" TitleAlign="Right" TitleLocation="Left" UIFieldID="" UIViewID="" Visible="True" Width="153" X="0" Y="25">
+      <Label ID="e5a51211-023f-4a87-a384-c6c7c4b2849f" Enabled="True" GridHeight="1" GridWidth="1" GridX="8" GridY="0" Height="20" IsNull="True" IsSequence="False" Name="lblPayrollType65" RelationControl="PayrollType65" TabIndex="7" TabStop="True" TitleAlign="Right" TitleLocation="Left" UIFieldID="" UIViewID="" Visible="True" Width="152" X="660" Y="0">
         <Events />
         <RelationControls />
         <Events />
       </Label>
-      <Reference ID="379b85da-c01c-47f1-8018-1eb8838710df" CodeAttributeName="Code" CodeField="Code" CodeFieldUIFieldID="PayrollType_Code" CodeFieldUIViewID="TotalPayrollDoc" DisplayFormat="19.0" Enabled="True" EntityName="ID" GridHeight="1" GridWidth="1" GridX="2" GridY="1" Height="20" IsNull="True" IsProperty="False" IsSequence="False" Name="PayrollType65" NameAttributeName="Name" NameFieldUIFieldID="PayrollType_Name" NameFieldUIViewID="TotalPayrollDoc" PkeyField="ID" RefType="722cdd76-5aca-464e-bbbc-4689c3102e74" RelationControl="lblPayrollType65" TabIndex="8" TabStop="True" TextAlign="Right" TitleAlign="Left" TitleLocation="Left" UIFieldID="PayrollType" UIViewID="TotalPayrollDoc" Visible="True" Width="153" WindowHeight="408" WindowWidth="580" X="158" Y="25">
+      <Reference ID="379b85da-c01c-47f1-8018-1eb8838710df" CodeAttributeName="Code" CodeField="Code" CodeFieldUIFieldID="PayrollType_Code" CodeFieldUIViewID="TotalPayrollDoc" DisplayFormat="19.0" Enabled="True" EntityName="ID" GridHeight="1" GridWidth="1" GridX="10" GridY="0" Height="20" IsNull="True" IsProperty="False" IsSequence="False" Name="PayrollType65" NameAttributeName="Name" NameFieldUIFieldID="PayrollType_Name" NameFieldUIViewID="TotalPayrollDoc" PkeyField="ID" RefType="722cdd76-5aca-464e-bbbc-4689c3102e74" RelationControl="lblPayrollType65" TabIndex="8" TabStop="True" TextAlign="Right" TitleAlign="Left" TitleLocation="Left" UIFieldID="PayrollType" UIViewID="TotalPayrollDoc" Visible="True" Width="152" WindowHeight="408" WindowWidth="580" X="817" Y="0">
         <Events />
         <RelationControls />
         <ReferenceRelation Action="Clear" ColumnDisplayName="ID" ColumnID="ID" TargetControlType="" TargetID="" TargetProperty="" />
@@ -255,6 +255,28 @@
         <UIFilterBar Name="ReferenceFilter" />
         <Events />
       </Reference>
+      <Label ID="9674886a-ab2e-4963-aaab-fc778d6adb20" Enabled="True" GridHeight="1" GridWidth="1" GridX="0" GridY="1" Height="20" IsNull="True" IsSequence="False" Name="lblSalarySolution90" RelationControl="SalarySolution90" TabIndex="11" TabStop="True" TitleAlign="Right" TitleLocation="Left" UIFieldID="" UIViewID="" Visible="True" Width="153" X="0" Y="25">
+        <Events />
+        <RelationControls />
+        <Events />
+      </Label>
+      <Reference ID="37baca4a-deb7-4acf-9686-dd2fb21e7b44" CodeAttributeName="Code" CodeField="Code" CodeFieldUIFieldID="SalarySolutionCodes" CodeFieldUIViewID="TotalPayrollDoc" DisplayFormat="19.0" Enabled="True" EntityName="ID" GridHeight="1" GridWidth="1" GridX="2" GridY="1" Height="20" IsNull="True" IsProperty="False" IsSequence="False" Name="SalarySolution90" NameAttributeName="Name" NameFieldUIFieldID="SalarySolutionNames" NameFieldUIViewID="TotalPayrollDoc" PkeyField="ID" RefType="cc980ae0-1941-45a0-9330-b54a6698f27e" RelationControl="lblSalarySolution90" TabIndex="12" TabStop="True" TextAlign="Right" TitleAlign="Left" TitleLocation="Left" UIFieldID="SalarySolution" UIViewID="TotalPayrollDoc" Visible="True" Width="153" WindowHeight="408" WindowWidth="580" X="158" Y="25">
+        <Events />
+        <RelationControls />
+        <ReferenceRelation Action="Clear" ColumnDisplayName="ID" ColumnID="ID" TargetControlType="" TargetID="" TargetProperty="" />
+        <ReferenceRelation Action="Clear" ColumnDisplayName="计薪方案编码" ColumnID="Code" TargetControlType="" TargetID="" TargetProperty="" />
+        <ReferenceRelation Action="Clear" ColumnDisplayName="计薪方案名称" ColumnID="Name" TargetControlType="" TargetID="" TargetProperty="" />
+        <ReferenceRelation Action="Clear" ColumnDisplayName="计薪方案描述" ColumnID="Description" TargetControlType="TextBoxModel" TargetID="SalarySolutionIDs81" TargetProperty="Value" />
+        <RefNameFields>
+          <RefNameField UIFieldID="Name" />
+        </RefNameFields>
+        <UIFilterBar Name="ReferenceFilter" />
+        <Events />
+      </Reference>
+      <TextBox ID="b39bf2a4-7847-44a9-890e-708f0c06b0f4" DisplayFormat="2000" Enabled="True" GridHeight="1" GridWidth="1" GridX="0" GridY="0" Height="20" IsNull="True" IsProperty="False" IsSequence="False" MultiLine="False" Name="SalarySolutionIDs81" RelationControl="" TabIndex="14" TabStop="True" TextAlign="Left" TitleAlign="Left" TitleLocation="Left" UIFieldID="SalarySolutionIDs" UIViewID="TotalPayrollDoc" Visible="False" Width="152" X="817" Y="25">
+        <Events />
+        <RelationControls />
+      </TextBox>
     </Card>
     <TabControl ID="853a3c09-6e2a-4a47-9680-5895232b3846" EventResponseType="Server" GridHeight="1" GridWidth="1" GridX="0" GridY="1" Height="328" Name="TabControl0" TabIndex="2" TabStop="True" Width="971" X="10" Y="82">
       <TabPage ID="132e2b90-e4c1-49ed-833d-e82082c41c05" ChildLabelWidth="60" ChildRefWidth="20" DisplayName="薪资汇总" DisplayNameIndexStr="" DisplayNameResourceID="" DisplaySrcType="Custom" DisplaySrcUIFieldID="" DisplaySrcUIViewID="" GridBottomMargin="0" GridColumnCount="1" GridColumnSpace="0" GridLeftMargin="0" GridRightMargin="0" GridRowCount="1" GridRowSpace="5" GridTopMargin="0" Height="295" Name="TabPageTotal" TabStop="False" Width="963" X="0" Y="0">
@@ -287,6 +309,9 @@
               <HeaderCell ID="0c24250d-fae2-4452-88ff-978039881fd2" ColSpan="1" Name="HeaderCell37" OwnerColName="FAfterDeptTotalOrigPay0" RowSpan="1" />
               <HeaderCell ID="4900ebde-216a-454a-b132-1f565643e1bd" ColSpan="1" Name="HeaderCell38" OwnerColName="FBeforeDeptTotalActPay0" RowSpan="1" />
               <HeaderCell ID="33239020-a3b7-4876-80ee-473e56dd4b3b" ColSpan="1" Name="HeaderCell39" OwnerColName="FAfterDeptTotalActPay0" RowSpan="1" />
+              <HeaderCell ID="154ec86e-171e-4ce0-b592-b90102e5367b" ColSpan="1" Name="HeaderCell40" OwnerColName="BankTotalActPay0" RowSpan="1" />
+              <HeaderCell ID="c81403bb-2c02-454c-9078-fe570bdac933" ColSpan="1" Name="HeaderCell41" OwnerColName="CashTotalActPay0" RowSpan="1" />
+              <HeaderCell ID="44dda1f8-f45c-4ec3-b93e-fcb123116423" ColSpan="1" Name="HeaderCell42" OwnerColName="WithholdingTotalActPay0" RowSpan="1" />
             </HeaderRow>
           </Header>
           <UIFilterBar Name="LocateBar" />
@@ -380,74 +405,95 @@
             <TextBoxColumn ID="4a4a33fb-4501-4c1f-aec4-eee840b07b0b" DisplayFormat="" Enabled="True" IsNull="True" Name="DescFlexField" NPos="9" Point="0" TextAlign="Left" Visible="False">
               <Events />
             </TextBoxColumn>
-            <NumberColumn ID="ac0a6cbc-ad94-4fd1-af94-9992b2adb999" DefaultValue="0" DisplayFormat="24.9" Enabled="True" HasSum="True" Help="薪资申请汇总行.Misc.调动前应发合计" IsNull="True" IsProperty="False" IsSequence="False" Name="BeforeDeptTotalOrigPay0" NPos="10" Point="2" UIFieldID="BeforeDeptTotalOrigPay" UIViewID="TotalPayrollDoc_TotalPayrollDocLine" Visible="True" Width="120">
+            <NumberColumn ID="ac0a6cbc-ad94-4fd1-af94-9992b2adb999" DefaultValue="0" DisplayFormat="24.9" Enabled="True" HasSum="True" Help="薪资申请汇总行.Misc.调动前应发合计" IsNull="True" IsProperty="False" IsSequence="False" Name="BeforeDeptTotalOrigPay0" NPos="10" Point="2" UIFieldID="BeforeDeptTotalOrigPay" UIViewID="TotalPayrollDoc_TotalPayrollDocLine" Visible="False" Width="120">
               <PrecisionBind Name="PrecisionBind8" />
               <RoundRuleBind Name="RoundRuleBind8" />
               <ValueOfRoundByValueBind Name="ValueOfRoundByValueBind8" />
               <CurrencyType Name="CurrencyType8" />
               <Events />
             </NumberColumn>
-            <NumberColumn ID="5d025f04-c97b-4d79-ac1b-c51e840018f7" DefaultValue="0" DisplayFormat="24.9" Enabled="True" HasSum="True" Help="薪资申请汇总行.Misc.调动后应发合计" IsNull="True" IsProperty="False" IsSequence="False" Name="AfterDeptTotalOrigPay0" NPos="11" Point="2" UIFieldID="AfterDeptTotalOrigPay" UIViewID="TotalPayrollDoc_TotalPayrollDocLine" Visible="True" Width="120">
+            <NumberColumn ID="5d025f04-c97b-4d79-ac1b-c51e840018f7" DefaultValue="0" DisplayFormat="24.9" Enabled="True" HasSum="True" Help="薪资申请汇总行.Misc.调动后应发合计" IsNull="True" IsProperty="False" IsSequence="False" Name="AfterDeptTotalOrigPay0" NPos="11" Point="2" UIFieldID="AfterDeptTotalOrigPay" UIViewID="TotalPayrollDoc_TotalPayrollDocLine" Visible="False" Width="120">
               <PrecisionBind Name="PrecisionBind9" />
               <RoundRuleBind Name="RoundRuleBind9" />
               <ValueOfRoundByValueBind Name="ValueOfRoundByValueBind9" />
               <CurrencyType Name="CurrencyType9" />
               <Events />
             </NumberColumn>
-            <NumberColumn ID="3bcb4f46-1575-4f13-af51-06924a308059" DefaultValue="0" DisplayFormat="24.9" Enabled="True" HasSum="True" Help="薪资申请汇总行.Misc.非调动应发合计" IsNull="True" IsProperty="False" IsSequence="False" Name="SystemTotalOrigPay0" NPos="12" Point="2" UIFieldID="SystemTotalOrigPay" UIViewID="TotalPayrollDoc_TotalPayrollDocLine" Visible="True" Width="120">
+            <NumberColumn ID="3bcb4f46-1575-4f13-af51-06924a308059" DefaultValue="0" DisplayFormat="24.9" Enabled="True" HasSum="True" Help="薪资申请汇总行.Misc.非调动应发合计" IsNull="True" IsProperty="False" IsSequence="False" Name="SystemTotalOrigPay0" NPos="12" Point="2" UIFieldID="SystemTotalOrigPay" UIViewID="TotalPayrollDoc_TotalPayrollDocLine" Visible="False" Width="120">
               <PrecisionBind Name="PrecisionBind10" />
               <RoundRuleBind Name="RoundRuleBind10" />
               <ValueOfRoundByValueBind Name="ValueOfRoundByValueBind10" />
               <CurrencyType Name="CurrencyType10" />
               <Events />
             </NumberColumn>
-            <NumberColumn ID="df3e9b11-cfe3-442a-9621-b80542a973f9" DefaultValue="0" DisplayFormat="24.9" Enabled="True" HasSum="True" Help="薪资申请汇总行.Misc.调动前实发合计" IsNull="True" IsProperty="False" IsSequence="False" Name="BeforeDeptTotalActPay0" NPos="13" Point="2" UIFieldID="BeforeDeptTotalActPay" UIViewID="TotalPayrollDoc_TotalPayrollDocLine" Visible="True" Width="120">
+            <NumberColumn ID="df3e9b11-cfe3-442a-9621-b80542a973f9" DefaultValue="0" DisplayFormat="24.9" Enabled="True" HasSum="True" Help="薪资申请汇总行.Misc.调动前实发合计" IsNull="True" IsProperty="False" IsSequence="False" Name="BeforeDeptTotalActPay0" NPos="13" Point="2" UIFieldID="BeforeDeptTotalActPay" UIViewID="TotalPayrollDoc_TotalPayrollDocLine" Visible="False" Width="120">
               <PrecisionBind Name="PrecisionBind11" />
               <RoundRuleBind Name="RoundRuleBind11" />
               <ValueOfRoundByValueBind Name="ValueOfRoundByValueBind11" />
               <CurrencyType Name="CurrencyType11" />
               <Events />
             </NumberColumn>
-            <NumberColumn ID="5096f647-c348-42d6-94c9-7c7d7a3e825d" DefaultValue="0" DisplayFormat="24.9" Enabled="True" HasSum="True" Help="薪资申请汇总行.Misc.调动后实发合计" IsNull="True" IsProperty="False" IsSequence="False" Name="AfterDeptTotalActPay0" NPos="14" Point="2" UIFieldID="AfterDeptTotalActPay" UIViewID="TotalPayrollDoc_TotalPayrollDocLine" Visible="True" Width="120">
+            <NumberColumn ID="5096f647-c348-42d6-94c9-7c7d7a3e825d" DefaultValue="0" DisplayFormat="24.9" Enabled="True" HasSum="True" Help="薪资申请汇总行.Misc.调动后实发合计" IsNull="True" IsProperty="False" IsSequence="False" Name="AfterDeptTotalActPay0" NPos="14" Point="2" UIFieldID="AfterDeptTotalActPay" UIViewID="TotalPayrollDoc_TotalPayrollDocLine" Visible="False" Width="120">
               <PrecisionBind Name="PrecisionBind12" />
               <RoundRuleBind Name="RoundRuleBind12" />
               <ValueOfRoundByValueBind Name="ValueOfRoundByValueBind12" />
               <CurrencyType Name="CurrencyType12" />
               <Events />
             </NumberColumn>
-            <NumberColumn ID="b19ad338-6a25-47e4-aa4d-780534a41a01" DefaultValue="0" DisplayFormat="24.9" Enabled="True" HasSum="True" Help="薪资申请汇总行.Misc.非调动实发合计" IsNull="True" IsProperty="False" IsSequence="False" Name="SystemTotalActPay0" NPos="15" Point="2" UIFieldID="SystemTotalActPay" UIViewID="TotalPayrollDoc_TotalPayrollDocLine" Visible="True" Width="120">
+            <NumberColumn ID="b19ad338-6a25-47e4-aa4d-780534a41a01" DefaultValue="0" DisplayFormat="24.9" Enabled="True" HasSum="True" Help="薪资申请汇总行.Misc.非调动实发合计" IsNull="True" IsProperty="False" IsSequence="False" Name="SystemTotalActPay0" NPos="15" Point="2" UIFieldID="SystemTotalActPay" UIViewID="TotalPayrollDoc_TotalPayrollDocLine" Visible="False" Width="120">
               <PrecisionBind Name="PrecisionBind13" />
               <RoundRuleBind Name="RoundRuleBind13" />
               <ValueOfRoundByValueBind Name="ValueOfRoundByValueBind13" />
               <CurrencyType Name="CurrencyType13" />
               <Events />
             </NumberColumn>
-            <NumberColumn ID="37bfd9d4-8610-479d-b9c6-6479ec1acdd2" DefaultValue="0" DisplayFormat="24.9" Enabled="True" HasSum="True" Help="薪资申请汇总行.Misc.F调动前应发合计" IsNull="True" IsProperty="False" IsSequence="False" Name="FBeforeDeptTotalOrigPay0" NPos="16" Point="2" UIFieldID="FBeforeDeptTotalOrigPay" UIViewID="TotalPayrollDoc_TotalPayrollDocLine" Visible="True" Width="120">
+            <NumberColumn ID="37bfd9d4-8610-479d-b9c6-6479ec1acdd2" DefaultValue="0" DisplayFormat="24.9" Enabled="True" HasSum="True" Help="薪资申请汇总行.Misc.F调动前应发合计" IsNull="True" IsProperty="False" IsSequence="False" Name="FBeforeDeptTotalOrigPay0" NPos="16" Point="2" UIFieldID="FBeforeDeptTotalOrigPay" UIViewID="TotalPayrollDoc_TotalPayrollDocLine" Visible="False" Width="120">
               <PrecisionBind Name="PrecisionBind14" />
               <RoundRuleBind Name="RoundRuleBind14" />
               <ValueOfRoundByValueBind Name="ValueOfRoundByValueBind14" />
               <CurrencyType Name="CurrencyType14" />
               <Events />
             </NumberColumn>
-            <NumberColumn ID="4ef8eeed-8d39-449c-9c17-62366bcbacef" DefaultValue="0" DisplayFormat="24.9" Enabled="True" HasSum="True" Help="薪资申请汇总行.Misc.F调动后应发合计" IsNull="True" IsProperty="False" IsSequence="False" Name="FAfterDeptTotalOrigPay0" NPos="17" Point="2" UIFieldID="FAfterDeptTotalOrigPay" UIViewID="TotalPayrollDoc_TotalPayrollDocLine" Visible="True" Width="120">
+            <NumberColumn ID="4ef8eeed-8d39-449c-9c17-62366bcbacef" DefaultValue="0" DisplayFormat="24.9" Enabled="True" HasSum="True" Help="薪资申请汇总行.Misc.F调动后应发合计" IsNull="True" IsProperty="False" IsSequence="False" Name="FAfterDeptTotalOrigPay0" NPos="17" Point="2" UIFieldID="FAfterDeptTotalOrigPay" UIViewID="TotalPayrollDoc_TotalPayrollDocLine" Visible="False" Width="120">
               <PrecisionBind Name="PrecisionBind15" />
               <RoundRuleBind Name="RoundRuleBind15" />
               <ValueOfRoundByValueBind Name="ValueOfRoundByValueBind15" />
               <CurrencyType Name="CurrencyType15" />
               <Events />
             </NumberColumn>
-            <NumberColumn ID="b7b8a3f4-6958-41de-853f-0a77605ad0b4" DefaultValue="0" DisplayFormat="24.9" Enabled="True" HasSum="True" Help="薪资申请汇总行.Misc.F调动前实发合计" IsNull="True" IsProperty="False" IsSequence="False" Name="FBeforeDeptTotalActPay0" NPos="18" Point="2" UIFieldID="FBeforeDeptTotalActPay" UIViewID="TotalPayrollDoc_TotalPayrollDocLine" Visible="True" Width="120">
+            <NumberColumn ID="b7b8a3f4-6958-41de-853f-0a77605ad0b4" DefaultValue="0" DisplayFormat="24.9" Enabled="True" HasSum="True" Help="薪资申请汇总行.Misc.F调动前实发合计" IsNull="True" IsProperty="False" IsSequence="False" Name="FBeforeDeptTotalActPay0" NPos="18" Point="2" UIFieldID="FBeforeDeptTotalActPay" UIViewID="TotalPayrollDoc_TotalPayrollDocLine" Visible="False" Width="120">
               <PrecisionBind Name="PrecisionBind16" />
               <RoundRuleBind Name="RoundRuleBind16" />
               <ValueOfRoundByValueBind Name="ValueOfRoundByValueBind16" />
               <CurrencyType Name="CurrencyType16" />
               <Events />
             </NumberColumn>
-            <NumberColumn ID="2bd3a6cb-e36f-423c-b237-bc06d2f47118" DefaultValue="0" DisplayFormat="24.9" Enabled="True" HasSum="True" Help="薪资申请汇总行.Misc.F调动后实发合计" IsNull="True" IsProperty="False" IsSequence="False" Name="FAfterDeptTotalActPay0" NPos="19" Point="2" UIFieldID="FAfterDeptTotalActPay" UIViewID="TotalPayrollDoc_TotalPayrollDocLine" Visible="True" Width="120">
+            <NumberColumn ID="2bd3a6cb-e36f-423c-b237-bc06d2f47118" DefaultValue="0" DisplayFormat="24.9" Enabled="True" HasSum="True" Help="薪资申请汇总行.Misc.F调动后实发合计" IsNull="True" IsProperty="False" IsSequence="False" Name="FAfterDeptTotalActPay0" NPos="19" Point="2" UIFieldID="FAfterDeptTotalActPay" UIViewID="TotalPayrollDoc_TotalPayrollDocLine" Visible="False" Width="120">
               <PrecisionBind Name="PrecisionBind17" />
               <RoundRuleBind Name="RoundRuleBind17" />
               <ValueOfRoundByValueBind Name="ValueOfRoundByValueBind17" />
               <CurrencyType Name="CurrencyType17" />
+              <Events />
+            </NumberColumn>
+            <NumberColumn ID="1e7fc9dc-c82c-4dac-9d0a-20aaaeb81307" DefaultValue="0" DisplayFormat="24.9" Enabled="False" Help="薪资申请汇总行.Misc.银行实发" IsNull="True" IsProperty="False" IsSequence="False" Name="BankTotalActPay0" NPos="20" Point="2" UIFieldID="BankTotalActPay" UIViewID="TotalPayrollDoc_TotalPayrollDocLine" Visible="True">
+              <PrecisionBind />
+              <RoundRuleBind />
+              <ValueOfRoundByValueBind />
+              <CurrencyType />
+              <Events />
+            </NumberColumn>
+            <NumberColumn ID="b5d19824-8f6c-4182-aeb2-0a9d2a460e89" DefaultValue="0" DisplayFormat="24.9" Enabled="False" Help="薪资申请汇总行.Misc.现金实发" IsNull="True" IsProperty="False" IsSequence="False" Name="CashTotalActPay0" NPos="21" Point="2" UIFieldID="CashTotalActPay" UIViewID="TotalPayrollDoc_TotalPayrollDocLine" Visible="True">
+              <PrecisionBind />
+              <RoundRuleBind />
+              <ValueOfRoundByValueBind />
+              <CurrencyType />
+              <Events />
+            </NumberColumn>
+            <NumberColumn ID="cfc3f467-5694-4248-bad3-9797bc4d99ef" DefaultValue="0" DisplayFormat="24.9" Enabled="False" Help="薪资申请汇总行.Misc.扣发合计" IsNull="True" IsProperty="False" IsSequence="False" Name="WithholdingTotalActPay0" NPos="22" Point="2" UIFieldID="WithholdingTotalActPay" UIViewID="TotalPayrollDoc_TotalPayrollDocLine" Visible="True">
+              <PrecisionBind />
+              <RoundRuleBind />
+              <ValueOfRoundByValueBind />
+              <CurrencyType />
               <Events />
             </NumberColumn>
           </Columns>

@@ -6,7 +6,7 @@ using UFSoft.UBF.Business;
 using UFIDA.U9.SM.SO;
 using UFSoft.UBF.PL;
 using UFIDA.U9.PM.Rcv;
-using UFIDA.U9.Cust.HBH.Common.CommonLibary;
+using HBH.DoNet.DevPlatform.EntityMapping;
 using UFIDA.U9.PPR.PurPriceList;
 using U9.VOB.Cus.HBHJianLiYuan.PPLDepartmentBE;
 using UFIDA.U9.PPR.PurPriceAdjustment;

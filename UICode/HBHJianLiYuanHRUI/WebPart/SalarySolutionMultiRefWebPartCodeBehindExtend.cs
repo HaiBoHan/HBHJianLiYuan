@@ -22,6 +22,7 @@ using UFSoft.UBF.UI.Engine;
 using UFSoft.UBF.UI.MD.Runtime;
 using UFSoft.UBF.UI.ActionProcess;
 using UFSoft.UBF.UI.WebControls.ClientCallBack;
+using U9.VOB.HBHCommon.HBHCommonUI;
 
 
 
@@ -70,9 +71,24 @@ namespace SalarySolutionMultiRef
 		private void ConfirmButton_Click_Extend(object sender, EventArgs  e)
 		{
 			//调用模版提供的默认实现.--默认实现可能会调用相应的Action.
-			
-		
-			ConfirmButton_Click_DefaultImpl(sender,e);
+            //ConfirmButton_Click_DefaultImpl(sender,e);
+
+            clsMultiSelect multiSel = new clsMultiSelect(this, MultiSelect_IDModel.RandomID);
+            //multiSel.Code_Field = this.Model.cRef.FieldCode.Name;
+            //multiSel.Name_Field = this.Model.cRef.FieldName.Name;
+
+            object objType = this.NameValues[clsMultiSelect.Const_RefType];
+
+            if (objType != null
+                && objType.ToString() == clsMultiSelect.Const_IsSingleReturn
+                )
+            {
+                clsMultiSelect.RegistScript((Control)this.TopLevelContainer, base.GetType(), "ReferenceReturn", multiSel.GetScript_ToOneLine(), false);
+            }
+            else
+            {
+                clsMultiSelect.RegistScript((Control)this.TopLevelContainer, base.GetType(), "ReferenceReturn", multiSel.GetScript_ToMultiLineNew(), false);
+            }
 		}	
 		 
 				//CancelButton_Click...
@@ -91,10 +107,13 @@ namespace SalarySolutionMultiRef
 		private void DataGrid_GridRowDbClicked_Extend(object sender, GridDBClickEventArgs  e)
 		{
 			//调用模版提供的默认实现.--默认实现可能会调用相应的Action.
-			
+            //DataGrid_GridRowDbClicked_DefaultImpl(sender,e);
+
+            ConfirmButton_Click_Extend(sender, e);
+        }
+
+        #endregion
 		
-			DataGrid_GridRowDbClicked_DefaultImpl(sender,e);
-		}
 
 		
             
@@ -143,8 +162,5 @@ namespace SalarySolutionMultiRef
 
 
         #endregion
-		
-        #endregion
-		
     }
 }

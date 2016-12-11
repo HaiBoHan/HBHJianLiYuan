@@ -8,7 +8,7 @@ using UFSoft.UBF.PL;
 using UFIDA.U9.SM.Enums;
 using UFIDA.U9.PR.PurchaseRequest;
 using U9.VOB.Cus.HBHJianLiYuan.HBHHelper;
-using UFIDA.U9.Cust.HBH.Common.CommonLibary;
+using HBH.DoNet.DevPlatform.EntityMapping;
 using UFIDA.U9.CBO.SCM.Supplier;
 using UFIDA.U9.Base;
 using UFIDA.U9.PR.DemandInterface;
