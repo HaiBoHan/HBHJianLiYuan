@@ -15,6 +15,7 @@ using UFSoft.UBF.Business;
 using UFSoft.UBF.Transactions;
 using UFIDA.U9.Approval.Util;
 using UFSoft.UBF.PL.Engine;
+using HBH.DoNet.DevPlatform.EntityMapping;
 
 #endregion
 
@@ -147,15 +148,22 @@ namespace U9.VOB.Cus.HBHJianLiYuan {
 
             if (this.SysState != UFSoft.UBF.PL.Engine.ObjectState.Deleted)
             {
-                if (this.PayrollType == null)
+                // 计薪类别改为  计薪方案多选
+                //if (this.PayrollType == null)
+                //{
+                //    throw new BusinessException("计薪类别 不可为空!");
+                //}
+
+                // 计薪方案不可为空
+                if (this.SalarySolutionIDs.IsNull())
                 {
-                    throw new BusinessException("计薪类别 不可为空!");
+                    throw new BusinessException("计薪方案 不可为空!");
                 }
 
                 if (ApproveType == null)
                 {
                     string strMsg = string.Format("计薪方案[{0}]发薪日期[{1}] 的审核方式不可为空!"
-                            , this.PayrollType.Name
+                            , this.SalarySolutionNames
                             , this.PayDate.ToString("yyyy-MM-dd")
                             );
                     throw new BusinessException(strMsg);

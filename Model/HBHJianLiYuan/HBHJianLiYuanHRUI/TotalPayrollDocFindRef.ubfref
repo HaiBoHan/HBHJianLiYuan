@@ -4,7 +4,8 @@
     <Reference id="15262903-b16f-479b-a652-686f8b9359e8" name="cRef" displayName="cRef" description="" help="薪资申请汇总表" refEntityId="7883dcca-92ce-408e-938b-0a4d08fe0202" refEntityName="U9.VOB.Cus.HBHJianLiYuan.TotalPayrollDoc" refType="1" isMain="False">
       <RefFields>
         <RefField id="56efb13d-7ad6-4165-afa1-8d245118d6d7" name="ID" displayName="ID" description="" help="薪资申请汇总表.Key.ID" isKey="True" isEdit="False" isName="False" isVisible="False" isParent="False" sequence="0" length="80" refAttributeName="U9.VOB.Cus.HBHJianLiYuan.TotalPayrollDoc:ID" displayNameIndexStr="2" />
-        <RefField id="189f5b57-c26a-40f7-9c08-b544110c0c88" name="PayDate" displayName="发薪日期" description="" help="薪资申请汇总表.Misc.发薪日期" isKey="False" isEdit="True" isName="True" isVisible="True" isParent="False" sequence="0" length="120" refAttributeName="U9.VOB.Cus.HBHJianLiYuan.TotalPayrollDoc:PayDate" displayNameIndexStr="2" />
+        <RefField id="189f5b57-c26a-40f7-9c08-b544110c0c88" name="PayDate" displayName="发薪日期" description="" help="薪资申请汇总表.Misc.发薪日期" isKey="False" isEdit="False" isName="False" isVisible="True" isParent="False" sequence="0" length="120" refAttributeName="U9.VOB.Cus.HBHJianLiYuan.TotalPayrollDoc:PayDate" displayNameIndexStr="2" />
+        <RefField id="1493918e-ba92-44d9-8e7a-4b3cbc14748b" name="Status" displayName="状态" description="" help="薪资申请汇总表.Misc.状态" isKey="False" isEdit="False" isName="False" isVisible="True" isParent="False" sequence="0" length="80" refAttributeName="U9.VOB.Cus.HBHJianLiYuan.TotalPayrollDoc:Status" displayNameIndexStr="2" />
       </RefFields>
       <OrderFields>
         <OrderField id="b5e2f2c4-f92d-497f-9432-363a86245d5a" name="PayDate" displayName="发薪日期" description="" help="薪资申请汇总表.Misc.发薪日期" direction="1" sequence="0" refAttributeName="U9.VOB.Cus.HBHJianLiYuan.TotalPayrollDoc:PayDate" />

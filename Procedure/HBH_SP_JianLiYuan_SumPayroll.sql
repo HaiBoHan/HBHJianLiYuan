@@ -179,7 +179,7 @@ select
 into #hbh_tmp_TotalPayrollDocLine
 from [Cust_TotalPayrollDoc] totalPay
 
-	inner join Base_ValueSetDef valueSet
+	left join Base_ValueSetDef valueSet
 	on valueSet.Code = @PayrollTypeCode
 	left join Base_DefineValue defValue
 	on defValue.ValueSetDef = valueSet.ID
@@ -222,6 +222,8 @@ Rejected	拒绝	3
 	--and payHead.Status in (2,5)
 	and payHead.Status in (1)
 
+	-- 由 计薪类别 改为 计薪方案集合
+	and ',' + totalPay.PayrollCalculateIDs + ',' like '%,' + cast(payHead.PayrollCaculate as varchar(20)) + ',%'
 
 
 /*   2015-12-06  部门改为 分拆  调动前部门、调动后部门；

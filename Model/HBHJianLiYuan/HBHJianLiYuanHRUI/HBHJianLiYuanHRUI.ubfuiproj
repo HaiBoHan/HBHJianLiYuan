@@ -34,5 +34,6 @@
     <Item id="81ef2841-704f-43a9-befc-480ba64442ad" name="CostWarningUIForm.ubfform" displayName="CostWarningUIForm.ubfform" description="" help="" include="CostWarningUIForm.ubfform" type="" />
     <Item id="9e7577ac-103b-45cd-9942-3090c736d342" name="CostWarningFindRef.ubfref" displayName="CostWarningFindRef.ubfref" description="" help="" include="CostWarningFindRef.ubfref" type="" />
     <Item id="c103f249-407e-4973-ac96-a6851263fc8b" name="SalarySolutionMultiRef.ubfref" displayName="SalarySolutionMultiRef.ubfref" description="" help="" include="SalarySolutionMultiRef.ubfref" type="" />
+    <Item id="c899545b-b9de-4396-a20a-4292bd61f720" name="PayrollCalculateRef.ubfref" displayName="PayrollCalculateRef.ubfref" description="" help="" include="PayrollCalculateRef.ubfref" type="" />
   </ItemGroup>
 </Project>

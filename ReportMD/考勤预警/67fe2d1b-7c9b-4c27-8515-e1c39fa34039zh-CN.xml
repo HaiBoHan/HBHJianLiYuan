@@ -69,21 +69,6 @@
               <Width>800</Width>
               <Name>C_CheckInDate</Name>
             </Column>
-            <Column>
-              <Width>800</Width>
-            </Column>
-            <Column>
-              <Width>800</Width>
-            </Column>
-            <Column>
-              <Width>800</Width>
-            </Column>
-            <Column>
-              <Width>800</Width>
-            </Column>
-            <Column>
-              <Width>1000</Width>
-            </Column>
           </ColumnInfo>
           <Style>
             <Border />
@@ -160,29 +145,6 @@
                   </TableCell>
                   <TableCell>
                     <RowID>0</RowID>
-                    <ColumnID>8</ColumnID>
-                    <ReportItems>
-                      <TextBoxs>
-                        <TextBox name="TextBox_3">
-                          <Style>
-                            <FormatStyle />
-                            <Front />
-                            <Alignment />
-                            <Background />
-                            <Padding />
-                            <Font />
-                            <Border />
-                          </Style>
-                          <Location />
-                          <Width>1000</Width>
-                          <Height>250</Height>
-                          <IsBookMark>false</IsBookMark>
-                        </TextBox>
-                      </TextBoxs>
-                    </ReportItems>
-                  </TableCell>
-                  <TableCell>
-                    <RowID>0</RowID>
                     <ColumnID>2</ColumnID>
                     <ReportItems>
                       <TextBoxs>
@@ -232,98 +194,6 @@
                           <Text>最近考勤日</Text>
                           <IS8N>true</IS8N>
                           <CultureReference>{ReferenceEntityAttribute:7f6b2be6-d4ac-4fb8-bcdf-31a518348067}</CultureReference>
-                          <IsBookMark>false</IsBookMark>
-                        </TextBox>
-                      </TextBoxs>
-                    </ReportItems>
-                  </TableCell>
-                  <TableCell>
-                    <RowID>0</RowID>
-                    <ColumnID>7</ColumnID>
-                    <ReportItems>
-                      <TextBoxs>
-                        <TextBox name="TextBox_16">
-                          <Style>
-                            <FormatStyle />
-                            <Front />
-                            <Alignment />
-                            <Background />
-                            <Padding />
-                            <Font />
-                            <Border />
-                          </Style>
-                          <Location />
-                          <Width>800</Width>
-                          <Height>250</Height>
-                          <IsBookMark>false</IsBookMark>
-                        </TextBox>
-                      </TextBoxs>
-                    </ReportItems>
-                  </TableCell>
-                  <TableCell>
-                    <RowID>0</RowID>
-                    <ColumnID>6</ColumnID>
-                    <ReportItems>
-                      <TextBoxs>
-                        <TextBox name="TextBox_19">
-                          <Style>
-                            <FormatStyle />
-                            <Front />
-                            <Alignment />
-                            <Background />
-                            <Padding />
-                            <Font />
-                            <Border />
-                          </Style>
-                          <Location />
-                          <Width>800</Width>
-                          <Height>250</Height>
-                          <IsBookMark>false</IsBookMark>
-                        </TextBox>
-                      </TextBoxs>
-                    </ReportItems>
-                  </TableCell>
-                  <TableCell>
-                    <RowID>0</RowID>
-                    <ColumnID>5</ColumnID>
-                    <ReportItems>
-                      <TextBoxs>
-                        <TextBox name="TextBox_22">
-                          <Style>
-                            <FormatStyle />
-                            <Front />
-                            <Alignment />
-                            <Background />
-                            <Padding />
-                            <Font />
-                            <Border />
-                          </Style>
-                          <Location />
-                          <Width>800</Width>
-                          <Height>250</Height>
-                          <IsBookMark>false</IsBookMark>
-                        </TextBox>
-                      </TextBoxs>
-                    </ReportItems>
-                  </TableCell>
-                  <TableCell>
-                    <RowID>0</RowID>
-                    <ColumnID>4</ColumnID>
-                    <ReportItems>
-                      <TextBoxs>
-                        <TextBox name="TextBox_25">
-                          <Style>
-                            <FormatStyle />
-                            <Front />
-                            <Alignment />
-                            <Background />
-                            <Padding />
-                            <Font />
-                            <Border />
-                          </Style>
-                          <Location />
-                          <Width>800</Width>
-                          <Height>250</Height>
                           <IsBookMark>false</IsBookMark>
                         </TextBox>
                       </TextBoxs>
@@ -391,29 +261,6 @@
                   </TableCell>
                   <TableCell>
                     <RowID>0</RowID>
-                    <ColumnID>8</ColumnID>
-                    <ReportItems>
-                      <TextBoxs>
-                        <TextBox name="TextBox_9">
-                          <Style>
-                            <FormatStyle />
-                            <Front />
-                            <Alignment />
-                            <Background />
-                            <Padding />
-                            <Font />
-                            <Border />
-                          </Style>
-                          <Location />
-                          <Width>1000</Width>
-                          <Height>250</Height>
-                          <IsBookMark>false</IsBookMark>
-                        </TextBox>
-                      </TextBoxs>
-                    </ReportItems>
-                  </TableCell>
-                  <TableCell>
-                    <RowID>0</RowID>
                     <ColumnID>2</ColumnID>
                     <ReportItems>
                       <TextBoxs>
@@ -441,98 +288,6 @@
                     <ReportItems>
                       <TextBoxs>
                         <TextBox name="TextBox_15">
-                          <Style>
-                            <FormatStyle />
-                            <Front />
-                            <Alignment />
-                            <Background />
-                            <Padding />
-                            <Font />
-                            <Border />
-                          </Style>
-                          <Location />
-                          <Width>800</Width>
-                          <Height>250</Height>
-                          <IsBookMark>false</IsBookMark>
-                        </TextBox>
-                      </TextBoxs>
-                    </ReportItems>
-                  </TableCell>
-                  <TableCell>
-                    <RowID>0</RowID>
-                    <ColumnID>7</ColumnID>
-                    <ReportItems>
-                      <TextBoxs>
-                        <TextBox name="TextBox_18">
-                          <Style>
-                            <FormatStyle />
-                            <Front />
-                            <Alignment />
-                            <Background />
-                            <Padding />
-                            <Font />
-                            <Border />
-                          </Style>
-                          <Location />
-                          <Width>800</Width>
-                          <Height>250</Height>
-                          <IsBookMark>false</IsBookMark>
-                        </TextBox>
-                      </TextBoxs>
-                    </ReportItems>
-                  </TableCell>
-                  <TableCell>
-                    <RowID>0</RowID>
-                    <ColumnID>6</ColumnID>
-                    <ReportItems>
-                      <TextBoxs>
-                        <TextBox name="TextBox_21">
-                          <Style>
-                            <FormatStyle />
-                            <Front />
-                            <Alignment />
-                            <Background />
-                            <Padding />
-                            <Font />
-                            <Border />
-                          </Style>
-                          <Location />
-                          <Width>800</Width>
-                          <Height>250</Height>
-                          <IsBookMark>false</IsBookMark>
-                        </TextBox>
-                      </TextBoxs>
-                    </ReportItems>
-                  </TableCell>
-                  <TableCell>
-                    <RowID>0</RowID>
-                    <ColumnID>5</ColumnID>
-                    <ReportItems>
-                      <TextBoxs>
-                        <TextBox name="TextBox_24">
-                          <Style>
-                            <FormatStyle />
-                            <Front />
-                            <Alignment />
-                            <Background />
-                            <Padding />
-                            <Font />
-                            <Border />
-                          </Style>
-                          <Location />
-                          <Width>800</Width>
-                          <Height>250</Height>
-                          <IsBookMark>false</IsBookMark>
-                        </TextBox>
-                      </TextBoxs>
-                    </ReportItems>
-                  </TableCell>
-                  <TableCell>
-                    <RowID>0</RowID>
-                    <ColumnID>4</ColumnID>
-                    <ReportItems>
-                      <TextBoxs>
-                        <TextBox name="TextBox_27">
                           <Style>
                             <FormatStyle />
                             <Front />
@@ -614,29 +369,6 @@
                   </TableCell>
                   <TableCell>
                     <RowID>0</RowID>
-                    <ColumnID>8</ColumnID>
-                    <ReportItems>
-                      <TextBoxs>
-                        <TextBox name="TextBox_6">
-                          <Style>
-                            <FormatStyle />
-                            <Front />
-                            <Alignment />
-                            <Background />
-                            <Padding />
-                            <Font />
-                            <Border />
-                          </Style>
-                          <Location />
-                          <Width>1000</Width>
-                          <Height>250</Height>
-                          <IsBookMark>false</IsBookMark>
-                        </TextBox>
-                      </TextBoxs>
-                    </ReportItems>
-                  </TableCell>
-                  <TableCell>
-                    <RowID>0</RowID>
                     <ColumnID>2</ColumnID>
                     <ReportItems>
                       <TextBoxs>
@@ -683,98 +415,6 @@
                       </TextBoxs>
                     </ReportItems>
                   </TableCell>
-                  <TableCell>
-                    <RowID>0</RowID>
-                    <ColumnID>7</ColumnID>
-                    <ReportItems>
-                      <TextBoxs>
-                        <TextBox name="TextBox_17">
-                          <Style>
-                            <FormatStyle />
-                            <Front />
-                            <Alignment />
-                            <Background />
-                            <Padding />
-                            <Font />
-                            <Border />
-                          </Style>
-                          <Location />
-                          <Width>800</Width>
-                          <Height>250</Height>
-                          <IsBookMark>false</IsBookMark>
-                        </TextBox>
-                      </TextBoxs>
-                    </ReportItems>
-                  </TableCell>
-                  <TableCell>
-                    <RowID>0</RowID>
-                    <ColumnID>6</ColumnID>
-                    <ReportItems>
-                      <TextBoxs>
-                        <TextBox name="TextBox_20">
-                          <Style>
-                            <FormatStyle />
-                            <Front />
-                            <Alignment />
-                            <Background />
-                            <Padding />
-                            <Font />
-                            <Border />
-                          </Style>
-                          <Location />
-                          <Width>800</Width>
-                          <Height>250</Height>
-                          <IsBookMark>false</IsBookMark>
-                        </TextBox>
-                      </TextBoxs>
-                    </ReportItems>
-                  </TableCell>
-                  <TableCell>
-                    <RowID>0</RowID>
-                    <ColumnID>5</ColumnID>
-                    <ReportItems>
-                      <TextBoxs>
-                        <TextBox name="TextBox_23">
-                          <Style>
-                            <FormatStyle />
-                            <Front />
-                            <Alignment />
-                            <Background />
-                            <Padding />
-                            <Font />
-                            <Border />
-                          </Style>
-                          <Location />
-                          <Width>800</Width>
-                          <Height>250</Height>
-                          <IsBookMark>false</IsBookMark>
-                        </TextBox>
-                      </TextBoxs>
-                    </ReportItems>
-                  </TableCell>
-                  <TableCell>
-                    <RowID>0</RowID>
-                    <ColumnID>4</ColumnID>
-                    <ReportItems>
-                      <TextBoxs>
-                        <TextBox name="TextBox_26">
-                          <Style>
-                            <FormatStyle />
-                            <Front />
-                            <Alignment />
-                            <Background />
-                            <Padding />
-                            <Font />
-                            <Border />
-                          </Style>
-                          <Location />
-                          <Width>800</Width>
-                          <Height>250</Height>
-                          <IsBookMark>false</IsBookMark>
-                        </TextBox>
-                      </TextBoxs>
-                    </ReportItems>
-                  </TableCell>
                 </TableCells>
               </Row>
             </Rows>
@@ -815,6 +455,7 @@
           <FieldName>UserDefineField4</FieldName>
           <DefaultLabel>最近考勤日</DefaultLabel>
           <SelectEnable>true</SelectEnable>
+          <Format>{D}</Format>
           <SubFields />
           <DisplayField>=GetDataFromOQL("select max(checkin2.DayCheckIn.CheckInDate) from U9::VOB::Cus::HBHJianLiYuan::DayCheckInLine checkin2 where checkin2.EmployeeArchive.ID=U_DF.GetQLValue(Fields!EmployeeArchiveID.Value)")</DisplayField>
           <BreakColumnByDisplayField>false</BreakColumnByDisplayField>
@@ -853,7 +494,9 @@
           <DataType>System.DateTime</DataType>
           <DefaultLabel>日考勤_考勤日期</DefaultLabel>
           <ReferenceCommand>{ReferenceEntityAttribute:7f6b2be6-d4ac-4fb8-bcdf-31a518348067}</ReferenceCommand>
+          <Format>{D}</Format>
           <SubFields />
+          <ReferenceFilterName>C_CheckInDate</ReferenceFilterName>
           <BreakColumnByDisplayField>false</BreakColumnByDisplayField>
         </Field>
       </Fields>

@@ -255,12 +255,12 @@
         <UIFilterBar Name="ReferenceFilter" />
         <Events />
       </Reference>
-      <Label ID="9674886a-ab2e-4963-aaab-fc778d6adb20" Enabled="True" GridHeight="1" GridWidth="1" GridX="0" GridY="1" Height="20" IsNull="True" IsSequence="False" Name="lblSalarySolution90" RelationControl="SalarySolution90" TabIndex="11" TabStop="True" TitleAlign="Right" TitleLocation="Left" UIFieldID="" UIViewID="" Visible="True" Width="153" X="0" Y="25">
+      <Label ID="9674886a-ab2e-4963-aaab-fc778d6adb20" Enabled="True" GridHeight="1" GridWidth="1" GridX="0" GridY="0" Height="20" IsNull="True" IsSequence="False" Name="lblSalarySolution90" RelationControl="SalarySolution90" TabIndex="11" TabStop="True" TitleAlign="Right" TitleLocation="Left" UIFieldID="" UIViewID="" Visible="False" Width="152" X="660" Y="25">
         <Events />
         <RelationControls />
         <Events />
       </Label>
-      <Reference ID="37baca4a-deb7-4acf-9686-dd2fb21e7b44" CodeAttributeName="Code" CodeField="Code" CodeFieldUIFieldID="SalarySolutionCodes" CodeFieldUIViewID="TotalPayrollDoc" DisplayFormat="19.0" Enabled="True" EntityName="ID" GridHeight="1" GridWidth="1" GridX="2" GridY="1" Height="20" IsNull="True" IsProperty="False" IsSequence="False" Name="SalarySolution90" NameAttributeName="Name" NameFieldUIFieldID="SalarySolutionNames" NameFieldUIViewID="TotalPayrollDoc" PkeyField="ID" RefType="cc980ae0-1941-45a0-9330-b54a6698f27e" RelationControl="lblSalarySolution90" TabIndex="12" TabStop="True" TextAlign="Right" TitleAlign="Left" TitleLocation="Left" UIFieldID="SalarySolution" UIViewID="TotalPayrollDoc" Visible="True" Width="153" WindowHeight="408" WindowWidth="580" X="158" Y="25">
+      <Reference ID="37baca4a-deb7-4acf-9686-dd2fb21e7b44" CodeAttributeName="Code" CodeField="Code" CodeFieldUIFieldID="SalarySolutionCodes" CodeFieldUIViewID="TotalPayrollDoc" DisplayFormat="19.0" Enabled="True" EntityName="ID" GridHeight="1" GridWidth="1" GridX="0" GridY="0" Height="20" IsNull="True" IsProperty="False" IsSequence="False" Name="SalarySolution90" NameAttributeName="Name" NameFieldUIFieldID="SalarySolutionNames" NameFieldUIViewID="TotalPayrollDoc" PkeyField="ID" RefType="cc980ae0-1941-45a0-9330-b54a6698f27e" RelationControl="lblSalarySolution90" TabIndex="12" TabStop="True" TextAlign="Right" TitleAlign="Left" TitleLocation="Left" UIFieldID="SalarySolution" UIViewID="TotalPayrollDoc" Visible="False" Width="152" WindowHeight="408" WindowWidth="580" X="817" Y="25">
         <Events />
         <RelationControls />
         <ReferenceRelation Action="Clear" ColumnDisplayName="ID" ColumnID="ID" TargetControlType="" TargetID="" TargetProperty="" />
@@ -274,6 +274,31 @@
         <Events />
       </Reference>
       <TextBox ID="b39bf2a4-7847-44a9-890e-708f0c06b0f4" DisplayFormat="2000" Enabled="True" GridHeight="1" GridWidth="1" GridX="0" GridY="0" Height="20" IsNull="True" IsProperty="False" IsSequence="False" MultiLine="False" Name="SalarySolutionIDs81" RelationControl="" TabIndex="14" TabStop="True" TextAlign="Left" TitleAlign="Left" TitleLocation="Left" UIFieldID="SalarySolutionIDs" UIViewID="TotalPayrollDoc" Visible="False" Width="152" X="817" Y="25">
+        <Events />
+        <RelationControls />
+      </TextBox>
+      <Label ID="dcb63a08-95af-4b17-abcd-02ea00de081b" Enabled="True" GridHeight="1" GridWidth="1" GridX="0" GridY="1" Height="20" IsNull="True" IsSequence="False" Name="lblPayrollCalculate138" RelationControl="PayrollCalculate138" TabIndex="15" TabStop="True" TitleAlign="Right" TitleLocation="Left" UIFieldID="" UIViewID="" Visible="True" Width="153" X="0" Y="25">
+        <Events />
+        <RelationControls />
+        <Events />
+      </Label>
+      <Reference ID="bd3e3e09-de4c-4f68-bf81-fea0f5a132aa" CodeAttributeName="SalarySolution.Code" CodeField="SalarySolution_Code" CodeFieldUIFieldID="PayrollCalculateCodes" CodeFieldUIViewID="TotalPayrollDoc" DisplayFormat="19.0" Enabled="True" EntityName="ID" GridHeight="1" GridWidth="1" GridX="2" GridY="1" Height="20" IsNull="True" IsProperty="False" IsSequence="False" Name="PayrollCalculate138" NameAttributeName="SalarySolution.Name" NameFieldUIFieldID="PayrollCalculateNames" NameFieldUIViewID="TotalPayrollDoc" PkeyField="ID" RefType="b8791bb3-5ddd-4eb0-b0b8-602bc71146aa" RelationControl="lblPayrollCalculate138" TabIndex="16" TabStop="True" TextAlign="Right" TitleAlign="Left" TitleLocation="Left" UIFieldID="PayrollCalculate" UIViewID="TotalPayrollDoc" Visible="True" Width="153" WindowHeight="408" WindowWidth="580" X="158" Y="25">
+        <Events />
+        <RelationControls />
+        <ReferenceRelation Action="Clear" ColumnDisplayName="ID" ColumnID="ID" TargetControlType="" TargetID="" TargetProperty="" />
+        <ReferenceRelation Action="Clear" ColumnDisplayName="计薪方案编码" ColumnID="SalarySolution_Code" TargetControlType="" TargetID="" TargetProperty="" />
+        <ReferenceRelation Action="Clear" ColumnDisplayName="计薪方案名称" ColumnID="SalarySolution_Name" TargetControlType="" TargetID="" TargetProperty="" />
+        <ReferenceRelation Action="Clear" ColumnDisplayName="人事组织" ColumnID="HROrg_Name" TargetControlType="" TargetID="" TargetProperty="" />
+        <ReferenceRelation Action="Clear" ColumnDisplayName="计薪日期" ColumnID="PlanDate" TargetControlType="" TargetID="" TargetProperty="" />
+        <ReferenceRelation Action="Clear" ColumnDisplayName="币种" ColumnID="SalarySolution_Currency_Name" TargetControlType="" TargetID="" TargetProperty="" />
+        <ReferenceRelation Action="Clear" ColumnDisplayName="计薪方案描述" ColumnID="SalarySolution_Description" TargetControlType="TextBoxModel" TargetID="PayrollCalculateIDs196" TargetProperty="Value" />
+        <RefNameFields>
+          <RefNameField UIFieldID="SalarySolution_Name" />
+        </RefNameFields>
+        <UIFilterBar Name="ReferenceFilter" />
+        <Events />
+      </Reference>
+      <TextBox ID="ff63c6e9-556c-40a8-b58f-f878227d6da2" DisplayFormat="50" Enabled="True" GridHeight="1" GridWidth="1" GridX="0" GridY="0" Height="20" IsNull="True" IsProperty="False" IsSequence="False" MultiLine="False" Name="PayrollCalculateIDs196" RelationControl="" TabIndex="18" TabStop="True" TextAlign="Left" TitleAlign="Left" TitleLocation="Left" UIFieldID="PayrollCalculateIDs" UIViewID="TotalPayrollDoc" Visible="False" Width="152" X="817" Y="50">
         <Events />
         <RelationControls />
       </TextBox>
@@ -476,24 +501,24 @@
               <Events />
             </NumberColumn>
             <NumberColumn ID="1e7fc9dc-c82c-4dac-9d0a-20aaaeb81307" DefaultValue="0" DisplayFormat="24.9" Enabled="False" Help="薪资申请汇总行.Misc.银行实发" IsNull="True" IsProperty="False" IsSequence="False" Name="BankTotalActPay0" NPos="20" Point="2" UIFieldID="BankTotalActPay" UIViewID="TotalPayrollDoc_TotalPayrollDocLine" Visible="True">
-              <PrecisionBind />
-              <RoundRuleBind />
-              <ValueOfRoundByValueBind />
-              <CurrencyType />
+              <PrecisionBind Name="PrecisionBind18" />
+              <RoundRuleBind Name="RoundRuleBind18" />
+              <ValueOfRoundByValueBind Name="ValueOfRoundByValueBind18" />
+              <CurrencyType Name="CurrencyType18" />
               <Events />
             </NumberColumn>
             <NumberColumn ID="b5d19824-8f6c-4182-aeb2-0a9d2a460e89" DefaultValue="0" DisplayFormat="24.9" Enabled="False" Help="薪资申请汇总行.Misc.现金实发" IsNull="True" IsProperty="False" IsSequence="False" Name="CashTotalActPay0" NPos="21" Point="2" UIFieldID="CashTotalActPay" UIViewID="TotalPayrollDoc_TotalPayrollDocLine" Visible="True">
-              <PrecisionBind />
-              <RoundRuleBind />
-              <ValueOfRoundByValueBind />
-              <CurrencyType />
+              <PrecisionBind Name="PrecisionBind19" />
+              <RoundRuleBind Name="RoundRuleBind19" />
+              <ValueOfRoundByValueBind Name="ValueOfRoundByValueBind19" />
+              <CurrencyType Name="CurrencyType19" />
               <Events />
             </NumberColumn>
             <NumberColumn ID="cfc3f467-5694-4248-bad3-9797bc4d99ef" DefaultValue="0" DisplayFormat="24.9" Enabled="False" Help="薪资申请汇总行.Misc.扣发合计" IsNull="True" IsProperty="False" IsSequence="False" Name="WithholdingTotalActPay0" NPos="22" Point="2" UIFieldID="WithholdingTotalActPay" UIViewID="TotalPayrollDoc_TotalPayrollDocLine" Visible="True">
-              <PrecisionBind />
-              <RoundRuleBind />
-              <ValueOfRoundByValueBind />
-              <CurrencyType />
+              <PrecisionBind Name="PrecisionBind20" />
+              <RoundRuleBind Name="RoundRuleBind20" />
+              <ValueOfRoundByValueBind Name="ValueOfRoundByValueBind20" />
+              <CurrencyType Name="CurrencyType20" />
               <Events />
             </NumberColumn>
           </Columns>

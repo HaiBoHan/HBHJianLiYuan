@@ -414,6 +414,8 @@ namespace TotalPayrollDocUIModel
             
             // 单行返回
             this.SalarySolution90.AddTypeParams(clsMultiSelect.Const_RefType, clsMultiSelect.Const_IsSingleReturn);
+            // 单行返回
+            this.PayrollCalculate138.AddTypeParams(clsMultiSelect.Const_RefType, clsMultiSelect.Const_IsSingleReturn);
         }
         
         public void AfterEventBind()

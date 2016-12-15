@@ -533,21 +533,21 @@
         <DropDownListColumn ID="0b1153a9-acd7-4e6b-b8d7-61e5ef0e7ca0" DefaultValue="0" DisplayFormat="10.0" Enabled="True" EnumFullName="U9.VOB.Cus.HBHJianLiYuan.CheckTypeEnum" EnumID="abfaa342-ff05-4e6b-bd98-836d0ddf53a5" Help="日考勤行.Misc.考勤类别" IsNull="True" IsProperty="False" IsSequence="False" Name="CheckType0" NPos="4" Point="0" UIFieldID="CheckType" UIViewID="DayCheckIn_DayCheckInLine" Visible="True">
           <Events />
         </DropDownListColumn>
-        <NumberColumn ID="1585cd51-0abe-496b-ae94-e39c86434df0" DefaultValue="0" DisplayFormat="24.9" Enabled="True" HasSum="True" Help="日考勤行.Misc.全日制员工出勤" IsNull="True" IsProperty="False" IsSequence="False" MinValue="0" Name="FullTimeDay0" NPos="5" Point="1" UIFieldID="FullTimeDay" UIViewID="DayCheckIn_DayCheckInLine" Visible="True" Width="130">
+        <NumberColumn ID="1585cd51-0abe-496b-ae94-e39c86434df0" DefaultValue="0" DisplayFormat="24.9" Enabled="True" HasSum="True" Help="日考勤行.Misc.全日制员工出勤" IsNull="True" IsProperty="False" IsSequence="False" MinValue="0" Name="FullTimeDay0" NPos="5" Point="2" UIFieldID="FullTimeDay" UIViewID="DayCheckIn_DayCheckInLine" Visible="True" Width="130">
           <PrecisionBind Name="PrecisionBind2" />
           <RoundRuleBind Name="RoundRuleBind2" />
           <ValueOfRoundByValueBind Name="ValueOfRoundByValueBind2" />
           <CurrencyType Name="CurrencyType2" />
           <Events />
         </NumberColumn>
-        <NumberColumn ID="fcdfabb7-294d-4112-b4d5-a29f27f5f1d9" DefaultValue="0" DisplayFormat="24.9" Enabled="True" HasSum="True" Help="日考勤行.Misc.非全日制员工出勤" IsNull="True" IsProperty="False" IsSequence="False" MinValue="0" Name="PartTimeDay0" NPos="6" Point="1" UIFieldID="PartTimeDay" UIViewID="DayCheckIn_DayCheckInLine" Visible="True" Width="140">
+        <NumberColumn ID="fcdfabb7-294d-4112-b4d5-a29f27f5f1d9" DefaultValue="0" DisplayFormat="24.9" Enabled="True" HasSum="True" Help="日考勤行.Misc.非全日制员工出勤" IsNull="True" IsProperty="False" IsSequence="False" MinValue="0" Name="PartTimeDay0" NPos="6" Point="2" UIFieldID="PartTimeDay" UIViewID="DayCheckIn_DayCheckInLine" Visible="True" Width="140">
           <PrecisionBind Name="PrecisionBind3" />
           <RoundRuleBind Name="RoundRuleBind3" />
           <ValueOfRoundByValueBind Name="ValueOfRoundByValueBind3" />
           <CurrencyType Name="CurrencyType3" />
           <Events />
         </NumberColumn>
-        <NumberColumn ID="0afaf11c-5cf4-40fc-8fd7-3716b029a02e" DefaultValue="0" DisplayFormat="24.9" Enabled="True" HasSum="True" Help="日考勤行.Misc.钟点工出勤" IsNull="True" IsProperty="False" IsSequence="False" MinValue="0" Name="HourlyDay0" NPos="7" Point="1" UIFieldID="HourlyDay" UIViewID="DayCheckIn_DayCheckInLine" Visible="True">
+        <NumberColumn ID="0afaf11c-5cf4-40fc-8fd7-3716b029a02e" DefaultValue="0" DisplayFormat="24.9" Enabled="True" HasSum="True" Help="日考勤行.Misc.钟点工出勤" IsNull="True" IsProperty="False" IsSequence="False" MinValue="0" Name="HourlyDay0" NPos="7" Point="2" UIFieldID="HourlyDay" UIViewID="DayCheckIn_DayCheckInLine" Visible="True">
           <PrecisionBind Name="PrecisionBind4" />
           <RoundRuleBind Name="RoundRuleBind4" />
           <ValueOfRoundByValueBind Name="ValueOfRoundByValueBind4" />
