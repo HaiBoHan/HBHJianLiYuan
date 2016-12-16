@@ -123,6 +123,7 @@ from CBO_Person person
 	
 	inner join CBO_EmployeeAssignment Ass
 	on arch.ID = Ass.Employee
+		and Ass.IsMain = 1
 		and checkIn.CheckInDate between IsNull(Ass.AssgnBeginDate,'2000-12-31') and IsNull(Ass.AssgnEndDate,'9999-12-31')
 
 where -- person.PersonID = '370211198801212020'
