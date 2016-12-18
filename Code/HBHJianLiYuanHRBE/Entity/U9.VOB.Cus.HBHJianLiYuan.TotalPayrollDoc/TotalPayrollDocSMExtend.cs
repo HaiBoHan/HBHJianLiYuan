@@ -4,6 +4,7 @@ using UFSoft.UBF.Eventing.Configuration;
 using UFSoft.UBF.Business;
 using UFIDA.U9.GeneralEvents;
 using U9.VOB.HBHCommon.U9CommonBE;
+using UFIDA.U9.Base;
 
 namespace U9.VOB.Cus.HBHJianLiYuan
 {
@@ -178,6 +179,8 @@ namespace U9.VOB.Cus.HBHJianLiYuan
                         else
                         {
                             entity.Status = DocStatus.Opened;
+                            entity.UnApprovedOn = DateTime.Now;
+                            entity.UnApprovedBy = Context.LoginUser;
                             entity.WFCurrentState = DocStatus.Opened.Value;
                             //entity.ActivityType = ActivityTypeEnum.SrvUpdate;
                             //this.SetPRLineStatus(entity, ActivityTypeEnum.SrvUpdate);

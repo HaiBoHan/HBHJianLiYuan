@@ -181,6 +181,8 @@ namespace U9.VOB.Cus.HBHJianLiYuan
                         else
                         {
                             entity.Status = DocStatus.Opened;
+                            entity.UnApprovedOn = DateTime.Now;
+                            entity.UnApprovedBy = Context.LoginUser;
                             entity.WFCurrentState = DocStatus.Opened.Value;
                             //entity.ActivityType = ActivityTypeEnum.SrvUpdate;
                             //this.SetPRLineStatus(entity, ActivityTypeEnum.SrvUpdate);

@@ -6,6 +6,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
+using U9.VOB.HBHCommon.U9CommonBE;
+using UFIDA.U9.Approval.Util;
+using UFIDA.U9.Base;
 
 #endregion
 
@@ -30,6 +33,47 @@ namespace U9.VOB.Cus.HBHJianLiYuan {
 		protected override void OnSetDefaultValue()
 		{
 			base.OnSetDefaultValue();
+
+            if (this.Org == null)
+            {
+                this.Org = Context.LoginOrg;
+            }
+
+            if (this.OriginalData != null
+                && this.OriginalData.Status != this.Status
+                )
+            {
+                if (this.Status == DocStatus.Opened)
+                {
+                    // 弃审
+                    if (this.OriginalData.Status == DocStatus.Approved)
+                    {
+                        DoUnApprove();
+                    }
+                    // 回收
+                    else if (this.OriginalData.Status == DocStatus.Approving)
+                    {
+                        DoTerminate();
+                    }
+                }
+                else if (this.Status == DocStatus.Approving)
+                {
+                    // 提交
+                    if (this.OriginalData.Status == DocStatus.Opened)
+                    {
+                        DoSubmit();
+                    }
+                }
+                else if (this.Status == DocStatus.Approved)
+                {
+                    // 审核
+                    if (this.OriginalData.Status == DocStatus.Approving)
+                    {
+                        DoApprove();
+                    }
+                }
+            }
+
 		}
 		/// <summary>
 		/// before Insert
@@ -124,6 +168,114 @@ namespace U9.VOB.Cus.HBHJianLiYuan {
 
 
 		#region Model Methods
+
+        #region  工作流
+
+        #region 提交、审核、弃审
+
+        /// <summary>
+        /// 提交
+        /// </summary>
+        public void DoSubmit()
+        {
+            this.Status = DocStatus.Approving;
+            if (IsApprovalFlow()
+                )
+            {
+                this.StateMachineInstance.Initialize();
+                //this.StateMachineInstance.Opend_SumitEvent(new SubmitEvent());
+                this.StateMachineInstance.Opened_SumitEvent(new SumitEvent());
+
+
+                ServiceOrderSubscriber_TotalPayrollDoc serviceOrderSubscriber = new ServiceOrderSubscriber_TotalPayrollDoc();
+                serviceOrderSubscriber.EntityKey = this.Key;
+                ApprovalService.Instance.SubmitApproval(this);
+                EventHelper.SubscribeApprovalResultEvent(this.Key, serviceOrderSubscriber);
+            }
+        }
+
+        private bool IsApprovalFlow()
+        {
+            //if (this.DocType.ConfirmType == Base.Doc.ConfirmTypeEnum.ApproveFlow)
+            return this.ApproveType != null
+                            && this.ApproveType.Name == DayCheckIn.Const_ApproveFlowName;
+        }
+
+        /// <summary>
+        /// 审核
+        /// </summary>
+        public void DoApprove()
+        {
+            this.Status = DocStatus.Approved;
+            if (IsApprovalFlow())
+            {
+                //this.StateMachineInstance.ApprovingState_ApproveEvent(new GeneralEvents.ApprovalResultEvent());
+                this.StateMachineInstance.Approving_ApproveEvent(new ApproveEvent());
+            }
+            this.ApprovedOn = DateTime.Now;
+            this.ApprovedBy = Context.LoginUser;
+
+        }
+
+        /// <summary>
+        /// 弃审
+        /// </summary>
+        public void DoUnApprove()
+        {
+            this.Status = DocStatus.Opened;
+            if (IsApprovalFlow())
+            {
+                //this.StateMachineInstance.ApprovedState_UnApproveEvent(new UnApprovedEvent());
+                this.StateMachineInstance.Approved_UnApproveEvent(new UnApproveEvent());
+            }
+            //this.ApprovedOn = DateTime.MinValue;
+            this.ApprovedOn = new DateTime(2000, 1, 1);
+            this.ApprovedBy = null;
+        }
+
+        #endregion
+
+        #region 工作流 审核相关
+
+        /// <summary>
+        /// 审核
+        /// </summary>
+        //public void DoApprove(ApprovalResultEvent ev)
+        public void DoApprove(ApproveEvent ev)
+        {
+            this.Status = DocStatus.Approved;
+            this.ApprovedOn = DateTime.Now;
+            this.ApprovedBy = Context.LoginUser;
+
+            if (IsApprovalFlow())
+            {
+                this.StateMachineInstance.Approving_ApproveEvent(ev);
+                //this.StateMachineInstance.ApprovingState_ApproveEvent(new ApproveEvent());
+            }
+        }
+
+        /// <summary>
+        /// 终止、拒绝
+        /// </summary>
+        public void DoTerminate()
+        {
+            this.Status = DocStatus.Opened;
+            this.ApprovedOn = new DateTime(2000, 1, 1);
+            this.ApprovedBy = null;
+
+            if (IsApprovalFlow())
+            {
+                ApprovalService.Instance.KillApproval(this);
+            }
+        }
+
+        #endregion
+
+
+        #endregion	
+	
+
+
 		#endregion		
 	}
 }
