@@ -88,10 +88,11 @@ end
 	-- F调动后实发合计
 	declare @FTransDeptAfterActPay varchar(125) = 'F48'
 
-	--declare @TransDeptBeforeCodeField varchar(125) = ''
-	--declare @TransDeptAfterCodeField varchar(125) = ''
-	--declare @TransDeptBeforeOrigPayField varchar(125) = ''
-	--declare @TransDeptAfterCodeField varchar(125) = ''
+--	--declare @TransDeptBeforeCodeField varchar(125) = ''
+--	--declare @TransDeptAfterCodeField varchar(125) = ''
+--	--declare @TransDeptBeforeOrigPayField varchar(125) = ''
+--	--declare @TransDeptAfterCodeField varchar(125) = ''
+
 
 	-- 字段：
 	-- 调动前部门
@@ -131,6 +132,51 @@ from Pay_SalaryItem where Code = @FTransDeptBeforeActPay)
 	-- F调动后实发合计
 	declare @FTransDeptAfterActPayField varchar(125) = (select PayrollField
 from Pay_SalaryItem where Code = @FTransDeptAfterActPay)
+
+
+	
+	-- 银行发放金额 = 109
+	declare @BankPay varchar(125) = '109'
+	declare @BankPayField varchar(125) = (select PayrollField
+from Pay_SalaryItem where Code = @BankPay)
+	-- F银行发放金额 = F31
+	declare @FBankPay varchar(125) = 'F31'
+	declare @FBankPayField varchar(125) = (select PayrollField
+from Pay_SalaryItem where Code = @FBankPay)
+	-- 现金发放金额 = 110
+	declare @CashPay varchar(125) = '110'
+	declare @CashPayField varchar(125) = (select PayrollField
+from Pay_SalaryItem where Code = @CashPay)
+	--  F现金发放金额 = F32
+	declare @FCashPay varchar(125) = 'F32'
+	declare @FCashPayField varchar(125) = (select PayrollField
+from Pay_SalaryItem where Code = @FCashPay)
+	-- 扣发金额 = 108
+	declare @DeductPay varchar(125) = '108'
+	declare @DeductPayField varchar(125) = (select PayrollField
+from Pay_SalaryItem where Code = @DeductPay)
+	--  F扣发金额 = F34
+	declare @FDeductPay varchar(125) = 'F34'
+	declare @FDeductPayField varchar(125) = (select PayrollField
+from Pay_SalaryItem where Code = @FDeductPay)
+	-- 应发工资合计 = 121
+	declare @GrossPay varchar(125) = '121'
+	declare @GrossPayField varchar(125) = (select PayrollField
+from Pay_SalaryItem where Code = @GrossPay)
+	--  F应发工资合计 = F18
+	declare @FGrossPay varchar(125) = 'F18'
+	declare @FGrossPayField varchar(125) = (select PayrollField
+from Pay_SalaryItem where Code = @FGrossPay)
+	-- 实发合计 = 005
+	declare @ActualPay varchar(125) = '005'
+	declare @ActualPayField varchar(125) = (select PayrollField
+from Pay_SalaryItem where Code = @ActualPay)
+	--  F实发合计 = F22
+	declare @FActualPay varchar(125) = 'F22'
+	declare @FActualPayField varchar(125) = (select PayrollField
+from Pay_SalaryItem where Code = @FActualPay)
+
+
 
 	declare @SysLineNo int = 10
 	declare @Now datetime = GetDate();
@@ -399,8 +445,44 @@ create table #hbh_tmp_TotalPayrollDocLine_Dept
 	,FAfterDeptOrigPay decimal(24,9)
 	,FBeforeDeptActPay decimal(24,9)
 	,FAfterDeptActPay decimal(24,9)
+	
+	-- 银行发放金额 -- = 109
+	,BankPay decimal(24,9) -- = '109'
+	-- F银行发放金额 -- = F31
+	,FBankPay decimal(24,9) -- = 'F31'
+	-- 现金发放金额 -- = 110
+	,CashPay decimal(24,9) -- = '110'
+	--  F现金发放金额 -- = F32
+	,FCashPay decimal(24,9) -- = 'F32'
+	-- 扣发金额 -- = 108
+	,DeductPay decimal(24,9) -- = '108'
+	--  F扣发金额 -- = F34
+	,FDeductPay decimal(24,9) -- = 'F34'
+	-- 应发工资合计 -- = 121
+	,GrossPay decimal(24,9) -- = '121'
+	--  F应发工资合计 -- = F18
+	,FGrossPay decimal(24,9) -- = 'F18'
+	-- 实发合计 -- = 005
+	,ActualPay decimal(24,9) -- = '005'
+	--  F实发合计 -- = F22
+	,FActualPay decimal(24,9) -- = 'F22'
 )
 
+--declare @DeptSql varchar(max) = 'insert into #hbh_tmp_TotalPayrollDocLine_Dept
+--select tmpLine.*
+--	,payResult.' + @TransDeptBeforeCodeField+ ' as BeforeDeptName,payResult.' + @TransDeptAfterCodeField+ ' as AfterDeptName	
+--	,dbo.HBH_Fn_GetDecimal(payDetail.' + @TransDeptBeforeOrigPayField + ',0) as BeforeDeptOrigPay,dbo.HBH_Fn_GetDecimal(payDetail.' + @TransDeptAfterOrigPayField + ',0) as AfterDeptOrigPay
+--	,dbo.HBH_Fn_GetDecimal(payDetail.' + @TransDeptBeforeActPayField + ',0) as BeforeDeptActPay,dbo.HBH_Fn_GetDecimal(payDetail.' + @TransDeptAfterActPayField + ',0) as AfterDeptActPay
+--	,payResult.' + @FTransDeptBeforeCodeField + ' as FBeforeDeptName,payResult.' + @FTransDeptAfterCodeField + ' as FAfterDeptName
+--	,dbo.HBH_Fn_GetDecimal(payDetail.' + @FTransDeptBeforeOrigPayField + ',0) as FBeforeDeptOrigPay,dbo.HBH_Fn_GetDecimal(payDetail.' + @FTransDeptAfterOrigPayField + ',0) as FAfterDeptOrigPay
+--	,dbo.HBH_Fn_GetDecimal(payDetail.' + @FTransDeptBeforeActPayField + ',0) as FBeforeDeptActPay,dbo.HBH_Fn_GetDecimal(payDetail.' + @FTransDeptAfterActPayField + ',0) as FAfterDeptActPay
+--from #hbh_tmp_TotalPayrollDocLine tmpLine
+--	inner join PAY_EmpPayroll payDetail
+--	on tmpLine.PayDetailID = payDetail.ID
+--	left join Pay_PayrollResult payResult
+--	on payDetail.PayrollResult = payResult.ID
+--	'
+	
 declare @DeptSql varchar(max) = 'insert into #hbh_tmp_TotalPayrollDocLine_Dept
 select tmpLine.*
 	,payResult.' + @TransDeptBeforeCodeField+ ' as BeforeDeptName,payResult.' + @TransDeptAfterCodeField+ ' as AfterDeptName	
@@ -409,6 +491,12 @@ select tmpLine.*
 	,payResult.' + @FTransDeptBeforeCodeField + ' as FBeforeDeptName,payResult.' + @FTransDeptAfterCodeField + ' as FAfterDeptName
 	,dbo.HBH_Fn_GetDecimal(payDetail.' + @FTransDeptBeforeOrigPayField + ',0) as FBeforeDeptOrigPay,dbo.HBH_Fn_GetDecimal(payDetail.' + @FTransDeptAfterOrigPayField + ',0) as FAfterDeptOrigPay
 	,dbo.HBH_Fn_GetDecimal(payDetail.' + @FTransDeptBeforeActPayField + ',0) as FBeforeDeptActPay,dbo.HBH_Fn_GetDecimal(payDetail.' + @FTransDeptAfterActPayField + ',0) as FAfterDeptActPay
+
+	,dbo.HBH_Fn_GetDecimal(payDetail.' + @BankPayField  + ',0) as BankPay ,dbo.HBH_Fn_GetDecimal(payDetail.' + @FBankPayField  + ',0) as FBankPay 
+	,dbo.HBH_Fn_GetDecimal(payDetail.' + @CashPayField  + ',0) as CashPay ,dbo.HBH_Fn_GetDecimal(payDetail.' + @FCashPayField  + ',0) as FCashPay 
+	,dbo.HBH_Fn_GetDecimal(payDetail.' + @DeductPayField  + ',0) as DeductPay ,dbo.HBH_Fn_GetDecimal(payDetail.' + @FDeductPayField  + ',0) as FDeductPay 
+	,dbo.HBH_Fn_GetDecimal(payDetail.' + @GrossPayField  + ',0) as GrossPay ,dbo.HBH_Fn_GetDecimal(payDetail.' + @FGrossPayField  + ',0) as FGrossPay 
+	,dbo.HBH_Fn_GetDecimal(payDetail.' + @ActualPayField  + ',0) as ActualPay  ,dbo.HBH_Fn_GetDecimal(payDetail.' + @FActualPayField  + ',0) as FActualPay  
 from #hbh_tmp_TotalPayrollDocLine tmpLine
 	inner join PAY_EmpPayroll payDetail
 	on tmpLine.PayDetailID = payDetail.ID
@@ -430,134 +518,177 @@ select
 	,PayrollCalculate
 	,SalarySolution
 	
-	--,sum(IsNull(TotalOrigPay,0)) as TotalOrigPay
-	--,sum(IsNull(TotalActPay,0)) as TotalActPay
-	--,sum(IsNull(FTotalOrigPay,0)) as FTotalOrigPay
-	--,sum(IsNull(FTotalActPay,0)) as FTotalActPay
+	----,sum(IsNull(TotalOrigPay,0)) as TotalOrigPay
+	----,sum(IsNull(TotalActPay,0)) as TotalActPay
+	----,sum(IsNull(FTotalOrigPay,0)) as FTotalOrigPay
+	----,sum(IsNull(FTotalActPay,0)) as FTotalActPay
 	
-	,sum(IsNull(BeforeDeptTotalOrigPay,0)) as BeforeDeptTotalOrigPay
-	,sum(IsNull(AfterDeptTotalOrigPay,0)) as AfterDeptTotalOrigPay
-	,sum(IsNull(SystemTotalOrigPay,0)) as SystemTotalOrigPay
-	,sum(IsNull(BeforeDeptTotalActPay,0)) as BeforeDeptTotalActPay
-	,sum(IsNull(AfterDeptTotalActPay,0)) as AfterDeptTotalActPay
-	,sum(IsNull(SystemTotalActPay,0)) as SystemTotalActPay
-	,sum(IsNull(FBeforeDeptTotalOrigPay,0)) as FBeforeDeptTotalOrigPay
-	,sum(IsNull(FAfterDeptTotalOrigPay,0)) as FAfterDeptTotalOrigPay
-	,sum(IsNull(FBeforeDeptTotalActPay,0)) as FBeforeDeptTotalActPay
-	,sum(IsNull(FAfterDeptTotalActPay,0)) as FAfterDeptTotalActPay
+	--,sum(IsNull(BeforeDeptTotalOrigPay,0)) as BeforeDeptTotalOrigPay
+	--,sum(IsNull(AfterDeptTotalOrigPay,0)) as AfterDeptTotalOrigPay
+	--,sum(IsNull(SystemTotalOrigPay,0)) as SystemTotalOrigPay
+	--,sum(IsNull(BeforeDeptTotalActPay,0)) as BeforeDeptTotalActPay
+	--,sum(IsNull(AfterDeptTotalActPay,0)) as AfterDeptTotalActPay
+	--,sum(IsNull(SystemTotalActPay,0)) as SystemTotalActPay
+	--,sum(IsNull(FBeforeDeptTotalOrigPay,0)) as FBeforeDeptTotalOrigPay
+	--,sum(IsNull(FAfterDeptTotalOrigPay,0)) as FAfterDeptTotalOrigPay
+	--,sum(IsNull(FBeforeDeptTotalActPay,0)) as FBeforeDeptTotalActPay
+	--,sum(IsNull(FAfterDeptTotalActPay,0)) as FAfterDeptTotalActPay
+	
+	----,sum(IsNull(TotalOrigPay,0)) as TotalOrigPay
+	----,sum(IsNull(TotalActPay,0)) as TotalActPay
+	
+	,sum(IsNull(BankPay ,0)) as BankPay
+	,sum(IsNull(FBankPay ,0)) as FBankPay
+	,sum(IsNull(CashPay ,0)) as CashPay 
+	,sum(IsNull(FCashPay ,0)) as FCashPay 
+	,sum(IsNull(DeductPay ,0)) as DeductPay 
+	,sum(IsNull(FDeductPay ,0)) as FDeductPay 
+	,sum(IsNull(GrossPay ,0)) as GrossPay 
+	,sum(IsNull(FGrossPay ,0)) as FGrossPay 
+	,sum(IsNull(ActualPay ,0)) as ActualPay 
+	,sum(IsNull(FActualPay ,0)) as FActualPay 
 
 into #hbh_tmp_TotalLine
 from (
-	select tmpLine.TotalPayrollDoc
-		-- ,payDetail.Department as Department
-		,deptTrl.ID as Department
-		,deptTrl.Name as DepartmentName
-		,IsNull(payDetail.PayrollCaculate,-1) as PayrollCalculate
-		,IsNull(payCalc.SalarySolution,-1) as SalarySolution
+	--select tmpLine.TotalPayrollDoc
+	--	-- ,payDetail.Department as Department
+	--	,deptTrl.ID as Department
+	--	,deptTrl.Name as DepartmentName
+	--	,IsNull(payDetail.PayrollCaculate,-1) as PayrollCalculate
+	--	,IsNull(payCalc.SalarySolution,-1) as SalarySolution
 
-		--,IsNull(sum(payDetail.TotalOrigPay),0) as TotalOrigPay
-		--,IsNull(sum(payDetail.TotalActPay),0) as TotalActPay
+	--	--,IsNull(sum(payDetail.TotalOrigPay),0) as TotalOrigPay
+	--	--,IsNull(sum(payDetail.TotalActPay),0) as TotalActPay
 
-		,case when tmpLine.BeforeDeptName = deptTrl.Name then tmpLine.BeforeDeptOrigPay
-			else 0 end
-			 as BeforeDeptTotalOrigPay
-		,case when tmpLine.AfterDeptName = deptTrl.Name then tmpLine.AfterDeptOrigPay
-			else 0 end
-			 as AfterDeptTotalOrigPay
-		-- 剩余取系统金额
-		,case when tmpLine.BeforeDeptName != deptTrl.Name and tmpLine.AfterDeptName != deptTrl.Name 
-				then payDetail.TotalOrigPay
-			else 0 end
-			 as SystemTotalOrigPay
+	--	,case when tmpLine.BeforeDeptName = deptTrl.Name then tmpLine.BeforeDeptOrigPay
+	--		else 0 end
+	--		 as BeforeDeptTotalOrigPay
+	--	,case when tmpLine.AfterDeptName = deptTrl.Name then tmpLine.AfterDeptOrigPay
+	--		else 0 end
+	--		 as AfterDeptTotalOrigPay
+	--	-- 剩余取系统金额
+	--	,case when tmpLine.BeforeDeptName != deptTrl.Name and tmpLine.AfterDeptName != deptTrl.Name 
+	--			then payDetail.TotalOrigPay
+	--		else 0 end
+	--		 as SystemTotalOrigPay
 			 
-		,case when tmpLine.BeforeDeptName = deptTrl.Name then tmpLine.BeforeDeptActPay
-			else 0 end
-			 as BeforeDeptTotalActPay
-		,case when  tmpLine.AfterDeptName = deptTrl.Name then tmpLine.AfterDeptActPay
-			else 0 end
-			 as AfterDeptTotalActPay
-		-- 剩余取系统金额
-		,case when tmpLine.BeforeDeptName != deptTrl.Name and tmpLine.AfterDeptName != deptTrl.Name 
-				then payDetail.TotalActPay
-			else 0 end
-			 as SystemTotalActPay
+	--	,case when tmpLine.BeforeDeptName = deptTrl.Name then tmpLine.BeforeDeptActPay
+	--		else 0 end
+	--		 as BeforeDeptTotalActPay
+	--	,case when  tmpLine.AfterDeptName = deptTrl.Name then tmpLine.AfterDeptActPay
+	--		else 0 end
+	--		 as AfterDeptTotalActPay
+	--	-- 剩余取系统金额
+	--	,case when tmpLine.BeforeDeptName != deptTrl.Name and tmpLine.AfterDeptName != deptTrl.Name 
+	--			then payDetail.TotalActPay
+	--		else 0 end
+	--		 as SystemTotalActPay
 
-		,0 as FBeforeDeptTotalOrigPay
-		,0 as FAfterDeptTotalOrigPay
-		,0 as FBeforeDeptTotalActPay
-		,0 as FAfterDeptTotalActPay
+	--	,0 as FBeforeDeptTotalOrigPay
+	--	,0 as FAfterDeptTotalOrigPay
+	--	,0 as FBeforeDeptTotalActPay
+	--	,0 as FAfterDeptTotalActPay
 
-		-- ,count(payDetail.Employee) as PeopleNumber
-	from
-		#hbh_tmp_TotalPayrollDocLine_Dept tmpLine
-		inner join PAY_EmpPayroll payDetail
-		on tmpLine.PayDetailID = payDetail.ID
-		left join Pay_PayrollCalculate payCalc
-		on payDetail.PayrollCaculate = payCalc.ID
+	--	-- ,count(payDetail.Employee) as PeopleNumber
+	--from
+	--	#hbh_tmp_TotalPayrollDocLine_Dept tmpLine
+	--	inner join PAY_EmpPayroll payDetail
+	--	on tmpLine.PayDetailID = payDetail.ID
+	--	left join Pay_PayrollCalculate payCalc
+	--	on payDetail.PayrollCaculate = payCalc.ID
 
-		inner join CBO_Department_Trl deptTrl
-		on (tmpLine.BeforeDeptName = deptTrl.Name
-			or tmpLine.AfterDeptName = deptTrl.Name
-			-- 没有调动前后、F调动前后部门，则取系统部门
-			or (IsNull(tmpLine.BeforeDeptName,'') = '' and IsNull(tmpLine.AfterDeptName,'') = '' 
-				and (IsNull(tmpLine.FBeforeDeptName,'') = '' or IsNull(tmpLine.FBeforeDeptName,'') = '0')
-				and (IsNull(tmpLine.FAfterDeptName,'') = '' or IsNull(tmpLine.FAfterDeptName,'') = '0')
-				and payDetail.Department = deptTrl.ID
-				 )
-			)
-	union all	
+	--	inner join CBO_Department_Trl deptTrl
+	--	on (tmpLine.BeforeDeptName = deptTrl.Name
+	--		or tmpLine.AfterDeptName = deptTrl.Name
+	--		-- 没有调动前后、F调动前后部门，则取系统部门
+	--		or (IsNull(tmpLine.BeforeDeptName,'') = '' and IsNull(tmpLine.AfterDeptName,'') = '' 
+	--			and (IsNull(tmpLine.FBeforeDeptName,'') = '' or IsNull(tmpLine.FBeforeDeptName,'') = '0')
+	--			and (IsNull(tmpLine.FAfterDeptName,'') = '' or IsNull(tmpLine.FAfterDeptName,'') = '0')
+	--			and payDetail.Department = deptTrl.ID
+	--			 )
+	--		)
+	--union all	
+	--select tmpLine.TotalPayrollDoc
+	--	-- ,payDetail.Department as Department
+	--	,deptTrl.ID as Department
+	--	,deptTrl.Name as DepartmentName
+	--	,IsNull(payDetail.PayrollCaculate,-1) as PayrollCalculate
+	--	,IsNull(payCalc.SalarySolution,-1) as SalarySolution
+
+	--	--,IsNull(sum(payDetail.TotalOrigPay),0) as TotalOrigPay
+	--	--,IsNull(sum(payDetail.TotalActPay),0) as TotalActPay
+		
+	--	,0 as BeforeDeptTotalOrigPay
+	--	,0 as AfterDeptTotalOrigPay
+	--	,0 as SystemTotalOrigPay
+	--	,0 as BeforeDeptTotalActPay
+	--	,0 as AfterDeptTotalActPay
+	--	,0 as SystemTotalActPay
+
+	--	,case when tmpLine.FBeforeDeptName = deptTrl.Name then tmpLine.FBeforeDeptOrigPay
+	--		-- else TotalOrigPay end
+	--		else 0 end
+	--		 as FBeforeDeptTotalOrigPay
+	--	,case when tmpLine.FAfterDeptName = deptTrl.Name then tmpLine.FAfterDeptOrigPay
+	--		-- else TotalOrigPay end
+	--		else 0 end
+	--		 as FAfterDeptTotalOrigPay
+	--	,case when tmpLine.FBeforeDeptName = deptTrl.Name then tmpLine.FBeforeDeptActPay
+	--		-- else TotalActPay end
+	--		else 0 end
+	--		 as FBeforeDeptTotalActPay
+	--	,case when tmpLine.FAfterDeptName = deptTrl.Name then tmpLine.FAfterDeptActPay
+	--		-- else TotalActPay end
+	--		else 0 end
+	--		 as FAfterDeptTotalActPay
+
+	--	--,count(payDetail.Employee) as PeopleNumber
+	--from
+	--	#hbh_tmp_TotalPayrollDocLine_Dept tmpLine
+	--	inner join PAY_EmpPayroll payDetail
+	--	on tmpLine.PayDetailID = payDetail.ID
+	--	left join Pay_PayrollCalculate payCalc
+	--	on payDetail.PayrollCaculate = payCalc.ID
+
+	--	inner join CBO_Department_Trl deptTrl
+	--	on (tmpLine.FBeforeDeptName = deptTrl.Name
+	--		or tmpLine.FAfterDeptName = deptTrl.Name
+	--		--or (IsNull(tmpLine.BeforeDeptName,'') = '' and IsNull(tmpLine.AfterDeptName,'') = ''
+	--		--	and payDetail.Department = deptTrl.ID
+	--		--	 )
+	--		)
+	--	inner join CBO_Department dept
+	--	on deptTrl.ID = dept.ID
+	--		and dept.Org = payDetail.BusinessOrg
+
+	
 	select tmpLine.TotalPayrollDoc
 		-- ,payDetail.Department as Department
 		,deptTrl.ID as Department
 		,deptTrl.Name as DepartmentName
 		,IsNull(payDetail.PayrollCaculate,-1) as PayrollCalculate
 		,IsNull(payCalc.SalarySolution,-1) as SalarySolution
+				
+		,(IsNull(tmpLine.BankPay ,0)) as BankPay
+		,(IsNull(tmpLine.FBankPay ,0)) as FBankPay
+		,(IsNull(tmpLine.CashPay ,0)) as CashPay 
+		,(IsNull(tmpLine.FCashPay ,0)) as FCashPay 
+		,(IsNull(tmpLine.DeductPay ,0)) as DeductPay 
+		,(IsNull(tmpLine.FDeductPay ,0)) as FDeductPay 
+		,(IsNull(tmpLine.GrossPay ,0)) as GrossPay 
+		,(IsNull(tmpLine.FGrossPay ,0)) as FGrossPay 
+		,(IsNull(tmpLine.ActualPay ,0)) as ActualPay 
+		,(IsNull(tmpLine.FActualPay ,0)) as FActualPay 
 
-		--,IsNull(sum(payDetail.TotalOrigPay),0) as TotalOrigPay
-		--,IsNull(sum(payDetail.TotalActPay),0) as TotalActPay
-		
-		,0 as BeforeDeptTotalOrigPay
-		,0 as AfterDeptTotalOrigPay
-		,0 as SystemTotalOrigPay
-		,0 as BeforeDeptTotalActPay
-		,0 as AfterDeptTotalActPay
-		,0 as SystemTotalActPay
-
-		,case when tmpLine.FBeforeDeptName = deptTrl.Name then tmpLine.FBeforeDeptOrigPay
-			-- else TotalOrigPay end
-			else 0 end
-			 as FBeforeDeptTotalOrigPay
-		,case when tmpLine.FAfterDeptName = deptTrl.Name then tmpLine.FAfterDeptOrigPay
-			-- else TotalOrigPay end
-			else 0 end
-			 as FAfterDeptTotalOrigPay
-		,case when tmpLine.FBeforeDeptName = deptTrl.Name then tmpLine.FBeforeDeptActPay
-			-- else TotalActPay end
-			else 0 end
-			 as FBeforeDeptTotalActPay
-		,case when tmpLine.FAfterDeptName = deptTrl.Name then tmpLine.FAfterDeptActPay
-			-- else TotalActPay end
-			else 0 end
-			 as FAfterDeptTotalActPay
-
-		--,count(payDetail.Employee) as PeopleNumber
 	from
 		#hbh_tmp_TotalPayrollDocLine_Dept tmpLine
 		inner join PAY_EmpPayroll payDetail
 		on tmpLine.PayDetailID = payDetail.ID
 		left join Pay_PayrollCalculate payCalc
 		on payDetail.PayrollCaculate = payCalc.ID
-
+		
 		inner join CBO_Department_Trl deptTrl
-		on (tmpLine.FBeforeDeptName = deptTrl.Name
-			or tmpLine.FAfterDeptName = deptTrl.Name
-			--or (IsNull(tmpLine.BeforeDeptName,'') = '' and IsNull(tmpLine.AfterDeptName,'') = ''
-			--	and payDetail.Department = deptTrl.ID
-			--	 )
-			)
-		inner join CBO_Department dept
-		on deptTrl.ID = dept.ID
-			and dept.Org = payDetail.BusinessOrg
+		on payDetail.Department = deptTrl.ID
 
 	) as totalPay
 group by TotalPayrollDoc
@@ -578,19 +709,19 @@ from #hbh_tmp_TotalLine totalLine
 		and detailLine.PayrollCalculate = totalLine.PayrollCalculate
 		-- and detailLine.Department = totalLine.Department
 	
-		-- 部门
-		and (detailLine.BeforeDeptName = totalLine.DepartmentName
-			or detailLine.AfterDeptName = totalLine.DepartmentName
-			or detailLine.FBeforeDeptName = totalLine.DepartmentName
-			or detailLine.FAfterDeptName = totalLine.DepartmentName
-			-- 没有调动前后、F调动前后部门，则取系统部门
-			or (IsNull(detailLine.BeforeDeptName,'') = '' and IsNull(detailLine.AfterDeptName,'') = '' 
-				-- and IsNull(detailLine.FBeforeDeptName,'') = '' and IsNull(detailLine.FAfterDeptName,'') = ''
-				and (IsNull(detailLine.FBeforeDeptName,'') = '' or IsNull(detailLine.FBeforeDeptName,'') = '0')
-				and (IsNull(detailLine.FAfterDeptName,'') = '' or IsNull(detailLine.FAfterDeptName,'') = '0')
-				and detailLine.Department = totalLine.Department
-				 )
-			)
+		---- 部门
+		--and (detailLine.BeforeDeptName = totalLine.DepartmentName
+		--	or detailLine.AfterDeptName = totalLine.DepartmentName
+		--	or detailLine.FBeforeDeptName = totalLine.DepartmentName
+		--	or detailLine.FAfterDeptName = totalLine.DepartmentName
+		--	-- 没有调动前后、F调动前后部门，则取系统部门
+		--	or (IsNull(detailLine.BeforeDeptName,'') = '' and IsNull(detailLine.AfterDeptName,'') = '' 
+		--		-- and IsNull(detailLine.FBeforeDeptName,'') = '' and IsNull(detailLine.FAfterDeptName,'') = ''
+		--		and (IsNull(detailLine.FBeforeDeptName,'') = '' or IsNull(detailLine.FBeforeDeptName,'') = '0')
+		--		and (IsNull(detailLine.FAfterDeptName,'') = '' or IsNull(detailLine.FAfterDeptName,'') = '0')
+		--		and detailLine.Department = totalLine.Department
+		--		 )
+		--	)
 
 	-- 计算ID
 	set @TotalIDCount = @TotalLineCount + @DetailLineCount
@@ -620,20 +751,49 @@ begin
 		,SalarySolution
 		
 		
-		,BeforeDeptTotalOrigPay
-		,AfterDeptTotalOrigPay
-		,SystemTotalOrigPay
-		,BeforeDeptTotalActPay
-		,AfterDeptTotalActPay
-		,SystemTotalActPay
-		,FBeforeDeptTotalOrigPay
-		,FAfterDeptTotalOrigPay
-		,FBeforeDeptTotalActPay
-		,FAfterDeptTotalActPay
+		--,BeforeDeptTotalOrigPay
+		--,AfterDeptTotalOrigPay
+		--,SystemTotalOrigPay
+		--,BeforeDeptTotalActPay
+		--,AfterDeptTotalActPay
+		--,SystemTotalActPay
+		--,FBeforeDeptTotalOrigPay
+		--,FAfterDeptTotalOrigPay
+		--,FBeforeDeptTotalActPay
+		--,FAfterDeptTotalActPay
 
 		,TotalOrigPay	-- 应发合计
 		,TotalActPay	-- 实发合计
 		,PeopleNumber	-- 计薪人数
+
+		
+		-- 银行发放金额 -- = 109
+		,BankPay
+		-- F银行发放金额 -- = F31
+		,FBankPay
+		-- 现金发放金额 -- = 110
+		,CashPay
+		--  F现金发放金额 -- = F32
+		,FCashPay
+		-- 扣发金额 -- = 108
+		,DeductPay
+		--  F扣发金额 -- = F34
+		,FDeductPay
+		-- 应发工资合计 -- = 121
+		,GrossPay
+		--  F应发工资合计 -- = F18
+		,FGrossPay
+		-- 实发合计 -- = 005
+		,ActualPay
+		--  F实发合计 -- = F22
+		,FActualPay
+
+		-- 银行实发
+		,BankTotalActPay
+		-- 现金实发
+		,CashTotalActPay
+		-- 扣发合计
+		,WithholdingTotalActPay
 
 	)select 
 		(@StartID + row_number() over (order by totalLine.PayrollCalculate,totalLine.Department) - 1)
@@ -654,43 +814,74 @@ begin
 		,totalLine.SalarySolution
 
 		
-		,totalLine.BeforeDeptTotalOrigPay
-		,totalLine.AfterDeptTotalOrigPay
-		,totalLine.SystemTotalOrigPay
-		,totalLine.BeforeDeptTotalActPay
-		,totalLine.AfterDeptTotalActPay
-		,totalLine.SystemTotalActPay
-		,totalLine.FBeforeDeptTotalOrigPay
-		,totalLine.FAfterDeptTotalOrigPay
-		,totalLine.FBeforeDeptTotalActPay
-		,totalLine.FAfterDeptTotalActPay
+		--,totalLine.BeforeDeptTotalOrigPay
+		--,totalLine.AfterDeptTotalOrigPay
+		--,totalLine.SystemTotalOrigPay
+		--,totalLine.BeforeDeptTotalActPay
+		--,totalLine.AfterDeptTotalActPay
+		--,totalLine.SystemTotalActPay
+		--,totalLine.FBeforeDeptTotalOrigPay
+		--,totalLine.FAfterDeptTotalOrigPay
+		--,totalLine.FBeforeDeptTotalActPay
+		--,totalLine.FAfterDeptTotalActPay
 
 		-- 应发合计
-		,totalLine.BeforeDeptTotalOrigPay + totalLine.AfterDeptTotalOrigPay + totalLine.SystemTotalOrigPay + totalLine.FBeforeDeptTotalOrigPay +totalLine.FAfterDeptTotalOrigPay
-			 as TotalOrigPay
+		--,totalLine.BeforeDeptTotalOrigPay + totalLine.AfterDeptTotalOrigPay + totalLine.SystemTotalOrigPay + totalLine.FBeforeDeptTotalOrigPay +totalLine.FAfterDeptTotalOrigPay
+		--	 as TotalOrigPay
+		,TotalOrigPay = GrossPay + FGrossPay
 		-- 实发合计
-		,totalLine.BeforeDeptTotalActPay + totalLine.AfterDeptTotalActPay + totalLine.SystemTotalActPay + totalLine.FBeforeDeptTotalActPay + totalLine.FAfterDeptTotalActPay
-			as TotalActPay
+		--,totalLine.BeforeDeptTotalActPay + totalLine.AfterDeptTotalActPay + totalLine.SystemTotalActPay + totalLine.FBeforeDeptTotalActPay + totalLine.FAfterDeptTotalActPay
+		--	as TotalActPay
+		,TotalActPay = ActualPay + FActualPay
 		-- 计薪人数
 		,(select count(*) from #hbh_tmp_TotalPayrollDocLine_Dept detailLine
 					where detailLine.SalarySolution = totalLine.SalarySolution
 						and detailLine.PayrollCalculate = totalLine.PayrollCalculate
 						-- and detailLine.Department = totalLine.Department
 	
-						-- 部门
-						and (detailLine.BeforeDeptName = totalLine.DepartmentName
-							or detailLine.AfterDeptName = totalLine.DepartmentName
-							or detailLine.FBeforeDeptName = totalLine.DepartmentName
-							or detailLine.FAfterDeptName = totalLine.DepartmentName
-							-- 没有调动前后、F调动前后部门，则取系统部门
-							or (
-								IsNull(detailLine.BeforeDeptName,'') = '' and IsNull(detailLine.AfterDeptName,'') = '' 
-								and (IsNull(detailLine.FBeforeDeptName,'') = '' or IsNull(detailLine.FBeforeDeptName,'') = '0')
-								and (IsNull(detailLine.FAfterDeptName,'') = '' or IsNull(detailLine.FAfterDeptName,'') = '0')
-								and detailLine.Department = totalLine.Department
-									)
-							)
+						---- 部门
+						--and (detailLine.BeforeDeptName = totalLine.DepartmentName
+						--	or detailLine.AfterDeptName = totalLine.DepartmentName
+						--	or detailLine.FBeforeDeptName = totalLine.DepartmentName
+						--	or detailLine.FAfterDeptName = totalLine.DepartmentName
+						--	-- 没有调动前后、F调动前后部门，则取系统部门
+						--	or (
+						--		IsNull(detailLine.BeforeDeptName,'') = '' and IsNull(detailLine.AfterDeptName,'') = '' 
+						--		and (IsNull(detailLine.FBeforeDeptName,'') = '' or IsNull(detailLine.FBeforeDeptName,'') = '0')
+						--		and (IsNull(detailLine.FAfterDeptName,'') = '' or IsNull(detailLine.FAfterDeptName,'') = '0')
+						--		and detailLine.Department = totalLine.Department
+						--			)
+						--	)
 				) as PeopleNumber
+		
+		
+		-- 银行发放金额 -- = 109
+		,BankPay
+		-- F银行发放金额 -- = F31
+		,FBankPay
+		-- 现金发放金额 -- = 110
+		,CashPay
+		--  F现金发放金额 -- = F32
+		,FCashPay
+		-- 扣发金额 -- = 108
+		,DeductPay
+		--  F扣发金额 -- = F34
+		,FDeductPay
+		-- 应发工资合计 -- = 121
+		,GrossPay
+		--  F应发工资合计 -- = F18
+		,FGrossPay
+		-- 实发合计 -- = 005
+		,ActualPay
+		--  F实发合计 -- = F22
+		,FActualPay
+
+		-- 银行实发
+		,BankTotalActPay = BankPay + FBankPay
+		-- 现金实发
+		,CashTotalActPay = CashPay + FCashPay
+		-- 扣发合计
+		,WithholdingTotalActPay = DeductPay + FDeductPay
 
 	from #hbh_tmp_TotalLine totalLine
 		inner join [Cust_TotalPayrollDoc] head
@@ -749,19 +940,19 @@ begin
 			and detailLine.PayrollCalculate = totalLine.PayrollCalculate
 			-- and detailLine.Department = totalLine.Department
 	
-			-- 部门
-			and (detailLine.BeforeDeptName = totalLine.DepartmentName
-				or detailLine.AfterDeptName = totalLine.DepartmentName
-				or detailLine.FBeforeDeptName = totalLine.DepartmentName
-				or detailLine.FAfterDeptName = totalLine.DepartmentName
-				-- 没有调动前后、F调动前后部门，则取系统部门
-				or (IsNull(detailLine.BeforeDeptName,'') = '' and IsNull(detailLine.AfterDeptName,'') = '' 
-					-- and IsNull(detailLine.FBeforeDeptName,'') = '' and IsNull(detailLine.FAfterDeptName,'') = ''
-					and (IsNull(detailLine.FBeforeDeptName,'') = '' or IsNull(detailLine.FBeforeDeptName,'') = '0')
-					and (IsNull(detailLine.FAfterDeptName,'') = '' or IsNull(detailLine.FAfterDeptName,'') = '0')
-					and detailLine.Department = totalLine.Department
-					 )
-				)
+			---- 部门
+			--and (detailLine.BeforeDeptName = totalLine.DepartmentName
+			--	or detailLine.AfterDeptName = totalLine.DepartmentName
+			--	or detailLine.FBeforeDeptName = totalLine.DepartmentName
+			--	or detailLine.FAfterDeptName = totalLine.DepartmentName
+			--	-- 没有调动前后、F调动前后部门，则取系统部门
+			--	or (IsNull(detailLine.BeforeDeptName,'') = '' and IsNull(detailLine.AfterDeptName,'') = '' 
+			--		-- and IsNull(detailLine.FBeforeDeptName,'') = '' and IsNull(detailLine.FAfterDeptName,'') = ''
+			--		and (IsNull(detailLine.FBeforeDeptName,'') = '' or IsNull(detailLine.FBeforeDeptName,'') = '0')
+			--		and (IsNull(detailLine.FAfterDeptName,'') = '' or IsNull(detailLine.FAfterDeptName,'') = '0')
+			--		and detailLine.Department = totalLine.Department
+			--		 )
+			--	)
 
 	-- 汇总数量
 
@@ -775,28 +966,28 @@ end
 
 
 
-select 
-	@TransDeptBeforeCode as TransDeptBeforeCode
-	,@TransDeptBeforeCodeField as TransDeptBeforeCodeField
-	,@TransDeptAfterCode as TransDeptAfterCode
-	,@TransDeptAfterCodeField as TransDeptAfterCodeField
-	,@TransDeptBeforeOrigPay as TransDeptBeforeOrigPay
-	,@TransDeptBeforeOrigPayField as TransDeptBeforeOrigPayField
-	,@TransDeptAfterOrigPay as TransDeptAfterOrigPay
-	,@TransDeptAfterOrigPayField as TransDeptAfterOrigPayField
-	,@TransDeptBeforeActPay as TransDeptBeforeActPay
-	,@TransDeptBeforeActPayField as TransDeptBeforeActPayField
-	,@TransDeptAfterActPay as TransDeptAfterActPay
-	,@TransDeptAfterActPayField as TransDeptAfterActPayField
-	,@FTransDeptBeforeCode as FTransDeptBeforeCode
-	,@FTransDeptBeforeCodeField as FTransDeptBeforeCodeField
-	,@FTransDeptAfterCode as FTransDeptAfterCode
-	,@FTransDeptAfterCodeField as FTransDeptAfterCodeField
-	,@FTransDeptBeforeOrigPay as FTransDeptBeforeOrigPay
-	,@FTransDeptBeforeOrigPayField as FTransDeptBeforeOrigPayField
-	,@FTransDeptAfterOrigPay as FTransDeptAfterOrigPay
-	,@FTransDeptAfterOrigPayField as FTransDeptAfterOrigPayField
-	,@FTransDeptBeforeActPay as FTransDeptBeforeActPay
-	,@FTransDeptBeforeActPayField as FTransDeptBeforeActPayField
-	,@FTransDeptAfterActPay as FTransDeptAfterActPay
-	,@FTransDeptAfterActPayField as FTransDeptAfterActPayField
+--select 
+--	@TransDeptBeforeCode as TransDeptBeforeCode
+--	,@TransDeptBeforeCodeField as TransDeptBeforeCodeField
+--	,@TransDeptAfterCode as TransDeptAfterCode
+--	,@TransDeptAfterCodeField as TransDeptAfterCodeField
+--	,@TransDeptBeforeOrigPay as TransDeptBeforeOrigPay
+--	,@TransDeptBeforeOrigPayField as TransDeptBeforeOrigPayField
+--	,@TransDeptAfterOrigPay as TransDeptAfterOrigPay
+--	,@TransDeptAfterOrigPayField as TransDeptAfterOrigPayField
+--	,@TransDeptBeforeActPay as TransDeptBeforeActPay
+--	,@TransDeptBeforeActPayField as TransDeptBeforeActPayField
+--	,@TransDeptAfterActPay as TransDeptAfterActPay
+--	,@TransDeptAfterActPayField as TransDeptAfterActPayField
+--	,@FTransDeptBeforeCode as FTransDeptBeforeCode
+--	,@FTransDeptBeforeCodeField as FTransDeptBeforeCodeField
+--	,@FTransDeptAfterCode as FTransDeptAfterCode
+--	,@FTransDeptAfterCodeField as FTransDeptAfterCodeField
+--	,@FTransDeptBeforeOrigPay as FTransDeptBeforeOrigPay
+--	,@FTransDeptBeforeOrigPayField as FTransDeptBeforeOrigPayField
+--	,@FTransDeptAfterOrigPay as FTransDeptAfterOrigPay
+--	,@FTransDeptAfterOrigPayField as FTransDeptAfterOrigPayField
+--	,@FTransDeptBeforeActPay as FTransDeptBeforeActPay
+--	,@FTransDeptBeforeActPayField as FTransDeptBeforeActPayField
+--	,@FTransDeptAfterActPay as FTransDeptAfterActPay
+--	,@FTransDeptAfterActPayField as FTransDeptAfterActPayField
