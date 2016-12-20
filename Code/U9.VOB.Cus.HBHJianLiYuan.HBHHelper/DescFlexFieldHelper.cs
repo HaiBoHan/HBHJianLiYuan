@@ -5,6 +5,7 @@ using System.Text;
 using UFIDA.U9.Base.FlexField.DescFlexField;
 using UFIDA.U9.PPR.PurPriceList;
 using HBH.DoNet.DevPlatform.EntityMapping;
+using UFSoft.UBF.Business;
 
 namespace U9.VOB.Cus.HBHJianLiYuan.HBHHelper
 {
@@ -68,7 +69,8 @@ namespace U9.VOB.Cus.HBHJianLiYuan.HBHHelper
         {
             if (descSegments != null)
             {
-                descSegments.PubDescSeg3 = PubClass.GetStringRemoveZero(price);
+                //descSegments.PubDescSeg3 = PubClass.GetStringRemoveZero(price);
+                SetValue(descSegments, "PubDescSeg3", PubClass.GetStringRemoveZero(price));
             }
         }
 
@@ -82,7 +84,12 @@ namespace U9.VOB.Cus.HBHJianLiYuan.HBHHelper
         {
             if (descSegments != null)
             {
-                descSegments.PrivateDescSeg5 = PubClass.GetStringRemoveZero(price);
+                //string strPrice = PubClass.GetStringRemoveZero(price);
+                //if (descSegments.PrivateDescSeg5 != strPrice)
+                //{
+                //    descSegments.PrivateDescSeg5 = strPrice;
+                //}
+                SetValue(descSegments, "PrivateDescSeg5", PubClass.GetStringRemoveZero(price));
             }
         }
 
@@ -124,7 +131,8 @@ namespace U9.VOB.Cus.HBHJianLiYuan.HBHHelper
         {
             if (descSegments != null)
             {
-                descSegments.PubDescSeg4 = PubClass.GetStringRemoveZero(rate);
+                //descSegments.PubDescSeg4 = PubClass.GetStringRemoveZero(rate);
+                SetValue(descSegments, "PubDescSeg4", PubClass.GetStringRemoveZero(rate));
             }
         }
 
@@ -165,7 +173,8 @@ namespace U9.VOB.Cus.HBHJianLiYuan.HBHHelper
         {
             if (descSegments != null)
             {
-                descSegments.PubDescSeg5 = PubClass.GetStringRemoveZero(disLimit);
+                //descSegments.PubDescSeg5 = PubClass.GetStringRemoveZero(disLimit);
+                SetValue(descSegments, "PubDescSeg5", PubClass.GetStringRemoveZero(disLimit));
             }
         }
 
@@ -207,7 +216,8 @@ namespace U9.VOB.Cus.HBHJianLiYuan.HBHHelper
         {
             if (descSegments != null)
             {
-                descSegments.PubDescSeg6 = PubClass.GetStringRemoveZero(price);
+                //descSegments.PubDescSeg6 = PubClass.GetStringRemoveZero(price);
+                SetValue(descSegments, "PubDescSeg6", PubClass.GetStringRemoveZero(price));
             }
         }
 
@@ -229,6 +239,27 @@ namespace U9.VOB.Cus.HBHJianLiYuan.HBHHelper
             }
         }
 
+
+        public static void SetValue<T>(PropertyTypeBase entity, string field, T value)
+        {
+            T oldValue = (T)entity.GetValue(field);
+
+            if (value == null
+                && oldValue == null
+                )
+            {
+                return;
+            }
+            else
+            {
+                if (value == null
+                    || !value.Equals(oldValue)
+                    )
+                {
+                    entity.SetValue(field, value);
+                }
+            }
+        }
 
         #endregion
 
