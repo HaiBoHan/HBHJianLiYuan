@@ -168,6 +168,16 @@ select
 		+ IsNull(FOvertimeSalary,@DefaultZero) * IsNull(HourlyDay,@DefaultZero))
 		)
 
+	-- 应出勤天数 = 当月天数 - 4
+	,MonthDays
+	-- 日保险
+	,DayInsurance = Sum(
+			-- 全日制员工保险
+			(IsNull(InsuranceSalary,@DefaultZero) / MonthDays * IsNull(FullTimeDay,@DefaultZero) 
+			-- 非全日制员工保险
+			+ (IsNull(FInsuranceSalary,@DefaultZero) / MonthDays) * IsNull(PartTimeDay,@DefaultZero) )
+			)
+
 from (
 	select 
 		-- 员工
@@ -205,9 +215,10 @@ from (
 		,Region = IsNull(region.ID,-1)
 		,RegionCode = IsNull(region.Code,'')
 		,RegionName = IsNull(regionTrl.Name,'')
-
-		-- 本月天数	
-		,MonthDays = IsNull(Day(DateAdd(Day,-1,DateAdd(d,- day(checkin.CheckInDate) + 1,checkin.CheckInDate))),27)
+		
+		---- 本月天数	
+		-- 应出勤天数 = 当月天数 - 4
+		,MonthDays = IsNull(Day(DateAdd(Day,-1,DateAdd(d,- day(checkin.CheckInDate) + 1,checkin.CheckInDate))),27)  - 4
 		
 	
 		-- 全日制标准工资=基本工资（01）+周末加班工资（02）+电话补贴（03）+交通补贴(04)+午餐补贴（05）+职务补贴（07）
@@ -232,13 +243,27 @@ from (
 				else @DefaultZero end
 					,@DefaultZero))
 		-- F加班工资
-		-- FJ钟点工工资标准（F06）=薪资项目中F工资标准项目(F06)					-- （F54）
+		-- FJ钟点工工资标准（F06）=薪资项目中F工资标准项目(F06)					-- （F56）
 		,FOvertimeSalary = Sum(dbo.HBH_Fn_GetDecimal(
 				case when salaryItem.Code in ('F06') 
 					then IsNull(salary.SalaryItemVlaue,@DefaultZero) 
 				else @DefaultZero end
 					,@DefaultZero))
 
+		-- 单位保险
+		-- 单位保险（12）=薪资项目中 单位保险(12)					-- （113）
+		,InsuranceSalary = Sum(dbo.HBH_Fn_GetDecimal(
+				case when salaryItem.Code in ('12') 
+					then IsNull(salary.SalaryItemVlaue,@DefaultZero) 
+				else @DefaultZero end
+					,@DefaultZero))
+		-- F单位保险
+		-- F单位保险（F04）=薪资项目中 F单位保险(F04)					-- （F52）
+		,FInsuranceSalary = Sum(dbo.HBH_Fn_GetDecimal(
+				case when salaryItem.Code in ('F04') 
+					then IsNull(salary.SalaryItemVlaue,@DefaultZero) 
+				else @DefaultZero end
+					,@DefaultZero))
 	from 		
 		HR20161108.dbo.CBO_EmployeeArchive employee	
 		left join HR20161108.dbo.CBO_Department dept

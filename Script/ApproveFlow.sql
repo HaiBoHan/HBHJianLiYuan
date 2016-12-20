@@ -143,7 +143,16 @@ set @HROrgExpr = ''
 set @PositionExpr = 'GetPositionByCreateBy(CostWarning.CreatedBy)'
 --URL则是跳转,GUID则是弹出   URL='UFIDA.U9.Cust.XR.LackSendModifyUI'   GUID='d109936a-92d0-4ac3-9bc9-7028c172af21'
 set @Uri = '96217a44-059e-4c82-870b-8ef5f7a9d03c'
-set @DisplayNameExpr = '''导入人:'' + CostWarning.Importer.Name + '';导入日期:'' + Convert(char(10),CostWarning.ImportDate,120) + '';部门:'' + CostWarning.Department.Name'
+set @DisplayNameExpr = '''部门:'' + CostWarning.Department.Name + '';导入日期:'' + Convert(char(10),CostWarning.ImportDate,120) '
+/*
+delete	from Approval_DocumentType_Trl
+where ID in (select ID
+			from Approval_DocumentType 
+			where EntityType in (@EntityName)
+			)
+delete	from Approval_DocumentType 
+where EntityType in (@EntityName)
+*/
 
 
 --如果不存在,才创建

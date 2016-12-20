@@ -51,6 +51,14 @@ namespace U9.VOB.Cus.HBHJianLiYuan {
                 this.Org = Context.LoginOrg;
             }
 
+            // 审批方式 默认= 审批流
+            if (this.ApproveType == null)
+            {
+                this.ApproveType = UFIDA.UBF.MD.Business.Attribute.Finder.Find("Name=@Name"
+                    , new OqlParam("ApproveFlow")
+                    );
+            }
+
 
             if (this.OriginalData != null
                 && this.OriginalData.Status != this.Status

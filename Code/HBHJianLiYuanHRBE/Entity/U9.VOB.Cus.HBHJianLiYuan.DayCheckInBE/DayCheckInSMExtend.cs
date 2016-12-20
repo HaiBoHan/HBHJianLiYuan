@@ -165,7 +165,7 @@ namespace U9.VOB.Cus.HBHJianLiYuan
                         if (approvalResultEvent.IsTerminate)
                         {
                             entity.Status = DocStatus.Opened;
-                            entity.WFCurrentState = DocStatus.Opened.Value;
+                            //entity.WFCurrentState = DocStatus.Opened.Value;
                             //entity.ActivityType = ActivityTypeEnum.SrvUpdate;
                             //this.SetPRLineStatus(entity, ActivityTypeEnum.SrvUpdate);
                         }
@@ -174,7 +174,7 @@ namespace U9.VOB.Cus.HBHJianLiYuan
                             entity.Status = DocStatus.Approved;
                             entity.ApprovedOn = DateTime.Now;
                             entity.ApprovedBy = Context.LoginUser;
-                            entity.WFCurrentState = DocStatus.Approved.Value;
+                            //entity.WFCurrentState = DocStatus.Approved.Value;
                             //entity.ActivityType = ActivityTypeEnum.UIUpdate;
                             //this.SetPRLineStatus(entity, ActivityTypeEnum.UIUpdate);
                         }
@@ -183,7 +183,7 @@ namespace U9.VOB.Cus.HBHJianLiYuan
                             entity.Status = DocStatus.Opened;
                             entity.UnApprovedOn = DateTime.Now;
                             entity.UnApprovedBy = Context.LoginUser;
-                            entity.WFCurrentState = DocStatus.Opened.Value;
+                            //entity.WFCurrentState = DocStatus.Opened.Value;
                             //entity.ActivityType = ActivityTypeEnum.SrvUpdate;
                             //this.SetPRLineStatus(entity, ActivityTypeEnum.SrvUpdate);
                         }

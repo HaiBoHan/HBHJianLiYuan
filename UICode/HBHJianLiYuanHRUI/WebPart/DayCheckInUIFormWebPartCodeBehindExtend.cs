@@ -32,6 +32,7 @@ using U9.VOB.Cus.HBHJianLiYuan;
 using UFSoft.UBF.UI.ControlModel;
 using UFSoft.UBF.UI.WebControlAdapter;
 using UFSoft.UBF.UI.Engine.Runtime.GridEdit;
+using HBH.DoNet.DevPlatform.EntityMapping;
 
 
 
@@ -442,6 +443,9 @@ namespace DayCheckInUIModel
 
             //// 审核后修改数据校验，测试
             //this.BtnSave.Enabled = true;
+
+            // 考勤类别不可修改；
+            this.DataGrid5.Columns[this.Model.DayCheckIn_DayCheckInLine.FieldCheckType.Name].Enabled = false;
 		}
 
 
@@ -480,6 +484,7 @@ namespace DayCheckInUIModel
             control.SourceServerControl = DataGrid5;
             control.SourceControl.EventName = "OnCellDataChanged";
             ((IUFClientAssoGrid)control.SourceControl).FireEventCols.Add(this.Model.DayCheckIn_DayCheckInLine.FieldCheckType.Name);
+            ((IUFClientAssoGrid)control.SourceControl).FireEventCols.Add(this.Model.DayCheckIn_DayCheckInLine.FieldEmployeeArchive.Name);
             //((IUFClientAssoGrid)control.SourceControl).FireEventCols.Add(FieldName_FinallyPriceTC);
             CodeBlock block = new CodeBlock();
             UFWebClientGridAdapter adapter = new UFWebClientGridAdapter(DataGrid5);
@@ -496,6 +501,13 @@ namespace DayCheckInUIModel
             if (e.PostTag.ToString().EndsWith("OnCellDataChanged")
                 )
             {
+                //清除错误信息
+                this.Model.ClearErrorMessage();
+
+                this.DataCollect();
+                this.IsDataBinding = true; //当前事件执行后会进行数据绑定
+                this.IsConsuming = false;
+
                 //int qtyIndex = GetColIndex(datagrid, FieldName_ItemID);
                 //&& e.ColIndex == qtyIndex
 
@@ -503,33 +515,14 @@ namespace DayCheckInUIModel
                 //if (uIFieldID == view.FieldCust_CustomerItemID.Name)
 
                 string uIFieldID = DataGrid5.Columns[e.ColIndex].UIFieldID;
+                if (uIFieldID == this.Model.DayCheckIn_DayCheckInLine.FieldEmployeeArchive.Name)
+                {
+                    SetCheckTypeByEmployee();
+                }
                 if (uIFieldID == this.Model.DayCheckIn_DayCheckInLine.FieldCheckType.Name)
                 {
-                    //清除错误信息
-                    this.Model.ClearErrorMessage();
 
-                    this.DataCollect();
-                    this.IsDataBinding = true; //当前事件执行后会进行数据绑定
-                    this.IsConsuming = false;
-
-                    
-                    DayCheckIn_DayCheckInLineView lineView = this.Model.DayCheckIn_DayCheckInLine;
-                    DayCheckIn_DayCheckInLineRecord focusedLine = lineView.FocusedRecord;
-                    if (focusedLine != null)
-                    {
-
-                        if (focusedLine.CheckType.GetValueOrDefault(-1) == (int)CheckTypeEnumData.FullTimeStaff)
-                        {
-                            focusedLine.FullTimeDay = 1;
-                            focusedLine.PartTimeDay = 0;
-                        }
-                        else if (focusedLine.CheckType.GetValueOrDefault(-1) == (int)CheckTypeEnumData.PartTimeStaff)
-                        {
-                            focusedLine.FullTimeDay = 0;
-                            focusedLine.PartTimeDay = 4;
-                        }
-                    }
-
+                    CheckTypeChanged();
                 }
                 //// 定价不可改，可能为扩展字段
                 //else if (uIFieldID == this.Model.DayCheckIn_DayCheckInLine.FieldOrderPriceTC.Name)
@@ -541,6 +534,101 @@ namespace DayCheckInUIModel
 
                 //    // 手工录入最终价时，如果物料没有价格，物料变更时候没带出来，那么
                 //}
+            }
+        }
+
+        private void SetCheckTypeByEmployee()
+        {
+            DayCheckIn_DayCheckInLineView lineView = this.Model.DayCheckIn_DayCheckInLine;
+            DayCheckIn_DayCheckInLineRecord focusedLine = lineView.FocusedRecord;
+            if (focusedLine != null)
+            {
+                long employeeID = focusedLine.EmployeeArchive.GetValueOrDefault(-1);
+                if (employeeID > 0)
+                {
+                    HBH.DoNet.DevPlatform.U9Mapping.ProcedureMapping procMapping = new HBH.DoNet.DevPlatform.U9Mapping.ProcedureMapping();
+                    procMapping.ProcedureName = "HBH_SP_JianLiYuan_GetEmployeeCheckType";
+                    procMapping.Params = new List<HBH.DoNet.DevPlatform.U9Mapping.ParamDTO>();
+
+                    {
+                        HBH.DoNet.DevPlatform.U9Mapping.ParamDTO suptParam = new HBH.DoNet.DevPlatform.U9Mapping.ParamDTO();
+                        suptParam.ParamName = "ID";
+                        suptParam.ParamType = System.Data.DbType.Int64;
+                        //suptParam.ParamDirection = ParameterDirection.Input;
+                        suptParam.ParamValue = employeeID;
+                        procMapping.Params.Add(suptParam);
+                    }
+
+
+                    U9.VOB.HBHCommon.Proxy.U9CommonSVProxy proxy = new U9.VOB.HBHCommon.Proxy.U9CommonSVProxy();
+
+                    // "HBH.DoNet.DevPlatform.U9Mapping.ProcedureMapping";
+                    proxy.EntityFullName = typeof(HBH.DoNet.DevPlatform.U9Mapping.ProcedureMapping).FullName;
+                    proxy.EntityContent = HBH.DoNet.DevPlatform.EntityMapping.EntitySerialization.EntitySerial(procMapping);
+
+                    string strResult = proxy.Do();
+
+                    if (!PubClass.IsNull(strResult))
+                    {
+                        HBH.DoNet.DevPlatform.EntityMapping.EntityResult result = HBH.DoNet.DevPlatform.EntityMapping.EntitySerialization.EntityDeserial<HBH.DoNet.DevPlatform.EntityMapping.EntityResult>(strResult);
+
+                        if (result != null)
+                        {
+                            if (result.Sucessfull)
+                            {
+                                if (!PubClass.IsNull(result.StringValue))
+                                {
+                                    DataSet ds = EntitySerialization.EntityDeserial<DataSet>(result.StringValue);
+                                    DataTable dt = ds.GetTableOfFirst();
+
+                                    if (dt != null
+                                        && dt.Rows != null
+                                        && dt.Rows.Count > 0
+                                        )
+                                    {
+                                        int checkType = dt.Rows[0][0].GetInt();
+
+                                        if (focusedLine.CheckType != checkType)
+                                        {
+                                            focusedLine.CheckType = checkType;
+
+                                            CheckTypeChanged();
+                                        }
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                //U9.VOB.Cus.HBHShangLuo.HBHShangLuoUIsll.WebPart.HBHUIHelper.ShowErrorInfo(this, result.Message);
+                                this.Model.ErrorMessage.Message = result.Message;
+                            }
+                        }
+                        else
+                        {
+
+                        }
+                    }
+                }
+            }
+        }
+
+        private void CheckTypeChanged()
+        {
+            DayCheckIn_DayCheckInLineView lineView = this.Model.DayCheckIn_DayCheckInLine;
+            DayCheckIn_DayCheckInLineRecord focusedLine = lineView.FocusedRecord;
+            if (focusedLine != null)
+            {
+
+                if (focusedLine.CheckType.GetValueOrDefault(-1) == (int)CheckTypeEnumData.FullTimeStaff)
+                {
+                    focusedLine.FullTimeDay = 1;
+                    focusedLine.PartTimeDay = 0;
+                }
+                else if (focusedLine.CheckType.GetValueOrDefault(-1) == (int)CheckTypeEnumData.PartTimeStaff)
+                {
+                    focusedLine.FullTimeDay = 0;
+                    focusedLine.PartTimeDay = 4;
+                }
             }
         }
 

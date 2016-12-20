@@ -162,6 +162,18 @@ select
 		-- 非全日制加班工资
 		+ IsNull(FOvertimeSalary,@DefaultZero) * IsNull(HourlyDay,@DefaultZero))
 
+
+	
+	-- 应出勤天数 = 当月天数 - 4
+	,MonthDays
+	-- 日保险
+	,DayInsurance = Sum(
+			-- 全日制员工保险
+			(IsNull(InsuranceSalary,@DefaultZero) / MonthDays * IsNull(FullTimeDay,@DefaultZero) 
+			-- 非全日制员工保险
+			+ (IsNull(FInsuranceSalary,@DefaultZero) / MonthDays) * IsNull(PartTimeDay,@DefaultZero) )
+			)
+
 into #hbh_tmp_rpt_DayCheckInLine
 from (
 	select 
@@ -198,8 +210,9 @@ from (
 		,IsNull(checkInLine.PartTimeDay,0) as PartTimeDay
 		,IsNull(checkInLine.HourlyDay,0) as HourlyDay
 
-		-- 本月天数	
-		,MonthDays = IsNull(Day(DateAdd(Day,-1,DateAdd(d,- day(checkin.CheckInDate) + 1,checkin.CheckInDate))),27)
+		---- 本月天数	
+		-- 应出勤天数 = 当月天数 - 4
+		,MonthDays = IsNull(Day(DateAdd(Day,-1,DateAdd(d,- day(checkin.CheckInDate) + 1,checkin.CheckInDate))),27)  - 4
 
 	
 		-- 全日制标准工资=基本工资（01）+周末加班工资（02）+电话补贴（03）+交通补贴(04)+午餐补贴（05）+职务补贴（07）
@@ -227,6 +240,22 @@ from (
 		-- FJ钟点工工资标准（F06）=薪资项目中F工资标准项目(F06)					-- （F54）
 		,FOvertimeSalary = Sum(dbo.HBH_Fn_GetDecimal(
 				case when salaryItem.Code in ('F06') 
+					then IsNull(salary.SalaryItemVlaue,@DefaultZero) 
+				else @DefaultZero end
+					,@DefaultZero))
+
+		
+		-- 单位保险
+		-- 单位保险（12）=薪资项目中 单位保险(12)					-- （113）
+		,InsuranceSalary = Sum(dbo.HBH_Fn_GetDecimal(
+				case when salaryItem.Code in ('12') 
+					then IsNull(salary.SalaryItemVlaue,@DefaultZero) 
+				else @DefaultZero end
+					,@DefaultZero))
+		-- F单位保险
+		-- F单位保险（F04）=薪资项目中 F单位保险(F04)					-- （F52）
+		,FInsuranceSalary = Sum(dbo.HBH_Fn_GetDecimal(
+				case when salaryItem.Code in ('F04') 
 					then IsNull(salary.SalaryItemVlaue,@DefaultZero) 
 				else @DefaultZero end
 					,@DefaultZero))
@@ -347,6 +376,7 @@ begin
 				-- 非全日制加班工资
 				+ IsNull(FOvertimeSalary,@DefaultZero) * IsNull(HourlyDay,@DefaultZero))
 				)
+
 		from #hbh_tmp_rpt_DayCheckInLine
 		group by
 			Department
@@ -424,6 +454,10 @@ begin
 			+ IsNull(FOvertimeSalary,@DefaultZero) * IsNull(HourlyDay,@DefaultZero))
 			)
 
+		-- 应出勤天数 = 当月天数 - 4
+		,MonthDays
+		-- 日保险
+		,DayInsurance
 	from #hbh_tmp_rpt_DayCheckInLine
 	group by
 		Department
@@ -440,6 +474,11 @@ begin
 		-- ,CheckInDate
 		-- ,CheckInMonth
 		-- ,CheckInDay
+
+		-- 应出勤天数 = 当月天数 - 4
+		,MonthDays
+		-- 日保险
+		,DayInsurance
 	order by
 		EmployeeCode
 		,EmployeeName

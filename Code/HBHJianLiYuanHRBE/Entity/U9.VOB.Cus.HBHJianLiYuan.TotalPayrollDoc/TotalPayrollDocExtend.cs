@@ -155,7 +155,7 @@ namespace U9.VOB.Cus.HBHJianLiYuan {
                 //}
 
                 // 计薪方案不可为空
-                if (this.SalarySolutionIDs.IsNull())
+                if (this.PayrollCalculateIDs.IsNull())
                 {
                     throw new BusinessException("计薪方案 不可为空!");
                 }
@@ -163,7 +163,7 @@ namespace U9.VOB.Cus.HBHJianLiYuan {
                 if (ApproveType == null)
                 {
                     string strMsg = string.Format("计薪方案[{0}]发薪日期[{1}] 的审核方式不可为空!"
-                            , this.SalarySolutionNames
+                            , this.PayrollCalculateNames
                             , this.PayDate.ToString("yyyy-MM-dd")
                             );
                     throw new BusinessException(strMsg);

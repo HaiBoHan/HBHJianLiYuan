@@ -6,7 +6,7 @@
         <Group id="27255b95-7562-42f0-af0d-1b3b0830a512" name="Key" displayName="Key" description="" help="" />
         <Group id="4b8d0ac0-25fa-4081-a399-d5eff8739c14" name="Sys" displayName="Sys" description="" help="" />
         <Group id="dc5ce4e0-b82b-493b-a3b8-e2a64b165177" name="StateMachine" displayName="StateMachine" description="" help="" />
-        <Group id="fccf2a12-c06d-4207-b9eb-8f7fb0c04a94" name="Misc" displayName="Misc" description="" help="" />
+        <Group id="00e3043e-1f09-4385-810a-24bde6f7e7dd" name="Misc" displayName="Misc" description="" help="" />
       </Groups>
       <Attributes>
         <Attribute id="4176d7d9-fb20-4dac-a540-49c71d0de08f" name="ID" displayName="ID" description="" help="成本预警.Key.ID" dataTypeID="ba391065-6c27-4c82-acc8-b52b1c93a910" isKey="True" defaultValue="" length="8" precise="19" scale="0" isNullable="False" isReadOnly="False" isHide="True" isCalculation="False" valueExpression="" maxValue="" minValue="" sequence="0" isDefaultDimensionAttribute="False" isDefaultMeasureAttribute="False" isGlobalization="False" idGenerator="db" groupName="Key" isEntityKey="False" isEntityData="True" isSystem="True" isBusinessKey="False" isSyncDictionary="False" dictionaryKey="" isExtendCode="False" isQuery="True" isForAsso="True" isModifyControl="False" isDynamic="False" isImpressible="False" isInCache="False" isKeySerializable="False" isColumnDefine="True" isFilterDefine="True" isSortDefine="True" isDefaultColumn="True" forOBAImport="False" />
@@ -77,7 +77,7 @@
       <Groups>
         <Group id="37e9a017-1b75-476c-b763-f4f9586898bb" name="Key" displayName="Key" description="" help="" />
         <Group id="c28429c6-42bf-4f81-acec-0502a35dc008" name="Sys" displayName="Sys" description="" help="" />
-        <Group id="f84d4a34-6ad3-41f0-bf4a-2a10cd5c0cc0" name="Misc" displayName="Misc" description="" help="" />
+        <Group id="296b2c62-051c-4cb1-b1ff-bd29748aeb02" name="Misc" displayName="Misc" description="" help="" />
       </Groups>
       <Attributes>
         <Attribute id="22d80a78-df25-41f5-b600-9127fda28da0" name="ID" displayName="ID" description="" help="成本预警行.Key.ID" dataTypeID="ba391065-6c27-4c82-acc8-b52b1c93a910" isKey="True" defaultValue="" length="8" precise="19" scale="0" isNullable="False" isReadOnly="False" isHide="True" isCalculation="False" valueExpression="" maxValue="" minValue="" sequence="0" isDefaultDimensionAttribute="False" isDefaultMeasureAttribute="False" isGlobalization="False" idGenerator="db" groupName="Key" isEntityKey="False" isEntityData="True" isSystem="True" isBusinessKey="False" isSyncDictionary="False" dictionaryKey="" isExtendCode="False" isQuery="True" isForAsso="True" isModifyControl="False" isDynamic="False" isImpressible="False" isInCache="False" isKeySerializable="False" isColumnDefine="True" isFilterDefine="True" isSortDefine="True" isDefaultColumn="True" forOBAImport="False" />

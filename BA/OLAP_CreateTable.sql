@@ -106,10 +106,21 @@ create table Fact_U9_DayCheckIn
 	-- ,LaborYield decimal(24,9)
 	-- 人工成本比例
 	-- 
+	
+	-- 应出勤天数 = 当月天数 - 4
+	,MonthDays decimal(24,9)
+	-- 日保险
+	,DayInsurance decimal(24,9)
 )
 
+/*
+alter table Fact_U9_DayCheckIn
+add MonthDays decimal(24,9)
 
 
+alter table Fact_U9_DayCheckIn
+add DayInsurance decimal(24,9)
+*/
 
 
 -- 事实，Excel导入		劳动生产率人工成本统计表

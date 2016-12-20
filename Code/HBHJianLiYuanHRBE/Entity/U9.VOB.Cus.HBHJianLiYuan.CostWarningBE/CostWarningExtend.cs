@@ -9,6 +9,7 @@ using System.Text;
 using U9.VOB.HBHCommon.U9CommonBE;
 using UFIDA.U9.Approval.Util;
 using UFIDA.U9.Base;
+using UFSoft.UBF.Business;
 
 #endregion
 
@@ -131,7 +132,13 @@ namespace U9.VOB.Cus.HBHJianLiYuan {
 			base.OnValidate();
 			this.SelfEntityValidator();
 			// TO DO: write your business code here...
+
+            if (this.ApproveType == null)
+            {
+                throw new BusinessException("审批方式不可为空!");
+            }
 		}
+
 		#endregion
 		
 		#region 异常处理，开发人员可以重新封装异常
@@ -187,7 +194,7 @@ namespace U9.VOB.Cus.HBHJianLiYuan {
                 this.StateMachineInstance.Opened_SumitEvent(new SumitEvent());
 
 
-                ServiceOrderSubscriber_TotalPayrollDoc serviceOrderSubscriber = new ServiceOrderSubscriber_TotalPayrollDoc();
+                ServiceOrderSubscriber_CostWarning serviceOrderSubscriber = new ServiceOrderSubscriber_CostWarning();
                 serviceOrderSubscriber.EntityKey = this.Key;
                 ApprovalService.Instance.SubmitApproval(this);
                 EventHelper.SubscribeApprovalResultEvent(this.Key, serviceOrderSubscriber);
@@ -231,6 +238,8 @@ namespace U9.VOB.Cus.HBHJianLiYuan {
             //this.ApprovedOn = DateTime.MinValue;
             this.ApprovedOn = new DateTime(2000, 1, 1);
             this.ApprovedBy = null;
+            this.UnApprovedOn = DateTime.Now;
+            this.UnApprovedBy = Context.LoginUser;
         }
 
         #endregion
