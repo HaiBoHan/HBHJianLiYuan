@@ -7,6 +7,7 @@ using UFIDA.U9.SM.SO;
 using UFSoft.UBF.PL;
 using UFIDA.U9.PM.Rcv;
 using HBH.DoNet.DevPlatform.EntityMapping;
+using UFIDA.U9.PM.Enums;
 
 namespace U9.VOB.Cus.HBHJianLiYuan.PlugInBE
 {
@@ -31,8 +32,9 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInBE
             //转成所需实体，同时判断有效性
             Receivement entity = key.GetEntity() as Receivement;
             //修改后的单价不能高于采购订单中的单价
-            if (entity == null || entity.SrcDocType.Value != 1)
-                return;
+            //if (entity == null || entity.SrcDocType.Value != 1)
+            //    return;
+
             foreach (RcvLine line in entity.RcvLines)
             {
                 if (line.SrcPO != null)
@@ -60,6 +62,22 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInBE
                         {
                             HBHHelper.DescFlexFieldHelper.SetRcvLinePoPreDiscountPrice(line.DescFlexSegments, poPrePrice);
                         }
+                    }
+                }
+
+
+                // 手工创建、则赋值 手工录入的 指导价，保证价差为 0
+                if (entity.SrcDocType == RcvSrcDocTypeEnum.CreateManual
+                    || entity.SrcDocType == RcvSrcDocTypeEnum.Empty
+                    )
+                {
+                    if (entity.Status == RcvStatusEnum.Opened
+                        || entity.Status == RcvStatusEnum.Empty
+                        || entity.Status == RcvStatusEnum.Approving
+                        )
+                    {
+                        decimal rcvPrePrice = HBHHelper.DescFlexFieldHelper.GetPreDiscountPrice(line.DescFlexSegments);
+                        HBHHelper.DescFlexFieldHelper.SetRcvLinePoPreDiscountPrice(line.DescFlexSegments, rcvPrePrice);
                     }
                 }
             }
