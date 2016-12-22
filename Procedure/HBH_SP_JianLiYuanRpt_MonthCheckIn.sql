@@ -167,7 +167,8 @@ select
 	-- 应出勤天数 = 当月天数 - 4
 	,MonthDays
 	-- 日保险
-	,DayInsurance = Sum(
+	,DayInsurance = -- Sum
+			(
 			-- 全日制员工保险
 			(IsNull(InsuranceSalary,@DefaultZero) / MonthDays * IsNull(FullTimeDay,@DefaultZero) 
 			-- 非全日制员工保险

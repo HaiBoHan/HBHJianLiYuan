@@ -67,8 +67,8 @@ truncate table Dim_U9_Department2
 
 insert into Dim_U9_Department2
 select dept.ID,dept.Code,deptTrl.Name,dept.Level+1 as Level,dept.Org
-from HR20161108.dbo.CBO_Department dept 
-	inner join HR20161108.dbo.CBO_Department_Trl deptTrl 
+from [10.28.76.125].U9.dbo.CBO_Department dept 
+	inner join [10.28.76.125].U9.dbo.CBO_Department_Trl deptTrl 
 	on dept.ID= deptTrl.ID and deptTrl.SysMLFlag='zh-CN'
 where
 	dept.Code != '00001'
@@ -171,7 +171,8 @@ select
 	-- 应出勤天数 = 当月天数 - 4
 	,MonthDays
 	-- 日保险
-	,DayInsurance = Sum(
+	,DayInsurance = Sum
+			(
 			-- 全日制员工保险
 			(IsNull(InsuranceSalary,@DefaultZero) / MonthDays * IsNull(FullTimeDay,@DefaultZero) 
 			-- 非全日制员工保险
@@ -265,32 +266,33 @@ from (
 				else @DefaultZero end
 					,@DefaultZero))
 	from 		
-		HR20161108.dbo.CBO_EmployeeArchive employee	
-		left join HR20161108.dbo.CBO_Department dept
-		-- on checkin.Department = dept.ID
-		on employee.Dept = dept.ID
-		left join HR20161108.dbo.CBO_Department_Trl deptTrl
+		[10.28.76.125].U9.dbo.Cust_DayCheckIn checkin
+		inner join [10.28.76.125].U9.dbo.Cust_DayCheckInLine checkinLine
+		on checkin.ID = checkinLine.DayCheckIn
+
+		inner join [10.28.76.125].U9.dbo.CBO_EmployeeArchive employee
+		on checkinLine.EmployeeArchive = employee.ID	
+		inner join [10.28.76.125].U9.dbo.CBO_Department dept
+		-- 要按考勤头 的部门，来确认考勤部门
+		on checkin.Department = dept.ID
+		-- on employee.Dept = dept.ID
+		inner join [10.28.76.125].U9.dbo.CBO_Department_Trl deptTrl
 		on deptTrl.ID = dept.ID
 			and deptTrl.SysMLFlag = 'zh-CN'
-		
-		left join HR20161108.dbo.Cust_DayCheckInLine checkinLine
-		on checkinLine.EmployeeArchive = employee.ID
-		left join HR20161108.dbo.Cust_DayCheckIn checkin
-		on checkin.ID = checkinLine.DayCheckIn
 	 
-		left join HR20161108.dbo.CBO_Department region
+		left join [10.28.76.125].U9.dbo.CBO_Department region
 		on SubString(dept.Code,1,5) = region.Code
-		left join HR20161108.dbo.CBO_Department_Trl regionTrl
+		left join [10.28.76.125].U9.dbo.CBO_Department_Trl regionTrl
 		on regionTrl.ID = region.ID
 			and regionTrl.SysMLFlag = 'zh-CN'
 
 		--left join CBO_Person person
 		--on checkinLine.StaffMember = person.ID
-		left join HR20161108.dbo.CBO_EmployeeSalaryFile salary
+		left join [10.28.76.125].U9.dbo.CBO_EmployeeSalaryFile salary
 		on salary.Employee = employee.ID
-		left join HR20161108.dbo.CBO_PublicSalaryItem salaryItem
+		left join [10.28.76.125].U9.dbo.CBO_PublicSalaryItem salaryItem
 		on salary.SalaryItem = salaryItem.ID
-		left join HR20161108.dbo.CBO_PublicSalaryItem_Trl salaryItemTrl
+		left join [10.28.76.125].U9.dbo.CBO_PublicSalaryItem_Trl salaryItemTrl
 		on salaryItemTrl.ID = salaryItem.ID 
 			and salaryItemTrl.SysMLFlag = 'zh-CN'
 	where 
@@ -334,7 +336,9 @@ group by
 	,Region
 	,RegionCode
 	,RegionName
-
+	
+	-- 应出勤天数 = 当月天数 - 4
+	,MonthDays
 
 
 select *
