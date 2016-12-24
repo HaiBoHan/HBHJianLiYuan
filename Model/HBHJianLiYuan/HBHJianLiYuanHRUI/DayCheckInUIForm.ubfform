@@ -208,12 +208,17 @@
           </OutParameters>
         </FormLink>
       </Label>
-      <Reference ID="ee0bc68a-fffc-4eb3-8a85-e8d96d5e234e" CodeAttributeName="Code" CodeField="Code" CodeFieldUIFieldID="Department_Code" CodeFieldUIViewID="DayCheckIn" DisplayFormat="19.0" Enabled="True" EntityName="ID" GridHeight="1" GridWidth="1" GridX="2" GridY="0" Height="20" IsNull="True" IsProperty="False" IsSequence="False" Name="Department116" NameAttributeName="Name" NameFieldUIFieldID="Department_Name" NameFieldUIViewID="DayCheckIn" PkeyField="ID" RefType="18e07fd6-84e7-4e0f-aeb6-eba9713f0bb5" RelationControl="lblDepartment116" TabIndex="1" TabStop="True" TextAlign="Right" TitleAlign="Left" TitleLocation="Left" UIFieldID="Department" UIViewID="DayCheckIn" Visible="True" Width="120" WindowHeight="408" WindowWidth="580" X="105" Y="0">
+      <Reference ID="ee0bc68a-fffc-4eb3-8a85-e8d96d5e234e" CodeAttributeName="Code" CodeField="Code" CodeFieldUIFieldID="Department_Code" CodeFieldUIViewID="DayCheckIn" DisplayFormat="19.0" Enabled="True" EntityName="ID" GridHeight="1" GridWidth="1" GridX="2" GridY="0" Height="20" IsNull="True" IsProperty="False" IsSequence="False" Name="Department116" NameAttributeName="Name" NameFieldUIFieldID="Department_Name" NameFieldUIViewID="DayCheckIn" PkeyField="ID" RefType="1e104b8d-a110-4608-a8d4-d41e1c252e1c" RelationControl="lblDepartment116" TabIndex="1" TabStop="True" TextAlign="Right" TitleAlign="Left" TitleLocation="Left" UIFieldID="Department" UIViewID="DayCheckIn" Visible="True" Width="120" WindowHeight="408" WindowWidth="580" X="105" Y="0">
         <Events />
         <RelationControls />
         <ReferenceRelation Action="Clear" ColumnDisplayName="ID" ColumnID="ID" TargetControlType="" TargetID="" TargetProperty="" />
         <ReferenceRelation Action="Clear" ColumnDisplayName="编码" ColumnID="Code" TargetControlType="" TargetID="" TargetProperty="" />
         <ReferenceRelation Action="Clear" ColumnDisplayName="名称" ColumnID="Name" TargetControlType="" TargetID="" TargetProperty="" />
+        <ReferenceRelation Action="Clear" ColumnDisplayName="简称" ColumnID="ShortName" TargetControlType="" TargetID="" TargetProperty="" />
+        <ReferenceRelation Action="Clear" ColumnDisplayName="描述" ColumnID="Description" TargetControlType="" TargetID="" TargetProperty="" />
+        <ReferenceRelation Action="Clear" ColumnDisplayName="上级ID" ColumnID="ParentNode_ID" TargetControlType="" TargetID="" TargetProperty="" />
+        <ReferenceRelation Action="Clear" ColumnDisplayName="上级编码" ColumnID="ParentNode_Code" TargetControlType="" TargetID="" TargetProperty="" />
+        <ReferenceRelation Action="Clear" ColumnDisplayName="上级名称" ColumnID="ParentNode_Name" TargetControlType="" TargetID="" TargetProperty="" />
         <RefNameFields>
           <RefNameField UIFieldID="Name" />
         </RefNameFields>

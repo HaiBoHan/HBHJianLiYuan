@@ -219,7 +219,7 @@ from (
 		
 		---- 本月天数	
 		-- 应出勤天数 = 当月天数 - 4
-		,MonthDays = IsNull(Day(DateAdd(Day,-1,DateAdd(d,- day(checkin.CheckInDate) + 1,checkin.CheckInDate))),27)  - 4
+		,MonthDays = IsNull(Day(DateAdd(Day,-1,DateAdd(d,- day(DateAdd(M,1,checkin.CheckInDate)) + 1,DateAdd(M,1,checkin.CheckInDate)))),27)  - 4
 		
 	
 		-- 全日制标准工资=基本工资（01）+周末加班工资（02）+电话补贴（03）+交通补贴(04)+午餐补贴（05）+职务补贴（07）

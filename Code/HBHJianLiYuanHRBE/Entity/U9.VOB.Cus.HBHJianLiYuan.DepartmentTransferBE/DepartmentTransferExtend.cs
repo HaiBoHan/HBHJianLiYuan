@@ -350,7 +350,8 @@ namespace U9.VOB.Cus.HBHJianLiYuan {
                                     && this.ChangedBeforeDept.Effective != null
                                     )
                                 {
-                                    this.ChangedBeforeDept.Effective.DisableDate = this.ChangedDate;
+                                    // 前一天失效，内部调动单就是调动日期  前一天失效、调动日期当天就转到新部门了；
+                                    this.ChangedBeforeDept.Effective.DisableDate = this.ChangedDate.AddDays(-1);
                                 }
 
                                 session2.Commit();
