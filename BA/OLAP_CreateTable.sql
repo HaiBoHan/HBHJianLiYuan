@@ -200,4 +200,84 @@ create table Dim_U9_MonthFilter
 )
 
 
+-- 假期人均效率人工成本预警表
+-- drop table Fact_U9_EfficiencyCostWarning
+create table Fact_U9_EfficiencyCostWarning
+(
+	Region bigint
+	,RegionCode varchar(200)
+	,RegionName varchar(200)
+	,Region2 bigint
+	,Region2Code varchar(200)
+	,Region2Name varchar(200)
+
+	,Department bigint
+	,DepartmentCode varchar(200)
+	,DepartmentName varchar(200)
+	
+	-- 年月期间
+	,StatisticsPeriod varchar(125)
+	-- 日期
+	,WarningDate varchar(125)
+	-- 餐次
+	,MealTime varchar(200) 
+	-- 预计就餐人数
+	,EstimatedQty decimal(24,9)
+	-- 餐标
+	,MealStandard decimal(24,9)
+	-- 就餐收入,这个做合计公式比较合适，不过不知道BA支持不;   =  早餐预计就餐人数*早餐餐标+中餐预计就餐人数*中餐餐标+晚餐预计就餐人数*晚餐餐标+夜餐预计就餐人数*夜餐餐标
+	,DiningIncome decimal(24,9)
+
+	-- 日出勤小时数
+	,AttendanceTime decimal(24,9)
+	-- 折算人数 ????  = 日出勤小时数/8
+	,TranslatedNumber decimal(24,9)
+
+	-- 当日人工工资
+	,Wage decimal(24,9)
+	-- 日综合毛利
+	,GrossProfit decimal(24,9)
+	
+	-- 人均效率预警
+	-- 人均效率 = if（折算人数=0,0，就餐收入/折算人数）
+	,PerEfficiency decimal(24,9)
+	-- 公司节日控制标准(效率) = ：固定值500
+	,EfficiencyHolidayStandards decimal(24,9) default 500
+	-- 差异(效率) = 公司节日控制标准-人均效率
+	,EfficiencyDiffer decimal(24,9)
+	-- 达标情况(效率) = if(差异>=0,"达标","人均效率低于公司要求，请调整")
+	,EfficiencyStandardConditions varchar(125)
+
+	-- 人工成本预警
+	-- 人工成本 = IF(当日人工工资=0,"0",当日人工工资/就餐收入)
+	,PerCost decimal(24,9)
+	-- 公司节日控制标准(成本) = ：固定值20%
+	,CostHolidayStandards decimal(24,9) default 0.2
+	-- 差异(成本) = 公司节日控制标准-人均效率
+	,CostDiffer decimal(24,9)
+	-- 达标情况(成本) = IF(差异>=0,"人工成本超标，请调整","达标")
+	,CostStandardConditions varchar(125)
+
+	-- 备注
+	,Memo varchar(125)
+
+	
+	-- 预计就餐人数(早)
+	,MorningEstimatedQty decimal(24,9)
+	-- 预计就餐人数(中)
+	,NoonEstimatedQty decimal(24,9)
+	-- 预计就餐人数(晚)
+	,AfternoonEstimatedQty decimal(24,9)
+	-- 预计就餐人数(夜)
+	,NightEstimatedQty decimal(24,9)
+	
+	-- 餐标(早)
+	,MorningMealStandard decimal(24,9)
+	-- 餐标(中)
+	,NoonMealStandard decimal(24,9)
+	-- 餐标(晚)
+	,AfternoonMealStandard decimal(24,9)
+	-- 餐标(夜)
+	,NightMealStandard decimal(24,9)
+)
 

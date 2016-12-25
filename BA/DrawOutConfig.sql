@@ -133,3 +133,32 @@ begin
 		,@ModelID
 end
 
+
+set @ReportID = '0171b154-6278-4b62-9985-ec53a2dc5519'
+set @ModelID = '1D61EF22-2ADF-42DD-A3D2-DE5775B160C7'
+set @TableName = 'Fact_U9_EfficiencyCostWarning'
+set @SPName = 'HBH_BASP_JianLiYuan_EfficiencyCostWarning'
+set @Parameters = '@请选择过滤年月,@请选择区域,@请选择大区,@请选择部门'
+
+/*
+delete from ETL_RealTime_Tables
+				where ReportID = @ReportID
+					and ModelID = @ModelID
+*/
+if not exists(select 1 from ETL_RealTime_Tables
+				where ReportID = @ReportID
+					and ModelID = @ModelID
+				)
+begin
+	insert into ETL_RealTime_Tables
+	(
+		TableName,SPName,Parameters,ReportID,ModelID
+	)
+	select
+		@TableName
+		,@SPName
+		,@Parameters
+		,@ReportID		-- 报表--属性--ID
+		,@ModelID
+end
+

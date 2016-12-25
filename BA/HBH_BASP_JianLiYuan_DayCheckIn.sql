@@ -60,6 +60,7 @@ end
 	declare @CurDate datetime = GetDate()
 	declare @Today datetime = convert(varchar(10), GetDate(), 120)
 
+	
 
 -- 部门二表,删除数据，重新抽取
 /*
@@ -73,7 +74,42 @@ from [10.28.76.125].U9.dbo.CBO_Department dept
 where
 	dept.Code != '00001'
 	and Len(dept.Code) = 5
+	
+
+truncate table Dim_U9_Department3
+
+insert into Dim_U9_Department3
+select dept.ID,dept.Code,deptTrl.Name,dept.Level+1 as Level,dept.Org
+from [10.28.76.125].U9.dbo.CBO_Department dept 
+	inner join [10.28.76.125].U9.dbo.CBO_Department_Trl deptTrl 
+	on dept.ID= deptTrl.ID and deptTrl.SysMLFlag='zh-CN'
+where
+	Len(dept.Code) = 7
 */
+
+-- 大区
+insert into Dim_U9_Department2
+select dept.ID,dept.Code,deptTrl.Name,dept.Level+1 as Level,dept.Org
+from [10.28.76.125].U9.dbo.CBO_Department dept 
+	inner join [10.28.76.125].U9.dbo.CBO_Department_Trl deptTrl 
+	on dept.ID= deptTrl.ID and deptTrl.SysMLFlag='zh-CN'
+where
+	dept.Code != '00001'
+	and Len(dept.Code) = 5
+	-- 不存在的新增
+	and dept.ID not in (select region2.ID from Dim_U9_Department2 region2)
+
+-- 区域
+insert into Dim_U9_Department3
+select dept.ID,dept.Code,deptTrl.Name,dept.Level+1 as Level,dept.Org
+from [10.28.76.125].U9.dbo.CBO_Department dept 
+	inner join [10.28.76.125].U9.dbo.CBO_Department_Trl deptTrl 
+	on dept.ID= deptTrl.ID and deptTrl.SysMLFlag='zh-CN'
+where
+	Len(dept.Code) = 7
+	-- 不存在的新增
+	and dept.ID not in (select region3.ID from Dim_U9_Department3 region3)
+
 
 
 
