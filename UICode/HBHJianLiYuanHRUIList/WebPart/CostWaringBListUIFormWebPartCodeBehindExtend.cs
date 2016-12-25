@@ -100,9 +100,9 @@ namespace CostWaringBListUIModel
 		private void DataGrid1_GridRowDbClicked_Extend(object sender, GridDBClickEventArgs  e)
 		{
 			//调用模版提供的默认实现.--默认实现可能会调用相应的Action.
-			
-		
-			DataGrid1_GridRowDbClicked_DefaultImpl(sender,e);
+            //DataGrid1_GridRowDbClicked_DefaultImpl(sender,e);
+
+            U9.VOB.HBHCommon.HBHCommonUI.HBHUIHelper.UIList_GridRowDbClicked(this);
         }
 
         #endregion
