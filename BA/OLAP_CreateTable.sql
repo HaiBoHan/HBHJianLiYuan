@@ -191,3 +191,13 @@ create table Fact_U9_HolidayAttendance
 
 
 
+
+-- 月份过滤条件
+create table Dim_U9_MonthFilter
+(
+	MonthName varchar(125) default ''
+
+)
+
+
+
