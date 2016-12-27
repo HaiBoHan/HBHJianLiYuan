@@ -16,7 +16,9 @@ create proc HBH_BASP_JianLiYuan_DayCheckIn  (
 
 @请选择过滤年月 varchar(125) = ''
 ,@请选择大区 varchar(125) = ''
+,@请选择区域 varchar(125) = ''
 ,@请选择部门 varchar(125) = ''
+,@领导用表 varchar(125) = ''
 )
 with encryption
 as
@@ -44,11 +46,13 @@ begin
 		select 'HBH_BASP_JianLiYuan_DayCheckIn','@请选择过滤年月',IsNull(@请选择过滤年月,'null'),GETDATE()
 		union select 'HBH_BASP_JianLiYuan_DayCheckIn','@请选择大区',IsNull(@请选择大区,'null'),GETDATE()
 		union select 'HBH_BASP_JianLiYuan_DayCheckIn','@请选择部门',IsNull(@请选择部门,'null'),GETDATE()
+		union select 'HBH_BASP_JianLiYuan_DayCheckIn','@领导用表',IsNull(@领导用表,'null'),GETDATE()
 
 		union select 'HBH_BASP_JianLiYuan_DayCheckIn','ProcSql','exec HBH_BASP_JianLiYuan_DayCheckIn '
 				+ IsNull('''' + @请选择过滤年月 + '''' ,'null')
 				+ ',' + IsNull('''' + @请选择大区 + '''' ,'null')
 				+ ',' + IsNull('''' + @请选择部门 + '''' ,'null')
+				+ ',' + IsNull('''' + @领导用表 + '''' ,'null')
 
 			   ,GETDATE()
 	end
@@ -59,7 +63,9 @@ end
 	declare @Now datetime = GetDate();
 	declare @CurDate datetime = GetDate()
 	declare @Today datetime = convert(varchar(10), GetDate(), 120)
-
+	
+	-- 设置每周第一天是哪天(周一)
+	set datefirst 1
 	
 
 -- 部门二表,删除数据，重新抽取
@@ -154,10 +160,28 @@ insert into Fact_U9_DayCheckIn
 --)
 
 select 
-	Department
+	-- 大区
+	Region
+	,RegionCode
+	,RegionName
+	-- 区域
+	,Region2
+	,Region2Code
+	,Region2Name
+	-- 部门
+	,Department
 	,DepartmentCode
 	,DepartmentName
-	,CheckInDate
+
+	--Department
+	--,DepartmentCode
+	--,DepartmentName
+	---- 区域
+	--,Region = Region
+	--,RegionCode
+	--,RegionName
+	
+	-- ,CheckInDate = convert(varchar(10),CheckInDate,23)
 	,DisplayDate
 	,StatisticsPeriod
 	--,checkin.Status as Status
@@ -174,18 +198,16 @@ select
 	-- 钟点工
 	,HourlyDay = Sum(IsNull(HourlyDay,@DefaultZero))
 	-- 日出勤人数 = 非全日制员工出勤合计/4 + 钟点工员工出勤合计/8 + 全日制员工出勤合计 
-	,PersonTime = Sum(IsNull(PartTimeDay,@DefaultZero)) / 4 + Sum(IsNull(HourlyDay,@DefaultZero)) / 8 + Sum(IsNull(FullTimeDay,@DefaultZero))
+	--,PersonTime = Sum(IsNull(PartTimeDay,@DefaultZero)) / 4 + Sum(IsNull(HourlyDay,@DefaultZero)) / 8 + Sum(IsNull(FullTimeDay,@DefaultZero))
+	,PersonTime = Sum(PersonTime)
 	
-	-- 收入
-	,Income = Max(Income)
+	-- 收入(如果是按周，那么汇总每天)
+	--,Income = Max(Income)
+	,Income = Sum(Income)
 	-- 劳产率目标
 	,LaborYieldTarget = Max(LaborYieldTarget)
 	-- 人工成本目标
 	,LaborCostTarget = Max(LaborCostTarget)
-	-- 区域
-	,Region = Region
-	,RegionCode
-	,RegionName
 	---- 标准工资
 	--,StardardSalary = Sum(StardardSalary)
 	
@@ -193,188 +215,480 @@ select
 	-- 日工资=标准工资/27 *全日制员工出勤+钟点工工资标准(038)*钟点工出勤+非全日制员工出勤*钟标准工资		;钟点工工资标准取U9维护薪资项目数值点工工资标准
 	-- 27 = 当月天数 - 4
 	--,Salary = Sum(StardardSalary / MonthDays * IsNull(FullTimeDay,@DefaultZero) + IsNull(PartTimeDay,@DefaultZero) * IsNull(PartSalary,@DefaultZero) + IsNull(HourlyDay,@DefaultZero) * IsNull(OvertimeSalary,@DefaultZero))
-	,Salary = Sum(
-		-- 全日制员工工资
-		(StardardSalary / MonthDays * IsNull(FullTimeDay,@DefaultZero) 
-		-- 非全日制员工工资
-		+ IsNull(FPartSalary,@DefaultZero) * IsNull(PartTimeDay,@DefaultZero) 
-		-- 全日制加班工资
-		+ IsNull(OvertimeSalary,@DefaultZero) * IsNull(HourlyDay,@DefaultZero) 
-		-- 非全日制加班工资
-		+ IsNull(FOvertimeSalary,@DefaultZero) * IsNull(HourlyDay,@DefaultZero))
-		)
+	--,Salary = Sum(
+	--	-- 全日制员工工资
+	--	(StardardSalary / MonthDays * IsNull(FullTimeDay,@DefaultZero) 
+	--	-- 非全日制员工工资
+	--	+ IsNull(FPartSalary,@DefaultZero) * IsNull(PartTimeDay,@DefaultZero) 
+	--	-- 全日制加班工资
+	--	+ IsNull(OvertimeSalary,@DefaultZero) * IsNull(HourlyDay,@DefaultZero) 
+	--	-- 非全日制加班工资
+	--	+ IsNull(FOvertimeSalary,@DefaultZero) * IsNull(HourlyDay,@DefaultZero))
+	--	)
+	,Salary = Sum(Salary)
 
 	-- 应出勤天数 = 当月天数 - 4
 	,MonthDays
 	-- 日保险
-	,DayInsurance = Sum
-			(
-			-- 全日制员工保险
-			(IsNull(InsuranceSalary,@DefaultZero) / MonthDays * IsNull(FullTimeDay,@DefaultZero) 
-			-- 非全日制员工保险
-			+ (IsNull(FInsuranceSalary,@DefaultZero) / MonthDays) * IsNull(PartTimeDay,@DefaultZero) )
-			)
+	--,DayInsurance = Sum
+	--		(
+	--		-- 全日制员工保险
+	--		(IsNull(InsuranceSalary,@DefaultZero) / MonthDays * IsNull(FullTimeDay,@DefaultZero) 
+	--		-- 非全日制员工保险
+	--		+ (IsNull(FInsuranceSalary,@DefaultZero) / MonthDays) * IsNull(PartTimeDay,@DefaultZero) )
+	--		)
+	,DayInsurance = Sum(DayInsurance)
 
-from (
-	select 
-		-- 员工
-		employee.ID as EmployeeArchive
-		-- 部门
-		,Department = IsNull(dept.ID,-1)
-		,DepartmentCode = IsNull(dept.Code,'')
-		,DepartmentName = IsNull(deptTrl.Name,'')
+	-- 月份第一天
+	,FirstDay
+	-- 月份第一天  是第几周
+	,FirstWeek
+	-- 月份第一天  有周几
+	,FirstWeekDay
+		
+	-- 月份最后一天
+	,LastDay
+	-- 月份最后一天  是第几周
+	,LastWeek
+	-- 月份最后一天  有周几
+	,LastWeekDay
 
-		,checkin.CheckInDate
-		,DisplayDate = Right('00' + DateName(Month,checkin.CheckInDate),2) + '.' + Right('00' + DateName(day,checkin.CheckInDate),2)
-		,StatisticsPeriod = Right('0000' + DateName(year,checkin.CheckInDate),4) + '年' + Right('00' + DateName(month,checkin.CheckInDate),2) + '月'
-		--,checkin.Status as Status
-		--,checkin.CurrentOperator as CurrentOperator
+from (	
+		select 
+			-- 大区
+			Region
+			,RegionCode
+			,RegionName
+			-- 区域
+			,Region2
+			,Region2Code
+			,Region2Name
+			-- 部门
+			,Department
+			,DepartmentCode
+			,DepartmentName
 
-		--,checkinLine.StaffMember as Staff
-		--,person.PersonID as StaffCode
-		--,person.Name as StaffName
+			---- 员工
+			--,EmployeeArchive
+			---- 部门
+			--,Department = IsNull(dept.ID,-1)
+			--,DepartmentCode = IsNull(dept.Code,'')
+			--,DepartmentName = IsNull(deptTrl.Name,'')
+
+			--,case when IsNull(@领导用表,'') = '是' then DATEPART(WEEK,checkin.CheckInDate) - DATEPART(WEEK, DateAdd(M,-1,DateAdd(d,- day(DateAdd(M,1,checkin.CheckInDate)) + 1,DateAdd(M,1,checkin.CheckInDate)))) + 1
+			--	else convert(varchar(10),checkin.CheckInDate,23)
+			--	end as CheckInDate
+			--,CheckInDate = convert(varchar(10),checkin.CheckInDate,23)
+			,CheckInDate
+			,StatisticsPeriod
+			--,DisplayDate
+			-- 普通，按天；领导，按周；
+			,DisplayDate = case when IsNull(@领导用表,'') = '是' 
+					then '第' + cast(IsNull(CheckMonthNumber,0) as char(1)) + '周(' 
+						-- 周的当月第一天(周一是当月几号)
+						+ case when CheckMonthNumber = FirstWeek then '1' else cast(IsNull(Day(DateAdd(d,-CheckWeekDay + 1,CheckInDate)),0) as varchar(2)) end
+						+ '-'
+						-- 周的当月最后一天
+						+ case when CheckMonthNumber = LastWeek then cast(IsNull(Day(LastDay),0) as varchar(2)) 
+								else cast(IsNull(Day(DateAdd(d,7 - CheckWeekDay,CheckInDate)),0) as varchar(2)) end
+						+ ')'
+					else DisplayDate
+					end
+	
+			-- 全日制
+			,FullTimeDay = Sum(IsNull(FullTimeDay,@DefaultZero))
+			-- 非全日制
+			,PartTimeDay = Sum(IsNull(PartTimeDay,@DefaultZero))
+			-- 钟点工
+			,HourlyDay = Sum(IsNull(HourlyDay,@DefaultZero))
+			-- 日出勤人数 = 非全日制员工出勤合计/4 + 钟点工员工出勤合计/8 + 全日制员工出勤合计 
+			,PersonTime = Sum(IsNull(PartTimeDay,@DefaultZero)) / 4 + Sum(IsNull(HourlyDay,@DefaultZero)) / 8 + Sum(IsNull(FullTimeDay,@DefaultZero))
+	
+			-- 收入
+			,Income = Max(Income)
+			-- 劳产率目标
+			,LaborYieldTarget = Max(LaborYieldTarget)
+			-- 人工成本目标
+			,LaborCostTarget = Max(LaborCostTarget)
+			---- 标准工资
+			--,StardardSalary = Sum(StardardSalary)
+		
+			-- 员工日工资
+			-- 日工资=标准工资/27 *全日制员工出勤+钟点工工资标准(038)*钟点工出勤+非全日制员工出勤*钟标准工资		;钟点工工资标准取U9维护薪资项目数值点工工资标准
+			-- 27 = 当月天数 - 4
+			--,Salary = Sum(StardardSalary / MonthDays * IsNull(FullTimeDay,@DefaultZero) + IsNull(PartTimeDay,@DefaultZero) * IsNull(PartSalary,@DefaultZero) + IsNull(HourlyDay,@DefaultZero) * IsNull(OvertimeSalary,@DefaultZero))
+			,Salary = Sum(
+				-- 全日制员工工资
+				(StardardSalary / MonthDays * IsNull(FullTimeDay,@DefaultZero) 
+				-- 非全日制员工工资
+				+ IsNull(FPartSalary,@DefaultZero) * IsNull(PartTimeDay,@DefaultZero) 
+				-- 全日制加班工资
+				+ IsNull(OvertimeSalary,@DefaultZero) * IsNull(HourlyDay,@DefaultZero) 
+				-- 非全日制加班工资
+				+ IsNull(FOvertimeSalary,@DefaultZero) * IsNull(HourlyDay,@DefaultZero))
+				)
+
+			---- 本月天数	
+			-- 应出勤天数 = 当月天数 - 4
+			,MonthDays
+		
+	
+			---- 全日制标准工资=基本工资（01）+周末加班工资（02）+电话补贴（03）+交通补贴(04)+午餐补贴（05）+职务补贴（07）
+			--,StardardSalary
+					
+			---- 加班工资
+			---- 钟点工工资标准 = 钟点工工资标准(06)			-- (038)
+			--,OvertimeSalary
+		
+			---- F钟点工工资标准（F01） = 钟点工工资标准(F01)			-- (F13)
+			--,FPartSalary
+			---- F加班工资
+			---- FJ钟点工工资标准（F06）=薪资项目中F工资标准项目(F06)					-- （F56）
+			--,FOvertimeSalary
+
+			---- 单位保险
+			---- 单位保险（12）=薪资项目中 单位保险(12)					-- （113）
+			--,InsuranceSalary
+			---- F单位保险
+			---- F单位保险（F04）=薪资项目中 F单位保险(F04)					-- （F52）
+			--,FInsuranceSalary
+
+			
+			-- 日保险
+			,DayInsurance = Sum
+					(
+					-- 全日制员工保险
+					(IsNull(InsuranceSalary,@DefaultZero) / MonthDays * IsNull(FullTimeDay,@DefaultZero) 
+					-- 非全日制员工保险
+					+ (IsNull(FInsuranceSalary,@DefaultZero) / MonthDays) * IsNull(PartTimeDay,@DefaultZero) )
+					)
+			
+			-- 月份第一天
+			,FirstDay
+			-- 月份第一天  是第几周
+			,FirstWeek
+			-- 月份第一天  有周几
+			,FirstWeekDay
+		
+			-- 月份最后一天
+			,LastDay
+			-- 月份最后一天  是第几周
+			,LastWeek
+			-- 月份最后一天  有周几
+			,LastWeekDay
+	from
+		(
+		select 
+			-- 大区
+			Region = IsNull(region.ID,-1)
+			,RegionCode = IsNull(region.Code,'')
+			,RegionName = IsNull(regionTrl.Name,'')
+			-- 区域
+			,Region2 = IsNull(region2.ID,-1)
+			,Region2Code = IsNull(region2.Code,'')
+			,Region2Name = IsNull(region2Trl.Name,'')
+			-- 部门
+			,Department = IsNull(dept.ID,-1)
+			,DepartmentCode = IsNull(dept.Code,'')
+			,DepartmentName = IsNull(deptTrl.Name,'')
+
+			-- 员工
+			,employee.ID as EmployeeArchive
+			---- 部门
+			--,Department = IsNull(dept.ID,-1)
+			--,DepartmentCode = IsNull(dept.Code,'')
+			--,DepartmentName = IsNull(deptTrl.Name,'')
+
+			--,case when IsNull(@领导用表,'') = '是' then DATEPART(WEEK,checkin.CheckInDate) - DATEPART(WEEK, DateAdd(M,-1,DateAdd(d,- day(DateAdd(M,1,checkin.CheckInDate)) + 1,DateAdd(M,1,checkin.CheckInDate)))) + 1
+			--	else convert(varchar(10),checkin.CheckInDate,23)
+			--	end as CheckInDate
+			--,CheckInDate = convert(varchar(10),checkin.CheckInDate,23)
+			,CheckInDate = checkin.CheckInDate
+			,DisplayDate = Right('00' + DateName(Month,checkin.CheckInDate),2) + '.' + Right('00' + DateName(day,checkin.CheckInDate),2)
+			,StatisticsPeriod = Right('0000' + DateName(year,checkin.CheckInDate),4) + '年' + Right('00' + DateName(month,checkin.CheckInDate),2) + '月'
+		
+			-- 本月第几周
+			,CheckMonthNumber = DATEPART(WEEK,checkin.CheckInDate) - DATEPART(WEEK, DateAdd(M,-1,DateAdd(d,- day(DateAdd(M,1,checkin.CheckInDate)) + 1,DateAdd(M,1,checkin.CheckInDate)))) + 1
+			-- 本月第几天
+			,CheckDayNumber = DATEPART(day,checkin.CheckInDate)
+			-- 是周几
+			,CheckWeekDay = DatePart(weekday,checkin.CheckInDate)
+
+			-- 月份第一天
+			,DateAdd(M,-1,DateAdd(d,- day(DateAdd(M,1,checkin.CheckInDate)) + 1,DateAdd(M,1,checkin.CheckInDate))) FirstDay
+			-- 月份第一天  是第几周
+			,1 FirstWeek
+			-- 月份第一天  是周几
+			,DatePart(weekday,DateAdd(M,-1,DateAdd(d,- day(DateAdd(M,1,checkin.CheckInDate)) + 1,DateAdd(M,1,checkin.CheckInDate)))) FirstWeekDay
+		
+			-- 月份最后一天
+			,DateAdd(d,- day(DateAdd(M,1,checkin.CheckInDate)),DateAdd(M,1,checkin.CheckInDate)) LastDay
+			-- 月份最后一天  是第几周
+			,DATEPART(WEEK,DateAdd(d,- day(DateAdd(M,1,checkin.CheckInDate)),DateAdd(M,1,checkin.CheckInDate))) - DATEPART(WEEK, DateAdd(M,-1,DateAdd(d,- day(DateAdd(M,1,DateAdd(d,- day(DateAdd(M,1,checkin.CheckInDate)),DateAdd(M,1,checkin.CheckInDate)))) + 1,DateAdd(M,1,DateAdd(d,- day(DateAdd(M,1,checkin.CheckInDate)),DateAdd(M,1,checkin.CheckInDate)))))) + 1 LastWeek
+			-- 月份最后一天  是周几
+			,DatePart(weekday,DateAdd(d,- day(DateAdd(M,1,checkin.CheckInDate)),DateAdd(M,1,checkin.CheckInDate))) LastWeekDay
+
+			--,checkin.Status as Status
+			--,checkin.CurrentOperator as CurrentOperator
+
+			--,checkinLine.StaffMember as Staff
+			--,person.PersonID as StaffCode
+			--,person.Name as StaffName
 
 	
-		-- 全日制
-		,FullTimeDay = IsNull(checkinLine.FullTimeDay,@DefaultZero)
-		-- 非全日制
-		,PartTimeDay = IsNull(checkinLine.PartTimeDay,@DefaultZero)
-		-- 钟点工
-		,HourlyDay = IsNull(checkinLine.HourlyDay,@DefaultZero)
+			-- 全日制
+			,FullTimeDay = IsNull(checkinLine.FullTimeDay,@DefaultZero)
+			-- 非全日制
+			,PartTimeDay = IsNull(checkinLine.PartTimeDay,@DefaultZero)
+			-- 钟点工
+			,HourlyDay = IsNull(checkinLine.HourlyDay,@DefaultZero)
 	
-		-- 收入
-		,Income = max(IsNull(checkin.Income,@DefaultZero))
-		-- 劳产率目标
-		,LaborYieldTarget = max(IsNull(checkin.LaborYieldTarget,@DefaultZero))
-		-- 人工成本目标
-		,LaborCostTarget = max(IsNull(checkin.LaborCostTarget,@DefaultZero))
-		-- 区域
-		,Region = IsNull(region.ID,-1)
-		,RegionCode = IsNull(region.Code,'')
-		,RegionName = IsNull(regionTrl.Name,'')
+			-- 收入
+			,Income = max(IsNull(checkin.Income,@DefaultZero))
+			-- 劳产率目标
+			,LaborYieldTarget = max(IsNull(checkin.LaborYieldTarget,@DefaultZero))
+			-- 人工成本目标
+			,LaborCostTarget = max(IsNull(checkin.LaborCostTarget,@DefaultZero))
+			---- 区域
+			--,Region = IsNull(region.ID,-1)
+			--,RegionCode = IsNull(region.Code,'')
+			--,RegionName = IsNull(regionTrl.Name,'')
 		
-		---- 本月天数	
-		-- 应出勤天数 = 当月天数 - 4
-		,MonthDays = IsNull(Day(DateAdd(Day,-1,DateAdd(d,- day(DateAdd(M,1,checkin.CheckInDate)) + 1,DateAdd(M,1,checkin.CheckInDate)))),27)  - 4
+			---- 本月天数	
+			-- 应出勤天数 = 当月天数 - 4
+			,MonthDays = IsNull(Day(DateAdd(Day,-1,DateAdd(d,- day(DateAdd(M,1,checkin.CheckInDate)) + 1,DateAdd(M,1,checkin.CheckInDate)))),27)  - 4
 		
 	
-		-- 全日制标准工资=基本工资（01）+周末加班工资（02）+电话补贴（03）+交通补贴(04)+午餐补贴（05）+职务补贴（07）
-		,StardardSalary = Sum(dbo.HBH_Fn_GetDecimal(
-				case when salaryItem.Code in ('01','02','03','04','05','07') 
-					then IsNull(salary.SalaryItemVlaue,@DefaultZero) 
-				else @DefaultZero end
-					,@DefaultZero))
+			-- 全日制标准工资=基本工资（01）+周末加班工资（02）+电话补贴（03）+交通补贴(04)+午餐补贴（05）+职务补贴（07）
+			,StardardSalary = Sum(dbo.HBH_Fn_GetDecimal(
+					case when salaryItem.Code in ('01','02','03','04','05','07') 
+						then IsNull(salary.SalaryItemVlaue,@DefaultZero) 
+					else @DefaultZero end
+						,@DefaultZero))
 		
-		-- 加班工资
-		-- 钟点工工资标准 = 钟点工工资标准(06)			-- (038)
-		,OvertimeSalary = Sum(dbo.HBH_Fn_GetDecimal(
-				case when salaryItem.Code in ('06') 
-					then IsNull(salary.SalaryItemVlaue,@DefaultZero) 
-				else @DefaultZero end
-					,@DefaultZero))
+			-- 加班工资
+			-- 钟点工工资标准 = 钟点工工资标准(06)			-- (038)
+			,OvertimeSalary = Sum(dbo.HBH_Fn_GetDecimal(
+					case when salaryItem.Code in ('06') 
+						then IsNull(salary.SalaryItemVlaue,@DefaultZero) 
+					else @DefaultZero end
+						,@DefaultZero))
 		
-		-- F钟点工工资标准（F01） = 钟点工工资标准(F01)			-- (F13)
-		,FPartSalary = Sum(dbo.HBH_Fn_GetDecimal(
-				case when salaryItem.Code in ('F01') 
-					then IsNull(salary.SalaryItemVlaue,@DefaultZero) 
-				else @DefaultZero end
-					,@DefaultZero))
-		-- F加班工资
-		-- FJ钟点工工资标准（F06）=薪资项目中F工资标准项目(F06)					-- （F56）
-		,FOvertimeSalary = Sum(dbo.HBH_Fn_GetDecimal(
-				case when salaryItem.Code in ('F06') 
-					then IsNull(salary.SalaryItemVlaue,@DefaultZero) 
-				else @DefaultZero end
-					,@DefaultZero))
+			-- F钟点工工资标准（F01） = 钟点工工资标准(F01)			-- (F13)
+			,FPartSalary = Sum(dbo.HBH_Fn_GetDecimal(
+					case when salaryItem.Code in ('F01') 
+						then IsNull(salary.SalaryItemVlaue,@DefaultZero) 
+					else @DefaultZero end
+						,@DefaultZero))
+			-- F加班工资
+			-- FJ钟点工工资标准（F06）=薪资项目中F工资标准项目(F06)					-- （F56）
+			,FOvertimeSalary = Sum(dbo.HBH_Fn_GetDecimal(
+					case when salaryItem.Code in ('F06') 
+						then IsNull(salary.SalaryItemVlaue,@DefaultZero) 
+					else @DefaultZero end
+						,@DefaultZero))
 
-		-- 单位保险
-		-- 单位保险（12）=薪资项目中 单位保险(12)					-- （113）
-		,InsuranceSalary = Sum(dbo.HBH_Fn_GetDecimal(
-				case when salaryItem.Code in ('12') 
-					then IsNull(salary.SalaryItemVlaue,@DefaultZero) 
-				else @DefaultZero end
-					,@DefaultZero))
-		-- F单位保险
-		-- F单位保险（F04）=薪资项目中 F单位保险(F04)					-- （F52）
-		,FInsuranceSalary = Sum(dbo.HBH_Fn_GetDecimal(
-				case when salaryItem.Code in ('F04') 
-					then IsNull(salary.SalaryItemVlaue,@DefaultZero) 
-				else @DefaultZero end
-					,@DefaultZero))
-	from 		
-		[10.28.76.125].U9.dbo.Cust_DayCheckIn checkin
-		inner join [10.28.76.125].U9.dbo.Cust_DayCheckInLine checkinLine
-		on checkin.ID = checkinLine.DayCheckIn
+			-- 单位保险
+			-- 单位保险（12）=薪资项目中 单位保险(12)					-- （113）
+			,InsuranceSalary = Sum(dbo.HBH_Fn_GetDecimal(
+					case when salaryItem.Code in ('12') 
+						then IsNull(salary.SalaryItemVlaue,@DefaultZero) 
+					else @DefaultZero end
+						,@DefaultZero))
+			-- F单位保险
+			-- F单位保险（F04）=薪资项目中 F单位保险(F04)					-- （F52）
+			,FInsuranceSalary = Sum(dbo.HBH_Fn_GetDecimal(
+					case when salaryItem.Code in ('F04') 
+						then IsNull(salary.SalaryItemVlaue,@DefaultZero) 
+					else @DefaultZero end
+						,@DefaultZero))
+		from 		
+			[10.28.76.125].U9.dbo.Cust_DayCheckIn checkin
+			inner join [10.28.76.125].U9.dbo.Cust_DayCheckInLine checkinLine
+			on checkin.ID = checkinLine.DayCheckIn
 
-		inner join [10.28.76.125].U9.dbo.CBO_EmployeeArchive employee
-		on checkinLine.EmployeeArchive = employee.ID	
-		inner join [10.28.76.125].U9.dbo.CBO_Department dept
-		-- 要按考勤头 的部门，来确认考勤部门
-		on checkin.Department = dept.ID
-		-- on employee.Dept = dept.ID
-		inner join [10.28.76.125].U9.dbo.CBO_Department_Trl deptTrl
-		on deptTrl.ID = dept.ID
-			and deptTrl.SysMLFlag = 'zh-CN'
+			inner join [10.28.76.125].U9.dbo.CBO_EmployeeArchive employee
+			on checkinLine.EmployeeArchive = employee.ID	
+			inner join [10.28.76.125].U9.dbo.CBO_Department dept
+			-- 要按考勤头 的部门，来确认考勤部门
+			on checkin.Department = dept.ID
+			-- on employee.Dept = dept.ID
+			inner join [10.28.76.125].U9.dbo.CBO_Department_Trl deptTrl
+			on deptTrl.ID = dept.ID
+				and deptTrl.SysMLFlag = 'zh-CN'
 	 
-		left join [10.28.76.125].U9.dbo.CBO_Department region
-		on SubString(dept.Code,1,5) = region.Code
-		left join [10.28.76.125].U9.dbo.CBO_Department_Trl regionTrl
-		on regionTrl.ID = region.ID
-			and regionTrl.SysMLFlag = 'zh-CN'
+			--left join [10.28.76.125].U9.dbo.CBO_Department region
+			--on SubString(dept.Code,1,5) = region.Code
+			--left join [10.28.76.125].U9.dbo.CBO_Department_Trl regionTrl
+			--on regionTrl.ID = region.ID
+			--	and regionTrl.SysMLFlag = 'zh-CN'
 
-		--left join CBO_Person person
-		--on checkinLine.StaffMember = person.ID
-		left join [10.28.76.125].U9.dbo.CBO_EmployeeSalaryFile salary
-		on salary.Employee = employee.ID
-		left join [10.28.76.125].U9.dbo.CBO_PublicSalaryItem salaryItem
-		on salary.SalaryItem = salaryItem.ID
-		left join [10.28.76.125].U9.dbo.CBO_PublicSalaryItem_Trl salaryItemTrl
-		on salaryItemTrl.ID = salaryItem.ID 
-			and salaryItemTrl.SysMLFlag = 'zh-CN'
-	where 
-			-- 全日制标准工资 = 标准工资=基本工资（01）+周末加班工资（02）+电话补贴（03）+交通补贴(04)+午餐补贴（05）+职务补贴（07）
-		-- 非全日制标准工资 = 钟点工工资标准(06)			-- (038)
-		-- 加班工资标准=薪资项目中F工资标准项目(F01)					-- （F13）
-			--(salaryItem.Code is null 
-			--	or salaryItem.Code in ('01','02','03','04','05','07' ,'06','F01'))
-
-		dept.ID is not null
-	group by 
-		-- 员工
-		employee.ID
-		,IsNull(dept.ID,-1)
-		,IsNull(dept.Code,'')
-		,IsNull(deptTrl.Name,'')
-		,checkin.CheckInDate
-		-- ,checkinLine.EmployeeArchive
+			--left join CBO_Person person
+			--on checkinLine.StaffMember = person.ID
+			left join [10.28.76.125].U9.dbo.CBO_EmployeeSalaryFile salary
+			on salary.Employee = employee.ID
+			left join [10.28.76.125].U9.dbo.CBO_PublicSalaryItem salaryItem
+			on salary.SalaryItem = salaryItem.ID
+			left join [10.28.76.125].U9.dbo.CBO_PublicSalaryItem_Trl salaryItemTrl
+			on salaryItemTrl.ID = salaryItem.ID 
+				and salaryItemTrl.SysMLFlag = 'zh-CN'
+			
 	
-		-- 全日制
-		,IsNull(checkinLine.FullTimeDay,@DefaultZero)
-		-- 非全日制
-		,IsNull(checkinLine.PartTimeDay,@DefaultZero)
-		-- 钟点工
-		,IsNull(checkinLine.HourlyDay,@DefaultZero)	
-		-- 收入
-		,IsNull(checkin.Income,@DefaultZero)
+			--left join [10.28.76.125].U9.dbo.CBO_Department dept
+			---- on checkin.Department = dept.ID
+			--on dept.ID = checkinSummary.Department
+
+			--left join [10.28.76.125].U9.dbo.CBO_Department_Trl deptTrl
+			--on deptTrl.ID = dept.ID
+			--	and deptTrl.SysMLFlag = 'zh-CN'
+	 
+			left join [10.28.76.125].U9.dbo.CBO_Department region
+			on SubString(dept.Code,1,5) = region.Code
+			left join [10.28.76.125].U9.dbo.CBO_Department_Trl regionTrl
+			on regionTrl.ID = region.ID
+				and regionTrl.SysMLFlag = 'zh-CN'
+	 
+			left join [10.28.76.125].U9.dbo.CBO_Department region2
+			on SubString(dept.Code,1,7) = region2.Code
+			left join [10.28.76.125].U9.dbo.CBO_Department_Trl region2Trl
+			on region2Trl.ID = region2.ID
+				and region2Trl.SysMLFlag = 'zh-CN'
+		where 
+				-- 全日制标准工资 = 标准工资=基本工资（01）+周末加班工资（02）+电话补贴（03）+交通补贴(04)+午餐补贴（05）+职务补贴（07）
+			-- 非全日制标准工资 = 钟点工工资标准(06)			-- (038)
+			-- 加班工资标准=薪资项目中F工资标准项目(F01)					-- （F13）
+				--(salaryItem.Code is null 
+				--	or salaryItem.Code in ('01','02','03','04','05','07' ,'06','F01'))
+
+			dept.ID is not null
+			and (@请选择过滤年月 is null or @请选择过滤年月 = ''
+				or @请选择过滤年月 = Right('0000' + DateName(year,checkin.CheckInDate),4) + '年' + Right('00' + DateName(month,checkin.CheckInDate),2) + '月'
+				)
+			
+			and (@请选择大区 is null or @请选择大区 = ''
+				or @请选择大区 = regionTrl.Name
+				)
+			and (@请选择区域 is null or @请选择区域 = ''
+				or @请选择区域 = region2Trl.Name
+				)
+			and (@请选择部门 is null or @请选择部门 = ''
+				or @请选择部门 = deptTrl.Name
+				)
+		group by 
+			-- 大区
+			IsNull(region.ID,-1)
+			,IsNull(region.Code,'')
+			,IsNull(regionTrl.Name,'')
+			-- 区域
+			,IsNull(region2.ID,-1)
+			,IsNull(region2.Code,'')
+			,IsNull(region2Trl.Name,'')
+			-- 部门
+			,IsNull(dept.ID,-1)
+			,IsNull(dept.Code,'')
+			,IsNull(deptTrl.Name,'')
+
+			-- 员工
+			,employee.ID
+			,IsNull(dept.ID,-1)
+			,IsNull(dept.Code,'')
+			,IsNull(deptTrl.Name,'')
+			,checkin.CheckInDate
+			-- ,checkinLine.EmployeeArchive
+	
+			-- 全日制
+			,IsNull(checkinLine.FullTimeDay,@DefaultZero)
+			-- 非全日制
+			,IsNull(checkinLine.PartTimeDay,@DefaultZero)
+			-- 钟点工
+			,IsNull(checkinLine.HourlyDay,@DefaultZero)	
+			-- 收入
+			,IsNull(checkin.Income,@DefaultZero)
+			---- 区域
+			--,IsNull(region.ID,-1)
+			--,IsNull(region.Code,'')
+			--,IsNull(regionTrl.Name,'')
+
+		) as checkinSummary
+	group by 
+		-- 大区
+		Region
+		,RegionCode
+		,RegionName
 		-- 区域
-		,IsNull(region.ID,-1)
-		,IsNull(region.Code,'')
-		,IsNull(regionTrl.Name,'')
-	) as checkinSummary
+		,Region2
+		,Region2Code
+		,Region2Name
+		-- 部门
+		,Department
+		,DepartmentCode
+		,DepartmentName
+
+		---- 员工
+		--,employee.ID
+		,CheckInDate
+		-- ,checkinLine.EmployeeArchive
+		,DisplayDate
+		,StatisticsPeriod
+	
+		-- 应出勤天数 = 当月天数 - 4
+		,MonthDays
+			
+		-- 月份第一天
+		,FirstDay
+		-- 月份第一天  是第几周
+		,FirstWeek
+		-- 月份第一天  有周几
+		,FirstWeekDay
+		
+		-- 月份最后一天
+		,LastDay
+		-- 月份最后一天  是第几周
+		,LastWeek
+		-- 月份最后一天  有周几
+		,LastWeekDay
+			
+		-- 本月第几周
+		,CheckMonthNumber
+		-- 本月第几天
+		,CheckDayNumber
+		-- 是周几
+		,CheckWeekDay
+
+		) as checkinSummary
 --where 1=1
 group by 
 	Department
 	,DepartmentCode
 	,DepartmentName
-	,CheckInDate
-	,DisplayDate
-	,StatisticsPeriod
 	,Region
 	,RegionCode
 	,RegionName
+	,Region2
+	,Region2Code
+	,Region2Name
+
+	--,CheckInDate
+	,DisplayDate
+	,StatisticsPeriod
 	
 	-- 应出勤天数 = 当月天数 - 4
 	,MonthDays
+	
+	-- 月份第一天
+	,FirstDay
+	-- 月份第一天  是第几周
+	,FirstWeek
+	-- 月份第一天  有周几
+	,FirstWeekDay
+		
+	-- 月份最后一天
+	,LastDay
+	-- 月份最后一天  是第几周
+	,LastWeek
+	-- 月份最后一天  有周几
+	,LastWeekDay
+
 
 
 select *
@@ -384,6 +698,9 @@ where (@请选择过滤年月 is null or @请选择过滤年月 = ''
 		)
 	and (@请选择大区 is null or @请选择大区 = ''
 		or @请选择大区 = RegionName
+		)
+	and (@请选择区域 is null or @请选择区域 = ''
+		or @请选择区域 = Region2Name
 		)
 	and (@请选择部门 is null or @请选择部门 = ''
 		or @请选择部门 = DepartmentName

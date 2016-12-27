@@ -70,10 +70,17 @@ where
 -- drop table Fact_U9_DayCheckIn
 create table Fact_U9_DayCheckIn
 (
-	Department bigint
+	Region bigint
+	,RegionCode varchar(200)
+	,RegionName varchar(200)
+	,Region2 bigint
+	,Region2Code varchar(200)
+	,Region2Name varchar(200)
+	,Department bigint
 	,DepartmentCode varchar(200)
 	,DepartmentName varchar(200)
-	,CheckInDate DateTime
+
+	--,CheckInDate varchar(200)
 	,DisplayDate varchar(200) 
 	,StatisticsPeriod varchar(125)
 	--,Status int
@@ -95,10 +102,6 @@ create table Fact_U9_DayCheckIn
 	,LaborYieldTarget decimal(24,9)
 	-- 人工成本目标
 	,LaborCostTarget decimal(24,9)
-	-- 大区
-	,Region bigint
-	,RegionCode varchar(200)
-	,RegionName varchar(200)
 	-- 工资
 	,Salary decimal(24,9)
 
@@ -111,6 +114,20 @@ create table Fact_U9_DayCheckIn
 	,MonthDays decimal(24,9)
 	-- 日保险
 	,DayInsurance decimal(24,9)
+	
+	-- 月份第一天
+	,FirstDay DateTime
+	-- 月份第一天  是第几周
+	,FirstWeek int
+	-- 月份第一天  有周几
+	,FirstWeekDay int
+		
+	-- 月份最后一天
+	,LastDay DateTime
+	-- 月份最后一天  是第几周
+	,LastWeek int
+	-- 月份最后一天  有周几
+	,LastWeekDay int
 )
 
 /*
