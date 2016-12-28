@@ -123,8 +123,7 @@ select
 	,CheckInDay
 
 	-- 本月天数	
-	,MonthDays
-
+	,MonthDays = (case when MonthWorkDays <= 0 then MonthDays else MonthWorkDays end)
 	
 	--,sum(checkInLine.FullTimeDay) as FullTimeDay
 	--,sum(checkInLine.PartTimeDay) as PartTimeDay
@@ -154,7 +153,7 @@ select
    --               +F钟点工工资标准      *非全日制员工出勤
 	,Salary = 
 		-- 全日制员工工资
-		(StardardSalary / MonthDays * IsNull(FullTimeDay,@DefaultZero) 
+		(StardardSalary / (case when MonthWorkDays <= 0 then MonthDays else MonthWorkDays end) * IsNull(FullTimeDay,@DefaultZero) 
 		-- 非全日制员工工资
 		+ IsNull(FPartSalary,@DefaultZero) * IsNull(PartTimeDay,@DefaultZero) 
 		-- 全日制加班工资
@@ -166,9 +165,9 @@ select
 	,DayInsurance = -- Sum
 			(
 			-- 全日制员工保险
-			(IsNull(InsuranceSalary,@DefaultZero) / MonthDays * IsNull(FullTimeDay,@DefaultZero) 
+			(IsNull(InsuranceSalary,@DefaultZero) / (case when MonthWorkDays <= 0 then MonthDays else MonthWorkDays end) * IsNull(FullTimeDay,@DefaultZero) 
 			-- 非全日制员工保险
-			+ (IsNull(FInsuranceSalary,@DefaultZero) / MonthDays) * IsNull(PartTimeDay,@DefaultZero) )
+			+ (IsNull(FInsuranceSalary,@DefaultZero) / (case when MonthWorkDays <= 0 then MonthDays else MonthWorkDays end)) * IsNull(PartTimeDay,@DefaultZero) )
 			)
 
 into #hbh_tmp_rpt_DayCheckInLine
@@ -209,9 +208,14 @@ from (
 
 		---- 本月天数	
 		-- 应出勤天数 = 当月天数 - 4
+		-- 改为在日考勤中录入
 		,MonthDays = IsNull(Day(DateAdd(Day,-1,DateAdd(d,- day(DateAdd(M,1,checkin.CheckInDate)) + 1,DateAdd(M,1,checkin.CheckInDate)))),27)  - 4
-
-	
+		-- 改为在日考勤中录入
+		,IsNull((select max(IsNull(checkin2.MonthWorkDays,0)) 
+					from Cust_DayCheckIn checkin2
+					where checkin2.Department = checkIn.Department)
+				,0) as MonthWorkDays
+		
 		-- 全日制标准工资=基本工资（01）+周末加班工资（02）+电话补贴（03）+交通补贴(04)+午餐补贴（05）+职务补贴（07）
 		,StardardSalary = Sum(dbo.HBH_Fn_GetDecimal(
 				case when salaryItem.Code in ('01','02','03','04','05','07') 
@@ -282,6 +286,13 @@ from (
 		left join CBO_PublicSalaryItem_Trl salaryItemTrl
 		on salaryItemTrl.ID = salaryItem.ID 
 			and salaryItemTrl.SysMLFlag = 'zh-CN'
+
+		--left join (select max(IsNull(checkin2.MonthWorkDays,0)) MonthWorkDays
+		--				,checkin2.Department as Department
+		--			from Cust_DayCheckIn checkin2
+		--			where checkin2.Department = checkIn.Department
+		--			) allCheckIn
+		--on allCheckIn.Department = checkIn.Department
 
 	where 1=1
 		and ( @SalaryPeriod is null or @SalaryPeriod <= 0

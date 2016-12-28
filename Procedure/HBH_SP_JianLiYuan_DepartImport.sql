@@ -214,7 +214,8 @@ begin
 		left join Base_ValueSetDef def
 		on def.Code in (@ContractTypeDefCode)
 		left join Base_DefineValue defValue
-		on defValue.Code = line.ContractType
+		on defValue.ValueSetDef = def.ID
+			and defValue.Code = line.ContractType
 		left join Base_DefineValue_Trl defValueTrl
 		on defValue.ID = defValueTrl.ID
 

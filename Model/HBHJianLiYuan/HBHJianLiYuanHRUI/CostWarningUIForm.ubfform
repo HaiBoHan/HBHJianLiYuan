@@ -323,7 +323,7 @@
           <CurrencyType Name="CurrencyType4" />
           <Events />
         </NumberColumn>
-        <NumberColumn ID="6dc60aa1-c959-4f27-9b87-930caa977046" DefaultValue="0" DisplayFormat="24.9" Enabled="True" Help="成本预警行.Misc.日综合毛利" IsNull="True" IsProperty="False" IsSequence="False" Name="GrossProfit0" NPos="9" Point="4" UIFieldID="GrossProfit" UIViewID="CostWarning_CostWarningLine" Visible="True">
+        <NumberColumn ID="6dc60aa1-c959-4f27-9b87-930caa977046" DefaultValue="0" DisplayFormat="24.9" Enabled="True" Help="成本预警行.Misc.日综合毛利" IsNull="True" IsProperty="False" IsSequence="False" Name="GrossProfit0" NPos="9" NumberType="Percent" Point="4" UIFieldID="GrossProfit" UIViewID="CostWarning_CostWarningLine" Visible="True">
           <PrecisionBind Name="PrecisionBind5" />
           <RoundRuleBind Name="RoundRuleBind5" />
           <ValueOfRoundByValueBind Name="ValueOfRoundByValueBind5" />

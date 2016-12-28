@@ -238,12 +238,12 @@
         <Events />
         <RelationControls />
       </FlexFieldPicker>
-      <Label ID="a096d1fc-e45e-461f-ad0b-89771f592e9a" Enabled="True" GridHeight="1" GridWidth="1" GridX="8" GridY="2" Height="20" IsNull="True" IsSequence="False" Name="lblMemo164" RelationControl="Memo164" TabIndex="7" TabStop="True" TitleAlign="Right" TitleLocation="Left" UIFieldID="" UIViewID="" Visible="True" Width="100" X="490" Y="50">
+      <Label ID="a096d1fc-e45e-461f-ad0b-89771f592e9a" Enabled="True" GridHeight="1" GridWidth="1" GridX="12" GridY="1" Height="20" IsNull="True" IsSequence="False" Name="lblMemo164" RelationControl="Memo164" TabIndex="7" TabStop="True" TitleAlign="Right" TitleLocation="Left" UIFieldID="" UIViewID="" Visible="True" Width="100" X="735" Y="25">
         <Events />
         <RelationControls />
         <Events />
       </Label>
-      <TextBox ID="b7ceef0d-4465-49f4-8f78-839e8ec8967b" DisplayFormat="50" Enabled="True" GridHeight="1" GridWidth="1" GridX="10" GridY="2" Height="20" IsNull="True" IsProperty="False" IsSequence="False" MultiLine="True" Name="Memo164" RelationControl="lblMemo164" TabIndex="8" TabStop="True" TextAlign="Left" TextBoxMode="MultiLine" TitleAlign="Left" TitleLocation="Left" UIFieldID="Memo" UIViewID="DayCheckIn" Visible="True" Width="120" X="595" Y="50">
+      <TextBox ID="b7ceef0d-4465-49f4-8f78-839e8ec8967b" DisplayFormat="50" Enabled="True" GridHeight="1" GridWidth="1" GridX="14" GridY="1" Height="20" IsNull="True" IsProperty="False" IsSequence="False" MultiLine="True" Name="Memo164" RelationControl="lblMemo164" TabIndex="8" TabStop="True" TextAlign="Left" TextBoxMode="MultiLine" TitleAlign="Left" TitleLocation="Left" UIFieldID="Memo" UIViewID="DayCheckIn" Visible="True" Width="120" X="840" Y="25">
         <Events />
         <RelationControls />
       </TextBox>
@@ -343,21 +343,21 @@
         </UIFilterBar>
         <Events />
       </Reference>
-      <Label ID="e86a840a-32e4-42b9-8418-58d7b230101c" Enabled="True" GridHeight="1" GridWidth="1" GridX="8" GridY="1" Height="20" IsNull="True" IsSequence="False" Name="lblStatus123" RelationControl="Status123" TabIndex="11" TabStop="True" TitleAlign="Right" TitleLocation="Left" UIFieldID="" UIViewID="" Visible="True" Width="100" X="490" Y="25">
+      <Label ID="e86a840a-32e4-42b9-8418-58d7b230101c" Enabled="True" GridHeight="1" GridWidth="1" GridX="8" GridY="2" Height="20" IsNull="True" IsSequence="False" Name="lblStatus123" RelationControl="Status123" TabIndex="11" TabStop="True" TitleAlign="Right" TitleLocation="Left" UIFieldID="" UIViewID="" Visible="True" Width="100" X="490" Y="50">
         <Events />
         <RelationControls />
         <Events />
       </Label>
-      <DropDownList ID="85b59994-983d-419b-b662-bfe7fde18cd3" DisplayFormat="10.0" Enabled="False" EnumFullName="U9.VOB.HBHCommon.U9CommonBE.DocStatus" EnumID="34af30f0-a7d9-4005-962e-21076f509a72" GridHeight="1" GridWidth="1" GridX="10" GridY="1" Height="20" IsNull="True" IsProperty="False" IsSequence="False" Name="Status123" RelationControl="lblStatus123" TabIndex="12" TabStop="True" TitleAlign="Left" TitleLocation="Left" UIFieldID="Status" UIViewID="DayCheckIn" Visible="True" Width="120" X="595" Y="25">
+      <DropDownList ID="85b59994-983d-419b-b662-bfe7fde18cd3" DisplayFormat="10.0" Enabled="False" EnumFullName="U9.VOB.HBHCommon.U9CommonBE.DocStatus" EnumID="34af30f0-a7d9-4005-962e-21076f509a72" GridHeight="1" GridWidth="1" GridX="10" GridY="2" Height="20" IsNull="True" IsProperty="False" IsSequence="False" Name="Status123" RelationControl="lblStatus123" TabIndex="12" TabStop="True" TitleAlign="Left" TitleLocation="Left" UIFieldID="Status" UIViewID="DayCheckIn" Visible="True" Width="120" X="595" Y="50">
         <Events />
         <RelationControls />
       </DropDownList>
-      <Label ID="409080a8-75f7-4c80-a353-b4f6d5a7af2e" Enabled="True" GridHeight="1" GridWidth="1" GridX="8" GridY="0" Height="20" IsNull="True" IsSequence="False" Name="lblApproveType266" RelationControl="ApproveType266" TabIndex="13" TabStop="True" TitleAlign="Right" TitleLocation="Left" UIFieldID="" UIViewID="" Visible="True" Width="100" X="490" Y="0">
+      <Label ID="409080a8-75f7-4c80-a353-b4f6d5a7af2e" Enabled="True" GridHeight="1" GridWidth="1" GridX="8" GridY="1" Height="20" IsNull="True" IsSequence="False" Name="lblApproveType266" RelationControl="ApproveType266" TabIndex="13" TabStop="True" TitleAlign="Right" TitleLocation="Left" UIFieldID="" UIViewID="" Visible="True" Width="100" X="490" Y="25">
         <Events />
         <RelationControls />
         <Events />
       </Label>
-      <Reference ID="3b49694c-6dc9-4379-bad5-7d36c05057cf" CodeAttributeName="Name" CodeField="Name" CodeFieldUIFieldID="ApproveType_Name" CodeFieldUIViewID="DayCheckIn" DisplayFormat="19.0" Enabled="True" EntityName="ID" GridHeight="1" GridWidth="1" GridX="10" GridY="0" Height="20" IsNull="True" IsProperty="False" IsSequence="False" Name="ApproveType266" NameAttributeName="DisplayName" NameFieldUIFieldID="ApproveType_DisplayName" NameFieldUIViewID="DayCheckIn" PkeyField="ID" RefType="d7ed54b4-76e7-4c92-a7ae-9551266d1ac5" RelationControl="lblApproveType266" TabIndex="14" TabStop="True" TextAlign="Right" TitleAlign="Left" TitleLocation="Left" UIFieldID="ApproveType" UIViewID="DayCheckIn" Visible="True" Width="120" WindowHeight="408" WindowWidth="580" X="595" Y="0">
+      <Reference ID="3b49694c-6dc9-4379-bad5-7d36c05057cf" CodeAttributeName="Name" CodeField="Name" CodeFieldUIFieldID="ApproveType_Name" CodeFieldUIViewID="DayCheckIn" DisplayFormat="19.0" Enabled="True" EntityName="ID" GridHeight="1" GridWidth="1" GridX="10" GridY="1" Height="20" IsNull="True" IsProperty="False" IsSequence="False" Name="ApproveType266" NameAttributeName="DisplayName" NameFieldUIFieldID="ApproveType_DisplayName" NameFieldUIViewID="DayCheckIn" PkeyField="ID" RefType="d7ed54b4-76e7-4c92-a7ae-9551266d1ac5" RelationControl="lblApproveType266" TabIndex="14" TabStop="True" TextAlign="Right" TitleAlign="Left" TitleLocation="Left" UIFieldID="ApproveType" UIViewID="DayCheckIn" Visible="True" Width="120" WindowHeight="408" WindowWidth="580" X="595" Y="25">
         <Events />
         <RelationControls />
         <ReferenceRelation Action="Clear" ColumnDisplayName="ID" ColumnID="ID" TargetControlType="" TargetID="" TargetProperty="" />
@@ -417,6 +417,19 @@
         <Events />
         <RelationControls />
       </TextBox>
+      <Label ID="062f8b20-27c6-44ee-9464-6044f52676b5" Enabled="True" GridHeight="1" GridWidth="1" GridX="8" GridY="0" Height="20" IsNull="True" IsSequence="False" Name="lblMonthWorkDays161" RelationControl="MonthWorkDays161" TabIndex="23" TabStop="True" TitleAlign="Right" TitleLocation="Left" UIFieldID="" UIViewID="" Visible="True" Width="100" X="490" Y="0">
+        <Events />
+        <RelationControls />
+        <Events />
+      </Label>
+      <NumberControl ID="ca7bcb5e-46fb-48d3-be74-dbfe43b4cf7c" DisplayFormat="10.0" Enabled="True" GridHeight="1" GridWidth="1" GridX="10" GridY="0" Height="20" IsNull="True" IsProperty="False" IsSequence="False" MultiLine="False" Name="MonthWorkDays161" RelationControl="lblMonthWorkDays161" TabIndex="24" TabStop="True" TextAlign="Right" TitleAlign="Left" TitleLocation="Left" UIFieldID="MonthWorkDays" UIViewID="DayCheckIn" Visible="True" Width="120" X="595" Y="0">
+        <Events />
+        <RelationControls />
+        <PrecisionBind />
+        <RoundRuleBind />
+        <ValueOfRoundByValueBind />
+        <CurrencyType />
+      </NumberControl>
     </Card>
     <DataGrid ID="4b366f14-453a-4a3a-9566-52032b4587e5" AllowSelectAllPage="True" EditStatus="edit" Enabled="True" GridHeight="2" GridWidth="2" GridX="0" GridY="1" HasSum="True" Height="339" IsSumAllData="True" Name="DataGrid5" PageSize="20" Paging="True" TabIndex="2" TabStop="True" Width="972" X="10" Y="82">
       <Events />

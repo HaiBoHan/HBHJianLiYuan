@@ -254,7 +254,7 @@ select
 	-- 达标情况(成本) = IF(差异>=0,"人工成本超标，请调整","达标")
 	,CostStandardConditions = case when (case when IsNull(DiningIncome,0) = 0 then 0
 										else IsNull(Wage,0) / IsNull(DiningIncome,0) end
-									- 0.2) > 0
+									- 0.2) <= 0
 									then '达标'
 									else '人工成本超标，请调整' end
 

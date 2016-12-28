@@ -228,7 +228,7 @@ select
 	,Salary = Sum(Salary)
 
 	-- 应出勤天数 = 当月天数 - 4
-	,MonthDays
+	,MonthDays  -- = (case when MonthWorkDays <= 0 then MonthDays else MonthWorkDays end)
 	-- 日保险
 	--,DayInsurance = Sum
 	--		(
@@ -319,7 +319,7 @@ from (
 			--,Salary = Sum(StardardSalary / MonthDays * IsNull(FullTimeDay,@DefaultZero) + IsNull(PartTimeDay,@DefaultZero) * IsNull(PartSalary,@DefaultZero) + IsNull(HourlyDay,@DefaultZero) * IsNull(OvertimeSalary,@DefaultZero))
 			,Salary = Sum(
 				-- 全日制员工工资
-				(StardardSalary / MonthDays * IsNull(FullTimeDay,@DefaultZero) 
+				(StardardSalary / (case when MonthWorkDays <= 0 then MonthDays else MonthWorkDays end) * IsNull(FullTimeDay,@DefaultZero) 
 				-- 非全日制员工工资
 				+ IsNull(FPartSalary,@DefaultZero) * IsNull(PartTimeDay,@DefaultZero) 
 				-- 全日制加班工资
@@ -330,7 +330,7 @@ from (
 
 			---- 本月天数	
 			-- 应出勤天数 = 当月天数 - 4
-			,MonthDays
+			,MonthDays = (case when MonthWorkDays <= 0 then MonthDays else MonthWorkDays end)
 		
 	
 			---- 全日制标准工资=基本工资（01）+周末加班工资（02）+电话补贴（03）+交通补贴(04)+午餐补贴（05）+职务补贴（07）
@@ -358,9 +358,9 @@ from (
 			,DayInsurance = Sum
 					(
 					-- 全日制员工保险
-					(IsNull(InsuranceSalary,@DefaultZero) / MonthDays * IsNull(FullTimeDay,@DefaultZero) 
+					(IsNull(InsuranceSalary,@DefaultZero) / (case when MonthWorkDays <= 0 then MonthDays else MonthWorkDays end) * IsNull(FullTimeDay,@DefaultZero) 
 					-- 非全日制员工保险
-					+ (IsNull(FInsuranceSalary,@DefaultZero) / MonthDays) * IsNull(PartTimeDay,@DefaultZero) )
+					+ (IsNull(FInsuranceSalary,@DefaultZero) / (case when MonthWorkDays <= 0 then MonthDays else MonthWorkDays end)) * IsNull(PartTimeDay,@DefaultZero) )
 					)
 			
 			-- 月份第一天
@@ -457,7 +457,13 @@ from (
 			---- 本月天数	
 			-- 应出勤天数 = 当月天数 - 4
 			,MonthDays = IsNull(Day(DateAdd(Day,-1,DateAdd(d,- day(DateAdd(M,1,checkin.CheckInDate)) + 1,DateAdd(M,1,checkin.CheckInDate)))),27)  - 4
-		
+		-- 改为在日考勤中录入
+			,IsNull((select max(IsNull(checkin2.MonthWorkDays,0)) 
+						from [10.28.76.125].U9.dbo.Cust_DayCheckIn checkin2
+						where checkin2.Department = checkIn.Department
+						--group by checkin2.Department
+						)
+					,0) as MonthWorkDays
 	
 			-- 全日制标准工资=基本工资（01）+周末加班工资（02）+电话补贴（03）+交通补贴(04)+午餐补贴（05）+职务补贴（07）
 			,StardardSalary = Sum(dbo.HBH_Fn_GetDecimal(
@@ -584,6 +590,7 @@ from (
 			,IsNull(region2.Code,'')
 			,IsNull(region2Trl.Name,'')
 			-- 部门
+			,checkIn.Department
 			,IsNull(dept.ID,-1)
 			,IsNull(dept.Code,'')
 			,IsNull(deptTrl.Name,'')
@@ -633,6 +640,8 @@ from (
 	
 		-- 应出勤天数 = 当月天数 - 4
 		,MonthDays
+		-- 考勤表中的应出勤天数
+		,MonthWorkDays
 			
 		-- 月份第一天
 		,FirstDay

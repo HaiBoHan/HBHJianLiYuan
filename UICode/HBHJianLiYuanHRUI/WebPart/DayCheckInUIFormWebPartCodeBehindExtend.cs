@@ -343,6 +343,7 @@ namespace DayCheckInUIModel
 		#endregion  
 
         #region 自己扩展 Extended Event handler 
+
 		public void AfterOnLoad()
 		{
             string strIsAFKey = UFIDA.U9.UI.PDHelper.FormAuthorityHelper.GetIsApproveDocKey;
@@ -444,8 +445,8 @@ namespace DayCheckInUIModel
             //// 审核后修改数据校验，测试
             //this.BtnSave.Enabled = true;
 
-            // 考勤类别不可修改；
-            this.DataGrid5.Columns[this.Model.DayCheckIn_DayCheckInLine.FieldCheckType.Name].Enabled = false;
+            // 考勤类别不可修改；这个字段放开，万一有问题了，可以有人修改；通过权限先把所有人的权限都做成只读
+            //this.DataGrid5.Columns[this.Model.DayCheckIn_DayCheckInLine.FieldCheckType.Name].Enabled = false;
 		}
 
 
