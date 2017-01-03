@@ -374,7 +374,7 @@
         <RelationControls />
         <Events />
       </Label>
-      <NumberControl ID="16f41205-645f-4773-a9fb-60eeac954174" DisplayFormat="24.9" Enabled="True" GridHeight="1" GridWidth="1" GridX="6" GridY="0" Height="20" IsNull="True" IsProperty="False" IsSequence="False" MultiLine="False" Name="Income170" Precision="4" RelationControl="lblIncome170" TabIndex="16" TabStop="True" TextAlign="Right" TitleAlign="Left" TitleLocation="Left" UIFieldID="Income" UIViewID="DayCheckIn" Visible="True" Width="120" X="350" Y="0">
+      <NumberControl ID="16f41205-645f-4773-a9fb-60eeac954174" DisplayFormat="24.9" Enabled="True" GridHeight="1" GridWidth="1" GridX="6" GridY="0" Height="20" IsNull="True" IsProperty="False" IsSequence="False" MultiLine="False" Name="Income170" Precision="3" RelationControl="lblIncome170" TabIndex="16" TabStop="True" TextAlign="Right" TitleAlign="Left" TitleLocation="Left" UIFieldID="Income" UIViewID="DayCheckIn" Visible="True" Width="120" X="350" Y="0">
         <Events />
         <RelationControls />
         <PrecisionBind Name="PrecisionBind5" />
@@ -387,7 +387,7 @@
         <RelationControls />
         <Events />
       </Label>
-      <NumberControl ID="58c355a9-47a6-422c-b0ca-27a534a1af50" DisplayFormat="24.9" Enabled="True" GridHeight="1" GridWidth="1" GridX="6" GridY="1" Height="20" IsNull="True" IsProperty="False" IsSequence="False" MultiLine="False" Name="LaborYieldTarget143" Precision="4" RelationControl="lblLaborYieldTarget143" TabIndex="18" TabStop="True" TextAlign="Right" TitleAlign="Left" TitleLocation="Left" UIFieldID="LaborYieldTarget" UIViewID="DayCheckIn" Visible="True" Width="120" X="350" Y="25">
+      <NumberControl ID="58c355a9-47a6-422c-b0ca-27a534a1af50" DisplayFormat="24.9" Enabled="True" GridHeight="1" GridWidth="1" GridX="6" GridY="1" Height="20" IsNull="True" IsProperty="False" IsSequence="False" MultiLine="False" Name="LaborYieldTarget143" Precision="0" RelationControl="lblLaborYieldTarget143" TabIndex="18" TabStop="True" TextAlign="Right" TitleAlign="Left" TitleLocation="Left" UIFieldID="LaborYieldTarget" UIViewID="DayCheckIn" Visible="True" Width="120" X="350" Y="25">
         <Events />
         <RelationControls />
         <PrecisionBind Name="PrecisionBind6" />
@@ -400,7 +400,7 @@
         <RelationControls />
         <Events />
       </Label>
-      <NumberControl ID="2a9c608e-df95-4e5c-8341-30276433fede" DisplayFormat="24.9" Enabled="True" GridHeight="1" GridWidth="1" GridX="6" GridY="2" Height="20" IsNull="True" IsProperty="False" IsSequence="False" MultiLine="False" Name="LaborCostTarget122" Precision="4" RelationControl="lblLaborCostTarget122" TabIndex="20" TabStop="True" TextAlign="Right" TitleAlign="Left" TitleLocation="Left" UIFieldID="LaborCostTarget" UIViewID="DayCheckIn" Visible="True" Width="120" X="350" Y="50">
+      <NumberControl ID="2a9c608e-df95-4e5c-8341-30276433fede" DisplayFormat="24.9" Enabled="True" GridHeight="1" GridWidth="1" GridX="6" GridY="2" Height="20" IsNull="True" IsProperty="False" IsSequence="False" MultiLine="False" Name="LaborCostTarget122" NumberType="Percent" Precision="3" RelationControl="lblLaborCostTarget122" TabIndex="20" TabStop="True" TextAlign="Right" TitleAlign="Left" TitleLocation="Left" UIFieldID="LaborCostTarget" UIViewID="DayCheckIn" Visible="True" Width="120" X="350" Y="50">
         <Events />
         <RelationControls />
         <PrecisionBind Name="PrecisionBind7" />
@@ -422,13 +422,13 @@
         <RelationControls />
         <Events />
       </Label>
-      <NumberControl ID="ca7bcb5e-46fb-48d3-be74-dbfe43b4cf7c" DisplayFormat="10.0" Enabled="True" GridHeight="1" GridWidth="1" GridX="10" GridY="0" Height="20" IsNull="True" IsProperty="False" IsSequence="False" MultiLine="False" Name="MonthWorkDays161" RelationControl="lblMonthWorkDays161" TabIndex="24" TabStop="True" TextAlign="Right" TitleAlign="Left" TitleLocation="Left" UIFieldID="MonthWorkDays" UIViewID="DayCheckIn" Visible="True" Width="120" X="595" Y="0">
+      <NumberControl ID="ca7bcb5e-46fb-48d3-be74-dbfe43b4cf7c" DisplayFormat="10.0" Enabled="True" GridHeight="1" GridWidth="1" GridX="10" GridY="0" Height="20" IsNull="True" IsProperty="False" IsSequence="False" MultiLine="False" Name="MonthWorkDays161" Precision="1" RelationControl="lblMonthWorkDays161" TabIndex="24" TabStop="True" TextAlign="Right" TitleAlign="Left" TitleLocation="Left" UIFieldID="MonthWorkDays" UIViewID="DayCheckIn" Visible="True" Width="120" X="595" Y="0">
         <Events />
         <RelationControls />
-        <PrecisionBind />
-        <RoundRuleBind />
-        <ValueOfRoundByValueBind />
-        <CurrencyType />
+        <PrecisionBind Name="PrecisionBind8" />
+        <RoundRuleBind Name="RoundRuleBind8" />
+        <ValueOfRoundByValueBind Name="ValueOfRoundByValueBind8" />
+        <CurrencyType Name="CurrencyType8" />
       </NumberControl>
     </Card>
     <DataGrid ID="4b366f14-453a-4a3a-9566-52032b4587e5" AllowSelectAllPage="True" EditStatus="edit" Enabled="True" GridHeight="2" GridWidth="2" GridX="0" GridY="1" HasSum="True" Height="339" IsSumAllData="True" Name="DataGrid5" PageSize="20" Paging="True" TabIndex="2" TabStop="True" Width="972" X="10" Y="82">

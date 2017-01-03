@@ -445,10 +445,22 @@ from (
 	
 			-- 收入
 			,Income = max(IsNull(checkin.Income,@DefaultZero))
-			-- 劳产率目标
-			,LaborYieldTarget = max(IsNull(checkin.LaborYieldTarget,@DefaultZero))
-			-- 人工成本目标
-			,LaborCostTarget = max(IsNull(checkin.LaborCostTarget,@DefaultZero))
+			-- 劳产率目标 , 可能有没有行的，所以 做子查询吧
+			--,LaborYieldTarget = max(IsNull(checkin.LaborYieldTarget,@DefaultZero))
+			,LaborYieldTarget = (select max(IsNull(checkin2.LaborYieldTarget,@DefaultZero)) from [10.28.76.125].U9.dbo.Cust_DayCheckIn checkin2 
+								where checkin.Department = checkin2.Department
+									-- 年月相同
+									and DatePart(year,checkin.CheckInDate)*100 + DatePart(month,checkin.CheckInDate)
+										= DatePart(year,checkin2.CheckInDate)*100 + DatePart(month,checkin2.CheckInDate)
+								)
+			-- 人工成本目标 , 可能有没有行的，所以 做子查询吧
+			--,LaborCostTarget = max(IsNull(checkin.LaborCostTarget,@DefaultZero))
+			,LaborCostTarget = (select max(IsNull(checkin2.LaborCostTarget,@DefaultZero)) from [10.28.76.125].U9.dbo.Cust_DayCheckIn checkin2 
+								where  checkin.Department = checkin2.Department
+									-- 年月相同
+									and DatePart(year,checkin.CheckInDate)*100 + DatePart(month,checkin.CheckInDate)
+										= DatePart(year,checkin2.CheckInDate)*100 + DatePart(month,checkin2.CheckInDate)
+								)
 			---- 区域
 			--,Region = IsNull(region.ID,-1)
 			--,RegionCode = IsNull(region.Code,'')
