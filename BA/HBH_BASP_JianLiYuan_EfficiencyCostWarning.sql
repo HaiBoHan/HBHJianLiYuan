@@ -197,15 +197,15 @@ select
 	-- 大区
 	Region
 	,RegionCode
-	,RegionName
+	,RegionName -- = '(' + RegionCode + ')' + RegionName
 	-- 区域
 	,Region2 
 	,Region2Code
-	,Region2Name
+	,Region2Name -- = '(' + Region2Code + ')' + Region2Name
 	-- 部门
 	,Department 
 	,DepartmentCode
-	,DepartmentName
+	,DepartmentName -- = '(' + DepartmentCode + ')' + DepartmentName
 	
 	-- 年月期间
 	,StatisticsPeriod

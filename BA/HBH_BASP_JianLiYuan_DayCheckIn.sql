@@ -45,12 +45,14 @@ begin
 		(ProcName,ParamName,ParamValue,CreatedOn)
 		select 'HBH_BASP_JianLiYuan_DayCheckIn','@请选择过滤年月',IsNull(@请选择过滤年月,'null'),GETDATE()
 		union select 'HBH_BASP_JianLiYuan_DayCheckIn','@请选择大区',IsNull(@请选择大区,'null'),GETDATE()
+		union select 'HBH_BASP_JianLiYuan_DayCheckIn','@请选择区域',IsNull(@请选择区域,'null'),GETDATE()
 		union select 'HBH_BASP_JianLiYuan_DayCheckIn','@请选择部门',IsNull(@请选择部门,'null'),GETDATE()
 		union select 'HBH_BASP_JianLiYuan_DayCheckIn','@领导用表',IsNull(@领导用表,'null'),GETDATE()
 
 		union select 'HBH_BASP_JianLiYuan_DayCheckIn','ProcSql','exec HBH_BASP_JianLiYuan_DayCheckIn '
 				+ IsNull('''' + @请选择过滤年月 + '''' ,'null')
 				+ ',' + IsNull('''' + @请选择大区 + '''' ,'null')
+				+ ',' + IsNull('''' + @请选择区域 + '''' ,'null')
 				+ ',' + IsNull('''' + @请选择部门 + '''' ,'null')
 				+ ',' + IsNull('''' + @领导用表 + '''' ,'null')
 
@@ -163,15 +165,15 @@ select
 	-- 大区
 	Region
 	,RegionCode
-	,RegionName
+	,RegionName -- = '(' + RegionCode + ')' + RegionName
 	-- 区域
-	,Region2
+	,Region2 
 	,Region2Code
-	,Region2Name
+	,Region2Name -- = '(' + Region2Code + ')' + Region2Name
 	-- 部门
-	,Department
+	,Department 
 	,DepartmentCode
-	,DepartmentName
+	,DepartmentName -- = '(' + DepartmentCode + ')' + DepartmentName
 
 	--Department
 	--,DepartmentCode
