@@ -10,6 +10,9 @@ declare @YearMonthStart int = 201606
 
 declare @CurrentYear int = @YearStart
 declare @CurrentMonth int = 0
+-- declare @CurrentDate datetime = cast((cast(@YearStart as varchar(125)) + '-' + cast(@MonthStart as varchar(125)) + '-' + '1') as datetime)
+declare @CurrentDate datetime = cast(cast((@YearStart * 10000 + @MonthStart * 100 + 1) as varchar(125)) as datetime)
+
 
 /*
 truncate table Dim_U9_MonthFilter
@@ -49,4 +52,24 @@ from Dim_U9_MonthFilter
 
 
 
+/*
+truncate table Dim_U9_Date_Filter
+*/
+if not exists(select 1 from Dim_U9_Date_Filter)
+begin
+	while year(@CurrentDate) <= @YearEnd
+	begin
+
+		-- 大于开始年月，才插入数据
+		if(year(@CurrentDate) * 100 + month(@CurrentDate) >= @YearMonthStart)
+		begin
+			insert into Dim_U9_Date_Filter
+			(DayName,DayDate)
+			select cast(year(@CurrentDate) as varchar(125)) + '年' + right('00' + cast(month(@CurrentDate) as varchar(125)),2) + '月' + right('00' + cast(day(@CurrentDate) as varchar(125)),2) + '日' + '[' + convert(varchar(8),@CurrentDate,112) + ']'
+				,@CurrentDate
+		end
+
+		set @CurrentDate = DateAdd(Day,1,@CurrentDate)
+	end
+end
 

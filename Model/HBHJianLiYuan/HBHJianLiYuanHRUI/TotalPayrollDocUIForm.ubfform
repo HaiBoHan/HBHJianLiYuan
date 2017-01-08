@@ -500,21 +500,21 @@
               <CurrencyType Name="CurrencyType17" />
               <Events />
             </NumberColumn>
-            <NumberColumn ID="1e7fc9dc-c82c-4dac-9d0a-20aaaeb81307" DefaultValue="0" DisplayFormat="24.9" Enabled="False" Help="薪资申请汇总行.Misc.银行实发" IsNull="True" IsProperty="False" IsSequence="False" Name="BankTotalActPay0" NPos="20" Point="2" UIFieldID="BankTotalActPay" UIViewID="TotalPayrollDoc_TotalPayrollDocLine" Visible="True">
+            <NumberColumn ID="1e7fc9dc-c82c-4dac-9d0a-20aaaeb81307" DefaultValue="0" DisplayFormat="24.9" Enabled="False" HasSum="True" Help="薪资申请汇总行.Misc.银行实发" IsNull="True" IsProperty="False" IsSequence="False" Name="BankTotalActPay0" NPos="20" Point="2" UIFieldID="BankTotalActPay" UIViewID="TotalPayrollDoc_TotalPayrollDocLine" Visible="True">
               <PrecisionBind Name="PrecisionBind18" />
               <RoundRuleBind Name="RoundRuleBind18" />
               <ValueOfRoundByValueBind Name="ValueOfRoundByValueBind18" />
               <CurrencyType Name="CurrencyType18" />
               <Events />
             </NumberColumn>
-            <NumberColumn ID="b5d19824-8f6c-4182-aeb2-0a9d2a460e89" DefaultValue="0" DisplayFormat="24.9" Enabled="False" Help="薪资申请汇总行.Misc.现金实发" IsNull="True" IsProperty="False" IsSequence="False" Name="CashTotalActPay0" NPos="21" Point="2" UIFieldID="CashTotalActPay" UIViewID="TotalPayrollDoc_TotalPayrollDocLine" Visible="True">
+            <NumberColumn ID="b5d19824-8f6c-4182-aeb2-0a9d2a460e89" DefaultValue="0" DisplayFormat="24.9" Enabled="False" HasSum="True" Help="薪资申请汇总行.Misc.现金实发" IsNull="True" IsProperty="False" IsSequence="False" Name="CashTotalActPay0" NPos="21" Point="2" UIFieldID="CashTotalActPay" UIViewID="TotalPayrollDoc_TotalPayrollDocLine" Visible="True">
               <PrecisionBind Name="PrecisionBind19" />
               <RoundRuleBind Name="RoundRuleBind19" />
               <ValueOfRoundByValueBind Name="ValueOfRoundByValueBind19" />
               <CurrencyType Name="CurrencyType19" />
               <Events />
             </NumberColumn>
-            <NumberColumn ID="cfc3f467-5694-4248-bad3-9797bc4d99ef" DefaultValue="0" DisplayFormat="24.9" Enabled="False" Help="薪资申请汇总行.Misc.扣发合计" IsNull="True" IsProperty="False" IsSequence="False" Name="WithholdingTotalActPay0" NPos="22" Point="2" UIFieldID="WithholdingTotalActPay" UIViewID="TotalPayrollDoc_TotalPayrollDocLine" Visible="True">
+            <NumberColumn ID="cfc3f467-5694-4248-bad3-9797bc4d99ef" DefaultValue="0" DisplayFormat="24.9" Enabled="False" HasSum="True" Help="薪资申请汇总行.Misc.扣发合计" IsNull="True" IsProperty="False" IsSequence="False" Name="WithholdingTotalActPay0" NPos="22" Point="2" UIFieldID="WithholdingTotalActPay" UIViewID="TotalPayrollDoc_TotalPayrollDocLine" Visible="True">
               <PrecisionBind Name="PrecisionBind20" />
               <RoundRuleBind Name="RoundRuleBind20" />
               <ValueOfRoundByValueBind Name="ValueOfRoundByValueBind20" />

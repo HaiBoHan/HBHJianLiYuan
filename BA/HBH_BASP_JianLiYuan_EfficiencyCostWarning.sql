@@ -9,6 +9,7 @@ if exists(select * from sys.objects where name='HBH_BASP_JianLiYuan_EfficiencyCo
 -- 如果存在则删掉
 	drop proc HBH_BASP_JianLiYuan_EfficiencyCostWarning
 go
+-- 假期人均效率人工成本预警表
 -- 创建存储过程
 create proc HBH_BASP_JianLiYuan_EfficiencyCostWarning  (
 -- @StartDate datetime = null
@@ -18,6 +19,8 @@ create proc HBH_BASP_JianLiYuan_EfficiencyCostWarning  (
 ,@请选择大区 varchar(125) = ''
 ,@请选择区域 varchar(125) = ''
 ,@请选择部门 varchar(125) = ''
+,@请选择开始日期 varchar(125) = ''
+,@请选择结束日期 varchar(125) = ''
 )
 with encryption
 as
@@ -46,12 +49,16 @@ begin
 		union select 'HBH_BASP_JianLiYuan_EfficiencyCostWarning','@请选择大区',IsNull(@请选择大区,'null'),GETDATE()
 		union select 'HBH_BASP_JianLiYuan_EfficiencyCostWarning','@请选择区域',IsNull(@请选择区域,'null'),GETDATE()
 		union select 'HBH_BASP_JianLiYuan_EfficiencyCostWarning','@请选择部门',IsNull(@请选择部门,'null'),GETDATE()
+		union select 'HBH_BASP_JianLiYuan_EfficiencyCostWarning','@请选择开始日期',IsNull(@请选择开始日期,'null'),GETDATE()
+		union select 'HBH_BASP_JianLiYuan_EfficiencyCostWarning','@请选择结束日期',IsNull(@请选择结束日期,'null'),GETDATE()
 
 		union select 'HBH_BASP_JianLiYuan_EfficiencyCostWarning','ProcSql','exec HBH_BASP_JianLiYuan_EfficiencyCostWarning '
 				+ IsNull('''' + @请选择过滤年月 + '''' ,'null')
 				+ ',' + IsNull('''' + @请选择大区 + '''' ,'null')
 				+ ',' + IsNull('''' + @请选择区域 + '''' ,'null')
 				+ ',' + IsNull('''' + @请选择部门 + '''' ,'null')
+				+ ',' + IsNull('''' + @请选择开始日期 + '''' ,'null')
+				+ ',' + IsNull('''' + @请选择结束日期 + '''' ,'null')
 
 			   ,GETDATE()
 	end
@@ -204,6 +211,8 @@ select
 	,StatisticsPeriod
 	-- 日期
 	,WarningDate
+	-- 日期
+	,CheckInDate
 	-- 餐次	(先做成合并的吧)
 	,MealTime = -1
 	-- 预计就餐人数
@@ -291,6 +300,8 @@ from (
 		,StatisticsPeriod = Right('0000' + DateName(year,warningLine.Date),4) + '年' + Right('00' + DateName(month,warningLine.Date),2) + '月'
 		-- 日期
 		,WarningDate = Right('00' + DateName(Month,warningLine.Date),2) + '.' + Right('00' + DateName(day,warningLine.Date),2)
+		-- 日期
+		,CheckInDate = warningLine.Date
 		---- 餐次
 		--,MealTime = MealTime
 		-- 预计就餐人数
@@ -416,6 +427,7 @@ from (
 		,Right('0000' + DateName(year,warningLine.Date),4) + '年' + Right('00' + DateName(month,warningLine.Date),2) + '月'
 		-- 日期
 		,Right('00' + DateName(Month,warningLine.Date),2) + '.' + Right('00' + DateName(day,warningLine.Date),2)
+		,warningLine.Date
 		---- 餐次
 		--,MealTime = MealTime
 	) warningDetail
@@ -437,5 +449,13 @@ where (@请选择过滤年月 is null or @请选择过滤年月 = ''
 	and (@请选择部门 is null or @请选择部门 = ''
 		or @请选择部门 = DepartmentName
 		)
+	and (@请选择开始日期 is null or @请选择开始日期 = ''
+		or CheckInDate >= (select max(dateStart.DayDate) from Dim_U9_Date_Filter dateStart where dateStart.DayName = @请选择开始日期)
+		)
+	and (@请选择结束日期 is null or @请选择结束日期 = ''
+		or CheckInDate <= (select max(dateEnd.DayDate) from Dim_U9_Date_Filter dateEnd where dateEnd.DayName = @请选择结束日期)
+		)
+
+
 
 

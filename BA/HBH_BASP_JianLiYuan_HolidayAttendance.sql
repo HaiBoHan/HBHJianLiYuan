@@ -18,6 +18,8 @@ create proc HBH_BASP_JianLiYuan_HolidayAttendance  (
 ,@请选择大区 varchar(125) = ''
 ,@请选择区域 varchar(125) = ''
 ,@请选择部门 varchar(125) = ''
+,@请选择开始日期 varchar(125) = ''
+,@请选择结束日期 varchar(125) = ''
 )
 with encryption
 as
@@ -46,12 +48,16 @@ begin
 		union select 'HBH_BASP_JianLiYuan_HolidayAttendance','@请选择大区',IsNull(@请选择大区,'null'),GETDATE()
 		union select 'HBH_BASP_JianLiYuan_HolidayAttendance','@请选择区域',IsNull(@请选择区域,'null'),GETDATE()
 		union select 'HBH_BASP_JianLiYuan_HolidayAttendance','@请选择部门',IsNull(@请选择部门,'null'),GETDATE()
+		union select 'HBH_BASP_JianLiYuan_HolidayAttendance','@请选择开始日期',IsNull(@请选择开始日期,'null'),GETDATE()
+		union select 'HBH_BASP_JianLiYuan_HolidayAttendance','@请选择结束日期',IsNull(@请选择结束日期,'null'),GETDATE()
 
 		union select 'HBH_BASP_JianLiYuan_HolidayAttendance','ProcSql','exec HBH_BASP_JianLiYuan_HolidayAttendance '
 				+ IsNull('''' + @请选择过滤年月 + '''' ,'null')
 				+ ',' + IsNull('''' + @请选择大区 + '''' ,'null')
 				+ ',' + IsNull('''' + @请选择区域 + '''' ,'null')
 				+ ',' + IsNull('''' + @请选择部门 + '''' ,'null')
+				+ ',' + IsNull('''' + @请选择开始日期 + '''' ,'null')
+				+ ',' + IsNull('''' + @请选择结束日期 + '''' ,'null')
 
 			   ,GETDATE()
 	end
@@ -323,7 +329,7 @@ from (
 
 
 select *
-from Fact_U9_HolidayAttendance
+from Fact_U9_HolidayAttendance holiday
 where (@请选择过滤年月 is null or @请选择过滤年月 = ''
 		or @请选择过滤年月 = StatisticsPeriod
 		)
@@ -336,5 +342,10 @@ where (@请选择过滤年月 is null or @请选择过滤年月 = ''
 	and (@请选择部门 is null or @请选择部门 = ''
 		or @请选择部门 = DepartmentName
 		)
-
+	and (@请选择开始日期 is null or @请选择开始日期 = ''
+		or CheckInDate >= (select max(dateStart.DayDate) from Dim_U9_Date_Filter dateStart where dateStart.DayName = @请选择开始日期)
+		)
+	and (@请选择结束日期 is null or @请选择结束日期 = ''
+		or CheckInDate <= (select max(dateEnd.DayDate) from Dim_U9_Date_Filter dateEnd where dateEnd.DayName = @请选择结束日期)
+		)
 

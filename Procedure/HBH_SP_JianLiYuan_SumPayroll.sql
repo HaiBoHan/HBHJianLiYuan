@@ -219,8 +219,12 @@ select
 	,totalPay.ID as TotalPayrollDoc
 	
 	,payDetail.Department as Department
+	-- ,IsNull(dept.ID,-1) as Department
+	-- 计薪方案计薪期间
 	,IsNull(payDetail.PayrollCaculate,-1) as PayrollCalculate
-	,IsNull(payCalc.SalarySolution,-1) as SalarySolution
+	-- 计薪方案
+	-- ,IsNull(payCalc.SalarySolution,-1) as SalarySolution
+	,-1  as SalarySolution
 
 into #hbh_tmp_TotalPayrollDocLine
 from [Cust_TotalPayrollDoc] totalPay
@@ -248,7 +252,10 @@ from [Cust_TotalPayrollDoc] totalPay
 		and (totalPay.PayrollType is null 
 			or defValue.Code = employeeCategory.DescFlexField_PrivateDescSeg1
 			)
-
+	
+	left join CBO_Department dept
+	on employee.DescFlexField_PubDescSeg18 = dept.Code
+		and dept.Org = employee.BusinessOrg
 	
 where totalPay.ID = @ID
 	---- and defValue.Code = employee.DescFlexField_PrivateDescSeg1
@@ -492,11 +499,11 @@ select tmpLine.*
 	,dbo.HBH_Fn_GetDecimal(payDetail.' + @FTransDeptBeforeOrigPayField + ',0) as FBeforeDeptOrigPay,dbo.HBH_Fn_GetDecimal(payDetail.' + @FTransDeptAfterOrigPayField + ',0) as FAfterDeptOrigPay
 	,dbo.HBH_Fn_GetDecimal(payDetail.' + @FTransDeptBeforeActPayField + ',0) as FBeforeDeptActPay,dbo.HBH_Fn_GetDecimal(payDetail.' + @FTransDeptAfterActPayField + ',0) as FAfterDeptActPay
 
-	,dbo.HBH_Fn_GetDecimal(payDetail.' + @BankPayField  + ',0) as BankPay ,dbo.HBH_Fn_GetDecimal(payDetail.' + @FBankPayField  + ',0) as FBankPay 
-	,dbo.HBH_Fn_GetDecimal(payDetail.' + @CashPayField  + ',0) as CashPay ,dbo.HBH_Fn_GetDecimal(payDetail.' + @FCashPayField  + ',0) as FCashPay 
-	,dbo.HBH_Fn_GetDecimal(payDetail.' + @DeductPayField  + ',0) as DeductPay ,dbo.HBH_Fn_GetDecimal(payDetail.' + @FDeductPayField  + ',0) as FDeductPay 
-	,dbo.HBH_Fn_GetDecimal(payDetail.' + @GrossPayField  + ',0) as GrossPay ,dbo.HBH_Fn_GetDecimal(payDetail.' + @FGrossPayField  + ',0) as FGrossPay 
-	,dbo.HBH_Fn_GetDecimal(payDetail.' + @ActualPayField  + ',0) as ActualPay  ,dbo.HBH_Fn_GetDecimal(payDetail.' + @FActualPayField  + ',0) as FActualPay  
+	,dbo.HBH_Fn_GetDecimal(payResult.' + @BankPayField  + ',0) as BankPay ,dbo.HBH_Fn_GetDecimal(payResult.' + @FBankPayField  + ',0) as FBankPay 
+	,dbo.HBH_Fn_GetDecimal(payResult.' + @CashPayField  + ',0) as CashPay ,dbo.HBH_Fn_GetDecimal(payResult.' + @FCashPayField  + ',0) as FCashPay 
+	,dbo.HBH_Fn_GetDecimal(payResult.' + @DeductPayField  + ',0) as DeductPay ,dbo.HBH_Fn_GetDecimal(payResult.' + @FDeductPayField  + ',0) as FDeductPay 
+	,dbo.HBH_Fn_GetDecimal(payResult.' + @GrossPayField  + ',0) as GrossPay ,dbo.HBH_Fn_GetDecimal(payResult.' + @FGrossPayField  + ',0) as FGrossPay 
+	,dbo.HBH_Fn_GetDecimal(payResult.' + @ActualPayField  + ',0) as ActualPay  ,dbo.HBH_Fn_GetDecimal(payResult.' + @FActualPayField  + ',0) as FActualPay  
 from #hbh_tmp_TotalPayrollDocLine tmpLine
 	inner join PAY_EmpPayroll payDetail
 	on tmpLine.PayDetailID = payDetail.ID
@@ -664,10 +671,13 @@ from (
 	
 	select tmpLine.TotalPayrollDoc
 		-- ,payDetail.Department as Department
-		,deptTrl.ID as Department
+		-- ,deptTrl.ID as Department
+		,tmpLine.Department as Department
 		,deptTrl.Name as DepartmentName
-		,IsNull(payDetail.PayrollCaculate,-1) as PayrollCalculate
-		,IsNull(payCalc.SalarySolution,-1) as SalarySolution
+		--,IsNull(payDetail.PayrollCaculate,-1) as PayrollCalculate
+		,IsNull(tmpLine.PayrollCalculate,-1) as PayrollCalculate
+		--,IsNull(payCalc.SalarySolution,-1) as SalarySolution
+		,IsNull(tmpLine.SalarySolution,-1) as SalarySolution
 				
 		,(IsNull(tmpLine.BankPay ,0)) as BankPay
 		,(IsNull(tmpLine.FBankPay ,0)) as FBankPay
@@ -804,7 +814,9 @@ begin
 		,@Now
 
 		,@ID
-		,(row_number() over (order by totalLine.Department) * 10) --  as DocLineNo
+		-- 黄利平提出问题:行号可否改成1、2、3、4……
+		--,(row_number() over (order by totalLine.PayrollCalculate,totalLine.Department) * 10) --  as DocLineNo
+		,(row_number() over (order by totalLine.PayrollCalculate,totalLine.Department)) --  as DocLineNo
 		-- 部门
 		,totalLine.Department
 		,totalLine.DepartmentName
@@ -837,7 +849,8 @@ begin
 		,(select count(*) from #hbh_tmp_TotalPayrollDocLine_Dept detailLine
 					where detailLine.SalarySolution = totalLine.SalarySolution
 						and detailLine.PayrollCalculate = totalLine.PayrollCalculate
-						-- and detailLine.Department = totalLine.Department
+						-- 部门
+						and detailLine.Department = totalLine.Department
 	
 						---- 部门
 						--and (detailLine.BeforeDeptName = totalLine.DepartmentName
@@ -938,7 +951,7 @@ begin
 		inner join Cust_TotalPayrollDocLine totalLine
 		on detailLine.SalarySolution = totalLine.SalarySolution
 			and detailLine.PayrollCalculate = totalLine.PayrollCalculate
-			-- and detailLine.Department = totalLine.Department
+			and detailLine.Department = totalLine.Department
 	
 			---- 部门
 			--and (detailLine.BeforeDeptName = totalLine.DepartmentName

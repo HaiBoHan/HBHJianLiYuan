@@ -3,6 +3,23 @@
 -- 集团数据库：U9OLAP				(账簿，U9ODS_Template)
 
 
+
+-- 月份过滤条件
+create table Dim_U9_MonthFilter
+(
+	MonthName varchar(125) default ''
+
+)
+
+-- 月份过滤条件
+create table Dim_U9_Date_Filter
+(
+	DayName varchar(125) default ''
+	,DayDate datetime
+)
+
+
+
 -- 维度，人员
 -- drop table Dim_U9_Person
 create table Dim_U9_Person
@@ -176,6 +193,10 @@ create table Fact_U9_HolidayAttendance
 	,DepartmentName varchar(200)
 	
 	,CheckInDate DateTime
+	-- 开始日期
+	,DateStart varchar(125)
+	-- 结束日期
+	,DateEnd varchar(125)
 	,DisplayDate varchar(200) 
 	,StatisticsPeriod varchar(125)
 
@@ -208,15 +229,6 @@ create table Fact_U9_HolidayAttendance
 
 
 
-
--- 月份过滤条件
-create table Dim_U9_MonthFilter
-(
-	MonthName varchar(125) default ''
-
-)
-
-
 -- 假期人均效率人工成本预警表
 -- drop table Fact_U9_EfficiencyCostWarning
 create table Fact_U9_EfficiencyCostWarning
@@ -236,6 +248,12 @@ create table Fact_U9_EfficiencyCostWarning
 	,StatisticsPeriod varchar(125)
 	-- 日期
 	,WarningDate varchar(125)
+	-- 日期
+	,CheckInDate DateTime
+	-- 开始日期
+	,DateStart varchar(125)
+	-- 结束日期
+	,DateEnd varchar(125)
 	-- 餐次
 	,MealTime varchar(200) 
 	-- 预计就餐人数

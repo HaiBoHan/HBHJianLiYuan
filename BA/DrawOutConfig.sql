@@ -127,7 +127,7 @@ set @ReportID = '905e5195-aada-4c91-8ae6-273cda3f3721'
 set @ModelID = '1D61EF22-2ADF-42DD-A3D2-DE5775B160C7'
 set @TableName = 'Fact_U9_HolidayAttendance'
 set @SPName = 'HBH_BASP_JianLiYuan_HolidayAttendance'
-set @Parameters = '@请选择过滤年月,@请选择区域,@请选择大区,@请选择部门'
+set @Parameters = '@请选择过滤年月,@请选择区域,@请选择大区,@请选择部门,@请选择开始日期,@请选择结束日期'
 
 /*
 delete from ETL_RealTime_Tables
@@ -154,17 +154,19 @@ end
 
 -- 假期人均效率人工成本预警表
 --set @ReportID = '0171b154-6278-4b62-9985-ec53a2dc5519'
-set @ReportID = '3b3b5a55-60f9-400e-8aaa-bb6d7be5bd1a'
+--set @ReportID = '3b3b5a55-60f9-400e-8aaa-bb6d7be5bd1a'
+--set @ReportID = '8c20b4eb-bb0f-4d3b-8d9a-601b4c93cf11'
+set @ReportID = '2012a71a-d3ba-45ed-93ff-00161427f7ca'
 set @ModelID = '1D61EF22-2ADF-42DD-A3D2-DE5775B160C7'
 set @TableName = 'Fact_U9_EfficiencyCostWarning'
 set @SPName = 'HBH_BASP_JianLiYuan_EfficiencyCostWarning'
-set @Parameters = '@请选择过滤年月,@请选择区域,@请选择大区,@请选择部门'
+set @Parameters = '@请选择过滤年月,@请选择区域,@请选择大区,@请选择部门,@请选择开始日期,@请选择结束日期'
 
 /*
 delete from ETL_RealTime_Tables
 				where ReportID = @ReportID
 					and ModelID = @ModelID
-*/
+--*/
 if not exists(select 1 from ETL_RealTime_Tables
 				where ReportID = @ReportID
 					and ModelID = @ModelID
