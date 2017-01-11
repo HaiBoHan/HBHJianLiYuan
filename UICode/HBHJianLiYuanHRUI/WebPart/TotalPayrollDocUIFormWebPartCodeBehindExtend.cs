@@ -28,6 +28,7 @@ using U9.VOB.HBHCommon.HBHCommonUI;
 using System.Collections.Generic;
 using HBH.DoNet.DevPlatform.EntityMapping;
 using U9.VOB.Cus.HBHJianLiYuan.HBHHelper;
+using UFSoft.UBF.UI.WebControlAdapter;
 
 
 
@@ -416,6 +417,11 @@ namespace TotalPayrollDocUIModel
             this.SalarySolution90.AddTypeParams(clsMultiSelect.Const_RefType, clsMultiSelect.Const_IsSingleReturn);
             // 单行返回
             this.PayrollCalculate138.AddTypeParams(clsMultiSelect.Const_RefType, clsMultiSelect.Const_IsSingleReturn);
+
+
+            // 每次都重算汇总数据，要不单据切换时，汇总数不改变
+            ((UFWebDataGridAdapter)this.DataGrid5).ResetSumData = true;
+            ((UFWebDataGridAdapter)this.DataGrid6).ResetSumData = true;
         }
         
         public void AfterEventBind()
@@ -423,7 +429,7 @@ namespace TotalPayrollDocUIModel
         }
         
 		public void BeforeUIModelBinding()
-		{
+        {
 
 		}
 
