@@ -167,8 +167,8 @@ from Pay_SalaryItem where Code = @GrossPay)
 	declare @FGrossPay varchar(125) = 'F18'
 	declare @FGrossPayField varchar(125) = (select PayrollField
 from Pay_SalaryItem where Code = @FGrossPay)
-	-- 实发合计 = 005
-	declare @ActualPay varchar(125) = '005'
+	-- 实发合计 = 005		，  087   115
+	declare @ActualPay varchar(125) = '087' -- '005'
 	declare @ActualPayField varchar(125) = (select PayrollField
 from Pay_SalaryItem where Code = @ActualPay)
 	--  F实发合计 = F22
@@ -218,8 +218,10 @@ select
 	,payHead.ID as PayHeadID
 	,totalPay.ID as TotalPayrollDoc
 	
-	,payDetail.Department as Department
-	-- ,IsNull(dept.ID,-1) as Department
+	-- 薪资申请.部门
+	-- ,payDetail.Department as Department
+	-- 人员.财务部门
+	,IsNull(dept.ID,-1) as Department
 	-- 计薪方案计薪期间
 	,IsNull(payDetail.PayrollCaculate,-1) as PayrollCalculate
 	-- 计薪方案
@@ -473,6 +475,11 @@ create table #hbh_tmp_TotalPayrollDocLine_Dept
 	,ActualPay decimal(24,9) -- = '005'
 	--  F实发合计 -- = F22
 	,FActualPay decimal(24,9) -- = 'F22'
+
+	-- 申请单应发
+	,TotalOrigPay decimal(24,9)
+	-- 申请单实发
+	,TotalActPay decimal(24,9)
 )
 
 --declare @DeptSql varchar(max) = 'insert into #hbh_tmp_TotalPayrollDocLine_Dept
@@ -504,6 +511,8 @@ select tmpLine.*
 	,dbo.HBH_Fn_GetDecimal(payResult.' + @DeductPayField  + ',0) as DeductPay ,dbo.HBH_Fn_GetDecimal(payResult.' + @FDeductPayField  + ',0) as FDeductPay 
 	,dbo.HBH_Fn_GetDecimal(payResult.' + @GrossPayField  + ',0) as GrossPay ,dbo.HBH_Fn_GetDecimal(payResult.' + @FGrossPayField  + ',0) as FGrossPay 
 	,dbo.HBH_Fn_GetDecimal(payResult.' + @ActualPayField  + ',0) as ActualPay  ,dbo.HBH_Fn_GetDecimal(payResult.' + @FActualPayField  + ',0) as FActualPay  
+	,payDetail.TotalOrigPay as TotalOrigPay
+	,payDetail.TotalActPay as TotalActPay
 from #hbh_tmp_TotalPayrollDocLine tmpLine
 	inner join PAY_EmpPayroll payDetail
 	on tmpLine.PayDetailID = payDetail.ID
@@ -554,6 +563,9 @@ select
 	,sum(IsNull(FGrossPay ,0)) as FGrossPay 
 	,sum(IsNull(ActualPay ,0)) as ActualPay 
 	,sum(IsNull(FActualPay ,0)) as FActualPay 
+
+	,sum(IsNull(TotalOrigPay ,0)) as TotalOrigPay 
+	,sum(IsNull(TotalActPay ,0)) as TotalActPay 
 
 into #hbh_tmp_TotalLine
 from (
@@ -689,6 +701,9 @@ from (
 		,(IsNull(tmpLine.FGrossPay ,0)) as FGrossPay 
 		,(IsNull(tmpLine.ActualPay ,0)) as ActualPay 
 		,(IsNull(tmpLine.FActualPay ,0)) as FActualPay 
+		
+		,(IsNull(tmpLine.TotalOrigPay ,0)) as TotalOrigPay 
+		,(IsNull(tmpLine.TotalActPay ,0)) as TotalActPay 
 
 	from
 		#hbh_tmp_TotalPayrollDocLine_Dept tmpLine
@@ -698,7 +713,9 @@ from (
 		on payDetail.PayrollCaculate = payCalc.ID
 		
 		inner join CBO_Department_Trl deptTrl
-		on payDetail.Department = deptTrl.ID
+		-- on payDetail.Department = deptTrl.ID
+		-- 改为财务部门
+		on tmpLine.Department = deptTrl.ID
 
 	) as totalPay
 group by TotalPayrollDoc
@@ -840,11 +857,16 @@ begin
 		-- 应发合计
 		--,totalLine.BeforeDeptTotalOrigPay + totalLine.AfterDeptTotalOrigPay + totalLine.SystemTotalOrigPay + totalLine.FBeforeDeptTotalOrigPay +totalLine.FAfterDeptTotalOrigPay
 		--	 as TotalOrigPay
-		,TotalOrigPay = GrossPay + FGrossPay
+		-- 有尾差，改为取 申请单
+		--,TotalOrigPay = GrossPay + FGrossPay
+		,TotalOrigPay = TotalOrigPay
+		
 		-- 实发合计
 		--,totalLine.BeforeDeptTotalActPay + totalLine.AfterDeptTotalActPay + totalLine.SystemTotalActPay + totalLine.FBeforeDeptTotalActPay + totalLine.FAfterDeptTotalActPay
 		--	as TotalActPay
-		,TotalActPay = ActualPay + FActualPay
+		-- 有尾差，改为取 申请单
+		--,TotalActPay = ActualPay + FActualPay
+		,TotalActPay = TotalActPay 
 		-- 计薪人数
 		,(select count(*) from #hbh_tmp_TotalPayrollDocLine_Dept detailLine
 					where detailLine.SalarySolution = totalLine.SalarySolution

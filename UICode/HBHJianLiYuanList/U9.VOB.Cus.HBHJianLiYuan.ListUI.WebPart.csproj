@@ -32,15 +32,14 @@
     <IncrementalBuild>false</IncrementalBuild>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="HBH.DoNet.DevPlatform.EntityMapping">
+      <HintPath>..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\HBHCommon\HBH.DoNet.DevPlatform.EntityMapping.dll</HintPath>
+    </Reference>
     <Reference Include="U9.VOB.Cus.HBHJianLiYuan.HBHHelper">
       <HintPath>..\..\..\..\..\..\UBFV30\U9.VOB.Product.WebPart\U9.VOB.Cus.HBHJianLiYuan.HBHHelper.dll</HintPath>
     </Reference>
     <Reference Include="U9.VOB.HBHCommon.HBHCommonUI.WebPart">
       <HintPath>..\..\..\..\..\..\UBFV30\U9.VOB.Product.WebPart\HBHCommon\U9.VOB.HBHCommon.HBHCommonUI.WebPart.dll</HintPath>
-    </Reference>
-    <Reference Include="UFIDA.U9.Cust.HBH.Common.CommonLibary, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\Unconfiged\Component\UFIDA.U9.Cust.HBH.Common.CommonLibary.dll</HintPath>
     </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

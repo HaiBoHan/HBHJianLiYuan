@@ -136,6 +136,7 @@ select
 
 	
 	-- 全日制标准工资=基本工资（01）+周末加班工资（02）+电话补贴（03）+交通补贴(04)+午餐补贴（05）+职务补贴（07）
+	-- 2017-01-10 wf  现场让修改成：(基本工资（01） + 周末加班工资（02）)，改成了 标准工资.(14)
 	,StardardSalary		
 	-- F钟点工工资标准（F01） = 钟点工工资标准(F01)			-- (F13)
 	,FPartSalary
@@ -217,8 +218,10 @@ from (
 				,0) as MonthWorkDays
 		
 		-- 全日制标准工资=基本工资（01）+周末加班工资（02）+电话补贴（03）+交通补贴(04)+午餐补贴（05）+职务补贴（07）
+		-- 2017-01-10 wf  现场让修改成：(基本工资（01） + 周末加班工资（02）)，改成了 标准工资.(14)
 		,StardardSalary = Sum(dbo.HBH_Fn_GetDecimal(
-				case when salaryItem.Code in ('01','02','03','04','05','07') 
+				--case when salaryItem.Code in ('01','02','03','04','05','07') 
+				case when salaryItem.Code in ('14','03','04','05','07')
 					then IsNull(salary.SalaryItemVlaue,@DefaultZero) 
 				else @DefaultZero end
 					,@DefaultZero))

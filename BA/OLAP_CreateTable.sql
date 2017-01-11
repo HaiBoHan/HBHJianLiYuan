@@ -96,8 +96,9 @@ create table Fact_U9_DayCheckIn
 	,Department bigint
 	,DepartmentCode varchar(200)
 	,DepartmentName varchar(200)
+	,DepartmentDisplayName varchar(200)
 
-	--,CheckInDate varchar(200)
+	,CheckInDate datetime
 	,DisplayDate varchar(200) 
 	,StatisticsPeriod varchar(125)
 	--,Status int
@@ -115,10 +116,10 @@ create table Fact_U9_DayCheckIn
 	
 	-- 收入
 	,Income decimal(24,9)
-	-- 劳产率目标
-	,LaborYieldTarget decimal(24,9)
-	-- 人工成本目标
-	,LaborCostTarget decimal(24,9)
+	-- 劳产率目标	整数
+	,LaborYieldTarget varchar(125)
+	-- 人工成本目标		保留2位小数的百分比
+	,LaborCostTarget varchar(125)
 	-- 工资
 	,Salary decimal(24,9)
 
@@ -131,6 +132,8 @@ create table Fact_U9_DayCheckIn
 	,MonthDays decimal(24,9)
 	-- 日保险
 	,DayInsurance decimal(24,9)
+	-- 日成本合计 = 日工资 + 日保险
+	,DayCost decimal(24,9)
 	
 	-- 月份第一天
 	,FirstDay DateTime

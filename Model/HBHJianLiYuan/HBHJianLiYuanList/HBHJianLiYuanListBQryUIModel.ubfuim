@@ -3,32 +3,32 @@
   <UIModels>
     <UIModel id="3100447a-cd6f-46f4-9b90-113e11241546" name="HBHJianLiYuanListBQryUIModel" displayName="HBHJianLiYuanListBQryUIModel" description="" help="" Namespace="U9.VOB.Cus.HBHJianLiYuan.HBHJianLiYuanListBQryUIModel" QueryInfo="7b0HYBxJliUmL23Ke39K9UrX4HShCIBgEyTYkEAQ7MGIzeaS7B1pRyMpqyqBymVWZV1mFkDM7Z28
 995777333nvvvfe6O51OJ/ff/z9cZmQBbPbOStrJniGAqsgfP358Hz8ifo1f89f4NX6N/5se/MTz
-6+GXf/F3ePx7vFuU6WVeN0W1/Oyj3fHOR2m+nFazYnnx2Ufr9nz74KPf4+jxT6zz+vqkWqyqZb5s
-02L22Uc79z/dz3YzajDbOd/ev3d/sv3w/r2d7cnewYPZzvT84f2H04/SZbbIP/vo20++/Z0iWz4v
-fp91tmRYH6WzolmV2fWL4QZ5M62LVcuIfZTO83KFn/ztm+sVvfXkVJvyj69enX320b3d3Z2HD3ay
-7Z3z3Xvb+/s7k+2D6c7e9s7+7qezg2yys7fzQNu/rtb1NH+2LkvB4atnZ0+Px189HL98NX5JX82z
-Jn+V/6J13rT00UfpV2c/WeRXT+vsQnrHb0+rq+VH6av8/Gx5Xj2vspl8dZJN5/lHR4+fZE0xxVdM
-sfzgXnYvO59sz/Ldg+39g/v3tg/2HtzffnDv4MHegyy7P53eMxTr0GeQGtT1m+ptzp+9qqr2KTU7
-qZZt/q79yaxc86vPirLN6zfZ5CeLppiU9Nmbep1/lJ5U5Xqx7H/+uqrb/qcC5fTdKlvOnueXeUnE
-NjC6nwJC97O7RI6XSikmx2w2zfc/ffjp9vm9/P72/u7udPvg4Wx/e7a7c393//6D2d59y0C3JcfL
-uvrpfNqePfX+eJm1c/z55OVZmy/kqycvv1zldYbX5YOnb7403xxfEIs/LUvvL4L07hp/0yC+OgsG
-Mdl/sHewd7CdHeQzkoJslwRgmm/vTvceEs/du39/P/8mB/HV2RfVLC/NSPKHD+7fO9h5sP3p7iwj
-Gs6m25PJZG/7fPfB3r2H9yf3Z7N7eOlZVS/MO7v7D2b7B9RoZ3JO7+x/urN98GD/3vbk/v375+f3
-Hk6y/T3X0VPI1M7O/v6DbHs6+5Qk/dPz/e2Hk4c727u79/Ld3b393fv7nzJphEWe5ufFMm/CP5lY
-9x+e7x3sPtjdnpEkbO8Tu29PPr0/2z7Iz893DrIHBzv3LLGeVtMXVYdi5rMBsmU1TZWh7XFZZI19
-5ax5VrzLCYVnWdnk+Pu4LKurJ2W2fGsYvMPvkKRnRV7O4uL0gqgjwg66UvOszZ8KsvIxyWNWNPnJ
-PFte5LPTS8LN6/7Juihn353ndf66rU2XwpNV/bxoWuW2Hg33dh9mNCGz7Yf7Dx7Q7JE6ObiXZ9v3
-Pn1IejjfuX9vYpXIk3WDmWiAW4eUna/eg6Lhmz8HhMUHb4pF/s0Q+G6HaUWhRf9k+j/Yzx5O84OH
-2zOiOClx4uGH9yYPt3d2700/zR7s73w6mf1wePi2ZP2pvK7OmtPFqr2270a49WVVgIB7TJXesA/u
-H+zem92/v50/zHe39yc7+XY2PZgSFWY7D/Lz+9mnuR32zwHbfaO0kC5uoMe9Bw938/sHRIDJPrFB
-Rlrs/t7O9vnBvYcPzndIU+7cN/T4sr7okEE+eY/R8wt20B2xMuP4oEH7Az4ur7LrBu6M6w2i0pEN
-+iVbl+0J+UnuD25iBYdpRe5N/uDhwX1ywohj9g/I5TnY3823Z7MHn+482M939h9YlRUTmf/8j//T
-/4s//m/4L/++P+M//xP/zkGy2UniLvenD84/vbd7vv3wgFzS/Yd79+m3ffIKp/uf7u09mEw/nd6G
-Xf+zv+vP+c//mL/4v/gz//L/4s/7C2/Z895Ovr8znWbb98+npJ9nOw+3Dw5m97eJLbLs3sFBtrdn
-B0uzOkZHnV7/6z/vD/ov/uY/5L/8e/+w//Lv/SNv2es0z+5NZg/I79g/J7d391NySKbkS92/d4+G
-fP7p/U+zPdPr8XRarZftQOf/xV/0d/2Xf8Of+X6d793bfZDf3yVvdo/M+vk5OSH375FuePDw0/N7
-B1Oy87um8+f5RTa9Hur7b/3T/7O/5+95r77P9/PdPNuh4X76Keml7NM9MoeTT7c/zQ8mBwf79ycH
-8E2G5PDmru52+dp+wFx/NwyMjn7DX+NHz4+e/xc+/w8=" UseType="ForQuery">
+6+GXv/t3ePx7vFuU6WVeN0W1/Oyj3fHOR2m+nFazYnnx2Ufr9nz74KPf4+jxT6zz+vqkWqyqZb5s
+02L22Uc79z/dz3YzajDbOd/ev3d/sv3w/r2d7cnewYPZzvT84f2H04/SZbbIP/vo5SsG8FE6K5pV
+mV2/6HyaN9O6WLWMwkfpPC9X+MnfvrleUdMnp9qUf3z16uyzj+7t7u48fLCTbe+c797b3t/fmWwf
+THf2tnf2dz+dHWSTnb2dB9r+dbWup/mzdVlKx189O3t6PP7q4fjlq/FL+mqeNfmr/Bet86aljz5K
+vzr7ySK/elpnF9I7fntaXS0/Sl/l52fL8+p5lc3kq5NsOs8/Onr8JGuKKb5i2uQH97J72flke5bv
+HmzvH9y/t32w9+D+9oN7Bw/2HmTZ/en0nqFNhyiD1KCu31Rvc/7sVVW1T6nZSbVs83ftT2blml99
+VpRtXr/JJj9ZNMWkpM/e1Ov8o/SkKteLZf/z11Xd9j8VKKfvVtly9jy/zMvPPrpvYHQ/BYTuZ3eJ
+HC+VUkyO2Wya73/68NPt83v5/e393d3p9sHD2f72bHfn/u7+/QezvfuWVW5Ljpd19dP5tD176v3x
+Mmvn+PPJy7M2X8hXT15+ucrrDK/LB0/ffGm+Ob4gZn5alt5fBOndNf6mQXx1Fgxisv9g72DvYDs7
+yGfE79kusfo0396d7j0knrt3//5+/k0O4quzL6pZXpqR5A8f3L93sPNg+9PdWUY0nE23J5PJ3vb5
+7oO9ew/vT+7PZvfw0rOqXph3dvcfzPYPqNHO5Jze2f90Z/vgwf697cn9+/fPz+89nGT7e66jp5Cp
+nZ39/QfZ9nT2Kcn0p+f72w8nD3e2d3fv5bu7e/u79/c/ZdIIizzNz4tl3oR/MrEeTnf2iTokkvcn
+O9v796f3AWifhHP26d75dHKwc7BjiPW0mr6oOhQznw2QLatpqgxtj8sia+wrZ82z4l1OKDzLyibH
+38dlWV09KbPlW8PgHX6HJD0r8nIWF6cXRB0RdtCVmmdt/lSQlY9JHrOiyU/m2fIin51eEm5e90/W
+RTn77jyv89dtbboUnqzq50XTKrf1aLj78MGUFOzO9r37eyQ1efZg+2ByL9vepXmZPLg/2713PjM0
+fLJuMBMNcOuQsvPVe1A0fPPngLD44E2xyL8ZAt/tMK0otOifTP9P708PDu7tkRxMdvaJ/tNdUuK7
+k+094uSDBw/2s4PZ5IfDw7cl60/ldXXWnC5W7bV9N8KtL6sCBNxjqvSGfbC/82D64Pzh9vThPtmu
+KREgezAj477zYJfs6vn5g3z/55DtvlFaSBc30CN/8Ok0Iwmc7pJ3s39v9mD74YycjQeTbO/T3f3Z
+dH9qjdeX9UWHDPLJe4yeX7CD7oiVGccHDdof8HF5lV03cGdcbxCVjmzQL9m6bE/IT3J/cBMrOKKy
+Pj349OG9nd3tWbb7gOzHvcl2Ntudbe/d33/46f3s090HD/c2icx//sf/6f/FH/83/Jd/35/xn/+J
+f+cg2ewkiVl+OLt/f/f8fPv+A/JF9+9/Sr7FZHePePbe7vQheRif7n16C3b9z/6uP+c//2P+4v/i
+z/zL/4s/7y+8Zc97+9P8/NP7D7Z3dnd3t/fPyfck94BG/PDe7mQnyw4eZD5jjNFRp9f/+s/7g/6L
+v/kP+S//3j/sv/x7/8hb9rpzTq7l3s5DoumU3N77+cPtLJ+Qftp58ODhbO/e+cFubno9nk6r9bId
+6Py/+Iv+rv/yb/gz36vz/fM8359m+9v3pjPSDTmphSx/SI4QuXMH9/fIj7tvzfrz/CKbXg/1/bf+
+6f/Z3/P3vFff+f18535+f4+8RiLy/v4BmcOHOflD5FNMdmb3JuT8D8vhzV3d7fK1/YC5/m4YAh39
+hr/Gj54fPf+fef4f" UseType="ForQuery">
       <UIModelInfos>
         <UIModelInfo id="2cc8f463-93c5-42e2-8de7-2f7f7b3d58c6" name="HBHJianLiYuanListBQryUIModel" displayName="HBHJianLiYuanListBQryUIModel" description="" help="" FullName="HBHJianLiYuanListBQryUIModel" DataTypeID="" MappingID="" MappingName="" IsMap="False">
           <UIModelInfo id="c3f54dfc-8e28-4c0f-b7f9-9e911f0ec431" name="QueryView" displayName="QueryView" description="" help="" FullName="HBHJianLiYuanListBQryUIModel.QueryView" DataTypeID="07313ceb-d85e-4a7b-839a-5f477ca914e5" MappingID="" MappingName="" IsMap="False">

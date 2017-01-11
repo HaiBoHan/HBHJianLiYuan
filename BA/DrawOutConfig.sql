@@ -61,11 +61,12 @@ declare @Parameters varchar(125)
 --declare @ReportID varchar(125) = '290b6a33-3117-4cdf-a97d-84f1339000c9'
 --declare @ModelID varchar(125) = '1D61EF22-2ADF-42DD-A3D2-DE5775B160C7'
 --declare @ReportID varchar(125) = 'e0ef8d8e-5d18-43bc-93a7-3f655033cdc7'
-set @ReportID = 'c6093628-faf4-42d6-94ee-b93c050778d0'
+-- set @ReportID = 'c6093628-faf4-42d6-94ee-b93c050778d0'
+set @ReportID = 'e0ef8d8e-5d18-43bc-93a7-3f655033cdc7'
 set @ModelID = '1D61EF22-2ADF-42DD-A3D2-DE5775B160C7'
 set @TableName = 'Fact_U9_DayCheckIn'
 set @SPName = 'HBH_BASP_JianLiYuan_DayCheckIn'
-set @Parameters = '@请选择过滤年月,@请选择大区,@请选择区域,@请选择部门'
+set @Parameters = '@请选择过滤年月,@请选择大区,@请选择区域,@请选择部门,@请选择开始日期,@请选择结束日期'
 
 
 /*
@@ -97,7 +98,7 @@ set @ReportID = 'b5696c01-2b0b-4745-9844-5f3efe3fea62'
 set @ModelID = '1D61EF22-2ADF-42DD-A3D2-DE5775B160C7'
 set @TableName = 'Fact_U9_DayCheckIn'
 set @SPName = 'HBH_BASP_JianLiYuan_DayCheckInLedUse'
-set @Parameters = '@请选择过滤年月,@请选择大区,@请选择部门'
+set @Parameters = '@请选择过滤年月,@请选择大区,@请选择部门,@请选择开始日期,@请选择结束日期'
 
 /*
 delete from ETL_RealTime_Tables

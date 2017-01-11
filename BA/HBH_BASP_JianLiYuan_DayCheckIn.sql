@@ -9,6 +9,7 @@ if exists(select * from sys.objects where name='HBH_BASP_JianLiYuan_DayCheckIn')
 -- 如果存在则删掉
 	drop proc HBH_BASP_JianLiYuan_DayCheckIn
 go
+-- 劳产率报表
 -- 创建存储过程
 create proc HBH_BASP_JianLiYuan_DayCheckIn  (
 -- @StartDate datetime = null
@@ -18,6 +19,8 @@ create proc HBH_BASP_JianLiYuan_DayCheckIn  (
 ,@请选择大区 varchar(125) = ''
 ,@请选择区域 varchar(125) = ''
 ,@请选择部门 varchar(125) = ''
+,@请选择开始日期 varchar(125) = ''
+,@请选择结束日期 varchar(125) = ''
 ,@领导用表 varchar(125) = ''
 )
 with encryption
@@ -47,6 +50,8 @@ begin
 		union select 'HBH_BASP_JianLiYuan_DayCheckIn','@请选择大区',IsNull(@请选择大区,'null'),GETDATE()
 		union select 'HBH_BASP_JianLiYuan_DayCheckIn','@请选择区域',IsNull(@请选择区域,'null'),GETDATE()
 		union select 'HBH_BASP_JianLiYuan_DayCheckIn','@请选择部门',IsNull(@请选择部门,'null'),GETDATE()
+		union select 'HBH_BASP_JianLiYuan_DayCheckIn','@请选择开始日期',IsNull(@请选择开始日期,'null'),GETDATE()
+		union select 'HBH_BASP_JianLiYuan_DayCheckIn','@请选择结束日期',IsNull(@请选择结束日期,'null'),GETDATE()
 		union select 'HBH_BASP_JianLiYuan_DayCheckIn','@领导用表',IsNull(@领导用表,'null'),GETDATE()
 
 		union select 'HBH_BASP_JianLiYuan_DayCheckIn','ProcSql','exec HBH_BASP_JianLiYuan_DayCheckIn '
@@ -54,6 +59,8 @@ begin
 				+ ',' + IsNull('''' + @请选择大区 + '''' ,'null')
 				+ ',' + IsNull('''' + @请选择区域 + '''' ,'null')
 				+ ',' + IsNull('''' + @请选择部门 + '''' ,'null')
+				+ ',' + IsNull('''' + @请选择开始日期 + '''' ,'null')
+				+ ',' + IsNull('''' + @请选择结束日期 + '''' ,'null')
 				+ ',' + IsNull('''' + @领导用表 + '''' ,'null')
 
 			   ,GETDATE()
@@ -138,6 +145,7 @@ insert into Fact_U9_DayCheckIn
 --	Department
 --	,DepartmentCode
 --	,DepartmentName
+--	,DepartmentDisplayName varchar(200)
 --	,CheckInDate
 --	,StatisticsPeriod
 --	-- 全日制
@@ -175,6 +183,16 @@ select
 	,DepartmentCode
 	,DepartmentName -- = '(' + DepartmentCode + ')' + DepartmentName
 
+	-- 带上劳产率、人工成本目标的 部门显示名
+	/*改为  部门名称 | 劳产率目标 | 人工成本目标
+部门名称,预留11个字空间
+劳产率目标，预留5个字空间
+人工成本目标，预留5个字空间
+	*/
+	,DepartmentDisplayName = Left(IsNull(DepartmentName,'') + '           ',11) + '|' 
+		+ Left(IsNull(dbo.HBH_Fn_GetString(Round(Max(LaborYieldTarget),0,0)),'0') + '     ',5) + '|'
+		+ Left(IsNull(dbo.HBH_Fn_GetString(Round(Max(LaborCostTarget),4,0) * 100),'0') + '%' + '     ',5)
+
 	--Department
 	--,DepartmentCode
 	--,DepartmentName
@@ -183,7 +201,7 @@ select
 	--,RegionCode
 	--,RegionName
 	
-	-- ,CheckInDate = convert(varchar(10),CheckInDate,23)
+	,CheckInDate
 	,DisplayDate
 	,StatisticsPeriod
 	--,checkin.Status as Status
@@ -207,9 +225,9 @@ select
 	--,Income = Max(Income)
 	,Income = Sum(Income)
 	-- 劳产率目标
-	,LaborYieldTarget = Max(LaborYieldTarget)
+	,LaborYieldTarget = dbo.HBH_Fn_GetString(Round(Max(LaborYieldTarget),0,0))
 	-- 人工成本目标
-	,LaborCostTarget = Max(LaborCostTarget)
+	,LaborCostTarget = dbo.HBH_Fn_GetString(Round(Max(LaborCostTarget),4,0) * 100) + '%'
 	---- 标准工资
 	--,StardardSalary = Sum(StardardSalary)
 	
@@ -240,6 +258,9 @@ select
 	--		+ (IsNull(FInsuranceSalary,@DefaultZero) / MonthDays) * IsNull(PartTimeDay,@DefaultZero) )
 	--		)
 	,DayInsurance = Sum(DayInsurance)
+	
+	-- 日成本合计 = 日工资 + 日保险
+	,DayCost = Sum(Salary) + Sum(DayInsurance)
 
 	-- 月份第一天
 	,FirstDay
@@ -480,8 +501,10 @@ from (
 					,0) as MonthWorkDays
 	
 			-- 全日制标准工资=基本工资（01）+周末加班工资（02）+电话补贴（03）+交通补贴(04)+午餐补贴（05）+职务补贴（07）
+			-- 2017-01-10 wf  现场让修改成：(基本工资（01） + 周末加班工资（02）)，改成了 标准工资.(14)
 			,StardardSalary = Sum(dbo.HBH_Fn_GetDecimal(
-					case when salaryItem.Code in ('01','02','03','04','05','07') 
+					--case when salaryItem.Code in ('01','02','03','04','05','07') 
+					case when salaryItem.Code in ('14','03','04','05','07')
 						then IsNull(salary.SalaryItemVlaue,@DefaultZero) 
 					else @DefaultZero end
 						,@DefaultZero))
@@ -594,6 +617,12 @@ from (
 			and (@请选择部门 is null or @请选择部门 = ''
 				or @请选择部门 = deptTrl.Name
 				)
+			and (@请选择开始日期 is null or @请选择开始日期 = ''
+				or checkin.CheckInDate >= (select max(dateStart.DayDate) from Dim_U9_Date_Filter dateStart where dateStart.DayName = @请选择开始日期)
+				)
+			and (@请选择结束日期 is null or @请选择结束日期 = ''
+				or checkin.CheckInDate <= (select max(dateEnd.DayDate) from Dim_U9_Date_Filter dateEnd where dateEnd.DayName = @请选择结束日期)
+				)
 		group by 
 			-- 大区
 			IsNull(region.ID,-1)
@@ -691,7 +720,7 @@ group by
 	,Region2Code
 	,Region2Name
 
-	--,CheckInDate
+	,CheckInDate
 	,DisplayDate
 	,StatisticsPeriod
 	
@@ -727,6 +756,12 @@ where (@请选择过滤年月 is null or @请选择过滤年月 = ''
 		)
 	and (@请选择部门 is null or @请选择部门 = ''
 		or @请选择部门 = DepartmentName
+		)
+	and (@请选择开始日期 is null or @请选择开始日期 = ''
+		or CheckInDate >= (select max(dateStart.DayDate) from Dim_U9_Date_Filter dateStart where dateStart.DayName = @请选择开始日期)
+		)
+	and (@请选择结束日期 is null or @请选择结束日期 = ''
+		or CheckInDate <= (select max(dateEnd.DayDate) from Dim_U9_Date_Filter dateEnd where dateEnd.DayName = @请选择结束日期)
 		)
 
 

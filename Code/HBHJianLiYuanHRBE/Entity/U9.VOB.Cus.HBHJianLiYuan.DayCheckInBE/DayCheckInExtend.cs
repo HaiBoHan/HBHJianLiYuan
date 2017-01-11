@@ -21,6 +21,9 @@ namespace U9.VOB.Cus.HBHJianLiYuan {
 
 	public partial class DayCheckIn{
 
+        // 管理中心组织编码 = 05
+        public const string Const_ManageOrgCode = "05";
+
         public const string Const_ApproveFlowName = "ApproveFlow";
 
 		#region Custom Constructor
@@ -48,6 +51,14 @@ namespace U9.VOB.Cus.HBHJianLiYuan {
 
             if (this.Org == null)
             {
+                // 默认组织不可以是其他组织
+                if (Context.LoginOrg.Code != Const_ManageOrgCode)
+                {
+                    throw new BusinessException(string.Format("日考勤，默认组织[{0}]不满足管理中心组织约束!"
+                        , Context.LoginOrg.Name
+                        ));
+                }
+
                 this.Org = Context.LoginOrg;
             }
 

@@ -378,7 +378,7 @@
               </FormLink>
               <Events />
             </ReferenceColumn>
-            <NumberColumn ID="dbbe05aa-d207-4d3b-98b9-3f2ab2d6d48a" DefaultValue="0" DisplayFormat="10.0" Enabled="True" Help="薪资申请汇总行.Misc.人数" IsNull="True" IsProperty="False" IsSequence="False" MinValue="0" Name="PeopleNumber0" NPos="4" Point="0" UIFieldID="PeopleNumber" UIViewID="TotalPayrollDoc_TotalPayrollDocLine" Visible="True">
+            <NumberColumn ID="dbbe05aa-d207-4d3b-98b9-3f2ab2d6d48a" DefaultValue="0" DisplayFormat="10.0" Enabled="True" HasSum="True" Help="薪资申请汇总行.Misc.人数" IsNull="True" IsProperty="False" IsSequence="False" MinValue="0" Name="PeopleNumber0" NPos="4" Point="0" UIFieldID="PeopleNumber" UIViewID="TotalPayrollDoc_TotalPayrollDocLine" Visible="True">
               <PrecisionBind Name="PrecisionBind2" />
               <RoundRuleBind Name="RoundRuleBind2" />
               <ValueOfRoundByValueBind Name="ValueOfRoundByValueBind2" />

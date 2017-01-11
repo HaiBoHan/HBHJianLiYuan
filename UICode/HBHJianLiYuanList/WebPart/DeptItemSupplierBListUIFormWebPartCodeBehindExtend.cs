@@ -22,8 +22,8 @@ using UFSoft.UBF.UI.Engine;
 using UFSoft.UBF.UI.MD.Runtime;
 using UFSoft.UBF.UI.ActionProcess;
 using UFSoft.UBF.UI.WebControls.ClientCallBack;
-using UFIDA.U9.Cust.HBH.Common.CommonLibary;
 using System.Collections.Specialized;
+using HBH.DoNet.DevPlatform.EntityMapping;
 
 
 

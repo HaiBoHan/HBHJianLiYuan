@@ -347,6 +347,13 @@ as
 	from [10.28.76.125].U9.dbo.Cust_CostWarning warning
 		inner join [10.28.76.125].U9.dbo.Cust_CostWarningLine warningLine
 		on warning.ID = warningLine.CostWarning
+	where 1=1
+		and (@请选择开始日期 is null or @请选择开始日期 = ''
+			or warningLine.Date >= (select max(dateStart.DayDate) from Dim_U9_Date_Filter dateStart where dateStart.DayName = @请选择开始日期)
+			)
+		and (@请选择结束日期 is null or @请选择结束日期 = ''
+			or warningLine.Date <= (select max(dateEnd.DayDate) from Dim_U9_Date_Filter dateEnd where dateEnd.DayName = @请选择结束日期)
+			)
 	group by
 		warning.Department
 		,warningLine.Date
