@@ -422,7 +422,7 @@
         <RelationControls />
         <Events />
       </Label>
-      <NumberControl ID="ca7bcb5e-46fb-48d3-be74-dbfe43b4cf7c" DisplayFormat="10.0" Enabled="True" GridHeight="1" GridWidth="1" GridX="10" GridY="0" Height="20" IsNull="True" IsProperty="False" IsSequence="False" MultiLine="False" Name="MonthWorkDays161" Precision="1" RelationControl="lblMonthWorkDays161" TabIndex="24" TabStop="True" TextAlign="Right" TitleAlign="Left" TitleLocation="Left" UIFieldID="MonthWorkDays" UIViewID="DayCheckIn" Visible="True" Width="120" X="595" Y="0">
+      <NumberControl ID="ca7bcb5e-46fb-48d3-be74-dbfe43b4cf7c" DisplayFormat="10.0" Enabled="True" GridHeight="1" GridWidth="1" GridX="10" GridY="0" Height="20" IsNull="True" IsProperty="False" IsSequence="False" MultiLine="False" Name="MonthWorkDays161" Precision="2" RelationControl="lblMonthWorkDays161" TabIndex="24" TabStop="True" TextAlign="Right" TitleAlign="Left" TitleLocation="Left" UIFieldID="MonthWorkDays" UIViewID="DayCheckIn" Visible="True" Width="120" X="595" Y="0">
         <Events />
         <RelationControls />
         <PrecisionBind Name="PrecisionBind8" />

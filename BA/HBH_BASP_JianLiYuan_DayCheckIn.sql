@@ -72,10 +72,34 @@ end
 	declare @Now datetime = GetDate();
 	declare @CurDate datetime = GetDate()
 	declare @Today datetime = convert(varchar(10), GetDate(), 120)
+	declare @StartDate datetime
+	declare @EndDate datetime
 	
 	-- 设置每周第一天是哪天(周一)
 	set datefirst 1
+
 	
+
+if(@请选择过滤年月 is null or @请选择过滤年月 = '')
+begin
+	select @StartDate=max(dateStart.DayDate)
+	from Dim_U9_Date_Filter dateStart 
+	where dateStart.DayName = @请选择开始日期
+
+	select @EndDate = max(dateStart.DayDate)
+	from Dim_U9_Date_Filter dateStart 
+	where dateStart.DayName = @请选择结束日期
+
+end
+else
+begin
+
+	set @StartDate = cast((replace(replace(@请选择过滤年月,'年','-'),'月','-') + '01') as datetime)
+	-- 下个月1号减一天
+	set @EndDate = DateAdd(day,-1,DateAdd(Month,1,@StartDate))
+	
+end
+
 
 -- 部门二表,删除数据，重新抽取
 /*
@@ -189,10 +213,13 @@ select
 劳产率目标，预留5个字空间
 人工成本目标，预留5个字空间
 	*/
-	,DepartmentDisplayName = Left(IsNull(DepartmentName,'') + '           ',11) + '|' 
-		+ Left(IsNull(dbo.HBH_Fn_GetString(Round(Max(LaborYieldTarget),0,0)),'0') + '     ',5) + '|'
-		+ Left(IsNull(dbo.HBH_Fn_GetString(Round(Max(LaborCostTarget),4,0) * 100),'0') + '%' + '     ',5)
-
+	-- 如果字符串类型是varchar,则中文占2，数字占1; 如果字符串类型是nvarchar,则中文和数字都占2
+	-- 默认查出来的是  nvarchar
+	-- ,DepartmentDisplayName = Left(IsNull(DepartmentName,'') + '                      ',22 - (datalength(cast(DepartmentName as varchar(125))) - len(DepartmentName))) + '|'
+	,DepartmentDisplayName = Left(IsNull(DepartmentName,'') + replicate('	',11),11 + Ceiling((cast(len(DepartmentName) * 2 as decimal(3,1)) - cast(datalength(cast(DepartmentName as varchar(125))) as decimal(3,1))) / 2)  ) + '|'
+		+ Left(LaborYieldTarget + replicate('	',5),5 + Ceiling((cast(len(LaborYieldTarget) * 2 as decimal(3,1)) - cast(datalength(cast(LaborYieldTarget as varchar(125))) as decimal(3,1))) / 2)  ) + '|'
+		+ Left(LaborCostTarget + replicate('	',5),5 + Ceiling((cast(len(LaborCostTarget) * 2 as decimal(3,1)) - cast(datalength(cast(LaborCostTarget as varchar(125))) as decimal(3,1))) / 2))
+		
 	--Department
 	--,DepartmentCode
 	--,DepartmentName
@@ -225,9 +252,11 @@ select
 	--,Income = Max(Income)
 	,Income = Sum(Income)
 	-- 劳产率目标
-	,LaborYieldTarget = dbo.HBH_Fn_GetString(Round(Max(LaborYieldTarget),0,0))
+	--,LaborYieldTarget = dbo.HBH_Fn_GetString(Round(Max(LaborYieldTarget),0,0))
+	,LaborYieldTarget = LaborYieldTarget
 	-- 人工成本目标
-	,LaborCostTarget = dbo.HBH_Fn_GetString(Round(Max(LaborCostTarget),4,0) * 100) + '%'
+	--,LaborCostTarget = dbo.HBH_Fn_GetString(Round(Max(LaborCostTarget),4,0) * 100) + '%'
+	,LaborCostTarget = LaborCostTarget
 	---- 标准工资
 	--,StardardSalary = Sum(StardardSalary)
 	
@@ -307,14 +336,17 @@ from (
 			--,DisplayDate
 			-- 普通，按天；领导，按周；
 			,DisplayDate = case when IsNull(@领导用表,'') = '是' 
-					then '第' + cast(IsNull(CheckMonthNumber,0) as char(1)) + '周(' 
-						-- 周的当月第一天(周一是当月几号)
-						+ case when CheckMonthNumber = FirstWeek then '1' else cast(IsNull(Day(DateAdd(d,-CheckWeekDay + 1,CheckInDate)),0) as varchar(2)) end
+					--then Right(DateName(year,CheckInDate),2) + '年' + Right('00' + DateName(month,CheckInDate),2) + '月' + '第' + cast(IsNull(CheckMonthNumber,0) as char(1)) + '周(' 
+					--	-- 周的当月第一天(周一是当月几号)
+					--	+ case when CheckMonthNumber = FirstWeek then '1' else cast(IsNull(Day(DateAdd(d,-CheckWeekDay + 1,CheckInDate)),0) as varchar(2)) end
+					--	+ '-'
+					--	-- 周的当月最后一天
+					--	+ case when CheckMonthNumber = LastWeek then cast(IsNull(Day(LastDay),0) as varchar(2)) 
+					--			else cast(IsNull(Day(DateAdd(d,7 - CheckWeekDay,CheckInDate)),0) as varchar(2)) end
+					--	+ ')'
+					then Right(CONVERT(varchar(100),case when WeekFirstDay > @StartDate then WeekFirstDay else @StartDate end, 2),8)
 						+ '-'
-						-- 周的当月最后一天
-						+ case when CheckMonthNumber = LastWeek then cast(IsNull(Day(LastDay),0) as varchar(2)) 
-								else cast(IsNull(Day(DateAdd(d,7 - CheckWeekDay,CheckInDate)),0) as varchar(2)) end
-						+ ')'
+						+ Right(CONVERT(varchar(100),case when @EndDate > WeekLastDay then WeekLastDay else @EndDate end, 2),8)
 					else DisplayDate
 					end
 	
@@ -330,9 +362,11 @@ from (
 			-- 收入
 			,Income = Max(Income)
 			-- 劳产率目标
-			,LaborYieldTarget = Max(LaborYieldTarget)
+			--,LaborYieldTarget = Max(LaborYieldTarget)
+			,LaborYieldTarget = dbo.HBH_Fn_GetString(Round(Max(LaborYieldTarget),0,0))
 			-- 人工成本目标
-			,LaborCostTarget = Max(LaborCostTarget)
+			--,LaborCostTarget = Max(LaborCostTarget)
+			,LaborCostTarget = dbo.HBH_Fn_GetString(Round(Max(LaborCostTarget),4,0) * 100) + '%'
 			---- 标准工资
 			--,StardardSalary = Sum(StardardSalary)
 		
@@ -437,19 +471,29 @@ from (
 			-- 是周几
 			,CheckWeekDay = DatePart(weekday,checkin.CheckInDate)
 
+			-- 本周第一天
+			,WeekFirstDay = DateAdd(day,1 -  DatePart(weekday,checkin.CheckInDate),checkin.CheckInDate)
+			-- 本周最后一天
+			,WeekLastDay = DateAdd(day,7 -  DatePart(weekday,checkin.CheckInDate),checkin.CheckInDate )
+
 			-- 月份第一天
-			,DateAdd(M,-1,DateAdd(d,- day(DateAdd(M,1,checkin.CheckInDate)) + 1,DateAdd(M,1,checkin.CheckInDate))) FirstDay
+			,FirstDay = DateAdd(M,-1,DateAdd(d,- day(DateAdd(M,1,checkin.CheckInDate)) + 1,DateAdd(M,1,checkin.CheckInDate))) 
+			--,FirstDay = case when @请选择开始日期 is null or @请选择开始日期 = '' then DateAdd(M,-1,DateAdd(d,- day(DateAdd(M,1,checkin.CheckInDate)) + 1,DateAdd(M,1,checkin.CheckInDate))) 
+			--				else StartDate.DayDate end
 			-- 月份第一天  是第几周
-			,1 FirstWeek
+			,FirstWeek = 1
 			-- 月份第一天  是周几
-			,DatePart(weekday,DateAdd(M,-1,DateAdd(d,- day(DateAdd(M,1,checkin.CheckInDate)) + 1,DateAdd(M,1,checkin.CheckInDate)))) FirstWeekDay
+			,FirstWeekDay = DatePart(weekday,DateAdd(M,-1,DateAdd(d,- day(DateAdd(M,1,checkin.CheckInDate)) + 1,DateAdd(M,1,checkin.CheckInDate)))) 
 		
 			-- 月份最后一天
-			,DateAdd(d,- day(DateAdd(M,1,checkin.CheckInDate)),DateAdd(M,1,checkin.CheckInDate)) LastDay
+			,LastDay = DateAdd(d,- day(DateAdd(M,1,checkin.CheckInDate)),DateAdd(M,1,checkin.CheckInDate)) 
+			--,LastDay =  case when @请选择结束日期 is null or @请选择结束日期 = ''
+			--				then DateAdd(d,- day(DateAdd(M,1,checkin.CheckInDate)),DateAdd(M,1,checkin.CheckInDate)) 
+			--				else EndDate.DayDate end
 			-- 月份最后一天  是第几周
-			,DATEPART(WEEK,DateAdd(d,- day(DateAdd(M,1,checkin.CheckInDate)),DateAdd(M,1,checkin.CheckInDate))) - DATEPART(WEEK, DateAdd(M,-1,DateAdd(d,- day(DateAdd(M,1,DateAdd(d,- day(DateAdd(M,1,checkin.CheckInDate)),DateAdd(M,1,checkin.CheckInDate)))) + 1,DateAdd(M,1,DateAdd(d,- day(DateAdd(M,1,checkin.CheckInDate)),DateAdd(M,1,checkin.CheckInDate)))))) + 1 LastWeek
+			,LastWeek = DATEPART(WEEK,DateAdd(d,- day(DateAdd(M,1,checkin.CheckInDate)),DateAdd(M,1,checkin.CheckInDate))) - DATEPART(WEEK, DateAdd(M,-1,DateAdd(d,- day(DateAdd(M,1,DateAdd(d,- day(DateAdd(M,1,checkin.CheckInDate)),DateAdd(M,1,checkin.CheckInDate)))) + 1,DateAdd(M,1,DateAdd(d,- day(DateAdd(M,1,checkin.CheckInDate)),DateAdd(M,1,checkin.CheckInDate)))))) + 1 
 			-- 月份最后一天  是周几
-			,DatePart(weekday,DateAdd(d,- day(DateAdd(M,1,checkin.CheckInDate)),DateAdd(M,1,checkin.CheckInDate))) LastWeekDay
+			,LastWeekDay = DatePart(weekday,DateAdd(d,- day(DateAdd(M,1,checkin.CheckInDate)),DateAdd(M,1,checkin.CheckInDate))) 
 
 			--,checkin.Status as Status
 			--,checkin.CurrentOperator as CurrentOperator
@@ -596,6 +640,15 @@ from (
 			left join [10.28.76.125].U9.dbo.CBO_Department_Trl region2Trl
 			on region2Trl.ID = region2.ID
 				and region2Trl.SysMLFlag = 'zh-CN'
+
+			--left join (select max(dateStart.DayDate) as DayDate
+			--		from Dim_U9_Date_Filter dateStart 
+			--		where dateStart.DayName = @请选择开始日期) StartDate
+			--on 1=1
+			--left join (select max(dateStart.DayDate) as DayDate
+			--		from Dim_U9_Date_Filter dateStart 
+			--		where dateStart.DayName = @请选择结束日期) EndDate
+			--on 1=1
 		where 
 				-- 全日制标准工资 = 标准工资=基本工资（01）+周末加班工资（02）+电话补贴（03）+交通补贴(04)+午餐补贴（05）+职务补贴（07）
 			-- 非全日制标准工资 = 钟点工工资标准(06)			-- (038)
@@ -604,9 +657,6 @@ from (
 				--	or salaryItem.Code in ('01','02','03','04','05','07' ,'06','F01'))
 
 			dept.ID is not null
-			and (@请选择过滤年月 is null or @请选择过滤年月 = ''
-				or @请选择过滤年月 = Right('0000' + DateName(year,checkin.CheckInDate),4) + '年' + Right('00' + DateName(month,checkin.CheckInDate),2) + '月'
-				)
 			
 			and (@请选择大区 is null or @请选择大区 = ''
 				or @请选择大区 = regionTrl.Name
@@ -617,12 +667,19 @@ from (
 			and (@请选择部门 is null or @请选择部门 = ''
 				or @请选择部门 = deptTrl.Name
 				)
-			and (@请选择开始日期 is null or @请选择开始日期 = ''
-				or checkin.CheckInDate >= (select max(dateStart.DayDate) from Dim_U9_Date_Filter dateStart where dateStart.DayName = @请选择开始日期)
-				)
-			and (@请选择结束日期 is null or @请选择结束日期 = ''
-				or checkin.CheckInDate <= (select max(dateEnd.DayDate) from Dim_U9_Date_Filter dateEnd where dateEnd.DayName = @请选择结束日期)
-				)
+			--and (@请选择过滤年月 is null or @请选择过滤年月 = ''
+			--	or @请选择过滤年月 = Right('0000' + DateName(year,checkin.CheckInDate),4) + '年' + Right('00' + DateName(month,checkin.CheckInDate),2) + '月'
+			--	)
+			--and (@请选择开始日期 is null or @请选择开始日期 = ''
+			--	or checkin.CheckInDate >= StartDate.DayDate --(select max(dateStart.DayDate) from Dim_U9_Date_Filter dateStart where dateStart.DayName = @请选择开始日期)
+			--	)
+			--and (@请选择结束日期 is null or @请选择结束日期 = ''
+			--	or checkin.CheckInDate <= EndDate.DayDate --(select max(dateEnd.DayDate) from Dim_U9_Date_Filter dateEnd where dateEnd.DayName = @请选择结束日期)
+			--	)
+
+			and checkin.CheckInDate >= @StartDate
+			and checkin.CheckInDate <= @EndDate
+
 		group by 
 			-- 大区
 			IsNull(region.ID,-1)
@@ -658,6 +715,8 @@ from (
 			--,IsNull(region.ID,-1)
 			--,IsNull(region.Code,'')
 			--,IsNull(regionTrl.Name,'')
+			--,StartDate.DayDate
+			--,EndDate.DayDate
 
 		) as checkinSummary
 	group by 
@@ -692,6 +751,11 @@ from (
 		,FirstWeek
 		-- 月份第一天  有周几
 		,FirstWeekDay
+
+		-- 本周第一天
+		,WeekFirstDay
+		-- 本周最后一天
+		,WeekLastDay 
 		
 		-- 月份最后一天
 		,LastDay
@@ -740,7 +804,9 @@ group by
 	,LastWeek
 	-- 月份最后一天  有周几
 	,LastWeekDay
-
+	
+	,LaborYieldTarget
+	,LaborCostTarget
 
 
 select *
@@ -763,5 +829,8 @@ where (@请选择过滤年月 is null or @请选择过滤年月 = ''
 	and (@请选择结束日期 is null or @请选择结束日期 = ''
 		or CheckInDate <= (select max(dateEnd.DayDate) from Dim_U9_Date_Filter dateEnd where dateEnd.DayName = @请选择结束日期)
 		)
-
-
+order by
+	RegionCode
+	,Region2Code
+	,DepartmentCode 
+	,DisplayDate
