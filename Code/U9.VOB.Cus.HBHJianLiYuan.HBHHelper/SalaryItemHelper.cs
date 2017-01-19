@@ -42,11 +42,65 @@ namespace U9.VOB.Cus.HBHJianLiYuan.HBHHelper
         /// </summary>
         public static string SalaryItemCode_WorkHours = "037";
 
+        // 工时 编码 = 037
+        /// <summary>
+        /// 工时 编码 = 037
+        /// </summary>
+        public static SalaryItem SalaryItem_WorkHours
+        {
+            get
+            {
+                SalaryItem item = SalaryItem.Finder.Find("Code=@Code"
+                    , new OqlParam(SalaryItemHelper.SalaryItemCode_WorkHours)
+                    );
+
+                return item;
+            }
+        }
+
         // F考勤工时 编码 = F26
         /// <summary>
         /// F考勤工时 编码 = F26
         /// </summary>
         public static string SalaryItemCode_FWorkHours = "F26";
+
+        // F考勤工时 编码 = F26
+        /// <summary>
+        /// F考勤工时 编码 = F26
+        /// </summary>
+        public static SalaryItem SalaryItem_FWorkHours
+        {
+            get
+            {
+                SalaryItem item = SalaryItem.Finder.Find("Code=@Code"
+                    , new OqlParam(SalaryItemHelper.SalaryItemCode_FWorkHours)
+                    );
+
+                return item;
+            }
+        }
+
+        // FJ工时 编码 = F57        = 取日考勤中钟点工出勤
+        /// <summary>
+        /// FJ工时 编码 = F57        = 取日考勤中钟点工出勤
+        /// </summary>
+        public static string SalaryItemCode_FJWorkHours = "F57";
+
+        // FJ工时 编码 = F57        = 取日考勤中钟点工出勤
+        /// <summary>
+        /// FJ工时 编码 = F57        = 取日考勤中钟点工出勤
+        /// </summary>
+        public static SalaryItem SalaryItem_FJWorkHours
+        {
+            get
+            {
+                SalaryItem item = SalaryItem.Finder.Find("Code=@Code"
+                    , new OqlParam(SalaryItemHelper.SalaryItemCode_FJWorkHours)
+                    );
+
+                return item;
+            }
+        }
 
         // 调动前部门 编码 : 取计薪期间内第一天所在部门 = 092
         /// <summary>
