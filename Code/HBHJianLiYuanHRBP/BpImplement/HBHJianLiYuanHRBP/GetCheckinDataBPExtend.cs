@@ -321,13 +321,50 @@
  
                                  */
 
-                                decimal allCheckInDay = GetAllCheckInDay(lstDTO);
-                                SalaryItem _allCheckinItem = SalaryItemHelper.SalaryItem_CheckInDays;
-                                if (_allCheckinItem != null)
+                                decimal alljWorkHours = 0;
+                                decimal fWorkHours = 0;
+                                decimal fjWorkHours = 0;
+                                decimal allCheckInDay = GetAllCheckInDay(lstDTO, out alljWorkHours, out fWorkHours, out fjWorkHours);
+                                // 出勤天数 编码 = 015
                                 {
-                                    line.SetSalaryItem(_allCheckinItem, allCheckInDay);
-                                    isSeted = true;
+                                    SalaryItem _allCheckinItem = SalaryItemHelper.SalaryItem_CheckInDays;
+                                    if (_allCheckinItem != null)
+                                    {
+                                        line.SetSalaryItem(_allCheckinItem, allCheckInDay);
+                                        isSeted = true;
+                                    }
                                 }
+
+                                //  F考勤工时 编码 = F26
+                                {
+                                    SalaryItem _allJWorkHours = SalaryItemHelper.SalaryItem_WorkHours;
+                                    if (_allJWorkHours != null)
+                                    {
+                                        line.SetSalaryItem(_allJWorkHours, alljWorkHours);
+                                        isSeted = true;
+                                    }
+                                }
+
+                                //  FJ工时 编码 = F57
+                                {
+                                    SalaryItem _fWorkHours = SalaryItemHelper.SalaryItem_FWorkHours;
+                                    if (_fWorkHours != null)
+                                    {
+                                        line.SetSalaryItem(_fWorkHours, fWorkHours);
+                                        isSeted = true;
+                                    }
+                                }
+
+                                //  FJ工时 编码 = F57        = 取日考勤中钟点工出勤
+                                {
+                                    SalaryItem _fjWorkHours = SalaryItemHelper.SalaryItem_FJWorkHours;
+                                    if (_fjWorkHours != null)
+                                    {
+                                        line.SetSalaryItem(_fjWorkHours, fjWorkHours);
+                                        isSeted = true;
+                                    }
+                                }
+
 
                                 {
                                     CheckInDTO firstCheckIn = lstDTO[0];
@@ -345,7 +382,7 @@
                                         }
                                         else
                                         {
-                                            SetSalaryValue(line, firstCheckIn, SalaryItemHelper.SalaryItem_FFirstDept, null,null);
+                                            SetSalaryValue(line, firstCheckIn, SalaryItemHelper.SalaryItem_FFirstDept, null, null);
                                         }
                                     }
                                 }
@@ -365,7 +402,7 @@
                                         }
                                         else
                                         {
-                                            SetSalaryValue(line, secondCheckIn, SalaryItemHelper.SalaryItem_FSecondDept, SalaryItemHelper.SalaryItem_FSecondDeptDays,null);
+                                            SetSalaryValue(line, secondCheckIn, SalaryItemHelper.SalaryItem_FSecondDept, SalaryItemHelper.SalaryItem_FSecondDeptDays, null);
                                         }
                                     }
                                 }
@@ -382,11 +419,11 @@
                                         // checkInDTO.CheckType == CheckTypeEnum.FullTimeStaff.Value ? beforeDeptItem : fbeforeDeptItem
                                         if (thirdCheckIn.CheckType == CheckTypeEnum.FullTimeStaff.Value)
                                         {
-                                            SetSalaryValue(line, thirdCheckIn, SalaryItemHelper.SalaryItem_ThirdDept, SalaryItemHelper.SalaryItem_ThirdDeptDays,SalaryItemHelper.SalaryItem_ThirdDeptWorkHours);
+                                            SetSalaryValue(line, thirdCheckIn, SalaryItemHelper.SalaryItem_ThirdDept, SalaryItemHelper.SalaryItem_ThirdDeptDays, SalaryItemHelper.SalaryItem_ThirdDeptWorkHours);
                                         }
                                         else
                                         {
-                                            SetSalaryValue(line, thirdCheckIn, SalaryItemHelper.SalaryItem_FThirdDept, SalaryItemHelper.SalaryItem_FThirdDeptDays,null);
+                                            SetSalaryValue(line, thirdCheckIn, SalaryItemHelper.SalaryItem_FThirdDept, SalaryItemHelper.SalaryItem_FThirdDeptDays, null);
                                         }
                                     }
                                 }
@@ -456,8 +493,19 @@
             非全日制员工出勤薪资取数规则：F考勤工时=∑非全日制员工出勤+∑钟点工出勤
             非全日制出勤、全日制出勤、出勤天数均保留一位小数，其中钟点工出勤、非全日制出勤不能大于4.
              */
+            // 出勤天数 编码 = 015
             SalaryItem checkinItem = SalaryItem.Finder.Find("Code=@Code"
                 , new OqlParam(SalaryItemHelper.SalaryItemCode_CheckInDays)
+                );
+
+            //  F考勤工时 编码 = F26
+            SalaryItem fWorkHoursItem = SalaryItem.Finder.Find("Code=@Code"
+                , new OqlParam(SalaryItemHelper.SalaryItemCode_FWorkHours)
+                );
+
+            //  FJ工时 编码 = F57
+            SalaryItem fjWorkHoursItem = SalaryItem.Finder.Find("Code=@Code"
+                , new OqlParam(SalaryItemHelper.SalaryItemCode_FJWorkHours)
                 );
 
             SalaryItem beforeDeptItem = SalaryItem.Finder.Find("Code=@Code"
@@ -591,8 +639,12 @@
         /// </summary>
         /// <param name="lstDTO"></param>
         /// <returns></returns>
-        private static decimal GetAllCheckInDay(List<CheckInDTO> lstDTO)
+        private static decimal GetAllCheckInDay(List<CheckInDTO> lstDTO, out decimal alljWorkHours, out decimal fWorkHours, out decimal fjWorkHours)
         {
+            alljWorkHours = 0;
+            fWorkHours = 0;
+            fjWorkHours = 0;
+
             decimal all = 0;
             if (lstDTO != null
                 && lstDTO.Count > 0
@@ -601,6 +653,16 @@
                 foreach (CheckInDTO dto in lstDTO)
                 {
                     all += dto.FullTimeDay;
+
+                    fWorkHours += dto.PartTimeDay;
+                    if (dto.CheckType == CheckTypeEnum.FullTimeStaff.Value)
+                    {
+                        alljWorkHours += dto.HourlyDay;
+                    }
+                    else if (dto.CheckType == CheckTypeEnum.PartTimeStaff.Value)
+                    {
+                        fjWorkHours += dto.HourlyDay;
+                    }
                 }
             }
 
