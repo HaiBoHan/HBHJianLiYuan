@@ -69,6 +69,29 @@ end
 	declare @Now datetime = GetDate();
 	declare @CurDate datetime = GetDate()
 	declare @Today datetime = convert(varchar(10), GetDate(), 120)
+	declare @StartDate datetime
+	declare @EndDate datetime
+
+
+if(@请选择过滤年月 is null or @请选择过滤年月 = '')
+begin
+	select @StartDate=max(dateStart.DayDate)
+	from Dim_U9_Date_Filter dateStart 
+	where dateStart.DayName = @请选择开始日期
+
+	select @EndDate = max(dateStart.DayDate)
+	from Dim_U9_Date_Filter dateStart 
+	where dateStart.DayName = @请选择结束日期
+
+end
+else
+begin
+
+	set @StartDate = cast((replace(replace(@请选择过滤年月,'年','-'),'月','-') + '01') as datetime)
+	-- 下个月1号减一天
+	set @EndDate = DateAdd(day,-1,DateAdd(Month,1,@StartDate))
+	
+end
 
 
 -- 部门二表,删除数据，重新抽取
@@ -414,6 +437,16 @@ from (
 			)
 		and (@请选择结束日期 is null or @请选择结束日期 = ''
 			or warningLine.Date <= (select max(dateEnd.DayDate) from Dim_U9_Date_Filter dateEnd where dateEnd.DayName = @请选择结束日期)
+			)
+
+		and (@请选择大区 is null or @请选择大区 = ''
+			or @请选择大区 = regionTrl.Name
+			)
+		and (@请选择区域 is null or @请选择区域 = ''
+			or @请选择区域 = region2Trl.Name
+			)
+		and (@请选择部门 is null or @请选择部门 = ''
+			or @请选择部门 = deptTrl.Name
 			)
 
 	group by

@@ -213,6 +213,19 @@
         <Events />
         <RelationControls />
         <Events />
+        <FormLink FormRefID="beee4a9d-0556-4787-a7f9-38d775f0c4f6" FormRefName="DepartmentMainUIForm.ubfform" FormRefPath="DepartmentMainUIForm.ubfform" FormRefProjectPath="UFIDA.U9.CBO.Pub.Department.DepartmentUI.MetaData.dll" Height="504" IsShowStateBar="True" Width="992">
+          <InParameters>
+            <Parameter ContextID="" ControlID="Department47" ControlProperty="Key" ControlType="ReferenceModel" Name="ID" ParameterBindType="Bind2Control" />
+          </InParameters>
+          <OutParameters>
+            <Parameter ContextID="" ControlID="Department47" ControlProperty="Key" ControlType="ReferenceModel" Name="ID" />
+            <Parameter ContextID="" ControlID="Department47" ControlProperty="Value" ControlType="ReferenceModel" Name="Code" />
+            <Parameter ContextID="" ControlID="Department47" ControlProperty="Text" ControlType="ReferenceModel" Name="Name" />
+            <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="WorkCalendar" />
+            <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="WorkCalendarName" />
+            <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="WorkCalendarCode" />
+          </OutParameters>
+        </FormLink>
       </Label>
       <Reference ID="1113362b-0d1e-41a6-ab37-042bfa35d5fe" CodeAttributeName="Code" CodeField="Code" CodeFieldUIFieldID="Department_Code" CodeFieldUIViewID="CostWarning" DisplayFormat="19.0" Enabled="True" EntityName="ID" GridHeight="1" GridWidth="1" GridX="2" GridY="2" Height="20" IsNull="True" IsProperty="False" IsSequence="False" Name="Department47" NameAttributeName="Name" NameFieldUIFieldID="Department_Name" NameFieldUIViewID="CostWarning" PkeyField="ID" RefType="1e104b8d-a110-4608-a8d4-d41e1c252e1c" RelationControl="lblDepartment47" TabIndex="5" TabStop="True" TextAlign="Right" TitleAlign="Left" TitleLocation="Left" UIFieldID="Department" UIViewID="CostWarning" Visible="True" Width="153" WindowHeight="408" WindowWidth="580" X="158" Y="50">
         <Events />

@@ -74,6 +74,17 @@ end
 	declare @Today datetime = convert(varchar(10), GetDate(), 120)
 	declare @StartDate datetime
 	declare @EndDate datetime
+	/*
+	01	北京三源
+	02	青岛健力源
+	03	烟台分公司
+	04	济南健力源
+	05	管理中心
+	06	采购中心
+	07	北京健力源
+	08	沈阳健力源
+	*/
+	declare @ManageOrgCode varchar(125) = '05'
 	
 	-- 设置每周第一天是哪天(周一)
 	set datefirst 1
@@ -132,11 +143,15 @@ select dept.ID,dept.Code,deptTrl.Name,dept.Level+1 as Level,dept.Org
 from [10.28.76.125].U9.dbo.CBO_Department dept 
 	inner join [10.28.76.125].U9.dbo.CBO_Department_Trl deptTrl 
 	on dept.ID= deptTrl.ID and deptTrl.SysMLFlag='zh-CN'
+	inner join [10.28.76.125].U9.dbo.Base_Organization org
+	on dept.Org = org.ID
 where
 	dept.Code != '00001'
 	and Len(dept.Code) = 5
 	-- 不存在的新增
 	and dept.ID not in (select region2.ID from Dim_U9_Department2 region2)
+	-- 管理组织
+	and org.Code = @ManageOrgCode
 
 -- 区域
 insert into Dim_U9_Department3
@@ -144,10 +159,31 @@ select dept.ID,dept.Code,deptTrl.Name,dept.Level+1 as Level,dept.Org
 from [10.28.76.125].U9.dbo.CBO_Department dept 
 	inner join [10.28.76.125].U9.dbo.CBO_Department_Trl deptTrl 
 	on dept.ID= deptTrl.ID and deptTrl.SysMLFlag='zh-CN'
+	inner join [10.28.76.125].U9.dbo.Base_Organization org
+	on dept.Org = org.ID
 where
 	Len(dept.Code) = 7
 	-- 不存在的新增
 	and dept.ID not in (select region3.ID from Dim_U9_Department3 region3)
+	-- 管理组织
+	and org.Code = @ManageOrgCode
+
+
+---- 部门
+--insert into Dim_Department
+--select dept.ID,dept.Code,deptTrl.Name,dept.Level+1 as Level,dept.Org
+--from [10.28.76.125].U9.dbo.CBO_Department dept 
+--	inner join [10.28.76.125].U9.dbo.CBO_Department_Trl deptTrl 
+--	on dept.ID= deptTrl.ID and deptTrl.SysMLFlag='zh-CN'
+--	inner join [10.28.76.125].U9.dbo.Base_Organization org
+--	on dept.Org = org.ID
+--where
+--	Len(dept.Code) = 10
+--	-- 不存在的新增
+--	and dept.ID not in (select dept.ID from Dim_Department dept)
+--	-- 管理组织
+--	and org.Code = @ManageOrgCode
+
 
 
 

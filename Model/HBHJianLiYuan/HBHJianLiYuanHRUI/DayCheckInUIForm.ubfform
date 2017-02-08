@@ -1,4 +1,4 @@
-<View ID="eff032a7-ce78-48c1-bb3f-f992965caa0d" ChildLabelWidth="56" ChildRefWidth="20" GridBottomMargin="5" GridColumnCount="1" GridColumnSpace="24" GridLeftMargin="0" GridRightMargin="0" GridRowCount="3" GridRowSpace="10" GridTopMargin="0" Height="504" IsMainForm="True" LayoutType="GridBag" Name="DayCheckInUIForm" Namespace="DayCheckInUIModel" TabStop="False" TemplateCode="UI_SingleCardAndSingleGrid" TemplateType="CustomTemplate" UIModelID="34364f02-d73b-43ab-a10e-4bec54ed69ff" URI=".UI_单卡单表WebPart" ViewID="4983" Width="992" X="10" Y="10">
+<View ID="eff032a7-ce78-48c1-bb3f-f992965caa0d" ChildLabelWidth="56" ChildRefWidth="20" GridBottomMargin="5" GridColumnCount="1" GridColumnSpace="24" GridLeftMargin="0" GridRightMargin="0" GridRowCount="3" GridRowSpace="10" GridTopMargin="0" Height="504" IsMainForm="True" LayoutType="GridBag" Name="DayCheckInUIForm" Namespace="DayCheckInUIModel" TabStop="False" TemplateCode="UI_SingleCardAndSingleGrid" TemplateType="CustomTemplate" UIModelID="34364f02-d73b-43ab-a10e-4bec54ed69ff" URI=".UI_单卡单表WebPart" ViewID="4983" Width="992" X="10" Y="415">
   <Columns>
     <Column Fixed="False" Name="Column0" Type="Title" Width="992" />
   </Columns>
@@ -417,18 +417,18 @@
         <Events />
         <RelationControls />
       </TextBox>
-      <Label ID="062f8b20-27c6-44ee-9464-6044f52676b5" Enabled="True" GridHeight="1" GridWidth="1" GridX="8" GridY="0" Height="20" IsNull="True" IsSequence="False" Name="lblMonthWorkDays161" RelationControl="MonthWorkDays161" TabIndex="23" TabStop="True" TitleAlign="Right" TitleLocation="Left" UIFieldID="" UIViewID="" Visible="True" Width="100" X="490" Y="0">
+      <Label ID="879ec2c8-5970-4c4a-9959-6ae98ffc1c0b" Enabled="True" GridHeight="1" GridWidth="1" GridX="8" GridY="0" Height="20" IsNull="True" IsSequence="False" Name="lblMonthWorkDays190" RelationControl="MonthWorkDays190" TabIndex="23" TabStop="True" TitleAlign="Right" TitleLocation="Left" UIFieldID="" UIViewID="" Visible="True" Width="100" X="490" Y="0">
         <Events />
         <RelationControls />
         <Events />
       </Label>
-      <NumberControl ID="ca7bcb5e-46fb-48d3-be74-dbfe43b4cf7c" DisplayFormat="10.0" Enabled="True" GridHeight="1" GridWidth="1" GridX="10" GridY="0" Height="20" IsNull="True" IsProperty="False" IsSequence="False" MultiLine="False" Name="MonthWorkDays161" Precision="2" RelationControl="lblMonthWorkDays161" TabIndex="24" TabStop="True" TextAlign="Right" TitleAlign="Left" TitleLocation="Left" UIFieldID="MonthWorkDays" UIViewID="DayCheckIn" Visible="True" Width="120" X="595" Y="0">
+      <NumberControl ID="d4fb0e43-e92c-407b-baff-8a110e789fa8" DisplayFormat="24.9" Enabled="True" GridHeight="1" GridWidth="1" GridX="10" GridY="0" Height="20" IsNull="True" IsProperty="False" IsSequence="False" MultiLine="False" Name="MonthWorkDays190" Precision="2" RelationControl="lblMonthWorkDays190" TabIndex="24" TabStop="True" TextAlign="Right" TitleAlign="Left" TitleLocation="Left" UIFieldID="MonthWorkDays" UIViewID="DayCheckIn" Visible="True" Width="120" X="595" Y="0">
         <Events />
         <RelationControls />
-        <PrecisionBind Name="PrecisionBind8" />
-        <RoundRuleBind Name="RoundRuleBind8" />
-        <ValueOfRoundByValueBind Name="ValueOfRoundByValueBind8" />
-        <CurrencyType Name="CurrencyType8" />
+        <PrecisionBind />
+        <RoundRuleBind />
+        <ValueOfRoundByValueBind />
+        <CurrencyType />
       </NumberControl>
     </Card>
     <DataGrid ID="4b366f14-453a-4a3a-9566-52032b4587e5" AllowSelectAllPage="True" EditStatus="edit" Enabled="True" GridHeight="2" GridWidth="2" GridX="0" GridY="1" HasSum="True" Height="339" IsSumAllData="True" Name="DataGrid5" PageSize="20" Paging="True" TabIndex="2" TabStop="True" Width="972" X="10" Y="82">

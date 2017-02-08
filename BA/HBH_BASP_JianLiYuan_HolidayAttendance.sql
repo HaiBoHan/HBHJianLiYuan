@@ -69,6 +69,29 @@ end
 	declare @Now datetime = GetDate();
 	declare @CurDate datetime = GetDate()
 	declare @Today datetime = convert(varchar(10), GetDate(), 120)
+	declare @StartDate datetime
+	declare @EndDate datetime
+
+
+if(@请选择过滤年月 is null or @请选择过滤年月 = '')
+begin
+	select @StartDate=max(dateStart.DayDate)
+	from Dim_U9_Date_Filter dateStart 
+	where dateStart.DayName = @请选择开始日期
+
+	select @EndDate = max(dateStart.DayDate)
+	from Dim_U9_Date_Filter dateStart 
+	where dateStart.DayName = @请选择结束日期
+
+end
+else
+begin
+
+	set @StartDate = cast((replace(replace(@请选择过滤年月,'年','-'),'月','-') + '01') as datetime)
+	-- 下个月1号减一天
+	set @EndDate = DateAdd(day,-1,DateAdd(Month,1,@StartDate))
+	
+end
 
 
 
@@ -347,12 +370,46 @@ as
 	from [10.28.76.125].U9.dbo.Cust_CostWarning warning
 		inner join [10.28.76.125].U9.dbo.Cust_CostWarningLine warningLine
 		on warning.ID = warningLine.CostWarning
+		
+		left join [10.28.76.125].U9.dbo.CBO_Department dept
+		-- on checkin.Department = dept.ID
+		on dept.ID = warning.Department
+
+		left join [10.28.76.125].U9.dbo.CBO_Department_Trl deptTrl
+		on deptTrl.ID = dept.ID
+			and deptTrl.SysMLFlag = 'zh-CN'
+	 
+		left join [10.28.76.125].U9.dbo.CBO_Department region
+		on SubString(dept.Code,1,5) = region.Code
+		left join [10.28.76.125].U9.dbo.CBO_Department_Trl regionTrl
+		on regionTrl.ID = region.ID
+			and regionTrl.SysMLFlag = 'zh-CN'
+	 
+		left join [10.28.76.125].U9.dbo.CBO_Department region2
+		on SubString(dept.Code,1,7) = region2.Code
+		left join [10.28.76.125].U9.dbo.CBO_Department_Trl region2Trl
+		on region2Trl.ID = region2.ID
+			and region2Trl.SysMLFlag = 'zh-CN'
+
 	where 1=1
-		and (@请选择开始日期 is null or @请选择开始日期 = ''
-			or warningLine.Date >= (select max(dateStart.DayDate) from Dim_U9_Date_Filter dateStart where dateStart.DayName = @请选择开始日期)
+		--and (@请选择开始日期 is null or @请选择开始日期 = ''
+		--	or warningLine.Date >= (select max(dateStart.DayDate) from Dim_U9_Date_Filter dateStart where dateStart.DayName = @请选择开始日期)
+		--	)
+		--and (@请选择结束日期 is null or @请选择结束日期 = ''
+		--	or warningLine.Date <= (select max(dateEnd.DayDate) from Dim_U9_Date_Filter dateEnd where dateEnd.DayName = @请选择结束日期)
+		--	)
+
+		and warningLine.Date >= @StartDate
+		and warningLine.Date <= @EndDate
+
+		and (@请选择大区 is null or @请选择大区 = ''
+			or @请选择大区 = regionTrl.Name
 			)
-		and (@请选择结束日期 is null or @请选择结束日期 = ''
-			or warningLine.Date <= (select max(dateEnd.DayDate) from Dim_U9_Date_Filter dateEnd where dateEnd.DayName = @请选择结束日期)
+		and (@请选择区域 is null or @请选择区域 = ''
+			or @请选择区域 = region2Trl.Name
+			)
+		and (@请选择部门 is null or @请选择部门 = ''
+			or @请选择部门 = deptTrl.Name
 			)
 	group by
 		warning.Department
@@ -377,9 +434,12 @@ select
 	,DepartmentName = IsNull(deptTrl.Name,'')
 	--,DepartmentName = '(' + IsNull(dept.Code,'') + ')' + IsNull(deptTrl.Name,'')
 
-	,checkinSummary.CheckInDate
-	,checkinSummary.DisplayDate
-	,checkinSummary.StatisticsPeriod
+	,IsNull(Warning.Date,checkinSummary.CheckInDate) as CheckInDate
+	--,checkinSummary.DisplayDate
+	--,checkinSummary.StatisticsPeriod
+	,DisplayDate = Right('00' + DateName(Month,IsNull(Warning.Date,checkinSummary.CheckInDate)),2) + '.' + Right('00' + DateName(day,IsNull(Warning.Date,checkinSummary.CheckInDate)),2)
+	,StatisticsPeriod = Right('0000' + DateName(year,IsNull(Warning.Date,checkinSummary.CheckInDate)),4) + '年' + Right('00' + DateName(month,IsNull(Warning.Date,checkinSummary.CheckInDate)),2) + '月'
+			
 	--,checkin.Status as Status
 	--,checkin.CurrentOperator as CurrentOperator
 
@@ -390,19 +450,19 @@ select
 	-- 预警
 	-- 收入 = 餐标 * 就餐人数
 	,ForecastHolidayDayIncome = Warning.Income
-	-- 日出勤小时数
-	,ForecastAttendance = Warning.AttendanceTime
+	-- 假日出勤人数 = 日出勤小时数 / 8 
+	,ForecastAttendance = Warning.AttendanceTime / 8
 	-- 当日人工工资
 	,ForecastWage = Warning.Wage
 	-- 预警.日人均效率 = 收入 / 出勤人数
 	,ForecastEfficiency = case when Warning.AttendanceTime is not null and Warning.AttendanceTime != 0
-							then IsNull(Warning.Income,0) / Warning.AttendanceTime
+							then IsNull(Warning.Income,0) * 8 / Warning.AttendanceTime
 							else 0 end
 	
 	-- 收入
-	,FactHolidayDayIncome = (checkinSummary.Income)
+	,FactHolidayDayIncome = IsNull(checkinSummary.Income,@DefaultZero)
 	-- 日出勤人数 = 非全日制员工出勤合计/4 + 钟点工员工出勤合计/8 + 全日制员工出勤合计 
-	,FactAttendance = checkinSummary.PersonTime
+	,FactAttendance = IsNull(checkinSummary.PersonTime,@DefaultZero)
 	-- 实际.日人均效率 =  收入 / 出勤人数
 	,FactEfficiency = case when checkinSummary.PersonTime is not null and checkinSummary.PersonTime != 0
 							then IsNull(checkinSummary.Income,0) / checkinSummary.PersonTime
@@ -487,7 +547,7 @@ from
 	
 	left join [10.28.76.125].U9.dbo.CBO_Department dept
 	-- on checkin.Department = dept.ID
-	on dept.ID = IsNull(checkinSummary.Department,Warning.Department)
+	on dept.ID = IsNull(Warning.Department,checkinSummary.Department)
 
 	left join [10.28.76.125].U9.dbo.CBO_Department_Trl deptTrl
 	on deptTrl.ID = dept.ID
