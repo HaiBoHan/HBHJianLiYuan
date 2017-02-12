@@ -484,7 +484,8 @@ from
 				--Department = IsNull(dept.ID,-1)
 				--,DepartmentCode = IsNull(dept.Code,'')
 				--,DepartmentName = IsNull(deptTrl.Name,'')
-				Department = employee.Dept
+				-- Department = employee.Dept
+				Department = IsNull(checkin.Department,-1)
 
 				,checkin.CheckInDate
 				,DisplayDate = Right('00' + DateName(Month,checkin.CheckInDate),2) + '.' + Right('00' + DateName(day,checkin.CheckInDate),2)
@@ -529,7 +530,8 @@ from
 				--IsNull(dept.ID,-1)
 				--,IsNull(dept.Code,'')
 				--,IsNull(deptTrl.Name,'')
-				employee.Dept
+				-- employee.Dept
+				checkin.Department
 
 				,checkin.CheckInDate
 				-- ,checkinLine.EmployeeArchive
