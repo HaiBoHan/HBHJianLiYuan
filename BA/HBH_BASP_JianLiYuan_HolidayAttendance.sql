@@ -71,6 +71,8 @@ end
 	declare @Today datetime = convert(varchar(10), GetDate(), 120)
 	declare @StartDate datetime
 	declare @EndDate datetime
+	-- 多选分隔标记
+	declare @Separator varchar(2) = ';'
 
 
 if(@请选择过滤年月 is null or @请选择过滤年月 = '')
@@ -143,6 +145,32 @@ where
 	-- 不存在的新增
 	and dept.ID not in (select region3.ID from Dim_U9_Department3 region3)
 
+
+-- 多选部门、区域
+
+-- 部门
+If OBJECT_ID('tempdb..#hbh_tmp_Department') is not null
+	Drop Table #hbh_tmp_Department
+
+select Item
+into #hbh_tmp_Department
+from dbo.HBH_Fn_StrSplitToTable(@请选择部门,@Separator,0)
+
+-- 区域
+If OBJECT_ID('tempdb..#hbh_tmp_Region') is not null
+	Drop Table #hbh_tmp_Region
+
+select Item
+into #hbh_tmp_Region
+from dbo.HBH_Fn_StrSplitToTable(@请选择区域,@Separator,0)
+
+-- 大区
+If OBJECT_ID('tempdb..#hbh_tmp_BigRegion') is not null
+	Drop Table #hbh_tmp_BigRegion
+
+select Item
+into #hbh_tmp_BigRegion
+from dbo.HBH_Fn_StrSplitToTable(@请选择大区,@Separator,0)
 
 
 
@@ -403,13 +431,16 @@ as
 		and warningLine.Date <= @EndDate
 
 		and (@请选择大区 is null or @请选择大区 = ''
-			or @请选择大区 = regionTrl.Name
+			-- or @请选择大区 = 
+			or regionTrl.Name in (select Item from #hbh_tmp_BigRegion )
 			)
 		and (@请选择区域 is null or @请选择区域 = ''
-			or @请选择区域 = region2Trl.Name
+			--or @请选择区域 = region2Trl.Name
+			or region2Trl.Name in (select Item from #hbh_tmp_Region )
 			)
 		and (@请选择部门 is null or @请选择部门 = ''
-			or @请选择部门 = deptTrl.Name
+			--or @请选择部门 = deptTrl.Name
+			or deptTrl.Name in (select Item from #hbh_tmp_Department )
 			)
 	group by
 		warning.Department
@@ -592,4 +623,3 @@ where (@请选择过滤年月 is null or @请选择过滤年月 = ''
 	and (@请选择结束日期 is null or @请选择结束日期 = ''
 		or CheckInDate <= (select max(dateEnd.DayDate) from Dim_U9_Date_Filter dateEnd where dateEnd.DayName = @请选择结束日期)
 		)
-

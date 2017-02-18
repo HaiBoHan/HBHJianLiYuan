@@ -85,6 +85,8 @@ end
 	08	沈阳健力源
 	*/
 	declare @ManageOrgCode varchar(125) = '05'
+	-- 多选分隔标记
+	declare @Separator varchar(2) = ';'
 	
 	-- 设置每周第一天是哪天(周一)
 	set datefirst 1
@@ -184,6 +186,33 @@ where
 --	-- 管理组织
 --	and org.Code = @ManageOrgCode
 
+
+
+-- 多选部门、区域
+
+-- 部门
+If OBJECT_ID('tempdb..#hbh_tmp_Department') is not null
+	Drop Table #hbh_tmp_Department
+
+select Item
+into #hbh_tmp_Department
+from dbo.HBH_Fn_StrSplitToTable(@请选择部门,@Separator,0)
+
+-- 区域
+If OBJECT_ID('tempdb..#hbh_tmp_Region') is not null
+	Drop Table #hbh_tmp_Region
+
+select Item
+into #hbh_tmp_Region
+from dbo.HBH_Fn_StrSplitToTable(@请选择区域,@Separator,0)
+
+-- 大区
+If OBJECT_ID('tempdb..#hbh_tmp_BigRegion') is not null
+	Drop Table #hbh_tmp_BigRegion
+
+select Item
+into #hbh_tmp_BigRegion
+from dbo.HBH_Fn_StrSplitToTable(@请选择大区,@Separator,0)
 
 
 
@@ -694,15 +723,29 @@ from (
 
 			dept.ID is not null
 			
+			--and (@请选择大区 is null or @请选择大区 = ''
+			--	or @请选择大区 = regionTrl.Name
+			--	)
+			--and (@请选择区域 is null or @请选择区域 = ''
+			--	or @请选择区域 = region2Trl.Name
+			--	)
+			--and (@请选择部门 is null or @请选择部门 = ''
+			--	or @请选择部门 = deptTrl.Name
+			--	)
+
 			and (@请选择大区 is null or @请选择大区 = ''
-				or @请选择大区 = regionTrl.Name
+				-- or @请选择大区 = 
+				or regionTrl.Name in (select Item from #hbh_tmp_BigRegion )
 				)
 			and (@请选择区域 is null or @请选择区域 = ''
-				or @请选择区域 = region2Trl.Name
+				--or @请选择区域 = region2Trl.Name
+				or region2Trl.Name in (select Item from #hbh_tmp_Region )
 				)
 			and (@请选择部门 is null or @请选择部门 = ''
-				or @请选择部门 = deptTrl.Name
+				--or @请选择部门 = deptTrl.Name
+				or deptTrl.Name in (select Item from #hbh_tmp_Department )
 				)
+
 			--and (@请选择过滤年月 is null or @请选择过滤年月 = ''
 			--	or @请选择过滤年月 = Right('0000' + DateName(year,checkin.CheckInDate),4) + '年' + Right('00' + DateName(month,checkin.CheckInDate),2) + '月'
 			--	)
@@ -870,3 +913,4 @@ order by
 	,Region2Code
 	,DepartmentCode 
 	,DisplayDate
+
