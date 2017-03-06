@@ -557,6 +557,14 @@ from
 						where warn.Department = checkin.Department
 							and checkin.CheckInDate = warn.Date
 						 )
+				
+				/* -- 状态
+				Approved	已审核	2
+				Approving	审核中	1
+				Closed	已关闭	3
+				Opened	开立	0
+				*/
+				and checkin.Status = 2
 			group by 
 				--IsNull(dept.ID,-1)
 				--,IsNull(dept.Code,'')

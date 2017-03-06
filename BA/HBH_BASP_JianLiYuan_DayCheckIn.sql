@@ -722,6 +722,15 @@ from (
 				--	or salaryItem.Code in ('01','02','03','04','05','07' ,'06','F01'))
 
 			dept.ID is not null
+
+			
+			/* -- 状态
+			Approved	已审核	2
+			Approving	审核中	1
+			Closed	已关闭	3
+			Opened	开立	0
+			*/
+			and checkin.Status = 2
 			
 			--and (@请选择大区 is null or @请选择大区 = ''
 			--	or @请选择大区 = regionTrl.Name
