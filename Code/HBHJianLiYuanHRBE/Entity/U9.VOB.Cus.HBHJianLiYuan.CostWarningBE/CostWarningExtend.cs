@@ -114,7 +114,16 @@ namespace U9.VOB.Cus.HBHJianLiYuan {
 		/// </summary>
 		protected override void OnDeleting() {
 			base.OnDeleting();
-			// TO DO: write your business code here...
+            // TO DO: write your business code here...
+
+            if (this.Status != DocStatus.Opened
+                )
+            {
+                throw new BusinessException(string.Format("部门[{0}]导入日[{1}]非开立状态不允许删除!"
+                    , this.Department != null ? this.Department.Name : string.Empty
+                    , this.ImportDate.ToString("yyyy-MM-dd")
+                    ));
+            }
 		}
 
 		/// <summary>

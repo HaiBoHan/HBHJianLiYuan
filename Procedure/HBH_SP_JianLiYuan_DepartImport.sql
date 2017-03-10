@@ -111,20 +111,42 @@ select
 			then person.DescFlexField_PrivateDescSeg13
 		end as ContractType
 into #hbh_tmp_DayCheckInLine
-from CBO_Person person
+--from CBO_Person person
+--	inner join CBO_EmployeeArchive arch
+--	on person.ID = arch.Person
+--	--left join CBO_Department dept
+--	--on dept.ID = arch.Dept
+--	--left join CBO_Department_Trl deptTrl
+--	--on dept.ID = deptTrl.ID
+--	inner join Cust_DayCheckIn checkIn
+--	on arch.Dept = checkin.Department
+	
+--	inner join CBO_EmployeeAssignment Ass
+--	on arch.ID = Ass.Employee
+--		and Ass.IsMain = 1
+--		and checkIn.CheckInDate between IsNull(Ass.AssgnBeginDate,'2000-12-31') and IsNull(Ass.AssgnEndDate,'9999-12-31')
+
+from
+	Cust_DayCheckIn checkIn
+
+	inner join CBO_EmployeeAssignment Ass
+	on Ass.IsMain = 1
+		and checkIn.CheckInDate between IsNull(Ass.AssgnBeginDate,'2000-12-31') and IsNull(Ass.AssgnEndDate,'9999-12-31')
+		--and arch.Dept = checkin.Department
+		and Ass.Dept = checkin.Department
+
 	inner join CBO_EmployeeArchive arch
+	on arch.ID = Ass.Employee
+	inner join CBO_Person person
 	on person.ID = arch.Person
 	--left join CBO_Department dept
 	--on dept.ID = arch.Dept
 	--left join CBO_Department_Trl deptTrl
 	--on dept.ID = deptTrl.ID
-	inner join Cust_DayCheckIn checkIn
-	on arch.Dept = checkin.Department
 	
-	inner join CBO_EmployeeAssignment Ass
-	on arch.ID = Ass.Employee
-		and Ass.IsMain = 1
-		and checkIn.CheckInDate between IsNull(Ass.AssgnBeginDate,'2000-12-31') and IsNull(Ass.AssgnEndDate,'9999-12-31')
+	--inner join 
+	--on arch.Dept = checkin.Department
+	
 
 where -- person.PersonID = '370211198801212020'
 	-- and arch.Dept = 

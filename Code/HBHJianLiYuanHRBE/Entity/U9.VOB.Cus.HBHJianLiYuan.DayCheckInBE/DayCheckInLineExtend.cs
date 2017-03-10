@@ -73,6 +73,16 @@ namespace U9.VOB.Cus.HBHJianLiYuan {
 		protected override void OnDeleting() {
 			base.OnDeleting();
 			// TO DO: write your business code here...
+
+            if (this.DayCheckIn != null
+                && this.DayCheckIn.Status != DocStatus.Opened
+                )
+            {
+                throw new BusinessException(string.Format("部门[{0}]考勤日[{1}]非开立状态不允许删除!"
+                    , this.DayCheckIn.Department != null ? this.DayCheckIn.Department.Name : string.Empty
+                    , this.DayCheckIn.CheckInDate.ToString("yyyy-MM-dd")
+                    ));
+            }
 		}
 
 		/// <summary>

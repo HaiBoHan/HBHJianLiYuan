@@ -78,9 +78,22 @@ namespace CostWarningUIModel
 		private void BtnCopy_Click_Extend(object sender, EventArgs  e)
 		{
 			//调用模版提供的默认实现.--默认实现可能会调用相应的Action.
-			
-		
-			BtnCopy_Click_DefaultImpl(sender,e);
+            BtnCopy_Click_DefaultImpl(sender, e);
+
+            CostWarningRecord head = this.Model.CostWarning.FocusedRecord;
+
+            if (head != null)
+            {
+                if (this.Model.CostWarning.FieldStatus.DefaultValue != null)
+                {
+                    head.Status = (int)this.Model.CostWarning.FieldStatus.DefaultValue;
+                }
+
+                if (this.Model.CostWarning.FieldImportDate.DefaultValue != null)
+                {
+                    head.ImportDate = (DateTime)this.Model.CostWarning.FieldImportDate.DefaultValue;
+                }
+            }
 		}
 
         //BtnSubmit_Click...

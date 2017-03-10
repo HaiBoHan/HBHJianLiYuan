@@ -6,6 +6,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
+using U9.VOB.HBHCommon.U9CommonBE;
+using UFSoft.UBF.Business;
 
 #endregion
 
@@ -69,7 +71,17 @@ namespace U9.VOB.Cus.HBHJianLiYuan {
 		/// </summary>
 		protected override void OnDeleting() {
 			base.OnDeleting();
-			// TO DO: write your business code here...
+            // TO DO: write your business code here...
+
+            if (this.CostWarning != null
+                && this.CostWarning.Status != DocStatus.Opened
+                )
+            {
+                throw new BusinessException(string.Format("部门[{0}]导入日[{1}]非开立状态不允许删除!"
+                    , this.CostWarning.Department != null ? this.CostWarning.Department.Name : string.Empty
+                    , this.CostWarning.ImportDate.ToString("yyyy-MM-dd")
+                    ));
+            }
 		}
 
 		/// <summary>
