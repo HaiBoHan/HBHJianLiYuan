@@ -62,7 +62,9 @@ declare @Parameters varchar(125)
 --declare @ModelID varchar(125) = '1D61EF22-2ADF-42DD-A3D2-DE5775B160C7'
 --declare @ReportID varchar(125) = 'e0ef8d8e-5d18-43bc-93a7-3f655033cdc7'
 -- set @ReportID = 'c6093628-faf4-42d6-94ee-b93c050778d0'
-set @ReportID = 'e0ef8d8e-5d18-43bc-93a7-3f655033cdc7'
+--set @ReportID = 'e0ef8d8e-5d18-43bc-93a7-3f655033cdc7'
+-- 2017-03-17，BA服务器迁移，都复制了一份报表
+set @ReportID = 'c2b8a510-c271-4bd2-9b93-8292bb56d0fe'
 set @ModelID = '1D61EF22-2ADF-42DD-A3D2-DE5775B160C7'
 set @TableName = 'Fact_U9_DayCheckIn'
 set @SPName = 'HBH_BASP_JianLiYuan_DayCheckIn'
@@ -94,7 +96,9 @@ end
 
 
 -- 劳动生产率人工成本统计表(领导用表)
-set @ReportID = 'b5696c01-2b0b-4745-9844-5f3efe3fea62'
+--set @ReportID = 'b5696c01-2b0b-4745-9844-5f3efe3fea62'
+-- 2017-03-17，BA服务器迁移，都复制了一份报表
+set @ReportID = 'b557ada8-4559-477f-8377-664cca8f8473'
 set @ModelID = '1D61EF22-2ADF-42DD-A3D2-DE5775B160C7'
 set @TableName = 'Fact_U9_DayCheckIn'
 set @SPName = 'HBH_BASP_JianLiYuan_DayCheckInLedUse'
@@ -124,7 +128,9 @@ end
 
 -- 假期餐厅实际情况统计表
 --set @ReportID = 'd4d091f4-5e93-4742-bfd8-f60b5e7e578f'
-set @ReportID = '905e5195-aada-4c91-8ae6-273cda3f3721'
+--set @ReportID = '905e5195-aada-4c91-8ae6-273cda3f3721'
+-- 2017-03-17，BA服务器迁移，都复制了一份报表
+set @ReportID = 'ead7373f-92a6-43bf-95e6-d649d9ababb7'
 set @ModelID = '1D61EF22-2ADF-42DD-A3D2-DE5775B160C7'
 set @TableName = 'Fact_U9_HolidayAttendance'
 set @SPName = 'HBH_BASP_JianLiYuan_HolidayAttendance'
@@ -157,7 +163,9 @@ end
 --set @ReportID = '0171b154-6278-4b62-9985-ec53a2dc5519'
 --set @ReportID = '3b3b5a55-60f9-400e-8aaa-bb6d7be5bd1a'
 --set @ReportID = '8c20b4eb-bb0f-4d3b-8d9a-601b4c93cf11'
-set @ReportID = '2012a71a-d3ba-45ed-93ff-00161427f7ca'
+--set @ReportID = '2012a71a-d3ba-45ed-93ff-00161427f7ca'
+-- 2017-03-17，BA服务器迁移，都复制了一份报表
+set @ReportID = 'b6175e20-e755-4e1e-93a6-e3234e6d3cab'
 set @ModelID = '1D61EF22-2ADF-42DD-A3D2-DE5775B160C7'
 set @TableName = 'Fact_U9_EfficiencyCostWarning'
 set @SPName = 'HBH_BASP_JianLiYuan_EfficiencyCostWarning'
