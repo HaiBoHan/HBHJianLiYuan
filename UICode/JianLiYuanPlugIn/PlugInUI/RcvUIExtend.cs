@@ -327,8 +327,11 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInUI
         {
             get
             { 
-                // 05	管理中心
-                return PDContext.Current.OrgRef.CodeColumn != "05";                 
+                // 工作服，管理中心放开这个限制
+                //// 05	管理中心
+                //return PDContext.Current.OrgRef.CodeColumn != "05";
+
+                return true;
             }
         }
     }

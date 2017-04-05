@@ -27,6 +27,7 @@
     <PaperType>A4</PaperType>
   </PageSet>
   <ReportHeader name="ReportHeader">
+    <Height>450</Height>
     <Hide>false</Hide>
     <ReportItems>
       <TextBoxs>
@@ -34,9 +35,7 @@
           <Style>
             <FormatStyle />
             <Front />
-            <Alignment>
-              <Horizontal>Center</Horizontal>
-            </Alignment>
+            <Alignment />
             <Background />
             <Padding />
             <Font>
@@ -46,12 +45,9 @@
               <Color>White,White,White,White,White</Color>
             </Border>
           </Style>
-          <Location>
-            <Top>350</Top>
-            <Left>980</Left>
-          </Location>
-          <Width>5470</Width>
-          <Height>630</Height>
+          <Location />
+          <Width>5420</Width>
+          <Height>450</Height>
           <Text>月考勤报表</Text>
           <IsBookMark>false</IsBookMark>
         </TextBox>
@@ -64,7 +60,7 @@
     <PrintModel>PrintOnFirstPage</PrintModel>
   </ReportHeader>
   <ReportFooter name="ReportFooter">
-    <Hide>false</Hide>
+    <Hide>true</Hide>
     <ReportItems>
       <Cells />
     </ReportItems>
@@ -74,7 +70,7 @@
     <PrintModel>PrintOnLastPage</PrintModel>
   </ReportFooter>
   <ReportBody name="ReportDetail">
-    <Height>1900</Height>
+    <Height>2460</Height>
     <Hide>false</Hide>
     <ReportItems>
       <Matrix name="matrix_3">
@@ -578,10 +574,7 @@
             </MatrixCells>
           </MatrixRow>
         </MatrixRows>
-        <Location>
-          <Top>110</Top>
-          <Left>160</Left>
-        </Location>
+        <Location />
         <Height>1000</Height>
         <Width>18000</Width>
         <DataSetName>MonthCheckIn</DataSetName>
@@ -838,10 +831,20 @@
           <ReferenceFilterName>FOvertimeSalary</ReferenceFilterName>
           <BreakColumnByDisplayField>false</BreakColumnByDisplayField>
         </Field>
+        <Field name="DayInsurance">
+          <FieldName>DayInsurance</FieldName>
+          <DataType>System.Decimal</DataType>
+          <DefaultLabel>日保险</DefaultLabel>
+          <SelectEnable>true</SelectEnable>
+          <Format>{n,2}</Format>
+          <SubFields />
+          <ReferenceFilterName>DayInsurance</ReferenceFilterName>
+          <BreakColumnByDisplayField>false</BreakColumnByDisplayField>
+        </Field>
       </Fields>
       <Command>
         <CommandType>StoredProcedure</CommandType>
-        <CommandText>HBH_SP_JianLiYuanRpt_MonthCheckIn;SalaryPeriod=Parameters!SalaryPeriod.Value&amp;StartDate=Parameters!StartDate.Value&amp;EndDate=Parameters!EndDate.Value&amp;Department=Parameters!Department.Value&amp;IsDetail=Parameters!IsDetail.Value</CommandText>
+        <CommandText>HBH_SP_JianLiYuanRpt_MonthCheckIn;SalaryPeriod=Parameters!SalaryPeriod.Value&amp;StartDate=Parameters!StartDate.Value&amp;EndDate=Parameters!EndDate.Value&amp;Department=Parameters!Department.Value&amp;Employee=Parameters!Employee.Value</CommandText>
         <Identity />
         <Parameters>
           <QueryParameter name="@Global_Parameter">
@@ -884,7 +887,6 @@
           <IsNeedValidate>true</IsNeedValidate>
           <IsAutoComplete>false</IsAutoComplete>
         </ReferenceObject>
-        <EnumeratorKeyPairs />
         <EnumRestrictList />
         <EntityClassId>4c593c05-0913-4b43-a0a4-8d3642f4fc34</EntityClassId>
       </Reference>
@@ -892,6 +894,8 @@
         <enuOperatorListType>Equal</enuOperatorListType>
       </OperatorList>
       <SubFilters />
+      <Level>basic</Level>
+      <Fixed>true</Fixed>
       <WeakRefEntityFullName />
       <WeakRefAttribute />
       <WeakRefEntityAlias />
@@ -920,6 +924,8 @@
         <enuOperatorListType>Equal</enuOperatorListType>
       </OperatorList>
       <SubFilters />
+      <Level>basic</Level>
+      <Fixed>true</Fixed>
       <WeakRefEntityFullName />
       <WeakRefAttribute />
       <WeakRefEntityAlias />
@@ -948,6 +954,8 @@
         <enuOperatorListType>Equal</enuOperatorListType>
       </OperatorList>
       <SubFilters />
+      <Level>basic</Level>
+      <Fixed>true</Fixed>
       <WeakRefEntityFullName />
       <WeakRefAttribute />
       <WeakRefEntityAlias />
@@ -990,7 +998,6 @@
           <IsNeedValidate>true</IsNeedValidate>
           <IsAutoComplete>false</IsAutoComplete>
         </ReferenceObject>
-        <EnumeratorKeyPairs />
         <EnumRestrictList />
         <EntityClassId>3410e657-4f0f-47a9-9cf1-d1c421c116a8</EntityClassId>
       </Reference>
@@ -998,6 +1005,8 @@
         <enuOperatorListType>Equal</enuOperatorListType>
       </OperatorList>
       <SubFilters />
+      <Level>basic</Level>
+      <Fixed>true</Fixed>
       <WeakRefEntityFullName />
       <WeakRefAttribute />
       <WeakRefEntityAlias />
@@ -1013,6 +1022,56 @@
     </FilterDefine>
     <FilterDefine>
       <ID>4</ID>
+      <Name>Employee</Name>
+      <Label>人员</Label>
+      <LabelMultiLang />
+      <DataType>Number</DataType>
+      <Reference>
+        <Type>reference</Type>
+        <ReferenceObject>
+          <ReturnValueType />
+          <ReferenceID>08050080-194d-48d1-8fe5-ec596e8c4386</ReferenceID>
+          <KeyField>ID</KeyField>
+          <ValueField>EmployeeCode</ValueField>
+          <TextField>Person_Name</TextField>
+          <ReturnValueField>ID</ReturnValueField>
+          <RefHeight>408</RefHeight>
+          <RefWidth>580</RefWidth>
+          <RefCondCollection>
+            <RefCondition>
+              <ParameterName />
+              <ParameterValue />
+              <IsFixed>false</IsFixed>
+              <CustomInParams />
+              <IsContext>false</IsContext>
+            </RefCondition>
+          </RefCondCollection>
+          <IsNeedValidate>true</IsNeedValidate>
+          <IsAutoComplete>false</IsAutoComplete>
+        </ReferenceObject>
+        <EnumRestrictList />
+        <EntityClassId>5564bf0f-bb59-4b65-9c7e-bed120a7b779</EntityClassId>
+      </Reference>
+      <OperatorList>
+        <enuOperatorListType>Equal</enuOperatorListType>
+      </OperatorList>
+      <SubFilters />
+      <Level>basic</Level>
+      <Fixed>true</Fixed>
+      <WeakRefEntityFullName />
+      <WeakRefAttribute />
+      <WeakRefEntityAlias />
+      <DescFieldContextValue />
+      <ItemAttribute />
+      <CustomItemAttribute />
+      <Group />
+      <IsRefView>false</IsRefView>
+      <EnumTypeCode />
+      <ValidationResult />
+      <IsUserDefine>false</IsUserDefine>
+    </FilterDefine>
+    <FilterDefine>
+      <ID>5</ID>
       <Name>IsDetail</Name>
       <Label>是否显示明细</Label>
       <LabelMultiLang />

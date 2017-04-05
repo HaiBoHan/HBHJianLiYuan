@@ -426,6 +426,14 @@ as
 		--and (@请选择结束日期 is null or @请选择结束日期 = ''
 		--	or warningLine.Date <= (select max(dateEnd.DayDate) from Dim_U9_Date_Filter dateEnd where dateEnd.DayName = @请选择结束日期)
 		--	)
+		
+		/* -- 状态
+		Approved	已审核	2
+		Approving	审核中	1
+		Closed	已关闭	3
+		Opened	开立	0
+		*/
+		and warning.Status = 2
 
 		and warningLine.Date >= @StartDate
 		and warningLine.Date <= @EndDate

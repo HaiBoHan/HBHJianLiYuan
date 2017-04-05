@@ -13,6 +13,7 @@ create proc HBH_SP_JianLiYuanRpt_MonthCheckIn  (
 ,@EndDate datetime = null
 
 ,@Department bigint = -1
+,@Employee bigint = -1
 
 ,@IsDetail varchar(125) = '1'
 
@@ -57,6 +58,7 @@ begin
 		union select 'HBH_SP_JianLiYuanRpt_MonthCheckIn','@StartDate',IsNull(Convert(varchar,@StartDate,120),'null'),GETDATE()
 		union select 'HBH_SP_JianLiYuanRpt_MonthCheckIn','@EndDate',IsNull(Convert(varchar,@EndDate,120),'null'),GETDATE()
 		union select 'HBH_SP_JianLiYuan_DepartImport','@Department',IsNull(cast(@Department as varchar(max)),'null'),GETDATE()
+		union select 'HBH_SP_JianLiYuan_DepartImport','@Employee',IsNull(cast(@Employee as varchar(max)),'null'),GETDATE()
 		union select 'HBH_SP_JianLiYuan_DepartImport','@IsDetail',IsNull(cast(@IsDetail as varchar(max)),'null'),GETDATE()
 		--union select 'HBH_SP_JianLiYuanRpt_MonthCheckIn','@IsCalcAll',IsNull(cast(@IsCalcAll as varchar(max)),'null'),GETDATE()
 		union select 'HBH_SP_JianLiYuanRpt_MonthCheckIn','ProcSql','exec HBH_SP_JianLiYuanRpt_MonthCheckIn '
@@ -64,6 +66,7 @@ begin
 				+ ',' + IsNull('''' + Convert(varchar,@StartDate,120) + '''' ,'null')
 				+ ',' + IsNull('''' + Convert(varchar,@EndDate,120) + '''' ,'null')
 				+ ',' + IsNull('''' + cast(@Department as varchar(501)) + '''' ,'null')
+				+ ',' + IsNull('''' + cast(@Employee as varchar(501)) + '''' ,'null')
 				--+ IsNull(cast(@IsCalcAll as varchar(501)),'null') 
 				+ ',' + IsNull('''' + cast(@IsDetail as varchar(501)) + '''' ,'null')
 			   ,GETDATE()
@@ -298,6 +301,13 @@ from (
 		--on allCheckIn.Department = checkIn.Department
 
 	where 1=1
+		-- 2017-03-29 李震林，报表显示已审核的
+		/* Approved	已审核	2
+		Approving	审核中	1
+		Closed	已关闭	3
+		Opened	开立	0
+		*/
+		and checkIn.Status in (2)
 		and ( @SalaryPeriod is null or @SalaryPeriod <= 0
 			or checkIn.CheckInDate between period.StartDate and period.EndDate
 			)
@@ -310,6 +320,10 @@ from (
 			)
 		and (@Department is null or @Department <= 0
 			or @Department = checkIn.Department
+			)
+
+		and (@Employee is null or @Employee <= 0
+			or @Employee = checkInLine.EmployeeArchive
 			)
 
 	group by

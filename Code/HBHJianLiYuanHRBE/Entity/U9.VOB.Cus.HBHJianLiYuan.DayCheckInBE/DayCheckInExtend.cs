@@ -14,6 +14,7 @@ using U9.VOB.HBHCommon.U9CommonBE;
 using UFIDA.U9.Approval.Util;
 using UFIDA.U9.GeneralEvents;
 using UFIDA.U9.CBO.HR.Department;
+using HBH.DoNet.DevPlatform.EntityMapping;
 
 #endregion
 
@@ -257,6 +258,51 @@ namespace U9.VOB.Cus.HBHJianLiYuan {
                     UnchangedValidate<decimal>("LaborCostTarget");
                     UnchangedValidate<decimal>("LaborYieldTarget");
                     UnchangedValidate<DateTime>("BusinessDate");
+                }
+            }
+
+            // 提交校验
+            if (this.Status == DocStatus.Approving)
+            {
+                StringBuilder sbIDs = new StringBuilder();
+                foreach(DayCheckInLine line in this.DayCheckInLine)
+                {
+                    if(line.StaffMemberKey != null
+                        && line.StaffMemberKey.ID > 0
+                        )
+                    {
+                        sbIDs.Append(line.StaffMemberKey.ID).Append(",");
+                    }
+                }
+
+                DayCheckInLine.EntityList list = U9.VOB.Cus.HBHJianLiYuan.DayCheckInLine.Finder.FindAll(string.Format("DayCheckIn != @DayCheckIn and DayCheckIn.CheckInDate=@Date and StaffMember in ({0}) "
+                , sbIDs.GetStringRemoveLastSplit()
+                )
+                    , new OqlParam(this.ID)
+                    , new OqlParam(this.CheckInDate)
+                    );
+
+                if (list != null)
+                {
+                    StringBuilder sbError = new StringBuilder();
+                    foreach (var line in list)
+                    {
+                        if (line != null)
+                        {
+                            sbError.Append(string.Format("部门:[{0}],日期:[{1}],人员:[{2}];"
+                                , line.DayCheckIn.Department.Name
+                                , line.DayCheckIn.CheckInDate.ToString("yyyy-MM-dd")
+                                , line.StaffMember.Name
+                                ));
+                        }
+                    }
+
+                    if (sbError.Length > 0)
+                    {
+                        throw new BusinessException(string.Format("本单考勤记录与以下考勤信息冲突: {0}"
+                            , sbError.ToString()
+                            ));
+                    }
                 }
             }
 		}

@@ -462,6 +462,14 @@ from (
 		on region2Trl.ID = region2.ID
 			and region2Trl.SysMLFlag = 'zh-CN'
 	where 1=1
+				
+		/* -- 状态
+		Approved	已审核	2
+		Approving	审核中	1
+		Closed	已关闭	3
+		Opened	开立	0
+		*/
+		and warning.Status = 2
 
 		and (@请选择开始日期 is null or @请选择开始日期 = ''
 			or warningLine.Date >= (select max(dateStart.DayDate) from Dim_U9_Date_Filter dateStart where dateStart.DayName = @请选择开始日期)
