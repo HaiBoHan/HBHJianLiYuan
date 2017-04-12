@@ -1,4 +1,5 @@
 
+
 /*
 select *
 from HBH_SPParamRecord
@@ -479,10 +480,13 @@ from (
 			-- 日保险
 			,DayInsurance = Sum
 					(
-					-- 全日制员工保险
-					(IsNull(InsuranceSalary,@DefaultZero) / (case when MonthWorkDays <= 0 then MonthDays else MonthWorkDays end) * IsNull(FullTimeDay,@DefaultZero) 
-					-- 非全日制员工保险
-					+ (IsNull(FInsuranceSalary,@DefaultZero) / (case when MonthWorkDays <= 0 then MonthDays else MonthWorkDays end)) * IsNull(PartTimeDay,@DefaultZero) )
+					---- 全日制员工保险
+					--(IsNull(InsuranceSalary,@DefaultZero) / (case when MonthWorkDays <= 0 then MonthDays else MonthWorkDays end) * IsNull(FullTimeDay,@DefaultZero) 
+					---- 非全日制员工保险
+					--+ (IsNull(FInsuranceSalary,@DefaultZero) / (case when MonthWorkDays <= 0 then MonthDays else MonthWorkDays end)) * IsNull(PartTimeDay,@DefaultZero) )
+
+					-- 2017-04-11 李震林  就用部门在职的人员的单位保险的和除以应出勤天数就行了
+					(IsNull(InsuranceSalary,@DefaultZero) / (case when MonthWorkDays <= 0 then MonthDays else MonthWorkDays end))
 					)
 			
 			-- 月份第一天
