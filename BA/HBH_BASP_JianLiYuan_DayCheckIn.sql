@@ -719,13 +719,13 @@ from (
 			--		where dateStart.DayName = @请选择结束日期) EndDate
 			--on 1=1
 		where 
-				-- 全日制标准工资 = 标准工资=基本工资（01）+周末加班工资（02）+电话补贴（03）+交通补贴(04)+午餐补贴（05）+职务补贴（07）
+			dept.ID is not null
+			
+			-- 全日制标准工资 = 标准工资=基本工资（01）+周末加班工资（02）+电话补贴（03）+交通补贴(04)+午餐补贴（05）+职务补贴（07）
 			-- 非全日制标准工资 = 钟点工工资标准(06)			-- (038)
 			-- 加班工资标准=薪资项目中F工资标准项目(F01)					-- （F13）
-				--(salaryItem.Code is null 
-				--	or salaryItem.Code in ('01','02','03','04','05','07' ,'06','F01'))
-
-			dept.ID is not null
+			and (salaryItem.Code is null 
+					or salaryItem.Code in ('14','03','04','05','07','06','F01','F06','12','F04'))
 
 			
 			/* -- 状态
