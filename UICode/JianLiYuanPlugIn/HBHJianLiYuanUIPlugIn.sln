@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "U9.VOB.Cus.HBHJianLiYuan.PlugInUI", "PlugInUI\U9.VOB.Cus.HBHJianLiYuan.PlugInUI.csproj", "{550E60F9-E26B-4001-B0A5-3C9908DFE791}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "U9.VOB.Cus.HBHJianLiYuan.PlugInUI", "U9.VOB.Cus.HBHJianLiYuan.PlugInUI.csproj", "{550E60F9-E26B-4001-B0A5-3C9908DFE791}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
