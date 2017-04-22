@@ -88,7 +88,7 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInUI
                 //                            UFSoft.UBF.Report.Filter.enuOperatorListType.Equal);
 
                 string strUserID = PDContext.Current.UserID;
-                //long orgID = PDContext.Current.OrgRef.ID;
+                long orgID = PDContext.Current.OrgRef.ID;
                 {
                     string strFilter = "Department";
                     FilterDefine filterDefine = caseDefine.FilterDefines.GetObjectByName(strFilter);
@@ -129,9 +129,9 @@ where usr.ID = @User
                             && dt.Rows.Count > 0
                             )
                         {
-                            strDeptID = dt.Rows[0].GetString();
-                            strDeptCode = dt.Rows[1].GetString();
-                            strDeptName = dt.Rows[2].GetString();
+                            strDeptID = dt.Rows[0][0].GetString();
+                            strDeptCode = dt.Rows[0][1].GetString();
+                            strDeptName = dt.Rows[0][2].GetString();
                         }
 
                         if (strDeptCode.IsNotNullOrWhiteSpace())
@@ -147,10 +147,11 @@ where usr.ID = @User
 
                             // 过滤条件
                             // "__curOId={0}&{1}={2}"
-                            filterDefine.Reference.ReferenceObject.RefCondCollection[0].CustomInParams = string.Format("{1}={2}"
+                            filterDefine.Reference.ReferenceObject.RefCondCollection[0].CustomInParams = string.Format("{0}={1}"
                                                             , BaseAction.Symbol_AddCustomFilter
-                                                            , string.Format("Code like '{0}%'"
+                                                            , string.Format("Code like '{0}%' and Org='{1}'"
                                                                     , strDeptCode
+                                                                    , orgID
                                                                     )
                                                             );
                         }
