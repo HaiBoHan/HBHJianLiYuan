@@ -19,7 +19,7 @@ using System.Collections.Specialized;
 using UFIDA.U9.PriceCal.PriceCalSV;
 using UFSoft.UBF.UI.Controls;
 using UFSoft.UBF.UI.WebControls;
-using UFIDA.U9.Cust.HBH.Common.CommonLibary;
+using HBH.DoNet.DevPlatform.EntityMapping;
 
 namespace U9.VOB.Cus.HBHJianLiYuan.PlugInUI
 {

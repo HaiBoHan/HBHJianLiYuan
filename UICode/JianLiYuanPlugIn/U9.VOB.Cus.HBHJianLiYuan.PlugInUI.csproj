@@ -143,10 +143,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\UI\UFIDA.U9.CS.UI.PDHelper.dll</HintPath>
     </Reference>
-    <Reference Include="UFIDA.U9.Cust.HBH.Common.CommonLibary, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.WebPart\UFIDA.U9.Cust.HBH.Common.CommonLibary.dll</HintPath>
-    </Reference>
     <Reference Include="UFIDA.U9.HR.PAY.PayCaculate.PayCaculateUI.WebPart">
       <HintPath>..\..\..\..\..\..\..\UBFV30\U9.VOB.Product.WebPart\UFIDA.U9.HR.PAY.PayCaculate.PayCaculateUI.WebPart.dll</HintPath>
     </Reference>
@@ -284,6 +280,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CheckInTotal_ReportStrategy.cs" />
     <Compile Include="CommonFunctionExtend.cs" />
     <Compile Include="PayCaculateUIExtend.cs" />
     <Compile Include="PayrollDocUIExtend.cs" />
@@ -314,9 +311,8 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <None Include="U9.VOB.Cus.HBHJianLiYuan.PlugInUI.config">
+    <None Include="WebPartExtend_HBH_JianLiYuan.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <SubType>Designer</SubType>
     </None>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

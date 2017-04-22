@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Collections.Specialized;
-using UFIDA.U9.Cust.HBH.Common.CommonLibary;
 using UFSoft.UBF.UI.WebControls.Association;
 using UFSoft.UBF.UI.ControlModel;
 using UFSoft.UBF.UI.WebControls.Association.Adapter;
@@ -11,6 +10,7 @@ using UFSoft.UBF.UI.Controls;
 using UFSoft.UBF.UI.WebControls;
 using UFSoft.UBF.UI.ActionProcess;
 using UFIDA.U9.SCM.PM.ReturnUI;
+using HBH.DoNet.DevPlatform.EntityMapping;
 
 namespace U9.VOB.Cus.HBHJianLiYuan.PlugInUI
 {

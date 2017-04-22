@@ -10,13 +10,13 @@ using System.Collections;
 using UFIDA.U9.SCM.SD.ShipUIModel;
 using UFSoft.UBF.UI.Controls;
 using UFSoft.UBF.UI.WebControls;
-using UFIDA.U9.Cust.HBH.Common.CommonLibary;
 using System.Collections.Specialized;
 using UFSoft.UBF.UI.MD.Runtime;
 using UFIDA.U9.CBO.SCM.Enums;
 using U9.VOB.Cus.HBHJianLiYuan.GetPriceFromPurListBP;
 using U9.VOB.Cus.HBHJianLiYuan.GetPriceFromPurListBP.Proxy;
 using UFSoft.UBF.UI.JMF.ActionProcess;
+using HBH.DoNet.DevPlatform.EntityMapping;
 
 namespace U9.VOB.Cus.HBHJianLiYuan.PlugInUI
 {
