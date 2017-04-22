@@ -8,6 +8,7 @@ using UFSoft.UBF.PL;
 using UFIDA.U9.PM.Rcv;
 using HBH.DoNet.DevPlatform.EntityMapping;
 using UFIDA.U9.PM.Enums;
+using U9.VOB.Cus.HBHJianLiYuan.HBHHelper;
 
 namespace U9.VOB.Cus.HBHJianLiYuan.PlugInBE
 {
@@ -46,11 +47,11 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInBE
                         decimal poPrePrice = HBHHelper.DescFlexFieldHelper.GetPreDiscountPrice(poLine.DescFlexSegments);
 
                         //if (line.FinallyPriceTC > poLine.FinallyPriceTC)
-                        if(poPrePrice > 0
+                        if (poPrePrice > 0
                             && rcvPrePrice > poPrePrice
                             )
                         {
-                            string msg = string.Format("单[{0}]行[{1}]价格[{2}]不能高于来源订单行价格[{3}]",line.Receivement.DocNo,line.DocLineNo
+                            string msg = string.Format("单[{0}]行[{1}]价格[{2}]不能高于来源订单行价格[{3}]", line.Receivement.DocNo, line.DocLineNo
                                 , PubClass.GetStringRemoveZero(rcvPrePrice)
                                 , PubClass.GetStringRemoveZero(poPrePrice)
                                 );
@@ -82,6 +83,41 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInBE
                 }
             }
 
+            // 提交时， 检查  折前价、折扣率、折扣额 与  折后价 如果不匹配，报错
+            if (entity.OriginalData != null
+                && entity.OriginalData.Status == RcvStatusEnum.Opened
+                && entity.Status == RcvStatusEnum.Approving
+                )
+            {
+                StringBuilder sbError = new StringBuilder();
+                foreach (RcvLine line in entity.RcvLines)
+                {
+                    decimal preDiscount = DescFlexFieldHelper.GetPreDiscountPrice(line.DescFlexSegments);
+                    decimal discountRate = DescFlexFieldHelper.GetDiscountRate(line.DescFlexSegments);
+                    decimal discountLimit = DescFlexFieldHelper.GetDiscountLimit(line.DescFlexSegments);
+                    // 计算的折后价
+                    decimal discountedPrice = PPLineHelper.GetFinallyPrice(preDiscount, discountRate, discountLimit);
+                    // 单据上的最终价
+                    decimal finallyPrice = line.FinallyPriceTC;
+
+                    // 考虑尾差，判断差额大于0.05 吧
+                    //if (discountedPrice != finallyPrice)
+                    if (Math.Abs(discountedPrice - finallyPrice) > 0.05M)
+                    {
+                        sbError.Append(string.Format("收货单[{0}]行[{1}]最终价[{2}]与折扣计算的最终价[{3}]不一致! \r\n "
+                            , entity.DocNo
+                            , line.DocLineNo
+                            , finallyPrice.GetStringRemoveZero()
+                            , discountedPrice.GetStringRemoveZero()
+                            ));
+                    }
+                }
+
+                if (sbError.Length > 0)
+                {
+                    throw new BusinessException(sbError.ToString());
+                }
+            }
         }
         #endregion
     }
