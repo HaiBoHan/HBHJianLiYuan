@@ -87,6 +87,27 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInUI
                 //                            PDContext.Current.OrgRef.ID.ToString(),
                 //                            UFSoft.UBF.Report.Filter.enuOperatorListType.Equal);
 
+/*
+
+select 
+	dept.ID
+	,dept.Code
+	,deptTrl.Name
+    ,usr.Code
+	,opr.Code
+	,orgTrl.name
+from Base_User usr
+	left join CBO_Operators opr
+	on usr.Contact = opr.Contact
+	left join CBO_Department dept
+	on opr.Dept = dept.ID
+	left join CBO_Department_Trl deptTrl
+	on deptTrl.ID = dept.ID
+        and deptTrl.SysMLFlag = 'zh-CN'
+
+	left join Base_Organization_Trl orgTrl
+	on opr.Org = orgTrl.ID
+*/
                 string strUserID = PDContext.Current.UserID;
                 long orgID = PDContext.Current.OrgRef.ID;
                 {

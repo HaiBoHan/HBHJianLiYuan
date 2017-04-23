@@ -79,7 +79,7 @@ namespace U9.VOB.Cus.HBHJianLiYuan.HBHHelper
         //public const long expire = 131276736000000000;   //2017.01.01
         //public const long expire = 131327712000000000;   //2017.03.01
         //public const long expire = 131407200000000000;   //2017.06.01
-        public const long expire = 131565312000000000;   //2017.06.01
+        public const long expire = 131565312000000000;   //2017.12.01
 
         public static void ExpiredProcess()
         {
