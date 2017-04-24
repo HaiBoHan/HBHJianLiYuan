@@ -55,7 +55,20 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInUI
         /// <returns>提示信息</returns>
         public override string VerifyParameters(Case usercase, CaseDefine caseDefine)
         {
-            //return this.VerifyParameters_Extend(usercase, caseDefine);        
+            //return this.VerifyParameters_Extend(usercase, caseDefine);   
+
+            string strFilter = "Department";
+            FilterValue filterValue = usercase.FilterValues.GetObjectByName(strFilter);
+            if (filterValue == null
+                || filterValue.Values == null
+                || filterValue.Values.ReferenceValues == null
+                || filterValue.Values.ReferenceValues.Count == 0
+                || filterValue.Values.ReferenceValues[0] == null
+                )
+            {
+                return "参数部门不可为空!";
+            }
+
             return null;		   
         }
 		
