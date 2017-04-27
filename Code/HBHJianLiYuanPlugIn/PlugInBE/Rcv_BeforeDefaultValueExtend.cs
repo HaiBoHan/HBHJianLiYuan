@@ -36,6 +36,25 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInBE
                 && entity.RcvDocType.ReceivementType == ReceivementTypeEnum.RCV
                 )
             {
+                // OBA导入，赋值最终价
+                // 最终价为0，则赋值
+                if (entity.SysState == UFSoft.UBF.PL.Engine.ObjectState.Inserted)
+                {
+                    foreach (RcvLine line in entity.RcvLines)
+                    {
+                        if (line.FinallyPriceTC == 0)
+                        {
+                            decimal preDiscount = DescFlexFieldHelper.GetPreDiscountPrice(line.DescFlexSegments);
+                            decimal discountRate = DescFlexFieldHelper.GetDiscountRate(line.DescFlexSegments);
+                            decimal discountLimit = DescFlexFieldHelper.GetDiscountLimit(line.DescFlexSegments);
+                            // 计算的折后价
+                            decimal discountedPrice = PPLineHelper.GetFinallyPrice(preDiscount, discountRate, discountLimit);
+                            
+                            line.FinallyPriceTC = discountedPrice;
+                        }
+                    }
+                }
+                
 
                 // 提交时机赋值吧，要不每次都调用，浪费；
                 bool isSubmit = false;
