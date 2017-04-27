@@ -49,8 +49,11 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInBE
                             decimal discountLimit = DescFlexFieldHelper.GetDiscountLimit(line.DescFlexSegments);
                             // 计算的折后价
                             decimal discountedPrice = PPLineHelper.GetFinallyPrice(preDiscount, discountRate, discountLimit);
-                            
-                            line.FinallyPriceTC = discountedPrice;
+
+                            if (line.FinallyPriceTC != discountedPrice)
+                            {
+                                line.FinallyPriceTC = discountedPrice;
+                            }
                         }
                     }
                 }
