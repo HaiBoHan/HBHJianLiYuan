@@ -222,8 +222,8 @@ namespace U9.VOB.Cus.HBHJianLiYuan {
                             //}
 
 
-                            // 查出所有的职员
-                            EmployeeArchive.EntityList lstEmployee = EmployeeArchive.Finder.FindAll("Dept=@Dept and (DimissionDate is null or DimissionDate <= '1980-1-1' or DimissionDate >= @Today)"
+                            // 查出所有的职员  DimissionDate 离职日期
+                            EmployeeArchive.EntityList lstEmployee = EmployeeArchive.Finder.FindAll("Dept=@Dept and (DimissionDate is null or DimissionDate <= '1980-1-1' or DimissionDate > @Today)"
                                         , new OqlParam(this.ChangedBeforeDeptKey.ID)
                                         , new OqlParam(DateTime.Today)
                                         );
@@ -261,7 +261,12 @@ namespace U9.VOB.Cus.HBHJianLiYuan {
                                 // 产生部门调动单行
                                 foreach (EmployeeArchive employee in lstEmployee)
                                 {
-                                    if (employee != null)
+                                    // 2017-05-03 wf  职务和岗位同时为空异常
+                                    if (employee != null
+                                        && ((employee.JobKey != null && employee.JobKey.ID > 0)
+                                            || (employee.JobLevelKey != null && employee.JobLevelKey.ID > 0)
+                                            )
+                                        )
                                     {
                                         InsideTransDocPerson person = InsideTransDocPerson.Create(transferHead);
 
