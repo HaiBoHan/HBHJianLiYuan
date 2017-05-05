@@ -143,7 +143,9 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInBE
                                         // line.TotalRecievedQtyTU
                                         foreach (POShipLine subline in line.POShiplines)
                                         {
-                                            if (subline.Status == PODOCStatusEnum.Approved)
+                                            if (subline.Status == PODOCStatusEnum.Approved
+                                                && line.Status == PODOCStatusEnum.Approved
+                                                )
                                             {
                                                 //subline.Status = PODOCStatusEnum.ClosedShort;
 
@@ -165,7 +167,7 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInBE
                             }
 
                             if (closeProxy.POLineKeyDTOs.Count > 0)
-                            {
+                            {   // 2017-05-05 wf  暂时先取消掉这个整单关闭功能吧；  现场收货单审批流审核报错，终审失败..."订单子行不是已核准状态，不能执行[关闭]操作"
                                 closeProxy.Do(srcDocOrg);
                             }
                         }
