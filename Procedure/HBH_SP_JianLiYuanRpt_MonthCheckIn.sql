@@ -1,4 +1,7 @@
 
+
+
+
 if exists(select * from sys.objects where name='HBH_SP_JianLiYuanRpt_MonthCheckIn')
 -- 如果存在则删掉
 	drop proc HBH_SP_JianLiYuanRpt_MonthCheckIn
@@ -287,6 +290,8 @@ from (
 		--on checkinLine.StaffMember = person.ID
 		left join CBO_EmployeeSalaryFile salary
 		on salary.Employee = employee.ID
+			-- 2017-05-09 有调薪，所以员工薪资信息-薪资档案里里也有多条、各有生失效时间
+			and checkIn.CheckInDate between IsNull(salary.EffectiveDate,'2000-01-01') and IsNull(salary.IneffectiveDate,'9999-12-31')
 		left join CBO_PublicSalaryItem salaryItem
 		on salary.SalaryItem = salaryItem.ID
 		left join CBO_PublicSalaryItem_Trl salaryItemTrl
