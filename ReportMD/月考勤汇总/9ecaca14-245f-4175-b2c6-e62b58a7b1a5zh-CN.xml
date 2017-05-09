@@ -8,8 +8,10 @@
   <RowNumberOnPage>0</RowNumberOnPage>
   <Language>zh-CN</Language>
   <Author>wangxif</Author>
-  <Designer>用户自定义报表</Designer>
+  <Designer>月考勤报表</Designer>
   <DynamicMatrixTable />
+  <UserDefineRptClassType>U9.VOB.Cus.HBHJianLiYuan.PlugInUI.CheckInTotal_ReportStrategy</UserDefineRptClassType>
+  <UserDefineRptAssemblyName>U9.VOB.Cus.HBHJianLiYuan.PlugInUI</UserDefineRptAssemblyName>
   <BaseMeasure>Mil</BaseMeasure>
   <UserMeasure>Inch</UserMeasure>
   <Width>18160</Width>
@@ -21,8 +23,8 @@
       <Top>300</Top>
       <Bottom>300</Bottom>
     </Margin>
-    <Height>11693</Height>
-    <Width>8268</Width>
+    <Height>11690</Height>
+    <Width>8270</Width>
     <Landscape>false</Landscape>
     <PaperType>A4</PaperType>
   </PageSet>
@@ -488,7 +490,9 @@
                   <TextBoxs>
                     <TextBox name="TextBox_95">
                       <Style>
-                        <FormatStyle />
+                        <FormatStyle>
+                          <Format>{n,2}</Format>
+                        </FormatStyle>
                         <Front />
                         <Alignment />
                         <Background />
@@ -510,7 +514,9 @@
                   <TextBoxs>
                     <TextBox name="TextBox_104">
                       <Style>
-                        <FormatStyle />
+                        <FormatStyle>
+                          <Format>{n,2}</Format>
+                        </FormatStyle>
                         <Front />
                         <Alignment />
                         <Background />
@@ -532,7 +538,9 @@
                   <TextBoxs>
                     <TextBox name="TextBox_102">
                       <Style>
-                        <FormatStyle />
+                        <FormatStyle>
+                          <Format>{n,2}</Format>
+                        </FormatStyle>
                         <Front />
                         <Alignment />
                         <Background />
@@ -844,7 +852,7 @@
       </Fields>
       <Command>
         <CommandType>StoredProcedure</CommandType>
-        <CommandText>HBH_SP_JianLiYuanRpt_MonthCheckIn;SalaryPeriod=Parameters!SalaryPeriod.Value&amp;StartDate=Parameters!StartDate.Value&amp;EndDate=Parameters!EndDate.Value&amp;Department=Parameters!Department.Value&amp;Employee=Parameters!Employee.Value</CommandText>
+        <CommandText>HBH_SP_JianLiYuanRpt_MonthCheckIn;SalaryPeriod=Parameters!SalaryPeriod.Value&amp;StartDate=Parameters!StartDate.Value&amp;EndDate=Parameters!EndDate.Value&amp;Department=Parameters!Department.Value</CommandText>
         <Identity />
         <Parameters>
           <QueryParameter name="@Global_Parameter">
@@ -1007,6 +1015,7 @@
       <SubFilters />
       <Level>basic</Level>
       <Fixed>true</Fixed>
+      <AllowBlank>false</AllowBlank>
       <WeakRefEntityFullName />
       <WeakRefAttribute />
       <WeakRefEntityAlias />
