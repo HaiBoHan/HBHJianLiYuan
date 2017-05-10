@@ -261,61 +261,61 @@ namespace U9.VOB.Cus.HBHJianLiYuan {
                 }
             }
 
-            // 提交校验
-            if (this.Status == DocStatus.Approving)
-            {
-                StringBuilder sbIDs = new StringBuilder();
-                foreach (DayCheckInLine line in this.DayCheckInLine)
-                {
-                    //if(line.StaffMemberKey != null
-                    //    && line.StaffMemberKey.ID > 0
-                    //    )
-                    //{
-                    //    sbIDs.Append(line.StaffMemberKey.ID).Append(",");
-                    //}
+            //// 提交校验
+            //if (this.Status == DocStatus.Approving)
+            //{
+            //    StringBuilder sbIDs = new StringBuilder();
+            //    foreach (DayCheckInLine line in this.DayCheckInLine)
+            //    {
+            //        //if(line.StaffMemberKey != null
+            //        //    && line.StaffMemberKey.ID > 0
+            //        //    )
+            //        //{
+            //        //    sbIDs.Append(line.StaffMemberKey.ID).Append(",");
+            //        //}
 
-                    if (line.EmployeeArchiveKey != null
-                        && line.EmployeeArchiveKey.ID > 0
-                        )
-                    {
-                        sbIDs.Append(line.EmployeeArchiveKey.ID).Append(",");
-                    }
-                }
+            //        if (line.EmployeeArchiveKey != null
+            //            && line.EmployeeArchiveKey.ID > 0
+            //            )
+            //        {
+            //            sbIDs.Append(line.EmployeeArchiveKey.ID).Append(",");
+            //        }
+            //    }
 
-                if (sbIDs.Length > 0)
-                {
-                    //DayCheckInLine.EntityList list = U9.VOB.Cus.HBHJianLiYuan.DayCheckInLine.Finder.FindAll(string.Format("DayCheckIn != @DayCheckIn and DayCheckIn.CheckInDate=@Date and StaffMember in ({0}) "
-                    DayCheckInLine.EntityList list = U9.VOB.Cus.HBHJianLiYuan.DayCheckInLine.Finder.FindAll(string.Format("DayCheckIn != @DayCheckIn and DayCheckIn.CheckInDate=@Date and EmployeeArchive in ({0}) "
-                    , sbIDs.GetStringRemoveLastSplit()
-                    )
-                        , new OqlParam(this.ID)
-                        , new OqlParam(this.CheckInDate)
-                        );
+            //    if (sbIDs.Length > 0)
+            //    {
+            //        //DayCheckInLine.EntityList list = U9.VOB.Cus.HBHJianLiYuan.DayCheckInLine.Finder.FindAll(string.Format("DayCheckIn != @DayCheckIn and DayCheckIn.CheckInDate=@Date and StaffMember in ({0}) "
+            //        DayCheckInLine.EntityList list = U9.VOB.Cus.HBHJianLiYuan.DayCheckInLine.Finder.FindAll(string.Format("DayCheckIn != @DayCheckIn and DayCheckIn.CheckInDate=@Date and EmployeeArchive in ({0}) "
+            //        , sbIDs.GetStringRemoveLastSplit()
+            //        )
+            //            , new OqlParam(this.ID)
+            //            , new OqlParam(this.CheckInDate)
+            //            );
 
-                    if (list != null)
-                    {
-                        StringBuilder sbError = new StringBuilder();
-                        foreach (var line in list)
-                        {
-                            if (line != null)
-                            {
-                                sbError.Append(string.Format("部门:[{0}],日期:[{1}],人员:[{2}];"
-                                    , line.DayCheckIn.Department.Name
-                                    , line.DayCheckIn.CheckInDate.ToString("yyyy-MM-dd")
-                                    , line.EmployeeArchive.Name
-                                    ));
-                            }
-                        }
+            //        if (list != null)
+            //        {
+            //            StringBuilder sbError = new StringBuilder();
+            //            foreach (var line in list)
+            //            {
+            //                if (line != null)
+            //                {
+            //                    sbError.Append(string.Format("部门:[{0}],日期:[{1}],人员:[{2}];"
+            //                        , line.DayCheckIn.Department.Name
+            //                        , line.DayCheckIn.CheckInDate.ToString("yyyy-MM-dd")
+            //                        , line.EmployeeArchive.Name
+            //                        ));
+            //                }
+            //            }
 
-                        if (sbError.Length > 0)
-                        {
-                            throw new BusinessException(string.Format("本单考勤记录与以下考勤信息冲突: {0}"
-                                , sbError.ToString()
-                                ));
-                        }
-                    }
-                }
-            }
+            //            if (sbError.Length > 0)
+            //            {
+            //                throw new BusinessException(string.Format("本单考勤记录与以下考勤信息冲突: {0}"
+            //                    , sbError.ToString()
+            //                    ));
+            //            }
+            //        }
+            //    }
+            //}
 		}
 
 		#endregion
