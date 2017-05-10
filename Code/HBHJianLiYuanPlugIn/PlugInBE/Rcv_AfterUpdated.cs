@@ -122,6 +122,9 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInBE
 
                             foreach (long srcPOID in lstPO)
                             {
+                                UFSoft.UBF.PL.Engine.Cache.PLCacheManager.DataCache.FlushCache();
+                                UFSoft.UBF.PL.Engine.Cache.PLCacheManager.ObjectCache.FlushCache();
+
                                 PurchaseOrder po = PurchaseOrder.Finder.FindByID(srcPOID);
 
                                 // 关闭服务里，没有设置动作
