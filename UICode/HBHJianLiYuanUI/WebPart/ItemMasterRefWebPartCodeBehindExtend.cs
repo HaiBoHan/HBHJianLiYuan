@@ -162,8 +162,8 @@ namespace ItemMasterRef
 
         public void AfterCreateChildControls()
         {
-
-
+            ////this.DataGrid.AllowSelectAllPage = true;
+            //this.DataGrid.PageSize = 9999;
 		
         }
         
