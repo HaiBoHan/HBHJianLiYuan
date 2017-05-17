@@ -248,15 +248,18 @@ from [Cust_TotalPayrollDoc] totalPay
 	
 	inner join CBO_EmployeeArchive employee
 	on payDetail.Employee = employee.ID
-	inner join CBO_EmployCategory employeeCategory
-	on employee.PersonCategory = employeeCategory.ID
-		-- 如果汇总的 计薪类型 是空，则匹配全部 ； 否则匹配对应的
-		and (totalPay.PayrollType is null 
-			or defValue.Code = employeeCategory.DescFlexField_PrivateDescSeg1
-			)
+	-- inner join CBO_EmployCategory employeeCategory
+	-- on employee.PersonCategory = employeeCategory.ID
+	-- 	-- 如果汇总的 计薪类型 是空，则匹配全部 ； 否则匹配对应的
+	-- 	and (totalPay.PayrollType is null 
+	-- 		or defValue.Code = employeeCategory.DescFlexField_PrivateDescSeg1
+	-- 		)
 	
+	left join CBO_Department srcDept
+	on employee.Dept = srcDept.ID
 	left join CBO_Department dept
-	on employee.DescFlexField_PubDescSeg18 = dept.Code
+	-- on employee.DescFlexField_PubDescSeg18 = dept.Code
+    on srcDept.DescFlexField_PubDescSeg18 = dept.Code
 		and dept.Org = employee.BusinessOrg
 	
 where totalPay.ID = @ID
@@ -712,7 +715,7 @@ from (
 		left join Pay_PayrollCalculate payCalc
 		on payDetail.PayrollCaculate = payCalc.ID
 		
-		inner join CBO_Department_Trl deptTrl
+		left join CBO_Department_Trl deptTrl
 		-- on payDetail.Department = deptTrl.ID
 		-- 改为财务部门
 		on tmpLine.Department = deptTrl.ID
