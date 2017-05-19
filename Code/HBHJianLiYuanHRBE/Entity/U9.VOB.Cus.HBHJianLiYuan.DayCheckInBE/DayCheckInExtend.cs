@@ -316,6 +316,21 @@ namespace U9.VOB.Cus.HBHJianLiYuan {
             //        }
             //    }
             //}
+            if (this.Status == DocStatus.Approving
+                && this.OriginalData.Status == DocStatus.Opened
+                )
+            {
+                if (this.Org != null)
+                {
+                    // 默认组织不可以是其他组织
+                    if (this.Org.Code != Const_ManageOrgCode)
+                    {
+                        throw new BusinessException(string.Format("日考勤，组织[{0}]不满足管理中心组织约束，请修改组织!"
+                            , Context.LoginOrg.Name
+                            ));
+                    }
+                }
+            }
 		}
 
 		#endregion
