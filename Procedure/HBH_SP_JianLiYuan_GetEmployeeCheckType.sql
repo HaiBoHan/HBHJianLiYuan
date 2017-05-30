@@ -49,7 +49,7 @@ end
 
 	declare @SysLineNo int = 10
 	declare @Now datetime = GetDate();
-	declare @CurDate datetime = GetDate()
+	declare @CurDate datetime = Convert(date,@Now)
 	declare @SheetName varchar(125)
 	declare @StartID bigint = -1
 	declare @TotalIDCount int = 0

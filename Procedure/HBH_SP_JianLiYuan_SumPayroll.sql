@@ -180,7 +180,7 @@ from Pay_SalaryItem where Code = @FActualPay)
 
 	declare @SysLineNo int = 10
 	declare @Now datetime = GetDate();
-	declare @CurDate datetime = GetDate()
+	declare @CurDate datetime = Convert(date,@Now)
 	declare @StartID bigint = -1
 	declare @TotalIDCount int = 0
 	declare @TotalLineCount int = 0

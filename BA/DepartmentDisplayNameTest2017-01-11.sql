@@ -14,7 +14,7 @@ declare
 	declare @SysMlFlag varchar(11) = 'zh-CN'
 	declare @DefaultZero decimal(24,9) = 0
 	declare @Now datetime = GetDate();
-	declare @CurDate datetime = GetDate()
+	declare @CurDate datetime = Convert(date,@Now)
 	declare @Today datetime = convert(varchar(10), GetDate(), 120)
 	
 	-- 设置每周第一天是哪天(周一)
