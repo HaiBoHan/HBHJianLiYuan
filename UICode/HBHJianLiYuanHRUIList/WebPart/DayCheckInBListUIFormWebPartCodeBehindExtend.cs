@@ -22,6 +22,10 @@ using UFSoft.UBF.UI.Engine;
 using UFSoft.UBF.UI.MD.Runtime;
 using UFSoft.UBF.UI.ActionProcess;
 using UFSoft.UBF.UI.WebControls.ClientCallBack;
+using U9.VOB.HBHCommon.U9CommonBE;
+using U9.VOB.Cus.HBHJianLiYuan.Proxy;
+using System.Collections.Generic;
+using HBH.DoNet.DevPlatform.EntityMapping;
 
 
 
@@ -105,6 +109,114 @@ namespace DayCheckInBListUIModel
             //U9.VOB.HBHCommon.HBHCommonUI.UICommonHelper.OnNavigatCard(this, "DayCheckIn");
 		}
 
+        //BtnSubmit_Click...
+        private void BtnSubmit_Click_Extend(object sender, EventArgs e)
+        {
+            //调用模版提供的默认实现.--默认实现可能会调用相应的Action.
+            //BtnSubmit_Click_DefaultImpl(sender,e);
+
+            this.Model.ClearErrorMessage();
+
+            UpdateStatus((int)DocStatusData.Approving);
+        }
+
+        //BtnApprove_Click...
+        private void BtnApprove_Click_Extend(object sender, EventArgs e)
+        {
+            //调用模版提供的默认实现.--默认实现可能会调用相应的Action.
+            //BtnApprove_Click_DefaultImpl(sender,e);
+
+            this.Model.ClearErrorMessage();
+
+            DayCheckInRecord head = this.Model.DayCheckIn.FocusedRecord;
+
+            if (head != null
+                && head.ID > 0
+                )
+            {
+                //if (head.IsApproveFlow.GetValueOrDefault(false))
+                //if (IsApproveFlow(head))
+                //{
+                //    UFIDA.U9.UI.PDHelper.PDPopWebPart.ApproveFlow_ApproveBatchUIWebPart(this);
+                //}
+                //else
+                {
+                    //ActionHelper.DoApprove(entityKeys, entityFullName);//这里是不走工作流时审核处理
+                    UpdateStatus((int)DocStatusData.Approved);
+                }
+            }
+
+        }
+
+        //BtnRecovery_Click...
+        private void BtnRecovery_Click_Extend(object sender, EventArgs e)
+        {
+            //调用模版提供的默认实现.--默认实现可能会调用相应的Action.
+            //BtnRecovery_Click_DefaultImpl(sender,e);
+
+            this.Model.ClearErrorMessage();
+
+            DayCheckInRecord head = this.Model.DayCheckIn.FocusedRecord;
+
+            if (head != null
+                && head.ID > 0
+                )
+            {
+                //if (head.IsApproveFlow.GetValueOrDefault(false))
+                //{
+                //    UFIDA.U9.UI.PDHelper.PDPopWebPart.ApproveFlow_ApproveBatchUIWebPart(this);
+                //}
+                //else
+                {
+                    //ActionHelper.DoApprove(entityKeys, entityFullName);//这里是不走工作流时审核处理
+                    UpdateStatus((int)DocStatusData.Opened);
+                }
+            }
+        }
+
+        //BtnUndoApprove_Click...
+        private void BtnUndoApprove_Click_Extend(object sender, EventArgs e)
+        {
+            //调用模版提供的默认实现.--默认实现可能会调用相应的Action.
+            //BtnUndoApprove_Click_DefaultImpl(sender,e);
+
+            this.Model.ClearErrorMessage();
+
+            UpdateStatus((int)DocStatusData.Opened);
+        }
+
+
+        private void UpdateStatus(int targetStatus)
+        {
+            IList<IUIRecord> selected = this.Model.DayCheckIn.Cache.GetSelectRecord();
+
+            if (selected != null
+                && selected.Count > 0
+                )
+            {
+                UpdateDayCheckInStatusBPProxy proxy = new UpdateDayCheckInStatusBPProxy();
+                proxy.TargetStatus = targetStatus;
+
+                proxy.HeadIDs = new System.Collections.Generic.List<long>();
+                //proxy.HeadIDs.Add(focusedRecord.ID);
+                foreach (IUIRecord record in selected)
+                {
+                    long id = record["MainID"].GetLong();
+
+                    if (id <= 0)
+                    {
+                        id = record.PrimaryKey;
+                    }
+
+                    proxy.HeadIDs.Add(id);
+                }
+
+                proxy.Do();
+
+                this.Action.NavigateAction.Refresh(null);
+            }
+        }
+
 		
         #endregion
 		
@@ -169,6 +281,9 @@ namespace DayCheckInBListUIModel
                 , "日考勤"
                 // , param
                 );
+
+            BtnRecovery.Visible = false;
+            BtnApprove.Enabled = false;
 
 		}
 
