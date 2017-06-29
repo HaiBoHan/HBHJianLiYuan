@@ -20,13 +20,34 @@
         <Event ActionName="OnDelete" EnableEvent="True" EventType="PostBack" IsDataBinding="True" IsDataCollect="True" Name="Click" Parameter="" Template="" />
       </Events>
     </Button>
-    <Separator ID="fb6fbfcd-b1a4-4b7c-af01-61f5e684beb0" Height="28" Name="Separator0" TabIndex="3" TabStop="True" Width="8" X="70" Y="0" />
-    <Button ID="ae1929b1-1c71-43c3-acda-65e30d8ae963" AccessKey="O" DisplayNameResourceID="688fd549-5a92-49cc-8072-6d5377f6409a" DisplaySrcType="PublicResource" Height="28" Name="BtnOutPut" TabIndex="4" TabStop="True" Width="35" X="78" Y="0">
+    <Separator ID="fb6fbfcd-b1a4-4b7c-af01-61f5e684beb0" Height="28" Name="Separator0" TabIndex="3" TabStop="True" Width="5" X="70" Y="0" />
+    <Button ID="677cef8b-8dbe-4e40-9a58-178461f8b017" AccessKey="" DisplayName="" DisplayNameResourceID="c42c0f21-2fd7-49b2-ac54-62f811747b18" DisplaySrcType="PublicResource" Height="28" Name="BtnSubmit" TabIndex="6" TabStop="True" Width="35" X="75" Y="0">
+      <Events>
+        <Event EnableEvent="True" EventType="PostBack" IsDataBinding="True" IsDataCollect="True" Name="Click" Parameter="" Template="" />
+      </Events>
+    </Button>
+    <Button ID="3121b07e-e287-45d7-8c25-c1678e280878" AccessKey="" DisplayName="" DisplayNameResourceID="eb678a04-c7e1-44f1-b175-8f90f9903862" DisplaySrcType="PublicResource" Height="28" Name="BtnApprove" TabIndex="7" TabStop="True" Width="35" X="110" Y="0">
+      <Events>
+        <Event EnableEvent="True" EventType="PostBack" IsDataBinding="True" IsDataCollect="True" Name="Click" Parameter="" Template="" />
+      </Events>
+    </Button>
+    <Button ID="72b18066-6dac-4849-9604-00aa13d27989" AccessKey="" DisplayName="回收" DisplayNameIndexStr="" DisplayNameResourceID="" DisplaySrcType="PublicResource" DisplaySrcUIFieldID="" DisplaySrcUIViewID="" Height="28" Name="BtnRecovery" TabIndex="8" TabStop="True" Width="35" X="145" Y="0">
+      <Events>
+        <Event EnableEvent="True" EventType="PostBack" IsDataBinding="True" IsDataCollect="True" Name="Click" Parameter="" Template="" />
+      </Events>
+    </Button>
+    <Button ID="6ddc458c-9502-418b-be1f-a330bb92bdf8" AccessKey="" DisplayName="" DisplayNameResourceID="ae796775-bce3-4aed-89a9-20eaa4648a67" DisplaySrcType="PublicResource" Height="28" Name="BtnUndoApprove" TabIndex="9" TabStop="True" Width="35" X="180" Y="0">
+      <Events>
+        <Event EnableEvent="True" EventType="PostBack" IsDataBinding="True" IsDataCollect="True" Name="Click" Parameter="" Template="" />
+      </Events>
+    </Button>
+    <Separator ID="2689651a-72c0-4ee8-a25e-cdab8d728d5d" Height="28" Name="Separator1" TabIndex="3" TabStop="True" Width="5" X="215" Y="0" />
+    <Button ID="ae1929b1-1c71-43c3-acda-65e30d8ae963" AccessKey="O" DisplayNameResourceID="688fd549-5a92-49cc-8072-6d5377f6409a" DisplaySrcType="PublicResource" Height="28" Name="BtnOutPut" TabIndex="4" TabStop="True" Width="35" X="220" Y="0">
       <Events>
         <Event ActionName="OnOutPut" EnableEvent="True" EventType="PostBack" IsDataBinding="True" IsDataCollect="True" Name="Click" Parameter="" Template="" />
       </Events>
     </Button>
-    <Button ID="43a0ceb2-8f82-4b16-94ff-7cb59d3e03fd" AccessKey="P" DisplayNameResourceID="27b5c615-cde5-458c-be74-833317249568" DisplaySrcType="PublicResource" Height="28" Name="BtnPrint" TabIndex="5" TabStop="True" Width="35" X="113" Y="0">
+    <Button ID="43a0ceb2-8f82-4b16-94ff-7cb59d3e03fd" AccessKey="P" DisplayNameResourceID="27b5c615-cde5-458c-be74-833317249568" DisplaySrcType="PublicResource" Height="28" Name="BtnPrint" TabIndex="5" TabStop="True" Width="35" X="255" Y="0">
       <Events>
         <Event ActionName="OnPrint" EnableEvent="True" EventType="PostBack" IsDataBinding="True" IsDataCollect="True" Name="Click" Parameter="" Template="" />
       </Events>
