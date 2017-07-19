@@ -119,33 +119,41 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInUI
         {
             base.AfterRender(Part, args);
 
-            if (_strongPart.Model.Views["PR"].FocusedRecord != null
-                && _strongPart.Model.Views["PR"].FocusedRecord["ReqDepartment"] != null
-                )
-            {
-                string id = _strongPart.Model.Views["PR"].FocusedRecord["ReqDepartment"].ToString();
-                IUFFldReferenceColumn itemRef = (IUFFldReferenceColumn)DataGrid8.Columns["ItemInfo_ItemID"];
-                //if (_strongPart.Model.Views["PR"].FocusedRecord["ReqDepartment"] == null || (long)_strongPart.Model.Views["PR"].FocusedRecord["ReqDepartment"] ==0)
-                //_strongPart.Model.ErrorMessage.Message = "请先选择需求部门";
-                // itemRef.CustomInParams = BaseAction.Symbol_AddCustomFilter + "= ID in (select ItemMaster from U9::VOB::Cus::HBHJianLiYuan::DeptItemSupplierBE::DeptItemSupplierLine where DeptItemSupplier.Department.ID=" + _strongPart.Model.Views["PR"].FocusedRecord["ReqDepartment"] + ")";
-
-                string opath = "Code in (select disLine.ItemMaster.Code from U9::VOB::Cus::HBHJianLiYuan::DeptItemSupplierBE::DeptItemSupplierLine disLine where disLine.DeptItemSupplier.Department.Name='" + _strongPart.Model.Views["PR"].FocusedRecord["ReqDepartment_Name"] + "')";
-                //string opath = "Code = '000001'";
-
-                string custFilter = BaseAction.Symbol_AddCustomFilter + "=";
-                if (itemRef.CustomInParams != null
-                    && itemRef.CustomInParams.Contains(custFilter)
-                    )
-                {
-                    itemRef.CustomInParams = itemRef.CustomInParams.Replace(custFilter, custFilter + opath + " and ");                    
-                }
-                else
-                {
-                    itemRef.CustomInParams = custFilter + opath;
-                }
-            }
+            SetSupplierRefCondition();
             //IUFFldReferenceColumn itemRef = (IUFFldReferenceColumn)DataGrid8.Columns["ItemInfo_ItemID"];
             //itemRef.CustomInParams = BaseAction.Symbol_AddCustomFilter + "= ID =1001411280110126";
+        }
+
+        private void SetSupplierRefCondition()
+        {
+            if (RcvUIExtend.IsSetSupplierCondition)
+            {
+                if (_strongPart.Model.Views["PR"].FocusedRecord != null
+                    && _strongPart.Model.Views["PR"].FocusedRecord["ReqDepartment"] != null
+                    )
+                {
+                    string id = _strongPart.Model.Views["PR"].FocusedRecord["ReqDepartment"].ToString();
+                    IUFFldReferenceColumn itemRef = (IUFFldReferenceColumn)DataGrid8.Columns["ItemInfo_ItemID"];
+                    //if (_strongPart.Model.Views["PR"].FocusedRecord["ReqDepartment"] == null || (long)_strongPart.Model.Views["PR"].FocusedRecord["ReqDepartment"] ==0)
+                    //_strongPart.Model.ErrorMessage.Message = "请先选择需求部门";
+                    // itemRef.CustomInParams = BaseAction.Symbol_AddCustomFilter + "= ID in (select ItemMaster from U9::VOB::Cus::HBHJianLiYuan::DeptItemSupplierBE::DeptItemSupplierLine where DeptItemSupplier.Department.ID=" + _strongPart.Model.Views["PR"].FocusedRecord["ReqDepartment"] + ")";
+
+                    string opath = "Code in (select disLine.ItemMaster.Code from U9::VOB::Cus::HBHJianLiYuan::DeptItemSupplierBE::DeptItemSupplierLine disLine where disLine.DeptItemSupplier.Department.Name='" + _strongPart.Model.Views["PR"].FocusedRecord["ReqDepartment_Name"] + "')";
+                    //string opath = "Code = '000001'";
+
+                    string custFilter = BaseAction.Symbol_AddCustomFilter + "=";
+                    if (itemRef.CustomInParams != null
+                        && itemRef.CustomInParams.Contains(custFilter)
+                        )
+                    {
+                        itemRef.CustomInParams = itemRef.CustomInParams.Replace(custFilter, custFilter + opath + " and ");
+                    }
+                    else
+                    {
+                        itemRef.CustomInParams = custFilter + opath;
+                    }
+                }
+            }
         }
 
         #endregion

@@ -326,12 +326,13 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInUI
         public static bool IsSetSupplierCondition
         {
             get
-            { 
+            {
+                // 2017-07-19 wf 李震林QQ说，在管理中心里，人力的不想用使用部门料号交叉档了。把管理中心的部门交叉档的限制取消吧
                 // 工作服，管理中心放开这个限制
                 //// 05	管理中心
-                //return PDContext.Current.OrgRef.CodeColumn != "05";
+                return PDContext.Current.OrgRef.CodeColumn != "05";
 
-                return true;
+                //return true;
             }
         }
     }
