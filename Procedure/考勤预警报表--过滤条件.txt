@@ -1,0 +1,4 @@
+
+
+(B.ID is null or not exists(select 1 from U9::VOB::Cus::HBHJianLiYuan::DayCheckInLine checkin2 where checkin2.EmployeeArchive = B.EmployeeArchive and checkin2.DayCheckIn.CheckInDate > C.CheckInDate)) and (A.DimissionDate is null or A.DimissionDate < '2000-01-01') and A.PersonCategory.Code != '×Ü²¿'
+
