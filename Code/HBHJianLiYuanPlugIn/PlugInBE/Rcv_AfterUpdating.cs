@@ -9,6 +9,7 @@ using UFIDA.U9.PM.Rcv;
 using UFIDA.U9.PM.PO;
 using UFIDA.U9.PM.Enums;
 using U9.VOB.Cus.HBHJianLiYuan.Proxy;
+using UFIDA.U9.CBO.SCM.Enums;
 
 namespace U9.VOB.Cus.HBHJianLiYuan.PlugInBE
 {
@@ -25,34 +26,39 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInBE
             Receivement entity = key.GetEntity() as Receivement;//出货单实体
             if (entity == null)
                 return;
-            bool isApproveAction = false;
-            bool isUnApproveAction = false;
-            // 审核操作
-            if (entity.OriginalData.Status != RcvStatusEnum.Closed
-                && entity.Status == RcvStatusEnum.Closed
-                )
-            {
-                isApproveAction = true;
-            }
-            // 弃审操作
-            if (entity.OriginalData.Status == RcvStatusEnum.Closed
-                && entity.Status == RcvStatusEnum.Opened
-                )
-            {
-                isUnApproveAction = true;
-            }
 
-            // 弃审，要先弃审下游 出货单、再删除出货单、再弃审收货单；否则报负库存；
-            // （要先删出货、后弃审），所以改到了 AfterUpdating 中做；
-            if (isUnApproveAction)
+            // 采购收货才更新；
+            if (entity.ReceivementType == ReceivementTypeEnum.RCV)
             {
-                RcvToShipSVProxy toShipProxy = new RcvToShipSVProxy();
+                bool isApproveAction = false;
+                bool isUnApproveAction = false;
+                // 审核操作
+                if (entity.OriginalData.Status != RcvStatusEnum.Closed
+                    && entity.Status == RcvStatusEnum.Closed
+                    )
+                {
+                    isApproveAction = true;
+                }
+                // 弃审操作
+                if (entity.OriginalData.Status == RcvStatusEnum.Closed
+                    && entity.Status == RcvStatusEnum.Opened
+                    )
+                {
+                    isUnApproveAction = true;
+                }
 
-                toShipProxy.IsRemove = true;
-                toShipProxy.RcvIDs = new List<long>();
-                toShipProxy.RcvIDs.Add(entity.ID);
+                // 弃审，要先弃审下游 出货单、再删除出货单、再弃审收货单；否则报负库存；
+                // （要先删出货、后弃审），所以改到了 AfterUpdating 中做；
+                if (isUnApproveAction)
+                {
+                    RcvToShipSVProxy toShipProxy = new RcvToShipSVProxy();
 
-                toShipProxy.Do();
+                    toShipProxy.IsRemove = true;
+                    toShipProxy.RcvIDs = new List<long>();
+                    toShipProxy.RcvIDs.Add(entity.ID);
+
+                    toShipProxy.Do();
+                }
             }
         }
 
