@@ -165,7 +165,7 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInBE
                 && line.ItemInfo != null
                 && line.ItemInfo.ItemID != null
                 && line.ItemInfo.ItemID.MainItemCategory != null
-                && lstPlanPriceCategoryCode.Contains(line.ItemInfo.ItemID.MainItemCategory.Code)
+                && ListPlanPriceCategoryCode.Contains(line.ItemInfo.ItemID.MainItemCategory.Code)
                 )
             {
                 return true;
