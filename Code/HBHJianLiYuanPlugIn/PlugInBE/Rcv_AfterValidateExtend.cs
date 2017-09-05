@@ -43,6 +43,7 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInBE
                 && entity.RcvDocType.ReceivementType == ReceivementTypeEnum.RCV
                 )
             {
+                StringBuilder sbError = new StringBuilder();
                 foreach (RcvLine line in entity.RcvLines)
                 {
                     if (line.SrcPO != null)
@@ -70,6 +71,29 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInBE
                             {
                                 HBHHelper.DescFlexFieldHelper.SetRcvLinePoPreDiscountPrice(line.DescFlexSegments, poPrePrice);
                             }
+
+                            //decimal poFinallyPrice = poLine.FinallyPriceTC;
+                            //decimal rcvFinallyPrice = line.FinallyPriceTC;
+                            // 2017-09-05 wf  by  李震林 哪个？要校验的吗？是指导价，就是折前价
+                            // 米面油入库时价格不允许修改
+                            if (entity.Status == RcvStatusEnum.Opened
+                                || entity.Status == RcvStatusEnum.Empty
+                                || entity.Status == RcvStatusEnum.Approving
+                                )
+                            {
+                                if (IsPlanPrice(line))
+                                {
+                                    if (rcvPrePrice != poPrePrice)
+                                    {
+                                        sbError.Append(string.Format("收货单行[{0}]料品[{1}]指导价[{2}]与订单指导价[{3}]不一致,不允许修改!"
+                                            , line.DocLineNo
+                                            , line.ItemInfo.ItemName
+                                            , rcvPrePrice.GetStringRemoveZero()
+                                            , poPrePrice.GetStringRemoveZero()
+                                            ));
+                                    }
+                                }
+                            }
                         }
                     }
 
@@ -86,6 +110,14 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInBE
                         {
                             decimal rcvPrePrice = HBHHelper.DescFlexFieldHelper.GetPreDiscountPrice(line.DescFlexSegments);
                             HBHHelper.DescFlexFieldHelper.SetRcvLinePoPreDiscountPrice(line.DescFlexSegments, rcvPrePrice);
+
+                            if (IsPlanPrice(line))
+                            {
+                                sbError.Append(string.Format("收货单行[{0}]料品[{1}]不允许手工创建，必须来源订单才可出货!"
+                                    , line.DocLineNo
+                                    , line.ItemInfo.ItemName
+                                    ));
+                            }
                         }
                     }
                 }
@@ -96,7 +128,6 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInBE
                     && entity.Status == RcvStatusEnum.Approving
                     )
                 {
-                    StringBuilder sbError = new StringBuilder();
                     foreach (RcvLine line in entity.RcvLines)
                     {
                         decimal preDiscount = DescFlexFieldHelper.GetPreDiscountPrice(line.DescFlexSegments);
@@ -119,14 +150,54 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInBE
                                 ));
                         }
                     }
+                }
 
-                    if (sbError.Length > 0)
-                    {
-                        throw new BusinessException(sbError.ToString());
-                    }
+                if (sbError.Length > 0)
+                {
+                    throw new BusinessException(sbError.ToString());
                 }
             }
         }
+
+        private bool IsPlanPrice(RcvLine line)
+        {
+            if (line != null
+                && line.ItemInfo != null
+                && line.ItemInfo.ItemID != null
+                && line.ItemInfo.ItemID.MainItemCategory != null
+                && lstPlanPriceCategoryCode.Contains(line.ItemInfo.ItemID.MainItemCategory.Code)
+                )
+            {
+                return true;
+            }
+            return false;
+        }
+
+        // 计划价的米面油的 物料分类编码
+        private List<string> lstPlanPriceCategoryCode = null;
+        /// <summary>
+        /// 计划价的米面油的 物料分类编码
+        /// </summary>
+        public List<string> ListPlanPriceCategoryCode
+        {
+            get
+            {
+                if (lstPlanPriceCategoryCode == null)
+                {
+                    lstPlanPriceCategoryCode = new List<string>();
+
+                    lstPlanPriceCategoryCode.Add("0101");
+                    lstPlanPriceCategoryCode.Add("0102");
+                    lstPlanPriceCategoryCode.Add("0103");
+                }
+
+                return lstPlanPriceCategoryCode;
+            }
+            //set { lstPlanPriceCategoryCode = value; }
+        }
+
+
+
         #endregion
     }
 }
