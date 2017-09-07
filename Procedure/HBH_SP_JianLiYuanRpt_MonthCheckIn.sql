@@ -199,9 +199,10 @@ from (
 		,employee.EmployeeCode as EmployeeCode
 		,employee.Name as EmployeeName
 
+			-- 2017-09-07 wf 改为只取日期部分，有带时间的数据
 		,Convert(varchar(10),checkIn.CheckInDate,120)  as CheckInDate
-		,Month(checkIn.CheckInDate) as CheckInMonth
-		,Day(checkIn.CheckInDate) as CheckInDay
+		,Month(Convert(varchar(10),checkIn.CheckInDate,120)) as CheckInMonth
+		,Day(Convert(varchar(10),checkIn.CheckInDate,120)) as CheckInDay
 
 	
 		--,sum(checkInLine.FullTimeDay) as FullTimeDay
@@ -216,7 +217,8 @@ from (
 		---- 本月天数	
 		-- 应出勤天数 = 当月天数 - 4
 		-- 改为在日考勤中录入
-		,MonthDays = IsNull(Day(DateAdd(Day,-1,DateAdd(d,- day(DateAdd(M,1,checkin.CheckInDate)) + 1,DateAdd(M,1,checkin.CheckInDate)))),27)  - 4
+			-- 2017-09-07 wf 改为只取日期部分，有带时间的数据
+		,MonthDays = IsNull(Day(DateAdd(Day,-1,DateAdd(d,- day(DateAdd(M,1,Convert(varchar(10),checkIn.CheckInDate,120))) + 1,DateAdd(M,1,Convert(varchar(10),checkIn.CheckInDate,120))))),27)  - 4
 		-- 改为在日考勤中录入
 		,IsNull((select max(IsNull(checkin2.MonthWorkDays,0)) 
 					from Cust_DayCheckIn checkin2
@@ -291,7 +293,9 @@ from (
 		left join CBO_EmployeeSalaryFile salary
 		on salary.Employee = employee.ID
 			-- 2017-05-09 有调薪，所以员工薪资信息-薪资档案里里也有多条、各有生失效时间
-			and checkIn.CheckInDate between IsNull(salary.EffectiveDate,'2000-01-01') and IsNull(salary.IneffectiveDate,'9999-12-31')
+			--and checkIn.CheckInDate between IsNull(salary.EffectiveDate,'2000-01-01') and IsNull(salary.IneffectiveDate,'9999-12-31')
+			-- 
+			and convert(char(10),checkIn.CheckInDate,120) between IsNull(salary.EffectiveDate,'2000-01-01') and IsNull(salary.IneffectiveDate,'9999-12-31')
 		left join CBO_PublicSalaryItem salaryItem
 		on salary.SalaryItem = salaryItem.ID
 		left join CBO_PublicSalaryItem_Trl salaryItemTrl
@@ -314,14 +318,17 @@ from (
 		*/
 		and checkIn.Status in (2)
 		and ( @SalaryPeriod is null or @SalaryPeriod <= 0
-			or checkIn.CheckInDate between period.StartDate and period.EndDate
+			--or checkIn.CheckInDate between period.StartDate and period.EndDate
+			-- 2017-09-07 wf 改为只取日期部分，有带时间的数据
+			or Convert(varchar(10),checkIn.CheckInDate,120) between period.StartDate and period.EndDate
 			)
 			--or checkIn.CheckInDate between @StartDate and @EndDate
 		and (@StartDate is null or @StartDate < '2000-01-01'
 			or checkIn.CheckInDate >= @StartDate
 			)
 		and (@EndDate is null or @EndDate < '2000-01-01'
-			or checkIn.CheckInDate <= @EndDate
+			-- 2017-09-07 wf 改为只取日期部分，有带时间的数据
+			or Convert(varchar(10),checkIn.CheckInDate,120) <= @EndDate
 			)
 		and (@Department is null or @Department <= 0
 			or @Department = checkIn.Department
@@ -335,12 +342,13 @@ from (
 		checkIn.Department
 		,dept.Code
 		,deptTrl.Name
-		,checkIn.CheckInDate
+			-- 2017-09-07 wf 改为只取日期部分，有带时间的数据
+		,Convert(varchar(10),checkIn.CheckInDate,120)
 		,checkInLine.EmployeeArchive
 		,checkInLine.CheckType
 		,employee.EmployeeCode
 		,employee.Name
-		,checkIn.CheckInDate
+		--,checkIn.CheckInDate
 		,IsNull(checkInLine.FullTimeDay,0)
 		,IsNull(checkInLine.PartTimeDay,0)
 		,IsNull(checkInLine.HourlyDay,0)
