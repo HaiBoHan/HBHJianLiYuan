@@ -185,7 +185,7 @@ select
 					else @DefaultZero end
 					)
 
-	,min(checkIn.CheckInDate) as CheckInDate
+	,min(Convert(varchar(10),checkIn.CheckInDate,120)) as CheckInDate
 	
 	,arch.Name
 from Pay_PayrollCalculate payCalc
@@ -217,11 +217,11 @@ from Pay_PayrollCalculate payCalc
 	*/
 	on checkIn.Status in (2)
 		and (
-			(monthPeriod.ID is not null and checkIn.CheckInDate between monthPeriod.StartDate and monthPeriod.EndDate)
-			or (fourWeekPeriod.ID is not null and checkIn.CheckInDate between fourWeekPeriod.StartDate and fourWeekPeriod.EndDate)
-			or (twoWeekPeriod.ID is not null and checkIn.CheckInDate between twoWeekPeriod.StartDate and twoWeekPeriod.EndDate)
-			or (weekPeriod.ID is not null and checkIn.CheckInDate between weekPeriod.StartDate and weekPeriod.EndDate)
-			or (dayPeriod.ID is not null and checkIn.CheckInDate between dayPeriod.StartDate and dayPeriod.EndDate)
+			(monthPeriod.ID is not null and Convert(varchar(10),checkIn.CheckInDate,120) between monthPeriod.StartDate and monthPeriod.EndDate)
+			or (fourWeekPeriod.ID is not null and Convert(varchar(10),checkIn.CheckInDate,120) between fourWeekPeriod.StartDate and fourWeekPeriod.EndDate)
+			or (twoWeekPeriod.ID is not null and Convert(varchar(10),checkIn.CheckInDate,120) between twoWeekPeriod.StartDate and twoWeekPeriod.EndDate)
+			or (weekPeriod.ID is not null and Convert(varchar(10),checkIn.CheckInDate,120) between weekPeriod.StartDate and weekPeriod.EndDate)
+			or (dayPeriod.ID is not null and Convert(varchar(10),checkIn.CheckInDate,120) between dayPeriod.StartDate and dayPeriod.EndDate)
 			)
 		
 	inner join Cust_DayCheckInLine checkInLine
@@ -246,5 +246,5 @@ group by
 	,arch.Name
 
 order by
-	min(checkIn.CheckInDate) asc
+	min(Convert(varchar(10),checkIn.CheckInDate,120)) asc
 
