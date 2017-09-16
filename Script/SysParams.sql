@@ -103,3 +103,36 @@ end ;
 
 
 */
+
+
+
+-- 系统参数： 米面油是否可无来源收货
+set @ID = 9009201709160002
+--	CBO		
+set @Application = 3000
+set @Code = 'HBHJianLiYuan_IsControlPlanPrice'
+set @Name = '健力源参数--米面油是否计划价控制'
+set @Group = '健力源参数'
+set @Type = 'bool'
+set @DefaultValue = 'false'
+
+if not exists(select 1 from Base_Profile where ID = @ID)
+begin
+	insert into Base_Profile
+	(ID,SysVersion,CreatedOn,CreatedBy,ModifiedOn,ModifiedBy
+	,Code,ShortName,ProfileValueType,SubTypeName,DefaultValue
+	,Application,ControlScope,SensitiveType,Sort
+	,ValidateSV,CanBeUpdatedSV,UpdatedProcessSV,ReferenceID,Hidden,ShowPecent,IsSend,IsModify
+	)values(
+	@ID,1,'2015-09-17','hbh','2015-09-17','hbh'
+	,@Code,@Name,0,@Type,@DefaultValue
+	,@Application,1,0,0
+	,null,null,null,null,0,0,0,0
+	)
+
+	insert into Base_Profile_Trl
+	(ID,SysMLFlag,ProfileGroup,Name,Description
+	)values(
+	@ID,'zh-CN',@Group,@Name,@Name
+	)
+end ;

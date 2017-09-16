@@ -10,11 +10,14 @@ using HBH.DoNet.DevPlatform.EntityMapping;
 using UFIDA.U9.PM.Enums;
 using U9.VOB.Cus.HBHJianLiYuan.HBHHelper;
 using UFIDA.U9.CBO.SCM.Enums;
+using HBH.DoNet.DevPlatform.U9Mapping;
 
 namespace U9.VOB.Cus.HBHJianLiYuan.PlugInBE
 {
     class Rcv_AfterValidateExtend : UFSoft.UBF.Eventing.IEventSubscriber
     {
+        // 是否控制计划价物料不可无来源出货
+        private const string Const_IsControlPlanPrice = "HBHJianLiYuan_IsControlPlanPrice";
 
         #region IEventSubscriber 成员
 
@@ -59,7 +62,7 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInBE
                                 && rcvPrePrice > poPrePrice
                                 )
                             {
-                                string msg = string.Format("单[{0}]行[{1}]价格[{2}]不能高于来源订单行价格[{3}]", line.Receivement.DocNo, line.DocLineNo
+                                string msg = string.Format("收货单[{0}]行[{1}]价格[{2}]不能高于来源订单行价格[{3}]", line.Receivement.DocNo, line.DocLineNo
                                     , PubClass.GetStringRemoveZero(rcvPrePrice)
                                     , PubClass.GetStringRemoveZero(poPrePrice)
                                     );
@@ -76,6 +79,7 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInBE
                             //decimal rcvFinallyPrice = line.FinallyPriceTC;
                             // 2017-09-05 wf  by  李震林 哪个？要校验的吗？是指导价，就是折前价
                             // 米面油入库时价格不允许修改
+                            // 2017-09-16 wf 李震林，有组织不启用计划价控制     HBHJianLiYuan_IsControlPlanPrice
                             if (entity.Status == RcvStatusEnum.Opened
                                 || entity.Status == RcvStatusEnum.Empty
                                 || entity.Status == RcvStatusEnum.Approving
@@ -161,14 +165,19 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInBE
 
         private bool IsPlanPrice(RcvLine line)
         {
-            if (line != null
-                && line.ItemInfo != null
-                && line.ItemInfo.ItemID != null
-                && line.ItemInfo.ItemID.MainItemCategory != null
-                && ListPlanPriceCategoryCode.Contains(line.ItemInfo.ItemID.MainItemCategory.Code)
-                )
+            bool isControl = U9Helper.GetSysParam(Const_IsControlPlanPrice).GetBool();
+
+            if (isControl)
             {
-                return true;
+                if (line != null
+                    && line.ItemInfo != null
+                    && line.ItemInfo.ItemID != null
+                    && line.ItemInfo.ItemID.MainItemCategory != null
+                    && ListPlanPriceCategoryCode.Contains(line.ItemInfo.ItemID.MainItemCategory.Code)
+                    )
+                {
+                    return true;
+                }
             }
             return false;
         }
