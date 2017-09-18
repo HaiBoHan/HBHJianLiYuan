@@ -117,7 +117,7 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInBE
 
                             if (IsPlanPrice(line))
                             {
-                                sbError.Append(string.Format("收货单行[{0}]料品[{1}]不允许手工创建，必须来源订单才可出货!"
+                                sbError.Append(string.Format("收货单行[{0}]料品[{1}]不允许手工创建，必须来源订单才可收货!"
                                     , line.DocLineNo
                                     , line.ItemInfo.ItemName
                                     ));
