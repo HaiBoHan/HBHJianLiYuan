@@ -24,7 +24,7 @@ create proc HBH_SP_JianLiYuan_SumPayroll  (
 )
 with encryption
 as
-	SET NOCOUNT ON;
+	--SET NOCOUNT ON;
 
 	
 declare @SysMlFlag varchar(11) = 'zh-CN'
@@ -231,11 +231,11 @@ select
 into #hbh_tmp_TotalPayrollDocLine
 from [Cust_TotalPayrollDoc] totalPay
 
-	left join Base_ValueSetDef valueSet
-	on valueSet.Code = @PayrollTypeCode
-	left join Base_DefineValue defValue
-	on defValue.ValueSetDef = valueSet.ID
-		and totalPay.PayrollType = defValue.ID
+	--left join Base_ValueSetDef valueSet
+	--on valueSet.Code = @PayrollTypeCode
+	--left join Base_DefineValue defValue
+	--on defValue.ValueSetDef = valueSet.ID
+	--	and totalPay.PayrollType = defValue.ID
 
 
 	inner join PAY_PayrollDoc payHead
