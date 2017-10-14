@@ -185,6 +185,7 @@ from Pay_SalaryItem where Code = @FActualPay)
 	declare @TotalIDCount int = 0
 	declare @TotalLineCount int = 0
 	declare @DetailLineCount int = 0
+	declare @DefaultZero decimal(24,9) = 0
 	
 	select @SysLineNo=cast(isnull(b.Value,a.DefaultValue) as int)
 	from Base_Profile a
@@ -223,7 +224,9 @@ select
 	-- 人员.财务部门
 	,IsNull(dept.ID,-1) as Department
 	-- 计薪方案计薪期间
-	,IsNull(payDetail.PayrollCaculate,-1) as PayrollCalculate
+	--,IsNull(payDetail.PayrollCaculate,-1) as PayrollCalculate
+	-- 2017-10-14 wf 不同计薪期间 合并到汇总行
+	,-1 as PayrollCalculate
 	-- 计薪方案
 	-- ,IsNull(payCalc.SalarySolution,-1) as SalarySolution
 	,-1  as SalarySolution
@@ -515,7 +518,10 @@ select tmpLine.*
 	,dbo.HBH_Fn_GetDecimal(payResult.' + @GrossPayField  + ',0) as GrossPay ,dbo.HBH_Fn_GetDecimal(payResult.' + @FGrossPayField  + ',0) as FGrossPay 
 	,dbo.HBH_Fn_GetDecimal(payResult.' + @ActualPayField  + ',0) as ActualPay  ,dbo.HBH_Fn_GetDecimal(payResult.' + @FActualPayField  + ',0) as FActualPay  
 	,payDetail.TotalOrigPay as TotalOrigPay
-	,payDetail.TotalActPay as TotalActPay
+	-- ,payDetail.TotalActPay as TotalActPay
+	-- 2017-10-14 wf 李震林，这个不取系统的实发，取 实发+F实发，原因沈阳的有几个人没税，但是系统算出来有税
+	-- 李震林(青岛健力源)  11:50:10      合计表中的实发工资，就等于087和F22的合计就可以了
+	,TotalActPay = dbo.HBH_Fn_GetDecimal(payResult.' + @ActualPayField  + ',0) + dbo.HBH_Fn_GetDecimal(payResult.' + @FActualPayField  + ',0)
 from #hbh_tmp_TotalPayrollDocLine tmpLine
 	inner join PAY_EmpPayroll payDetail
 	on tmpLine.PayDetailID = payDetail.ID
@@ -525,6 +531,9 @@ from #hbh_tmp_TotalPayrollDocLine tmpLine
 	
 --print(@DeptSql)
 exec (@DeptSql)
+--declare @StrZero varchar(125) = N'0'
+---- N'cast(0 as decimal(24,9))'
+--exec sp_executesql @DeptSql,N'@DefaultZero varchar(125)',@StrZero
 
 
 If OBJECT_ID('tempdb..#hbh_tmp_TotalLine') is not null
@@ -977,6 +986,7 @@ begin
 		on detailLine.SalarySolution = totalLine.SalarySolution
 			and detailLine.PayrollCalculate = totalLine.PayrollCalculate
 			and detailLine.Department = totalLine.Department
+			and head.ID = totalLine.TotalPayrollDoc
 	
 			---- 部门
 			--and (detailLine.BeforeDeptName = totalLine.DepartmentName
