@@ -144,16 +144,32 @@ from Base_User usr
 	on deptTrl.ID = dept.ID
         and deptTrl.SysMLFlag = 'zh-CN'
 where usr.ID = @User
+    and dept.Org = @Org
 "
                             );
-                        ParamDTO paramDTO = new ParamDTO();
-                        paramDTO.ParamDirection = ParameterDirection.Input;
-                        paramDTO.ParamType = DbType.String;
-                        paramDTO.ParamName = "User";
-                        paramDTO.ParamValue = strUserID;
+
+                        List<ParamDTO> lstParam = new List<ParamDTO>();
+                        {
+                            ParamDTO paramDTO = new ParamDTO();
+                            paramDTO.ParamDirection = ParameterDirection.Input;
+                            paramDTO.ParamType = DbType.String;
+                            paramDTO.ParamName = "User";
+                            paramDTO.ParamValue = strUserID;
+
+                            lstParam.Add(paramDTO);
+                        }
+                        {
+                            ParamDTO paramDTO = new ParamDTO();
+                            paramDTO.ParamDirection = ParameterDirection.Input;
+                            paramDTO.ParamType = DbType.Int64;
+                            paramDTO.ParamName = "Org";
+                            paramDTO.ParamValue = orgID;
+
+                            lstParam.Add(paramDTO);
+                        }
 
                         DataTable dt;
-                        U9Helper.GetResultBySql(sql, out dt, paramDTO);
+                        U9Helper.GetResultBySql(sql, out dt, lstParam.ToArray());
 
                         string strDeptID = string.Empty;
                         string strDeptCode = string.Empty;
@@ -176,19 +192,41 @@ where usr.ID = @User
                                                         , strDeptCode
                                                         , strDeptName
                                                         , strDeptID
-                                                        ,UFSoft.UBF.Report.Filter.enuOperatorListType.Equal
+                                                        , UFSoft.UBF.Report.Filter.enuOperatorListType.Equal
                                                         );
 
-                            // 过滤条件
-                            // "__curOId={0}&{1}={2}"
-                            filterDefine.Reference.ReferenceObject.RefCondCollection[0].CustomInParams = string.Format("{0}={1}"
-                                                            , BaseAction.Symbol_AddCustomFilter
-                                                            , string.Format("Code like '{0}%' and Org='{1}'"
-                                                                    , strDeptCode
-                                                                    , orgID
-                                                                    )
-                                                            );
                         }
+                        //// 过滤条件
+                        //// "__curOId={0}&{1}={2}"
+                        //filterDefine.Reference.ReferenceObject.RefCondCollection[0].CustomInParams = string.Format("{0}={1}"
+                        //                                , BaseAction.Symbol_AddCustomFilter
+                        //                                , string.Format("Code like '{0}%' and Org='{1}'"
+                        //                                        , strDeptCode
+                        //                                        , orgID
+                        //                                        )
+                        //                                );
+                        
+                        StringBuilder sbDeptIDs = new StringBuilder();
+
+                        if (dt != null
+                            && dt.Rows != null
+                            && dt.Rows.Count > 0
+                            )
+                        {
+                            foreach (DataRow row in dt.Rows)
+                            {
+                                sbDeptIDs.Append(row[0].GetString()).Append(",");
+                            }
+                        }
+                        // 过滤条件
+                        // "__curOId={0}&{1}={2}"
+                        filterDefine.Reference.ReferenceObject.RefCondCollection[0].CustomInParams = string.Format("{0}={1}"
+                                                        , BaseAction.Symbol_AddCustomFilter
+                                                        , string.Format("ID in ({0}) and Org='{1}'"
+                                                                , sbDeptIDs.GetStringRemoveLastSplit()
+                                                                , orgID
+                                                                )
+                                                        );
                     }
                 }
             }
