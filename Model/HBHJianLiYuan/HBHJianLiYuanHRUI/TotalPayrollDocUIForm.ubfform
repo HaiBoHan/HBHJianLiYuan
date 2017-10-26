@@ -1,11 +1,11 @@
-<View ID="fe9fb407-7e59-4dfa-a7dd-c841afbbc35d" ChildLabelWidth="56" ChildRefWidth="20" GridBottomMargin="5" GridColumnCount="1" GridColumnSpace="24" GridLeftMargin="0" GridRightMargin="0" GridRowCount="3" GridRowSpace="10" GridTopMargin="0" Height="504" IsMainForm="True" LayoutType="GridBag" Name="TotalPayrollDocUIForm" Namespace="TotalPayrollDocUIModel" TabStop="False" TemplateCode="UI_SingleCardAndSingleGrid" TemplateType="CustomTemplate" UIModelID="6b86687d-f392-41ec-be5a-e1cca5b5de21" URI=".UI_单卡单表WebPart" ViewID="4983" Width="992" X="10" Y="10">
+<View ID="fe9fb407-7e59-4dfa-a7dd-c841afbbc35d" ChildLabelWidth="56" ChildRefWidth="20" GridBottomMargin="5" GridColumnCount="1" GridColumnSpace="24" GridLeftMargin="0" GridRightMargin="0" GridRowCount="3" GridRowSpace="10" GridTopMargin="0" Height="504" IsAutoSize="True" IsMainForm="True" LayoutType="GridBag" Name="TotalPayrollDocUIForm" Namespace="TotalPayrollDocUIModel" TabStop="False" TemplateCode="UI_SingleCardAndSingleGrid" TemplateType="CustomTemplate" UIModelID="6b86687d-f392-41ec-be5a-e1cca5b5de21" URI=".UI_单卡单表WebPart" ViewID="4983" Width="992" X="10" Y="10">
   <Columns>
     <Column Fixed="False" Name="Column0" Type="Title" Width="992" />
   </Columns>
   <Rows>
     <Row Fixed="True" Height="28" Name="Row0" />
     <Row Fixed="False" Height="421" Name="Row4" />
-    <Row Fixed="True" Height="25" Name="Row3" />
+    <Row Fixed="True" Height="30" Name="Row3" />
   </Rows>
   <Providers />
   <InParameters />
@@ -112,7 +112,7 @@
       </Events>
     </Button>
   </Toolbar>
-  <Card ID="d9fc48e9-2675-4920-bebc-092d912b5291" ChildLabelWidth="60" ChildRefWidth="20" FunctionBar="FunctionBar" GridBottomMargin="2" GridColumnCount="22" GridColumnSpace="0" GridHeight="1" GridLeftMargin="10" GridRightMargin="10" GridRowCount="1" GridRowSpace="5" GridTopMargin="3" GridWidth="1" GridX="0" GridY="2" Height="25" LayoutType="GridBag" Name="Card0" TabIndex="3" TabStop="False" Width="992" X="0" Y="469">
+  <Card ID="d9fc48e9-2675-4920-bebc-092d912b5291" BorderStyle="False" ChildLabelWidth="60" ChildRefWidth="20" FunctionBar="none" GridBottomMargin="1" GridColumnCount="22" GridColumnSpace="0" GridHeight="1" GridLeftMargin="10" GridRightMargin="10" GridRowCount="1" GridRowSpace="5" GridTopMargin="1" GridWidth="1" GridX="0" GridY="2" Height="30" LayoutType="GridBag" Name="Card0" TabIndex="3" TabStop="False" Width="992" X="0" Y="469">
     <Columns>
       <Column Fixed="True" Name="Column0" Type="Title" Width="80" />
       <Column Fixed="True" Name="Column1" Type="Spacing" Width="10" />
@@ -140,17 +140,17 @@
     <Rows>
       <Row Fixed="True" Height="20" Name="Row0" />
     </Rows>
-    <Button ID="0d626c5d-fb41-4916-a190-98f5071d0077" AccessKey="" DisplayNameResourceID="626ebf9b-f65a-4dd5-8f32-96f84919878c" DisplaySrcType="PublicResource" GridHeight="1" GridWidth="1" GridX="18" GridY="0" Height="20" Name="BtnOk" TabIndex="9" TabStop="True" Width="80" X="811" Y="3">
+    <Button ID="0d626c5d-fb41-4916-a190-98f5071d0077" AccessKey="" DisplayNameResourceID="626ebf9b-f65a-4dd5-8f32-96f84919878c" DisplaySrcType="PublicResource" GridHeight="1" GridWidth="1" GridX="18" GridY="0" Height="20" Name="BtnOk" TabIndex="9" TabStop="True" Width="80" X="811" Y="1">
       <Events>
         <Event EnableEvent="True" EventType="PostBack" IsDataBinding="True" IsDataCollect="True" Name="Click" Parameter="" Template="" />
       </Events>
     </Button>
-    <Button ID="df1223ca-bcda-40a0-a906-ad8f60e543ba" AccessKey="" DisplayNameResourceID="020a5365-8f12-4970-b8df-17ce3ae60a68" DisplaySrcType="PublicResource" GridHeight="1" GridWidth="1" GridX="20" GridY="0" Height="20" Name="BtnClose" TabIndex="10" TabStop="True" Width="80" X="901" Y="3">
+    <Button ID="df1223ca-bcda-40a0-a906-ad8f60e543ba" AccessKey="" DisplayNameResourceID="020a5365-8f12-4970-b8df-17ce3ae60a68" DisplaySrcType="PublicResource" GridHeight="1" GridWidth="1" GridX="20" GridY="0" Height="20" Name="BtnClose" TabIndex="10" TabStop="True" Width="80" X="901" Y="1">
       <Events>
         <Event EnableEvent="True" EventType="PostBack" IsDataBinding="True" IsDataCollect="True" Name="Click" Parameter="" Template="" />
       </Events>
     </Button>
-    <Button ID="327046da-ab43-43ce-b2d0-b40b96bf6a41" AccessKey="" DisplayName="汇总薪资" DisplayNameIndexStr="" DisplayNameResourceID="" DisplaySrcType="Custom" DisplaySrcUIFieldID="" DisplaySrcUIViewID="" GridHeight="1" GridWidth="1" GridX="0" GridY="0" Height="20" Name="BtnSumPayroll" TabIndex="11" TabStop="True" Width="80" X="10" Y="3">
+    <Button ID="327046da-ab43-43ce-b2d0-b40b96bf6a41" AccessKey="" DisplayName="汇总薪资" DisplayNameIndexStr="" DisplayNameResourceID="" DisplaySrcType="Custom" DisplaySrcUIFieldID="" DisplaySrcUIViewID="" GridHeight="1" GridWidth="1" GridX="0" GridY="0" Height="20" Name="BtnSumPayroll" TabIndex="11" TabStop="True" Width="80" X="10" Y="1">
       <Events>
         <Event EnableEvent="True" EventType="PostBack" IsDataBinding="True" IsDataCollect="True" Name="Click" Parameter="" Template="" />
       </Events>
@@ -158,8 +158,8 @@
   </Card>
   <Card ID="1d990f2a-3a54-4616-bed5-a37e992775e5" ChildLabelWidth="60" ChildRefWidth="20" GridBottomMargin="0" GridColumnCount="2" GridColumnSpace="0" GridHeight="1" GridLeftMargin="10" GridRightMargin="10" GridRowCount="3" GridRowSpace="10" GridTopMargin="0" GridWidth="1" GridX="0" GridY="1" Height="421" LayoutType="GridBag" Name="Card4" TabIndex="2" TabStop="False" Width="992" X="0" Y="38">
     <Columns>
-      <Column Fixed="True" Name="Column0" Type="Title" Width="971" />
-      <Column Fixed="False" Name="Column1" Width="1" />
+      <Column Fixed="False" Name="Column0" Type="Value" Width="971" />
+      <Column Fixed="True" Name="Column1" Width="1" />
     </Columns>
     <Rows>
       <Row Fixed="True" Height="72" Name="Row0" />
@@ -304,9 +304,9 @@
       </TextBox>
     </Card>
     <TabControl ID="853a3c09-6e2a-4a47-9680-5895232b3846" EventResponseType="Server" GridHeight="1" GridWidth="1" GridX="0" GridY="1" Height="328" Name="TabControl0" TabIndex="2" TabStop="True" Width="971" X="10" Y="82">
-      <TabPage ID="132e2b90-e4c1-49ed-833d-e82082c41c05" ChildLabelWidth="60" ChildRefWidth="20" DisplayName="薪资汇总" DisplayNameIndexStr="" DisplayNameResourceID="" DisplaySrcType="Custom" DisplaySrcUIFieldID="" DisplaySrcUIViewID="" GridBottomMargin="0" GridColumnCount="1" GridColumnSpace="0" GridLeftMargin="0" GridRightMargin="0" GridRowCount="1" GridRowSpace="5" GridTopMargin="0" Height="295" Name="TabPageTotal" TabStop="False" Width="963" X="0" Y="0">
+      <TabPage ID="132e2b90-e4c1-49ed-833d-e82082c41c05" ChildLabelWidth="60" ChildRefWidth="20" DisplayName="薪资汇总" DisplayNameIndexStr="" DisplayNameResourceID="" DisplaySrcType="Custom" DisplaySrcUIFieldID="" DisplaySrcUIViewID="" GridBottomMargin="0" GridColumnCount="1" GridColumnSpace="0" GridLeftMargin="0" GridRightMargin="0" GridRowCount="1" GridRowSpace="5" GridTopMargin="0" Height="298" Name="TabPageTotal" TabStop="False" Width="963" X="0" Y="0">
         <Columns>
-          <Column Fixed="True" Name="Column0" Type="Title" Width="963" />
+          <Column Fixed="False" Name="Column0" Type="Title" Width="963" />
         </Columns>
         <Rows>
           <Row Fixed="False" Height="295" Name="Row0" />
@@ -524,9 +524,9 @@
           </Columns>
         </DataGrid>
       </TabPage>
-      <TabPage ID="9f12cd4f-49d5-44b2-b1a1-ec9b909f4f45" ChildLabelWidth="60" ChildRefWidth="20" DisplayName="薪资明细" DisplayNameIndexStr="" DisplayNameResourceID="" DisplaySrcType="Custom" DisplaySrcUIFieldID="" DisplaySrcUIViewID="" GridBottomMargin="0" GridColumnCount="1" GridColumnSpace="0" GridLeftMargin="0" GridRightMargin="0" GridRowCount="1" GridRowSpace="5" GridTopMargin="0" Height="295" Name="TabPageDetail" TabStop="False" Width="963" X="0" Y="0">
+      <TabPage ID="9f12cd4f-49d5-44b2-b1a1-ec9b909f4f45" ChildLabelWidth="60" ChildRefWidth="20" DisplayName="薪资明细" DisplayNameIndexStr="" DisplayNameResourceID="" DisplaySrcType="Custom" DisplaySrcUIFieldID="" DisplaySrcUIViewID="" GridBottomMargin="0" GridColumnCount="1" GridColumnSpace="0" GridLeftMargin="0" GridRightMargin="0" GridRowCount="1" GridRowSpace="5" GridTopMargin="0" Height="298" Name="TabPageDetail" TabStop="False" Width="963" X="0" Y="0">
         <Columns>
-          <Column Fixed="True" Name="Column0" Type="Title" Width="963" />
+          <Column Fixed="False" Name="Column0" Type="Title" Width="963" />
         </Columns>
         <Rows>
           <Row Fixed="False" Height="295" Name="Row0" />
