@@ -446,6 +446,15 @@
                 {
                     return true;
                 }
+
+                // 2017-11-09 wf 李震林QQ提出，
+                // 开头为8821和8822的物料，也能自动出库，是增加，不是修改，原来的不变，增加两种自动出库的物料类
+                if (line.ItemInfo.ItemID.Code.StartsWith("8821")
+                    || line.ItemInfo.ItemID.Code.StartsWith("8822")
+                    )
+                {
+                    return true;
+                }
             }
             return false;
         }		
