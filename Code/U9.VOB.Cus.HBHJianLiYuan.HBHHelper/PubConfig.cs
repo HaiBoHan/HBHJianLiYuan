@@ -39,8 +39,8 @@ namespace U9.VOB.Cus.HBHJianLiYuan.HBHHelper
                 {
                     _dicConfig = new Dictionary<string, string>();
 
-                    _dicConfig.Add("WebPartExtend_HBH_JianLiYuan.config", "WebPartExtend_HBH_JianLiYuan.config");
-                    _dicConfig.Add("U9.VOB.Cus.HBHJianLiYuan.PlugInBE.sub.xml", "bin\\U9.VOB.Cus.HBHJianLiYuan.PlugInBE.sub.xml");
+                    //_dicConfig.Add("WebPartExtend_HBH_JianLiYuan.config", "WebPartExtend_HBH_JianLiYuan.config");
+                    //_dicConfig.Add("U9.VOB.Cus.HBHJianLiYuan.PlugInBE.sub.xml", "bin\\U9.VOB.Cus.HBHJianLiYuan.PlugInBE.sub.xml");
                 }
 
                 return _dicConfig;
