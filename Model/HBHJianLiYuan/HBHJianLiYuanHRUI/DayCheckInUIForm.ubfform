@@ -1,4 +1,4 @@
-<View ID="eff032a7-ce78-48c1-bb3f-f992965caa0d" ChildLabelWidth="56" ChildRefWidth="20" GridBottomMargin="5" GridColumnCount="1" GridColumnSpace="24" GridLeftMargin="0" GridRightMargin="0" GridRowCount="3" GridRowSpace="10" GridTopMargin="0" Height="504" IsMainForm="True" LayoutType="GridBag" Name="DayCheckInUIForm" Namespace="DayCheckInUIModel" TabStop="False" TemplateCode="UI_SingleCardAndSingleGrid" TemplateType="CustomTemplate" UIModelID="34364f02-d73b-43ab-a10e-4bec54ed69ff" URI=".UI_单卡单表WebPart" ViewID="4983" Width="992" X="10" Y="415">
+<View ID="eff032a7-ce78-48c1-bb3f-f992965caa0d" ChildLabelWidth="56" ChildRefWidth="20" GridBottomMargin="5" GridColumnCount="1" GridColumnSpace="24" GridLeftMargin="0" GridRightMargin="0" GridRowCount="3" GridRowSpace="10" GridTopMargin="0" Height="504" IsMainForm="True" LayoutType="GridBag" Name="DayCheckInUIForm" Namespace="DayCheckInUIModel" TabStop="False" TemplateCode="UI_SingleCardAndSingleGrid" TemplateType="CustomTemplate" UIModelID="34364f02-d73b-43ab-a10e-4bec54ed69ff" URI=".UI_单卡单表WebPart" ViewID="4983" Width="992" X="10" Y="10">
   <Columns>
     <Column Fixed="False" Name="Column0" Type="Title" Width="992" />
   </Columns>
@@ -425,11 +425,31 @@
       <NumberControl ID="d4fb0e43-e92c-407b-baff-8a110e789fa8" DisplayFormat="24.9" Enabled="True" GridHeight="1" GridWidth="1" GridX="10" GridY="0" Height="20" IsNull="True" IsProperty="False" IsSequence="False" MultiLine="False" Name="MonthWorkDays190" Precision="2" RelationControl="lblMonthWorkDays190" TabIndex="24" TabStop="True" TextAlign="Right" TitleAlign="Left" TitleLocation="Left" UIFieldID="MonthWorkDays" UIViewID="DayCheckIn" Visible="True" Width="120" X="595" Y="0">
         <Events />
         <RelationControls />
-        <PrecisionBind />
-        <RoundRuleBind />
-        <ValueOfRoundByValueBind />
-        <CurrencyType />
+        <PrecisionBind Name="PrecisionBind8" />
+        <RoundRuleBind Name="RoundRuleBind8" />
+        <ValueOfRoundByValueBind Name="ValueOfRoundByValueBind8" />
+        <CurrencyType Name="CurrencyType8" />
       </NumberControl>
+      <Label ID="00efb2ec-2f6a-4d47-aa0b-75ed7bb6be43" Enabled="True" GridHeight="1" GridWidth="1" GridX="12" GridY="2" Height="20" IsNull="True" IsSequence="False" Name="lblOrg38" RelationControl="Org38" TabIndex="25" TabStop="True" TitleAlign="Right" TitleLocation="Left" UIFieldID="" UIViewID="" Visible="True" Width="100" X="735" Y="50">
+        <Events />
+        <RelationControls />
+        <Events />
+      </Label>
+      <Reference ID="3498b6c5-8021-4da1-a36b-e82a279abcfd" CodeAttributeName="Code" CodeField="Code" CodeFieldUIFieldID="Org_Code" CodeFieldUIViewID="DayCheckIn" DisplayFormat="19.0" Enabled="True" EntityName="ID" GridHeight="1" GridWidth="1" GridX="14" GridY="2" Height="20" IsNull="True" IsProperty="False" IsSequence="False" Name="Org38" NameAttributeName="Name" NameFieldUIFieldID="Org_Name" NameFieldUIViewID="DayCheckIn" PkeyField="ID" RefType="48e70ff6-090a-464d-ab36-4793dc7ef34a" RelationControl="lblOrg38" TabIndex="26" TabStop="True" TextAlign="Right" TitleAlign="Left" TitleLocation="Left" UIFieldID="Org" UIViewID="DayCheckIn" Visible="True" Width="120" WindowHeight="408" WindowWidth="580" X="840" Y="50">
+        <Events />
+        <RelationControls />
+        <ReferenceRelation Action="Clear" ColumnDisplayName="ID" ColumnID="ID" TargetControlType="" TargetID="" TargetProperty="" />
+        <ReferenceRelation Action="Clear" ColumnDisplayName="编码" ColumnID="Code" TargetControlType="" TargetID="" TargetProperty="" />
+        <ReferenceRelation Action="Clear" ColumnDisplayName="名称" ColumnID="Name" TargetControlType="" TargetID="" TargetProperty="" />
+        <ReferenceRelation Action="Clear" ColumnDisplayName="简称" ColumnID="ShortName" TargetControlType="" TargetID="" TargetProperty="" />
+        <RefNameFields>
+          <RefNameField UIFieldID="Name" />
+        </RefNameFields>
+        <UIFilterBar Name="ReferenceFilter">
+          <Parameter ContextID="" ControlID="" ControlProperty="" ControlType="" Name="FormOrg" />
+        </UIFilterBar>
+        <Events />
+      </Reference>
     </Card>
     <DataGrid ID="4b366f14-453a-4a3a-9566-52032b4587e5" AllowSelectAllPage="True" EditStatus="edit" Enabled="True" GridHeight="2" GridWidth="2" GridX="0" GridY="1" HasSum="True" Height="339" IsSumAllData="True" Name="DataGrid5" PageSize="20" Paging="True" TabIndex="2" TabStop="True" Width="972" X="10" Y="82">
       <Events />
