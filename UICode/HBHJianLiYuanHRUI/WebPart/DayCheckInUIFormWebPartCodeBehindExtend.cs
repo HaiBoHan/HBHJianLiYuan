@@ -447,6 +447,9 @@ namespace DayCheckInUIModel
 
             // 考勤类别不可修改；这个字段放开，万一有问题了，可以有人修改；通过权限先把所有人的权限都做成只读
             //this.DataGrid5.Columns[this.Model.DayCheckIn_DayCheckInLine.FieldCheckType.Name].Enabled = false;
+
+            this.Org38.ReadOnly = false;
+            this.Org38.Enabled = true;
 		}
 
 
