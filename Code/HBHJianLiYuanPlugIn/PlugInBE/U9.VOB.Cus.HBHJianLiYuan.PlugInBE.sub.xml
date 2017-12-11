@@ -48,5 +48,11 @@
   <subcription event="UFIDA.U9.CBO.HR.Department.Department.BeforeDefaultValue">
     <subscriber type="U9.VOB.Cus.HBHJianLiYuan.PlugInBE.Department_AfterDefaultValueExtend,U9.VOB.Cus.HBHJianLiYuan.PlugInBE.dll" />
   </subcription>
+
+
+  <subcription event="UFIDA.U9.InvDoc.TransferIn.TransferIn.AfterUpdated">
+    <subscriber type="U9.VOB.Cus.HBHJianLiYuan.PlugInBE.TransferIn_AfterUpdated,U9.VOB.Cus.HBHJianLiYuan.PlugInBE.dll" />
+  </subcription>
+  
   
 </pub-sub>
