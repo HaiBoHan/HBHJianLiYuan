@@ -330,6 +330,7 @@
     <Compile Include="Rcv_AfterUpdating.cs" />
     <Compile Include="Department_AfterDefaultValueExtend.cs" />
     <Compile Include="TransferIn_AfterUpdated.cs" />
+    <Compile Include="TransferIn_AfterValidate.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
