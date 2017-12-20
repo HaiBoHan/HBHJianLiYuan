@@ -70,7 +70,8 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInBE
                             }
 
                             // 如果新增，则把订单指导价 赋值给 收货单行；因为指导价可以修改，后面可以对比  订单指导价、和 收货指导价  差额
-                            if (entity.SysState == UFSoft.UBF.PL.Engine.ObjectState.Inserted)
+                            //if (entity.SysState == UFSoft.UBF.PL.Engine.ObjectState.Inserted)
+                            if (line.SysState == UFSoft.UBF.PL.Engine.ObjectState.Inserted)
                             {
                                 HBHHelper.DescFlexFieldHelper.SetRcvLinePoPreDiscountPrice(line.DescFlexSegments, poPrePrice);
                             }
