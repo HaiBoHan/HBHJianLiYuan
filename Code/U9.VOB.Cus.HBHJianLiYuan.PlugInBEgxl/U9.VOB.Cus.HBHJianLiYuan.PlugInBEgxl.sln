@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "U9.VOB.Cus.HBHJianLiYuan.PlugInBEgxl", "U9.VOB.Cus.HBHJianLiYuan.PlugInBEgxl.csproj", "{687D4E9C-FF10-4EC9-91AB-252D92CE1354}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{687D4E9C-FF10-4EC9-91AB-252D92CE1354}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{687D4E9C-FF10-4EC9-91AB-252D92CE1354}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{687D4E9C-FF10-4EC9-91AB-252D92CE1354}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{687D4E9C-FF10-4EC9-91AB-252D92CE1354}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
