@@ -1,0 +1,8 @@
+﻿<?xml version="1.0"?>
+<pub-sub>
+
+  <subcription event="UFIDA.U9.HI.Dimission.DimissionDoc.AfterValidate">
+    <subscriber type="U9.VOB.Cus.HBHJianLiYuan.PlugInBEgxl.DimissionDoc_AfterValidate,U9.VOB.Cus.HBHJianLiYuan.PlugInBEgxl.dll" />
+  </subcription>
+
+</pub-sub>
