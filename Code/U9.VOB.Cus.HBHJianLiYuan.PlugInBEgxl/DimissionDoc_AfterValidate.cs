@@ -65,20 +65,28 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInBEgxl
                 //TransInBin bin = new TransInBin();
                 //bin.TransInSubLine.TransInLine.TransferIn.ApprovedOn
 
-                TransInBin.EntityList binList = TransInBin.Finder.FindAll("Org=@Org and SqlLen(BinInfo.Code)>2 and Substr(BinInfo.Code,3,SqlLen(BinInfo.Code)-2)=@EmployeeCode order by TransInSubLine.TransInLine.TransferIn.ApprovedOn desc"
+                TransInBin.EntityList binList = TransInBin.Finder.FindAll("Org=@Org and SqlLen(BinInfo.Code)>2 and Substr(BinInfo.Code,3,SqlLen(BinInfo.Code)-2)=@EmployeeCode and TransInSubLine is not null and TransInSubLine > 0 order by TransInSubLine.TransInLine.TransferIn.ApprovedOn desc"
                     , new OqlParam(Context.LoginOrg.ID)
                     , new OqlParam(employeeCode)
                     );
 
                 if (binList != null && binList.Count > 0)
                 {
-                    if (binList[0].TransInSubLine.TransInLine.TransferIn.DocType.Code == "007")
+                    if (binList[0] != null
+                        && binList[0].TransInSubLine != null
+                        && binList[0].TransInSubLine.TransInLine != null
+                        && binList[0].TransInSubLine.TransInLine.TransferIn != null
+                        && binList[0].TransInSubLine.TransInLine.TransferIn.DocType != null
+                        )
                     {
-                        if (entity.DescFlexField == null)
+                        if (binList[0].TransInSubLine.TransInLine.TransferIn.DocType.Code == "007")
                         {
-                            entity.DescFlexField = new UFIDA.U9.Base.FlexField.DescFlexField.DescFlexSegments();
+                            if (entity.DescFlexField == null)
+                            {
+                                entity.DescFlexField = new UFIDA.U9.Base.FlexField.DescFlexField.DescFlexSegments();
+                            }
+                            entity.DescFlexField.PrivateDescSeg4 = "离职未退回";
                         }
-                        entity.DescFlexField.PrivateDescSeg4 = "离职未退回";
                     }
                 }
             }
