@@ -104,51 +104,85 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInBE
                             if (strGetDate.IsNotNullOrWhiteSpace()
                                 )
                             {
-                                if (lotMaster.DescFlexSegments.PrivateDescSeg4 == strGetDate)
-                                {
-                                    string strGetDateEnd = strGetDate + ";";
-                                    if (lotMaster.DescFlexSegments.PrivateDescSeg5.EndsWith(strGetDateEnd))
-                                    {
-                                        lotMaster.DescFlexSegments.PrivateDescSeg5 = lotMaster.DescFlexSegments.PrivateDescSeg5.Remove(strGetDateEnd.Length - 1, strGetDateEnd.Length);
-
-                                        if (lotMaster.DescFlexSegments.PrivateDescSeg5.Length > 0)
-                                        {
-                                            string[] splitDate = lotMaster.DescFlexSegments.PrivateDescSeg5.Split(';');
-
-                                            if (splitDate.Length > 0)
-                                            {
-                                                string strOldDate = splitDate[splitDate.Length - 1];
-                                                lotMaster.DescFlexSegments.PrivateDescSeg4 = strOldDate;
-                                            }
-                                        }
-
-                                        int number = lotMaster.DescFlexSegments.PrivateDescSeg6.GetInt();
-                                        if (number > 0)
-                                        {
-                                            number--;
-                                            lotMaster.DescFlexSegments.PrivateDescSeg6 = number.ToString();
-                                        }
-                                        isUpdated = true;
-                                    }
-                                }
                                 //if (lotMaster.DescFlexSegments.PrivateDescSeg4 == strGetDate)
-                                else
+                                //{
+                                //    string strGetDateEnd = strGetDate + ";";
+                                //    if (lotMaster.DescFlexSegments.PrivateDescSeg5.EndsWith(strGetDateEnd))
+                                //    {
+                                //        lotMaster.DescFlexSegments.PrivateDescSeg5 = lotMaster.DescFlexSegments.PrivateDescSeg5.Remove(lotMaster.DescFlexSegments.PrivateDescSeg5.Length - strGetDateEnd.Length, strGetDateEnd.Length);
+
+                                //        if (lotMaster.DescFlexSegments.PrivateDescSeg5.Length > 0)
+                                //        {
+                                //            string[] splitDate = lotMaster.DescFlexSegments.PrivateDescSeg5.Split(';');
+
+                                //            if (splitDate.Length > 0)
+                                //            {
+                                //                string strOldDate = splitDate[splitDate.Length - 1];
+                                //                lotMaster.DescFlexSegments.PrivateDescSeg4 = strOldDate;
+                                //            }
+                                //        }
+
+                                //        int number = lotMaster.DescFlexSegments.PrivateDescSeg6.GetInt();
+                                //        if (number > 0)
+                                //        {
+                                //            number--;
+                                //            lotMaster.DescFlexSegments.PrivateDescSeg6 = number.ToString();
+                                //        }
+                                //        isUpdated = true;
+                                //    }
+                                //}
+                                ////if (lotMaster.DescFlexSegments.PrivateDescSeg4 == strGetDate)
+                                //else
+                                //{
+                                //    string strGetDateEnd = strGetDate + ";";
+                                //    if (lotMaster.DescFlexSegments.PrivateDescSeg5.EndsWith(strGetDateEnd))
+                                //    {
+                                //        lotMaster.DescFlexSegments.PrivateDescSeg5 = lotMaster.DescFlexSegments.PrivateDescSeg5.Remove(lotMaster.DescFlexSegments.PrivateDescSeg5.Length - strGetDateEnd.Length, strGetDateEnd.Length);
+
+                                //        //if (lotMaster.DescFlexSegments.PrivateDescSeg5.Length > 0)
+                                //        //{
+                                //        //    string[] splitDate = lotMaster.DescFlexSegments.PrivateDescSeg5.Split(';');
+
+                                //        //    if (splitDate.Length > 0)
+                                //        //    {
+                                //        //        string strOldDate = splitDate[splitDate.Length - 1];
+                                //        //        lotMaster.DescFlexSegments.PrivateDescSeg4 = strOldDate;
+                                //        //    }
+                                //        //}
+
+                                //        int number = lotMaster.DescFlexSegments.PrivateDescSeg6.GetInt();
+                                //        if (number > 0)
+                                //        {
+                                //            number--;
+                                //            lotMaster.DescFlexSegments.PrivateDescSeg6 = number.ToString();
+                                //        }
+                                //        isUpdated = true;
+                                //    }
+                                //    else if (lotMaster.DescFlexSegments.PrivateDescSeg5.Contains(strGetDateEnd))
+                                //    {
+                                //        int lastIndex = lotMaster.DescFlexSegments.PrivateDescSeg5.LastIndexOf(strGetDateEnd);
+                                //        if (lastIndex >= 0)
+                                //        {
+                                //            lotMaster.DescFlexSegments.PrivateDescSeg5 = lotMaster.DescFlexSegments.PrivateDescSeg5.Remove(lastIndex, strGetDateEnd.Length);
+
+                                //            int number = lotMaster.DescFlexSegments.PrivateDescSeg6.GetInt();
+                                //            if (number > 0)
+                                //            {
+                                //                number--;
+                                //                lotMaster.DescFlexSegments.PrivateDescSeg6 = number.ToString();
+                                //            }
+                                //            isUpdated = true;
+                                //        }
+                                //    }
+                                //}
+
+                                string strGetDateEnd = strGetDate + ";";
+                                if (lotMaster.DescFlexSegments.PrivateDescSeg5.Contains(strGetDateEnd))
                                 {
-                                    string strGetDateEnd = strGetDate + ";";
-                                    if (lotMaster.DescFlexSegments.PrivateDescSeg5.EndsWith(strGetDateEnd))
+                                    int lastIndex = lotMaster.DescFlexSegments.PrivateDescSeg5.LastIndexOf(strGetDateEnd);
+                                    if (lastIndex >= 0)
                                     {
-                                        lotMaster.DescFlexSegments.PrivateDescSeg5 = lotMaster.DescFlexSegments.PrivateDescSeg5.Remove(strGetDateEnd.Length - 1, strGetDateEnd.Length);
-
-                                        //if (lotMaster.DescFlexSegments.PrivateDescSeg5.Length > 0)
-                                        //{
-                                        //    string[] splitDate = lotMaster.DescFlexSegments.PrivateDescSeg5.Split(';');
-
-                                        //    if (splitDate.Length > 0)
-                                        //    {
-                                        //        string strOldDate = splitDate[splitDate.Length - 1];
-                                        //        lotMaster.DescFlexSegments.PrivateDescSeg4 = strOldDate;
-                                        //    }
-                                        //}
+                                        lotMaster.DescFlexSegments.PrivateDescSeg5 = lotMaster.DescFlexSegments.PrivateDescSeg5.Remove(lastIndex, strGetDateEnd.Length);
 
                                         int number = lotMaster.DescFlexSegments.PrivateDescSeg6.GetInt();
                                         if (number > 0)
@@ -157,22 +191,6 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInBE
                                             lotMaster.DescFlexSegments.PrivateDescSeg6 = number.ToString();
                                         }
                                         isUpdated = true;
-                                    }
-                                    else if (lotMaster.DescFlexSegments.PrivateDescSeg5.Contains(strGetDateEnd))
-                                    {
-                                        int lastIndex = lotMaster.DescFlexSegments.PrivateDescSeg5.LastIndexOf(strGetDateEnd);
-                                        if (lastIndex >= 0)
-                                        {
-                                            lotMaster.DescFlexSegments.PrivateDescSeg5 = lotMaster.DescFlexSegments.PrivateDescSeg5.Remove(lastIndex, strGetDateEnd.Length);
-
-                                            int number = lotMaster.DescFlexSegments.PrivateDescSeg6.GetInt();
-                                            if (number > 0)
-                                            {
-                                                number--;
-                                                lotMaster.DescFlexSegments.PrivateDescSeg6 = number.ToString();
-                                            }
-                                            isUpdated = true;
-                                        }
                                     }
                                 }
                             }
