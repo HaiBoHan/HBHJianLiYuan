@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ReferenceComponent id="b8791bb3-5ddd-4eb0-b0b8-602bc71146aa" name="PayrollCalculateRef" displayName="计薪方案计薪期间" description="" help="" refType="1" isMultiSelect="True" isDefault="False" isClientReturn="False" width="580" height="408" isBinding="False" displayNameResourceID="" URI="U9.VOB.Cus.HBHJianLiYuan.HRUI.PayrollCalculateRef" Classify="" ForMultOrg="False">
+  <References>
+    <Reference id="64d65f2c-767f-4ca9-8eeb-7453af291c87" name="cRef" displayName="cRef" description="" help="计薪方案计薪期间" refEntityId="be178a33-0f0e-4589-a35a-33e9d54ae79e" refEntityName="UFIDA.U9.PAY.PayrollCaculate.PayrollCalculate" refType="1" isMain="False">
+      <RefFields>
+        <RefField id="8fe82140-b463-4a4a-88eb-c4d8c1d1f80c" name="ID" displayName="ID" description="" help="计薪方案计薪期间.Key.ID" isKey="True" isEdit="False" isName="False" isVisible="False" isParent="False" sequence="0" length="80" refAttributeName="UFIDA.U9.PAY.PayrollCaculate.PayrollCalculate:ID" displayNameIndexStr="2" />
+        <RefField id="ae3d0c05-8332-486d-9560-266419272c12" name="SalarySolution_Code" displayName="计薪方案编码" description="" help="计薪方案.Misc.编码" isKey="False" isEdit="True" isName="False" isVisible="True" isParent="False" sequence="0" length="120" refAttributeName="UFIDA.U9.PAY.PayrollCaculate.PayrollCalculate:SalarySolution.Code" displayNameIndexStr="0.2" />
+        <RefField id="8b395615-6474-4693-8140-95c3538499e4" name="SalarySolution_Name" displayName="计薪方案名称" description="" help="计薪方案.Misc.名称" isKey="False" isEdit="False" isName="True" isVisible="True" isParent="False" sequence="0" length="120" refAttributeName="UFIDA.U9.PAY.PayrollCaculate.PayrollCalculate:SalarySolution.Name" displayNameIndexStr="0.2" />
+        <RefField id="c7e18552-ea5a-4c6e-9e25-befac2ca912a" name="HROrg_Name" displayName="人事组织" description="" help="组织机构.行政组织.名称" isKey="False" isEdit="False" isName="False" isVisible="True" isParent="False" sequence="0" length="79" refAttributeName="UFIDA.U9.PAY.PayrollCaculate.PayrollCalculate:HROrg.Name" displayNameIndexStr="" />
+        <RefField id="712f489d-8fbe-444b-a9d3-817f6e36d35c" name="PlanDate" displayName="计薪日期" description="" help="计薪方案计薪期间.Misc.计薪日期" isKey="False" isEdit="False" isName="False" isVisible="True" isParent="False" sequence="0" length="80" refAttributeName="UFIDA.U9.PAY.PayrollCaculate.PayrollCalculate:PlanDate" displayNameIndexStr="2" />
+        <RefField id="4ea5c8b2-76e3-4241-a8b4-7853ddc09046" name="SalarySolution_Currency_Name" displayName="币种" description="" help="币种.基本.名称" isKey="False" isEdit="False" isName="False" isVisible="True" isParent="False" sequence="0" length="80" refAttributeName="UFIDA.U9.PAY.PayrollCaculate.PayrollCalculate:SalarySolution.Currency.Name" displayNameIndexStr="0" />
+        <RefField id="92c2ba71-6fda-4381-a677-cf1d19ef5976" name="SalarySolution_Description" displayName="计薪方案描述" description="" help="计薪方案.Misc.描述" isKey="False" isEdit="False" isName="False" isVisible="False" isParent="False" sequence="0" length="80" refAttributeName="UFIDA.U9.PAY.PayrollCaculate.PayrollCalculate:SalarySolution.Description" displayNameIndexStr="" />
+      </RefFields>
+      <OrderFields>
+        <OrderField id="04e7dbf0-b050-4216-8e52-62a3859a11c1" name="PlanDate" displayName="计薪日期" description="" help="计薪方案计薪期间.Misc.计薪日期" direction="1" sequence="0" refAttributeName="UFIDA.U9.PAY.PayrollCaculate.PayrollCalculate:PlanDate" />
+        <OrderField id="c538ced7-eb58-4e12-bf74-67c38359960c" name="SalarySolution_Code" displayName="编码" description="" help="计薪方案.Misc.编码" direction="0" sequence="0" refAttributeName="UFIDA.U9.PAY.PayrollCaculate.PayrollCalculate:SalarySolution.Code" />
+      </OrderFields>
+      <Filter />
+    </Reference>
+  </References>
+</ReferenceComponent>

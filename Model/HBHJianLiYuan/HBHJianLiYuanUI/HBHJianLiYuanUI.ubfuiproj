@@ -25,5 +25,7 @@
     <Item id="7a3a7e54-9279-418b-af2a-fd7b8bb8f384" name="OperatorRef.ubfref" displayName="OperatorRef.ubfref" description="" help="" include="HBHJianLiYuanRef\OperatorRef.ubfref" type="" />
     <Item id="4f489bca-c4e0-46c6-bddf-7a322fe9ef59" name="PersonRef.ubfref" displayName="PersonRef.ubfref" description="" help="" include="PersonRef.ubfref" type="" />
     <Item id="dce78bbc-e811-4688-b1d1-1c1fa2148d98" name="EmployeeArchiveRef.ubfref" displayName="EmployeeArchiveRef.ubfref" description="" help="" include="EmployeeArchiveRef.ubfref" type="" />
+    <Item id="313c5e8e-dd85-473b-bb60-89786dbcc7ee" name="AQWRcvUIModel.ubfuim" displayName="AQWRcvUIModel.ubfuim" description="" help="" include="AQWRcvUIModel.ubfuim" type="" />
+    <Item id="1ec9be9d-f6bf-4dbe-adf3-97ef4fa57fae" name="AQWRcvUIForm.ubfform" displayName="AQWRcvUIForm.ubfform" description="" help="" include="AQWRcvUIForm.ubfform" type="" />
   </ItemGroup>
 </Project>

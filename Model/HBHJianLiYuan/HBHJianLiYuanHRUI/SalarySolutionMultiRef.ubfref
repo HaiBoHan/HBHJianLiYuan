@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ReferenceComponent id="cc980ae0-1941-45a0-9330-b54a6698f27e" name="SalarySolutionMultiRef" displayName="计薪方案" description="" help="" refType="1" isMultiSelect="True" isDefault="False" isClientReturn="False" width="580" height="408" isBinding="False" displayNameResourceID="" URI="U9.VOB.Cus.HBHJianLiYuan.HRUI.SalarySolutionMultiRef" Classify="" ForMultOrg="False">
+  <References>
+    <Reference id="249b093b-992c-4e8e-9eec-5b7dd041372f" name="cRef" displayName="cRef" description="" help="计薪方案" refEntityId="54bb9a97-4a7b-456d-9036-e9d9490b2532" refEntityName="UFIDA.U9.PAY.SalarySolutionBE.SalarySolution" refType="1" isMain="False">
+      <RefFields>
+        <RefField id="2d4f8a1c-ec7d-45e4-8948-4d8611e80540" name="ID" displayName="ID" description="" help="计薪方案.Key.ID" isKey="True" isEdit="False" isName="False" isVisible="False" isParent="False" sequence="0" length="80" refAttributeName="UFIDA.U9.PAY.SalarySolutionBE.SalarySolution:ID" displayNameIndexStr="2" />
+        <RefField id="87b6631d-993f-4d23-a82d-986f823aa850" name="Code" displayName="计薪方案编码" description="" help="计薪方案.Misc.编码" isKey="False" isEdit="True" isName="False" isVisible="True" isParent="False" sequence="0" length="120" refAttributeName="UFIDA.U9.PAY.SalarySolutionBE.SalarySolution:Code" displayNameIndexStr="" />
+        <RefField id="004bda4e-b13a-493e-bb52-dcb23792d02c" name="Name" displayName="计薪方案名称" description="" help="计薪方案.Misc.名称" isKey="False" isEdit="False" isName="True" isVisible="True" isParent="False" sequence="0" length="120" refAttributeName="UFIDA.U9.PAY.SalarySolutionBE.SalarySolution:Name" displayNameIndexStr="" />
+        <RefField id="c328a471-f757-447f-b443-3a419b32a899" name="Description" displayName="计薪方案描述" description="" help="计薪方案.Misc.描述" isKey="False" isEdit="False" isName="False" isVisible="True" isParent="False" sequence="0" length="120" refAttributeName="UFIDA.U9.PAY.SalarySolutionBE.SalarySolution:Description" displayNameIndexStr="" />
+      </RefFields>
+      <OrderFields>
+        <OrderField id="783a4828-59bd-4ac0-8fd5-a257b651498f" name="Code" displayName="编码" description="" help="计薪方案.Misc.编码" direction="0" sequence="0" refAttributeName="UFIDA.U9.PAY.SalarySolutionBE.SalarySolution:Code" />
+      </OrderFields>
+      <Filter />
+    </Reference>
+  </References>
+</ReferenceComponent>
