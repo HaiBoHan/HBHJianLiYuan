@@ -15,7 +15,7 @@ create proc HBH_SP_JianLiYuan_GetAQWTableFromAWQ (
 )
 with encryption
 as
-	SET NOCOUNT ON;
+	--SET NOCOUNT ON;
 
 	
 declare @SysMlFlag varchar(11) = 'zh-CN'
@@ -317,7 +317,7 @@ end
 			-- 稽查时间
 			,btime datetime
 			-- 盘点周期tag
-			,pdatetag varchar(125)
+			,pdatetag datetime
 			-- 单据类型
 			,ordertype varchar(125)
 			-- 确认人
@@ -405,13 +405,13 @@ end
 			-- 备注
 			,icomment varchar(125)
 			-- 更新时间
-			,iutime varchar(125)
+			,iutime datetime
 			-- 批次
 			,batch varchar(125)
 			-- 配送单价
 			,disprice varchar(125)
 			-- 入库时间
-			,depotintime varchar(125)
+			,depotintime datetime
 			-- 成本单价
 			,originalprice varchar(125)
 			-- 原因备注ID
@@ -442,11 +442,11 @@ end
 	insert into lgt_dispatchin_item
 	select *
 	from openquery([MYSQL-AWQ],'SELECT 
-			ldiid
+			ldiiid
+			,ldiid
 			,lgid
 			,amount
 			,damount
-			,Amount+damount
 			,uprice
 			,total
 			,icomment
@@ -469,8 +469,11 @@ end
 								FROM lgt_dispatchin_item 
 								; ') as tmp
 	where
-		ldiid not in (select ldiid
+		ldiiid not in (select ldiiid
 					from lgt_dispatchin_item
+					)
+		and ldiid in (select ldiid
+					from lgt_dispatchin
 					)
 
 
