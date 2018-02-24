@@ -37,6 +37,11 @@
         <Operation id="7e8339f1-7086-4941-a2a6-7d67d4620cde" name="Impement" displayName="实现" description="" help="" mD_ParentClass_ID="" isFactEntity="False" returnTypeID="378d45b4-375d-4b5d-8748-abc9575c26b3" isService="False" isDefault="True" isEntityKey="False" transactionType="2" isAuthorization="True" isISV="False" />
       </Implements>
     </Operation>
+    <Operation id="283836d0-6083-47ff-9f32-032f5019dc2f" name="GetAWQTableSV" displayName="获取奥琦玮表服务" description="获取奥琦玮表服务" help="" mD_ParentClass_ID="" isFactEntity="False" returnTypeID="378d45b4-375d-4b5d-8748-abc9575c26b3" isService="True" isDefault="False" isEntityKey="False" transactionType="2" isAuthorization="True" isISV="False">
+      <Implements>
+        <Operation id="663b976f-a8f9-48b8-99df-77c37fab15f4" name="Impement" displayName="实现" description="" help="" mD_ParentClass_ID="" isFactEntity="False" returnTypeID="378d45b4-375d-4b5d-8748-abc9575c26b3" isService="False" isDefault="True" isEntityKey="False" transactionType="2" isAuthorization="True" isISV="False" />
+      </Implements>
+    </Operation>
     <Diagram id="541a8906-95d4-4ab8-a16a-ee8821c7f70c" name="RcvToShipSV" displayName="RcvToShipSV">
       <Class Editable="True" ID="086ca88b-4054-4572-9499-d66ff30cd93e" Type="Service" ADID="cd2668d6-86a2-4d4a-a8c5-f701bddc4ae2">
         <Location X="94" Y="81" />
@@ -48,6 +53,10 @@
       </Class>
       <Class Editable="True" ID="aff7a63d-0b68-44c6-93ab-29dd86656221" Type="Service" ADID="3c6b44bf-790a-4389-a8a6-b86e8246d3d2">
         <Location X="570" Y="111" />
+        <Size width="120" height="58" />
+      </Class>
+      <Class Editable="True" ID="8ea3d443-cd89-451c-87d5-12e18cb5fe1f" Type="Service" ADID="283836d0-6083-47ff-9f32-032f5019dc2f">
+        <Location X="93" Y="184" />
         <Size width="120" height="58" />
       </Class>
     </Diagram>

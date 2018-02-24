@@ -5,7 +5,7 @@ if exists(select * from sys.objects where name='HBH_SP_JianLiYuan_GetAQWRcvLineI
 go
 -- 创建存储过程
 create proc HBH_SP_JianLiYuan_GetAQWRcvLineInfo  (
- @HeadID bigint = -1
+ @HeadIDs varchar(max) = ''
 )
 with encryption
 as
@@ -33,11 +33,11 @@ begin
 
 		insert into HBH_SPParamRecord
 		(ProcName,ParamName,ParamValue,CreatedOn)
-		select 'HBH_SP_JianLiYuan_GetAQWRcvLineInfo','@HeadID',IsNull(cast(@HeadID as varchar(max)),'null'),GETDATE()
+		select 'HBH_SP_JianLiYuan_GetAQWRcvLineInfo','@HeadIDs',IsNull(cast(@HeadIDs as varchar(max)),'null'),GETDATE()
 		--union  select 'HBH_SP_JianLiYuan_GetAQWRcvLineInfo','@StartDate',IsNull(Convert(varchar,@StartDate,120),'null'),GETDATE()
 		-- union select 'HBH_SP_JianLiYuan_GetAQWRcvLineInfo','@EndDate',IsNull(Convert(varchar,@EndDate,120),'null'),GETDATE()
 		union select 'HBH_SP_JianLiYuan_GetAQWRcvLineInfo','ProcSql','exec HBH_SP_JianLiYuan_GetAQWRcvLineInfo '
-				+ IsNull(cast(@HeadID as varchar(501)),'null') 
+				+ IsNull(cast(@HeadIDs as varchar(501)),'null') 
 				--+ ',' + IsNull('''' + Convert(varchar,@StartDate,120) + '''' ,'null')
 				--+ ',' + IsNull('''' + Convert(varchar,@EndDate,120) + '''' ,'null')
 			   ,GETDATE()
@@ -58,12 +58,37 @@ end
 	
 
 
+	
+-- 1、获得传入物料ID集合
+If OBJECT_ID('tempdb..#hbh_tmp_ObjectList') is not null
+	Drop Table #hbh_tmp_ObjectList
+
+declare @split char(1) = ','
+DECLARE @xmlIDs XML
+
+SET @xmlIDs = CONVERT(XML,'<items><item id="' + REPLACE(@HeadIDs, @split, '"/><item id="') + '"/></items>')
+
+-- select *
+-- into #hbh_tmp_ObjectList
+-- from CBO_ItemMaster
+-- where ID in (
+-- 		SELECT x.item.value('@id[1]', 'bigint') as ItemID
+-- 		FROM @xmlIDs.nodes('//items/item') AS x(item)
+-- 		)
+
+SELECT x.item.value('@id[1]', 'bigint') as ID
+into #hbh_tmp_ObjectList
+FROM @xmlIDs.nodes('//items/item') AS x(item)
+
+
 
 select 
 	*
 from lgt_dispatchin_item
 where 1=1
-	and ldiid = @HeadID
+	and ldiid in (select ID
+				from #hbh_tmp_ObjectList
+				)
 
 
 
