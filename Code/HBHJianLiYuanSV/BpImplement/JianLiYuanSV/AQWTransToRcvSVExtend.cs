@@ -14,6 +14,7 @@
     using UFSoft.UBF.PL;
     using UFIDA.U9.Base;
     using UFIDA.U9.PM.Pub;
+    using UFIDA.U9.CBO.SCM.Warehouse;
 
 	/// <summary>
 	/// AQWTransToRcvSV partial 
@@ -215,6 +216,14 @@
                 }
                 erpRcvHead.DescFlexField.PrivateDescSeg1 = aqwRcvDTO.ldiid;
                 erpRcvHead.DescFlexField.PrivateDescSeg2 = aqwRcvDTO.code;
+
+                if (aqwRcvDTO.sno.IsNotNullOrWhiteSpace())
+                {
+                    Warehouse wh = Warehouse.Finder.Find("Org=@Org and Code=@Code"
+                        , new OqlParam(Context.LoginOrg.ID)
+                        , new OqlParam(aqwRcvDTO.sno)
+                        );
+                }
 
                 erpRcvHead.RcvLines = new List<OBARcvLineDTO>();
                 foreach (AQWRcvLineDTO aqwRcvLineDTO in aqwRcvDTO.AQWRcvLineDTOs)
