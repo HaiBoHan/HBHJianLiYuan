@@ -195,6 +195,18 @@ namespace U9.VOB.Cus.HBHJianLiYuan
         /// </summary>
         public string ldname { get; set; }
 
+        // 店铺编码
+        /// <summary>
+        /// 店铺编码
+        /// </summary>
+        public string shopcode { get; set; }
+
+        // 店铺名称
+        /// <summary>
+        /// 店铺名称
+        /// </summary>
+        public string shopname { get; set; }
+
 
         // 行
         /// <summary>

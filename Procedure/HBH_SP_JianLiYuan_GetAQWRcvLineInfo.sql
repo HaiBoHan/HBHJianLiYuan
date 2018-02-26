@@ -5,7 +5,7 @@ if exists(select * from sys.objects where name='HBH_SP_JianLiYuan_GetAQWRcvLineI
 go
 -- 创建存储过程
 create proc HBH_SP_JianLiYuan_GetAQWRcvLineInfo  (
- @HeadIDs Xml
+ @HeadIDs varchar(max)
 )
 with encryption
 as
@@ -91,10 +91,16 @@ select
 	,wh.sno
 	,wh.ldname
 
+	,dept.shopcode
+	,dept.shopname
+
 from lgt_dispatchin rcvhead
 
 	left join lgt_depot wh
 	on rcvhead.ldid = wh.ldid
+
+	left join sls_shop dept
+	on rcvhead.lsid = dept.[sid]
 
 where 1=1
 	and rcvhead.ldiid in (select tmp.ID
