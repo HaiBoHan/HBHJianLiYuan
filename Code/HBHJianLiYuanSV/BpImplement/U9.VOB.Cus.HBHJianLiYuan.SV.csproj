@@ -155,6 +155,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AQWRcvDTO.cs" />
     <Compile Include="AQWRcvLineDTO.cs" />
     <Compile Include="PubHelperExtend.cs" />
   </ItemGroup>

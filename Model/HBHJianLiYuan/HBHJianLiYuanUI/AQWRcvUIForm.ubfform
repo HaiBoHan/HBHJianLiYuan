@@ -57,7 +57,7 @@
       <Row Fixed="True" Height="370" Name="Row0" />
       <Row Fixed="False" Height="1" Name="Row1" />
     </Rows>
-    <DataGrid ID="7730aa0a-d85a-417c-8504-f69b88661e2e" AllowAddRow="False" AllowDelRow="False" AllowInsertRow="False" AutoEditModel="False" EditStatus="browse" Enabled="True" GridHeight="1" GridWidth="1" GridX="0" GridY="0" HasSum="False" Height="370" IsMultiSelect="True" Name="DataGrid1" PageSize="20" Paging="True" ShowEditBar="False" TabIndex="1" TabStop="True" Width="971" X="10" Y="0">
+    <DataGrid ID="7730aa0a-d85a-417c-8504-f69b88661e2e" AllowAddRow="False" AllowDelRow="False" AllowInsertRow="False" AutoEditModel="False" EditStatus="browse" Enabled="True" GridHeight="1" GridWidth="1" GridX="0" GridY="0" HasSum="False" Height="370" IsMultiSelect="True" Name="DataGrid1" PageSize="-1" Paging="False" ShowEditBar="False" TabIndex="1" TabStop="True" Width="971" X="10" Y="0">
       <Events />
       <Header ID="d0cc6b6f-35fc-4266-9054-14613d995644" Name="Header1">
         <HeaderRow Name="DefaultRow">
@@ -67,6 +67,7 @@
           <HeaderCell ID="65796e0b-a16c-4a88-806a-1e6919e6e8dd" ColSpan="1" Name="HeaderCell2" OwnerColName="status0" RowSpan="1" />
           <HeaderCell ID="3dab6e27-ea93-4157-ae32-a4969f7d9bdb" ColSpan="1" Name="HeaderCell3" OwnerColName="bsetcheck0" RowSpan="1" />
           <HeaderCell ID="4493f7c3-73ea-4e61-8ef1-eeaf6bd91f81" ColSpan="1" Name="HeaderCell4" OwnerColName="ordertype0" RowSpan="1" />
+          <HeaderCell ID="90d3007f-c8d4-4325-acb5-365d8f5580bf" ColSpan="1" DisplayName="到货时间" DisplayNameIndexStr="" DisplayNameResourceID="" DisplaySrcUIFieldID="" DisplaySrcUIViewID="" Name="HeaderCell11" OwnerColName="arrivetime0" RowSpan="1" />
           <HeaderCell ID="95ff9c09-4185-42fa-b485-a7126becb939" ColSpan="1" Name="HeaderCell5" OwnerColName="confirmuid0" RowSpan="1" />
           <HeaderCell ID="f1761b4e-11f6-4098-855d-b9405599cd86" ColSpan="1" Name="HeaderCell6" OwnerColName="confirmtime0" RowSpan="1" />
           <HeaderCell ID="d576c18a-741c-4b36-aa40-d3f92a7c73f5" ColSpan="1" Name="HeaderCell7" OwnerColName="comment0" RowSpan="1" />
@@ -100,13 +101,16 @@
         <TextBoxColumn ID="6028a28c-1638-4b65-89ad-69597baa4d5c" DefaultValue="" DisplayFormat="50" Enabled="True" Help="Misc.单据类型" IsNull="False" IsProperty="False" IsSequence="False" Name="ordertype0" NPos="6" Point="0" TextAlign="Left" UIFieldID="ordertype" UIViewID="DispatchinView" Visible="True">
           <Events />
         </TextBoxColumn>
-        <TextBoxColumn ID="007fdc95-a06a-482a-8e93-f4218f98d88e" DefaultValue="" DisplayFormat="50" Enabled="True" Help="Misc.确认人ID" IsNull="False" IsProperty="False" IsSequence="False" Name="confirmuid0" NPos="7" Point="0" TextAlign="Left" UIFieldID="confirmuid" UIViewID="DispatchinView" Visible="True">
+        <TextBoxColumn ID="8729a471-2dd9-434a-a7de-5454cc8686f5" DefaultValue="" DisplayFormat="50" Enabled="True" Help="Misc.到货时间" IsNull="True" IsProperty="False" IsSequence="False" Name="arrivetime0" NPos="7" Point="0" TextAlign="Left" UIFieldID="arrivetime" UIViewID="DispatchinView" Visible="True">
           <Events />
         </TextBoxColumn>
-        <TextBoxColumn ID="ad2ded4c-9d1b-45ea-acc9-b01b8988c096" DefaultValue="" DisplayFormat="50" Enabled="True" Help="Misc.确认时间" IsNull="False" IsProperty="False" IsSequence="False" Name="confirmtime0" NPos="8" Point="0" TextAlign="Left" UIFieldID="confirmtime" UIViewID="DispatchinView" Visible="True">
+        <TextBoxColumn ID="007fdc95-a06a-482a-8e93-f4218f98d88e" DefaultValue="" DisplayFormat="50" Enabled="True" Help="Misc.确认人ID" IsNull="False" IsProperty="False" IsSequence="False" Name="confirmuid0" NPos="8" Point="0" TextAlign="Left" UIFieldID="confirmuid" UIViewID="DispatchinView" Visible="True">
           <Events />
         </TextBoxColumn>
-        <TextBoxColumn ID="8e439af2-563d-4ddc-86d9-4bd23c1f4849" DefaultValue="" DisplayFormat="50" Enabled="True" Help="Misc.备注" IsNull="False" IsProperty="False" IsSequence="False" Name="comment0" NPos="9" Point="0" TextAlign="Left" UIFieldID="comment" UIViewID="DispatchinView" Visible="True" Width="300">
+        <TextBoxColumn ID="ad2ded4c-9d1b-45ea-acc9-b01b8988c096" DefaultValue="" DisplayFormat="50" Enabled="True" Help="Misc.确认时间" IsNull="False" IsProperty="False" IsSequence="False" Name="confirmtime0" NPos="9" Point="0" TextAlign="Left" UIFieldID="confirmtime" UIViewID="DispatchinView" Visible="True">
+          <Events />
+        </TextBoxColumn>
+        <TextBoxColumn ID="8e439af2-563d-4ddc-86d9-4bd23c1f4849" DefaultValue="" DisplayFormat="50" Enabled="True" Help="Misc.备注" IsNull="False" IsProperty="False" IsSequence="False" Name="comment0" NPos="10" Point="0" TextAlign="Left" UIFieldID="comment" UIViewID="DispatchinView" Visible="True" Width="200">
           <Events />
         </TextBoxColumn>
       </Columns>
