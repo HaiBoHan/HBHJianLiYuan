@@ -41,7 +41,7 @@ begin
 		union select 'HBH_SP_JianLiYuan_GetAQWRcvInfo','ProcSql','exec HBH_SP_JianLiYuan_GetAQWRcvInfo '
 				+ IsNull('''' + Convert(varchar,@StartDate,120) + '''' ,'null')
 				+ ',' + IsNull('''' + Convert(varchar,@EndDate,120) + '''' ,'null')
-				+ ',' + IsNull(cast(@DocNo as varchar(501)),'null') 
+				+ ',' + IsNull('''' + cast(@DocNo as varchar(501)) + '''' ,'null') 
 			   ,GETDATE()
 	end
 end
@@ -81,12 +81,12 @@ where 1=1
 	-- 开始日期
 	and (@StartDate is null 
 		or @StartDate <= '2010-01-01'
-		or @StartDate <= Convert(varchar(10),head.Sndate,120)
+		or @StartDate <= Convert(varchar(10),head.arrivetime,120)
 		)
 	-- 结束日期
 	and (@EndDate is null 
 		or @EndDate <= '2010-01-01'
-		or @EndDate >= Convert(varchar(10),head.Sndate,120)
+		or @EndDate >= Convert(varchar(10),head.arrivetime,120)
 		)
 
 	--单号
@@ -104,6 +104,12 @@ where 1=1
 
 order by 
 	head.arrivetime desc
+
+
+
+
+select *
+from #tmp_hbh_PageHead
 
 
 

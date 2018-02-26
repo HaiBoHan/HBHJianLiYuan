@@ -403,7 +403,7 @@
                         <Menu id="f76347fe-ea57-480b-b7ea-4e56b646fac6" code="f76347fe-ea57-480b-b7ea-4e56b646fac6" name="日考勤" shortName="new menu" displayName="日考勤" description="new menu" image="" isDialog="False" pageURI="Cust_DayCheckIn" pageParameter="" sequence="0" kind="Task" theApp="" />
                         <Menu id="c874897a-1ed9-4a6d-a4cf-9b9792f28725" code="c874897a-1ed9-4a6d-a4cf-9b9792f28725" name="日考勤列表" shortName="new menu" displayName="日考勤列表" description="new menu" image="" isDialog="False" pageURI="Cust_DayCheckIn_UIList" pageParameter="" sequence="1" kind="Task" theApp="" />
                         <Menu id="5e95692b-0c4f-4f81-b411-2c0b1dc43911" code="5e95692b-0c4f-4f81-b411-2c0b1dc43911" name="成本预警" shortName="new menu" displayName="成本预警" description="new menu" image="" isDialog="False" pageURI="Cust_CostWarning" pageParameter="" sequence="2" kind="Task" theApp="" />
-                        <Menu id="153cd25b-46a4-4afe-9181-200442ff1d33" code="153cd25b-46a4-4afe-9181-200442ff1d33" name="成本预警列表" shortName="new menu" displayName="成本预警列表" description="new menu" image="" isDialog="False" pageURI="Cust_CostWarning_UIList" pageParameter="" sequence="3" kind="Task" theApp="301101" />
+                        <Menu id="153cd25b-46a4-4afe-9181-200442ff1d33" code="153cd25b-46a4-4afe-9181-200442ff1d33" name="成本预警列表" shortName="new menu" displayName="成本预警列表" description="new menu" image="" isDialog="False" pageURI="Cust_CostWarning_UIList" pageParameter="" sequence="3" kind="Task" theApp="" />
                     </Menu>
                 </PrePlacedMenu>
             </App>
@@ -471,6 +471,20 @@
                         <PartRelations />
                         <Parameters />
                     </Page>
+                    <Page id="9049e1e8-2f3a-4a15-9775-84804cd2f429" code="AQWRcvUIForm" name="奥琦玮收货" shortName="" displayName="奥琦玮收货" description="" title="奥琦玮收货" uri="AQWRcvUIForm" topMargine="10" bottomMargine="10" leftMargine="10" rightMargine="10" columnSpace="10" orientation="Vertical" defaultEntity="">
+                        <Columns>
+                            <Column id="e8e95503-cd38-4794-84a4-09da02ac9e8d" code="" name="" shortName="" displayName="" description="" widthProportion="100" heightProportion="0" title="" IsMainRegion="True">
+                                <Parts>
+                                    <Part>ddec24a2-9f22-4815-b4ba-0f30a248a0e5</Part>
+                                </Parts>
+                            </Column>
+                        </Columns>
+                        <Parts>
+                            <Part id="ddec24a2-9f22-4815-b4ba-0f30a248a0e5" code="ddec24a2-9f22-4815-b4ba-0f30a248a0e5" name="AQWRcvUIFormWebPart" shortName="AQWRcvUIFormWebPart" displayName="AQWRcvUIFormWebPart" description="AQWRcvUIFormWebPart" title="AQWRcvUIFormWebPart" bindedFormID="f91e1840-ac91-4084-9662-bf9c328ccddd" bindedFormName="AQWRcvUIFormWebPart" height="504" width="992" />
+                        </Parts>
+                        <PartRelations />
+                        <Parameters />
+                    </Page>
                 </Pages>
                 <BEComponents>
                     <BEComponent assemblyName="U9.VOB.Cus.HBHJianLiYuan.BE.dll" assemblyID="13a5b6db-0dab-4f3a-aeae-7e9af108a7bc" />
@@ -491,6 +505,9 @@
                     <Menu id="c757c019-2413-464e-bd5a-00ee45cb015e" code="c757c019-2413-464e-bd5a-00ee45cb015e" name="部门料品" shortName="new menu" displayName="部门料品" description="new menu" image="" isDialog="False" pageURI="" pageParameter="" sequence="0" kind="Task" theApp="">
                         <Menu id="dd5faf85-55a7-463a-b297-e9564962420b" code="dd5faf85-55a7-463a-b297-e9564962420b" name="部门料品交叉档" shortName="new menu" displayName="部门料品交叉档" description="new menu" image="" isDialog="False" pageURI="U9.VOB.Cus.HBHJianLiYuan.DeptItemSupplierURI" pageParameter="" sequence="0" kind="Task" theApp="" />
                         <Menu id="e8989e89-4c10-43e5-bf1a-fff51bdee28f" code="e8989e89-4c10-43e5-bf1a-fff51bdee28f" name="部门料品交叉档列表" shortName="new menu" displayName="部门料品交叉档列表" description="new menu" image="" isDialog="False" pageURI="Cust_DeptItemSupplierUIList" pageParameter="" sequence="1" kind="Task" theApp="" />
+                    </Menu>
+                    <Menu id="e9e99727-b3a8-4843-be00-ed8671009153" code="e9e99727-b3a8-4843-be00-ed8671009153" name="奥琦玮收货" shortName="new menu" displayName="奥琦玮收货" description="new menu" image="" isDialog="False" pageURI="" pageParameter="" sequence="1" kind="Task" theApp="3016">
+                        <Menu id="bbf39cb1-09ca-42dc-851a-32cde1ae5ebe" code="bbf39cb1-09ca-42dc-851a-32cde1ae5ebe" name="奥琦玮收货" shortName="new menu" displayName="奥琦玮收货" description="new menu" image="" isDialog="False" pageURI="AQWRcvUIForm" pageParameter="" sequence="0" kind="Task" theApp="3016" />
                     </Menu>
                 </PrePlacedMenu>
             </App>
@@ -909,6 +926,46 @@
             <ReportComponents />
             <PrePlacedMenu />
             <App id="9902001" code="9902001" shortName="EDaiInterface01" name="接口平台" uri="">
+                <Pages />
+                <BEComponents />
+                <BPComponents />
+                <ServiceComponents />
+                <UIComponents />
+                <WorkflowComponents />
+                <ReportComponents />
+                <PrePlacedMenu />
+            </App>
+        </App>
+        <App id="99030" code="99030" shortName="ProjectQuote" name="项目报价" uri="">
+            <Pages />
+            <BEComponents />
+            <BPComponents />
+            <ServiceComponents />
+            <UIComponents />
+            <WorkflowComponents />
+            <ReportComponents />
+            <PrePlacedMenu />
+            <App id="9903001" code="9903001" shortName="ProjectQuote01" name="项目报价" uri="">
+                <Pages />
+                <BEComponents />
+                <BPComponents />
+                <ServiceComponents />
+                <UIComponents />
+                <WorkflowComponents />
+                <ReportComponents />
+                <PrePlacedMenu />
+            </App>
+        </App>
+        <App id="91000" code="91000" shortName="NTHQ" name="易制毒证管理(南通化轻)" uri="">
+            <Pages />
+            <BEComponents />
+            <BPComponents />
+            <ServiceComponents />
+            <UIComponents />
+            <WorkflowComponents />
+            <ReportComponents />
+            <PrePlacedMenu />
+            <App id="91001" code="91001" shortName="YZD" name="易制毒证管理" uri="">
                 <Pages />
                 <BEComponents />
                 <BPComponents />

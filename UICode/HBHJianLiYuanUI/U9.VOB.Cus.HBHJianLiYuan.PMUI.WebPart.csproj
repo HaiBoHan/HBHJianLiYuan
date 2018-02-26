@@ -47,6 +47,12 @@
     <Reference Include="U9.VOB.Cus.HBHJianLiYuan.BP.Deploy">
       <HintPath>..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\Unconfiged\Component\U9.VOB.Cus.HBHJianLiYuan.BP.Deploy.dll</HintPath>
     </Reference>
+    <Reference Include="U9.VOB.Cus.HBHJianLiYuan.SV.Agent">
+      <HintPath>..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\Unconfiged\Component\U9.VOB.Cus.HBHJianLiYuan.SV.Agent.dll</HintPath>
+    </Reference>
+    <Reference Include="U9.VOB.Cus.HBHJianLiYuan.SV.Deploy">
+      <HintPath>..\..\..\..\..\..\UBFV30\U9.VOB.Product.Component\Unconfiged\Component\U9.VOB.Cus.HBHJianLiYuan.SV.Deploy.dll</HintPath>
+    </Reference>
     <Reference Include="U9.VOB.HBHCommon.HBHCommonUI.WebPart">
       <HintPath>..\..\..\..\..\..\UBFV30\U9.VOB.Product.WebPart\HBHCommon\U9.VOB.HBHCommon.HBHCommonUI.WebPart.dll</HintPath>
     </Reference>

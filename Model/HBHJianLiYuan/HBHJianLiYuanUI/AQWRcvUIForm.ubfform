@@ -1,4 +1,4 @@
-<View ID="f91e1840-ac91-4084-9662-bf9c328ccddd" ChildLabelWidth="56" ChildRefWidth="20" GridBottomMargin="5" GridColumnCount="1" GridColumnSpace="24" GridLeftMargin="0" GridRightMargin="0" GridRowCount="3" GridRowSpace="10" GridTopMargin="0" Height="504" LayoutType="GridBag" Name="AQWRcvUIForm" Namespace="AQWRcvUIModel" TabStop="False" TemplateCode="UI_SingleGrid" TemplateType="CustomTemplate" UIModelID="4fa19bf9-e16d-414f-8c29-70df091749b8" URI=".UI_单列表WebPart" ViewID="4983" Width="992" X="10" Y="10">
+<View ID="f91e1840-ac91-4084-9662-bf9c328ccddd" ChildLabelWidth="56" ChildRefWidth="20" GridBottomMargin="5" GridColumnCount="1" GridColumnSpace="24" GridLeftMargin="0" GridRightMargin="0" GridRowCount="3" GridRowSpace="10" GridTopMargin="0" Height="504" IsMainForm="True" LayoutType="GridBag" Name="AQWRcvUIForm" Namespace="AQWRcvUIModel" TabStop="False" TemplateCode="UI_SingleGrid" TemplateType="CustomTemplate" UIModelID="4fa19bf9-e16d-414f-8c29-70df091749b8" URI=".UI_单列表WebPart" ViewID="4983" Width="992" X="10" Y="10">
   <Columns>
     <Column Fixed="False" Name="Column0" Type="Title" Width="992" />
   </Columns>
@@ -62,6 +62,7 @@
       <Header ID="d0cc6b6f-35fc-4266-9054-14613d995644" Name="Header1">
         <HeaderRow Name="DefaultRow">
           <HeaderCell ID="64553ba2-04d9-4b5b-a7d6-1e599de3fb98" ColSpan="1" Name="HeaderCell0" OwnerColName="ID0" RowSpan="1" />
+          <HeaderCell ID="345bc804-866f-4ec2-8b46-eeda8b21c82c" ColSpan="1" DisplayName="行号" DisplayNameIndexStr="" DisplayNameResourceID="" DisplaySrcUIFieldID="" DisplaySrcUIViewID="" Name="HeaderCell9" OwnerColName="LineNum0" RowSpan="1" />
           <HeaderCell ID="ad6f13e4-4e23-44db-af5f-3be8dc00bce2" ColSpan="1" Name="HeaderCell1" OwnerColName="code0" RowSpan="1" />
           <HeaderCell ID="65796e0b-a16c-4a88-806a-1e6919e6e8dd" ColSpan="1" Name="HeaderCell2" OwnerColName="status0" RowSpan="1" />
           <HeaderCell ID="3dab6e27-ea93-4157-ae32-a4969f7d9bdb" ColSpan="1" Name="HeaderCell3" OwnerColName="bsetcheck0" RowSpan="1" />
@@ -74,45 +75,52 @@
       <UIFilterBar Name="LocateBar" />
       <Columns>
         <NumberColumn ID="c34d4041-c358-4fa8-9076-131d56f8f49e" DefaultValue="" DisplayFormat="" Enabled="True" Help="Key.ID" IsNull="False" IsProperty="False" IsSequence="True" Name="ID0" NPos="1" Point="0" UIFieldID="ID" UIViewID="DispatchinView" Visible="False">
-          <PrecisionBind />
-          <RoundRuleBind />
-          <ValueOfRoundByValueBind />
-          <CurrencyType />
+          <PrecisionBind Name="PrecisionBind0" />
+          <RoundRuleBind Name="RoundRuleBind0" />
+          <ValueOfRoundByValueBind Name="ValueOfRoundByValueBind0" />
+          <CurrencyType Name="CurrencyType0" />
           <Events />
         </NumberColumn>
-        <TextBoxColumn ID="3f701e57-3f1b-4776-91f2-1c054a394892" DefaultValue="" DisplayFormat="50" Enabled="True" Help="Misc.入库单号" IsNull="False" IsProperty="False" IsSequence="False" Name="code0" NPos="2" Point="0" TextAlign="Left" UIFieldID="code" UIViewID="DispatchinView" Visible="True">
+        <NumberColumn ID="1642cddc-9011-4168-80f9-6bb0c8808162" DefaultValue="" DisplayFormat="10.0" Enabled="True" Help="Misc.行号" IsNull="True" IsProperty="False" IsSequence="False" Name="LineNum0" NPos="2" Point="0" UIFieldID="LineNum" UIViewID="DispatchinView" Visible="True" Width="45">
+          <PrecisionBind Name="PrecisionBind1" />
+          <RoundRuleBind Name="RoundRuleBind1" />
+          <ValueOfRoundByValueBind Name="ValueOfRoundByValueBind1" />
+          <CurrencyType Name="CurrencyType1" />
+          <Events />
+        </NumberColumn>
+        <TextBoxColumn ID="3f701e57-3f1b-4776-91f2-1c054a394892" DefaultValue="" DisplayFormat="50" Enabled="True" Help="Misc.入库单号" IsNull="False" IsProperty="False" IsSequence="False" Name="code0" NPos="3" Point="0" TextAlign="Left" UIFieldID="code" UIViewID="DispatchinView" Visible="True">
           <Events />
         </TextBoxColumn>
-        <TextBoxColumn ID="daeb135b-0812-4df0-978a-e9e8c6cb1f6f" DefaultValue="" DisplayFormat="50" Enabled="True" Help="Misc.状态" IsNull="False" IsProperty="False" IsSequence="False" Name="status0" NPos="3" Point="0" TextAlign="Left" UIFieldID="status" UIViewID="DispatchinView" Visible="True">
+        <TextBoxColumn ID="daeb135b-0812-4df0-978a-e9e8c6cb1f6f" DefaultValue="" DisplayFormat="50" Enabled="True" Help="Misc.状态" IsNull="False" IsProperty="False" IsSequence="False" Name="status0" NPos="4" Point="0" TextAlign="Left" UIFieldID="status" UIViewID="DispatchinView" Visible="True">
           <Events />
         </TextBoxColumn>
-        <TextBoxColumn ID="ed3bb8db-2a47-4c95-a9e8-665d33d2837f" DefaultValue="" DisplayFormat="50" Enabled="True" Help="Misc.结算" IsNull="False" IsProperty="False" IsSequence="False" Name="bsetcheck0" NPos="4" Point="0" TextAlign="Left" UIFieldID="bsetcheck" UIViewID="DispatchinView" Visible="True">
+        <TextBoxColumn ID="ed3bb8db-2a47-4c95-a9e8-665d33d2837f" DefaultValue="" DisplayFormat="50" Enabled="True" Help="Misc.结算" IsNull="False" IsProperty="False" IsSequence="False" Name="bsetcheck0" NPos="5" Point="0" TextAlign="Left" UIFieldID="bsetcheck" UIViewID="DispatchinView" Visible="True">
           <Events />
         </TextBoxColumn>
-        <TextBoxColumn ID="6028a28c-1638-4b65-89ad-69597baa4d5c" DefaultValue="" DisplayFormat="50" Enabled="True" Help="Misc.单据类型" IsNull="False" IsProperty="False" IsSequence="False" Name="ordertype0" NPos="5" Point="0" TextAlign="Left" UIFieldID="ordertype" UIViewID="DispatchinView" Visible="True">
+        <TextBoxColumn ID="6028a28c-1638-4b65-89ad-69597baa4d5c" DefaultValue="" DisplayFormat="50" Enabled="True" Help="Misc.单据类型" IsNull="False" IsProperty="False" IsSequence="False" Name="ordertype0" NPos="6" Point="0" TextAlign="Left" UIFieldID="ordertype" UIViewID="DispatchinView" Visible="True">
           <Events />
         </TextBoxColumn>
-        <TextBoxColumn ID="007fdc95-a06a-482a-8e93-f4218f98d88e" DefaultValue="" DisplayFormat="50" Enabled="True" Help="Misc.确认人ID" IsNull="False" IsProperty="False" IsSequence="False" Name="confirmuid0" NPos="6" Point="0" TextAlign="Left" UIFieldID="confirmuid" UIViewID="DispatchinView" Visible="True">
+        <TextBoxColumn ID="007fdc95-a06a-482a-8e93-f4218f98d88e" DefaultValue="" DisplayFormat="50" Enabled="True" Help="Misc.确认人ID" IsNull="False" IsProperty="False" IsSequence="False" Name="confirmuid0" NPos="7" Point="0" TextAlign="Left" UIFieldID="confirmuid" UIViewID="DispatchinView" Visible="True">
           <Events />
         </TextBoxColumn>
-        <TextBoxColumn ID="ad2ded4c-9d1b-45ea-acc9-b01b8988c096" DefaultValue="" DisplayFormat="50" Enabled="True" Help="Misc.确认时间" IsNull="False" IsProperty="False" IsSequence="False" Name="confirmtime0" NPos="7" Point="0" TextAlign="Left" UIFieldID="confirmtime" UIViewID="DispatchinView" Visible="True">
+        <TextBoxColumn ID="ad2ded4c-9d1b-45ea-acc9-b01b8988c096" DefaultValue="" DisplayFormat="50" Enabled="True" Help="Misc.确认时间" IsNull="False" IsProperty="False" IsSequence="False" Name="confirmtime0" NPos="8" Point="0" TextAlign="Left" UIFieldID="confirmtime" UIViewID="DispatchinView" Visible="True">
           <Events />
         </TextBoxColumn>
-        <TextBoxColumn ID="8e439af2-563d-4ddc-86d9-4bd23c1f4849" DefaultValue="" DisplayFormat="50" Enabled="True" Help="Misc.备注" IsNull="False" IsProperty="False" IsSequence="False" Name="comment0" NPos="8" Point="0" TextAlign="Left" UIFieldID="comment" UIViewID="DispatchinView" Visible="True">
+        <TextBoxColumn ID="8e439af2-563d-4ddc-86d9-4bd23c1f4849" DefaultValue="" DisplayFormat="50" Enabled="True" Help="Misc.备注" IsNull="False" IsProperty="False" IsSequence="False" Name="comment0" NPos="9" Point="0" TextAlign="Left" UIFieldID="comment" UIViewID="DispatchinView" Visible="True" Width="300">
           <Events />
         </TextBoxColumn>
       </Columns>
     </DataGrid>
   </Card>
-  <Card ID="5674f53b-6fbf-40ac-a3b7-62cfd930918d" ChildLabelWidth="60" ChildRefWidth="20" GridBottomMargin="5" GridColumnCount="11" GridColumnSpace="0" GridHeight="1" GridLeftMargin="10" GridRightMargin="10" GridRowCount="3" GridRowSpace="5" GridTopMargin="5" GridWidth="1" GridX="0" GridY="0" Height="74" Name="Card5" TabStop="False" Width="992">
+  <Card ID="5674f53b-6fbf-40ac-a3b7-62cfd930918d" ChildLabelWidth="60" ChildRefWidth="20" GridBottomMargin="10" GridColumnCount="11" GridColumnSpace="0" GridHeight="1" GridLeftMargin="10" GridRightMargin="10" GridRowCount="2" GridRowSpace="10" GridTopMargin="10" GridWidth="1" GridX="0" GridY="0" Height="74" Name="Card5" TabStop="False" Width="992">
     <Columns>
       <Column Fixed="True" Name="Column0" Type="Title" Width="100" />
       <Column Fixed="True" Name="Column1" Type="Spacing" Width="10" />
-      <Column Fixed="True" Name="Column2" Width="100" />
+      <Column Fixed="True" Name="Column2" Width="120" />
       <Column Fixed="True" Name="Column3" Type="Spacing" Width="10" />
       <Column Fixed="True" Name="Column4" Type="Title" Width="100" />
       <Column Fixed="True" Name="Column5" Type="Spacing" Width="10" />
-      <Column Fixed="True" Name="Column6" Width="100" />
+      <Column Fixed="True" Name="Column6" Width="120" />
       <Column Fixed="True" Name="Column7" Type="Spacing" Width="10" />
       <Column Fixed="True" Name="Column8" Type="Title" Width="100" />
       <Column Fixed="True" Name="Column9" Type="Spacing" Width="10" />
@@ -121,36 +129,35 @@
     <Rows>
       <Row Fixed="False" Height="20" Name="Row0" />
       <Row Fixed="False" Height="20" Name="Row1" />
-      <Row Fixed="False" Height="20" Name="Row2" />
     </Rows>
-    <Label ID="5a843563-6812-4389-9801-1016f717a671" Enabled="True" GridHeight="1" GridWidth="1" GridX="0" GridY="0" Height="20" IsNull="True" IsSequence="False" Name="lblStartDate35" RelationControl="StartDate35" TabIndex="0" TabStop="True" TitleAlign="Right" TitleLocation="Left" UIFieldID="" UIViewID="" Visible="True" Width="100" X="10" Y="5">
+    <Label ID="5a843563-6812-4389-9801-1016f717a671" Enabled="True" GridHeight="1" GridWidth="1" GridX="0" GridY="0" Height="20" IsNull="True" IsSequence="False" Name="lblStartDate35" RelationControl="StartDate35" TabIndex="0" TabStop="True" TitleAlign="Right" TitleLocation="Left" UIFieldID="" UIViewID="" Visible="True" Width="100" X="10" Y="10">
       <Events />
       <RelationControls />
       <Events />
     </Label>
-    <DatePicker ID="81ec25b4-2150-4e87-891c-80240810240d" DisplayFormat="17" Enabled="True" GridHeight="1" GridWidth="1" GridX="2" GridY="0" Height="20" IsNull="True" IsProperty="False" IsSequence="False" Name="StartDate35" RelationControl="lblStartDate35" TabIndex="1" TabStop="True" TitleAlign="Left" TitleLocation="Left" UIFieldID="StartDate" UIViewID="FilterView" Visible="True" Width="100" X="120" Y="5">
+    <DatePicker ID="81ec25b4-2150-4e87-891c-80240810240d" DateTimeFormat="Date" DisplayFormat="17" Enabled="True" GridHeight="1" GridWidth="1" GridX="2" GridY="0" Height="20" IsNull="True" IsProperty="False" IsSequence="False" Name="StartDate35" RelationControl="lblStartDate35" TabIndex="1" TabStop="True" TitleAlign="Left" TitleLocation="Left" UIFieldID="StartDate" UIViewID="FilterView" Visible="True" Width="120" X="120" Y="10">
       <Events />
       <RelationControls />
     </DatePicker>
-    <Label ID="19b75314-507e-4329-a102-e08a873c237f" Enabled="True" GridHeight="1" GridWidth="1" GridX="0" GridY="1" Height="20" IsNull="True" IsSequence="False" Name="lblEndDate50" RelationControl="EndDate50" TabIndex="2" TabStop="True" TitleAlign="Right" TitleLocation="Left" UIFieldID="" UIViewID="" Visible="True" Width="100" X="10" Y="30">
+    <Label ID="19b75314-507e-4329-a102-e08a873c237f" Enabled="True" GridHeight="1" GridWidth="1" GridX="0" GridY="1" Height="20" IsNull="True" IsSequence="False" Name="lblEndDate50" RelationControl="EndDate50" TabIndex="2" TabStop="True" TitleAlign="Right" TitleLocation="Left" UIFieldID="" UIViewID="" Visible="True" Width="100" X="10" Y="40">
       <Events />
       <RelationControls />
       <Events />
     </Label>
-    <DatePicker ID="3e54c8a1-c83e-4d8f-9d7d-5da72db1e51c" DisplayFormat="17" Enabled="True" GridHeight="1" GridWidth="1" GridX="2" GridY="1" Height="20" IsNull="True" IsProperty="False" IsSequence="False" Name="EndDate50" RelationControl="lblEndDate50" TabIndex="3" TabStop="True" TitleAlign="Left" TitleLocation="Left" UIFieldID="EndDate" UIViewID="FilterView" Visible="True" Width="100" X="120" Y="30">
+    <DatePicker ID="3e54c8a1-c83e-4d8f-9d7d-5da72db1e51c" DateTimeFormat="Date" DisplayFormat="17" Enabled="True" GridHeight="1" GridWidth="1" GridX="2" GridY="1" Height="20" IsNull="True" IsProperty="False" IsSequence="False" Name="EndDate50" RelationControl="lblEndDate50" TabIndex="3" TabStop="True" TitleAlign="Left" TitleLocation="Left" UIFieldID="EndDate" UIViewID="FilterView" Visible="True" Width="120" X="120" Y="40">
       <Events />
       <RelationControls />
     </DatePicker>
-    <Label ID="f5555a3e-a43d-4759-bc20-37e00b56392d" Enabled="True" GridHeight="1" GridWidth="1" GridX="0" GridY="2" Height="20" IsNull="True" IsSequence="False" Name="lblCode30" RelationControl="Code30" TabIndex="4" TabStop="True" TitleAlign="Right" TitleLocation="Left" UIFieldID="" UIViewID="" Visible="True" Width="100" X="10" Y="55">
+    <Label ID="f5555a3e-a43d-4759-bc20-37e00b56392d" Enabled="True" GridHeight="1" GridWidth="1" GridX="4" GridY="0" Height="20" IsNull="True" IsSequence="False" Name="lblCode30" RelationControl="Code30" TabIndex="4" TabStop="True" TitleAlign="Right" TitleLocation="Left" UIFieldID="" UIViewID="" Visible="True" Width="100" X="250" Y="10">
       <Events />
       <RelationControls />
       <Events />
     </Label>
-    <TextBox ID="562488c9-8703-4ec5-be2a-82f414e5e24d" DisplayFormat="50" Enabled="True" GridHeight="1" GridWidth="1" GridX="2" GridY="2" Height="20" IsNull="True" IsProperty="False" IsSequence="False" MultiLine="False" Name="Code30" RelationControl="lblCode30" TabIndex="5" TabStop="True" TextAlign="Left" TitleAlign="Left" TitleLocation="Left" UIFieldID="Code" UIViewID="FilterView" Visible="True" Width="100" X="120" Y="55">
+    <TextBox ID="562488c9-8703-4ec5-be2a-82f414e5e24d" DisplayFormat="50" Enabled="True" GridHeight="1" GridWidth="1" GridX="6" GridY="0" Height="20" IsNull="True" IsProperty="False" IsSequence="False" MultiLine="False" Name="Code30" RelationControl="lblCode30" TabIndex="5" TabStop="True" TextAlign="Left" TitleAlign="Left" TitleLocation="Left" UIFieldID="Code" UIViewID="FilterView" Visible="True" Width="120" X="360" Y="10">
       <Events />
       <RelationControls />
     </TextBox>
-    <Button ID="f1bcd57d-7d7a-4a22-8e36-a4e1bd50631f" AccessKey="" DisplayName="查询" DisplayNameIndexStr="" DisplayNameResourceID="" DisplaySrcType="Custom" DisplaySrcUIFieldID="" DisplaySrcUIViewID="" GridHeight="1" GridWidth="1" GridX="6" GridY="2" Height="20" Name="BtnSearch" TabIndex="6" TabStop="True" Width="100" X="340" Y="55">
+    <Button ID="f1bcd57d-7d7a-4a22-8e36-a4e1bd50631f" AccessKey="" DisplayName="查询" DisplayNameIndexStr="" DisplayNameResourceID="" DisplaySrcType="Custom" DisplaySrcUIFieldID="" DisplaySrcUIViewID="" GridHeight="1" GridWidth="1" GridX="6" GridY="1" Height="20" Name="BtnSearch" TabIndex="6" TabStop="True" Width="120" X="360" Y="40">
       <Events>
         <Event EnableEvent="True" EventType="PostBack" IsDataBinding="True" IsDataCollect="True" Name="Click" Parameter="" Template="" />
       </Events>
