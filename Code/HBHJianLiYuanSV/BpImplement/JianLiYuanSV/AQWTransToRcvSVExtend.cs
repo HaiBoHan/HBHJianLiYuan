@@ -79,7 +79,7 @@
                 ParamDTO paramDTO = new ParamDTO();
                 paramDTO.ParamName = "HeadIDs";
                 paramDTO.ParamDirection = ParameterDirection.Input;
-                paramDTO.ParamType = DbType.Xml;
+                paramDTO.ParamType = DbType.AnsiString;
                 paramDTO.ParamValue = EntitySerialization.EntitySerial(dtID);
 
                 lstParam.Add(paramDTO);
