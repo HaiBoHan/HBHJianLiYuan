@@ -35,8 +35,10 @@
 	internal partial class AQWTransToRcvSVImpementStrategy : BaseStrategy
 	{
         private const string Const_RcvDocTypeCode = "RCV01";
-        // 北京配送部
+        // 00222-北京配送部
         private const string Const_SupplierCode = "00222";
+        // 00291--北京配送部（冻货）
+        private const string Const_FrozenSupplierCode = "00291";
 
 		public AQWTransToRcvSVImpementStrategy() { }
 
@@ -150,6 +152,30 @@
             }
         }
 
+        private Supplier _rcvFrozenSupplier = null;
+        private Supplier RcvFrozenSupplier
+        {
+            get
+            {
+                if (_rcvFrozenSupplier == null)
+                {
+                    _rcvFrozenSupplier = Supplier.Finder.Find("Org=@Org and Code=@Code"
+                        , new OqlParam(Context.LoginOrg.ID)
+                        , new OqlParam(Const_FrozenSupplierCode)
+                        );
+
+                    if (_rcvFrozenSupplier == null)
+                    {
+                        throw new BusinessException(string.Format("组织[{0}]下没有找到编码为[{1}]的供应商!"
+                            , Context.LoginOrg.Name
+                            , Const_FrozenSupplierCode
+                            ));
+                    }
+                }
+                return _rcvFrozenSupplier;
+            }
+        }
+
         private RcvDocType _rcvDocType = null;
         private RcvDocType RcvDocType
         {
@@ -181,6 +207,8 @@
                 && aqwRcvDTO.AQWRcvLineDTOs.Count > 0
                 )
             {
+                AQWRcvLineDTO firstLine = aqwRcvDTO.AQWRcvLineDTOs[0];
+
                 StringBuilder sbError = new StringBuilder();
 
                 OBAReceivementDTO erpRcvHead = new OBAReceivementDTO();
@@ -195,7 +223,17 @@
 
                 erpRcvHead.BusinessDate = DateTime.Today;
 
-                Supplier supt = RcvSupplier;
+                Supplier supt = null;
+
+                // 当奥琦玮内料号名称前面加“冻货”两个字的，在U9内对应的供应商为“00291--北京配送部（冻货）”，没有冻货两个字的，对应的供应商为“00222-北京配送部”
+                if (firstLine.lgname.Contains("冻货"))
+                {
+                    supt = RcvFrozenSupplier;
+                }
+                else
+                {
+                    supt = RcvSupplier;
+                }
 
                 if (supt != null)
                 {
@@ -223,7 +261,17 @@
                         , new OqlParam(Context.LoginOrg.ID)
                         , new OqlParam(aqwRcvDTO.sno)
                         );
+
+                    if (wh == null)
+                    {
+                        throw new BusinessException(string.Format("组织[{0}]下没有找到编码为[{1}]的收货仓库!"
+                            , Context.LoginOrg.Name
+                            , aqwRcvDTO.sno
+                            ));
+                    }
                 }
+
+                // 现在奥琦玮内部门的编码和名称是一个字段，我让他们限定前三位是代码，后面的名称现在在调整成跟U9一致
 
                 erpRcvHead.RcvLines = new List<OBARcvLineDTO>();
                 foreach (AQWRcvLineDTO aqwRcvLineDTO in aqwRcvDTO.AQWRcvLineDTOs)
