@@ -87,6 +87,7 @@ end
 
 	end
 
+
 	-- 货品表
 	If OBJECT_ID('lgt_good') is null
 	begin
@@ -165,6 +166,11 @@ end
 			--,deductrate varchar(125)
  )
 	end
+	-- 基础数据，删表重导
+	else
+	begin
+		truncate table lgt_good
+	end
 
 	insert into lgt_good
 	select *
@@ -209,7 +215,11 @@ end
 			,utime datetime
 		)
 	end
+	-- 基础数据，删表重导
 	else
+	begin
+		truncate table sls_shop
+	end
 	
 	insert into sls_shop
 	select *
@@ -221,6 +231,9 @@ end
 			,status 
 			,utime 
 								FROM sls_shop 
+								where
+									1=1
+									-- and shopname not REGEXP ''[0-9]{1,}''
 								; ') as tmp
 	where
 		sid not in (select sid
@@ -247,6 +260,11 @@ end
 			,ctime datetime
 			,utime datetime
 		)
+	end
+	-- 基础数据，删表重导
+	else
+	begin
+		truncate table lgt_depot
 	end
 	
 	insert into lgt_depot

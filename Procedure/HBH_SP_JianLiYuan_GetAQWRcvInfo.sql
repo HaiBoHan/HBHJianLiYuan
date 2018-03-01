@@ -67,43 +67,57 @@ If OBJECT_ID('tempdb..#tmp_hbh_PageHead') is not null
 
 
 select top 500
-	head.*
+	rcvhead.*
+	
+	,wh.sno
+	,wh.ldname
+
+	,dept.shopcode
+	,dept.shopname
+
 into #tmp_hbh_PageHead
-from lgt_dispatchin as head
+from lgt_dispatchin as rcvhead
+
+	left join lgt_depot wh
+	on rcvhead.ldid = wh.ldid
+
+	left join sls_shop dept
+	on rcvhead.lsid = dept.[sid]
+
 where 1=1
 /*
 1：待审核
 2：已审核
 3：已确认待审核
 */
-	and head.status = ('2')
+	and rcvhead.status = ('2')
 	
 	-- 开始日期
 	and (@StartDate is null 
 		or @StartDate <= '2010-01-01'
-		or @StartDate <= Convert(varchar(10),head.arrivetime,120)
+		or @StartDate <= Convert(varchar(10),rcvhead.arrivetime,120)
 		)
 	-- 结束日期
 	and (@EndDate is null 
 		or @EndDate <= '2010-01-01'
-		or @EndDate >= Convert(varchar(10),head.arrivetime,120)
+		or @EndDate >= Convert(varchar(10),rcvhead.arrivetime,120)
 		)
 
 	--单号
 	and (@DocNo is null or @DocNo = ''
-		or head.Code like @DocNo
+		or rcvhead.Code like @DocNo
 		)
 
 	-- 已生单过滤
-	and head.Code not in (select u9Doc.DescFlexField_PrivateDescSeg1
+	and rcvhead.Code not in (select u9Doc.DescFlexField_PrivateDescSeg2
 					from PM_Receivement u9Doc
-					where u9Doc.DescFlexField_PrivateDescSeg1 is not null
-						and u9Doc.DescFlexField_PrivateDescSeg1 != ''
+					where u9Doc.DescFlexField_PrivateDescSeg2 is not null
+						and u9Doc.DescFlexField_PrivateDescSeg2 != ''
 					)
 
 
 order by 
-	head.arrivetime desc
+	rcvhead.arrivetime desc
 
 
 

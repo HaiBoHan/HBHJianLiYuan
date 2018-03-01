@@ -354,6 +354,10 @@ namespace U9.VOB.Cus.HBHJianLiYuan
                 rcvHead.sno = row["sno"].GetString();
                 //  仓库名称
                 rcvHead.ldname = row["ldname"].GetString();
+                //  部门编码
+                rcvHead.shopcode = row["shopcode"].GetString();
+                //  部门名称
+                rcvHead.shopname = row["shopname"].GetString();
 
                 return rcvHead;
             }

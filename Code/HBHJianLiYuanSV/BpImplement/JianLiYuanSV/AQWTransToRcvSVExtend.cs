@@ -15,6 +15,7 @@
     using UFIDA.U9.Base;
     using UFIDA.U9.PM.Pub;
     using UFIDA.U9.CBO.SCM.Warehouse;
+    using UFIDA.U9.CBO.HR.Department;
 
 	/// <summary>
 	/// AQWTransToRcvSV partial 
@@ -221,7 +222,7 @@
                     erpRcvHead.RcvDocType.Code = rcvDocType.Code;
                 }
 
-                erpRcvHead.BusinessDate = DateTime.Today;
+                erpRcvHead.BusinessDate = aqwRcvDTO.arrivetime.GetDateTime(DateTime.Today).Date;
 
                 Supplier supt = null;
 
@@ -255,23 +256,76 @@
                 erpRcvHead.DescFlexField.PrivateDescSeg1 = aqwRcvDTO.ldiid;
                 erpRcvHead.DescFlexField.PrivateDescSeg2 = aqwRcvDTO.code;
 
-                if (aqwRcvDTO.sno.IsNotNullOrWhiteSpace())
+                //if (aqwRcvDTO.sno.IsNotNullOrWhiteSpace())
+                //{
+                //    Warehouse wh = Warehouse.Finder.Find("Org=@Org and Code=@Code"
+                //        , new OqlParam(Context.LoginOrg.ID)
+                //        , new OqlParam(aqwRcvDTO.sno)
+                //        );
+
+                //    if (wh == null)
+                //    {
+                //        throw new BusinessException(string.Format("组织[{0}]下没有找到编码为[{1}]的收货仓库!"
+                //            , Context.LoginOrg.Name
+                //            , aqwRcvDTO.sno
+                //            ));
+                //    }
+                //}
+
+                // 现在奥琦玮内部门的编码和名称是一个字段，我让他们限定前三位是代码，后面的名称现在在调整成跟U9一致
+                Department dept = null;
+                Warehouse wh = null;
+                if (aqwRcvDTO.shopcode.IsNotNullOrWhiteSpace())
                 {
-                    Warehouse wh = Warehouse.Finder.Find("Org=@Org and Code=@Code"
+                    string strDeptCode = string.Empty;
+                    if (aqwRcvDTO.shopcode.Length > 3)
+                    {
+                        strDeptCode = aqwRcvDTO.shopcode.Substring(0, 3);
+                    }
+                    else
+                    {
+                        strDeptCode = aqwRcvDTO.shopcode;
+                    }
+
+                    dept = Department.Finder.Find("Org=@Org and Code=@Code"
                         , new OqlParam(Context.LoginOrg.ID)
-                        , new OqlParam(aqwRcvDTO.sno)
+                        , new OqlParam(strDeptCode)
+                        );
+
+                    if (dept == null)
+                    {
+                        throw new BusinessException(string.Format("组织[{0}]下没有找到编码为[{1}]的部门!"
+                            , Context.LoginOrg.Name
+                            , strDeptCode
+                            ));
+                    }
+                    //else
+                    //{ 
+
+                    //}
+
+                    string strWhOpath = string.Format("Org=@Org and (Code like '%' + @Code) order by sqlLen(Code) asc,Code asc"
+                        , strDeptCode
+                        );
+                    wh = Warehouse.Finder.Find(strWhOpath
+                        , new OqlParam(Context.LoginOrg.ID)
+                        , new OqlParam(strDeptCode)
                         );
 
                     if (wh == null)
                     {
-                        throw new BusinessException(string.Format("组织[{0}]下没有找到编码为[{1}]的收货仓库!"
+                        throw new BusinessException(string.Format("组织[{0}]下没有找到编码以[{1}]结尾的仓库!"
                             , Context.LoginOrg.Name
-                            , aqwRcvDTO.sno
+                            , strDeptCode
                             ));
                     }
                 }
-
-                // 现在奥琦玮内部门的编码和名称是一个字段，我让他们限定前三位是代码，后面的名称现在在调整成跟U9一致
+                else
+                { 
+                    throw new BusinessException(string.Format("单据[{0}]店铺不可为空!"
+                        , aqwRcvDTO.code
+                        ));                    
+                }
 
                 erpRcvHead.RcvLines = new List<OBARcvLineDTO>();
                 foreach (AQWRcvLineDTO aqwRcvLineDTO in aqwRcvDTO.AQWRcvLineDTOs)
@@ -280,7 +334,10 @@
                     {
                         OBARcvLineDTO erpRcvLine = new OBARcvLineDTO();
 
-                        erpRcvLine.ConfirmDate = aqwRcvDTO.arrivetime.GetDateTime(erpRcvHead.BusinessDate);
+                        //erpRcvLine.ConfirmDate = aqwRcvDTO.arrivetime.GetDateTime(erpRcvHead.BusinessDate);
+
+                        erpRcvLine.ArrivedTime = aqwRcvDTO.arrivetime.GetDateTime(erpRcvHead.BusinessDate);
+                        erpRcvLine.ConfirmDate = erpRcvLine.ArrivedTime;
 
                         if (aqwRcvLineDTO.lgcode.IsNotNullOrWhiteSpace())
                         {
@@ -311,6 +368,20 @@
                         erpRcvLine.RcvContacts = new List<OBARcvContactDTO>();
                         erpRcvLine.RcvSubLines = new List<OBARcvSubLineDTO>();
 
+                        erpRcvLine.RcvDept = new UFIDA.U9.PM.DTOs.BESimp4UIDTO();
+                        erpRcvLine.RcvDept.ID = dept.ID;
+                        erpRcvLine.RcvDept.Code = dept.Code;
+
+                        erpRcvLine.Wh = new UFIDA.U9.PM.DTOs.BESimp4UIDTO();
+                        erpRcvLine.Wh.ID = wh.ID;
+                        erpRcvLine.Wh.Code = wh.Code;
+
+                        if (wh.Manager != null)
+                        {
+                            erpRcvLine.WhMan = new UFIDA.U9.PM.DTOs.BESimp4UIDTO();
+                            erpRcvLine.WhMan.ID = wh.Manager.ID;
+                            erpRcvLine.WhMan.Code = wh.Manager.Code;
+                        }
 
                         erpRcvHead.RcvLines.Add(erpRcvLine);
                     }

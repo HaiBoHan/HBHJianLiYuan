@@ -196,7 +196,7 @@ namespace AQWRcvUIModel
 
         private void OnLoadData_Extend(object sender)
 		{	
-			OnLoadData_DefaultImpl(sender);
+            //OnLoadData_DefaultImpl(sender);
 		}
 
 		private void OnDataCollect_Extend(object sender)
