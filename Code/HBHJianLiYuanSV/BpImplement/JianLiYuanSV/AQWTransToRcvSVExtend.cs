@@ -275,16 +275,18 @@
                 // 现在奥琦玮内部门的编码和名称是一个字段，我让他们限定前三位是代码，后面的名称现在在调整成跟U9一致
                 Department dept = null;
                 Warehouse wh = null;
-                if (aqwRcvDTO.shopcode.IsNotNullOrWhiteSpace())
+
+                string strAqwShopName = aqwRcvDTO.shopname;
+                if (strAqwShopName.IsNotNullOrWhiteSpace())
                 {
                     string strDeptCode = string.Empty;
-                    if (aqwRcvDTO.shopcode.Length > 3)
+                    if (strAqwShopName.Length > 3)
                     {
-                        strDeptCode = aqwRcvDTO.shopcode.Substring(0, 3);
+                        strDeptCode = strAqwShopName.Substring(0, 3);
                     }
                     else
                     {
-                        strDeptCode = aqwRcvDTO.shopcode;
+                        strDeptCode = strAqwShopName;
                     }
 
                     dept = Department.Finder.Find("Org=@Org and Code=@Code"
