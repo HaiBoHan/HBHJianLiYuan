@@ -27,6 +27,7 @@ using System.Collections.Generic;
 using HBH.DoNet.DevPlatform.U9Mapping;
 using HBH.DoNet.DevPlatform.EntityMapping;
 using U9.VOB.Cus.HBHJianLiYuan.Proxy;
+using UFIDA.U9.UI.PDHelper;
 
 
 
@@ -64,6 +65,12 @@ namespace AQWRcvUIModel
                 }
 
                 proxy.Do();
+
+                if (!this.Model.ErrorMessage.hasErrorMessage
+                    )
+                {
+                    this.BtnSearch_Click_Extend(sender, e);
+                }
             }
             else
             {
@@ -107,21 +114,33 @@ namespace AQWRcvUIModel
 
                 lstParam.Add(paramDTO);
             }
-            {
-                ParamDTO paramDTO = new ParamDTO();
-                paramDTO.ParamName = "EndDate";
-                paramDTO.ParamDirection = ParameterDirection.Input;
-                paramDTO.ParamType = DbType.DateTime;
-                paramDTO.ParamValue = filterRecord.EndDate;
+            // 不做处理了，存储过程处理
+            //{
+            //    ParamDTO paramDTO = new ParamDTO();
+            //    paramDTO.ParamName = "EndDate";
+            //    paramDTO.ParamDirection = ParameterDirection.Input;
+            //    paramDTO.ParamType = DbType.DateTime;
+            //    //paramDTO.ParamValue = filterRecord.EndDate;
+            //    // 为了效率只查一天的，所以用开始日期作为结束日期
+            //    paramDTO.ParamValue = filterRecord.StartDate;
 
-                lstParam.Add(paramDTO);
-            }
+            //    lstParam.Add(paramDTO);
+            //}
             {
                 ParamDTO paramDTO = new ParamDTO();
                 paramDTO.ParamName = "DocNo";
                 paramDTO.ParamDirection = ParameterDirection.Input;
                 paramDTO.ParamType = DbType.String;
                 paramDTO.ParamValue = filterRecord.Code;
+
+                lstParam.Add(paramDTO);
+            }
+            {
+                ParamDTO paramDTO = new ParamDTO();
+                paramDTO.ParamName = "LoginUser";
+                paramDTO.ParamDirection = ParameterDirection.Input;
+                paramDTO.ParamType = DbType.String;
+                paramDTO.ParamValue = PDContext.Current.UserID;
 
                 lstParam.Add(paramDTO);
             }
@@ -177,6 +196,11 @@ namespace AQWRcvUIModel
                                 record.returnuid = row["returnuid"].GetString();
                                 record.returntime = row["returntime"].GetString();
                                 record.bgenerateorder = row["bgenerateorder"].GetString();
+
+                                record.sno = row["sno"].GetString();
+                                record.ldname = row["ldname"].GetString();
+                                record.shopcode = row["shopcode"].GetString();
+                                record.shopname = row["shopname"].GetString();
                             }
                         }
                     }
