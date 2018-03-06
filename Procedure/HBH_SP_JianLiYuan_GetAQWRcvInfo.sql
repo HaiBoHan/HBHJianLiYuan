@@ -11,7 +11,8 @@ go
 
 -- 创建存储过程
 create proc HBH_SP_JianLiYuan_GetAQWRcvInfo  (
- @StartDate datetime = null
+@OrgID bigint = -1
+,@StartDate datetime = null
 ,@EndDate datetime = null
 ,@DocNo varchar(125) = ''
 ,@LoginUser varchar(125) = ''
@@ -19,9 +20,6 @@ create proc HBH_SP_JianLiYuan_GetAQWRcvInfo  (
 with encryption
 as
 	SET NOCOUNT ON;
-
-	
-declare @SysMlFlag varchar(11) = 'zh-CN'
 
 
 if exists(select name from sys.objects where name = 'HBH_Debug_Param')
@@ -42,12 +40,14 @@ begin
 
 		insert into HBH_SPParamRecord
 		(ProcName,ParamName,ParamValue,CreatedOn)
-		select 'HBH_SP_JianLiYuan_GetAQWRcvInfo','@StartDate',IsNull(Convert(varchar,@StartDate,120),'null'),GETDATE()
+		select 'HBH_SP_JianLiYuan_GetAQWRcvInfo','@OrgID',IsNull(cast(@OrgID as varchar(max)),'null'),GETDATE()
+		union select 'HBH_SP_JianLiYuan_GetAQWRcvInfo','@StartDate',IsNull(Convert(varchar,@StartDate,120),'null'),GETDATE()
 		union select 'HBH_SP_JianLiYuan_GetAQWRcvInfo','@EndDate',IsNull(Convert(varchar,@EndDate,120),'null'),GETDATE()
 		union select 'HBH_SP_JianLiYuan_GetAQWRcvInfo','@DocNo',IsNull(cast(@DocNo as varchar(max)),'null'),GETDATE()
 		union select 'HBH_SP_JianLiYuan_GetAQWRcvInfo','@LoginUser',IsNull(cast(@LoginUser as varchar(max)),'null'),GETDATE()
 		union select 'HBH_SP_JianLiYuan_GetAQWRcvInfo','ProcSql','exec HBH_SP_JianLiYuan_GetAQWRcvInfo '
-				+ IsNull('''' + Convert(varchar,@StartDate,120) + '''' ,'null')
+				+ IsNull('''' + cast(@OrgID as varchar(501)) + '''' ,'null') 
+				+ ',' + IsNull('''' + Convert(varchar,@StartDate,120) + '''' ,'null')
 				+ ',' + IsNull('''' + Convert(varchar,@EndDate,120) + '''' ,'null')
 				+ ',' + IsNull('''' + cast(@DocNo as varchar(501)) + '''' ,'null') 
 				+ ',' + IsNull('''' + cast(@LoginUser as varchar(501)) + '''' ,'null') 
@@ -55,8 +55,8 @@ begin
 	end
 end
 
-
-
+	
+	declare @SysMlFlag varchar(11) = 'zh-CN'
 	declare @SalePriceListCode varchar(125) = '001'
 	declare @SysLineNo int = 10
 	declare @Now datetime = GetDate();
@@ -69,6 +69,7 @@ end
 	declare @DefaultZero decimal(24,9) = 0
 	
 	declare @AqwDeptCodeStart varchar(125) = ''
+	declare @AqwDeptName varchar(125) = ''
 	
 	set @EndDate = DateAdd(minute,-1,DateAdd(day,1,@StartDate))
 
@@ -76,11 +77,16 @@ end
 
 	select 
 		@AqwDeptCodeStart = dept.Code
+		,@AqwDeptName = deptTrl.Name
 	from Base_User usr
 		inner join CBO_Operators opr
 		on usr.Contact = opr.Contact
 		inner join CBO_Department dept
 		on opr.Dept = dept.ID
+			and dept.Org = @OrgID
+		inner join CBO_Department_Trl deptTrl
+		on dept.ID = deptTrl.ID
+			and deptTrl.SysMlFlag = @SysMlFlag
 	where
 		usr.ID = @LoginUser
 		
@@ -229,7 +235,9 @@ begin
 end
 else
 begin
-	set @Sql = Replace(@Sql,'#OPath#',' and dept.shopname like ''''' + @AqwDeptCodeStart + '%''''' + '
+	set @Sql = Replace(@Sql,'#OPath#'
+							--,' and dept.shopname like ''''%' + @AqwDeptCodeStart + '''''' + '
+							,' and dept.shopname like ''''%' + @AqwDeptName + '''''' + '
 							and rcvhead.arrivetime between ''''' + Convert(varchar(10),@StartDate,120) + ''''' 
 							and ''''' + Convert(varchar(19),@EndDate,120) + '''''' + ' 
 							and ' + @WhereDocNo
@@ -382,12 +390,12 @@ where 1=1
 		or rcvhead.Code like @DocNo
 		)
 
-	-- 已生单过滤
-	and rcvhead.Code not in (select u9Doc.DescFlexField_PrivateDescSeg2
-					from PM_Receivement u9Doc
-					where u9Doc.DescFlexField_PrivateDescSeg2 is not null
-						and u9Doc.DescFlexField_PrivateDescSeg2 != ''
-					)
+	---- 已生单过滤
+	--and rcvhead.Code not in (select u9Doc.DescFlexField_PrivateDescSeg2
+	--				from PM_Receivement u9Doc
+	--				where u9Doc.DescFlexField_PrivateDescSeg2 is not null
+	--					and u9Doc.DescFlexField_PrivateDescSeg2 != ''
+	--				)
 
 
 order by 

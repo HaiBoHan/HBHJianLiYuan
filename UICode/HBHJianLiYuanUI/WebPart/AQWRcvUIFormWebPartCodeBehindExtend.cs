@@ -107,6 +107,15 @@ namespace AQWRcvUIModel
             List<ParamDTO> lstParam = new List<ParamDTO>();
             {
                 ParamDTO paramDTO = new ParamDTO();
+                paramDTO.ParamName = "OrgID";
+                paramDTO.ParamDirection = ParameterDirection.Input;
+                paramDTO.ParamType = DbType.Int64;
+                paramDTO.ParamValue = PDContext.Current.OrgRef.ID;
+
+                lstParam.Add(paramDTO);
+            }
+            {
+                ParamDTO paramDTO = new ParamDTO();
                 paramDTO.ParamName = "StartDate";
                 paramDTO.ParamDirection = ParameterDirection.Input;
                 paramDTO.ParamType = DbType.DateTime;

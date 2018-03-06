@@ -63,18 +63,19 @@
                 throw new BusinessException(string.Format("转单服务，参数不可为空!"));
             }
 
-            DataTable dtID = new DataTable("HeadIDs");
-            dtID.Columns.Add("ID", typeof(string));
+            //DataTable dtID = new DataTable("HeadIDs");
+            //dtID.Columns.Add("ID", typeof(string));
 
-            foreach (string id in bpObj.HeadIDs)
-            {
-                DataRow row = dtID.NewRow();
+            //foreach (string id in bpObj.HeadIDs)
+            //{
+            //    DataRow row = dtID.NewRow();
 
-                row[0] = id;
+            //    row[0] = id;
 
-                dtID.Rows.Add(row);
-            }
+            //    dtID.Rows.Add(row);
+            //}
 
+            string strIDs = bpObj.HeadIDs.GetOpathFromIList();
 
             string strProcName = "HBH_SP_JianLiYuan_GetAQWRcvLineInfo";
             List<ParamDTO> lstParam = new List<ParamDTO>();
@@ -82,8 +83,10 @@
                 ParamDTO paramDTO = new ParamDTO();
                 paramDTO.ParamName = "HeadIDs";
                 paramDTO.ParamDirection = ParameterDirection.Input;
-                paramDTO.ParamType = DbType.AnsiString;
-                paramDTO.ParamValue = EntitySerialization.EntitySerial(dtID);
+                //paramDTO.ParamType = DbType.AnsiString;
+                //paramDTO.ParamValue = EntitySerialization.EntitySerial(dtID);
+                paramDTO.ParamType = DbType.String;
+                paramDTO.ParamValue = strIDs;
 
                 lstParam.Add(paramDTO);
             }
@@ -279,26 +282,28 @@
                 string strAqwShopName = aqwRcvDTO.shopname;
                 if (strAqwShopName.IsNotNullOrWhiteSpace())
                 {
-                    string strDeptCode = string.Empty;
+                    string strDept = string.Empty;
                     if (strAqwShopName.Length > 3)
                     {
-                        strDeptCode = strAqwShopName.Substring(0, 3);
+                        //strDept = strAqwShopName.Substring(0, 3);
+                        strDept = strAqwShopName.Substring(3, strAqwShopName.Length - 3);
                     }
                     else
                     {
-                        strDeptCode = strAqwShopName;
+                        strDept = strAqwShopName;
                     }
 
-                    dept = Department.Finder.Find("Org=@Org and Code=@Code"
+                    //dept = Department.Finder.Find("Org=@Org and Code=@Code"
+                    dept = Department.Finder.Find("Org=@Org and Name=@Dept"
                         , new OqlParam(Context.LoginOrg.ID)
-                        , new OqlParam(strDeptCode)
+                        , new OqlParam(strDept)
                         );
 
                     if (dept == null)
                     {
-                        throw new BusinessException(string.Format("组织[{0}]下没有找到编码为[{1}]的部门!"
+                        throw new BusinessException(string.Format("组织[{0}]下没有找到名称为[{1}]的部门!"
                             , Context.LoginOrg.Name
-                            , strDeptCode
+                            , strDept
                             ));
                     }
                     //else
@@ -307,18 +312,18 @@
                     //}
 
                     string strWhOpath = string.Format("Org=@Org and (Code like '%' + @Code) order by sqlLen(Code) asc,Code asc"
-                        , strDeptCode
+                        , strDept
                         );
                     wh = Warehouse.Finder.Find(strWhOpath
                         , new OqlParam(Context.LoginOrg.ID)
-                        , new OqlParam(strDeptCode)
+                        , new OqlParam(strDept)
                         );
 
                     if (wh == null)
                     {
                         throw new BusinessException(string.Format("组织[{0}]下没有找到编码以[{1}]结尾的仓库!"
                             , Context.LoginOrg.Name
-                            , strDeptCode
+                            , strDept
                             ));
                     }
                 }
