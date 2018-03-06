@@ -311,19 +311,20 @@
 
                     //}
 
-                    string strWhOpath = string.Format("Org=@Org and (Code like '%' + @Code) order by sqlLen(Code) asc,Code asc"
-                        , strDept
-                        );
+                    //string strWhOpath = string.Format("Org=@Org and (Code like '%' + @Code) order by sqlLen(Code) asc,Code asc"
+                        //, strDept
+                        //);
+                    string strWhOpath = string.Format("Org=@Org and Department.Code = @Code order by sqlLen(Code) asc,Code asc");
                     wh = Warehouse.Finder.Find(strWhOpath
                         , new OqlParam(Context.LoginOrg.ID)
-                        , new OqlParam(strDept)
+                        , new OqlParam(dept.Code)
                         );
-
+                    
                     if (wh == null)
                     {
-                        throw new BusinessException(string.Format("组织[{0}]下没有找到编码以[{1}]结尾的仓库!"
+                        throw new BusinessException(string.Format("组织[{0}]下没有找到所属部门为[{1}]的仓库!"
                             , Context.LoginOrg.Name
-                            , strDept
+                            , dept.Code
                             ));
                     }
                 }

@@ -390,12 +390,12 @@ where 1=1
 		or rcvhead.Code like @DocNo
 		)
 
-	---- 已生单过滤
-	--and rcvhead.Code not in (select u9Doc.DescFlexField_PrivateDescSeg2
-	--				from PM_Receivement u9Doc
-	--				where u9Doc.DescFlexField_PrivateDescSeg2 is not null
-	--					and u9Doc.DescFlexField_PrivateDescSeg2 != ''
-	--				)
+	-- 已生单过滤
+	and rcvhead.Code not in (select u9Doc.DescFlexField_PrivateDescSeg2
+					from PM_Receivement u9Doc
+					where u9Doc.DescFlexField_PrivateDescSeg2 is not null
+						and u9Doc.DescFlexField_PrivateDescSeg2 != ''
+					)
 
 
 order by 

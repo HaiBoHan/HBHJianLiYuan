@@ -277,6 +277,7 @@ end
 
 
 set @Sql = Replace(@Sql,'#OPath#',' and ' + @WhereheadIDs  )
+--set @Sql = Replace(@Sql,'#OPath#',' and ' + '1=0'  )
 	
   -- print (@Sql)
   exec (@Sql)
