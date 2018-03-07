@@ -1,10 +1,10 @@
 ﻿namespace U9.VOB.Cus.HBHJianLiYuan
 {
-	using System;
-	using System.Collections.Generic;
-	using System.Text; 
-	using UFSoft.UBF.AopFrame;	
-	using UFSoft.UBF.Util.Context;
+    using System;
+    using System.Collections.Generic;
+    using System.Text;
+    using UFSoft.UBF.AopFrame;
+    using UFSoft.UBF.Util.Context;
     using UFSoft.UBF.Business;
     using System.Data;
     using HBH.DoNet.DevPlatform.EntityMapping;
@@ -16,42 +16,47 @@
     using UFIDA.U9.PM.Pub;
     using UFIDA.U9.CBO.SCM.Warehouse;
     using UFIDA.U9.CBO.HR.Department;
+    using UFIDA.U9.PM.Rcv;
+    using UFSoft.UBF.Transactions;
+    using UFIDA.U9.PM.Enums;
 
-	/// <summary>
-	/// AQWTransToRcvSV partial 
-	/// </summary>	
-	public partial class AQWTransToRcvSV 
-	{	
-		internal BaseStrategy Select()
-		{
-			return new AQWTransToRcvSVImpementStrategy();	
-		}		
-	}
-	
+    /// <summary>
+    /// AQWTransToRcvSV partial 
+    /// </summary>	
+    public partial class AQWTransToRcvSV
+    {
+        internal BaseStrategy Select()
+        {
+            return new AQWTransToRcvSVImpementStrategy();
+        }
+    }
+
     //#region  implement strategy	
-	/// <summary>
-	/// Impement Implement
-	/// 
-	/// </summary>	
-	internal partial class AQWTransToRcvSVImpementStrategy : BaseStrategy
-	{
-        private const string Const_RcvDocTypeCode = "RCV01";
+    /// <summary>
+    /// Impement Implement
+    /// 
+    /// </summary>	
+    internal partial class AQWTransToRcvSVImpementStrategy : BaseStrategy
+    {
+        //private const string Const_RcvDocTypeCode = "RCV01";
+        // 2018-03-07 wf 改为确认审批的可自动审核的单据类型   09   奥琦玮生单
+        private const string Const_RcvDocTypeCode = "09";
         // 00222-北京配送部
         private const string Const_SupplierCode = "00222";
         // 00291--北京配送部（冻货）
         private const string Const_FrozenSupplierCode = "00291";
 
-		public AQWTransToRcvSVImpementStrategy() { }
+        public AQWTransToRcvSVImpementStrategy() { }
 
-		public override object Do(object obj)
-		{						
-			AQWTransToRcvSV bpObj = (AQWTransToRcvSV)obj;
-			
-			//get business operation context is as follows
-			//IContext context = ContextManager.Context	
-			
-			//auto generating code end,underside is user custom code
-			//and if you Implement replace this Exception Code...
+        public override object Do(object obj)
+        {
+            AQWTransToRcvSV bpObj = (AQWTransToRcvSV)obj;
+
+            //get business operation context is as follows
+            //IContext context = ContextManager.Context	
+
+            //auto generating code end,underside is user custom code
+            //and if you Implement replace this Exception Code...
             //throw new NotImplementedException();
 
 
@@ -109,10 +114,11 @@
             }
 
             return null;
-		}
+        }
 
         private void AQWRcvToErpRcv(List<AQWRcvDTO> lstRcvHead)
         {
+            // 服务外面包装了事务应该
             UFIDA.U9.ISV.RCV.CreateRCVSRV creatRcv = new UFIDA.U9.ISV.RCV.CreateRCVSRV();
 
             creatRcv.RCVList = new List<UFIDA.U9.ISV.RCV.DTO.OBAReceivementDTO>();
@@ -128,7 +134,9 @@
 
             if (creatRcv.RCVList.Count > 0)
             {
-                creatRcv.Do();
+                Receivement.EntityList lstRcv = creatRcv.Do();
+
+                ApproveRcv(lstRcv);
             }
         }
 
@@ -312,14 +320,14 @@
                     //}
 
                     //string strWhOpath = string.Format("Org=@Org and (Code like '%' + @Code) order by sqlLen(Code) asc,Code asc"
-                        //, strDept
-                        //);
+                    //, strDept
+                    //);
                     string strWhOpath = string.Format("Org=@Org and Department.Code = @Code order by sqlLen(Code) asc,Code asc");
                     wh = Warehouse.Finder.Find(strWhOpath
                         , new OqlParam(Context.LoginOrg.ID)
                         , new OqlParam(dept.Code)
                         );
-                    
+
                     if (wh == null)
                     {
                         throw new BusinessException(string.Format("组织[{0}]下没有找到所属部门为[{1}]的仓库!"
@@ -329,10 +337,10 @@
                     }
                 }
                 else
-                { 
+                {
                     throw new BusinessException(string.Format("单据[{0}]店铺不可为空!"
                         , aqwRcvDTO.code
-                        ));                    
+                        ));
                 }
 
                 erpRcvHead.RcvLines = new List<OBARcvLineDTO>();
@@ -425,9 +433,48 @@
 
             return null;
         }
-	}
+
+
+
+        private void ApproveRcv(Receivement.EntityList lstRcv)
+        {
+            foreach (Receivement head in lstRcv)
+            {
+                //head.ActivateType = ActivateTypeEnum.UIUpdate;
+                //foreach (RcvLine line in head.RcvLines)
+                //{
+                //    line.ActivateType = head.ActivateType;
+                //}
+
+                // 清空缓存
+                UFSoft.UBF.PL.Engine.Cache.PLCacheManager.DataCache.FlushCache();
+                UFSoft.UBF.PL.Engine.Cache.PLCacheManager.ObjectCache.FlushCache();
+
+                {
+                    // 改为建华给的BP
+                    UFIDA.U9.PM.Rcv.Proxy.RcvApprovedBPProxy proxy = new UFIDA.U9.PM.Rcv.Proxy.RcvApprovedBPProxy();
+                    proxy.DocHead = head.ID;
+                    // 提交7，审核8，弃审9
+                    proxy.ActType = 7;
+                    proxy.Do();
+                }
+
+                // 清空缓存，否则报并发
+                UFSoft.UBF.PL.Engine.Cache.PLCacheManager.DataCache.FlushCache();
+                UFSoft.UBF.PL.Engine.Cache.PLCacheManager.ObjectCache.FlushCache();
+                {
+                    // 改为建华给的BP
+                    UFIDA.U9.PM.Rcv.Proxy.RcvApprovedBPProxy proxy = new UFIDA.U9.PM.Rcv.Proxy.RcvApprovedBPProxy();
+                    proxy.DocHead = head.ID;
+                    // 提交7，审核8，弃审9
+                    proxy.ActType = 8;
+                    proxy.Do();
+                }
+            }
+        }
+    }
 
     //#endregion
-	
-	
+
+
 }
