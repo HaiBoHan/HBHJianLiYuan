@@ -40,6 +40,9 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInBE
             //if (entity == null || entity.SrcDocType.Value != 1)
             //    return;
 
+            // 2018-03-07 wf
+            SetAQWRcvPriceInfo(entity);
+
             // 收货才赋值，退货等不赋值
             if (entity.RcvDocType != null
                 && entity.RcvDocType.ReceivementType != null
@@ -160,6 +163,27 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInBE
                 if (sbError.Length > 0)
                 {
                     throw new BusinessException(sbError.ToString());
+                }
+            }
+        }
+
+        private void SetAQWRcvPriceInfo(Receivement entity)
+        {
+            // 新增，并且AQW单ID不为空
+            if (entity.SysState == UFSoft.UBF.PL.Engine.ObjectState.Inserted
+                && entity.DescFlexField.PrivateDescSeg1.IsNotNullOrWhiteSpace()
+                )
+            {
+                foreach (RcvLine line in entity.RcvLines)
+                {
+                    /*
+1、入库单价  
+2、指导价=入库单价  公共段3    (私有段的指导价不用了；)
+3、入库金额=入库单价*实到数量    私有段4
+                     */
+                    line.DescFlexSegments.PubDescSeg3 = line.FinallyPriceTC.GetStringRemoveZero();
+                    line.DescFlexSegments.PrivateDescSeg4 = line.TotalMnyTC.GetStringRemoveZero();
+                    line.DescFlexSegments.PrivateDescSeg5 = line.DescFlexSegments.PubDescSeg3;
                 }
             }
         }
