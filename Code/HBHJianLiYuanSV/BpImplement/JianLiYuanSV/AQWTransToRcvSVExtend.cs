@@ -341,6 +341,7 @@
                     if (aqwRcvLineDTO != null)
                     {
                         OBARcvLineDTO erpRcvLine = new OBARcvLineDTO();
+                        erpRcvHead.RcvLines.Add(erpRcvLine);
 
                         //erpRcvLine.ConfirmDate = aqwRcvDTO.arrivetime.GetDateTime(erpRcvHead.BusinessDate);
 
@@ -391,7 +392,18 @@
                             erpRcvLine.WhMan.Code = wh.Manager.Code;
                         }
 
-                        erpRcvHead.RcvLines.Add(erpRcvLine);
+                        if (erpRcvLine.DescFlexSegments == null)
+                        {
+                            erpRcvLine.DescFlexSegments = new UFIDA.U9.Base.FlexField.DescFlexField.DescFlexSegments();
+                        }
+                        /*
+1、入库单价  
+2、指导价=入库单价  公共段3    (私有段的指导价不用了；)
+3、入库金额=入库单价*实到数量    私有段4
+                         */
+                        //erpRcvLine.DescFlexSegments.PubDescSeg3 = erpRcvLine.
+                        // 这个写到了 头插件的  AfterValidate里了；省的计算有精度差异
+
                     }
                 }
 
