@@ -171,19 +171,28 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInBE
         {
             // 新增，并且AQW单ID不为空
             if (entity.SysState == UFSoft.UBF.PL.Engine.ObjectState.Inserted
-                && entity.DescFlexField.PrivateDescSeg1.IsNotNullOrWhiteSpace()
+                //&& entity.DescFlexField.PrivateDescSeg1.IsNotNullOrWhiteSpace()
                 )
             {
                 foreach (RcvLine line in entity.RcvLines)
                 {
-                    /*
-1、入库单价  
-2、指导价=入库单价  公共段3    (私有段的指导价不用了；)
-3、入库金额=入库单价*实到数量    私有段4
-                     */
-                    line.DescFlexSegments.PubDescSeg3 = line.FinallyPriceTC.GetStringRemoveZero();
-                    line.DescFlexSegments.PrivateDescSeg4 = line.TotalMnyTC.GetStringRemoveZero();
-                    line.DescFlexSegments.PrivateDescSeg5 = line.DescFlexSegments.PubDescSeg3;
+                    if (line.DescFlexSegments.PrivateDescSeg10.IsNotNullOrWhiteSpace()
+                        )
+                    {
+                        /*
+    1、入库单价  
+    2、指导价=入库单价  公共段3    (私有段的指导价不用了；)
+    3、入库金额=入库单价*实到数量    私有段4
+                         */
+                        line.DescFlexSegments.PubDescSeg3 = line.FinallyPriceTC.GetStringRemoveZero();
+                        line.DescFlexSegments.PrivateDescSeg4 = line.TotalMnyTC.GetStringRemoveZero();
+                        line.DescFlexSegments.PrivateDescSeg5 = line.DescFlexSegments.PubDescSeg3;
+
+                        DescFlexFieldHelper.SetPreDiscountPrice(line.DescFlexSegments, line.FinallyPriceTC);
+                        DescFlexFieldHelper.SetDiscountRate(line.DescFlexSegments, 1);
+                        DescFlexFieldHelper.SetDiscountLimit(line.DescFlexSegments, 0);
+
+                    }
                 }
             }
         }
