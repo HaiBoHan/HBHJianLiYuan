@@ -391,17 +391,38 @@
                                 , firstAQWRcvHead.code
                                 ));
                         }
+                        
+                        List<string> lstAQWID = new List<string>();
+                        List<string> lstAQWDocNo = new List<string>();
 
                         erpRcvHead.RcvLines = new List<OBARcvLineDTO>();
                         foreach (AQWRcvLineDTO aqwRcvLineDTO in lstAQWRcvLine)
                         {
                             if (aqwRcvLineDTO != null)
                             {
-                                OBARcvLineDTO erpRcvLine = GetErpRcvLine(firstAQWRcvHead, erpRcvHead, dept, wh, aqwRcvLineDTO);
+                                OBARcvLineDTO erpRcvLine = GetErpRcvLine(aqwRcvLineDTO, erpRcvHead, dept, wh);
 
                                 erpRcvHead.RcvLines.Add(erpRcvLine);
+
+                                AQWRcvDTO aqwRcvHeadDTO = aqwRcvLineDTO.AQWRcvHead;
+
+                                if(!lstAQWID.Contains(aqwRcvHeadDTO.ldiid))
+                                {
+                                    lstAQWID.Add(aqwRcvHeadDTO.ldiid);
+                                }
+                                if (!lstAQWDocNo.Contains(aqwRcvHeadDTO.code))
+                                {
+                                    lstAQWDocNo.Add(aqwRcvHeadDTO.code);
+                                }
                             }
                         }
+                        
+                        // wf 2018-03-08 改为行上赋值
+                        //erpRcvHead.DescFlexField.PrivateDescSeg1 = aqwRcvDTO.ldiid;
+                        //erpRcvHead.DescFlexField.PrivateDescSeg2 = aqwRcvDTO.code;
+
+                        erpRcvHead.DescFlexField.PrivateDescSeg1 = lstAQWID.GetOpathFromIList();
+                        erpRcvHead.DescFlexField.PrivateDescSeg2 = lstAQWDocNo.GetOpathFromIList();
 
                         if (sbError.Length > 0)
                         {
@@ -561,7 +582,7 @@
                 {
                     if (aqwRcvLineDTO != null)
                     {
-                        OBARcvLineDTO erpRcvLine = GetErpRcvLine(aqwRcvDTO, erpRcvHead, dept, wh, aqwRcvLineDTO);
+                        OBARcvLineDTO erpRcvLine = GetErpRcvLine(aqwRcvLineDTO, erpRcvHead, dept, wh);
 
                         erpRcvHead.RcvLines.Add(erpRcvLine);
                     }
@@ -586,8 +607,10 @@
             return null;
         }
 
-        private static OBARcvLineDTO GetErpRcvLine(AQWRcvDTO aqwRcvDTO, OBAReceivementDTO erpRcvHead, Department dept, Warehouse wh, AQWRcvLineDTO aqwRcvLineDTO)
+        private static OBARcvLineDTO GetErpRcvLine(AQWRcvLineDTO aqwRcvLineDTO , OBAReceivementDTO erpRcvHead, Department dept, Warehouse wh)
         {
+            AQWRcvDTO aqwRcvDTO = aqwRcvLineDTO.AQWRcvHead;
+
             OBARcvLineDTO erpRcvLine = new OBARcvLineDTO();
 
             //erpRcvLine.ConfirmDate = aqwRcvDTO.arrivetime.GetDateTime(erpRcvHead.BusinessDate);
