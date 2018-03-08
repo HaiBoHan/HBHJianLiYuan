@@ -391,10 +391,15 @@ where 1=1
 		)
 
 	-- 已生单过滤
-	and rcvhead.Code not in (select u9Doc.DescFlexField_PrivateDescSeg2
-					from PM_Receivement u9Doc
-					where u9Doc.DescFlexField_PrivateDescSeg2 is not null
-						and u9Doc.DescFlexField_PrivateDescSeg2 != ''
+	--and rcvhead.Code not in (select u9Doc.DescFlexField_PrivateDescSeg2
+	--				from PM_Receivement u9Doc
+	--				where u9Doc.DescFlexField_PrivateDescSeg2 is not null
+	--					and u9Doc.DescFlexField_PrivateDescSeg2 != ''
+	--				)
+	and rcvhead.Code not in (select distinct u9Doc.DescFlexSegments_PrivateDescSeg10
+					from PM_RcvLine u9Doc
+					where u9Doc.DescFlexSegments_PrivateDescSeg10 is not null
+						and u9Doc.DescFlexSegments_PrivateDescSeg10 != ''
 					)
 
 
