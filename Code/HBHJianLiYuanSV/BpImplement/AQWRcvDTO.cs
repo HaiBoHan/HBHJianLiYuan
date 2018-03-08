@@ -273,6 +273,9 @@ namespace U9.VOB.Cus.HBHJianLiYuan
                                     rcvHead.AQWRcvLineDTOs = new List<AQWRcvLineDTO>();
                                 }
 
+                                // 增加头行关系
+                                rcvLine.AQWRcvHead = rcvHead;
+
                                 rcvHead.AQWRcvLineDTOs.Add(rcvLine);
                             }
 

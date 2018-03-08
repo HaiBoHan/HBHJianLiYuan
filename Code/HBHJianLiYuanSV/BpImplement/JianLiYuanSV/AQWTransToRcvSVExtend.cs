@@ -31,7 +31,7 @@
         }
     }
 
-    //#region  implement strategy	
+
     /// <summary>
     /// Impement Implement
     /// 
@@ -121,16 +121,18 @@
             // 服务外面包装了事务应该
             UFIDA.U9.ISV.RCV.CreateRCVSRV creatRcv = new UFIDA.U9.ISV.RCV.CreateRCVSRV();
 
-            creatRcv.RCVList = new List<UFIDA.U9.ISV.RCV.DTO.OBAReceivementDTO>();
-            foreach (AQWRcvDTO aqwRcvDTO in lstRcvHead)
-            {
-                OBAReceivementDTO erpRcv = GetErpRcv(aqwRcvDTO);
+            //creatRcv.RCVList = new List<UFIDA.U9.ISV.RCV.DTO.OBAReceivementDTO>();
+            //foreach (AQWRcvDTO aqwRcvDTO in lstRcvHead)
+            //{
+            //    OBAReceivementDTO erpRcv = GetErpRcv(aqwRcvDTO);
 
-                if (erpRcv != null)
-                {
-                    creatRcv.RCVList.Add(erpRcv);
-                }
-            }
+            //    if (erpRcv != null)
+            //    {
+            //        creatRcv.RCVList.Add(erpRcv);
+            //    }
+            //}
+
+            creatRcv.RCVList = GetRcvList(lstRcvHead);
 
             if (creatRcv.RCVList.Count > 0)
             {
@@ -211,6 +213,217 @@
                 return _rcvDocType;
             }
         }
+        
+
+
+        private List<OBAReceivementDTO> GetRcvList(List<AQWRcvDTO> lstAQWRcvHead)
+        {
+            List<OBAReceivementDTO> lstErpRcv = new List<OBAReceivementDTO>();
+
+            Dictionary<AQWSupplierType, List<AQWRcvLineDTO>> dicRcv = new Dictionary<AQWSupplierType, List<AQWRcvLineDTO>>();
+            foreach (AQWRcvDTO rcvDTO in lstAQWRcvHead)
+            {
+                if (rcvDTO != null
+                    && rcvDTO.AQWRcvLineDTOs != null
+                    && rcvDTO.AQWRcvLineDTOs.Count > 0
+                    )
+                {
+                    foreach (AQWRcvLineDTO lineDTO in rcvDTO.AQWRcvLineDTOs)
+                    {
+                        AQWSupplierType suptType = AQWSupplierType.Empty;
+
+                        // 当奥琦玮内料号名称前面加“冻货”两个字的，在U9内对应的供应商为“00291--北京配送部（冻货）”，没有冻货两个字的，对应的供应商为“00222-北京配送部”
+                        if (lineDTO.lgname.Contains("冻货"))
+                        {
+                            //supt = RcvFrozenSupplier;
+                            suptType = AQWSupplierType.冷冻;
+                        }
+                        else
+                        {
+                            //supt = RcvSupplier;
+                            suptType = AQWSupplierType.配送;
+                        }
+
+                        if (!dicRcv.ContainsKey(suptType))
+                        {
+                            dicRcv.Add(suptType, new List<AQWRcvLineDTO>());
+                        }
+
+                        dicRcv[suptType].Add(lineDTO);
+                    }
+                }
+            }
+
+            if (dicRcv.Count > 0)
+            {
+                foreach (AQWSupplierType key in dicRcv.Keys)
+                {
+                    List<AQWRcvLineDTO> lstAQWRcvLine = dicRcv[key];
+
+                    if (lstAQWRcvLine != null
+                        && lstAQWRcvLine.Count > 0
+                        )
+                    {
+                        AQWRcvLineDTO firstAQWRcvLine = lstAQWRcvLine[0];
+                        AQWRcvDTO firstAQWRcvHead = firstAQWRcvLine.AQWRcvHead;
+
+                        Supplier supt = null;
+                        // 当奥琦玮内料号名称前面加“冻货”两个字的，在U9内对应的供应商为“00291--北京配送部（冻货）”，没有冻货两个字的，对应的供应商为“00222-北京配送部”
+                        //if (firstLine.lgname.Contains("冻货"))
+                        if(key == AQWSupplierType.冷冻)
+                        {
+                            supt = RcvFrozenSupplier;
+                        }
+                        else
+                        {
+                            supt = RcvSupplier;
+                        }
+
+
+                        StringBuilder sbError = new StringBuilder();
+
+                        OBAReceivementDTO erpRcvHead = new OBAReceivementDTO();
+
+                        RcvDocType rcvDocType = RcvDocType;
+                        if (rcvDocType != null)
+                        {
+                            erpRcvHead.RcvDocType = new UFIDA.U9.PM.DTOs.BESimp4UIDTO();
+                            erpRcvHead.RcvDocType.ID = rcvDocType.ID;
+                            erpRcvHead.RcvDocType.Code = rcvDocType.Code;
+                        }
+
+                        erpRcvHead.BusinessDate = firstAQWRcvHead.arrivetime.GetDateTime(DateTime.Today).Date;
+
+
+                        if (supt != null)
+                        {
+                            erpRcvHead.Supplier = new UFIDA.U9.CBO.SCM.Supplier.SupplierMISCInfo();
+                            erpRcvHead.Supplier.Supplier = supt;
+                        }
+
+
+                        erpRcvHead.RcvFees = new List<OBARcvFeeDTO>();
+                        erpRcvHead.RcvDiscount = new List<OBARcvDiscountDTO>();
+                        erpRcvHead.RcvTax = new List<OBARcvTaxDTO>();
+                        erpRcvHead.RcvAddress = new List<OBARcvAddressDTO>();
+                        erpRcvHead.RcvContacts = new List<OBARcvContactDTO>();
+
+                        if (erpRcvHead.DescFlexField == null)
+                        {
+                            erpRcvHead.DescFlexField = new UFIDA.U9.Base.FlexField.DescFlexField.DescFlexSegments();
+                        }
+                        // wf 2018-03-08 改为行上赋值
+                        //erpRcvHead.DescFlexField.PrivateDescSeg1 = aqwRcvDTO.ldiid;
+                        //erpRcvHead.DescFlexField.PrivateDescSeg2 = aqwRcvDTO.code;
+
+                        //if (aqwRcvDTO.sno.IsNotNullOrWhiteSpace())
+                        //{
+                        //    Warehouse wh = Warehouse.Finder.Find("Org=@Org and Code=@Code"
+                        //        , new OqlParam(Context.LoginOrg.ID)
+                        //        , new OqlParam(aqwRcvDTO.sno)
+                        //        );
+
+                        //    if (wh == null)
+                        //    {
+                        //        throw new BusinessException(string.Format("组织[{0}]下没有找到编码为[{1}]的收货仓库!"
+                        //            , Context.LoginOrg.Name
+                        //            , aqwRcvDTO.sno
+                        //            ));
+                        //    }
+                        //}
+
+                        // 现在奥琦玮内部门的编码和名称是一个字段，我让他们限定前三位是代码，后面的名称现在在调整成跟U9一致
+                        Department dept = null;
+                        Warehouse wh = null;
+
+                        string strAqwShopName = firstAQWRcvHead.shopname;
+                        if (strAqwShopName.IsNotNullOrWhiteSpace())
+                        {
+                            string strDept = string.Empty;
+                            if (strAqwShopName.Length > 3)
+                            {
+                                //strDept = strAqwShopName.Substring(0, 3);
+                                strDept = strAqwShopName.Substring(3, strAqwShopName.Length - 3);
+                            }
+                            else
+                            {
+                                strDept = strAqwShopName;
+                            }
+
+                            //dept = Department.Finder.Find("Org=@Org and Code=@Code"
+                            dept = Department.Finder.Find("Org=@Org and Name=@Dept"
+                                , new OqlParam(Context.LoginOrg.ID)
+                                , new OqlParam(strDept)
+                                );
+
+                            if (dept == null)
+                            {
+                                throw new BusinessException(string.Format("组织[{0}]下没有找到名称为[{1}]的部门!"
+                                    , Context.LoginOrg.Name
+                                    , strDept
+                                    ));
+                            }
+                            //else
+                            //{ 
+
+                            //}
+
+                            //string strWhOpath = string.Format("Org=@Org and (Code like '%' + @Code) order by sqlLen(Code) asc,Code asc"
+                            //, strDept
+                            //);
+                            string strWhOpath = string.Format("Org=@Org and Department.Code = @Code order by sqlLen(Code) asc,Code asc");
+                            wh = Warehouse.Finder.Find(strWhOpath
+                                , new OqlParam(Context.LoginOrg.ID)
+                                , new OqlParam(dept.Code)
+                                );
+
+                            if (wh == null)
+                            {
+                                throw new BusinessException(string.Format("组织[{0}]下没有找到所属部门为[{1}]的仓库!"
+                                    , Context.LoginOrg.Name
+                                    , dept.Code
+                                    ));
+                            }
+                        }
+                        else
+                        {
+                            throw new BusinessException(string.Format("单据[{0}]店铺不可为空!"
+                                , firstAQWRcvHead.code
+                                ));
+                        }
+
+                        erpRcvHead.RcvLines = new List<OBARcvLineDTO>();
+                        foreach (AQWRcvLineDTO aqwRcvLineDTO in lstAQWRcvLine)
+                        {
+                            if (aqwRcvLineDTO != null)
+                            {
+                                OBARcvLineDTO erpRcvLine = GetErpRcvLine(firstAQWRcvHead, erpRcvHead, dept, wh, aqwRcvLineDTO);
+
+                                erpRcvHead.RcvLines.Add(erpRcvLine);
+                            }
+                        }
+
+                        if (sbError.Length > 0)
+                        {
+                            throw new BusinessException(sbError.ToString());
+                        }
+
+                        // 有行，才返回；没行没意义；
+                        if (erpRcvHead.RcvLines.Count > 0)
+                        {
+                            lstErpRcv.Add(erpRcvHead);
+                        }
+                        else
+                        {
+                            return null;
+                        }
+                    }
+                }
+            }
+
+            return lstErpRcv;
+        }
+
 
         private OBAReceivementDTO GetErpRcv(AQWRcvDTO aqwRcvDTO)
         {
@@ -264,8 +477,8 @@
                 {
                     erpRcvHead.DescFlexField = new UFIDA.U9.Base.FlexField.DescFlexField.DescFlexSegments();
                 }
-                erpRcvHead.DescFlexField.PrivateDescSeg1 = aqwRcvDTO.ldiid;
-                erpRcvHead.DescFlexField.PrivateDescSeg2 = aqwRcvDTO.code;
+                //erpRcvHead.DescFlexField.PrivateDescSeg1 = aqwRcvDTO.ldiid;
+                //erpRcvHead.DescFlexField.PrivateDescSeg2 = aqwRcvDTO.code;
 
                 //if (aqwRcvDTO.sno.IsNotNullOrWhiteSpace())
                 //{
@@ -348,70 +561,9 @@
                 {
                     if (aqwRcvLineDTO != null)
                     {
-                        OBARcvLineDTO erpRcvLine = new OBARcvLineDTO();
+                        OBARcvLineDTO erpRcvLine = GetErpRcvLine(aqwRcvDTO, erpRcvHead, dept, wh, aqwRcvLineDTO);
+
                         erpRcvHead.RcvLines.Add(erpRcvLine);
-
-                        //erpRcvLine.ConfirmDate = aqwRcvDTO.arrivetime.GetDateTime(erpRcvHead.BusinessDate);
-
-                        erpRcvLine.ArrivedTime = aqwRcvDTO.arrivetime.GetDateTime(erpRcvHead.BusinessDate);
-                        erpRcvLine.ConfirmDate = erpRcvLine.ArrivedTime;
-
-                        if (aqwRcvLineDTO.lgcode.IsNotNullOrWhiteSpace())
-                        {
-                            erpRcvLine.ItemInfo = new UFIDA.U9.CBO.SCM.Item.ItemInfo();
-                            erpRcvLine.ItemInfo.ItemCode = aqwRcvLineDTO.lgcode;
-                        }
-                        else
-                        {
-                            sbError.AppendLine(string.Format("单据[{0}]货品[{1}]无法找到货品编码!"
-                                , aqwRcvDTO.code
-                                , aqwRcvLineDTO.lgid
-                                ));
-                            break;
-                        }
-
-                        erpRcvLine.ArriveQtyTU = aqwRcvLineDTO.amount.GetDecimal() + aqwRcvLineDTO.damount.GetDecimal();
-                        erpRcvLine.FinallyPriceTC = aqwRcvLineDTO.uprice.GetDecimal();
-
-                        //erpRcvLine.TotalMnyTC = aqwRcvLineDTO.total.GetDecimal();
-
-                        erpRcvLine.RcvFees = new List<OBARcvFeeDTO>();
-                        erpRcvLine.RcvDiscount = new List<OBARcvDiscountDTO>();
-                        erpRcvLine.RcvTaxs = new List<OBARcvTaxDTO>();
-                        erpRcvLine.RcvLineDispenses = new List<OBARcvLineDispenseDTO>();
-                        erpRcvLine.RcvLineAllotMOs = new List<OBARcvLineAllotMODTO>();
-                        erpRcvLine.RcvLineLocations = new List<OBARcvLineLocationDTO>();
-                        erpRcvLine.RcvAddress = new List<OBARcvAddressDTO>();
-                        erpRcvLine.RcvContacts = new List<OBARcvContactDTO>();
-                        erpRcvLine.RcvSubLines = new List<OBARcvSubLineDTO>();
-
-                        erpRcvLine.RcvDept = new UFIDA.U9.PM.DTOs.BESimp4UIDTO();
-                        erpRcvLine.RcvDept.ID = dept.ID;
-                        erpRcvLine.RcvDept.Code = dept.Code;
-
-                        erpRcvLine.Wh = new UFIDA.U9.PM.DTOs.BESimp4UIDTO();
-                        erpRcvLine.Wh.ID = wh.ID;
-                        erpRcvLine.Wh.Code = wh.Code;
-
-                        if (wh.Manager != null)
-                        {
-                            erpRcvLine.WhMan = new UFIDA.U9.PM.DTOs.BESimp4UIDTO();
-                            erpRcvLine.WhMan.ID = wh.Manager.ID;
-                            erpRcvLine.WhMan.Code = wh.Manager.Code;
-                        }
-
-                        if (erpRcvLine.DescFlexSegments == null)
-                        {
-                            erpRcvLine.DescFlexSegments = new UFIDA.U9.Base.FlexField.DescFlexField.DescFlexSegments();
-                        }
-                        /*
-1、入库单价  
-2、指导价=入库单价  公共段3    (私有段的指导价不用了；)
-3、入库金额=入库单价*实到数量    私有段4
-                         */
-                        //erpRcvLine.DescFlexSegments.PubDescSeg3 = erpRcvLine.
-                        // 这个写到了 头插件的  AfterValidate里了；省的计算有精度差异
-
                     }
                 }
 
@@ -432,6 +584,90 @@
             }
 
             return null;
+        }
+
+        private static OBARcvLineDTO GetErpRcvLine(AQWRcvDTO aqwRcvDTO, OBAReceivementDTO erpRcvHead, Department dept, Warehouse wh, AQWRcvLineDTO aqwRcvLineDTO)
+        {
+            OBARcvLineDTO erpRcvLine = new OBARcvLineDTO();
+
+            //erpRcvLine.ConfirmDate = aqwRcvDTO.arrivetime.GetDateTime(erpRcvHead.BusinessDate);
+
+            erpRcvLine.ArrivedTime = aqwRcvDTO.arrivetime.GetDateTime(erpRcvHead.BusinessDate);
+            erpRcvLine.ConfirmDate = erpRcvLine.ArrivedTime;
+
+            if (aqwRcvLineDTO.lgcode.IsNotNullOrWhiteSpace())
+            {
+                erpRcvLine.ItemInfo = new UFIDA.U9.CBO.SCM.Item.ItemInfo();
+                erpRcvLine.ItemInfo.ItemCode = aqwRcvLineDTO.lgcode;
+            }
+            else
+            {
+                //sbError.AppendLine(string.Format("单据[{0}]货品[{1}]无法找到货品编码!"
+                //    , aqwRcvDTO.code
+                //    , aqwRcvLineDTO.lgid
+                //    ));
+                throw new BusinessException(string.Format("单据[{0}]货品[{1}]无法找到货品编码!"
+                    , aqwRcvDTO.code
+                    , aqwRcvLineDTO.lgid
+                    ));
+            }
+
+            erpRcvLine.ArriveQtyTU = aqwRcvLineDTO.amount.GetDecimal() + aqwRcvLineDTO.damount.GetDecimal();
+            erpRcvLine.FinallyPriceTC = aqwRcvLineDTO.uprice.GetDecimal();
+
+            //erpRcvLine.TotalMnyTC = aqwRcvLineDTO.total.GetDecimal();
+
+            erpRcvLine.RcvFees = new List<OBARcvFeeDTO>();
+            erpRcvLine.RcvDiscount = new List<OBARcvDiscountDTO>();
+            erpRcvLine.RcvTaxs = new List<OBARcvTaxDTO>();
+            erpRcvLine.RcvLineDispenses = new List<OBARcvLineDispenseDTO>();
+            erpRcvLine.RcvLineAllotMOs = new List<OBARcvLineAllotMODTO>();
+            erpRcvLine.RcvLineLocations = new List<OBARcvLineLocationDTO>();
+            erpRcvLine.RcvAddress = new List<OBARcvAddressDTO>();
+            erpRcvLine.RcvContacts = new List<OBARcvContactDTO>();
+            erpRcvLine.RcvSubLines = new List<OBARcvSubLineDTO>();
+
+            erpRcvLine.RcvDept = new UFIDA.U9.PM.DTOs.BESimp4UIDTO();
+            erpRcvLine.RcvDept.ID = dept.ID;
+            erpRcvLine.RcvDept.Code = dept.Code;
+
+            erpRcvLine.Wh = new UFIDA.U9.PM.DTOs.BESimp4UIDTO();
+            erpRcvLine.Wh.ID = wh.ID;
+            erpRcvLine.Wh.Code = wh.Code;
+
+            if (wh.Manager != null)
+            {
+                erpRcvLine.WhMan = new UFIDA.U9.PM.DTOs.BESimp4UIDTO();
+                erpRcvLine.WhMan.ID = wh.Manager.ID;
+                erpRcvLine.WhMan.Code = wh.Manager.Code;
+            }
+
+            if (erpRcvLine.DescFlexSegments == null)
+            {
+                erpRcvLine.DescFlexSegments = new UFIDA.U9.Base.FlexField.DescFlexField.DescFlexSegments();
+            }
+            // 头ID
+            erpRcvLine.DescFlexSegments.PrivateDescSeg9 = aqwRcvDTO.ldiid;
+            // 头单号
+            erpRcvLine.DescFlexSegments.PrivateDescSeg10 = aqwRcvDTO.code;
+            // 行ID
+            erpRcvLine.DescFlexSegments.PrivateDescSeg11 = aqwRcvLineDTO.ldiiid;
+
+            // 档口
+            erpRcvLine.DescFlexSegments.PubDescSeg12 = aqwRcvDTO.ldname;
+
+
+            /*
+1、入库单价  
+2、指导价=入库单价  公共段3    (私有段的指导价不用了；)
+3、入库金额=入库单价*实到数量    私有段4
+             */
+            //erpRcvLine.DescFlexSegments.PubDescSeg3 = erpRcvLine.
+            // 这个写到了 头插件的  AfterValidate里了；省的计算有精度差异
+
+
+
+            return erpRcvLine;
         }
 
 
@@ -474,7 +710,15 @@
         }
     }
 
-    //#endregion
 
-
+    // 供应商类型
+    /// <summary>
+    /// 供应商类型
+    /// </summary>
+    public enum AQWSupplierType
+    { 
+        Empty = -1 ,
+        冷冻 = 0 ,
+        配送 = 1 ,
+    }
 }

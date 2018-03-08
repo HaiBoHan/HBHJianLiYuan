@@ -12,7 +12,13 @@ namespace U9.VOB.Cus.HBHJianLiYuan
     /// 奥琦玮收货行
     /// </summary>
     public class AQWRcvLineDTO
-    {    
+    {
+        // 奥琦玮收货头
+        /// <summary>
+        /// 奥琦玮收货头
+        /// </summary>
+        public AQWRcvDTO AQWRcvHead { get; set; }
+
         // 配送入库单单据项ID
         /// <summary>
         /// 配送入库单单据项ID
