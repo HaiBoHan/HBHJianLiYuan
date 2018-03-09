@@ -402,17 +402,20 @@
                             {
                                 OBARcvLineDTO erpRcvLine = GetErpRcvLine(aqwRcvLineDTO, erpRcvHead, dept, wh);
 
-                                erpRcvHead.RcvLines.Add(erpRcvLine);
-
-                                AQWRcvDTO aqwRcvHeadDTO = aqwRcvLineDTO.AQWRcvHead;
-
-                                if(!lstAQWID.Contains(aqwRcvHeadDTO.ldiid))
+                                if (erpRcvLine != null)
                                 {
-                                    lstAQWID.Add(aqwRcvHeadDTO.ldiid);
-                                }
-                                if (!lstAQWDocNo.Contains(aqwRcvHeadDTO.code))
-                                {
-                                    lstAQWDocNo.Add(aqwRcvHeadDTO.code);
+                                    erpRcvHead.RcvLines.Add(erpRcvLine);
+
+                                    AQWRcvDTO aqwRcvHeadDTO = aqwRcvLineDTO.AQWRcvHead;
+
+                                    if (!lstAQWID.Contains(aqwRcvHeadDTO.ldiid))
+                                    {
+                                        lstAQWID.Add(aqwRcvHeadDTO.ldiid);
+                                    }
+                                    if (!lstAQWDocNo.Contains(aqwRcvHeadDTO.code))
+                                    {
+                                        lstAQWDocNo.Add(aqwRcvHeadDTO.code);
+                                    }
                                 }
                             }
                         }
