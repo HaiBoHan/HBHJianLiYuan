@@ -580,11 +580,15 @@
                 erpRcvHead.RcvLines = new List<OBARcvLineDTO>();
                 foreach (AQWRcvLineDTO aqwRcvLineDTO in aqwRcvDTO.AQWRcvLineDTOs)
                 {
-                    if (aqwRcvLineDTO != null)
+                    if (aqwRcvLineDTO != null
+                        )
                     {
                         OBARcvLineDTO erpRcvLine = GetErpRcvLine(aqwRcvLineDTO, erpRcvHead, dept, wh);
 
-                        erpRcvHead.RcvLines.Add(erpRcvLine);
+                        if (erpRcvLine != null)
+                        {
+                            erpRcvHead.RcvLines.Add(erpRcvLine);
+                        }
                     }
                 }
 
@@ -607,88 +611,96 @@
             return null;
         }
 
-        private static OBARcvLineDTO GetErpRcvLine(AQWRcvLineDTO aqwRcvLineDTO , OBAReceivementDTO erpRcvHead, Department dept, Warehouse wh)
+        private static OBARcvLineDTO GetErpRcvLine(AQWRcvLineDTO aqwRcvLineDTO, OBAReceivementDTO erpRcvHead, Department dept, Warehouse wh)
         {
-            AQWRcvDTO aqwRcvDTO = aqwRcvLineDTO.AQWRcvHead;
+            OBARcvLineDTO erpRcvLine = null;
+            decimal qty = aqwRcvLineDTO.amount.GetDecimal() + aqwRcvLineDTO.damount.GetDecimal();
 
-            OBARcvLineDTO erpRcvLine = new OBARcvLineDTO();
-
-            //erpRcvLine.ConfirmDate = aqwRcvDTO.arrivetime.GetDateTime(erpRcvHead.BusinessDate);
-
-            erpRcvLine.ArrivedTime = aqwRcvDTO.arrivetime.GetDateTime(erpRcvHead.BusinessDate);
-            erpRcvLine.ConfirmDate = erpRcvLine.ArrivedTime;
-
-            if (aqwRcvLineDTO.lgcode.IsNotNullOrWhiteSpace())
+            if (qty > 0)
             {
-                erpRcvLine.ItemInfo = new UFIDA.U9.CBO.SCM.Item.ItemInfo();
-                erpRcvLine.ItemInfo.ItemCode = aqwRcvLineDTO.lgcode;
+                AQWRcvDTO aqwRcvDTO = aqwRcvLineDTO.AQWRcvHead;
+
+                erpRcvLine = new OBARcvLineDTO();
+
+                //erpRcvLine.ConfirmDate = aqwRcvDTO.arrivetime.GetDateTime(erpRcvHead.BusinessDate);
+
+                erpRcvLine.ArrivedTime = aqwRcvDTO.arrivetime.GetDateTime(erpRcvHead.BusinessDate);
+                erpRcvLine.ConfirmDate = erpRcvLine.ArrivedTime;
+
+                if (aqwRcvLineDTO.lgcode.IsNotNullOrWhiteSpace())
+                {
+                    erpRcvLine.ItemInfo = new UFIDA.U9.CBO.SCM.Item.ItemInfo();
+                    erpRcvLine.ItemInfo.ItemCode = aqwRcvLineDTO.lgcode;
+                }
+                else
+                {
+                    //sbError.AppendLine(string.Format("单据[{0}]货品[{1}]无法找到货品编码!"
+                    //    , aqwRcvDTO.code
+                    //    , aqwRcvLineDTO.lgid
+                    //    ));
+                    throw new BusinessException(string.Format("单据[{0}]货品[{1}]无法找到货品编码!"
+                        , aqwRcvDTO.code
+                        , aqwRcvLineDTO.lgid
+                        ));
+                }
+
+                erpRcvLine.ArriveQtyTU = qty;
+                erpRcvLine.FinallyPriceTC = aqwRcvLineDTO.uprice.GetDecimal();
+
+                //erpRcvLine.TotalMnyTC = aqwRcvLineDTO.total.GetDecimal();
+
+                erpRcvLine.RcvFees = new List<OBARcvFeeDTO>();
+                erpRcvLine.RcvDiscount = new List<OBARcvDiscountDTO>();
+                erpRcvLine.RcvTaxs = new List<OBARcvTaxDTO>();
+                erpRcvLine.RcvLineDispenses = new List<OBARcvLineDispenseDTO>();
+                erpRcvLine.RcvLineAllotMOs = new List<OBARcvLineAllotMODTO>();
+                erpRcvLine.RcvLineLocations = new List<OBARcvLineLocationDTO>();
+                erpRcvLine.RcvAddress = new List<OBARcvAddressDTO>();
+                erpRcvLine.RcvContacts = new List<OBARcvContactDTO>();
+                erpRcvLine.RcvSubLines = new List<OBARcvSubLineDTO>();
+
+                erpRcvLine.RcvDept = new UFIDA.U9.PM.DTOs.BESimp4UIDTO();
+                erpRcvLine.RcvDept.ID = dept.ID;
+                erpRcvLine.RcvDept.Code = dept.Code;
+
+                erpRcvLine.Wh = new UFIDA.U9.PM.DTOs.BESimp4UIDTO();
+                erpRcvLine.Wh.ID = wh.ID;
+                erpRcvLine.Wh.Code = wh.Code;
+
+                if (wh.Manager != null)
+                {
+                    erpRcvLine.WhMan = new UFIDA.U9.PM.DTOs.BESimp4UIDTO();
+                    erpRcvLine.WhMan.ID = wh.Manager.ID;
+                    erpRcvLine.WhMan.Code = wh.Manager.Code;
+                }
+
+                if (erpRcvLine.DescFlexSegments == null)
+                {
+                    erpRcvLine.DescFlexSegments = new UFIDA.U9.Base.FlexField.DescFlexField.DescFlexSegments();
+                }
+                // 头ID
+                erpRcvLine.DescFlexSegments.PrivateDescSeg9 = aqwRcvDTO.ldiid;
+                // 头单号
+                erpRcvLine.DescFlexSegments.PrivateDescSeg10 = aqwRcvDTO.code;
+                // 行ID
+                erpRcvLine.DescFlexSegments.PrivateDescSeg11 = aqwRcvLineDTO.ldiiid;
+
+                // 档口
+                erpRcvLine.DescFlexSegments.PubDescSeg12 = aqwRcvDTO.ldname;
+
+
+                /*
+    1、入库单价  
+    2、指导价=入库单价  公共段3    (私有段的指导价不用了；)
+    3、入库金额=入库单价*实到数量    私有段4
+                 */
+                //erpRcvLine.DescFlexSegments.PubDescSeg3 = erpRcvLine.
+                // 这个写到了 头插件的  AfterValidate里了；省的计算有精度差异
+
+
+
+                return erpRcvLine;
             }
-            else
-            {
-                //sbError.AppendLine(string.Format("单据[{0}]货品[{1}]无法找到货品编码!"
-                //    , aqwRcvDTO.code
-                //    , aqwRcvLineDTO.lgid
-                //    ));
-                throw new BusinessException(string.Format("单据[{0}]货品[{1}]无法找到货品编码!"
-                    , aqwRcvDTO.code
-                    , aqwRcvLineDTO.lgid
-                    ));
-            }
-
-            erpRcvLine.ArriveQtyTU = aqwRcvLineDTO.amount.GetDecimal() + aqwRcvLineDTO.damount.GetDecimal();
-            erpRcvLine.FinallyPriceTC = aqwRcvLineDTO.uprice.GetDecimal();
-
-            //erpRcvLine.TotalMnyTC = aqwRcvLineDTO.total.GetDecimal();
-
-            erpRcvLine.RcvFees = new List<OBARcvFeeDTO>();
-            erpRcvLine.RcvDiscount = new List<OBARcvDiscountDTO>();
-            erpRcvLine.RcvTaxs = new List<OBARcvTaxDTO>();
-            erpRcvLine.RcvLineDispenses = new List<OBARcvLineDispenseDTO>();
-            erpRcvLine.RcvLineAllotMOs = new List<OBARcvLineAllotMODTO>();
-            erpRcvLine.RcvLineLocations = new List<OBARcvLineLocationDTO>();
-            erpRcvLine.RcvAddress = new List<OBARcvAddressDTO>();
-            erpRcvLine.RcvContacts = new List<OBARcvContactDTO>();
-            erpRcvLine.RcvSubLines = new List<OBARcvSubLineDTO>();
-
-            erpRcvLine.RcvDept = new UFIDA.U9.PM.DTOs.BESimp4UIDTO();
-            erpRcvLine.RcvDept.ID = dept.ID;
-            erpRcvLine.RcvDept.Code = dept.Code;
-
-            erpRcvLine.Wh = new UFIDA.U9.PM.DTOs.BESimp4UIDTO();
-            erpRcvLine.Wh.ID = wh.ID;
-            erpRcvLine.Wh.Code = wh.Code;
-
-            if (wh.Manager != null)
-            {
-                erpRcvLine.WhMan = new UFIDA.U9.PM.DTOs.BESimp4UIDTO();
-                erpRcvLine.WhMan.ID = wh.Manager.ID;
-                erpRcvLine.WhMan.Code = wh.Manager.Code;
-            }
-
-            if (erpRcvLine.DescFlexSegments == null)
-            {
-                erpRcvLine.DescFlexSegments = new UFIDA.U9.Base.FlexField.DescFlexField.DescFlexSegments();
-            }
-            // 头ID
-            erpRcvLine.DescFlexSegments.PrivateDescSeg9 = aqwRcvDTO.ldiid;
-            // 头单号
-            erpRcvLine.DescFlexSegments.PrivateDescSeg10 = aqwRcvDTO.code;
-            // 行ID
-            erpRcvLine.DescFlexSegments.PrivateDescSeg11 = aqwRcvLineDTO.ldiiid;
-
-            // 档口
-            erpRcvLine.DescFlexSegments.PubDescSeg12 = aqwRcvDTO.ldname;
-
-
-            /*
-1、入库单价  
-2、指导价=入库单价  公共段3    (私有段的指导价不用了；)
-3、入库金额=入库单价*实到数量    私有段4
-             */
-            //erpRcvLine.DescFlexSegments.PubDescSeg3 = erpRcvLine.
-            // 这个写到了 头插件的  AfterValidate里了；省的计算有精度差异
-
-
 
             return erpRcvLine;
         }
