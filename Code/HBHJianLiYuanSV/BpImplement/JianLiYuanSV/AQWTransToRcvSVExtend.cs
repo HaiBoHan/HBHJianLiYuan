@@ -233,7 +233,10 @@
                         AQWSupplierType suptType = AQWSupplierType.Empty;
 
                         // 当奥琦玮内料号名称前面加“冻货”两个字的，在U9内对应的供应商为“00291--北京配送部（冻货）”，没有冻货两个字的，对应的供应商为“00222-北京配送部”
-                        if (lineDTO.lgname.Contains("冻货"))
+                        if (lineDTO.lgname.Contains("冻货")
+                            // 2018-03-12 wf 冻品也生成冷冻的供应商
+                            || lineDTO.lgname.Contains("冻品")
+                            )
                         {
                             //supt = RcvFrozenSupplier;
                             suptType = AQWSupplierType.冷冻;
