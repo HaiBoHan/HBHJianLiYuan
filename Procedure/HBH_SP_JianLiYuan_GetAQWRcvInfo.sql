@@ -19,8 +19,6 @@ create proc HBH_SP_JianLiYuan_GetAQWRcvInfo  (
 )
 with encryption
 as
-	SET NOCOUNT ON;
-
 
 if exists(select name from sys.objects where name = 'HBH_Debug_Param')
 begin
@@ -55,6 +53,8 @@ begin
 	end
 end
 
+	SET NOCOUNT ON;
+
 	
 	declare @SysMlFlag varchar(11) = 'zh-CN'
 	declare @SalePriceListCode varchar(125) = '001'
@@ -71,7 +71,7 @@ end
 	declare @AqwDeptCodeStart varchar(125) = ''
 	declare @AqwDeptName varchar(125) = ''
 	
-	set @EndDate = DateAdd(minute,-1,DateAdd(day,1,@StartDate))
+	set @EndDate = DateAdd(second,-1,DateAdd(day,1,@StartDate))
 
 	-- @LoginUser
 
@@ -245,7 +245,7 @@ begin
 end
 	
 
-  -- print (@Sql)
+  print (@Sql)
   exec (@Sql)
 
 
@@ -387,7 +387,7 @@ where 1=1
 
 	--单号
 	and (@DocNo is null or @DocNo = ''
-		or rcvhead.Code like @DocNo
+		or rcvhead.Code like '%' + @DocNo + '%'
 		)
 
 	-- 已生单过滤
