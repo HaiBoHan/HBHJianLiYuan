@@ -69,8 +69,12 @@ namespace U9.VOB.Cus.HBHJianLiYuan.HBHHelper
         {
             if (descSegments != null)
             {
-                //descSegments.PubDescSeg3 = PubClass.GetStringRemoveZero(price);
-                SetValue(descSegments, "PubDescSeg3", PubClass.GetStringRemoveZero(price));
+                //SetValue(descSegments, "PubDescSeg3", PubClass.GetStringRemoveZero(price));
+                string strPrice = PubClass.GetStringRemoveZero(price);
+                if (descSegments.PubDescSeg3 != strPrice)
+                {
+                    descSegments.PubDescSeg3 = strPrice;
+                }
             }
         }
 
@@ -84,12 +88,12 @@ namespace U9.VOB.Cus.HBHJianLiYuan.HBHHelper
         {
             if (descSegments != null)
             {
-                //string strPrice = PubClass.GetStringRemoveZero(price);
-                //if (descSegments.PrivateDescSeg5 != strPrice)
-                //{
-                //    descSegments.PrivateDescSeg5 = strPrice;
-                //}
-                SetValue(descSegments, "PrivateDescSeg5", PubClass.GetStringRemoveZero(price));
+                //SetValue(descSegments, "PrivateDescSeg5", PubClass.GetStringRemoveZero(price));
+                string strPrice = PubClass.GetStringRemoveZero(price);
+                if (descSegments.PrivateDescSeg5 != strPrice)
+                {
+                    descSegments.PrivateDescSeg5 = strPrice;
+                }
             }
         }
 
@@ -131,8 +135,13 @@ namespace U9.VOB.Cus.HBHJianLiYuan.HBHHelper
         {
             if (descSegments != null)
             {
+                //SetValue(descSegments, "PubDescSeg4", PubClass.GetStringRemoveZero(rate));
                 //descSegments.PubDescSeg4 = PubClass.GetStringRemoveZero(rate);
-                SetValue(descSegments, "PubDescSeg4", PubClass.GetStringRemoveZero(rate));
+                string strRate = PubClass.GetStringRemoveZero(rate);
+                if (descSegments.PubDescSeg4 != strRate)
+                {
+                    descSegments.PubDescSeg4 = strRate;
+                }
             }
         }
 
@@ -173,8 +182,13 @@ namespace U9.VOB.Cus.HBHJianLiYuan.HBHHelper
         {
             if (descSegments != null)
             {
+                //SetValue(descSegments, "PubDescSeg5", PubClass.GetStringRemoveZero(disLimit));
                 //descSegments.PubDescSeg5 = PubClass.GetStringRemoveZero(disLimit);
-                SetValue(descSegments, "PubDescSeg5", PubClass.GetStringRemoveZero(disLimit));
+                string strDisLimit = PubClass.GetStringRemoveZero(disLimit);
+                if (descSegments.PubDescSeg5 != strDisLimit)
+                {
+                    descSegments.PubDescSeg5 = strDisLimit;
+                }
             }
         }
 
@@ -216,8 +230,13 @@ namespace U9.VOB.Cus.HBHJianLiYuan.HBHHelper
         {
             if (descSegments != null)
             {
+                //SetValue(descSegments, "PubDescSeg6", PubClass.GetStringRemoveZero(price));
                 //descSegments.PubDescSeg6 = PubClass.GetStringRemoveZero(price);
-                SetValue(descSegments, "PubDescSeg6", PubClass.GetStringRemoveZero(price));
+                string strPrice = PubClass.GetStringRemoveZero(price);
+                if (descSegments.PubDescSeg6 != strPrice)
+                {
+                    descSegments.PubDescSeg6 = strPrice;
+                }
             }
         }
 
@@ -235,7 +254,8 @@ namespace U9.VOB.Cus.HBHJianLiYuan.HBHHelper
                 && srcSegments != null
                 )
             {
-                targetSegments.SetValue(DescFlexField_OnceItemNameField, srcSegments.GetValue(DescFlexField_OnceItemNameField));
+                //targetSegments.SetValue(DescFlexField_OnceItemNameField, srcSegments.GetValue(DescFlexField_OnceItemNameField));
+                targetSegments.PubDescSeg11 = srcSegments.PubDescSeg11;
             }
         }
 
