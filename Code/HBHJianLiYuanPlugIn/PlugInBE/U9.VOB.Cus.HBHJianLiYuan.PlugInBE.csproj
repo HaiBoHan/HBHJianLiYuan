@@ -331,6 +331,7 @@
     <Compile Include="Department_AfterDefaultValueExtend.cs" />
     <Compile Include="TransferIn_AfterUpdated.cs" />
     <Compile Include="TransferIn_AfterValidate.cs" />
+    <Compile Include="Receivement_AfterDefaultValue.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">

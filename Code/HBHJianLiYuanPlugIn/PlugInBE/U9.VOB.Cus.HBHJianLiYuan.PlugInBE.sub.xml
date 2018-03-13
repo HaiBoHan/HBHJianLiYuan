@@ -59,5 +59,9 @@
     <subscriber type="U9.VOB.Cus.HBHJianLiYuan.PlugInBE.TransferIn_AfterValidate,U9.VOB.Cus.HBHJianLiYuan.PlugInBE.dll" />
   </subcription>
   
+
+  <subcription event="UFIDA.U9.PM.Rcv.Receivement.AfterDefaultValue">
+    <subscriber type="U9.VOB.Cus.HBHJianLiYuan.PlugInBE.Receivement_AfterDefaultValue,U9.VOB.Cus.HBHJianLiYuan.PlugInBE.dll" />
+  </subcription>
   
 </pub-sub>
