@@ -219,6 +219,7 @@ declare @Sql varchar(max) =
 						left join sls_shop dept
 						on wh.lsid = dept.sid
 					where rcvhead.status = 2
+						and rcvhead.arrivetime >= ''''2018-03-13''''
 						#OPath#
 					; '') tmp';
 

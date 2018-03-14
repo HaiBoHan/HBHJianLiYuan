@@ -124,17 +124,85 @@
                         <PartRelations />
                         <Parameters />
                     </Page>
+                    <Page id="0b1e7097-1d5c-487c-b6e0-65233f737434" code="AQWRcvUIForm" name="奥琦玮收货" shortName="" displayName="奥琦玮收货" description="" title="奥琦玮收货" uri="AQWRcvUIForm" topMargine="10" bottomMargine="10" leftMargine="10" rightMargine="10" columnSpace="10" orientation="Vertical" defaultEntity="">
+                        <Columns>
+                            <Column id="75eef323-fd31-4f1f-bfc6-613f5153e504" code="" name="" shortName="" displayName="" description="" widthProportion="100" heightProportion="0" title="" IsMainRegion="True">
+                                <Parts>
+                                    <Part>218746cf-5354-4c82-a30f-b9db1262b8aa</Part>
+                                </Parts>
+                            </Column>
+                        </Columns>
+                        <Parts>
+                            <Part id="218746cf-5354-4c82-a30f-b9db1262b8aa" code="218746cf-5354-4c82-a30f-b9db1262b8aa" name="AQWRcvUIFormWebPart" shortName="AQWRcvUIFormWebPart" displayName="AQWRcvUIFormWebPart" description="AQWRcvUIFormWebPart" title="AQWRcvUIFormWebPart" bindedFormID="f91e1840-ac91-4084-9662-bf9c328ccddd" bindedFormName="AQWRcvUIFormWebPart" height="504" width="992" />
+                        </Parts>
+                        <PartRelations />
+                        <Parameters />
+                    </Page>
+                    <Page id="d813ccf1-a474-475a-8183-3bfb986786ee" code="U9.VOB.Cus.HBHJianLiYuan.DeptItemSupplierURI" name="部门料品交叉档" shortName="" displayName="部门料品交叉档" description="" title="部门料品交叉档" uri="U9.VOB.Cus.HBHJianLiYuan.DeptItemSupplierURI" topMargine="10" bottomMargine="10" leftMargine="10" rightMargine="10" columnSpace="10" orientation="Vertical" defaultEntity="">
+                        <Columns>
+                            <Column id="a24150f2-b235-4257-a311-fbb983dd2f2f" code="" name="" shortName="" displayName="" description="" widthProportion="100" heightProportion="0" title="" IsMainRegion="True">
+                                <Parts>
+                                    <Part>58e5933e-73a2-4860-ab40-2f03e2d54dc9</Part>
+                                </Parts>
+                            </Column>
+                        </Columns>
+                        <Parts>
+                            <Part id="58e5933e-73a2-4860-ab40-2f03e2d54dc9" code="58e5933e-73a2-4860-ab40-2f03e2d54dc9" name="DeptItemSupplierUIFormWebPart" shortName="DeptItemSupplierUIFormWebPart" displayName="DeptItemSupplierUIFormWebPart" description="DeptItemSupplierUIFormWebPart" title="DeptItemSupplierUIFormWebPart" bindedFormID="654cd1bb-67e1-4c34-9ad4-7e39b921cc13" bindedFormName="DeptItemSupplierUIFormWebPart" height="504" width="992" />
+                        </Parts>
+                        <PartRelations />
+                        <Parameters />
+                    </Page>
+                    <Page id="bf4cd4a9-7f40-4534-8e46-8aff9b64e6bd" code="Cust_DeptOrg" name="部门组织" shortName="" displayName="部门组织" description="" title="部门组织" uri="Cust_DeptOrg" topMargine="10" bottomMargine="10" leftMargine="10" rightMargine="10" columnSpace="10" orientation="Vertical" defaultEntity="">
+                        <Columns>
+                            <Column id="b56690ff-7138-474f-ab79-06f57f362f19" code="" name="" shortName="" displayName="" description="" widthProportion="100" heightProportion="0" title="" IsMainRegion="True">
+                                <Parts>
+                                    <Part>f0e5cfbf-38b3-42e9-8378-6eecee39be8a</Part>
+                                </Parts>
+                            </Column>
+                        </Columns>
+                        <Parts>
+                            <Part id="f0e5cfbf-38b3-42e9-8378-6eecee39be8a" code="f0e5cfbf-38b3-42e9-8378-6eecee39be8a" name="DepartOrgUIFormWebPart" shortName="DepartOrgUIFormWebPart" displayName="DepartOrgUIFormWebPart" description="DepartOrgUIFormWebPart" title="DepartOrgUIFormWebPart" bindedFormID="b3e00814-979e-43c4-8d91-008053aa00e8" bindedFormName="DepartOrgUIFormWebPart" height="504" width="992" />
+                        </Parts>
+                        <PartRelations />
+                        <Parameters />
+                    </Page>
+                    <Page id="f0b98501-0b1d-445b-9e81-6f8c360cc17e" code="Cust_DeptItemSupplierUIList" name="部门料品交叉档列表" shortName="" displayName="部门料品交叉档列表" description="" title="部门料品交叉档列表" uri="Cust_DeptItemSupplierUIList" topMargine="10" bottomMargine="10" leftMargine="10" rightMargine="10" columnSpace="10" orientation="Vertical" defaultEntity="">
+                        <Columns>
+                            <Column id="97bee0cb-4d33-42ee-bd1d-0d3397928dd8" code="" name="" shortName="" displayName="" description="" widthProportion="100" heightProportion="0" title="" IsMainRegion="True">
+                                <Parts>
+                                    <Part>7c5dba36-1dbe-47dc-b028-66df25eaa19e</Part>
+                                </Parts>
+                            </Column>
+                        </Columns>
+                        <Parts>
+                            <Part id="7c5dba36-1dbe-47dc-b028-66df25eaa19e" code="7c5dba36-1dbe-47dc-b028-66df25eaa19e" name="DeptItemSupplierBListUIFormWebPart" shortName="DeptItemSupplierBListUIFormWebPart" displayName="DeptItemSupplierBListUIFormWebPart" description="DeptItemSupplierBListUIFormWebPart" title="DeptItemSupplierBListUIFormWebPart" bindedFormID="532fa6bc-f43f-4030-b7c1-891451a925ba" bindedFormName="DeptItemSupplierBListUIFormWebPart" height="504" width="992" />
+                        </Parts>
+                        <PartRelations />
+                        <Parameters />
+                    </Page>
                 </Pages>
                 <BEComponents>
                     <BEComponent assemblyName="U9.VOB.Cus.HBHJianLiYuan.HRBE.dll" assemblyID="7170c766-f82d-41bb-abeb-7018386a027d" />
+                    <BEComponent assemblyName="U9.VOB.Cust.HBHNanTongHuaQing.BEwf.dll" assemblyID="2159db9c-4a78-44bd-b510-16dad1cce35d" />
+                    <BEComponent assemblyName="U9.VOB.Cus.HBHJianLiYuan.BE.dll" assemblyID="13a5b6db-0dab-4f3a-aeae-7e9af108a7bc" />
                 </BEComponents>
                 <BPComponents>
                     <BPComponent assemblyName="U9.VOB.Cus.HBHJianLiYuan.HRBP.dll" assemblyID="20e01a33-453a-4f0c-8dae-e4e88512d6e1" />
+                    <BPComponent assemblyName="HBHNanTongHuaQingUIListBP.dll" assemblyID="dc96d49e-0529-46d2-af82-3d46821e8a05" />
+                    <BPComponent assemblyName="U9.VOB.Cus.HBHJianLiYuan.BP.dll" assemblyID="9fcaf04f-7330-4117-8678-f4bab3ec0930" />
+                    <BPComponent assemblyName="HBHJianLiYuanListBP.dll" assemblyID="0b6b2d10-9daf-4408-b048-beadc7acfd88" />
                 </BPComponents>
-                <ServiceComponents />
+                <ServiceComponents>
+                    <ServiceComponent assemblyName="U9.VOB.Cust.HBHNanTongHuaQing.SVwf.dll" assemblyID="e0fc60d0-4da9-4098-8d24-60589f2d2444" />
+                    <ServiceComponent assemblyName="U9.VOB.Cus.HBHJianLiYuan.SV.dll" assemblyID="7b2a5db4-baa2-4078-b2d4-7603589ea9aa" />
+                </ServiceComponents>
                 <UIComponents>
                     <UIComponent assemblyName="U9.VOB.Cus.HBHJianLiYuan.HRUI.WebPart.dll" assemblyID="786a4bb4-3b15-4f9c-86b2-d164e25b1c15" />
                     <UIComponent assemblyName="U9.VOB.Cus.HBHJianLiYuan.HRUIList.WebPart.dll" assemblyID="7de2413b-40f0-44fa-a339-851ae3df2ed1" />
+                    <UIComponent assemblyName="U9.VOB.Cust.HBHNanTongHuaQing.UIwf.WebPart.dll" assemblyID="15c93e2e-1fe6-4b55-a19a-6423dccf3fc1" />
+                    <UIComponent assemblyName="U9.VOB.Cust.HBHNanTongHuaQing.UIList.WebPart.dll" assemblyID="c7228b84-a973-41b0-b2e1-53e2a5ab93fd" />
+                    <UIComponent assemblyName="U9.VOB.Cus.HBHJianLiYuan.PMUI.WebPart.dll" assemblyID="99f8a4d8-2108-4d7c-8ff4-83a82cc252be" />
+                    <UIComponent assemblyName="U9.VOB.Cus.HBHJianLiYuan.ListUI.WebPart.dll" assemblyID="ae783a81-e39f-40ad-a8f6-4f3342468bbd" />
                 </UIComponents>
                 <WorkflowComponents />
                 <ReportComponents />
@@ -429,7 +497,7 @@
             </App>
             <App id="3016" code="0504" shortName="PM" name="采购管理" uri="">
                 <Pages>
-                    <Page id="a679ab35-bc33-4337-bffb-4cb31dd55280" code="a679ab35-bc33-4337-bffb-4cb31dd55280" name="部门料品交叉档" shortName="" displayName="部门料品交叉档" description="" title="部门料品交叉档" uri="U9.VOB.Cus.HBHJianLiYuan.DeptItemSupplierURI" topMargine="10" bottomMargine="10" leftMargine="10" rightMargine="10" columnSpace="10" orientation="Vertical" defaultEntity="">
+                    <Page id="a679ab35-bc33-4337-bffb-4cb31dd55280" code="a679ab35-bc33-4337-bffb-4cb31dd55280Old" name="部门料品交叉档" shortName="" displayName="部门料品交叉档" description="" title="部门料品交叉档" uri="U9.VOB.Cus.HBHJianLiYuan.DeptItemSupplierURIOld" topMargine="10" bottomMargine="10" leftMargine="10" rightMargine="10" columnSpace="10" orientation="Vertical" defaultEntity="">
                         <Columns>
                             <Column id="a0e44ec0-5c5c-4734-a9d9-2a9798c5285f" code="" name="" shortName="" displayName="" description="" widthProportion="100" heightProportion="0" title="" IsMainRegion="True">
                                 <Parts>
@@ -443,7 +511,7 @@
                         <PartRelations />
                         <Parameters />
                     </Page>
-                    <Page id="49eaf46b-9224-4c86-aeb9-097e68dd6206" code="Cust_DeptOrg" name="部门组织" shortName="" displayName="部门组织" description="" title="部门组织" uri="Cust_DeptOrg" topMargine="10" bottomMargine="10" leftMargine="10" rightMargine="10" columnSpace="10" orientation="Vertical" defaultEntity="">
+                    <Page id="49eaf46b-9224-4c86-aeb9-097e68dd6206" code="Cust_DeptOrgOld" name="部门组织" shortName="" displayName="部门组织" description="" title="部门组织" uri="Cust_DeptOrgOld" topMargine="10" bottomMargine="10" leftMargine="10" rightMargine="10" columnSpace="10" orientation="Vertical" defaultEntity="">
                         <Columns>
                             <Column id="f75b8f74-146c-44d9-83f3-53e9928f4fb1" code="" name="" shortName="" displayName="" description="" widthProportion="100" heightProportion="0" title="" IsMainRegion="True">
                                 <Parts>
@@ -457,7 +525,7 @@
                         <PartRelations />
                         <Parameters />
                     </Page>
-                    <Page id="47e4a55c-9968-45b4-81fb-de92a08650f6" code="Cust_DeptItemSupplierUIList" name="部门料品交叉档列表" shortName="" displayName="部门料品交叉档列表" description="" title="部门料品交叉档" uri="Cust_DeptItemSupplierUIList" topMargine="10" bottomMargine="10" leftMargine="10" rightMargine="10" columnSpace="10" orientation="Vertical" defaultEntity="">
+                    <Page id="47e4a55c-9968-45b4-81fb-de92a08650f6" code="Cust_DeptItemSupplierUIListOld" name="部门料品交叉档列表" shortName="" displayName="部门料品交叉档列表" description="" title="部门料品交叉档" uri="Cust_DeptItemSupplierUIListOld" topMargine="10" bottomMargine="10" leftMargine="10" rightMargine="10" columnSpace="10" orientation="Vertical" defaultEntity="">
                         <Columns>
                             <Column id="ce757cfa-e043-45b5-b8f9-661feb48bc8d" code="" name="" shortName="" displayName="" description="" widthProportion="100" heightProportion="0" title="" IsMainRegion="True">
                                 <Parts>
@@ -471,7 +539,7 @@
                         <PartRelations />
                         <Parameters />
                     </Page>
-                    <Page id="9049e1e8-2f3a-4a15-9775-84804cd2f429" code="AQWRcvUIForm" name="奥琦玮收货" shortName="" displayName="奥琦玮收货" description="" title="奥琦玮收货" uri="AQWRcvUIForm" topMargine="10" bottomMargine="10" leftMargine="10" rightMargine="10" columnSpace="10" orientation="Vertical" defaultEntity="">
+                    <Page id="9049e1e8-2f3a-4a15-9775-84804cd2f429" code="AQWRcvUIFormOld" name="奥琦玮收货" shortName="" displayName="奥琦玮收货" description="" title="奥琦玮收货" uri="AQWRcvUIFormOld" topMargine="10" bottomMargine="10" leftMargine="10" rightMargine="10" columnSpace="10" orientation="Vertical" defaultEntity="">
                         <Columns>
                             <Column id="e8e95503-cd38-4794-84a4-09da02ac9e8d" code="" name="" shortName="" displayName="" description="" widthProportion="100" heightProportion="0" title="" IsMainRegion="True">
                                 <Parts>
@@ -486,19 +554,10 @@
                         <Parameters />
                     </Page>
                 </Pages>
-                <BEComponents>
-                    <BEComponent assemblyName="U9.VOB.Cus.HBHJianLiYuan.BE.dll" assemblyID="13a5b6db-0dab-4f3a-aeae-7e9af108a7bc" />
-                </BEComponents>
-                <BPComponents>
-                    <BPComponent assemblyName="U9.VOB.Cus.HBHJianLiYuan.BP.dll" assemblyID="9fcaf04f-7330-4117-8678-f4bab3ec0930" />
-                </BPComponents>
-                <ServiceComponents>
-                    <ServiceComponent assemblyName="U9.VOB.Cus.HBHJianLiYuan.SV.dll" assemblyID="7b2a5db4-baa2-4078-b2d4-7603589ea9aa" />
-                </ServiceComponents>
-                <UIComponents>
-                    <UIComponent assemblyName="U9.VOB.Cus.HBHJianLiYuan.PMUI.WebPart.dll" assemblyID="99f8a4d8-2108-4d7c-8ff4-83a82cc252be" />
-                    <UIComponent assemblyName="U9.VOB.Cus.HBHJianLiYuan.ListUI.WebPart.dll" assemblyID="ae783a81-e39f-40ad-a8f6-4f3342468bbd" />
-                </UIComponents>
+                <BEComponents />
+                <BPComponents />
+                <ServiceComponents />
+                <UIComponents />
                 <WorkflowComponents />
                 <ReportComponents />
                 <PrePlacedMenu>
@@ -506,8 +565,8 @@
                         <Menu id="dd5faf85-55a7-463a-b297-e9564962420b" code="dd5faf85-55a7-463a-b297-e9564962420b" name="部门料品交叉档" shortName="new menu" displayName="部门料品交叉档" description="new menu" image="" isDialog="False" pageURI="U9.VOB.Cus.HBHJianLiYuan.DeptItemSupplierURI" pageParameter="" sequence="0" kind="Task" theApp="" />
                         <Menu id="e8989e89-4c10-43e5-bf1a-fff51bdee28f" code="e8989e89-4c10-43e5-bf1a-fff51bdee28f" name="部门料品交叉档列表" shortName="new menu" displayName="部门料品交叉档列表" description="new menu" image="" isDialog="False" pageURI="Cust_DeptItemSupplierUIList" pageParameter="" sequence="1" kind="Task" theApp="" />
                     </Menu>
-                    <Menu id="e9e99727-b3a8-4843-be00-ed8671009153" code="e9e99727-b3a8-4843-be00-ed8671009153" name="奥琦玮收货" shortName="new menu" displayName="奥琦玮收货" description="new menu" image="" isDialog="False" pageURI="" pageParameter="" sequence="1" kind="Task" theApp="3016">
-                        <Menu id="bbf39cb1-09ca-42dc-851a-32cde1ae5ebe" code="bbf39cb1-09ca-42dc-851a-32cde1ae5ebe" name="奥琦玮收货" shortName="new menu" displayName="奥琦玮收货" description="new menu" image="" isDialog="False" pageURI="AQWRcvUIForm" pageParameter="" sequence="0" kind="Task" theApp="3016" />
+                    <Menu id="e9e99727-b3a8-4843-be00-ed8671009153" code="e9e99727-b3a8-4843-be00-ed8671009153" name="奥琦玮收货" shortName="new menu" displayName="奥琦玮收货" description="new menu" image="" isDialog="False" pageURI="" pageParameter="" sequence="1" kind="Task" theApp="">
+                        <Menu id="bbf39cb1-09ca-42dc-851a-32cde1ae5ebe" code="bbf39cb1-09ca-42dc-851a-32cde1ae5ebe" name="奥琦玮收货" shortName="new menu" displayName="奥琦玮收货" description="new menu" image="" isDialog="False" pageURI="AQWRcvUIForm" pageParameter="" sequence="0" kind="Task" theApp="" />
                     </Menu>
                 </PrePlacedMenu>
             </App>
@@ -912,6 +971,9 @@
                         <Menu id="5b4978b6-e32f-4724-810e-1e07c9e9e81d" code="5b4978b6-e32f-4724-810e-1e07c9e9e81d" name="入库单" shortName="new menu" displayName="入库单" description="new menu" image="" isDialog="False" pageURI="Cust_Rcv" pageParameter="RCV_Type=PM6010" sequence="1" kind="Task" theApp="" />
                         <Menu id="bb487077-259f-4784-a103-d914e22b532a" code="bb487077-259f-4784-a103-d914e22b532a" name="领料单" shortName="new menu" displayName="领料单" description="new menu" image="" isDialog="False" pageURI="Cust_Ship" pageParameter="SHIP_Type=SM6010" sequence="2" kind="Task" theApp="" />
                         <Menu id="90b03313-5230-41e0-8c2e-24cf9aaf0efa" code="90b03313-5230-41e0-8c2e-24cf9aaf0efa" name="部门组织" shortName="new menu" displayName="部门组织" description="new menu" image="" isDialog="False" pageURI="Cust_DeptOrg" pageParameter="" sequence="3" kind="Task" theApp="" />
+                    </Menu>
+                    <Menu id="39890718-d85a-4f78-811b-1769beafb219" code="39890718-d85a-4f78-811b-1769beafb219" name="奥琦玮收货" shortName="new menu" displayName="奥琦玮收货" description="new menu" image="" isDialog="False" pageURI="" pageParameter="" sequence="1" kind="Task" theApp="9901001">
+                        <Menu id="10399ed9-306e-4672-a574-929ae05a78e3" code="10399ed9-306e-4672-a574-929ae05a78e3" name="奥琦玮收货" shortName="new menu" displayName="奥琦玮收货" description="new menu" image="" isDialog="False" pageURI="AQWRcvUIForm" pageParameter="" sequence="0" kind="Task" theApp="9901001" />
                     </Menu>
                 </PrePlacedMenu>
             </App>

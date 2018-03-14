@@ -238,7 +238,7 @@
                             || lineDTO.lgname.Contains("冻品")
                             )
                         {
-                            //supt = RcvFrozenSupplier;
+                            // supt = RcvFrozenSupplier;
                             suptType = AQWSupplierType.冷冻;
                         }
                         else
