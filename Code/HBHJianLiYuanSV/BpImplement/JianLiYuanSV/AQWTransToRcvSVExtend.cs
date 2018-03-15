@@ -73,12 +73,45 @@
 
             //foreach (string id in bpObj.HeadIDs)
             //{
-            //    DataRow row = dtID.NewRow();
 
-            //    row[0] = id;
-
-            //    dtID.Rows.Add(row);
             //}
+
+            {
+                // 检查，是否有已生成单据的单子
+                string strOutDocIDs = bpObj.HeadIDs.GetOpathFromIList();
+
+                string strOpath = string.Format("DescFlexSegments.PrivateDescSeg9 in ({0})"
+                    , strOutDocIDs
+                    );
+
+                Receivement.EntityList lstRcv = Receivement.Finder.FindAll(strOpath);
+
+                if (lstRcv != null
+                    && lstRcv.Count > 0
+                    )
+                {
+                    StringBuilder sbOutDocNo = new StringBuilder();
+                    StringBuilder sbRcvDocNo = new StringBuilder();
+
+                    foreach (Receivement head in lstRcv)
+                    {
+                        if (head != null)
+                        {
+                            sbOutDocNo.Append(head.DescFlexField.PrivateDescSeg2).Append(",");
+                            sbRcvDocNo.Append(head.DocNo).Append(",");
+                        }
+                    }
+
+                    if (sbOutDocNo.Length > 0)
+                    {
+                        throw new BusinessException(string.Format("外部单据[{0}]已生成收货单[{1}],不允许重复收货!"
+                            , sbOutDocNo.GetStringRemoveLastSplit()
+                            , sbRcvDocNo.GetStringRemoveLastSplit()
+                            ));
+                    }
+                }
+            }
+
 
             string strIDs = bpObj.HeadIDs.GetOpathFromIList();
 
