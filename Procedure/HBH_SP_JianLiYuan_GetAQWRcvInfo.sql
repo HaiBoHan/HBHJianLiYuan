@@ -16,6 +16,7 @@ create proc HBH_SP_JianLiYuan_GetAQWRcvInfo  (
 ,@EndDate datetime = null
 ,@DocNo varchar(125) = ''
 ,@LoginUser varchar(125) = ''
+,@IsPrint bit = 0
 )
 with encryption
 as
@@ -43,12 +44,14 @@ begin
 		union select 'HBH_SP_JianLiYuan_GetAQWRcvInfo','@EndDate',IsNull(Convert(varchar,@EndDate,120),'null'),GETDATE()
 		union select 'HBH_SP_JianLiYuan_GetAQWRcvInfo','@DocNo',IsNull(cast(@DocNo as varchar(max)),'null'),GETDATE()
 		union select 'HBH_SP_JianLiYuan_GetAQWRcvInfo','@LoginUser',IsNull(cast(@LoginUser as varchar(max)),'null'),GETDATE()
+		union select 'HBH_SP_JianLiYuan_GetAQWRcvInfo','@IsPrint',IsNull(cast(@IsPrint as varchar(max)),'null'),GETDATE()
 		union select 'HBH_SP_JianLiYuan_GetAQWRcvInfo','ProcSql','exec HBH_SP_JianLiYuan_GetAQWRcvInfo '
 				+ IsNull('''' + cast(@OrgID as varchar(501)) + '''' ,'null') 
 				+ ',' + IsNull('''' + Convert(varchar,@StartDate,120) + '''' ,'null')
 				+ ',' + IsNull('''' + Convert(varchar,@EndDate,120) + '''' ,'null')
 				+ ',' + IsNull('''' + cast(@DocNo as varchar(501)) + '''' ,'null') 
 				+ ',' + IsNull('''' + cast(@LoginUser as varchar(501)) + '''' ,'null') 
+				+ ',' + IsNull(cast(@IsPrint as varchar(501)) ,'null') 
 			   ,GETDATE()
 	end
 end
@@ -220,6 +223,12 @@ declare @Sql varchar(max) =
 						on wh.lsid = dept.sid
 					where rcvhead.status = 2
 						and rcvhead.arrivetime >= ''''2018-03-13''''
+						-- 行数量汇总大于0
+						and (select sum(ifnull(rcvline.amount,0) + ifnull(rcvline.damount,0))
+								from lgt_dispatchin_item rcvline
+								where rcvline.ldiid = rcvhead.ldiid
+								) > 0
+						-- and rcvhead.
 						#OPath#
 					; '') tmp';
 
@@ -246,7 +255,11 @@ begin
 end
 	
 
+if(@IsPrint = 1)
+begin
   print (@Sql)
+end
+
   exec (@Sql)
 
 
