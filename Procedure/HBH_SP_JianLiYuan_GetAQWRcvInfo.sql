@@ -73,21 +73,23 @@ end
 	
 	declare @AqwDeptCodeStart varchar(125) = ''
 	declare @AqwDeptName varchar(125) = ''
+	declare @UserCode varchar(125) = ''
 	
 	set @EndDate = DateAdd(second,-1,DateAdd(day,1,@StartDate))
 
 	-- @LoginUser
 
 	select 
-		@AqwDeptCodeStart = dept.Code
-		,@AqwDeptName = deptTrl.Name
+		@AqwDeptCodeStart = IsNull(dept.Code,'')
+		,@AqwDeptName = IsNull(deptTrl.Name,'')
+		,@UserCode = usr.Code
 	from Base_User usr
-		inner join CBO_Operators opr
+		left join CBO_Operators opr
 		on usr.Contact = opr.Contact
-		inner join CBO_Department dept
+		left join CBO_Department dept
 		on opr.Dept = dept.ID
 			and dept.Org = @OrgID
-		inner join CBO_Department_Trl deptTrl
+		left join CBO_Department_Trl deptTrl
 		on dept.ID = deptTrl.ID
 			and deptTrl.SysMlFlag = @SysMlFlag
 	where
@@ -230,6 +232,7 @@ declare @Sql varchar(max) =
 								) > 0
 						-- and rcvhead.
 						#OPath#
+						#OPathUser#
 					; '') tmp';
 
 
@@ -239,18 +242,42 @@ begin
 	set @WhereDocNo = ' rcvhead.code like ''''%' + @DocNo + '%'''''
 end
 
-if (@AqwDeptCodeStart is null or @AqwDeptCodeStart = '')
+--if (@AqwDeptCodeStart is null or @AqwDeptCodeStart = '')
+--begin
+--	set @Sql = Replace(@Sql,'#OPath#',' and 1=0 '  )
+--end
+--else
+--begin
+--	set @Sql = Replace(@Sql,'#OPath#'
+--							--,' and dept.shopname like ''''%' + @AqwDeptCodeStart + '''''' + '
+--							,' and dept.shopname like ''''%' + @AqwDeptName + '''''' + '
+--							and rcvhead.arrivetime between ''''' + Convert(varchar(10),@StartDate,120) + ''''' 
+--							and ''''' + Convert(varchar(19),@EndDate,120) + '''''' + ' 
+--							and ' + @WhereDocNo
+--					)
+--end
+	
+	
+set @Sql = Replace(@Sql,'#OPath#'
+						--,' and dept.shopname like ''''%' + @AqwDeptCodeStart + '''''' + '
+						,' and ( rcvhead.arrivetime between ''''' + Convert(varchar(10),@StartDate,120) + ''''' 
+						and ''''' + Convert(varchar(19),@EndDate,120) + '''''' + ' 
+						and ' + @WhereDocNo + ')'
+				)
+
+
+if (@UserCode = 'admin')
 begin
-	set @Sql = Replace(@Sql,'#OPath#',' and 1=0 '  )
+	set @Sql = Replace(@Sql,'#OPathUser#',' and (1=1) '  )
 end
-else
+else if (@AqwDeptCodeStart is null or @AqwDeptCodeStart = '')
 begin
-	set @Sql = Replace(@Sql,'#OPath#'
+	set @Sql = Replace(@Sql,'#OPathUser#',' and (1=0) '  )
+end
+begin
+	set @Sql = Replace(@Sql,'#OPathUser#'
 							--,' and dept.shopname like ''''%' + @AqwDeptCodeStart + '''''' + '
-							,' and dept.shopname like ''''%' + @AqwDeptName + '''''' + '
-							and rcvhead.arrivetime between ''''' + Convert(varchar(10),@StartDate,120) + ''''' 
-							and ''''' + Convert(varchar(19),@EndDate,120) + '''''' + ' 
-							and ' + @WhereDocNo
+							,' and (dept.shopname like ''''%' + @AqwDeptName + ''''')'
 					)
 end
 	

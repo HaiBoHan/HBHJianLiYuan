@@ -78,14 +78,14 @@
 
             {
                 // 检查，是否有已生成单据的单子
-                string strOutDocIDs = bpObj.HeadIDs.GetOpathFromIList();
+                string strOutDocIDs = bpObj.HeadIDs.GetOpathFromList("'", "'", ",");
 
-                string strOpath = string.Format("DescFlexSegments.PrivateDescSeg9 in ({0})"
+                string strOpath = string.Format("DescFlexField.PrivateDescSeg9 in ({0})"
                     , strOutDocIDs
                     );
 
                 Receivement.EntityList lstRcv = Receivement.Finder.FindAll(strOpath);
-
+                
                 if (lstRcv != null
                     && lstRcv.Count > 0
                     )
