@@ -78,18 +78,25 @@ end
 	set @EndDate = DateAdd(second,-1,DateAdd(day,1,@StartDate))
 
 	-- @LoginUser
+	
+	select
+		@UserCode = usr.Code
+	from Base_User usr
+	where
+		usr.ID = @LoginUser
+
 
 	select 
 		@AqwDeptCodeStart = IsNull(dept.Code,'')
 		,@AqwDeptName = IsNull(deptTrl.Name,'')
-		,@UserCode = usr.Code
+		-- ,@UserCode = usr.Code
 	from Base_User usr
-		left join CBO_Operators opr
+		inner join CBO_Operators opr
 		on usr.Contact = opr.Contact
-		left join CBO_Department dept
+		inner join CBO_Department dept
 		on opr.Dept = dept.ID
 			and dept.Org = @OrgID
-		left join CBO_Department_Trl deptTrl
+		inner join CBO_Department_Trl deptTrl
 		on dept.ID = deptTrl.ID
 			and deptTrl.SysMlFlag = @SysMlFlag
 	where
@@ -452,6 +459,10 @@ order by
 
 select *
 from #tmp_hbh_PageHead
+
+
+
+--select @UserCode
 
 
 
