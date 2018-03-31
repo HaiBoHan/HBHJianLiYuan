@@ -152,7 +152,7 @@
         private void AQWRcvToErpRcv(List<AQWRcvDTO> lstRcvHead)
         {
             // 服务外面包装了事务应该
-            UFIDA.U9.ISV.RCV.CreateRCVSRV creatRcv = new UFIDA.U9.ISV.RCV.CreateRCVSRV();
+            //UFIDA.U9.ISV.RCV.CreateRCVSRV creatRcv = new UFIDA.U9.ISV.RCV.CreateRCVSRV();
 
             //creatRcv.RCVList = new List<UFIDA.U9.ISV.RCV.DTO.OBAReceivementDTO>();
             //foreach (AQWRcvDTO aqwRcvDTO in lstRcvHead)
@@ -165,13 +165,52 @@
             //    }
             //}
 
-            creatRcv.RCVList = GetRcvList(lstRcvHead);
+            //creatRcv.RCVList = GetRcvList(lstRcvHead);
 
-            if (creatRcv.RCVList.Count > 0)
+            //if (creatRcv.RCVList.Count > 0)
+            //{
+            //    // 多张生单，供应商居然会全部取第一个供应商；集团bug，所以改为每次调用一次生单
+            //    Receivement.EntityList lstRcv = creatRcv.Do();
+
+            //    ApproveRcv(lstRcv);
+            //}
+
+
+            // 2018-03-31 多张生单，供应商居然会全部取第一个供应商；集团bug，所以改为每次调用一次生单
+            List<OBAReceivementDTO> lstRcvDTO = GetRcvList(lstRcvHead);
+            if (lstRcvDTO != null
+                && lstRcvDTO.Count > 0
+                )
             {
-                Receivement.EntityList lstRcv = creatRcv.Do();
+                Receivement.EntityList lstResultRcv = new Receivement.EntityList();
 
-                ApproveRcv(lstRcv);
+                foreach (OBAReceivementDTO rcvDTO in lstRcvDTO)
+                {
+                    UFIDA.U9.ISV.RCV.CreateRCVSRV creatRcv = new UFIDA.U9.ISV.RCV.CreateRCVSRV();
+
+                    creatRcv.RCVList = new List<OBAReceivementDTO>();
+                    creatRcv.RCVList.Add(rcvDTO);
+
+                    // 多张生单，供应商居然会全部取第一个供应商；集团bug，所以改为每次调用一次生单
+                    Receivement.EntityList lstRcv = creatRcv.Do();
+
+                    if (lstRcv != null
+                        && lstRcv.Count > 0
+                        )
+                    {
+                        foreach (Receivement head in lstRcv)
+                        {
+                            lstResultRcv.Add(head);
+                        }
+                    }
+                }
+
+                if (lstResultRcv != null
+                    && lstResultRcv.Count > 0
+                    )
+                {
+                    ApproveRcv(lstResultRcv);
+                }
             }
         }
 
