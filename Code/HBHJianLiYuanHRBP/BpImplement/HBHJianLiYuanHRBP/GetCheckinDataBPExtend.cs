@@ -1034,6 +1034,9 @@
         }
     }
 
+    /// <summary>
+    /// 日考勤DTO
+    /// </summary>
     public class CheckInDTO
     {
         // 部门

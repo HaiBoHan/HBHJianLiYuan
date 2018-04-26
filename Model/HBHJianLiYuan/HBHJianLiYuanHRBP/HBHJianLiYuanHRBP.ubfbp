@@ -59,25 +59,40 @@
         <Operation id="ec44ceec-53ca-4fdd-83ba-b1075b59d5dd" name="Impement" displayName="实现" description="" help="" mD_ParentClass_ID="" isFactEntity="False" returnTypeID="378d45b4-375d-4b5d-8748-abc9575c26b3" isService="False" isDefault="True" isEntityKey="False" transactionType="2" isAuthorization="True" isISV="False" />
       </Implements>
     </Operation>
+    <Operation id="d7047d6e-f7f6-4ccd-82e4-5206f6f1354b" name="CalcPayrollAreaCashBP" displayName="计算区域应兑现BP" description="计算区域应兑现BP" help="" mD_ParentClass_ID="" isFactEntity="False" returnTypeID="378d45b4-375d-4b5d-8748-abc9575c26b3" isService="False" isDefault="False" isEntityKey="False" transactionType="0" isAuthorization="True" isISV="False">
+      <Groups>
+        <Group id="8fd74ce5-a31d-425b-ab7c-38d7b0cea23d" name="Misc" displayName="Misc" description="" help="" />
+      </Groups>
+      <Attributes>
+        <Attribute id="d69f9460-707c-4215-9ad3-d20d84bd6d13" name="IDs" displayName="ID集合" description="" help="计算区域应兑现BP.Misc.ID集合" isCollection="True" dataTypeID="ba391065-6c27-4c82-acc8-b52b1c93a910" isKey="False" defaultValue="0" length="8" precise="19" scale="0" isNullable="True" isReadOnly="False" isHide="False" isCalculation="False" valueExpression="" maxValue="" minValue="" sequence="0" isDefaultDimensionAttribute="False" isDefaultMeasureAttribute="False" isGlobalization="False" idGenerator="" groupName="Misc" isEntityKey="False" isEntityData="True" isSystem="False" isBusinessKey="False" isSyncDictionary="False" dictionaryKey="" isExtendCode="False" isQuery="True" isForAsso="True" isModifyControl="False" isDynamic="False" isImpressible="False" isInCache="False" isKeySerializable="False" isColumnDefine="True" isFilterDefine="True" isSortDefine="True" isDefaultColumn="True" forOBAImport="False" />
+      </Attributes>
+      <Implements>
+        <Operation id="99d985f6-3f52-4939-bdb7-06b8fb14a7f1" name="Impement" displayName="实现" description="" help="" mD_ParentClass_ID="" isFactEntity="False" returnTypeID="378d45b4-375d-4b5d-8748-abc9575c26b3" isService="False" isDefault="True" isEntityKey="False" transactionType="2" isAuthorization="True" isISV="False" />
+      </Implements>
+    </Operation>
     <Diagram id="aa797570-0691-4551-a442-ee4753c18508" name="HBHJianLiYuanHRBP" displayName="HBHJianLiYuanHRBP">
       <Class Editable="True" ID="9cef8186-b012-472a-b25f-d14d6515d632" Type="Operation" ADID="a7fb583d-5637-42f9-985a-f33ef1f793ce">
         <Location X="105" Y="55" />
         <Size width="120" height="58" />
       </Class>
       <Class Editable="True" ID="029482ff-97fa-4581-81c9-3d57e7a58f29" Type="Operation" ADID="66493cf1-d629-4956-978a-da4112dc54a0">
-        <Location X="318" Y="59" />
+        <Location X="321" Y="29" />
         <Size width="120" height="58" />
       </Class>
       <Class Editable="True" ID="5a73117f-26b1-4d5f-b0a1-8b5b1c01ae8b" Type="Operation" ADID="5b2cce80-6ac4-4575-a265-00e43fbf4ea3">
-        <Location X="548" Y="52" />
+        <Location X="326" Y="103" />
         <Size width="120" height="58" />
       </Class>
       <Class Editable="True" ID="e6e539e2-614d-4e23-915d-f3307ff1f6b5" Type="Operation" ADID="bda04ef4-72ec-4b0d-98ce-8d107c3cf9b3">
-        <Location X="742" Y="51" />
+        <Location X="535" Y="87" />
         <Size width="120" height="58" />
       </Class>
       <Class Editable="True" ID="0db8e1f3-b196-40df-9367-a36b4ab4c669" Type="Operation" ADID="b9294ef1-0726-4f49-84a1-4e6a73cbded4">
-        <Location X="117" Y="160" />
+        <Location X="93" Y="152" />
+        <Size width="120" height="58" />
+      </Class>
+      <Class Editable="True" ID="23db4caa-d739-402a-b6aa-597189cdaf18" Type="Operation" ADID="d7047d6e-f7f6-4ccd-82e4-5206f6f1354b">
+        <Location X="300" Y="172" />
         <Size width="120" height="58" />
       </Class>
     </Diagram>

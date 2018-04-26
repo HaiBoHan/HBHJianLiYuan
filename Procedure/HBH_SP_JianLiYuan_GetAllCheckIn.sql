@@ -92,6 +92,15 @@ end
 	--where ID = @PayrollDoc
 
 
+--if(@PayrollCalculate is null or @PayrollCalculate <= 0)
+--begin
+--	select 
+--		@PayrollCalculate = PayrollCaculate
+--	from PAY_PayrollDoc
+--	where ID = @PayrollDoc
+--end
+
+
 /*
 
 select 
@@ -247,4 +256,38 @@ group by
 
 order by
 	min(Convert(varchar(10),checkIn.CheckInDate,120)) asc
+
+
+	
+If OBJECT_ID('tempdb..#tmp_hbh_CashCalc') is not null
+	Drop Table #tmp_hbh_CashCalc
+	
+
+select 
+	line.Employee
+	,Area = ''
+	,AreaShouldBeCashed = @DefaultZero
+
+into #tmp_hbh_CashCalc
+--from PAY_PayrollDoc head
+--	inner join PAY_EmpPayroll line
+--	on head.ID = line.PayrollDoc
+	
+from Pay_PayrollCalculate head
+
+	--left join PAY_PayrollDoc payHead
+	--on payCalc.ID = payHead.PayrollCaculate
+	--left join PAY_EmpPayroll as payLine	--·¢Ð½Ã÷Ï¸
+	--on payHead.ID = payLine.PayrollDoc
+
+	left join PAY_PayrollResult line
+	on head.ID = line.PayrollCaculate
+
+
+	
+where 
+	--head.ID = @PayrollDoc
+	head.ID = @PayrollCalculate
+
+
 
