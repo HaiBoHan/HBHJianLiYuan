@@ -58,26 +58,31 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInUI
                     HBHCommon.HBHCommonUI.UICommonHelper.Layout(card0, ddbCalcPayroll, 12, 0);
 
 
-                    IUFMenu btnGetCheckin = new UFWebMenuAdapter();
-                    btnGetCheckin.Text = "考勤计算";
-                    btnGetCheckin.ID = "btnGetCheckin";
-                    btnGetCheckin.AutoPostBack = true;
-                    btnGetCheckin.ItemClick += new UFSoft.UBF.UI.WebControls.MenuItemHandle(btnGetCheckin_ItemClick);
-                    ddbCalcPayroll.MenuItems.Add(btnGetCheckin);
+                    {
+                        IUFMenu btnGetCheckin = new UFWebMenuAdapter();
+                        btnGetCheckin.Text = "考勤计算";
+                        btnGetCheckin.ID = "btnGetCheckin";
+                        btnGetCheckin.AutoPostBack = true;
+                        btnGetCheckin.ItemClick += new UFSoft.UBF.UI.WebControls.MenuItemHandle(btnGetCheckin_ItemClick);
+                        ddbCalcPayroll.MenuItems.Add(btnGetCheckin);
 
-                    // 确认对话框
-                    UFIDA.U9.UI.PDHelper.PDFormMessage.ShowDelConfirmDialog(_strongPart.Page, "确认重新计算考勤？", "考勤计算", btnGetCheckin);
+                        // 确认对话框
+                        // 报错: 控件必须位于页面的控件树中。
+                        //UFIDA.U9.UI.PDHelper.PDFormMessage.ShowDelConfirmDialog(_strongPart.Page, "确认重新计算考勤？", "考勤计算", btnGetCheckin);
+                    }
 
+                    {
+                        IUFMenu btnCalcAreaCash = new UFWebMenuAdapter();
+                        btnCalcAreaCash.Text = "计算应兑现";
+                        btnCalcAreaCash.ID = "btnCalcAreaCash";
+                        btnCalcAreaCash.AutoPostBack = true;
+                        btnCalcAreaCash.ItemClick += new UFSoft.UBF.UI.WebControls.MenuItemHandle(btnCalcAreaCash_ItemClick);
+                        ddbCalcPayroll.MenuItems.Add(btnCalcAreaCash);
 
-                    IUFMenu btnCalcAreaCash = new UFWebMenuAdapter();
-                    btnCalcAreaCash.Text = "计算应兑现";
-                    btnCalcAreaCash.ID = "btnCalcAreaCash";
-                    btnCalcAreaCash.AutoPostBack = true;
-                    btnCalcAreaCash.ItemClick += new UFSoft.UBF.UI.WebControls.MenuItemHandle(btnCalcAreaCash_ItemClick);
-                    ddbCalcPayroll.MenuItems.Add(btnCalcAreaCash);
-                    
-                    // 确认对话框
-                    UFIDA.U9.UI.PDHelper.PDFormMessage.ShowDelConfirmDialog(_strongPart.Page, "确认计算应兑现？", "计算应兑现", ddbCalcPayroll);
+                        // 确认对话框
+                        // 报错: 控件必须位于页面的控件树中。
+                        //UFIDA.U9.UI.PDHelper.PDFormMessage.ShowDelConfirmDialog(_strongPart.Page, "确认计算应兑现？", "计算应兑现", btnCalcAreaCash);
+                    }
 
                 }
             }
