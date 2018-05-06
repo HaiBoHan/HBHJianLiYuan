@@ -121,12 +121,12 @@ select
 		
 
 	-- 绩效标准
-	,PerformanceStandard = dbo.HBH_GetDecimal(line.ExtField168)
+	,PerformanceStandard = dbo.HBH_Fn_GetDecimal(line.ExtField168,0)
 
 	-- 最终利润 = 部门总利润
-	,DeptPerformance = dbo.HBH_GetDecimal(line.ExtField105)
+	,DeptPerformance = dbo.HBH_Fn_GetDecimal(line.ExtField105,0)
 	-- 部门应兑现 = 效益应兑现
-	,DeptPerformance = dbo.HBH_GetDecimal(line.ExtField153)
+	,DeptShouldBeCashed_NoUse = dbo.HBH_Fn_GetDecimal(line.ExtField153,0)
 
 	-- 区域 总利润
 	,AreaPerformance = @DefaultZero
@@ -140,15 +140,15 @@ select
 	,TotalPartDeptShouldBeCashed = @DefaultZero
 
 	-- 区域应兑现.区域部分 = 非兼职部门的算法，是 最终利润 * 2%
-	,AreaDeptShouldBeCashed = dbo.HBH_GetDecimal(line.ExtField105) * 0.02
+	,AreaDeptShouldBeCashed = dbo.HBH_Fn_GetDecimal(line.ExtField105,0) * 0.02
 
 	-- 区域应兑现.兼职部门部分 = 最终利润<=0,最终利润*负激励系数 ； 最终利润>0，最终利润*正激励系
 	,PartDeptShouldBeCashed = @DefaultZero
 
 	-- 正激励系数
-	,PlusRatio = dbo.HBH_GetDecimal(line.ExtField184)
+	,PlusRatio = dbo.HBH_Fn_GetDecimal(line.ExtField184,0)
 	-- 负激励系数
-	,MinusRatio = dbo.HBH_GetDecimal(line.ExtField163)
+	,MinusRatio = dbo.HBH_Fn_GetDecimal(line.ExtField163,0)
 
 into #tmp_hbh_CashCalc
 --from PAY_PayrollDoc head
@@ -216,7 +216,7 @@ UFIDA.U9.CBO.HR.Person.EmployeeAssignment	员工任职记录	CBO_EmployeeAssignment	UF
 		and tmp.EndDate between ass.AssgnBeginDate and ass.AssgnEndDate
 		
 	inner join CBO_Department dept
-	on line.Department = dept.ID
+	on tmp.Department = dept.ID
 	
 	/*
 Job	任职职务	UFIDA.U9.CBO.HR.Job.Job	CBO_Job
@@ -270,7 +270,7 @@ If OBJECT_ID('tempdb..#tmp_hbh_EmployeePartDept') is not null
 	
 select 
 
-	line.Employee
+	tmp.Employee
 	
 	,DepartmentCode = IsNull(dept.Code,tmp.DepartmentCode)
 	-- 区域 = 部门.全局段2
@@ -300,7 +300,7 @@ UFIDA.U9.CBO.HR.Person.EmployeeAssignment	员工任职记录	CBO_EmployeeAssignment	UF
 		and tmp.EndDate between ass.AssgnBeginDate and ass.AssgnEndDate
 		
 	inner join CBO_Department dept
-	on line.Department = dept.ID
+	on tmp.Department = dept.ID
 	
 	/*
 Job	任职职务	UFIDA.U9.CBO.HR.Job.Job	CBO_Job
@@ -381,7 +381,7 @@ set
 																		else tmp2.DepartmentCode end
 							)
 						)
-	,TotalPartDeptShouldBeCashed = @DefaultZero
+	--,TotalPartDeptShouldBeCashed = @DefaultZero
 from #tmp_hbh_CashCalc tmp
 
 --where
