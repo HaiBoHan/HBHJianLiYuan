@@ -10,6 +10,7 @@
     using UFIDA.U9.PAY.PayrollResult;
     using UFSoft.UBF.PL;
     using UFSoft.UBF.Business;
+    using U9.VOB.Cus.HBHJianLiYuan.HBHHelper;
 
 	/// <summary>
 	/// CalcPayrollAreaCashBP partial 
@@ -106,15 +107,15 @@
                                                     AreaCash dto = AreaCash.GetFromDataRow(row);
 
                                                     if (dto != null
-                                                        && dto.EmployeeArchive > 0
+                                                        && dto.Employee > 0
                                                         )
                                                     {
-                                                        if (!dicEmployee2AreaCash.ContainsKey(dto.EmployeeArchive))
+                                                        if (!dicEmployee2AreaCash.ContainsKey(dto.Employee))
                                                         {
-                                                            dicEmployee2AreaCash.Add(dto.EmployeeArchive, new List<AreaCash>());
+                                                            dicEmployee2AreaCash.Add(dto.Employee, new List<AreaCash>());
                                                         }
 
-                                                        dicEmployee2AreaCash[dto.EmployeeArchive].Add(dto);
+                                                        dicEmployee2AreaCash[dto.Employee].Add(dto);
                                                     }
                                                 }
                                             }
@@ -158,8 +159,51 @@
 
         private void SetSalaryItem(Dictionary<long, List<AreaCash>> dicEmployee2AreaCash, PayrollResult.EntityList payResultList)
         {
-            throw new NotImplementedException();
-        }		
+            using (ISession session = Session.Open())
+            {
+                bool isSeted = false;
+
+                //foreach (EmpPayroll line in payHead.EmpPayrolls)
+                foreach (PayrollResult line in payResultList)
+                {
+                    if (line != null
+                        && line.EmployeeKey != null
+                        )
+                    {
+                        long employeeID = line.EmployeeKey.ID;
+
+                        if (employeeID > 0
+                            && dicEmployee2AreaCash.ContainsKey(employeeID)
+                            )
+                        {
+                            List<AreaCash> lstDTO = dicEmployee2AreaCash[employeeID];
+
+                            if (lstDTO != null
+                                && lstDTO.Count > 0
+                                )
+                            {
+                                AreaCash cash = lstDTO[0];
+
+                                if (cash != null
+                                    && cash.AreaShouldBeCashed > 0
+                                    )
+                                {
+                                    line.SetSalaryItem(SalaryItemHelper.SalaryItem_AreaShouldBeCashed, cash.AreaShouldBeCashed);
+                                }
+                            }
+                        }
+                        // 如果不存在，那么不覆盖已有的手工录入的记录
+                        else
+                        {
+                            //SetSalaryValue(line, checkinItem, afterDeptItem, beforeDeptItem, fafterDeptItem, fbeforeDeptItem, transferDayItem, workHoursItem, 0, -1, -1, 0, 0);
+                        }
+                    }
+                }
+
+                session.Commit();
+            }
+        }
+
 	}
 
     //#endregion
@@ -169,6 +213,18 @@
     /// </summary>
     public class AreaCash
     {
+
+        // 员工
+        private long employee;
+        /// <summary>
+        /// 员工
+        /// </summary>
+        public long Employee
+        {
+            get { return employee; }
+            set { employee = value; }
+        }
+
         // 部门
         private long department;
         /// <summary>
@@ -180,26 +236,26 @@
             set { department = value; }
         }
 
-        // 员工
-        private long employeeArchive;
+        // 部门
+        private string departmentCode;
         /// <summary>
-        /// 员工
+        /// 部门
         /// </summary>
-        public long EmployeeArchive
+        public string DepartmentCode
         {
-            get { return employeeArchive; }
-            set { employeeArchive = value; }
+            get { return departmentCode; }
+            set { departmentCode = value; }
         }
 
         // 应兑现金额
-        private decimal shouldBeCash;
+        private decimal areaShouldBeCashed;
         /// <summary>
         /// 应兑现金额
         /// </summary>
-        public decimal ShouldBeCash
+        public decimal AreaShouldBeCashed
         {
-            get { return shouldBeCash; }
-            set { shouldBeCash = value; }
+            get { return areaShouldBeCashed; }
+            set { areaShouldBeCashed = value; }
         }
 
 
@@ -207,9 +263,10 @@
         {
             AreaCash dto = new AreaCash();
 
-            dto.EmployeeArchive = PubClass.GetLong(row.GetValue("EmployeeArchive"));
+            dto.Employee = PubClass.GetLong(row.GetValue("Employee"));
             dto.Department = PubClass.GetLong(row.GetValue("Department"));
-            dto.ShouldBeCash = PubClass.GetInt(row.GetValue("ShouldBeCash"));
+            dto.DepartmentCode = PubClass.GetString(row.GetValue("DepartmentCode"));
+            dto.AreaShouldBeCashed = PubClass.GetInt(row.GetValue("AreaShouldBeCashed"));
             
             return dto;
         }
