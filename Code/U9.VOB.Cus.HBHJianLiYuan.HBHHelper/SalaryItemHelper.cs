@@ -430,5 +430,32 @@ namespace U9.VOB.Cus.HBHJianLiYuan.HBHHelper
             }
         }
 
+
+
+
+
+        // 2018-05-06 wf 区域应兑现
+        /// <summary>
+        /// 2018-05-06 wf 区域应兑现
+        /// </summary>
+        public static string SalaryItemCode_AreaShouldBeCashed = "155";
+
+        // 2018-05-06 wf 区域应兑现
+        /// <summary>
+        /// 2018-05-06 wf 区域应兑现
+        /// </summary>
+        public static SalaryItem SalaryItem_AreaShouldBeCashed
+        {
+            get
+            {
+                SalaryItem item = SalaryItem.Finder.Find("Code=@Code"
+                    , new OqlParam(SalaryItemHelper.SalaryItemCode_AreaShouldBeCashed)
+                    );
+
+                return item;
+            }
+        }
+
+
     }
 }
