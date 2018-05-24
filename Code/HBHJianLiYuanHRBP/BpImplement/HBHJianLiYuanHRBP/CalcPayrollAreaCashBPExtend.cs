@@ -185,7 +185,7 @@
                                 AreaCash cash = lstDTO[0];
 
                                 if (cash != null
-                                    && cash.AreaShouldBeCashed > 0
+                                    // && cash.AreaShouldBeCashed > 0
                                     )
                                 {
                                     line.SetSalaryItem(SalaryItemHelper.SalaryItem_AreaShouldBeCashed, cash.AreaShouldBeCashed);
