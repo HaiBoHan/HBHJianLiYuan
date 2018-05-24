@@ -437,8 +437,9 @@ namespace U9.VOB.Cus.HBHJianLiYuan.HBHHelper
         // 2018-05-06 wf 区域应兑现
         /// <summary>
         /// 2018-05-06 wf 区域应兑现
+        /// JX37     区域应兑现      ExtField155 
         /// </summary>
-        public static string SalaryItemCode_AreaShouldBeCashed = "155";
+        public static string SalaryItemCode_AreaShouldBeCashed = "JX37";
 
         // 2018-05-06 wf 区域应兑现
         /// <summary>
