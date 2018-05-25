@@ -38,7 +38,9 @@ namespace U9.VOB.Cus.HBHJianLiYuan.PlugInBEgxl
 
                 if (employeeCode != null && employeeCode.Length > 0)
                 {
-                    string oql = "ItemOwnOrg=@Org and SqlLen(BinInfo.Code)>2 and Substr(BinInfo.Code,3,SqlLen(BinInfo.Code)-2)=@EmployeeCode and StoreQty>0";
+                    // 2018-05-25 wf 修改为 员工编码 与 库位编码 末尾匹配，客户那边有人建立库位档案不规范（有的前两位加01、00，这次问题是库位前面没有加编码，跟员工编码完全匹配了）
+                    //string oql = "ItemOwnOrg=@Org and SqlLen(BinInfo.Code)>2 and Substr(BinInfo.Code,3,SqlLen(BinInfo.Code)-2)=@EmployeeCode and StoreQty>0";
+                    string oql = "ItemOwnOrg=@Org and BinInfo.Code like '%' + @EmployeeCode and StoreQty>0";
                     WhQoh whQoh = WhQoh.Finder.Find(oql
                         , new OqlParam(Context.LoginOrg.ID)
                         , new OqlParam(employeeCode)
