@@ -479,9 +479,9 @@ set
 						)
 	--,TotalPartDeptShouldBeCashed = @DefaultZero
 from #tmp_hbh_CashCalc tmp
-where
-	-- 区域管理者，才计算区域应兑现
-	IsAreaManager = 1
+--where
+--	-- 区域管理者，才计算区域应兑现
+--	IsAreaManager = 1
 
 
 --where
@@ -496,9 +496,9 @@ set
 	TotalAreaDeptShouldBeCashed = IsNull(AreaPerformance,0) * 0.02
 	
 from #tmp_hbh_CashCalc tmp
-where
-	-- 区域管理者，才计算区域应兑现
-	IsAreaManager = 1
+--where
+--	-- 区域管理者，才计算区域应兑现
+--	IsAreaManager = 1
 
 
 -- 区域应兑现
@@ -508,9 +508,9 @@ set
 	AreaShouldBeCashed = IsNull(TotalAreaDeptShouldBeCashed,0) + IsNull(TotalPartDeptShouldBeCashed,0)
 	
 from #tmp_hbh_CashCalc tmp
-where
-	-- 区域管理者，才计算区域应兑现
-	IsAreaManager = 1
+--where
+--	-- 区域管理者，才计算区域应兑现
+--	IsAreaManager = 1
 
 
 
@@ -520,22 +520,22 @@ from #tmp_hbh_CashCalc
 
 
 
-select *
-from #tmp_hbh_EmployeePartDept
+--select *
+--from #tmp_hbh_EmployeePartDept
 
 
 
-select *
-from #tmp_hbh_CashCalc
-where
-	EmployeeCode = '00108136'
+--select *
+--from #tmp_hbh_CashCalc
+--where
+--	EmployeeCode = '00108136'
 
 
 
-select *
-from #tmp_hbh_EmployeePartDept
-where
-	EmployeeCode = '00108136'
+--select *
+--from #tmp_hbh_EmployeePartDept
+--where
+--	EmployeeCode = '00108136'
 
 
 
