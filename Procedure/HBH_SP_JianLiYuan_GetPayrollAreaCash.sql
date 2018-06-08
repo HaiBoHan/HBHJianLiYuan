@@ -64,6 +64,8 @@ end
 	declare @DefaultEmpty varchar(125) = ''
 	declare @DefaultID bigint = -1
 	declare @DefaultBool bit = 0
+	declare @DefaultInt int = 0
+
 	
 /*
 区域经理，0005003
@@ -91,8 +93,8 @@ select
 	,EmployeeCode = employee.EmployeeCode
 	,EmployeeName = employee.Name
 		
-	-- 是否区域管理人员
-	,IsAreaManager = @DefaultBool
+	-- 区域管理类型(区域经理1,片区经理2)
+	,AreaManagerType = @DefaultInt
 	-- 区域应兑现
 	,AreaShouldBeCashed = @DefaultZero
 	
@@ -126,15 +128,18 @@ select
 	--,DepartmentCode = @DefaultEmpty
 	,Department = dept.ID
 	,DepartmentCode = dept.Code
+	,DepartmentName = deptTrl.Name
 
 	-- 区域 = 部门.全局段2
 	--,AreaCode = @DefaultEmpty
 	-- 1、好多区域是空的; 2、问了下，区域不在这里用，这里用部门编码前7位;
-	,AreaCode =  cast(IsNull(case when len(dept.Code) > 7
-						then SubString(dept.Code,1,7)
-						else dept.Code
-						end
-						,'') as varchar(125))
+	--,AreaCode =  cast(IsNull(case when len(dept.Code) > 7
+	--					then SubString(dept.Code,1,7)
+	--					else dept.Code
+	--					end
+	--					,'') as varchar(125))
+	-- 2018-06-07 wf 区域经理，区域=7位；片区经理，区域=10位；
+	,AreaCode = @DefaultEmpty
 
 	-- 职务
 	,JobCode = @DefaultEmpty
@@ -209,6 +214,10 @@ from Pay_PayrollCalculate head
 	left join CBO_Department dept
 	on line.Department = dept.ID
 
+	left join CBO_Department_Trl deptTrl
+	on deptTrl.ID = dept.ID
+		and deptTrl.SysMlFlag = @SysMlFlag
+
 	left join CBO_EmployeeArchive employee
 	on line.Employee = employee.ID
 
@@ -227,8 +236,16 @@ set
 	-- 职务
 	JobCode = job.Code
 
-	-- 是否区域管理人员
-	,IsAreaManager = 1
+	-- 区域管理类型(区域经理1,片区经理2)
+	,AreaManagerType = 
+						-- 区域经理
+						case when job.Code = @AreaManager
+							then 1
+						-- 片区经理
+							when job.Code = @ZoneManager
+							then 2
+							else -1
+						end
 	
 	-- 区域应兑现-兼职部门部门计算 = （最终利润<=0,最终利润*负激励系数+现任部门编码前七位相同的部门的“最终利润”相加（排除兼职部门）*2%，如果（最终利润>0，最终利润*正激励系数）+现任部门编码前七位相同的部门的“最终利润”相加（排除兼职部门）*2%
 	,PartDeptShouldBeCashed = case when DeptPerformance <= 0
@@ -266,6 +283,29 @@ where
 
 
 
+-- 更新区域：  区域经理，区域=7位；片区经理，区域=10位；
+update #tmp_hbh_CashCalc
+set
+	--,AreaCode =  cast(IsNull(case when len(dept.Code) > 7
+	--					then SubString(dept.Code,1,7)
+	--					else dept.Code
+	--					end
+	--					,'') as varchar(125))
+	-- 2018-06-07 wf 区域经理，区域=7位；片区经理，区域=10位； 区域管理类型(区域经理1,片区经理2)
+	AreaCode = cast(IsNull(
+					case when AreaManagerType = 1 and len(tmp.DepartmentCode) > 7
+						then SubString(tmp.DepartmentCode,1,7)
+						when AreaManagerType = 2 and len(tmp.DepartmentCode) > 10
+						then SubString(tmp.DepartmentCode,1,10)
+						else tmp.DepartmentCode
+					end
+					,'') as varchar(125))
+
+from #tmp_hbh_CashCalc tmp
+where
+	AreaManagerType >= 1
+
+
 
 -- 建立部门区域绩效表
 If OBJECT_ID('tempdb..#tmp_hbh_DeptPerformance') is not null
@@ -274,8 +314,8 @@ If OBJECT_ID('tempdb..#tmp_hbh_DeptPerformance') is not null
 
 select 
 	DepartmentCode
-	-- 区域 = 部门.全局段2
-	,AreaCode
+	,DepartmentName
+	--,AreaCode
 		
 	--,DeptPerformance = max(IsNull(DeptPerformance,@DefaultZero))
 	,DeptPerformance = (select top 1 tmp1.DeptPerformance from #tmp_hbh_CashCalc tmp1 
@@ -311,7 +351,8 @@ into #tmp_hbh_DeptPerformance
 from #tmp_hbh_CashCalc 
 group by
 	DepartmentCode
-	,AreaCode
+	,DepartmentName
+	--,AreaCode
 
 
 
@@ -340,11 +381,14 @@ select
 	-- 区域 = 部门.全局段2
 	--,AreaCode = dept.DescFlexField_PrivateDescSeg2
 	-- 1、好多区域是空的; 2、问了下，区域不在这里用，这里用部门编码前7位;
-	,AreaCode =  cast(IsNull(case when len(dept.Code) > 7
-						then SubString(dept.Code,1,7)
-						else dept.Code
-						end
-						,'') as varchar(125))
+	--,AreaCode =  cast(IsNull(case when len(dept.Code) > 7
+	--					then SubString(dept.Code,1,7)
+	--					else dept.Code
+	--					end
+	--					,'') as varchar(125))
+	-- 部门不能有区域，要按照人员做区域匹配
+	-- ,AreaCode = @DefaultString
+
 	-- 职务
 	,JobCode = job.Code
 	
@@ -436,17 +480,22 @@ set
 	--						)
 	--					)
 	
-	AreaPerformance = (select 
-							IsNull(sum(IsNull(DeptPerformance,0)),0)
-						from #tmp_hbh_DeptPerformance tmp2
-						where tmp.AreaCode = tmp2.AreaCode
-							-- 没有兼职的部门（有兼职按兼职算法）
-							and tmp2.DepartmentCode not in (
-										select tmp3.DepartmentCode
-										from #tmp_hbh_EmployeePartDept tmp3
-										where tmp.EmployeeCode = tmp3.EmployeeCode
-										)
-						)
+	-- 区域管理人员，才算区域绩效、及区域应兑现的区域部分
+	-- 区域管理类型(区域经理1,片区经理2)
+	AreaPerformance = case when AreaManagerType >= 1
+						then (select 
+								IsNull(sum(IsNull(DeptPerformance,0)),0)
+							from #tmp_hbh_DeptPerformance tmp2
+							where tmp2.DepartmentCode like tmp.AreaCode + '%'
+								-- 没有兼职的部门（有兼职按兼职算法）
+								and tmp2.DepartmentCode not in (
+											select tmp3.DepartmentCode
+											from #tmp_hbh_EmployeePartDept tmp3
+											where tmp.EmployeeCode = tmp3.EmployeeCode
+											)
+							)
+						else @DefaultZero
+						end
 	
 	-- 区域应兑现.区域部分 = 非兼职部门的算法，是 最终利润 * 2%
 	--TotalAreaDeptShouldBeCashed = IsNull(AreaDeptShouldBeCashed,0)
@@ -481,7 +530,7 @@ set
 from #tmp_hbh_CashCalc tmp
 --where
 --	-- 区域管理者，才计算区域应兑现
---	IsAreaManager = 1
+--	AreaManagerType >= 1
 
 
 --where
@@ -498,7 +547,7 @@ set
 from #tmp_hbh_CashCalc tmp
 --where
 --	-- 区域管理者，才计算区域应兑现
---	IsAreaManager = 1
+--	AreaManagerType >= 1
 
 
 -- 区域应兑现
@@ -510,7 +559,7 @@ set
 from #tmp_hbh_CashCalc tmp
 --where
 --	-- 区域管理者，才计算区域应兑现
---	IsAreaManager = 1
+--	AreaManagerType >= 1
 
 
 
@@ -520,23 +569,25 @@ from #tmp_hbh_CashCalc
 
 
 
---select *
---from #tmp_hbh_EmployeePartDept
+select *
+from #tmp_hbh_EmployeePartDept
 
 
 
---select *
---from #tmp_hbh_CashCalc
---where
---	EmployeeCode = '00108136'
+select *
+from #tmp_hbh_CashCalc
+where
+	EmployeeCode = '00004243'
 
 
 
---select *
---from #tmp_hbh_EmployeePartDept
---where
---	EmployeeCode = '00108136'
+select *
+from #tmp_hbh_EmployeePartDept
+where
+	EmployeeCode = '00004243'
 
-
-
-
+	
+select *
+from #tmp_hbh_DeptPerformance
+where DepartmentCode like '0000305018%'
+		
