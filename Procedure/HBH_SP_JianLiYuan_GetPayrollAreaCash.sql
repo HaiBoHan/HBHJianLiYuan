@@ -3,6 +3,10 @@ if exists(select * from sys.objects where Name='HBH_SP_JianLiYuan_GetPayrollArea
 -- 如果存在则删掉
 	drop proc HBH_SP_JianLiYuan_GetPayrollAreaCash
 go
+
+/*
+exec HBH_SP_JianLiYuan_GetPayrollAreaCash '-1','1001806010000032'
+*/
 -- 创建存储过程
 create proc HBH_SP_JianLiYuan_GetPayrollAreaCash  (
 @PayrollDoc bigint = -1
@@ -501,9 +505,42 @@ set
 	--TotalAreaDeptShouldBeCashed = IsNull(AreaDeptShouldBeCashed,0)
 
 	-- 区域应兑现.兼职部门部分 = 最终利润<=0,最终利润*负激励系数 ； 最终利润>0，最终利润*正激励系
+	--,TotalPartDeptShouldBeCashed = (select 
+	--						IsNull(sum(IsNull(tmp2.PartDeptShouldBeCashed,0)),0)
+	--					from #tmp_hbh_EmployeePartDept tmp2
+	--					where 
+	--						-- 区域应兑现=现任部门编码前七位相同的部门的“最终利润”相加*2%
+	--						-- 本区域下部门扩展字段区域取值为空时相加，非空取首个员工的值
+	--						-- 1、好多区域是空的; 2、问了下，区域不在这里用，这里用部门编码前7位;
+	--						--((tmp.AreaCode is not null
+	--						--	and tmp.AreaCode != ''
+	--						--	)
+	--						--	and tmp.AreaCode = tmp2.AreaCode
+	--						--)
+	--						--or ((tmp.AreaCode is null
+	--						--	or tmp.AreaCode = ''
+	--						--	)
+	--						--	and case when len(tmp.DepartmentCode) > 7
+	--						--		then SubString(tmp.DepartmentCode,0,7)
+	--						--		else tmp.DepartmentCode end
+	--						--										= case when len(tmp2.DepartmentCode) > 7
+	--						--											then SubString(tmp2.DepartmentCode,0,7)
+	--						--											else tmp2.DepartmentCode end
+	--						--)
+	--						1=1
+	--						and tmp.EmployeeCode = tmp2.EmployeeCode
+	--					)
 	,TotalPartDeptShouldBeCashed = (select 
-							IsNull(sum(IsNull(tmp2.PartDeptShouldBeCashed,0)),0)
+							IsNull(sum(
+										--IsNull(tmp2.DeptPerformance,0)
+										case when IsNull(tmp2.DeptPerformance,0) <= 0
+											then tmp2.DeptPerformance * IsNull(tmpEmployee.MinusRatio,0)
+											else tmp2.DeptPerformance * IsNull(tmpEmployee.PlusRatio,0)
+										end
+										),0)
 						from #tmp_hbh_EmployeePartDept tmp2
+							inner join #tmp_hbh_CashCalc tmpEmployee
+							on tmpEmployee.EmployeeCode = tmp2.EmployeeCode
 						where 
 							-- 区域应兑现=现任部门编码前七位相同的部门的“最终利润”相加*2%
 							-- 本区域下部门扩展字段区域取值为空时相加，非空取首个员工的值
@@ -525,6 +562,9 @@ set
 							--)
 							1=1
 							and tmp.EmployeeCode = tmp2.EmployeeCode
+						group by
+							IsNull(tmpEmployee.MinusRatio,0)
+							,IsNull(tmpEmployee.PlusRatio,0)
 						)
 	--,TotalPartDeptShouldBeCashed = @DefaultZero
 from #tmp_hbh_CashCalc tmp
