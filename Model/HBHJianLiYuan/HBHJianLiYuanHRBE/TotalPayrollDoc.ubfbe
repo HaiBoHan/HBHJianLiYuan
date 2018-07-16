@@ -6,7 +6,7 @@
         <Group id="87363161-426c-480d-a26e-aecaac0e7600" name="Key" displayName="Key" description="" help="" />
         <Group id="7407c1cd-e855-454f-b825-7aea9720c492" name="Sys" displayName="Sys" description="" help="" />
         <Group id="5e38fd62-b046-4204-9a34-ddefe5e693bf" name="StateMachine" displayName="StateMachine" description="" help="" />
-        <Group id="d03bbfe0-786f-4cd6-b59c-5ac648f2c1d5" name="Misc" displayName="Misc" description="" help="" />
+        <Group id="c904461b-fb94-4393-9b08-1cfd3016b35b" name="Misc" displayName="Misc" description="" help="" />
       </Groups>
       <Attributes>
         <Attribute id="2b6d3d50-23ea-4b13-8f7d-80fd56ddc05b" name="ID" displayName="ID" description="" help="薪资申请汇总表.Key.ID" dataTypeID="ba391065-6c27-4c82-acc8-b52b1c93a910" isKey="True" defaultValue="" length="8" precise="19" scale="0" isNullable="False" isReadOnly="False" isHide="True" isCalculation="False" valueExpression="" maxValue="" minValue="" sequence="0" isDefaultDimensionAttribute="False" isDefaultMeasureAttribute="False" isGlobalization="False" idGenerator="db" groupName="Key" isEntityKey="False" isEntityData="True" isSystem="True" isBusinessKey="False" isSyncDictionary="False" dictionaryKey="" isExtendCode="False" isQuery="True" isForAsso="True" isModifyControl="False" isDynamic="False" isImpressible="False" isInCache="False" isKeySerializable="False" isColumnDefine="True" isFilterDefine="True" isSortDefine="True" isDefaultColumn="True" forOBAImport="False" />
@@ -85,7 +85,7 @@
       <Groups>
         <Group id="13510c43-e311-4d7e-a2bc-5a8c9e45c7a5" name="Key" displayName="Key" description="" help="" />
         <Group id="01488b5e-aff4-489a-b826-f0a49dd459fd" name="Sys" displayName="Sys" description="" help="" />
-        <Group id="e7f5675b-a37c-489b-a643-2ba67951d954" name="Misc" displayName="Misc" description="" help="" />
+        <Group id="0f6aa5bb-5ced-46ec-bb89-b8835cc6ba58" name="Misc" displayName="Misc" description="" help="" />
       </Groups>
       <Attributes>
         <Attribute id="b9bba5d2-f714-4572-836e-1a229c7506e4" name="ID" displayName="ID" description="" help="薪资申请汇总行.Key.ID" dataTypeID="ba391065-6c27-4c82-acc8-b52b1c93a910" isKey="True" defaultValue="" length="8" precise="19" scale="0" isNullable="False" isReadOnly="False" isHide="True" isCalculation="False" valueExpression="" maxValue="" minValue="" sequence="0" isDefaultDimensionAttribute="False" isDefaultMeasureAttribute="False" isGlobalization="False" idGenerator="db" groupName="Key" isEntityKey="False" isEntityData="True" isSystem="True" isBusinessKey="False" isSyncDictionary="False" dictionaryKey="" isExtendCode="False" isQuery="True" isForAsso="True" isModifyControl="False" isDynamic="False" isImpressible="False" isInCache="False" isKeySerializable="False" isColumnDefine="True" isFilterDefine="True" isSortDefine="True" isDefaultColumn="True" forOBAImport="False" />
@@ -142,7 +142,7 @@
       <Groups>
         <Group id="21db4d8e-8d2b-458a-b5e0-abe05a9a103e" name="Key" displayName="Key" description="" help="" />
         <Group id="3e1f1448-dfe2-4eb0-a55e-48bed76a76d0" name="Sys" displayName="Sys" description="" help="" />
-        <Group id="df37fb8f-1d13-4b9f-b81c-2e0f1921830b" name="Misc" displayName="Misc" description="" help="" />
+        <Group id="3d3d6cf4-5f65-42e4-b2c6-c612c5a89451" name="Misc" displayName="Misc" description="" help="" />
       </Groups>
       <Attributes>
         <Attribute id="f79584de-b65d-4df8-83ed-5fede20a3ed6" name="ID" displayName="ID" description="" help="发薪申请明细.Key.ID" dataTypeID="ba391065-6c27-4c82-acc8-b52b1c93a910" isKey="True" defaultValue="" length="8" precise="19" scale="0" isNullable="False" isReadOnly="False" isHide="True" isCalculation="False" valueExpression="" maxValue="" minValue="" sequence="0" isDefaultDimensionAttribute="False" isDefaultMeasureAttribute="False" isGlobalization="False" idGenerator="db" groupName="Key" isEntityKey="False" isEntityData="True" isSystem="True" isBusinessKey="False" isSyncDictionary="False" dictionaryKey="" isExtendCode="False" isQuery="True" isForAsso="True" isModifyControl="False" isDynamic="False" isImpressible="False" isInCache="False" isKeySerializable="False" isColumnDefine="True" isFilterDefine="True" isSortDefine="True" isDefaultColumn="True" forOBAImport="False" />

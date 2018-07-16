@@ -821,6 +821,117 @@
                 }
             }
         }
+
+
+
+        private string PrepareData(List<AQWRcvDTO> lstRcvHead)
+        {
+            StringBuilder sbError = new StringBuilder();
+
+            if (lstRcvHead != null
+                && lstRcvHead.Count > 0
+                )
+            {
+                foreach (AQWRcvDTO headDTO in lstRcvHead)
+                {
+                    // 现在奥琦玮内部门的编码和名称是一个字段，我让他们限定前三位是代码，后面的名称现在在调整成跟U9一致
+                    Department dept = null;
+                    Warehouse wh = null;
+
+                    string strAqwShopName = headDTO.shopname;
+                    if (strAqwShopName.IsNotNullOrWhiteSpace())
+                    {
+                        string strDept = string.Empty;
+                        if (strAqwShopName.Length > 3)
+                        {
+                            //strDept = strAqwShopName.Substring(0, 3);
+                            strDept = strAqwShopName.Substring(3, strAqwShopName.Length - 3);
+                        }
+                        else
+                        {
+                            strDept = strAqwShopName;
+                        }
+
+                        //dept = Department.Finder.Find("Org=@Org and Code=@Code"
+                        dept = Department.Finder.Find("Org=@Org and Name=@Dept"
+                            , new OqlParam(Context.LoginOrg.ID)
+                            , new OqlParam(strDept)
+                            );
+
+                        if (dept == null)
+                        {
+                            sbError.AppendLine(string.Format("组织[{0}]下没有找到名称为[{1}]的部门!"
+                                , Context.LoginOrg.Name
+                                , strDept
+                                ));
+
+                            continue;
+                        }
+                        else
+                        {
+                            headDTO.DepartmentID = dept.ID;
+                            headDTO.DepartmentCode = dept.Code;
+                            headDTO.DepartmentName = dept.Name;
+                        }
+                        //else
+                        //{ 
+
+                        //}
+
+                        //string strWhOpath = string.Format("Org=@Org and (Code like '%' + @Code) order by sqlLen(Code) asc,Code asc"
+                        //, strDept
+                        //);
+                        string strWhOpath = string.Format("Org=@Org and Department.Code = @Code order by sqlLen(Code) asc,Code asc");
+                        wh = Warehouse.Finder.Find(strWhOpath
+                            , new OqlParam(Context.LoginOrg.ID)
+                            , new OqlParam(dept.Code)
+                            );
+
+                        if (wh == null)
+                        {
+                            sbError.AppendLine(string.Format("组织[{0}]下没有找到所属部门为[{1}]的仓库!"
+                                , Context.LoginOrg.Name
+                                , dept.Code
+                                ));
+
+                            continue;
+                        }
+                        else
+                        {
+                            headDTO.WarehouseID = wh.ID;
+                            headDTO.WarehouseCode = wh.Code;
+                            headDTO.WarehouseName = wh.Name;
+                        }
+                    }
+                    else
+                    {
+                        sbError.AppendLine(string.Format("单据[{0}]店铺不可为空!"
+                            , headDTO.code
+                            ));
+
+                        continue;
+                    }
+
+
+                    foreach (AQWRcvLineDTO lineDTO in headDTO.AQWRcvLineDTOs)
+                    {
+                        string strItemCode = lineDTO.lgcode;
+
+
+                        //deptLine = U9.VOB.Cus.HBHJianLiYuan.DeptItemSupplierBE.DeptItemSupplierLine.Finder.Find("ItemMaster.Code='" + line.ItemInfo.ItemID.Code + "' and DeptItemSupplier.Department.Name='" + line.ReqDept.Name + "'");
+                        U9.VOB.Cus.HBHJianLiYuan.DeptItemSupplierBE.DeptItemSupplierLine deptLine = U9.VOB.Cus.HBHJianLiYuan.DeptItemSupplierBE.DeptItemSupplierLine.Finder.Find("ItemMaster.Code=@ItemCode and DeptItemSupplier.Department.Name=@DeptName order by Supplier desc ");
+                        if (deptLine != null
+                            && deptLine.Supplier != null
+                            )
+                        {
+                        }
+
+                    }
+                }
+            }
+
+            return sbError.ToString();
+        }
     }
 
 

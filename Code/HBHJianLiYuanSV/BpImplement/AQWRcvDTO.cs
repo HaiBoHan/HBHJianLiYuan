@@ -216,6 +216,45 @@ namespace U9.VOB.Cus.HBHJianLiYuan
 
 
 
+        // 部门
+        /// <summary>
+        /// 部门
+        /// </summary>
+        public long DepartmentID { get; set; }
+
+        // 部门编码
+        /// <summary>
+        /// 部门编码
+        /// </summary>
+        public string DepartmentCode { get; set; }
+
+        // 部门名称
+        /// <summary>
+        /// 部门名称
+        /// </summary>
+        public string DepartmentName { get; set; }
+
+
+        // 仓库
+        /// <summary>
+        /// 仓库
+        /// </summary>
+        public long WarehouseID { get; set; }
+
+        // 仓库编码
+        /// <summary>
+        /// 仓库编码
+        /// </summary>
+        public string WarehouseCode { get; set; }
+
+        // 仓库名称
+        /// <summary>
+        /// 仓库名称
+        /// </summary>
+        public string WarehouseName { get; set; }
+
+
+
         public static List<AQWRcvDTO> GetAQWRcvByDataset(DataSet ds)
         {
             List<AQWRcvDTO> lstRcv = new List<AQWRcvDTO>();

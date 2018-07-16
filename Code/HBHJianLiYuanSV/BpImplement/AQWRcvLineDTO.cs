@@ -166,6 +166,26 @@ namespace U9.VOB.Cus.HBHJianLiYuan
         public string lgname { get; set; }
 
 
+        // 供应商，从交叉档获取建议供应商
+        /// <summary>
+        /// 供应商，从交叉档获取建议供应商
+        /// </summary>
+        public long SupplierID { get; set; }
+
+        // 供应商编码，从交叉档获取建议供应商
+        /// <summary>
+        /// 供应商编码，从交叉档获取建议供应商
+        /// </summary>
+        public long SupplierCode { get; set; }
+
+        // 供应商名称，从交叉档获取建议供应商
+        /// <summary>
+        /// 供应商名称，从交叉档获取建议供应商
+        /// </summary>
+        public long SupplierName { get; set; }
+
+
+
         public static AQWRcvLineDTO GetRcvLineByRow(DataRow row)
         {
             if (row != null)
