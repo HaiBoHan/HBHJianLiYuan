@@ -605,6 +605,8 @@ from #tmp_hbh_CashCalc tmp
 
 select *
 from #tmp_hbh_CashCalc
+where 1=1
+	-- and EmployeeName = '»Ææ·'
 
 
 
