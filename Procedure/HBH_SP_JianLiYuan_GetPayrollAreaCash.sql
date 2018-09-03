@@ -183,6 +183,13 @@ select
 	-- 负激励系数
 	,MinusRatio = dbo.HBH_Fn_GetDecimal(line.ExtField163,0)
 
+	-- 不需要，这里取部门就好了，算出来部门兼职应兑现
+	-- 兼职需要找到兼职部门，取兼职部门的扩展字段
+	-- 兼职 正激励系数
+	,PartPlusRatio = dbo.HBH_Fn_GetDecimal(dept.DescFlexField_PrivateDescSeg4,0)
+	-- 兼职 负激励系数
+	,PartMinusRatio = dbo.HBH_Fn_GetDecimal(dept.DescFlexField_PrivateDescSeg5,0)
+
 into #tmp_hbh_CashCalc
 --from PAY_PayrollDoc head
 --	inner join PAY_EmpPayroll line
@@ -348,6 +355,14 @@ select
 				where tmp1.DepartmentCode = #tmp_hbh_CashCalc.DepartmentCode
 				order by abs(tmp1.MinusRatio)
 				)
+				
+				
+	-- 兼职需要找到兼职部门，取兼职部门的扩展字段
+	-- 2018-08-31 wf 李震林，部门上增加了 兼职 正、负 激励系数
+	-- 兼职 正激励系数
+	,PartPlusRatio = PartPlusRatio
+	-- 兼职 负激励系数
+	,PartMinusRatio = PartMinusRatio
 
 
 into #tmp_hbh_DeptPerformance
@@ -358,14 +373,21 @@ group by
 	,DepartmentName
 	--,AreaCode
 
+	-- 兼职 正激励系数
+	,PartPlusRatio
+	-- 兼职 负激励系数
+	,PartMinusRatio
+
 
 
 update #tmp_hbh_DeptPerformance
 set	
 	-- 区域应兑现-兼职部门部门计算 = （最终利润<=0,最终利润*负激励系数+现任部门编码前七位相同的部门的“最终利润”相加（排除兼职部门）*2%，如果（最终利润>0，最终利润*正激励系数）+现任部门编码前七位相同的部门的“最终利润”相加（排除兼职部门）*2%
-	PartDeptShouldBeCashed = case when DeptPerformance <= 0
-							then DeptPerformance * MinusRatio
-							else DeptPerformance * PlusRatio
+	PartDeptShouldBeCashed = case when DeptPerformance < 0
+							--then DeptPerformance * MinusRatio
+							--else DeptPerformance * PlusRatio
+							then DeptPerformance * PartMinusRatio
+							else DeptPerformance * PartPlusRatio
 							end
 
 
@@ -382,6 +404,7 @@ select
 	,tmp.EmployeeName
 	
 	,DepartmentCode = dept.Code
+	,DepartmentName = deptTrl.Name
 	-- 区域 = 部门.全局段2
 	--,AreaCode = dept.DescFlexField_PrivateDescSeg2
 	-- 1、好多区域是空的; 2、问了下，区域不在这里用，这里用部门编码前7位;
@@ -411,8 +434,14 @@ select
 	,DeptPerformance = IsNull(deptPreformance.DeptPerformance,@DefaultZero)
 
 	-- 区域应兑现-兼职部门部门计算 = （最终利润<=0,最终利润*负激励系数+现任部门编码前七位相同的部门的“最终利润”相加（排除兼职部门）*2%，如果（最终利润>0，最终利润*正激励系数）+现任部门编码前七位相同的部门的“最终利润”相加（排除兼职部门）*2%
+	--, PartDeptShouldBeCashed = IsNull(deptPreformance.PartDeptShouldBeCashed,@DefaultZero)
 	, PartDeptShouldBeCashed = IsNull(deptPreformance.PartDeptShouldBeCashed,@DefaultZero)
-
+	
+	
+	-- 兼职 正激励系数
+	,PartPlusRatio = IsNull(deptPreformance.PartPlusRatio,@DefaultZero)
+	-- 兼职 负激励系数
+	,PartMinusRatio = IsNull(deptPreformance.PartMinusRatio,@DefaultZero)
 
 into #tmp_hbh_EmployeePartDept
 
@@ -428,6 +457,10 @@ UFIDA.U9.CBO.HR.Person.EmployeeAssignment	员工任职记录	CBO_EmployeeAssignment	UF
 		
 	inner join CBO_Department dept
 	on ass.Dept = dept.ID
+
+	left join CBO_Department_Trl deptTrl
+	on deptTrl.ID = dept.ID
+		and deptTrl.SysMlFlag = @SysMlFlag
 	
 	/*
 Job	任职职务	UFIDA.U9.CBO.HR.Job.Job	CBO_Job
@@ -534,8 +567,12 @@ set
 							IsNull(sum(
 										--IsNull(tmp2.DeptPerformance,0)
 										case when IsNull(tmp2.DeptPerformance,0) <= 0
-											then tmp2.DeptPerformance * IsNull(tmpEmployee.MinusRatio,0)
-											else tmp2.DeptPerformance * IsNull(tmpEmployee.PlusRatio,0)
+											--then tmp2.DeptPerformance * IsNull(tmpEmployee.PartMinusRatio,0)
+											-- 这里取部门的激励系数
+											then tmp2.DeptPerformance * IsNull(tmp2.PartMinusRatio,0)
+											--else tmp2.DeptPerformance * IsNull(tmpEmployee.PartPlusRatio,0)
+											-- 这里取部门的激励系数
+											else tmp2.DeptPerformance * IsNull(tmp2.PartPlusRatio,0)
 										end
 										),0)
 						from #tmp_hbh_EmployeePartDept tmp2
@@ -563,8 +600,10 @@ set
 							1=1
 							and tmp.EmployeeCode = tmp2.EmployeeCode
 						group by
-							IsNull(tmpEmployee.MinusRatio,0)
-							,IsNull(tmpEmployee.PlusRatio,0)
+							--IsNull(tmpEmployee.PartMinusRatio,0)
+							--,IsNull(tmpEmployee.PartPlusRatio,0)
+							IsNull(tmp2.PartMinusRatio,0)
+							,IsNull(tmp2.PartPlusRatio,0)
 						)
 	--,TotalPartDeptShouldBeCashed = @DefaultZero
 from #tmp_hbh_CashCalc tmp
@@ -611,25 +650,25 @@ where 1=1
 
 
 
-select *
-from #tmp_hbh_EmployeePartDept
+--select *
+--from #tmp_hbh_EmployeePartDept
 
 
 
 select *
 from #tmp_hbh_CashCalc
 where
-	EmployeeCode = '00004243'
+	EmployeeCode = '00000693'
 
 
 
 select *
 from #tmp_hbh_EmployeePartDept
 where
-	EmployeeCode = '00004243'
+	EmployeeCode = '00000693'
 
 	
 select *
 from #tmp_hbh_DeptPerformance
-where DepartmentCode like '0000305018%'
+where DepartmentCode like '0000314003%'
 		
