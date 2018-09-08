@@ -599,11 +599,11 @@ set
 							--)
 							1=1
 							and tmp.EmployeeCode = tmp2.EmployeeCode
-						group by
-							--IsNull(tmpEmployee.PartMinusRatio,0)
-							--,IsNull(tmpEmployee.PartPlusRatio,0)
-							IsNull(tmp2.PartMinusRatio,0)
-							,IsNull(tmp2.PartPlusRatio,0)
+						--group by
+						--	--IsNull(tmpEmployee.PartMinusRatio,0)
+						--	--,IsNull(tmpEmployee.PartPlusRatio,0)
+						--	IsNull(tmp2.PartMinusRatio,0)
+						--	,IsNull(tmp2.PartPlusRatio,0)
 						)
 	--,TotalPartDeptShouldBeCashed = @DefaultZero
 from #tmp_hbh_CashCalc tmp
