@@ -130,9 +130,11 @@ select
 	-- 没有职务下面部门会更新为空，这个错误，所以，先把部门取出来
 	--,Department = @DefaultID
 	--,DepartmentCode = @DefaultEmpty
-	,Department = dept.ID
-	,DepartmentCode = dept.Code
-	,DepartmentName = deptTrl.Name
+
+	-- 2018-09-17 wf 如果录入临时部门、按临时部门取；否则取 行部门
+	,Department = IsNull(tmpDept.ID , dept.ID )
+	,DepartmentCode = IsNull(tmpDept.Code , dept.Code )
+	,DepartmentName = IsNull(tmpDeptTrl.Name , deptTrl.Name )
 
 	-- 区域 = 部门.全局段2
 	--,AreaCode = @DefaultEmpty
@@ -186,9 +188,14 @@ select
 	-- 不需要，这里取部门就好了，算出来部门兼职应兑现
 	-- 兼职需要找到兼职部门，取兼职部门的扩展字段
 	-- 兼职 正激励系数
-	,PartPlusRatio = dbo.HBH_Fn_GetDecimal(dept.DescFlexField_PrivateDescSeg4,0)
+	-- 2018-09-17 wf 如果录入临时部门、按临时部门取；否则取 行部门
+	,PartPlusRatio = dbo.HBH_Fn_GetDecimal(IsNull(dept.DescFlexField_PrivateDescSeg4 
+											,tmpDept.DescFlexField_PrivateDescSeg4)
+							,0)
 	-- 兼职 负激励系数
-	,PartMinusRatio = dbo.HBH_Fn_GetDecimal(dept.DescFlexField_PrivateDescSeg5,0)
+	,PartMinusRatio = dbo.HBH_Fn_GetDecimal(IsNull(dept.DescFlexField_PrivateDescSeg5
+											,tmpDept.DescFlexField_PrivateDescSeg5)
+							,0)
 
 into #tmp_hbh_CashCalc
 --from PAY_PayrollDoc head
@@ -223,11 +230,20 @@ from Pay_PayrollCalculate head
 	--on arch.Dept = dept.ID
 	
 	left join CBO_Department dept
-	on line.Department = dept.ID
+	on dept.ID = line.Department
 
 	left join CBO_Department_Trl deptTrl
 	on deptTrl.ID = dept.ID
 		and deptTrl.SysMlFlag = @SysMlFlag
+		
+	-- 临时部门
+	left join CBO_Department tmpDept
+	on tmpDept.Code = line.ExtField186
+		and tmpDept.Org = head.HROrg
+
+	left join CBO_Department_Trl tmpDeptTrl
+	on tmpDeptTrl.ID = tmpDept.ID
+		and tmpDeptTrl.SysMlFlag = @SysMlFlag
 
 	left join CBO_EmployeeArchive employee
 	on line.Employee = employee.ID
