@@ -1,0 +1,1 @@
+select 0 as Column1,1 as Column2

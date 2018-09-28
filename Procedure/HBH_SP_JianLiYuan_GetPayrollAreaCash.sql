@@ -238,7 +238,12 @@ from Pay_PayrollCalculate head
 		
 	-- 临时部门
 	left join CBO_Department tmpDept
-	on tmpDept.Code = line.ExtField186
+	--on tmpDept.Code = line.ExtField186
+	/*
+ExtField186
+0000304001,江山路一小,1001604010485885
+	*/
+	on line.ExtField186 like  tmpDept.Code + ',%'
 		and tmpDept.Org = head.HROrg
 
 	left join CBO_Department_Trl tmpDeptTrl
@@ -674,14 +679,16 @@ where 1=1
 select *
 from #tmp_hbh_CashCalc
 where
-	EmployeeCode = '00000693'
+	-- EmployeeCode = '00000693'
+	EmployeeName = '刘振好'
 
 
 
 select *
 from #tmp_hbh_EmployeePartDept
 where
-	EmployeeCode = '00000693'
+	-- EmployeeCode = '00000693'
+	EmployeeName = '刘振好'
 
 	
 select *
