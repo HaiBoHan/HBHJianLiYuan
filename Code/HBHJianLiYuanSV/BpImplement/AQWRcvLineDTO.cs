@@ -176,14 +176,20 @@ namespace U9.VOB.Cus.HBHJianLiYuan
         /// <summary>
         /// 供应商编码，从交叉档获取建议供应商
         /// </summary>
-        public long SupplierCode { get; set; }
+        public string SupplierCode { get; set; }
 
         // 供应商名称，从交叉档获取建议供应商
         /// <summary>
         /// 供应商名称，从交叉档获取建议供应商
         /// </summary>
-        public long SupplierName { get; set; }
+        public string SupplierName { get; set; }
 
+
+        // 收货总数量(计算的结果)
+        /// <summary>
+        /// 收货总数量(计算的结果)
+        /// </summary>
+        public decimal TotalQty { get; set; }
 
 
         public static AQWRcvLineDTO GetRcvLineByRow(DataRow row)
@@ -244,6 +250,9 @@ namespace U9.VOB.Cus.HBHJianLiYuan
                 rcvLine.lgcode = row["lgcode"].GetString();
                 //  货品编码
                 rcvLine.lgname = row["lgname"].GetString();
+
+                // 计算总数量
+                rcvLine.TotalQty = rcvLine.amount.GetDecimal() + rcvLine.damount.GetDecimal();
 
                 return rcvLine;
             }

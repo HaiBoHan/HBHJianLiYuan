@@ -302,29 +302,35 @@
                 {
                     foreach (AQWRcvLineDTO lineDTO in rcvDTO.AQWRcvLineDTOs)
                     {
-                        AQWSupplierType suptType = AQWSupplierType.Empty;
-
-                        // 当奥琦玮内料号名称前面加“冻货”两个字的，在U9内对应的供应商为“00291--北京配送部（冻货）”，没有冻货两个字的，对应的供应商为“00222-北京配送部”
-                        if (lineDTO.lgname.Contains("冻货")
-                            // 2018-03-12 wf 冻品也生成冷冻的供应商
-                            || lineDTO.lgname.Contains("冻品")
+                        //decimal qty = lineDTO.amount.GetDecimal();
+                        decimal qty = lineDTO.TotalQty;
+                        if (qty > 0
                             )
                         {
-                            // supt = RcvFrozenSupplier;
-                            suptType = AQWSupplierType.冷冻;
-                        }
-                        else
-                        {
-                            //supt = RcvSupplier;
-                            suptType = AQWSupplierType.配送;
-                        }
+                            AQWSupplierType suptType = AQWSupplierType.Empty;
 
-                        if (!dicRcv.ContainsKey(suptType))
-                        {
-                            dicRcv.Add(suptType, new List<AQWRcvLineDTO>());
-                        }
+                            // 当奥琦玮内料号名称前面加“冻货”两个字的，在U9内对应的供应商为“00291--北京配送部（冻货）”，没有冻货两个字的，对应的供应商为“00222-北京配送部”
+                            if (lineDTO.lgname.Contains("冻货")
+                                // 2018-03-12 wf 冻品也生成冷冻的供应商
+                                || lineDTO.lgname.Contains("冻品")
+                                )
+                            {
+                                // supt = RcvFrozenSupplier;
+                                suptType = AQWSupplierType.冷冻;
+                            }
+                            else
+                            {
+                                //supt = RcvSupplier;
+                                suptType = AQWSupplierType.配送;
+                            }
 
-                        dicRcv[suptType].Add(lineDTO);
+                            if (!dicRcv.ContainsKey(suptType))
+                            {
+                                dicRcv.Add(suptType, new List<AQWRcvLineDTO>());
+                            }
+
+                            dicRcv[suptType].Add(lineDTO);
+                        }
                     }
                 }
             }
@@ -514,7 +520,8 @@
                         }
                         else
                         {
-                            return null;
+                            //return null;
+                            continue;
                         }
                     }
                 }
@@ -692,7 +699,8 @@
         private static OBARcvLineDTO GetErpRcvLine(AQWRcvLineDTO aqwRcvLineDTO, OBAReceivementDTO erpRcvHead, Department dept, Warehouse wh)
         {
             OBARcvLineDTO erpRcvLine = null;
-            decimal qty = aqwRcvLineDTO.amount.GetDecimal() + aqwRcvLineDTO.damount.GetDecimal();
+            //decimal qty = aqwRcvLineDTO.amount.GetDecimal() + aqwRcvLineDTO.damount.GetDecimal();
+            decimal qty = aqwRcvLineDTO.TotalQty;
 
             if (qty > 0)
             {
